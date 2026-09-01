@@ -1,0 +1,17 @@
+{
+  "source": "A:30_thesis_atpg_search_v1/data/atpg_run_timing_v2.tsv",
+  "rows": 33563,
+  "complete": 33563,
+  "incomplete": 0,
+  "sha256": "56cc2c4ff7039e3500904ceb275970219d259ea2132cf92e9aeb25a35858abe3",
+  "circuits": {
+    "aes_core": {"rows": 4053, "wall_s": 41647.520},
+    "b20": {"rows": 4221, "wall_s": 38695.570},
+    "b21": {"rows": 5074, "wall_s": 46530.730},
+    "b22": {"rows": 4709, "wall_s": 47556.630},
+    "spi": {"rows": 8184, "wall_s": 67303.590},
+    "tv80": {"rows": 4741, "wall_s": 39429.730},
+    "wb_dma": {"rows": 2581, "wall_s": 21074.910}
+  },
+  "boundary": "Historical runtime is for training and offline replay. Formal runtime claims require same-environment forward validation."
+}

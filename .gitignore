@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Editors and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Large or generated experiment artifacts
+data/raw/
+data/staging/
+artifacts/
+checkpoints/
+runs/
+logs/
+*.mtfi
+*.stil
+*.tsdb*
+*.tar
+*.tar.gz
+*.zip
+*.pt
+*.pth
+*.ckpt
+
+# Keep small audited manifests and summaries only.
+!data/manifests/
+!data/manifests/**
+!artifacts/README.md
+

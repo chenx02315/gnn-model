@@ -1,0 +1,47 @@
+{
+  "contract_version": "p0-v1",
+  "status": "BLOCKED_PENDING_EVIDENCE",
+  "fixed_modes": ["H64", "M16", "F4"],
+  "fixed_order": {
+    "HF": ["H64", "F4"],
+    "HMF": ["H64", "M16", "F4"]
+  },
+  "decision_key": {
+    "HF": ["scheme", "h_limit"],
+    "HMF": ["scheme", "h_limit", "m_limit"]
+  },
+  "f_is_decision": false,
+  "f_actual_source": "tessent_residual_closure",
+  "requested_and_actual_patterns_separated": true,
+  "primary_epsilon": 0.01,
+  "primary_k": 10,
+  "secondary_epsilons": [0.0, 0.005, 0.02, 0.05],
+  "secondary_k": [1, 3, 5, 20, "full"],
+  "success_noninferiority_margin": 0.05,
+  "primary_comparator": "d95_safe_then_predicted_cycles",
+  "primary_method": "d95_safe_cost_aware_topk",
+  "ranking_static_within_session": true,
+  "pilot_circuits": ["b20", "b21"],
+  "pilot_is_formal_test": false,
+  "blind_test_access_before_freeze": "forbidden",
+  "accepted_candidate_requires": {
+    "exit_zero": true,
+    "d95_verified_by_tessent": true,
+    "regret_le_primary_epsilon": true
+  },
+  "statistics": {
+    "unit": "family",
+    "aggregation": "family_equal_macro_average",
+    "ci": "paired_family_cluster_bootstrap",
+    "ci_level": 0.95,
+    "bootstrap_repetitions": 10000,
+    "primary_comparison_count": 1
+  },
+  "pending_evidence": [
+    "candidate_space_tsv_and_sha256",
+    "d95_common_fault_definition_and_sha256",
+    "timeout_retry_cache_and_prefix_reuse_policy",
+    "train_validation_pilot_blind_split_manifest_and_sha256"
+  ]
+}
+

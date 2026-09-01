@@ -1,0 +1,22 @@
+{
+  "gate_version": "p0-gate-v1",
+  "pass_expression": "all(G01:G15)",
+  "checks": {
+    "G01": "fixed_modes == [H64,M16,F4]",
+    "G02": "fixed_order == {HF:H->F,HMF:H->M->F}",
+    "G03": "sha256(common_fault_file) == registered_sha256",
+    "G04": "threshold_count == ceil(0.95*N_common)",
+    "G05": "candidate_uid is unique",
+    "G06": "every candidate belongs to exactly one frozen scheme/grid",
+    "G07": "methods use identical candidate_space_sha256",
+    "G08": "family appears in exactly one split role",
+    "G09": "PILOT intersection BLIND_TEST is empty",
+    "G10": "no blacklisted feature exists in model feature list",
+    "G11": "primary_epsilon == 0.01 and primary_k == 10",
+    "G12": "comparator,tie_break,timeout,retry,fallback are non-null",
+    "G13": "search_wall equals all executed elapsed including failures/retries",
+    "G14": "search and independent verification intervals do not overlap",
+    "G15": "blind_manifest_sha256 and contract_sha256 recorded before blind access"
+  }
+}
+

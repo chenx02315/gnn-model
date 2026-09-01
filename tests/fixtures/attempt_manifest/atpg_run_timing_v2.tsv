@@ -1,0 +1,6 @@
+circuit	stage	run_id	run_id_source	mode	elapsed_wall_s	user_time_s	system_time_s	max_rss_kb	exit_status	parse_status	source_log
+b20	stage_h	stale	filename								10_circuits/b20/stage_h/H_marker.driver.log
+b20	stage_h				2.000				0	PASS	10_circuits/b20/stage_h/H_retry.driver.log
+b20	stage_h				1.000				0	PASS	10_circuits/b20/stage_h/H_dup.driver.log
+b20	stage_f										10_circuits/b20/stage_f/missing.driver.log
+b21	stage_m	M_b21	filename	M	3.000				0	PASS	10_circuits/b21/stage_m/M_b21.driver.log

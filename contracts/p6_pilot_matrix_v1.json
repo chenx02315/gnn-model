@@ -1,0 +1,23 @@
+{
+  "status": "DRAFT_UNTIL_P0_PASS",
+  "circuits": ["b20", "b21"],
+  "methods": [
+    "fixed_heuristic",
+    "d95_safe_then_predicted_cycles",
+    "d95_safe_cost_aware_topk"
+  ],
+  "top_k": 10,
+  "time_blocks": 3,
+  "atpg_seeds": 1,
+  "search_sessions": 18,
+  "candidate_attempts_min": 18,
+  "candidate_attempts_max": 180,
+  "interleave": "latin_square_within_circuit_block",
+  "pilot_pass": {
+    "complete_event_and_hash_rate": 1.0,
+    "accepted_candidate_d95_rate": 1.0,
+    "cost_method_must_not_lose_baseline_hits": true,
+    "paired_point_estimate_improvement_min": 0.2,
+    "protocol_only_not_formal_statistical_claim": true
+  }
+}

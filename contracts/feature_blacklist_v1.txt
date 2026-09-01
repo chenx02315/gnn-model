@@ -1,0 +1,11 @@
+final_detected_faults
+final_feasible_at_d95
+actual_f_min
+actual_f_ratio
+actual_total_cycles
+actual_runtime
+full_residual_fault_set
+full_grid_rank
+oracle_cycles
+eligible_regression
+

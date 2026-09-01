@@ -1,0 +1,28 @@
+{
+  "contract_version": "timing-v1",
+  "status": "DRAFT",
+  "primary_endpoint": "cumulative_tessent_elapsed_s_to_epsilon_hit",
+  "primary_endpoint_formula": "sum(all_executed_attempt.elapsed_s_until_hit)",
+  "queue_wait_in_primary": false,
+  "failed_attempt_time_in_primary": true,
+  "retry_time_in_primary": true,
+  "timeout_charge": "timeout_s",
+  "no_hit_at_k": {
+    "success": 0,
+    "charged_cost": "all_attempt_time_through_k",
+    "survival_status": "right_censored"
+  },
+  "secondary_endpoint": "online_end_to_end_s",
+  "secondary_components": [
+    "queue_wait",
+    "feature",
+    "inference",
+    "tessent_search",
+    "fallback",
+    "independent_final_verification"
+  ],
+  "double_count_rule": "A Tessent run used for search and D95/cycles verification is counted once. Verification is separate only for an additional independent confirmation run.",
+  "historical_runtime_role": "training_and_offline_replay_only",
+  "formal_runtime_role": "same_environment_forward_validation"
+}
+
