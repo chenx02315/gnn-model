@@ -27,9 +27,9 @@ logs/
 *.pt
 *.pth
 *.ckpt
+*.joblib
 
 # Keep small audited manifests and summaries only.
 !data/manifests/
 !data/manifests/**
 !artifacts/README.md
-

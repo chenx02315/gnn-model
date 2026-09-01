@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "verification": "independent recomputation from all circuit-level rows",
+  "fixed_seeds": [
+    20260824,
+    20260825,
+    20260826
+  ],
+  "all_seeds_included": true,
+  "circuits_per_model_seed": 15,
+  "effective_families": 12,
+  "internal_summary_numeric_match": true,
+  "selected_actions_rejoined_to_candidate_source": true,
+  "safe_anchor_source_contract": "PASS",
+  "model_practical_signal": {
+    "graphsage": "PASS",
+    "xgboost_scalar": "PASS"
+  },
+  "model_safety_status": {
+    "graphsage": "PASS",
+    "xgboost_scalar": "PASS"
+  },
+  "infeasible_selected_rows": [],
+  "candidate_table_sha256": "b6621447645f7c5291566e4071441f2fa7064dddd258ea5e7d33261783b0db60",
+  "family_map_sha256": "582f377e9677fbf9f48ea3a570199310db4a7f83b7085499ba4b47eb5e84a569",
+  "graph_manifest_sha256": "60d94f6d867873483168b703b158b91d032fa241a2c069ab0ef834d0b63acede",
+  "input_result_hashes": {
+    "/ssd/cjc/multimode_ate_phase4_20260825_B/41_runs/formal_phase4_v4_safe_abstain_three_seed_r1/seed_20260824/lofo_circuit_metrics.tsv": "cd9050a5a976cde7bda2d3c4feabd94392fc855943aeb7827c7cf0523cf3629a",
+    "/ssd/cjc/multimode_ate_phase4_20260825_B/41_runs/formal_phase4_v4_safe_abstain_three_seed_r1/seed_20260824/run_summary.json": "fa0197c945ae0cc4f1c8d21f075e6ca370b6c089b47a9a1d8d53f59ad985edea",
+    "/ssd/cjc/multimode_ate_phase4_20260825_B/41_runs/formal_phase4_v4_safe_abstain_three_seed_r1/seed_20260825/lofo_circuit_metrics.tsv": "b18b9d1cc686cfdd7a6287e0b42b375c110d07d0b756435bb25eb4979a679eea",
+    "/ssd/cjc/multimode_ate_phase4_20260825_B/41_runs/formal_phase4_v4_safe_abstain_three_seed_r1/seed_20260825/run_summary.json": "5546872ee4a77f5287532b0b2ac1ad33541a6ca8113ecc1bfee74ca493468b48",
+    "/ssd/cjc/multimode_ate_phase4_20260825_B/41_runs/formal_phase4_v4_safe_abstain_three_seed_r1/seed_20260826/lofo_circuit_metrics.tsv": "90c47c11a30c2a3d505a9e8e4b04cd091eeddc3af5172a5eb6b69309c3215c35",
+    "/ssd/cjc/multimode_ate_phase4_20260825_B/41_runs/formal_phase4_v4_safe_abstain_three_seed_r1/seed_20260826/run_summary.json": "59ce6c7b091b6629e67ae0d3d2c37c472691852ba2e11dcad02e0ee6fec8c040"
+  }
+}

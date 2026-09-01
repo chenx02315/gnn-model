@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "split": "leave-one-effective-family-out",
+  "candidate_rows": 11167,
+  "circuits": 15,
+  "measured_infeasible_candidate_rows": 1,
+  "effective_families": 12,
+  "device": "cuda",
+  "seed": 20260824,
+  "elapsed_seconds": 62.8455924987793,
+  "input_policy": "no f_patterns/f_ratio candidate outcome leakage",
+  "feasibility_policy": "shared outer-train-family gate; single-class labels are unidentifiable and force abstention",
+  "decision_policy": "single-class or invalid/non-positive candidate predictions abstain to coordinate-fixed FullScan-F4 anchor",
+  "target": "log1p(total_cycles/common_fault_count)",
+  "primary_success": "selected candidate reaches D95 and has fewer cycles than the best feasible single-mode baseline",
+  "secondary_metric": "cycle regret to the measured oracle candidate",
+  "warning": "This remains a feasibility study; success does not imply oracle-optimal prediction."
+}

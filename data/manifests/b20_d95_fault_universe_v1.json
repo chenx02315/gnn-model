@@ -1,0 +1,29 @@
+{
+  "circuit": "b20",
+  "schema": "multimode_common_fault_universe_v1",
+  "fault_model": "stuck-at",
+  "constraint_type": "common_fault_count_threshold",
+  "common_fault_count": 46382,
+  "minimum_fraction": 0.95,
+  "threshold_rule": "ceil(minimum_fraction * common_fault_count)",
+  "d95": 44063,
+  "common_fault_directory": "10_circuits/b20/03_fault_universe/common_b20_m16_phase4_v1",
+  "manifest_sha256": "55c40a33a6fb83215eba14fde92343d8375daa2606155a96bbe03351395dd034",
+  "canonical_mapping": {
+    "rows_excluding_header": 46382,
+    "sha256": "c0c131edbf54196c9ab2d871a32596140283e2d0433d54b061e4066ef05dbf00"
+  },
+  "mode_fault_files": {
+    "H": "92a30987a46e4ea366259d9964745ede81366b1df0af6440a86f8c1933485548",
+    "M": "9bac210aa9209b547774c1fb7d1d51b6b0290b90c933437b0d4a3df54b13fc9d",
+    "F": "c66859eaa15aaa6c085bb0918bbf3d07b4d60215f9d64468ad041451e9e5edb2"
+  },
+  "readback_validation": {
+    "status": "PASS",
+    "expected": 46382,
+    "H": 46382,
+    "M": 46382,
+    "F": 46382
+  },
+  "scope_boundary": "D95 is currently a count threshold over the frozen common fault universe. It is not a preselected set of exactly 44063 fault IDs."
+}

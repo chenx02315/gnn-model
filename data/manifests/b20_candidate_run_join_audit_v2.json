@@ -1,0 +1,67 @@
+{
+  "auxiliary_boundary_search_attempts": "future incidence task; not included in candidate search cost",
+  "by_stage_mode": {
+    "hf_coarse:F": {
+      "UNIQUE": 21
+    },
+    "hf_coarse:H": {
+      "MISSING": 1,
+      "UNIQUE": 20
+    },
+    "hf_refine:F": {
+      "UNIQUE": 51
+    },
+    "hf_refine:H": {
+      "UNIQUE": 51
+    },
+    "hmf_coarse:F": {
+      "NOT_RUN": 381,
+      "UNIQUE": 60
+    },
+    "hmf_coarse:H": {
+      "MISSING": 21,
+      "UNIQUE": 420
+    },
+    "hmf_coarse:M": {
+      "UNIQUE": 441
+    },
+    "hmf_refine:F": {
+      "NOT_RUN": 64,
+      "UNIQUE": 272
+    },
+    "hmf_refine:H": {
+      "UNIQUE": 336
+    },
+    "hmf_refine:M": {
+      "UNIQUE": 336
+    },
+    "repeatability:F": {
+      "NO_RESULT_PATH": 9
+    },
+    "repeatability:H": {
+      "NO_RESULT_PATH": 9
+    },
+    "repeatability:M": {
+      "NO_RESULT_PATH": 3
+    },
+    "single_boundary:F": {
+      "MISSING": 1,
+      "UNIQUE": 40
+    },
+    "single_boundary:H": {
+      "MISSING": 1,
+      "UNIQUE": 20
+    }
+  },
+  "final_direct_join_ambiguity_count": 0,
+  "final_direct_join_ambiguity_zero": true,
+  "join_key_source_counts": {
+    "not_joined": 490,
+    "source_log_basename": 2068
+  },
+  "path_backed_row_count": 2537,
+  "repeatability_not_joined_count": 21,
+  "repeatability_policy": "NO_RESULT_PATH/NOT_JOINED; excluded from path-backed direct-join completeness",
+  "row_count": 2558,
+  "source_basename_marker_run_id_mismatch_count": 887
+}

@@ -1,0 +1,22 @@
+{
+  "ambiguous_attempt_ids": [],
+  "attempt_count": 4221,
+  "circuit_filter": [
+    "b20"
+  ],
+  "duplicate_run_ids": [],
+  "parse_status_counts": {
+    "PASS": 4221
+  },
+  "run_id_source_counts": {
+    "filename": 4002,
+    "log_marker": 219
+  },
+  "schema_version": "attempt_manifest_v1",
+  "selected_circuits": [
+    "b20"
+  ],
+  "selected_row_count": 4221,
+  "selection_policy": "all input rows retained; no fastest-result deduplication",
+  "source_row_count": 33563
+}
