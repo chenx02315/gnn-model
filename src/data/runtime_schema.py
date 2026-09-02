@@ -3,7 +3,7 @@ from __future__ import print_function
 
 MANIFEST_V2_FIELDS = (
     "attempt_id", "adapter", "circuit", "family", "role", "cohort", "environment_cohort", "phase", "stage", "mode", "run_id",
-    "run_id_source", "wall_s", "user_s", "system_s", "rss_kb", "exit_status",
+    "run_id_source", "wall_s", "user_s", "system_s", "rss_kb", "exit_status", "atpg_status",
     "timeout_status", "retry_order", "retry_order_status", "parse_status",
     "attempt_outcome_class", "semantics_status", "semantics_contract", "elapsed_source", "elapsed_semantics",
     "retry_group_id", "source_artifact", "source_artifact_sha256", "source_row_number", "source_log_path",

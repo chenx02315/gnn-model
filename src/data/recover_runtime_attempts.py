@@ -4,7 +4,8 @@ from __future__ import print_function
 import argparse, csv, hashlib, os, re
 from runtime_schema import MANIFEST_V2_FIELDS, PHASE2_WALL_CONTRACT
 
-MARKERS = {"run_id": re.compile(r"^MAPPED_COMMON_ATPG_RUN_ID=(.+)$", re.M), "mode": re.compile(r"^MAPPED_COMMON_ATPG_MODE=(.+)$", re.M), "user_s": re.compile(r"^\s*User time \(seconds\):\s*(\S+)", re.M), "system_s": re.compile(r"^\s*System time \(seconds\):\s*(\S+)", re.M), "elapsed": re.compile(r"^\s*Elapsed \(wall clock\) time \(h:mm:ss or m:ss\):\s*(\S+)", re.M), "rss_kb": re.compile(r"^\s*Maximum resident set size \(kbytes\):\s*(\S+)", re.M), "exit_status": re.compile(r"^\s*Exit status:\s*(\S+)", re.M)}
+MARKERS = {"run_id": re.compile(r"^MAPPED_COMMON_ATPG_RUN_ID=(.+)$", re.M), "mode": re.compile(r"^MAPPED_COMMON_ATPG_MODE=(.+)$", re.M), "atpg_status": re.compile(r"^MAPPED_COMMON_ATPG_STATUS=(.+)$", re.M), "user_s": re.compile(r"^\s*User time \(seconds\):\s*(\S+)", re.M), "system_s": re.compile(r"^\s*System time \(seconds\):\s*(\S+)", re.M), "elapsed": re.compile(r"^\s*Elapsed \(wall clock\) time \(h:mm:ss or m:ss\):\s*(\S+)", re.M), "rss_kb": re.compile(r"^\s*Maximum resident set size \(kbytes\):\s*(\S+)", re.M), "exit_status": re.compile(r"^\s*Exit status:\s*(\S+)", re.M)}
+TIMEOUT_MARKER = re.compile(r"(?:^|\n)(?:TIMEOUT|TIMED_OUT|KILLED_FOR_TIMEOUT)(?:\b|=)", re.I)
 
 def sha(path):
     h = hashlib.sha256()
@@ -19,11 +20,23 @@ def wall(text):
 def val(row, name): return (row.get(name) or "").strip()
 def base(adapter, circuit, phase, stage, mode, run, source, source_sha, line="", log_path="", log_sha="", meta=None):
     meta=meta or {}
-    return {"adapter":adapter,"circuit":circuit,"family":meta.get("family", ""),"role":meta.get("role", ""),"cohort":meta.get("cohort", ""),"environment_cohort":meta.get("environment_cohort", ""),"phase":phase,"stage":stage,"mode":mode,"run_id":run,"run_id_source":"","wall_s":"","user_s":"","system_s":"","rss_kb":"","exit_status":"","timeout_status":"unknown","retry_order":"","retry_order_status":"UNKNOWN_ORDER","parse_status":"","attempt_outcome_class":"UNKNOWN","semantics_status":"","semantics_contract":"","elapsed_source":"","elapsed_semantics":"","retry_group_id":"","source_artifact":source,"source_artifact_sha256":source_sha,"source_row_number":line,"source_log_path":log_path,"source_log_sha256":log_sha,"inventory_manifest_sha256":meta.get("inventory_manifest_sha256", "")}
+    return {"adapter":adapter,"circuit":circuit,"family":meta.get("family", ""),"role":meta.get("role", ""),"cohort":meta.get("cohort", ""),"environment_cohort":meta.get("environment_cohort", ""),"phase":phase,"stage":stage,"mode":mode,"run_id":run,"run_id_source":"","wall_s":"","user_s":"","system_s":"","rss_kb":"","exit_status":"","atpg_status":"","timeout_status":"unknown","retry_order":"","retry_order_status":"UNKNOWN_ORDER","parse_status":"","attempt_outcome_class":"UNKNOWN","semantics_status":"","semantics_contract":"","elapsed_source":"","elapsed_semantics":"","retry_group_id":"","source_artifact":source,"source_artifact_sha256":source_sha,"source_row_number":line,"source_log_path":log_path,"source_log_sha256":log_sha,"inventory_manifest_sha256":meta.get("inventory_manifest_sha256", "")}
 def finalize(row):
     identity = "|".join(row.get(k, "") for k in ("source_artifact_sha256","source_row_number","source_log_sha256","run_id"))
     row["attempt_id"] = "attempt_" + hashlib.sha256(identity.encode("utf-8")).hexdigest()[:20]
     return row
+
+def scan_log(path):
+    digest=hashlib.sha256(); found=dict((key, "") for key in MARKERS); timeout=False
+    with open(path,"rb") as stream:
+        for raw in stream:
+            digest.update(raw); line=raw.decode("utf-8","replace")
+            for key,pattern in MARKERS.items():
+                if not found[key]:
+                    match=pattern.search(line)
+                    if match: found[key]=match.group(1).strip()
+            if not timeout and TIMEOUT_MARKER.search(line): timeout=True
+    return found,digest.hexdigest(),timeout
 
 def gnu_rows(input_path, root, meta):
     paths = []
@@ -31,20 +44,18 @@ def gnu_rows(input_path, root, meta):
         paths.extend(os.path.join(parent, x) for x in files if x.endswith(".driver.log"))
     rows=[]
     for path in sorted(paths):
-        log_sha=sha(path)
-        with open(path,"rb") as stream:
-            stream.seek(0,os.SEEK_END); size=stream.tell(); stream.seek(max(0,size-65536),os.SEEK_SET)
-            data=stream.read()
-        text=data.decode("utf-8","replace"); found={k:(p.search(text).group(1).strip() if p.search(text) else "") for k,p in MARKERS.items()}
+        found,log_sha,timeout_marker=scan_log(path)
         rel=os.path.relpath(path,root).replace(os.sep,"/"); parts=rel.split("/"); run=found["run_id"] or os.path.basename(path)[:-11]
         circuit=meta.get("circuit") or (parts[1] if len(parts)>1 and parts[0]=="10_circuits" else "")
         row=base("gnu_time_log",circuit,meta.get("phase", ""),parts[-2] if len(parts)>1 else "",found["mode"] or (run[0] if run[:2] in ("H_","M_","F_") else ""),run,rel,log_sha,"",rel,log_sha,meta)
-        row.update({"run_id_source":"log_marker" if found["run_id"] else "filename","wall_s":wall(found["elapsed"]),"user_s":found["user_s"],"system_s":found["system_s"],"rss_kb":found["rss_kb"],"exit_status":found["exit_status"],"semantics_status":"VERIFIED_GNU_TIME","semantics_contract":PHASE2_WALL_CONTRACT,"elapsed_source":"gnu_time_footer","elapsed_semantics":"tessent_process_wall_seconds","retry_group_id":run})
-        timeout_marker = re.search(r"(?:^|\n)(?:TIMEOUT|TIMED_OUT|KILLED_FOR_TIMEOUT)(?:\b|=)",text,re.I)
+        wall_s=wall(found["elapsed"])
+        row.update({"run_id_source":"log_marker" if found["run_id"] else "filename","wall_s":wall_s,"user_s":found["user_s"],"system_s":found["system_s"],"rss_kb":found["rss_kb"],"exit_status":found["exit_status"],"atpg_status":found["atpg_status"],"semantics_status":"FOOTER_VERIFIED" if wall_s else "CONTRACT_VERIFIED_MISSING_VALUE","semantics_contract":PHASE2_WALL_CONTRACT,"elapsed_source":"gnu_time_footer" if wall_s else "","elapsed_semantics":"tessent_process_wall_seconds" if wall_s else "","retry_group_id":run})
         if timeout_marker: row["parse_status"]="TIMEOUT"; row["timeout_status"]="TIMEOUT_MARKER"; row["attempt_outcome_class"]="TIMEOUT"
         elif not row["wall_s"]: row["parse_status"]="MISSING_ELAPSED"
         elif not row["exit_status"]: row["parse_status"]="MISSING_EXIT"
         elif row["exit_status"]!="0": row["parse_status"]="NONZERO_EXIT"; row["attempt_outcome_class"]="NONZERO_EXIT"
+        elif not row["atpg_status"]: row["parse_status"]="PASS_RUNTIME_OUTCOME_PENDING"; row["attempt_outcome_class"]="UNKNOWN_LEGACY_STATUS"
+        elif row["atpg_status"]!="PASS": row["parse_status"]="ATPG_STATUS_FAIL"; row["attempt_outcome_class"]="TOOL_FAIL"
         else: row["parse_status"]="PASS"; row["attempt_outcome_class"]="SUCCESS"
         rows.append(finalize(row))
     return rows

@@ -18,15 +18,23 @@ PATTERNS = {
     "user": re.compile(r"^\s*User time \(seconds\):\s*\S+", re.M),
     "system": re.compile(r"^\s*System time \(seconds\):\s*\S+", re.M),
     "exit": re.compile(r"^\s*Exit status:\s*(\S+)", re.M),
+    "atpg_status": re.compile(r"^MAPPED_COMMON_ATPG_STATUS=(\S+)", re.M),
 }
 
 
-def file_sha256(path):
+def scan_file(path):
     digest = hashlib.sha256()
+    found = dict((key, "") for key in PATTERNS)
     with open(path, "rb") as stream:
-        data = stream.read()
-    digest.update(data)
-    return digest.hexdigest(), data.decode("utf-8", "replace")
+        for raw in stream:
+            digest.update(raw)
+            line = raw.decode("utf-8", "replace")
+            for key, pattern in PATTERNS.items():
+                if not found[key]:
+                    match = pattern.search(line)
+                    if match:
+                        found[key] = match.group(1) if match.groups() else "PRESENT"
+    return digest.hexdigest(), found
 
 
 def audit(root, circuit, cohort):
@@ -38,17 +46,19 @@ def audit(root, circuit, cohort):
     paths.sort()
     counts = dict((key, 0) for key in PATTERNS)
     nonzero_exit = 0
+    nonpass_atpg_status = 0
     inventory = hashlib.sha256()
     for path in paths:
-        digest, text = file_sha256(path)
+        digest, found = scan_file(path)
         relative = os.path.relpath(path, root).replace(os.sep, "/")
         inventory.update((relative + "\t" + digest + "\n").encode("utf-8"))
-        for key, pattern in PATTERNS.items():
-            match = pattern.search(text)
-            if match:
+        for key in PATTERNS:
+            if found[key]:
                 counts[key] += 1
-                if key == "exit" and match.group(1) != "0":
+                if key == "exit" and found[key] != "0":
                     nonzero_exit += 1
+                if key == "atpg_status" and found[key] != "PASS":
+                    nonpass_atpg_status += 1
     total = len(paths)
     result = {
         "schema_version": "runtime_log_inventory_aggregate_v1",
@@ -60,8 +70,11 @@ def audit(root, circuit, cohort):
         "system_footer_count": counts["system"],
         "exit_footer_count": counts["exit"],
         "nonzero_exit_count": nonzero_exit,
+        "atpg_status_marker_count": counts["atpg_status"],
+        "nonpass_atpg_status_count": nonpass_atpg_status,
         "missing_elapsed_count": total - counts["elapsed"],
         "missing_exit_count": total - counts["exit"],
+        "missing_atpg_status_count": total - counts["atpg_status"],
         "inventory_manifest_sha256": inventory.hexdigest(),
         "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
     }

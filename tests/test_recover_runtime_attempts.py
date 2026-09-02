@@ -10,18 +10,28 @@ class RuntimeRecoveryTest(unittest.TestCase):
  def test_gnu_statuses_and_order_independent_ids(self):
   with tempfile.TemporaryDirectory() as d:
    logs=os.path.join(d,"10_circuits","b18","stage")
-   put(os.path.join(logs,"H_one.driver.log"),"MAPPED_COMMON_ATPG_RUN_ID=one\nMAPPED_COMMON_ATPG_MODE=H\nElapsed (wall clock) time (h:mm:ss or m:ss): 1:02\nExit status: 0\n")
-   put(os.path.join(logs,"F_two.driver.log"),"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02\nExit status: 3\n")
-   put(os.path.join(logs,"M_three.driver.log"),"MAPPED_COMMON_ATPG_RUN_ID=three\nExit status: 0\n")
-   put(os.path.join(logs,"H_four.driver.log"),"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03\n")
-   put(os.path.join(logs,"F_five.driver.log"),"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04\nExit status: 0\nTIMEOUT\n")
+   put(os.path.join(logs,"H_one.driver.log"),"MAPPED_COMMON_ATPG_RUN_ID=one\nMAPPED_COMMON_ATPG_MODE=H\nMAPPED_COMMON_ATPG_STATUS=PASS\n"+("x"*70000)+"\nElapsed (wall clock) time (h:mm:ss or m:ss): 1:02\nExit status: 0\n")
+   put(os.path.join(logs,"F_two.driver.log"),"MAPPED_COMMON_ATPG_STATUS=PASS\nElapsed (wall clock) time (h:mm:ss or m:ss): 0:02\nExit status: 3\n")
+   put(os.path.join(logs,"M_three.driver.log"),"MAPPED_COMMON_ATPG_RUN_ID=three\nMAPPED_COMMON_ATPG_STATUS=PASS\nExit status: 0\n")
+   put(os.path.join(logs,"H_four.driver.log"),"MAPPED_COMMON_ATPG_STATUS=PASS\nElapsed (wall clock) time (h:mm:ss or m:ss): 0:03\n")
+   put(os.path.join(logs,"F_five.driver.log"),"MAPPED_COMMON_ATPG_STATUS=PASS\nElapsed (wall clock) time (h:mm:ss or m:ss): 0:04\nExit status: 0\nTIMEOUT\n")
+   put(os.path.join(logs,"M_six.driver.log"),"MAPPED_COMMON_ATPG_STATUS=FAIL\nElapsed (wall clock) time (h:mm:ss or m:ss): 0:05\nExit status: 0\n")
    out=os.path.join(d,"out.tsv"); subprocess.check_call([sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",d,"--evidence-root",d,"--output",out])
    with open(out,encoding="utf8",newline="") as f:rows=list(csv.DictReader(f,delimiter="\t"))
-   self.assertEqual(["MISSING_ELAPSED","MISSING_EXIT","NONZERO_EXIT","PASS","TIMEOUT"],sorted(r["parse_status"] for r in rows)); self.assertEqual(5,len(set(r["attempt_id"] for r in rows))); self.assertTrue(all(r["retry_order_status"]=="UNKNOWN_ORDER" for r in rows)); self.assertEqual(("TIMEOUT_MARKER","TIMEOUT"),tuple([r for r in rows if r["run_id"]=="F_five"][0][k] for k in ("timeout_status","attempt_outcome_class")))
-   ids={r["run_id"]:r["attempt_id"] for r in rows}; put(os.path.join(logs,"H_one.driver.log"),"MAPPED_COMMON_ATPG_RUN_ID=one\nElapsed (wall clock) time (h:mm:ss or m:ss): 1:02\nExit status: 0\n# changed\n")
+   self.assertEqual(["ATPG_STATUS_FAIL","MISSING_ELAPSED","MISSING_EXIT","NONZERO_EXIT","PASS","TIMEOUT"],sorted(r["parse_status"] for r in rows)); self.assertEqual(6,len(set(r["attempt_id"] for r in rows))); self.assertTrue(all(r["retry_order_status"]=="UNKNOWN_ORDER" for r in rows)); self.assertEqual(("TIMEOUT_MARKER","TIMEOUT"),tuple([r for r in rows if r["run_id"]=="F_five"][0][k] for k in ("timeout_status","attempt_outcome_class"))); self.assertEqual("TOOL_FAIL",[r for r in rows if r["run_id"]=="M_six"][0]["attempt_outcome_class"])
+   self.assertEqual(("CONTRACT_VERIFIED_MISSING_VALUE","",""),tuple([r for r in rows if r["run_id"]=="three"][0][k] for k in ("semantics_status","elapsed_source","elapsed_semantics")))
+   ids={r["run_id"]:r["attempt_id"] for r in rows}; put(os.path.join(logs,"H_one.driver.log"),"MAPPED_COMMON_ATPG_RUN_ID=one\nMAPPED_COMMON_ATPG_STATUS=PASS\n"+("x"*70000)+"\nElapsed (wall clock) time (h:mm:ss or m:ss): 1:02\nExit status: 0\n# changed\n")
    subprocess.check_call([sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",d,"--evidence-root",d,"--output",out])
    with open(out,encoding="utf8",newline="") as f: changed=list(csv.DictReader(f,delimiter="\t"))
    self.assertNotEqual(ids["one"],[r for r in changed if r["run_id"]=="one"][0]["attempt_id"])
+ def test_missing_legacy_status_keeps_runtime_but_not_outcome(self):
+  with tempfile.TemporaryDirectory() as d:
+   logs=os.path.join(d,"stage")
+   put(os.path.join(logs,"H_legacy.driver.log"),"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03\nExit status: 0\n")
+   out=os.path.join(d,"out.tsv")
+   subprocess.check_call([sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",d,"--evidence-root",d,"--output",out])
+   with open(out,encoding="utf8",newline="") as f:r=next(csv.DictReader(f,delimiter="\t"))
+   self.assertEqual(("PASS_RUNTIME_OUTCOME_PENDING","UNKNOWN_LEGACY_STATUS","3.000"),(r["parse_status"],r["attempt_outcome_class"],r["wall_s"]))
  def test_phase2_requires_contract(self):
   with tempfile.TemporaryDirectory() as d:
    inp=os.path.join(d,"p.csv"); put(inp,"circuit,phase,mode,run_id,wall_time,max_rss_kb\nb18,05_two_mode,H,x,1:02,9\n")

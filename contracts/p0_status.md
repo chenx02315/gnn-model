@@ -6,7 +6,7 @@ P0 当前允许继续 P1/P2 数据审计，但禁止正式训练、盲测访问�
 
 当前仅剩 runtime 恢复审计阻断：Phase2 已发现 b18、s35932、s38417、s38584 的真实 `wall_time` 行；Phase3 已发现 s13207、s15850、s5378、s9234 的逐次 driver log，抽样均含 elapsed/user/system/exit footer。发现证据不等于可训练标签；必须先通过 `contracts/runtime_recovery_gate_v1.json` 的 R01-R14，全量证明时间语义、失败/重试保留、SHA-256、环境 cohort、结果路径唯一连接和盲测 executed-stage 100% 覆盖。缺失耗时禁止插补，ATE cycles 禁止充当 runtime。
 
-恢复审计 v1 已开始：Phase2 的 b18、s35932、s38417 已转换为 4,609 条 outcome-free attempt manifest v2，wall-time 语义全部通过且 attempt ID 全部唯一；但旧 collector 仅收集带 `statistics.rpt` 的成功结果，失败/重试生命周期仍阻断。Phase3 的 s13207、s15850、s5378 共 9,655 个非盲日志已全量确认 elapsed/user/system/exit footer 齐全且 nonzero exit 为 0；BLIND s9234 仅做 aggregate-only 清单，4,520/4,520 footer 齐全、nonzero exit 为 0，未进行候选级连接。详见 `data/manifests/runtime_recovery_inventory_v1.json`。
+恢复审计 v1 已推进到原始日志层：Phase2 的 b18、s35932、s38417 既保留旧 collector 的 4,609 条 outcome-free CSV manifest，也从历史 coverage 目录只读恢复了 1,969 个原始 driver logs；Phase3 的 s13207、s15850、s5378 恢复了 9,655 个非盲 driver logs。上述 11,624 个原始日志全部含 elapsed/exit footer、nonzero exit 为 0、attempt ID 全部唯一；其中 758 个有显式 `MAPPED_COMMON_ATPG_STATUS=PASS`，其余 10,866 个旧日志仅标记为 `PASS_RUNTIME_OUTCOME_PENDING`，保留 wall runtime 但不得推断 ATPG 成功，必须通过非盲 result path 唯一连接补齐 outcome。三个 BLIND 家族仅完成 aggregate-only 清点：s38584 753、s9234 4,520、wb_dma 2,581 个日志均 footer 齐全且 nonzero exit 为 0，未暴露路径、run_id、候选或逐次耗时，也未进行候选级连接。详见 `data/manifests/runtime_recovery_inventory_v1.json`。
 
 候选空间门禁已通过：输入 6,287 行（SHA-256 `bce1e586fc47c57a01579d343322d12bc19b76b8b299649f5513d8788144bfb6`），筛得 3,161 条正式 HF/HMF 测量，按可部署动作去重为 3,050 个动作（输出 SHA-256 `07673677be6d97c4293453f3cfd11abeded30a4535bc86bdf69b37a4ecd1c514`）。其中 111 个动作有重复测量，outcome 冲突为 0；F 不进入动作键。
 
