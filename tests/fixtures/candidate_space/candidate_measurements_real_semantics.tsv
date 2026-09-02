@@ -1,0 +1,6 @@
+circuit	scheme	formal_scheme	stage	h_patterns	m_patterns	f_patterns	detected_faults	total_cycles	eligible_regression	candidate_uid
+b20	H64-F4	1	hf_coarse	10	0	5	100	200	1	coarse_2
+b20	H64-F4	1	hf_refine	10	0	7	101	201	1	refine_1
+b20	H64-M16-F4	1	hmf_coarse	10	3	2	110	190	1	hmf_1
+b20	H64-F4	1	hf_refine	99	0	1	1	1	0	excluded
+b20	FullScan-F4	1	single_boundary	0	0	1	1	1	1	skip_stage

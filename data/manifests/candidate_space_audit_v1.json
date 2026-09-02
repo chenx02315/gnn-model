@@ -1,0 +1,30 @@
+{
+  "action_count": 3050,
+  "counts_by_circuit_scheme": {
+    "aes_core:HF": 54,
+    "aes_core:HMF": 296,
+    "b20:HF": 65,
+    "b20:HMF": 327,
+    "b21:HF": 81,
+    "b21:HMF": 401,
+    "b22:HF": 64,
+    "b22:HMF": 376,
+    "spi:HF": 61,
+    "spi:HMF": 675,
+    "tv80:HF": 68,
+    "tv80:HMF": 380,
+    "wb_dma:HF": 54,
+    "wb_dma:HMF": 148
+  },
+  "deduplication_policy": "group deployable actions only; retain repeat counts and all sorted source identifiers; never select an outcome",
+  "duplicate_action_count": 111,
+  "eligible_measurement_count": 3161,
+  "input_row_count": 6287,
+  "input_sha256": "bce1e586fc47c57a01579d343322d12bc19b76b8b299649f5513d8788144bfb6",
+  "outcome_conflict_action_count": 0,
+  "output_sha256": "07673677be6d97c4293453f3cfd11abeded30a4535bc86bdf69b37a4ecd1c514",
+  "skipped_reason_counts": {
+    "eligible_regression_not_1": 2957,
+    "stage_not_hf_or_hmf": 169
+  }
+}

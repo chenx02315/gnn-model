@@ -2,12 +2,13 @@
 
 P0 当前允许继续 P1/P2 数据审计，但禁止正式训练、盲测访问或 runtime 结论。
 
-待补四项：
+待补三项：
 
-1. `candidate_space.tsv`、唯一候选 UID 与 SHA-256；
-2. 每电路共同故障文件、`N_common`、D95 规则与 SHA-256；
-3. timeout、retry、cache、prefix reuse、tie-break 与 fallback 的冻结值；
-4. TRAIN/VALIDATION/PILOT/BLIND_TEST 的 circuit-family 清单与 SHA-256。
+1. 每电路共同故障文件、`N_common`、D95 规则与 SHA-256；
+2. timeout、retry、cache、prefix reuse、tie-break 与 fallback 的冻结值；
+3. TRAIN/VALIDATION/PILOT/BLIND_TEST 的 circuit-family 清单与 SHA-256。
+
+候选空间门禁已通过：输入 6,287 行（SHA-256 `bce1e586fc47c57a01579d343322d12bc19b76b8b299649f5513d8788144bfb6`），筛得 3,161 条正式 HF/HMF 测量，按可部署动作去重为 3,050 个动作（输出 SHA-256 `07673677be6d97c4293453f3cfd11abeded30a4535bc86bdf69b37a4ecd1c514`）。其中 111 个动作有重复测量，outcome 冲突为 0；F 不进入动作键。
 
 当前 b20 候选空间审计：正式 HF/HMF 测量 404 行，对应 392 个唯一 `(scheme,h_limit,m_limit)` 动作；12 个动作同时出现在 coarse/refine。正式 candidate space 必须以 action key 去重，并把多次测量保留为重复 attempts，禁止按 outcome 选取一行。
 
