@@ -1,6 +1,7 @@
 {
   "contract_version": "timing-v1",
-  "status": "DRAFT",
+  "status": "FROZEN_FOR_PILOT",
+  "runtime_policy": "contracts/runtime_policy_v1.json",
   "primary_endpoint": "cumulative_tessent_elapsed_s_to_epsilon_hit",
   "primary_endpoint_formula": "sum(all_executed_attempt.elapsed_s_until_hit)",
   "queue_wait_in_primary": false,
@@ -25,4 +26,3 @@
   "historical_runtime_role": "training_and_offline_replay_only",
   "formal_runtime_role": "same_environment_forward_validation"
 }
-

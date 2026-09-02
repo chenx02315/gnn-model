@@ -1,0 +1,60 @@
+{
+  "schema_version": "data_split_v1",
+  "status": "BLOCKED_FORMAL_RUNTIME_SPLIT",
+  "purpose": "family-isolated formal runtime split plus a non-formal pipeline smoke split",
+  "formal_runtime_membership": {
+    "BLIND_TEST": [],
+    "PILOT": [
+      {"circuit": "b20", "family": "itc99_b14_connected"},
+      {"circuit": "b21", "family": "itc99_b14_connected"},
+      {"circuit": "b22", "family": "itc99_b14_connected"}
+    ],
+    "TRAIN": [],
+    "VALIDATION": []
+  },
+  "formal_runtime_membership_sha256": "059f48055c3c0c55557f530610a3c258149844ac3556aaf0a35548e74dbd69a0",
+  "sealed_blind_test": true,
+  "blind_test_policy": "No BLIND_TEST circuit or measurement may be used for feature selection, model selection, threshold tuning, candidate-order tuning, or calibration before the split is unblocked and sealed.",
+  "pilot_policy": "b20, b21, and b22 are PILOT only; their shared family must not occur in formal TRAIN, VALIDATION, or BLIND_TEST.",
+  "pipeline_split_v0": {
+    "membership": {
+      "HOLDOUT_SMOKE": [{"circuit": "wb_dma", "family": "iwls_wb_dma"}],
+      "PILOT_DEV": [
+        {"circuit": "b20", "family": "itc99_b14_connected"},
+        {"circuit": "b21", "family": "itc99_b14_connected"},
+        {"circuit": "b22", "family": "itc99_b14_connected"}
+      ],
+      "TRAIN_DEV": [
+        {"circuit": "aes_core", "family": "iwls_aes_core"}, {"circuit": "spi", "family": "iwls_spi"}],
+      "VALIDATION_DEV": [{"circuit": "tv80", "family": "iwls_tv80"}]
+    },
+    "canonical_membership_sha256": "7db9fc52ed95b265d528a51573a7295b429fe81c9dccb8ad09064b016ba4dc3d",
+    "thesis_primary_evidence": false,
+    "runtime_generalization_claim_allowed": false,
+    "holdout_smoke_may_tune": false,
+    "training_or_tuning_allowed": false,
+    "purpose": "pipeline integrity smoke checks only; no model training, threshold tuning, or thesis performance claim"
+  },
+  "evidence": {
+    "candidate_table": "C:/Users/86155/Desktop/new lab/multimode_atpg_search_thesis_20260901/inputs/21_phase4_training_export_v3/data/processed/candidate_measurements_all_phase4.tsv",
+    "observed_candidate_circuits": ["aes_core", "b20", "b21", "b22", "spi", "tv80", "wb_dma"],
+    "observed_candidate_circuit_count": 7,
+    "family_map": "C:/Users/86155/Desktop/new lab/multimode_atpg_search_thesis_20260901/inputs/21_phase4_training_export_v3/metadata/phase4_family_map.tsv",
+    "family_map_sha256": "770b58d9fd1e56c550a7bada8bc4d79813b867d32537734ef8597461db6b6628",
+    "family_count": 5
+  },
+  "pre_split_access": {
+    "aggregate_counts_maxima_seen": true,
+    "candidate_level_future_blind_mapping_seen": false,
+    "training_or_tuning_performed": false
+  },
+  "blocking_evidence": [
+    "The current candidate table contains 7 circuits, not the required 15-circuit population.",
+    "The current family map contains 5 effective families; b20, b21, and b22 share itc99_b14_connected.",
+    "With b20/b21/b22 reserved for PILOT, the supplied evidence does not provide a defensible family-isolated formal TRAIN, VALIDATION, and sealed BLIND_TEST partition."
+  ],
+  "unblock_requirements": [
+    "Provide at least 8 non-PILOT families, ideally restoring the authoritative 12-family labels, with their SHA256.",
+    "Pre-register hash-sorted non-overlapping formal assignments before any candidate-level BLIND_TEST inspection."
+  ]
+}

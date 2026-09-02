@@ -1,0 +1,211 @@
+{
+  "all_d95_rule_pass": true, 
+  "all_mapping_count_pass": true, 
+  "all_readback_pass": true, 
+  "circuits": {
+    "aes_core": {
+      "canonical_mapping_rows": 71216, 
+      "canonical_mapping_sha256": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8", 
+      "common_dir": "common_aes_core_m16_phase4_v2", 
+      "common_fault_count": 71216, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2", 
+      "d95": 67656, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566", 
+        "H": "6c1287af9af0b2c64a917f712d4eeaa88fdd510e3b3e878b95e856c0e22c7d0b", 
+        "M": "b4005966e37c53b369db9f33a1c49632d43041a9af79a7d29e6afe88b5124414"
+      }, 
+      "manifest_sha256": "c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 71216, 
+        "readback_counts": {
+          "F": 71216, 
+          "H": 71216, 
+          "M": 71216
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v2.json", 
+      "readback_validation_sha256": "027891e00e8d7c49de2421946b6265a16af75d1d0143af04c6db6a6e786f384b"
+    }, 
+    "b20": {
+      "canonical_mapping_rows": 46382, 
+      "canonical_mapping_sha256": "c0c131edbf54196c9ab2d871a32596140283e2d0433d54b061e4066ef05dbf00", 
+      "common_dir": "common_b20_m16_phase4_v1", 
+      "common_fault_count": 46382, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/b20/03_fault_universe/common_b20_m16_phase4_v1", 
+      "d95": 44063, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "c66859eaa15aaa6c085bb0918bbf3d07b4d60215f9d64468ad041451e9e5edb2", 
+        "H": "92a30987a46e4ea366259d9964745ede81366b1df0af6440a86f8c1933485548", 
+        "M": "9bac210aa9209b547774c1fb7d1d51b6b0290b90c933437b0d4a3df54b13fc9d"
+      }, 
+      "manifest_sha256": "55c40a33a6fb83215eba14fde92343d8375daa2606155a96bbe03351395dd034", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 46382, 
+        "readback_counts": {
+          "F": 46382, 
+          "H": 46382, 
+          "M": 46382
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v1.json", 
+      "readback_validation_sha256": "941bba287c0d0db2138190a23a4a8bc84b087157979237e5598b51113ff44a6c"
+    }, 
+    "b21": {
+      "canonical_mapping_rows": 47908, 
+      "canonical_mapping_sha256": "c316a946e907611fc4c55f743573c2a398d2bd0eb3c76861aab331874184478c", 
+      "common_dir": "common_b21_m16_phase4_v2", 
+      "common_fault_count": 47908, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/b21/03_fault_universe/common_b21_m16_phase4_v2", 
+      "d95": 45513, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "86167abdf609c38646eff215c4862ddf9f41d7fc6c57fae8189ce1feed175b45", 
+        "H": "c96794316f1a7e251529449f40dd18fcdea2bd935289853cfcc0596744a6840f", 
+        "M": "4a1315de8ac966935f9a7e93fa69fc12f86bff4e4175d29f9173ddd7bef7dc2b"
+      }, 
+      "manifest_sha256": "7fc7c2ca059c78ef77798260decedf89d857022716a9e3935f554d8a72acf755", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 47908, 
+        "readback_counts": {
+          "F": 47908, 
+          "H": 47908, 
+          "M": 47908
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v2.json", 
+      "readback_validation_sha256": "a5c00d2010805503a300d8f4e1e94f3a08d15146c489c434f6c4408dc53922bc"
+    }, 
+    "b22": {
+      "canonical_mapping_rows": 69604, 
+      "canonical_mapping_sha256": "8752dd7be6c582d9b045c1f0a9aab1f0fcebc215ff241a8923b16f7847d1b6f6", 
+      "common_dir": "common_b22_m16_phase4_v2", 
+      "common_fault_count": 69604, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/b22/03_fault_universe/common_b22_m16_phase4_v2", 
+      "d95": 66124, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "367b60eaefe3caa499d2e41817c24d5f2484b021f9c33a201ed7ae1256397ad4", 
+        "H": "bb3ff465ca4904ef20f787409f3c496d3c518f471979ab4d301b9530cf958469", 
+        "M": "42e309efe221ca91d7be62f7721dc6070066420dffa25761b7fcc7be6663a3d7"
+      }, 
+      "manifest_sha256": "b6892aeffbdaa5a973a54b10ea75c13ded653ecf168185efe05bf29ce9a29da2", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 69604, 
+        "readback_counts": {
+          "F": 69604, 
+          "H": 69604, 
+          "M": 69604
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v2.json", 
+      "readback_validation_sha256": "8228453cc97752d0857ec2bdd4d687efd55fc7bc3c1ecb7d051e82989d507f57"
+    }, 
+    "spi": {
+      "canonical_mapping_rows": 10418, 
+      "canonical_mapping_sha256": "42b62fa47c5f171b7544aadaadb0f4a1f62a45e6cacd4c64c477ab706015320f", 
+      "common_dir": "common_spi_m16_phase4_v2", 
+      "common_fault_count": 10418, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2", 
+      "d95": 9898, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "4fd1bef9ba95d31aec94b16490926b63469e6ca6ccd0289956f0eeded6b44ec2", 
+        "H": "edcc0102ade212a942ab4b98e7c55d1bd97cbbd7fd4817e4ceb216be118a55bb", 
+        "M": "a8741335b50611f0b4e6a6cec6712862d1c829a97d98b3ab347009a21172f305"
+      }, 
+      "manifest_sha256": "d2ddcb23ac9295cbef63953579edfa59d9bcb00787cb884f56d0e8724289fca5", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 10418, 
+        "readback_counts": {
+          "F": 10418, 
+          "H": 10418, 
+          "M": 10418
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v2.json", 
+      "readback_validation_sha256": "80c9f14823888adb608ec7d65b77ecb087bda8a179024b136a27a1a1d804b203"
+    }, 
+    "tv80": {
+      "canonical_mapping_rows": 25530, 
+      "canonical_mapping_sha256": "9c144510938222530102d6a6166b278bd2010db75e7fb7032dbdd35a1763287b", 
+      "common_dir": "common_tv80_m16_phase4_v2", 
+      "common_fault_count": 25530, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/tv80/03_fault_universe/common_tv80_m16_phase4_v2", 
+      "d95": 24254, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "188b3da7cd75b2827827baa636a7b1f87a19842bb0459a03ce052801baa0a1f6", 
+        "H": "6d2b0ee8005336a302d2e5a580800e4d26f447e11da46d9c5dc385e00a11bfd5", 
+        "M": "400f4d6238db8fe71295cce4075d0706f427cdf19538c975d92586a5397da543"
+      }, 
+      "manifest_sha256": "225c67dfccd505e4d18b93bda178eb9523b4ca8fc675ddcbbf2286c6234f1201", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 25530, 
+        "readback_counts": {
+          "F": 25530, 
+          "H": 25530, 
+          "M": 25530
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v2.json", 
+      "readback_validation_sha256": "8ca76773235810931b713b34e8cd3835c2095c93b48967b2314e5ebae5a3676c"
+    }, 
+    "wb_dma": {
+      "canonical_mapping_rows": 17508, 
+      "canonical_mapping_sha256": "b453d9e4dec065860a2be8189c678465579366fa4bb8ff4cef6e886e6823337f", 
+      "common_dir": "common_wb_dma_m16_phase4_v2", 
+      "common_fault_count": 17508, 
+      "common_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma/03_fault_universe/common_wb_dma_m16_phase4_v2", 
+      "d95": 16633, 
+      "d95_rule": "ceil(0.95 * common_fault_count)", 
+      "d95_rule_pass": true, 
+      "fault_file_sha256": {
+        "F": "b6556fb2fce2d735d9f202bc70959e0da3e58aeb860cfd5e9cf6afda44e8573e", 
+        "H": "f091989e09783ed738c5a92b4541ecd78b81bd98c25ffbe4d5a14723cb9ab071", 
+        "M": "c9c172fb25c31ef4ff34bb62cb4b9c434a0021527f627ae910b8bba484f4e080"
+      }, 
+      "manifest_sha256": "b72937721fb0b0031b3b2cb35e5d0872f38a8093738d54c18eefd5258b8e0fb1", 
+      "mapping_count_pass": true, 
+      "readback_validation": {
+        "errors": [], 
+        "expected": 17508, 
+        "readback_counts": {
+          "F": 17508, 
+          "H": 17508, 
+          "M": 17508
+        }, 
+        "status": "PASS"
+      }, 
+      "readback_validation_file": "readback_validation_phase4_v2.json", 
+      "readback_validation_sha256": "d3b3a0d8b7bb01e428d1fe3dd760fcf4a2cce6ea010b12c9eb560b6ecc68f092"
+    }
+  }, 
+  "schema_version": "d95_common_faults_seven_v1"
+}

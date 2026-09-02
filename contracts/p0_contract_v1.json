@@ -38,8 +38,6 @@
     "primary_comparison_count": 1
   },
   "pending_evidence": [
-    "d95_common_fault_definition_and_sha256",
-    "timeout_retry_cache_and_prefix_reuse_policy",
     "train_validation_pilot_blind_split_manifest_and_sha256"
   ]
 }

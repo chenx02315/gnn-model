@@ -1,0 +1,117 @@
+{
+  "policy_version": "runtime-policy-v1",
+  "status": "FROZEN_FOR_PILOT",
+  "primary_endpoint": "cumulative_tessent_process_elapsed_s_to_epsilon_hit",
+  "timing": {
+    "start_event": "timed_tessent_process_exec",
+    "stop_event": "timed_tessent_process_exit_or_kill",
+    "external_scheduler_queue_in_primary": false,
+    "internal_license_or_io_wait_in_primary": true,
+    "failed_attempt_elapsed_in_primary": true,
+    "retry_elapsed_in_primary": true,
+    "independent_confirmation_in_primary": false,
+    "independent_confirmation_audit_only": true
+  },
+  "timeouts": {
+    "scope": "stage_attempt",
+    "H_s": 60,
+    "M_s": 30,
+    "F_s": 30,
+    "HF_nominal_cap_s": 90,
+    "HMF_nominal_cap_s": 120,
+    "kill_grace_s": 5,
+    "timeout_cost_if_elapsed_available": "observed_process_elapsed_s",
+    "timeout_cost_if_elapsed_missing": "configured_stage_timeout_s",
+    "timeout_is_candidate_failure": true,
+    "timeout_retry_allowed": false,
+    "pilot_invalidation_rule": "if any stage non-design timeout rate > 0.01, invalidate and restart the whole pilot after re-freezing policy"
+  },
+  "retry": {
+    "max_retry_per_stage": 1,
+    "retryable_classes": [
+      "license_checkout_transient",
+      "host_or_scheduler_transient",
+      "filesystem_io_transient"
+    ],
+    "nonretryable_classes": [
+      "timeout",
+      "d95_fail",
+      "design_or_drc_error",
+      "invalid_configuration",
+      "unclassified_error"
+    ],
+    "charge_all_attempts": true,
+    "select_fastest_success": false,
+    "retry_preserves_candidate_position": true
+  },
+  "cache": {
+    "primary_session_start": "cold_artifact_cache",
+    "fresh_workdir_per_search_session": true,
+    "cross_method_artifact_reuse": false,
+    "cross_session_artifact_reuse": false,
+    "os_page_cache": "uncontrolled_but_recorded",
+    "warm_cache_result_role": "secondary_sensitivity_only",
+    "method_order": "latin_square_interleaved",
+    "parallel_candidates_per_host": 1
+  },
+  "prefix_reuse": {
+    "enabled": true,
+    "fallback_if_audit_unavailable": "disable_for_all_methods",
+    "scope": "within_same_search_session_only",
+    "allowed_prefixes": ["H", "HM"],
+    "exact_content_addressed_key_required": true,
+    "longer_prefix_truncation_allowed": false,
+    "theoretical_or_inferred_reuse_allowed": false,
+    "first_materialization_charged_once": true,
+    "restore_or_load_elapsed_charged_each_time": true,
+    "F_prefix_reuse_allowed": false,
+    "required_key_fields": [
+      "circuit",
+      "netlist_sha256",
+      "library_sha256",
+      "common_fault_universe_sha256",
+      "atpg_seed",
+      "atpg_config_sha256",
+      "mode_order",
+      "h_limit",
+      "m_limit_for_HM",
+      "parent_prefix_sha256"
+    ]
+  },
+  "ranking_tie_break": {
+    "prediction_decimal_places": 12,
+    "sort_keys": [
+      "score_desc",
+      "d95_lcb_desc",
+      "predicted_cycles_asc",
+      "predicted_incremental_wall_s_asc",
+      "action_uid_lexicographic_asc"
+    ],
+    "candidate_list_hash_required_before_session": true
+  },
+  "fallback": {
+    "trigger": "no_epsilon_hit_after_primary_k",
+    "primary_success_remains_zero": true,
+    "order": "frozen_primary_comparator_remaining_candidates",
+    "skip_already_executed_actions": true,
+    "fallback_k": 10,
+    "cost_in_primary_endpoint": false,
+    "cost_in_online_end_to_end": true,
+    "still_no_d95_result": "UNRESOLVED"
+  },
+  "missing_historical_timing": {
+    "run_ids": ["H_b20_H_full_phase4_v1", "F_b20_F_full_phase4_v1"],
+    "policy": "missing_label_no_imputation",
+    "zero_cost_precompute_forbidden": true,
+    "runtime_head_eligible": false,
+    "primary_offline_runtime_replay_eligible": false,
+    "cycles_and_d95_model_eligible": true,
+    "prospective_if_selected": "fresh_independent_timed_execution"
+  },
+  "historical_evidence": {
+    "attempt_count": 33563,
+    "successful_only": true,
+    "max_elapsed_s": {"H": 40.99, "M": 18.58, "F": 13.13},
+    "timeout_values_are_pilot_calibrated": false
+  }
+}
