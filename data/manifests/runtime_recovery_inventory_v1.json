@@ -1,0 +1,31 @@
+{
+  "schema_version": "runtime_recovery_inventory_v1",
+  "status": "PARTIAL_BLOCKED_RECOVERY_AUDIT",
+  "blind_policy": "BLIND evidence is aggregate-only until the model-freeze gate permits one-shot row-level evaluation.",
+  "phase2": {
+    "elapsed_semantics": "tessent_process_wall_seconds",
+    "semantics_evidence": "collect_b14_all_results.py parses GNU time Elapsed (wall clock) from mode_run_id.driver.log",
+    "lifecycle_completeness": "BLOCKED_COLLECTED_SUCCESS_ONLY",
+    "circuits": {
+      "b18": {"role": "PILOT", "source_rows": 2057, "source_sha256": "681943ab7d379169542a3c81956c79b124e17f7ee5fe718cf78400dc4eb89c71", "manifest_rows": 2057, "manifest_sha256": "e251e482f070e2e80a6535ff1621a064cfb56e4c04b041c8d219c2505b6253e8"},
+      "s35932": {"role": "TRAIN", "source_rows": 841, "source_sha256": "63ed68527f1f5fedf60d5d1f08fdefff6b814e74de58e7c6a1754dbb3fbc62ee", "manifest_rows": 841, "manifest_sha256": "9eeb437f12598ddc08d5539800e0faaeab2508a0285e15d49b33f348538fe45f"},
+      "s38417": {"role": "TRAIN", "source_rows": 1711, "source_sha256": "ec169a9db102cd74e0856c2536fd7ae5fee0ec4a0f6927d1f4515eb2d28f58b6", "manifest_rows": 1711, "manifest_sha256": "416dfdbddee67964ebfbd93618d6cf63d8645553d7050804122b7b63f34f749c"},
+      "s38584": {"role": "BLIND_TEST", "source_rows": 923, "source_sha256": "e506507d0d1f5c9e8264307a1c9dcef4f312de7235ee3e78d1aa336003819246", "candidate_level_join_performed": false}
+    }
+  },
+  "phase3": {
+    "elapsed_semantics": "tessent_process_wall_seconds",
+    "circuits": {
+      "s13207": {"role": "TRAIN", "driver_logs": 3007, "elapsed_footers": 3007, "user_footers": 3007, "system_footers": 3007, "exit_footers": 3007, "nonzero_exit": 0, "inventory_manifest_sha256": "PENDING"},
+      "s15850": {"role": "TRAIN", "driver_logs": 3198, "elapsed_footers": 3198, "user_footers": 3198, "system_footers": 3198, "exit_footers": 3198, "nonzero_exit": 0, "inventory_manifest_sha256": "PENDING"},
+      "s5378": {"role": "VALIDATION", "driver_logs": 3450, "elapsed_footers": 3450, "user_footers": 3450, "system_footers": 3450, "exit_footers": 3450, "nonzero_exit": 0, "inventory_manifest_sha256": "PENDING"},
+      "s9234": {"role": "BLIND_TEST", "driver_logs": 4520, "elapsed_footers": 4520, "user_footers": 4520, "system_footers": 4520, "exit_footers": 4520, "nonzero_exit": 0, "inventory_manifest_sha256": "cd226c86807c6e80bfe2210db46eab5d3305c322626829f7e163467d4b562826", "candidate_level_join_performed": false}
+    }
+  },
+  "remaining_blockers": [
+    "Recover raw Phase2 driver-log lifecycle including failed and retry attempts.",
+    "Record Phase3 inventory hashes for TRAIN and VALIDATION circuits.",
+    "Build row-level joins for PILOT TRAIN and VALIDATION only and require ambiguity_count == 0.",
+    "Run aggregate-only BLIND executed-stage coverage audit without exposing row-level associations."
+  ]
+}

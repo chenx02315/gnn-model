@@ -6,7 +6,7 @@
     "BLIND_TEST": [
       {"circuit": "s9234", "family": "iscas89_s9234"},
       {"circuit": "s38584", "family": "iscas89_s38584"},
-      {"circuit": "wb_dma", "family": "opencores_wb_dma"}
+      {"circuit": "wb_dma", "family": "iwls_wb_dma"}
     ],
     "PILOT": [
       {"circuit": "b18", "family": "itc99_b14_connected"},
@@ -19,15 +19,15 @@
       {"circuit": "s15850", "family": "iscas89_s15850"},
       {"circuit": "s35932", "family": "iscas89_s35932"},
       {"circuit": "s38417", "family": "iscas89_s38417"},
-      {"circuit": "aes_core", "family": "opencores_aes"},
-      {"circuit": "spi", "family": "opencores_spi"}
+      {"circuit": "aes_core", "family": "iwls_aes_core"},
+      {"circuit": "spi", "family": "iwls_spi"}
     ],
     "VALIDATION": [
       {"circuit": "s5378", "family": "iscas89_s5378"},
-      {"circuit": "tv80", "family": "opencores_tv80"}
+      {"circuit": "tv80", "family": "iwls_tv80"}
     ]
   },
-  "formal_runtime_membership_sha256": "d483782422f4541834815675f47144bb52b8ad385cbd950e39a3c7bd45aee28a",
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
   "sealed_blind_test": true,
   "blind_test_policy": "No BLIND_TEST circuit or measurement may be used for feature selection, model selection, threshold tuning, candidate-order tuning, or calibration before the split is unblocked and sealed.",
   "pilot_policy": "b18, b20, b21, and b22 are PILOT only; their shared family must not occur in formal TRAIN, VALIDATION, or BLIND_TEST.",
