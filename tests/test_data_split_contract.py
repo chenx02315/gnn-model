@@ -8,24 +8,26 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PATH = os.path.join(ROOT, "contracts", "data_split_v1.json")
 
 class DataSplitContractTest(unittest.TestCase):
-    def test_blocked_contract_preserves_pilot_and_seals_blind_test(self):
+    def test_preregistered_contract_is_family_isolated_and_seals_blind_test(self):
         with open(PATH, "r", encoding="utf-8") as stream:
             contract = json.load(stream)
         membership = contract["formal_runtime_membership"]
         canonical = json.dumps(membership, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
         self.assertEqual(contract["formal_runtime_membership_sha256"], hashlib.sha256(canonical).hexdigest())
-        self.assertEqual("BLOCKED_FORMAL_RUNTIME_SPLIT", contract["status"])
+        self.assertEqual("BLOCKED_RECOVERY_AUDIT", contract["status"])
         self.assertTrue(contract["sealed_blind_test"])
-        self.assertEqual([], membership["BLIND_TEST"])
-        self.assertEqual({"b20", "b21", "b22"}, {entry["circuit"] for entry in membership["PILOT"]})
+        self.assertEqual({"s9234", "s38584", "wb_dma"}, {entry["circuit"] for entry in membership["BLIND_TEST"]})
+        self.assertEqual({"b18", "b20", "b21", "b22"}, {entry["circuit"] for entry in membership["PILOT"]})
         circuits, family_roles = set(), {}
         for role in ("TRAIN", "VALIDATION", "PILOT", "BLIND_TEST"):
             for entry in membership[role]:
                 self.assertNotIn(entry["circuit"], circuits)
                 self.assertEqual(role, family_roles.get(entry["family"], role))
                 circuits.add(entry["circuit"]); family_roles[entry["family"]] = role
+        self.assertEqual(15, len(circuits))
+        self.assertEqual(12, len(family_roles))
         self.assertEqual(7, contract["evidence"]["observed_candidate_circuit_count"])
-        self.assertIn("15-circuit", " ".join(contract["blocking_evidence"]))
+        self.assertIn("recovery", " ".join(contract["blocking_evidence"]).lower())
 
     def test_nonformal_pipeline_split_is_family_isolated_and_not_tunable(self):
         with open(PATH, "r", encoding="utf-8") as stream:

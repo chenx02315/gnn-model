@@ -1,10 +1,10 @@
-# P0 状态：BLOCKED_PENDING_EVIDENCE
+# P0 状态：BLOCKED_RECOVERY_AUDIT
 
 P0 当前允许继续 P1/P2 数据审计，但禁止正式训练、盲测访问或 runtime 结论。
 
-待补一项：
+正式家族划分已在候选级盲测 runtime 连接检查前预注册并封存（SHA-256 `d483782422f4541834815675f47144bb52b8ad385cbd950e39a3c7bd45aee28a`）：PILOT 1 family / 4 circuits，TRAIN 6 families，VALIDATION 2 families，BLIND_TEST 3 families。b18/b20/b21/b22 的 `itc99_b14_connected` 整体只进入 PILOT。
 
-1. TRAIN/VALIDATION/PILOT/BLIND_TEST 的 circuit-family 清单与 SHA-256；当前七电路仅有五个 family，正式 runtime 泛化 split 仍阻断。
+当前仅剩 runtime 恢复审计阻断：Phase2 已发现 b18、s35932、s38417、s38584 的真实 `wall_time` 行；Phase3 已发现 s13207、s15850、s5378、s9234 的逐次 driver log，抽样均含 elapsed/user/system/exit footer。发现证据不等于可训练标签；必须先通过 `contracts/runtime_recovery_gate_v1.json` 的 R01-R14，全量证明时间语义、失败/重试保留、SHA-256、环境 cohort、结果路径唯一连接和盲测 executed-stage 100% 覆盖。缺失耗时禁止插补，ATE cycles 禁止充当 runtime。
 
 候选空间门禁已通过：输入 6,287 行（SHA-256 `bce1e586fc47c57a01579d343322d12bc19b76b8b299649f5513d8788144bfb6`），筛得 3,161 条正式 HF/HMF 测量，按可部署动作去重为 3,050 个动作（输出 SHA-256 `07673677be6d97c4293453f3cfd11abeded30a4535bc86bdf69b37a4ecd1c514`）。其中 111 个动作有重复测量，outcome 冲突为 0；F 不进入动作键。
 

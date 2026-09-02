@@ -1,21 +1,36 @@
 {
   "schema_version": "data_split_v1",
-  "status": "BLOCKED_FORMAL_RUNTIME_SPLIT",
-  "purpose": "family-isolated formal runtime split plus a non-formal pipeline smoke split",
+  "status": "BLOCKED_RECOVERY_AUDIT",
+  "purpose": "pre-registered family-isolated formal runtime split pending retrospective runtime recovery audit, plus a non-formal pipeline smoke split",
   "formal_runtime_membership": {
-    "BLIND_TEST": [],
+    "BLIND_TEST": [
+      {"circuit": "s9234", "family": "iscas89_s9234"},
+      {"circuit": "s38584", "family": "iscas89_s38584"},
+      {"circuit": "wb_dma", "family": "opencores_wb_dma"}
+    ],
     "PILOT": [
+      {"circuit": "b18", "family": "itc99_b14_connected"},
       {"circuit": "b20", "family": "itc99_b14_connected"},
       {"circuit": "b21", "family": "itc99_b14_connected"},
       {"circuit": "b22", "family": "itc99_b14_connected"}
     ],
-    "TRAIN": [],
-    "VALIDATION": []
+    "TRAIN": [
+      {"circuit": "s13207", "family": "iscas89_s13207"},
+      {"circuit": "s15850", "family": "iscas89_s15850"},
+      {"circuit": "s35932", "family": "iscas89_s35932"},
+      {"circuit": "s38417", "family": "iscas89_s38417"},
+      {"circuit": "aes_core", "family": "opencores_aes"},
+      {"circuit": "spi", "family": "opencores_spi"}
+    ],
+    "VALIDATION": [
+      {"circuit": "s5378", "family": "iscas89_s5378"},
+      {"circuit": "tv80", "family": "opencores_tv80"}
+    ]
   },
-  "formal_runtime_membership_sha256": "059f48055c3c0c55557f530610a3c258149844ac3556aaf0a35548e74dbd69a0",
+  "formal_runtime_membership_sha256": "d483782422f4541834815675f47144bb52b8ad385cbd950e39a3c7bd45aee28a",
   "sealed_blind_test": true,
   "blind_test_policy": "No BLIND_TEST circuit or measurement may be used for feature selection, model selection, threshold tuning, candidate-order tuning, or calibration before the split is unblocked and sealed.",
-  "pilot_policy": "b20, b21, and b22 are PILOT only; their shared family must not occur in formal TRAIN, VALIDATION, or BLIND_TEST.",
+  "pilot_policy": "b18, b20, b21, and b22 are PILOT only; their shared family must not occur in formal TRAIN, VALIDATION, or BLIND_TEST.",
   "pipeline_split_v0": {
     "membership": {
       "HOLDOUT_SMOKE": [{"circuit": "wb_dma", "family": "iwls_wb_dma"}],
@@ -49,12 +64,13 @@
     "training_or_tuning_performed": false
   },
   "blocking_evidence": [
-    "The current candidate table contains 7 circuits, not the required 15-circuit population.",
-    "The current family map contains 5 effective families; b20, b21, and b22 share itc99_b14_connected.",
-    "With b20/b21/b22 reserved for PILOT, the supplied evidence does not provide a defensible family-isolated formal TRAIN, VALIDATION, and sealed BLIND_TEST partition."
+    "Phase2 has real wall_time rows for b18, s35932, s38417, and s38584, but wall-time semantics and exact candidate-stage joins are not yet fully audited.",
+    "Phase3 has driver logs with elapsed/user/system/exit footers for s13207, s15850, s5378, and s9234, but full parse coverage, failure retention, hashes, and unique result-path joins are not yet audited.",
+    "The formal split is pre-registered and sealed, but P0 remains blocked until the retrospective runtime recovery gate passes for all required families and all BLIND actions."
   ],
   "unblock_requirements": [
-    "Provide at least 8 non-PILOT families, ideally restoring the authoritative 12-family labels, with their SHA256.",
-    "Pre-register hash-sorted non-overlapping formal assignments before any candidate-level BLIND_TEST inspection."
+    "Pass contracts/runtime_recovery_gate_v1.json without runtime imputation, fastest-success selection, or ATE-cycle proxy labels.",
+    "Require 100 percent executed-stage runtime join coverage for every formal BLIND action; any BLIND family recovery failure re-blocks the formal split.",
+    "Record source/environment cohorts and SHA-256 for every recovered attempt before training or candidate-level BLIND inspection."
   ]
 }

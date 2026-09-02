@@ -1,0 +1,38 @@
+{
+  "gate_version": "runtime-recovery-gate-v1",
+  "status": "BLOCKED_PENDING_AUDIT",
+  "pass_expression": "all(R01:R14)",
+  "checks": {
+    "R01": "15 circuits and 12 family memberships match the frozen split manifest",
+    "R02": "itc99_b14_connected appears only in PILOT",
+    "R03": "all source tables and timing artifacts have SHA-256",
+    "R04": "every discovered attempt has parse status including failures and missing footers",
+    "R05": "no fastest-success deduplication is performed",
+    "R06": "candidate-stage-to-attempt ambiguity_count == 0",
+    "R07": "every formal BLIND action has complete executed-stage runtime coverage",
+    "R08": "NOT_RUN and TARGET_BEFORE_F are contract-derived and never charged as zero-time executions",
+    "R09": "missing elapsed is never imputed",
+    "R10": "Phase2 wall_time semantics audit == PASS",
+    "R11": "Phase2 Phase3 and Phase4 source and environment cohort is recorded per attempt",
+    "R12": "candidate cycles recompute exactly but are never used as runtime labels",
+    "R13": "all methods use the identical frozen runtime-eligible candidate space",
+    "R14": "formal split hash was recorded before candidate-level BLIND runtime join inspection"
+  },
+  "coverage_policy": {
+    "BLIND_TEST": "100 percent executed-stage runtime join coverage required",
+    "TRAIN_VALIDATION": "explicit missing actions may only be excluded from the common runtime-eligible space and exclusion rates must be reported by family"
+  },
+  "forbidden_runtime_proxies": [
+    "h_cycles",
+    "m_cycles",
+    "f_cycles",
+    "total_cycles",
+    "tester_cycles",
+    "pattern_count",
+    "file_size",
+    "mtime",
+    "user_time_plus_system_time",
+    "mean_runtime_times_log_count"
+  ],
+  "training_allowed": false
+}
