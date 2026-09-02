@@ -6,7 +6,7 @@ P0 当前允许继续 P1/P2 数据审计，但禁止正式训练、盲测访问�
 
 当前仅剩 runtime 恢复审计阻断：Phase2 已发现 b18、s35932、s38417、s38584 的真实 `wall_time` 行；Phase3 已发现 s13207、s15850、s5378、s9234 的逐次 driver log，抽样均含 elapsed/user/system/exit footer。发现证据不等于可训练标签；必须先通过 `contracts/runtime_recovery_gate_v1.json` 的 R01-R14，全量证明时间语义、失败/重试保留、SHA-256、环境 cohort、结果路径唯一连接和盲测 executed-stage 100% 覆盖。缺失耗时禁止插补，ATE cycles 禁止充当 runtime。
 
-恢复审计 v1 已推进到原始日志层：Phase2 的 b18、s35932、s38417 既保留旧 collector 的 4,609 条 outcome-free CSV manifest，也从历史 coverage 目录只读恢复了 1,969 个原始 driver logs；Phase3 的 s13207、s15850、s5378 恢复了 9,655 个非盲 driver logs。上述 11,624 个原始日志全部含 elapsed/exit footer、nonzero exit 为 0、attempt ID 全部唯一；其中 758 个有显式 `MAPPED_COMMON_ATPG_STATUS=PASS`，其余 10,866 个旧日志仅标记为 `PASS_RUNTIME_OUTCOME_PENDING`，保留 wall runtime 但不得推断 ATPG 成功，必须通过非盲 result path 唯一连接补齐 outcome。三个 BLIND 家族仅完成 aggregate-only 清点：s38584 753、s9234 4,520、wb_dma 2,581 个日志均 footer 齐全且 nonzero exit 为 0，未暴露路径、run_id、候选或逐次耗时，也未进行候选级连接。详见 `data/manifests/runtime_recovery_inventory_v1.json`。
+恢复审计 v1 已推进到非盲连接层：Phase2 全量根目录只读恢复 b18 6,806、s35932 1,981、s38417 5,003 个 driver logs；Phase3 全量根目录恢复 s13207 3,010、s15850 3,201、s5378 7,085 个 logs。全部具有 elapsed/exit footer；s38417 保留 3 个 nonzero exit，s5378 的 7,085 条全量根目录存在多版本历史路径，故采用覆盖审计 manifest 加 3 个精确 full-baseline logs，形成 3,453 行权威 attempt manifest，未按最快成功选择。六电路候选阶段共 7,015 行，唯一连接 5,659，合同定义 `NOT_RUN` 1,230，重复性无结果路径 126，`MISSING`/`AMBIGUOUS` 均为 0；跨阶段连接与 marker/run_id 不一致均保留在审计中。唯一连接中仍有 2,525 条 `UNKNOWN_LEGACY_STATUS`，不得由 exit=0 推断 ATPG 成功。三个 BLIND 家族仅完成 aggregate-only 清点：s38584 753、s9234 4,520、wb_dma 2,581 个日志均 footer 齐全且 nonzero exit 为 0，未暴露路径、run_id、候选或逐次耗时，也未进行候选级连接。详见 `data/manifests/runtime_recovery_inventory_v1.json` 与 `data/manifests/runtime_nonblind_join_audit_v2.json`。
 
 候选空间门禁已通过：输入 6,287 行（SHA-256 `bce1e586fc47c57a01579d343322d12bc19b76b8b299649f5513d8788144bfb6`），筛得 3,161 条正式 HF/HMF 测量，按可部署动作去重为 3,050 个动作（输出 SHA-256 `07673677be6d97c4293453f3cfd11abeded30a4535bc86bdf69b37a4ecd1c514`）。其中 111 个动作有重复测量，outcome 冲突为 0；F 不进入动作键。
 
@@ -21,5 +21,9 @@ b20 的权威 common-fault 目录名保留为 `common_b20_m16_phase4_v1`，其 m
 runtime policy 已冻结为 pilot 版：H/M/F timeout=60/30/30 秒；失败与允许的一次基础设施重试全部计时；禁止 fastest-success 选择；主会话冷 artifact cache；跨方法/跨 session 不复用；只有同一 session 内、精确内容寻址的 H/HM 前缀可复用。b20 两个无 timing 的 full-run 禁止插补或当作零成本，若前瞻选中必须独立执行并计时。
 
 P2 b20 直接连接当前为条件通过：2,558 个 stage-mode 行中，21 行 repeatability 因源表没有结果路径而按合同标记 `NO_RESULT_PATH`；445 行 F 因 `TARGET_BEFORE_F` 标记 `NOT_RUN`；2,068 行以 `source_log` basename 唯一连接，歧义为 0。另有 24 行 `MISSING`，实际只引用两个共享基线 `H_b20_H_full_phase4_v1` 与 `F_b20_F_full_phase4_v1`，A 端未发现其独立 driver 计时日志。正式 cost label 前必须选择“隔离重跑这两个基线”或“明确视为预计算固定成本并从训练目标排除”，不得填补或推断耗时。
+
+非盲连接审计 v2 已通过：Phase2 b18/s35932/s38417 与 Phase3 s13207/s15850/s5378 均为 `ambiguity_count=0`，`MISSING=0`，空路径仅出现在合同允许的 `NOT_RUN` 或 repeatability `NO_RESULT_PATH`。`PRUNED_OR_UNREACHED` 已保留原始原因并映射为 `NOT_RUN`，不计入 runtime。该审计仅证明已覆盖的六个非盲电路连接正确，不等于 P0 解锁。
+
+尚未完成的非盲范围为 Phase4 b20、b21、b22、aes_core、spi、tv80 的 attempt-level runtime 连接与全量生命周期/环境 cohort 审计；在这些审计及 R01-R14 全部通过前，不得训练、调参或做正式泛化结论。
 
 时间主终点固定为“命中 epsilon-near-optimal 前所有实际 Tessent attempts 的累计 elapsed”，包括失败和重试。命中后如另做独立确认，该确认只在端到端次指标计时，不与 search 重复计算。

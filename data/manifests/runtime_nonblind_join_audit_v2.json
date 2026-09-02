@@ -1,0 +1,113 @@
+{
+  "schema_version": "runtime_nonblind_join_audit_v2",
+  "status": "PASS_NONBLIND_JOIN_AUDIT_PARTIAL_FORMAL_SPLIT",
+  "split_contract": "contracts/data_split_v1.json",
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "scope": "Phase2 and Phase3 non-blind circuits with recovered attempt-level wall runtime; this is not the full formal split gate",
+  "aggregate": {
+    "circuit_count": 6,
+    "row_count": 7015,
+    "unique_join_count": 5659,
+    "not_run_count": 1230,
+    "repeatability_no_result_path_count": 126,
+    "missing_count": 0,
+    "missing_result_path_count": 0,
+    "ambiguity_count": 0,
+    "cross_stage_unique_count": 203,
+    "source_basename_marker_run_id_mismatch_count": 2525
+  },
+  "circuits": {
+    "b18": {
+      "role": "PILOT",
+      "family": "itc99_b14_connected",
+      "row_count": 286,
+      "unique_join_count": 206,
+      "not_run_count": 59,
+      "repeatability_no_result_path_count": 21,
+      "ambiguity_count": 0,
+      "cross_stage_unique_count": 114,
+      "marker_run_id_mismatch_count": 133,
+      "attempt_manifest_sha256": "2d3a24cb247188cb49dc7c011c83c5cdca1c8eef615103f8e49ebafc990aea66",
+      "join_tsv_sha256": "91137acfb3c864838a5a4390b751bb93e5c2d4307c4222125d2cf1497e94558f",
+      "audit_json_sha256": "1a0b40d8bd04c8a476a17d09e491c37137cdbe38097e38fc1367877e7b406464"
+    },
+    "s35932": {
+      "role": "TRAIN",
+      "family": "iscas89_s35932",
+      "row_count": 66,
+      "unique_join_count": 41,
+      "not_run_count": 4,
+      "repeatability_no_result_path_count": 21,
+      "ambiguity_count": 0,
+      "cross_stage_unique_count": 12,
+      "marker_run_id_mismatch_count": 23,
+      "attempt_manifest_sha256": "0043aa6983bd53c85a811dde1b0ca5c93ef4e3c467f16d6f32f43d725250452d",
+      "join_tsv_sha256": "a6446231355cd7d38c2fd634af9bce7a49cd2a5fab113025325cc3983b07b8cf",
+      "audit_json_sha256": "1efc0b7197c89684edf6bc179f5d5083aff720d402ca5230360cb1cf7641c733"
+    },
+    "s38417": {
+      "role": "TRAIN",
+      "family": "iscas89_s38417",
+      "row_count": 153,
+      "unique_join_count": 130,
+      "not_run_count": 2,
+      "repeatability_no_result_path_count": 21,
+      "ambiguity_count": 0,
+      "cross_stage_unique_count": 25,
+      "marker_run_id_mismatch_count": 65,
+      "attempt_manifest_sha256": "b2c60df614648be12a70cbb1d20e6b53059604165f25aa8a93a9bafedf2e87a0",
+      "join_tsv_sha256": "df433abf64269be762f64650ae3a8b3dfc103d01d0994cc253aece063bd133b5",
+      "audit_json_sha256": "7ab10994cf46b104fd97ad48c34b97a5a5f314c04b1615df9257708493948ac4"
+    },
+    "s13207": {
+      "role": "TRAIN",
+      "family": "iscas89_s13207",
+      "row_count": 2074,
+      "unique_join_count": 1680,
+      "not_run_count": 373,
+      "repeatability_no_result_path_count": 21,
+      "ambiguity_count": 0,
+      "cross_stage_unique_count": 13,
+      "marker_run_id_mismatch_count": 733,
+      "attempt_manifest_sha256": "261ae483a6a44a2b3cb20b9e0e4bc199b4a0138563bd5f3413bbddbfea76a9a2",
+      "join_tsv_sha256": "05595a81abf1c521d34266186ba9d82e0e60f98d55ef5b9d50362f47956e15c4",
+      "audit_json_sha256": "eba0fd63e58e37aac0be83e6b57f03c9eab217ea3f672bbb8fe0793c088d6128"
+    },
+    "s15850": {
+      "role": "TRAIN",
+      "family": "iscas89_s15850",
+      "row_count": 2252,
+      "unique_join_count": 1776,
+      "not_run_count": 455,
+      "repeatability_no_result_path_count": 21,
+      "ambiguity_count": 0,
+      "cross_stage_unique_count": 24,
+      "marker_run_id_mismatch_count": 798,
+      "attempt_manifest_sha256": "2a78ee98b0dc1749766d51983973c82244cc551dbe9f031b4d7a113fe4b4470c",
+      "join_tsv_sha256": "b56007169e1d4e30489c70cf670461caf5c7cf04ddef515a2aebcd147b4e5328",
+      "audit_json_sha256": "460bab6efbb1b16c7b5a14aea10684389e04696be57bb4af1f2ff5a27cb70333"
+    },
+    "s5378": {
+      "role": "VALIDATION",
+      "family": "iscas89_s5378",
+      "row_count": 2184,
+      "unique_join_count": 1826,
+      "not_run_count": 337,
+      "repeatability_no_result_path_count": 21,
+      "ambiguity_count": 0,
+      "cross_stage_unique_count": 15,
+      "marker_run_id_mismatch_count": 773,
+      "attempt_manifest_sha256": "7024ee4222790f2bf283f9d4b1e73caae8fa8b9492477c1e1e577c4b5974b32e",
+      "join_tsv_sha256": "d2f7ad43ef55cf2129fdf30138be8697239ee1590df63d0077c4d144127d959d",
+      "audit_json_sha256": "f36bef113885c3f96148f44714c923b3e5888272af8b6a894d1e6285df68df4b"
+    }
+  },
+  "policies": {
+    "repeatability": "Rows without result paths are NO_RESULT_PATH and excluded from path-backed completeness.",
+    "not_run": "TARGET_BEFORE_F, NOT_RUN, and PRUNED_OR_UNREACHED are contract-derived NOT_RUN rows and are never charged runtime.",
+    "legacy_status": "PASS_RUNTIME_OUTCOME_PENDING is not inferred as ATPG success from exit zero; a unique non-blind result-path join only associates the attempt with its measurement outcome.",
+    "prefix_reuse": "Cross-stage basename joins are retained and counted; no fastest-success or outcome-based row selection is performed.",
+    "blind": "No BLIND_TEST candidate, run_id, result path, or per-attempt elapsed value was opened or joined."
+  },
+  "remaining_gate": "P0 remains blocked until the remaining Phase4 non-blind families, lifecycle/environment cohort requirements, and post-freeze one-shot blind requirements pass R01-R14."
+}
