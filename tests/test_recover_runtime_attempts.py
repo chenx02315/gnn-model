@@ -32,6 +32,36 @@ class RuntimeRecoveryTest(unittest.TestCase):
    subprocess.check_call([sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",d,"--evidence-root",d,"--output",out])
    with open(out,encoding="utf8",newline="") as f:r=next(csv.DictReader(f,delimiter="\t"))
    self.assertEqual(("PASS_RUNTIME_OUTCOME_PENDING","UNKNOWN_LEGACY_STATUS","3.000"),(r["parse_status"],r["attempt_outcome_class"],r["wall_s"]))
+ def test_gnu_extra_logs_extend_only_the_explicit_allowlist(self):
+  with tempfile.TemporaryDirectory() as d:
+   primary=os.path.join(d,"primary"); extra_one=os.path.join(d,"known","H_one.driver.log"); extra_two=os.path.join(d,"known","F_two.driver.log")
+   put(os.path.join(primary,"M_main.driver.log"),"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01\nExit status: 0\n")
+   put(extra_one,"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02\nExit status: 0\n")
+   put(extra_two,"Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03\nExit status: 0\n")
+   out=os.path.join(d,"out.tsv")
+   subprocess.check_call([sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",primary,"--evidence-root",d,"--extra-log",extra_one,"--extra-log",extra_two,"--output",out])
+   with open(out,encoding="utf8",newline="") as f: rows=list(csv.DictReader(f,delimiter="\t"))
+   self.assertEqual(["F_two","H_one","M_main"],sorted(r["run_id"] for r in rows))
+   self.assertEqual(["known/F_two.driver.log","known/H_one.driver.log","primary/M_main.driver.log"],sorted(r["source_log_path"] for r in rows))
+ def test_gnu_extra_log_rejects_outside_evidence_root(self):
+  with tempfile.TemporaryDirectory() as d, tempfile.TemporaryDirectory() as outside:
+   primary=os.path.join(d,"primary"); extra=os.path.join(outside,"H_outside.driver.log"); put(os.path.join(primary,"M_main.driver.log"),""); put(extra,"")
+   cmd=[sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",primary,"--evidence-root",d,"--extra-log",extra,"--output",os.path.join(d,"out.tsv")]
+   self.assertNotEqual(0,subprocess.call(cmd))
+ def test_gnu_extra_log_rejects_duplicate(self):
+  with tempfile.TemporaryDirectory() as d:
+   primary=os.path.join(d,"primary"); extra=os.path.join(primary,"H_duplicate.driver.log"); put(extra,"")
+   cmd=[sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",primary,"--evidence-root",d,"--extra-log",extra,"--output",os.path.join(d,"out.tsv")]
+   self.assertNotEqual(0,subprocess.call(cmd))
+   put(os.path.join(d,"other","H_other.driver.log"),"")
+   other=os.path.join(d,"other","H_other.driver.log")
+   cmd=[sys.executable,SCRIPT,"--adapter","gnu_time_log","--input",primary,"--evidence-root",d,"--extra-log",other,"--extra-log",other,"--output",os.path.join(d,"out.tsv")]
+   self.assertNotEqual(0,subprocess.call(cmd))
+ def test_phase2_rejects_extra_log(self):
+  with tempfile.TemporaryDirectory() as d:
+   inp=os.path.join(d,"p.csv"); extra=os.path.join(d,"H_extra.driver.log"); put(inp,"circuit,phase,mode,run_id,wall_time,max_rss_kb\nb18,05_two_mode,H,x,1:02,9\n"); put(extra,"")
+   cmd=[sys.executable,SCRIPT,"--adapter","phase2_csv","--input",inp,"--extra-log",extra,"--output",os.path.join(d,"out.tsv")]
+   self.assertNotEqual(0,subprocess.call(cmd))
  def test_phase2_requires_contract(self):
   with tempfile.TemporaryDirectory() as d:
    inp=os.path.join(d,"p.csv"); put(inp,"circuit,phase,mode,run_id,wall_time,max_rss_kb\nb18,05_two_mode,H,x,1:02,9\n")

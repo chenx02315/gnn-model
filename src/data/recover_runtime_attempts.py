@@ -38,14 +38,31 @@ def scan_log(path):
             if not timeout and TIMEOUT_MARKER.search(line): timeout=True
     return found,digest.hexdigest(),timeout
 
-def gnu_rows(input_path, root, meta):
+def gnu_rows(input_path, root, meta, extra_logs=None):
     paths = []
     for parent, _dirs, files in os.walk(input_path):
         paths.extend(os.path.join(parent, x) for x in files if x.endswith(".driver.log"))
+    root_real = os.path.realpath(root)
+    scanned_real = set(os.path.realpath(path) for path in paths)
+    extra_real = set()
+    for path in extra_logs or []:
+        real = os.path.realpath(path)
+        if not os.path.exists(path):
+            raise ValueError("--extra-log does not exist: %s" % path)
+        if not os.path.isfile(path):
+            raise ValueError("--extra-log is not a file: %s" % path)
+        if not path.endswith(".driver.log"):
+            raise ValueError("--extra-log must end in .driver.log: %s" % path)
+        if os.path.commonpath((root_real, real)) != root_real:
+            raise ValueError("--extra-log is outside --evidence-root: %s" % path)
+        if real in scanned_real or real in extra_real:
+            raise ValueError("--extra-log duplicates a scanned or extra log: %s" % path)
+        extra_real.add(real)
+    paths.extend(extra_logs or [])
     rows=[]
     for path in sorted(paths):
         found,log_sha,timeout_marker=scan_log(path)
-        rel=os.path.relpath(path,root).replace(os.sep,"/"); parts=rel.split("/"); run=found["run_id"] or os.path.basename(path)[:-11]
+        rel=os.path.relpath(os.path.realpath(path),root_real).replace(os.sep,"/"); parts=rel.split("/"); run=found["run_id"] or os.path.basename(path)[:-11]
         circuit=meta.get("circuit") or (parts[1] if len(parts)>1 and parts[0]=="10_circuits" else "")
         row=base("gnu_time_log",circuit,meta.get("phase", ""),parts[-2] if len(parts)>1 else "",found["mode"] or (run[0] if run[:2] in ("H_","M_","F_") else ""),run,rel,log_sha,"",rel,log_sha,meta)
         wall_s=wall(found["elapsed"])
@@ -74,8 +91,14 @@ def phase2_rows(path, contract, meta):
     return rows
 
 def main():
-    p=argparse.ArgumentParser(); p.add_argument("--adapter",choices=("gnu_time_log","phase2_csv"),required=True); p.add_argument("--input",required=True); p.add_argument("--output",required=True); p.add_argument("--evidence-root",default=""); p.add_argument("--semantics-contract",default=""); p.add_argument("--phase",default=""); p.add_argument("--cohort",default=""); p.add_argument("--environment-cohort",default=""); p.add_argument("--circuit",default=""); p.add_argument("--family",default=""); p.add_argument("--role",default=""); p.add_argument("--inventory-manifest-sha256",default="")
-    a=p.parse_args(); meta={"phase":a.phase,"cohort":a.cohort,"environment_cohort":a.environment_cohort,"circuit":a.circuit,"family":a.family,"role":a.role,"inventory_manifest_sha256":a.inventory_manifest_sha256}; rows=gnu_rows(a.input,a.evidence_root or a.input,meta) if a.adapter=="gnu_time_log" else phase2_rows(a.input,a.semantics_contract,meta)
+    p=argparse.ArgumentParser(); p.add_argument("--adapter",choices=("gnu_time_log","phase2_csv"),required=True); p.add_argument("--input",required=True); p.add_argument("--output",required=True); p.add_argument("--evidence-root",default=""); p.add_argument("--extra-log",action="append",default=[]); p.add_argument("--semantics-contract",default=""); p.add_argument("--phase",default=""); p.add_argument("--cohort",default=""); p.add_argument("--environment-cohort",default=""); p.add_argument("--circuit",default=""); p.add_argument("--family",default=""); p.add_argument("--role",default=""); p.add_argument("--inventory-manifest-sha256",default="")
+    a=p.parse_args(); meta={"phase":a.phase,"cohort":a.cohort,"environment_cohort":a.environment_cohort,"circuit":a.circuit,"family":a.family,"role":a.role,"inventory_manifest_sha256":a.inventory_manifest_sha256}
+    if a.adapter == "phase2_csv" and a.extra_log:
+        p.error("--extra-log is only supported with --adapter gnu_time_log")
+    try:
+        rows=gnu_rows(a.input,a.evidence_root or a.input,meta,a.extra_log) if a.adapter=="gnu_time_log" else phase2_rows(a.input,a.semantics_contract,meta)
+    except ValueError as exc:
+        p.error(str(exc))
     rows.sort(key=lambda r:(r["circuit"],r["phase"],r["stage"],r["run_id"],r["attempt_id"]))
     with open(a.output,"w",encoding="utf-8",newline="") as f:
         w=csv.DictWriter(f,fieldnames=MANIFEST_V2_FIELDS,delimiter="\t",lineterminator="\n"); w.writeheader(); w.writerows({k:r.get(k,"") for k in MANIFEST_V2_FIELDS} for r in rows)

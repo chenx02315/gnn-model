@@ -123,6 +123,25 @@ class RuntimeJoinV2Test(unittest.TestCase):
                 row = next(csv.DictReader(stream, delimiter="\t"))
             self.assertEqual(("UNIQUE", "A"), (row["join_status"], row["attempt_id"]))
 
+    def test_infeasible_at_d95_without_f_result_is_not_run(self):
+        with tempfile.TemporaryDirectory() as work:
+            contract(os.path.join(work, "split.json"))
+            # Add b21 to the test split without involving any blind data.
+            with open(os.path.join(work, "split.json"), "r", encoding="utf-8") as stream:
+                split = json.load(stream)
+            split["formal_runtime_membership"]["PILOT"].append({"circuit": "b21", "family": "itc"})
+            put(os.path.join(work, "split.json"), json.dumps(split))
+            manifest(os.path.join(work, "attempt.tsv"), "")
+            put(os.path.join(work, "measurements", "03_hmf_coarse", "measurements.tsv"),
+                "candidate\th_result\tm_result\tf_result\tresult_status\n1\t\t\t\tINFEASIBLE_AT_D95\n")
+            result, out, unused = self.invoke(work, "b21")
+            self.assertEqual(0, result.returncode, result.stderr.decode("utf-8"))
+            with open(out, "r", encoding="utf-8", newline="") as stream:
+                rows = list(csv.DictReader(stream, delimiter="\t"))
+            self.assertEqual(3, len(rows))
+            self.assertTrue(all(row["join_status"] == "NOT_RUN" for row in rows))
+            self.assertTrue(all(row["join_reason"] == "INFEASIBLE_AT_D95" for row in rows))
+
 
 if __name__ == "__main__":
     unittest.main()

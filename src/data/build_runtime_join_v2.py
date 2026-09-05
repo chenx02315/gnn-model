@@ -67,7 +67,7 @@ def source_rows(kind, row):
 def is_not_run(row):
     state = source_state(row)
     return ("TARGET_BEFORE_F" in state or "NOT_RUN" in state or
-            "PRUNED_OR_UNREACHED" in state)
+            "PRUNED_OR_UNREACHED" in state or "INFEASIBLE_AT_D95" in state)
 
 
 def source_state(row):

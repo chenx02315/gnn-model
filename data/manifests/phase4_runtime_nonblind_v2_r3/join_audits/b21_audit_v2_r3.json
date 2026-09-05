@@ -1,0 +1,50 @@
+{
+  "ambiguity_count": 0,
+  "ambiguity_zero": true,
+  "by_role_circuit_stage_mode": {
+    "PILOT/b21/01_single_boundaries/F": {
+      "UNIQUE": 43
+    },
+    "PILOT/b21/01_single_boundaries/H": {
+      "UNIQUE": 21
+    },
+    "PILOT/b21/02_hf_coarse/F": {
+      "UNIQUE": 21
+    },
+    "PILOT/b21/02_hf_coarse/H": {
+      "UNIQUE": 21
+    },
+    "PILOT/b21/03_hmf_coarse/F": {
+      "NOT_RUN": 370,
+      "UNIQUE": 71
+    },
+    "PILOT/b21/03_hmf_coarse/H": {
+      "UNIQUE": 441
+    },
+    "PILOT/b21/03_hmf_coarse/M": {
+      "UNIQUE": 441
+    },
+    "PILOT/b21/04_integer_refine/F": {
+      "NOT_RUN": 48,
+      "UNIQUE": 403
+    },
+    "PILOT/b21/04_integer_refine/H": {
+      "UNIQUE": 451
+    },
+    "PILOT/b21/04_integer_refine/M": {
+      "UNIQUE": 383
+    },
+    "PILOT/b21/05_repeatability/F": {
+      "NO_RESULT_PATH": 9
+    },
+    "PILOT/b21/05_repeatability/H": {
+      "NO_RESULT_PATH": 9
+    },
+    "PILOT/b21/05_repeatability/M": {
+      "NO_RESULT_PATH": 3
+    }
+  },
+  "cross_stage_unique_count": 24,
+  "row_count": 2735,
+  "source_basename_marker_run_id_mismatch_count": 977
+}

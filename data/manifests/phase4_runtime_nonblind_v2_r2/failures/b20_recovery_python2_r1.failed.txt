@@ -1,0 +1,8 @@
+failure_kind=PYTHON_INTERPRETER_MISMATCH
+attempted_interpreter=python
+attempted_version=Python 2.7.5
+required_interpreter=python3
+verified_retry_version=Python 3.6.8
+error=TypeError: file() takes at most 3 arguments (4 given)
+output_created=false
+recovery_action=retry_as_r2_with_python3

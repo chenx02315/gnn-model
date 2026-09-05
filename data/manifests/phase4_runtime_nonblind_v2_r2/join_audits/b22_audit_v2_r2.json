@@ -1,0 +1,54 @@
+{
+  "ambiguity_count": 0,
+  "ambiguity_zero": true,
+  "by_role_circuit_stage_mode": {
+    "PILOT/b22/01_single_boundaries/F": {
+      "MISSING": 1,
+      "UNIQUE": 45
+    },
+    "PILOT/b22/01_single_boundaries/H": {
+      "MISSING": 1,
+      "UNIQUE": 20
+    },
+    "PILOT/b22/02_hf_coarse/F": {
+      "UNIQUE": 21
+    },
+    "PILOT/b22/02_hf_coarse/H": {
+      "MISSING": 1,
+      "UNIQUE": 20
+    },
+    "PILOT/b22/03_hmf_coarse/F": {
+      "NOT_RUN": 379,
+      "UNIQUE": 62
+    },
+    "PILOT/b22/03_hmf_coarse/H": {
+      "MISSING": 21,
+      "UNIQUE": 420
+    },
+    "PILOT/b22/03_hmf_coarse/M": {
+      "UNIQUE": 441
+    },
+    "PILOT/b22/04_integer_refine/F": {
+      "NOT_RUN": 60,
+      "UNIQUE": 369
+    },
+    "PILOT/b22/04_integer_refine/H": {
+      "UNIQUE": 429
+    },
+    "PILOT/b22/04_integer_refine/M": {
+      "UNIQUE": 379
+    },
+    "PILOT/b22/05_repeatability/F": {
+      "NO_RESULT_PATH": 9
+    },
+    "PILOT/b22/05_repeatability/H": {
+      "NO_RESULT_PATH": 9
+    },
+    "PILOT/b22/05_repeatability/M": {
+      "NO_RESULT_PATH": 3
+    }
+  },
+  "cross_stage_unique_count": 0,
+  "row_count": 2690,
+  "source_basename_marker_run_id_mismatch_count": 934
+}

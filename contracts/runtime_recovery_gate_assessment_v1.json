@@ -1,0 +1,73 @@
+{
+  "schema_version": "runtime-recovery-gate-assessment-v1",
+  "gate_contract": "contracts/runtime_recovery_gate_v1.json",
+  "gate_contract_sha256": "ab4ea723cc5d2c0d598ed63358a3ed5e3ba767aa63fc3cd9a44fe086b7bf641f",
+  "assessment_status": "BLOCKED",
+  "assessment_scope": "evidence available through Phase4 nonblind runtime recovery r3; BLIND candidate-level artifacts remain sealed",
+  "training_allowed": false,
+  "checks": {
+    "R01": {
+      "status": "PASS",
+      "evidence": "contracts/data_split_v1.json fixes 15 circuits and 12 families"
+    },
+    "R02": {
+      "status": "PASS",
+      "evidence": "itc99_b14_connected is confined to PILOT in contracts/data_split_v1.json"
+    },
+    "R03": {
+      "status": "PARTIAL",
+      "evidence": "Phase2/3 manifests and Phase4 r3 log inventories/attempt/join artifacts have SHA-256; a single cross-phase source-table hash ledger is not yet frozen"
+    },
+    "R04": {
+      "status": "PARTIAL",
+      "evidence": "all nonblind recovered attempts have parse status and failures are retained; BLIND attempts remain aggregate-only"
+    },
+    "R05": {
+      "status": "PARTIAL",
+      "evidence": "nonblind recovery retains every discovered attempt and performs no fastest-success selection; retry lineage/order remains unverified for Phase4 r3"
+    },
+    "R06": {
+      "status": "PARTIAL",
+      "evidence": "Phase2/3 and Phase4 nonblind joins all have ambiguity_count=0; BLIND join is sealed"
+    },
+    "R07": {
+      "status": "BLOCKED",
+      "evidence": "s9234 s38584 and wb_dma executed-stage runtime coverage has not been checked at candidate level"
+    },
+    "R08": {
+      "status": "PASS",
+      "evidence": "TARGET_BEFORE_F PRUNED_OR_UNREACHED NOT_RUN and INFEASIBLE_AT_D95 are contract-derived NOT_RUN states and are never emitted as zero-time attempts"
+    },
+    "R09": {
+      "status": "PASS",
+      "evidence": "recovery code preserves missing elapsed and contains no runtime imputation path"
+    },
+    "R10": {
+      "status": "PARTIAL",
+      "evidence": "Phase2 wall_time is traced to GNU-time elapsed parsing, but the cross-phase gate still lacks one consolidated PASS artifact"
+    },
+    "R11": {
+      "status": "PARTIAL",
+      "evidence": "source and environment cohort fields are recorded; Phase4 r3 environment is explicitly marked unverified and retry order is UNKNOWN_ORDER for 30994 attempts"
+    },
+    "R12": {
+      "status": "PASS",
+      "evidence": "candidate-space and D95/common-fault audits recompute cycles while runtime schemas forbid cycles and pattern counts as labels"
+    },
+    "R13": {
+      "status": "BLOCKED",
+      "evidence": "the identical formal runtime-eligible candidate intersection cannot be frozen until BLIND coverage is known"
+    },
+    "R14": {
+      "status": "PASS",
+      "evidence": "formal membership hash c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac was recorded before any candidate-level BLIND runtime join; no such join has been performed"
+    }
+  },
+  "next_gates": [
+    "freeze one cross-phase source artifact SHA-256 ledger and Phase2 wall-time semantics PASS record",
+    "reconstruct or explicitly classify lifecycle retry lineage and verify environment cohorts without imputing order",
+    "define a model-free one-shot BLIND unseal procedure that only measures runtime coverage and cannot tune features thresholds or candidate order",
+    "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",
+    "start training only if every R01-R14 status is PASS"
+  ]
+}

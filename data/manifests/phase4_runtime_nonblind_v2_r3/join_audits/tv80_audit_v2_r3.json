@@ -1,0 +1,50 @@
+{
+  "ambiguity_count": 0,
+  "ambiguity_zero": true,
+  "by_role_circuit_stage_mode": {
+    "VALIDATION/tv80/01_single_boundaries/F": {
+      "UNIQUE": 46
+    },
+    "VALIDATION/tv80/01_single_boundaries/H": {
+      "UNIQUE": 21
+    },
+    "VALIDATION/tv80/02_hf_coarse/F": {
+      "UNIQUE": 21
+    },
+    "VALIDATION/tv80/02_hf_coarse/H": {
+      "UNIQUE": 21
+    },
+    "VALIDATION/tv80/03_hmf_coarse/F": {
+      "NOT_RUN": 365,
+      "UNIQUE": 76
+    },
+    "VALIDATION/tv80/03_hmf_coarse/H": {
+      "UNIQUE": 441
+    },
+    "VALIDATION/tv80/03_hmf_coarse/M": {
+      "UNIQUE": 441
+    },
+    "VALIDATION/tv80/04_integer_refine/F": {
+      "NOT_RUN": 38,
+      "UNIQUE": 364
+    },
+    "VALIDATION/tv80/04_integer_refine/H": {
+      "UNIQUE": 402
+    },
+    "VALIDATION/tv80/04_integer_refine/M": {
+      "UNIQUE": 347
+    },
+    "VALIDATION/tv80/05_repeatability/F": {
+      "NO_RESULT_PATH": 9
+    },
+    "VALIDATION/tv80/05_repeatability/H": {
+      "NO_RESULT_PATH": 9
+    },
+    "VALIDATION/tv80/05_repeatability/M": {
+      "NO_RESULT_PATH": 3
+    }
+  },
+  "cross_stage_unique_count": 24,
+  "row_count": 2604,
+  "source_basename_marker_run_id_mismatch_count": 931
+}

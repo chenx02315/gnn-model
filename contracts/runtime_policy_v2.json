@@ -1,0 +1,34 @@
+{
+  "policy_version": "runtime-policy-v2",
+  "status": "FROZEN_FOR_PILOT_PENDING_P0",
+  "contract_type": "json_merge_patch_over_frozen_base",
+  "base_policy": "contracts/runtime_policy_v1.json",
+  "base_policy_sha256": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
+  "change_scope": "evidence correction only; timeout retry cache prefix-reuse endpoint and tie-break rules remain identical to runtime-policy-v1",
+  "training_allowed": false,
+  "replacements": {
+    "missing_historical_timing": {
+      "run_ids": [],
+      "policy": "no_known_missing_phase4_full_boundary_timing_after_r3",
+      "zero_cost_precompute_forbidden": true,
+      "runtime_head_eligible": "only_after_P0_R01_R14_pass",
+      "primary_offline_runtime_replay_eligible": "only_after_P0_R01_R14_pass",
+      "resolved_run_ids": [
+        {
+          "run_id": "H_b20_H_full_phase4_v1",
+          "wall_s": 24.78,
+          "source_log_sha256": "309992fc3d22bf914ff71952d0ff29083328fd7eb6ce09e0b9276a5f36c593bc",
+          "source": "original_gnu_time_footer"
+        },
+        {
+          "run_id": "F_b20_F_full_phase4_v1",
+          "wall_s": 13.67,
+          "source_log_sha256": "8fcc46dced22bcfa917d7defc596f00927161149338596b745b7a9558f8d4301",
+          "source": "original_gnu_time_footer"
+        }
+      ],
+      "phase4_nonblind_r3_summary_sha256": "352a66b50956fd9607274b0c28ac139adb071487da761e4faefd670edc203752",
+      "accounting_rule": "charge each unique attempt once even when multiple measurements reference it"
+    }
+  }
+}

@@ -18,12 +18,16 @@ P1 b20 计时清单已通过：4,221 条 attempt 全部保留，解析完整、�
 
 b20 的权威 common-fault 目录名保留为 `common_b20_m16_phase4_v1`，其 manifest、mapping 和三模式 readback 已现场核验通过；其余六电路使用对应的 `phase4_v2` common 目录。目录版本差异不得被自动改名或解释为故障集合等价。
 
-runtime policy 已冻结为 pilot 版：H/M/F timeout=60/30/30 秒；失败与允许的一次基础设施重试全部计时；禁止 fastest-success 选择；主会话冷 artifact cache；跨方法/跨 session 不复用；只有同一 session 内、精确内容寻址的 H/HM 前缀可复用。b20 两个无 timing 的 full-run 禁止插补或当作零成本，若前瞻选中必须独立执行并计时。
+runtime policy 的 timeout/retry/cache/prefix-reuse 主体继续沿用冻结的 v1；新增 `contracts/runtime_policy_v2.json` 仅修正历史证据，不改变这些实验规则。Phase4 的 F/H full-boundary 日志已作为唯一真实 attempts 纳入恢复；同一基线被多条测量引用时按唯一 attempt 计费，禁止按引用次数重复累计。v1 中 b20 两个 full-boundary run 缺失 timing 的旧判断保留为历史版本，v2 已用原始 GNU-time footer 纠正，但仍需 P0 R01-R14 全通过后才可进入 runtime head 或正式离线回放。
 
-P2 b20 直接连接当前为条件通过：2,558 个 stage-mode 行中，21 行 repeatability 因源表没有结果路径而按合同标记 `NO_RESULT_PATH`；445 行 F 因 `TARGET_BEFORE_F` 标记 `NOT_RUN`；2,068 行以 `source_log` basename 唯一连接，歧义为 0。另有 24 行 `MISSING`，实际只引用两个共享基线 `H_b20_H_full_phase4_v1` 与 `F_b20_F_full_phase4_v1`，A 端未发现其独立 driver 计时日志。正式 cost label 前必须选择“隔离重跑这两个基线”或“明确视为预计算固定成本并从训练目标排除”，不得填补或推断耗时。
+P2 b20 直接连接已由 r3 修复通过：2,558 个 stage-mode 行中，21 行 repeatability 因源表没有结果路径而按合同标记 `NO_RESULT_PATH`，445 行 F 因 `TARGET_BEFORE_F` 标记 `NOT_RUN`，其余 2,092 行全部唯一连接，`MISSING=0`、`AMBIGUOUS=0`。其中 24 条跨阶段引用连接到两个唯一的 `H_b20_H_full_phase4_v1` 与 `F_b20_F_full_phase4_v1` driver attempts；其 wall time 来自原始 GNU-time footer，不做插补。
 
 非盲连接审计 v2 已通过：Phase2 b18/s35932/s38417 与 Phase3 s13207/s15850/s5378 均为 `ambiguity_count=0`，`MISSING=0`，空路径仅出现在合同允许的 `NOT_RUN` 或 repeatability `NO_RESULT_PATH`。`PRUNED_OR_UNREACHED` 已保留原始原因并映射为 `NOT_RUN`，不计入 runtime。该审计仅证明已覆盖的六个非盲电路连接正确，不等于 P0 解锁。
 
-尚未完成的非盲范围为 Phase4 b20、b21、b22、aes_core、spi、tv80 的 attempt-level runtime 连接与全量生命周期/环境 cohort 审计；在这些审计及 R01-R14 全部通过前，不得训练、调参或做正式泛化结论。
+Phase4 六个非盲电路的 r3 连接层已完成：30,994 个 driver attempts 全部具有 elapsed/exit footer，1,441 个有显式 ATPG PASS，29,553 个保留为 `UNKNOWN_LEGACY_STATUS`；15,505 条测量引用中 13,187 条唯一连接、2,209 条合同定义 `NOT_RUN`、109 条 repeatability `NO_RESULT_PATH`，`MISSING=0`、`MISSING_RESULT_PATH=0`、`AMBIGUOUS=0`。153 条 F/H full-boundary 引用连接到 12 个唯一跨阶段 attempts，未重复计费。汇总 SHA-256 为 `352a66b50956fd9607274b0c28ac139adb071487da761e4faefd670edc203752`，详见 `data/manifests/phase4_runtime_nonblind_v2_r3/`。
+
+P0 仍未解锁。当前剩余关键阻断是 R07 的三个 BLIND 家族 executed-stage runtime 100% 覆盖尚未证明，以及 R03/R05/R11 所需的全源文件哈希、失败/重试 lineage 与真实环境 cohort 仍需形成统一 gate assessment；Phase4 r3 的 30,994 个 attempts 目前只能记录为环境未核验、retry order 未知。按照冻结 split，任何候选级 BLIND join 仍保持封存；在 R01-R14 形成可审计的一次性解封流程并全部通过前，不得训练、调参、比较方法或做正式泛化结论。
+
+R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessment_v1.json`：R01、R02、R08、R09、R12、R14 为 PASS；R03、R04、R05、R06、R10、R11 为 PARTIAL；R07、R13 为 BLOCKED。该表只报告门禁状态，不会把 PARTIAL 当作通过。
 
 时间主终点固定为“命中 epsilon-near-optimal 前所有实际 Tessent attempts 的累计 elapsed”，包括失败和重试。命中后如另做独立确认，该确认只在端到端次指标计时，不与 search 重复计算。
