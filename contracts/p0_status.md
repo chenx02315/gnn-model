@@ -26,7 +26,9 @@ P2 b20 直接连接已由 r3 修复通过：2,558 个 stage-mode 行中，21 行
 
 Phase4 六个非盲电路的 r3 连接层已完成：30,994 个 driver attempts 全部具有 elapsed/exit footer，1,441 个有显式 ATPG PASS，29,553 个保留为 `UNKNOWN_LEGACY_STATUS`；15,505 条测量引用中 13,187 条唯一连接、2,209 条合同定义 `NOT_RUN`、109 条 repeatability `NO_RESULT_PATH`，`MISSING=0`、`MISSING_RESULT_PATH=0`、`AMBIGUOUS=0`。153 条 F/H full-boundary 引用连接到 12 个唯一跨阶段 attempts，未重复计费。汇总 SHA-256 为 `352a66b50956fd9607274b0c28ac139adb071487da761e4faefd670edc203752`，详见 `data/manifests/phase4_runtime_nonblind_v2_r3/`。
 
-P0 仍未解锁。当前剩余关键阻断是 R07 的三个 BLIND 家族 executed-stage runtime 100% 覆盖尚未证明，以及 R03/R05/R11 所需的全源文件哈希、失败/重试 lineage 与真实环境 cohort 仍需形成统一 gate assessment；Phase4 r3 的 30,994 个 attempts 目前只能记录为环境未核验、retry order 未知。按照冻结 split，任何候选级 BLIND join 仍保持封存；在 R01-R14 形成可审计的一次性解封流程并全部通过前，不得训练、调参、比较方法或做正式泛化结论。
+Phase4 非盲 r6 已在不修改 r3 的前提下收敛状态语义：`TARGET_BEFORE_F`/`INFEASIBLE_AT_D95` 只抑制未执行的 F，非空 H/M 路径继续作为真实 attempts；泛化 `NOT_RUN`/`PRUNED_OR_UNREACHED` 也不得覆盖非空 per-mode 路径。r6 保持 30,994 attempts、15,505 引用、13,187 `UNIQUE`、2,209 `NOT_RUN`、109 `NO_RESULT_PATH`、零缺失和零歧义，并把 153 条跨阶段引用直接重算为 12 个 distinct attempts。两次隔离复跑的 summary 均为 SHA-256 `482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2`。r4 因错误地将行级状态覆盖到 H/M 而被否决，r5 因泛化状态边界尚未完成而中止；二者仅在 A 端保留为失败证据，不进入 Git 权威汇总。
+
+P0 仍未解锁。当前剩余关键阻断是 R07 的三个 BLIND 家族 executed-stage runtime 100% 覆盖尚未证明，以及 R03/R05/R11 所需的全源文件哈希、失败/重试 lineage 与真实环境 cohort 仍需形成统一 gate assessment；Phase4 r6 的 30,994 个 attempts 目前只能记录为环境未核验、retry order 未知。一次性、无模型、仅覆盖率的 BLIND 解封流程已冻结在 `contracts/blind_runtime_unseal_v1.json`，但只有 R07/R13 之外的全部门禁先通过后才能执行；当前前置条件不满足，任何候选级 BLIND join 仍保持封存。R01-R14 全部通过前，不得训练、调参、比较方法或做正式泛化结论。
 
 R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessment_v1.json`：R01、R02、R08、R09、R12、R14 为 PASS；R03、R04、R05、R06、R10、R11 为 PARTIAL；R07、R13 为 BLOCKED。该表只报告门禁状态，不会把 PARTIAL 当作通过。
 

@@ -110,7 +110,9 @@ class RuntimeJoinV2Test(unittest.TestCase):
                              tuple(h_row[x] for x in ("join_status", "attempt_stage", "stage_relation", "marker_run_id_mismatch")))
             with open(audit, "r", encoding="utf-8") as stream:
                 summary = json.load(stream)
-            self.assertEqual((1, 1), (summary["cross_stage_unique_count"], summary["source_basename_marker_run_id_mismatch_count"]))
+            self.assertEqual((1, 1, 1), (summary["cross_stage_unique_count"],
+                                        summary["distinct_cross_stage_attempt_count"],
+                                        summary["source_basename_marker_run_id_mismatch_count"]))
 
     def test_legacy_source_log_is_supported(self):
         with tempfile.TemporaryDirectory() as work:
@@ -123,7 +125,7 @@ class RuntimeJoinV2Test(unittest.TestCase):
                 row = next(csv.DictReader(stream, delimiter="\t"))
             self.assertEqual(("UNIQUE", "A"), (row["join_status"], row["attempt_id"]))
 
-    def test_infeasible_at_d95_without_f_result_is_not_run(self):
+    def test_infeasible_at_d95_only_suppresses_f_even_with_stale_path(self):
         with tempfile.TemporaryDirectory() as work:
             contract(os.path.join(work, "split.json"))
             # Add b21 to the test split without involving any blind data.
@@ -131,16 +133,73 @@ class RuntimeJoinV2Test(unittest.TestCase):
                 split = json.load(stream)
             split["formal_runtime_membership"]["PILOT"].append({"circuit": "b21", "family": "itc"})
             put(os.path.join(work, "split.json"), json.dumps(split))
-            manifest(os.path.join(work, "attempt.tsv"), "")
+            manifest(os.path.join(work, "attempt.tsv"),
+                     "HREAL\tb21\t03_hmf_coarse\tH\tH_real\t10\t/out/H_real.driver.log\n"
+                     "MREAL\tb21\t03_hmf_coarse\tM\tM_real\t20\t/out/M_real.driver.log\n"
+                     "STALE\tb21\t03_hmf_coarse\tF\tF_stale\t99\t/out/F_stale.driver.log\n")
             put(os.path.join(work, "measurements", "03_hmf_coarse", "measurements.tsv"),
-                "candidate\th_result\tm_result\tf_result\tresult_status\n1\t\t\t\tINFEASIBLE_AT_D95\n")
+                "candidate\th_result\tm_result\tf_result\tresult_status\n1\t/out/H_real\t/out/M_real\t/out/F_stale\tINFEASIBLE_AT_D95\n")
             result, out, unused = self.invoke(work, "b21")
             self.assertEqual(0, result.returncode, result.stderr.decode("utf-8"))
             with open(out, "r", encoding="utf-8", newline="") as stream:
                 rows = list(csv.DictReader(stream, delimiter="\t"))
             self.assertEqual(3, len(rows))
-            self.assertTrue(all(row["join_status"] == "NOT_RUN" for row in rows))
-            self.assertTrue(all(row["join_reason"] == "INFEASIBLE_AT_D95" for row in rows))
+            by_mode = {row["mode"]: row for row in rows}
+            self.assertEqual(("UNIQUE", "HREAL"), (by_mode["H"]["join_status"], by_mode["H"]["attempt_id"]))
+            self.assertEqual(("UNIQUE", "MREAL"), (by_mode["M"]["join_status"], by_mode["M"]["attempt_id"]))
+            self.assertEqual("NOT_RUN", by_mode["F"]["join_status"])
+            self.assertEqual("INFEASIBLE_AT_D95", by_mode["F"]["join_reason"])
+            self.assertFalse(by_mode["F"]["attempt_id"])
+
+    def test_target_before_f_only_suppresses_f(self):
+        with tempfile.TemporaryDirectory() as work:
+            contract(os.path.join(work, "split.json"))
+            manifest(os.path.join(work, "attempt.tsv"),
+                     "HREAL\tb20\t03_hmf_coarse\tH\tH_real\t10\t/out/H_real.driver.log\n"
+                     "MREAL\tb20\t03_hmf_coarse\tM\tM_real\t20\t/out/M_real.driver.log\n"
+                     "FSTALE\tb20\t03_hmf_coarse\tF\tF_stale\t30\t/out/F_stale.driver.log\n")
+            put(os.path.join(work, "measurements", "03_hmf_coarse", "measurements.tsv"),
+                "candidate\th_result\tm_result\tf_result\tresult_status\n"
+                "1\t/out/H_real\t/out/M_real\t/out/F_stale\tTARGET_BEFORE_F\n")
+            result, out, unused = self.invoke(work)
+            self.assertEqual(0, result.returncode, result.stderr.decode("utf-8"))
+            with open(out, "r", encoding="utf-8", newline="") as stream:
+                rows = list(csv.DictReader(stream, delimiter="\t"))
+            by_mode = {row["mode"]: row for row in rows}
+            self.assertEqual("UNIQUE", by_mode["H"]["join_status"])
+            self.assertEqual("UNIQUE", by_mode["M"]["join_status"])
+            self.assertEqual("NOT_RUN", by_mode["F"]["join_status"])
+            self.assertFalse(by_mode["F"]["attempt_id"])
+
+    def test_generic_pruned_state_does_not_hide_a_real_mode_path(self):
+        with tempfile.TemporaryDirectory() as work:
+            contract(os.path.join(work, "split.json"))
+            manifest(os.path.join(work, "attempt.tsv"),
+                     "HREAL\tb20\t03_hmf_coarse\tH\tH_real\t10\t/out/H_real.driver.log\n")
+            put(os.path.join(work, "measurements", "03_hmf_coarse", "measurements.tsv"),
+                "candidate\th_result\tm_result\tf_result\tresult_status\n"
+                "1\t/out/H_real\t\t\tPRUNED_OR_UNREACHED\n")
+            result, out, unused = self.invoke(work)
+            self.assertEqual(0, result.returncode, result.stderr.decode("utf-8"))
+            with open(out, "r", encoding="utf-8", newline="") as stream:
+                rows = list(csv.DictReader(stream, delimiter="\t"))
+            by_mode = {row["mode"]: row for row in rows}
+            self.assertEqual(("UNIQUE", "HREAL"), (by_mode["H"]["join_status"], by_mode["H"]["attempt_id"]))
+            self.assertEqual("NOT_RUN", by_mode["M"]["join_status"])
+            self.assertEqual("NOT_RUN", by_mode["F"]["join_status"])
+
+    def test_generic_not_run_state_does_not_hide_a_real_mode_path(self):
+        with tempfile.TemporaryDirectory() as work:
+            contract(os.path.join(work, "split.json"))
+            manifest(os.path.join(work, "attempt.tsv"),
+                     "HREAL\tb20\t01_single_boundaries\tH\tH_real\t10\t/out/H_real.driver.log\n")
+            put(os.path.join(work, "measurements", "01_single_boundaries", "measurements.tsv"),
+                "mode\tresult\tstatus\nH\t/out/H_real\tNOT_RUN\n")
+            result, out, unused = self.invoke(work)
+            self.assertEqual(0, result.returncode, result.stderr.decode("utf-8"))
+            with open(out, "r", encoding="utf-8", newline="") as stream:
+                row = next(csv.DictReader(stream, delimiter="\t"))
+            self.assertEqual(("UNIQUE", "HREAL"), (row["join_status"], row["attempt_id"]))
 
 
 if __name__ == "__main__":

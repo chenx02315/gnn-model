@@ -11,7 +11,7 @@ import sys
 
 EVIDENCE_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A"
 RECOVERY_ROOT = "/temp/jiangchuanc/multimode_atpg_runtime_recovery_v1/phase4_nonblind_v2_r1"
-TOOLS = os.path.join(RECOVERY_ROOT, "tools_r3")
+TOOLS = os.path.dirname(os.path.abspath(__file__))
 
 SPECS = {
     "b20": ("PILOT", "itc99_b14_connected", "phase4_v1"),
@@ -48,7 +48,7 @@ def baseline(circuit, mode):
 
 def main():
     if len(sys.argv) != 2 or not sys.argv[1].replace("_", "").isalnum():
-        raise SystemExit("usage: repeat_phase4_nonblind_runtime_recovery_r3.py TAG")
+        raise SystemExit("usage: repeat_phase4_nonblind_runtime_recovery.py TAG")
     tag = sys.argv[1]
     dirs = {
         "inventory": os.path.join(RECOVERY_ROOT, "inventory_" + tag),
@@ -100,7 +100,7 @@ def main():
                 "python3", audit_tool, "--input", measurement_root,
                 "--evidence-root", EVIDENCE_ROOT, "--extra-log", f_log,
                 "--extra-log", h_log, "--circuit", circuit,
-                "--cohort", "phase4_v2_base_plus_full_boundaries_" + tag,
+                "--cohort", "phase4_v2_base_plus_full_boundaries_r6",
             ], stdout=stream)
         os.rename(inventory_tmp, inventory)
         with open(inventory) as stream:
@@ -110,7 +110,7 @@ def main():
             "python3", recover_tool, "--adapter", "gnu_time_log",
             "--input", measurement_root, "--evidence-root", EVIDENCE_ROOT,
             "--extra-log", f_log, "--extra-log", h_log, "--output", attempt_tmp,
-            "--phase", "phase4", "--cohort", "phase4_v2_full_gnu_time_" + tag,
+            "--phase", "phase4", "--cohort", "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6",
             "--environment-cohort", "phase4_20260825_A_phase4_v2_base_environment_unverified",
             "--circuit", circuit, "--family", family, "--role", role,
             "--inventory-manifest-sha256", inventory_sha,

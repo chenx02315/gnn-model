@@ -22,6 +22,13 @@
     "BLIND_TEST": "100 percent executed-stage runtime join coverage required",
     "TRAIN_VALIDATION": "explicit missing actions may only be excluded from the common runtime-eligible space and exclusion rates must be reported by family"
   },
+  "execution_state_policy": {
+    "TARGET_BEFORE_F": "F is NOT_RUN even if a stale F path exists; nonempty H or M paths remain executed attempts",
+    "INFEASIBLE_AT_D95": "F is NOT_RUN even if a stale F path exists; nonempty H or M paths remain executed attempts",
+    "NOT_RUN": "a nonempty per-mode result path remains an executed attempt; only a pathless mode is NOT_RUN",
+    "PRUNED_OR_UNREACHED": "a nonempty per-mode result path remains an executed attempt; only a pathless mode is NOT_RUN",
+    "repeatability": "pathless repeatability rows are NO_RESULT_PATH and are not inferred from row-level execution state"
+  },
   "forbidden_runtime_proxies": [
     "h_cycles",
     "m_cycles",

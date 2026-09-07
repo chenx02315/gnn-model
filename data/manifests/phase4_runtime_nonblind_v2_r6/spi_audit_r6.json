@@ -1,0 +1,46 @@
+{
+  "ambiguity_count": 0,
+  "ambiguity_zero": true,
+  "by_role_circuit_stage_mode": {
+    "TRAIN/spi/01_single_boundaries/F": {
+      "UNIQUE": 38
+    },
+    "TRAIN/spi/01_single_boundaries/H": {
+      "UNIQUE": 21
+    },
+    "TRAIN/spi/02_hf_coarse/F": {
+      "UNIQUE": 21
+    },
+    "TRAIN/spi/02_hf_coarse/H": {
+      "UNIQUE": 21
+    },
+    "TRAIN/spi/03_hmf_coarse/F": {
+      "UNIQUE": 441
+    },
+    "TRAIN/spi/03_hmf_coarse/H": {
+      "UNIQUE": 441
+    },
+    "TRAIN/spi/03_hmf_coarse/M": {
+      "UNIQUE": 441
+    },
+    "TRAIN/spi/04_integer_refine/F": {
+      "UNIQUE": 294
+    },
+    "TRAIN/spi/04_integer_refine/H": {
+      "UNIQUE": 294
+    },
+    "TRAIN/spi/04_integer_refine/M": {
+      "UNIQUE": 246
+    },
+    "TRAIN/spi/05_repeatability/F": {
+      "NO_RESULT_PATH": 2
+    },
+    "TRAIN/spi/05_repeatability/H": {
+      "NO_RESULT_PATH": 2
+    }
+  },
+  "cross_stage_unique_count": 38,
+  "distinct_cross_stage_attempt_count": 2,
+  "row_count": 2262,
+  "source_basename_marker_run_id_mismatch_count": 815
+}

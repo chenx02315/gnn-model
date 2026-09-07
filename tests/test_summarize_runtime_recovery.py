@@ -47,11 +47,12 @@ def make_evidence(root, circuit, audit_rows=2, flat=False):
     put(attempt, header +
         circuit + "\t" + role + "\t" + family + "\tcohort_a\tenv_a\tPASS\tSUCCESS\t1.0\t0\tKNOWN\tFOOTER_VERIFIED\tunknown\t" + manifest_sha + "\n" +
         circuit + "\t" + role + "\t" + family + "\tcohort_a\tenv_a\tPASS_RUNTIME_OUTCOME_PENDING\tUNKNOWN_LEGACY_STATUS\t\t2\tUNKNOWN_ORDER\tFOOTER_VERIFIED\tunknown\t" + manifest_sha + "\n")
-    put(join, "circuit\trole\tfamily\tjoin_status\tatpg_status\tparse_status\tattempt_outcome_class\tstage_relation\tmarker_run_id_mismatch\n" +
-        circuit + "\t" + role + "\t" + family + "\tUNIQUE\tPASS\tPASS\tSUCCESS\tSAME_STAGE\ttrue\n" +
-        circuit + "\t" + role + "\t" + family + "\tUNIQUE\t\tPASS_RUNTIME_OUTCOME_PENDING\tUNKNOWN_LEGACY_STATUS\tCROSS_STAGE\tfalse\n")
+    put(join, "attempt_id\tcircuit\trole\tfamily\tjoin_status\tatpg_status\tparse_status\tattempt_outcome_class\tstage_relation\tmarker_run_id_mismatch\n" +
+        "A1\t" + circuit + "\t" + role + "\t" + family + "\tUNIQUE\tPASS\tPASS\tSUCCESS\tSAME_STAGE\ttrue\n" +
+        "A2\t" + circuit + "\t" + role + "\t" + family + "\tUNIQUE\t\tPASS_RUNTIME_OUTCOME_PENDING\tUNKNOWN_LEGACY_STATUS\tCROSS_STAGE\tfalse\n")
     put(audit, json.dumps({"row_count": audit_rows, "ambiguity_count": 0,
                             "cross_stage_unique_count": 1,
+                            "distinct_cross_stage_attempt_count": 1,
                             "source_basename_marker_run_id_mismatch_count": 1}))
     return inventory, attempt, join, audit
 
@@ -76,6 +77,7 @@ class SummarizeRuntimeRecoveryTest(unittest.TestCase):
             self.assertEqual(2, summary["aggregate"]["circuit_count"])
             self.assertEqual((4, 2, 2), tuple(summary["aggregate"]["join"][key] for key in (
                 "row_count", "explicit_pass_unique_count", "unknown_legacy_status_unique_count")))
+            self.assertEqual(2, summary["aggregate"]["join"]["distinct_cross_stage_attempt_count"])
             self.assertEqual((2, 2), tuple(summary["aggregate"]["attempt"][key] for key in (
                 "missing_wall_count", "nonzero_exit_count")))
             self.assertEqual(4, summary["aggregate"]["inventory_counts"]["elapsed_footer_count"])

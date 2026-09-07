@@ -1,0 +1,530 @@
+{
+  "aggregate": {
+    "attempt": {
+      "cohort_counts": {
+        "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 30994
+      },
+      "environment_cohort_counts": {
+        "phase4_20260825_A_phase4_v2_base_environment_unverified": 30994
+      },
+      "family_counts": {
+        "itc99_b14_connected": 14010,
+        "iwls_aes_core": 4055,
+        "iwls_spi": 8186,
+        "iwls_tv80": 4743
+      },
+      "missing_wall_count": 0,
+      "nonzero_exit_count": 0,
+      "outcome_counts": {
+        "SUCCESS": 1441,
+        "UNKNOWN_LEGACY_STATUS": 29553
+      },
+      "parse_status_counts": {
+        "PASS": 1441,
+        "PASS_RUNTIME_OUTCOME_PENDING": 29553
+      },
+      "retry_order_status_counts": {
+        "UNKNOWN_ORDER": 30994
+      },
+      "role_counts": {
+        "PILOT": 14010,
+        "TRAIN": 12241,
+        "VALIDATION": 4743
+      },
+      "row_count": 30994,
+      "semantics_status_counts": {
+        "FOOTER_VERIFIED": 30994
+      },
+      "timeout_status_counts": {
+        "unknown": 30994
+      }
+    },
+    "circuit_count": 6,
+    "inventory_counts": {
+      "atpg_status_marker_count": 1441,
+      "driver_log_count": 30994,
+      "elapsed_footer_count": 30994,
+      "exit_footer_count": 30994,
+      "missing_atpg_status_count": 29553,
+      "missing_elapsed_count": 0,
+      "missing_exit_count": 0,
+      "nonpass_atpg_status_count": 0,
+      "nonzero_exit_count": 0,
+      "system_footer_count": 30994,
+      "user_footer_count": 30994
+    },
+    "join": {
+      "cross_stage_unique_count": 153,
+      "distinct_cross_stage_attempt_count": 12,
+      "explicit_pass_unique_count": 5561,
+      "join_status_counts": {
+        "NOT_RUN": 2209,
+        "NO_RESULT_PATH": 109,
+        "UNIQUE": 13187
+      },
+      "marker_run_id_mismatch_count": 5561,
+      "row_count": 15505,
+      "unique_join_count": 13187,
+      "unknown_legacy_status_unique_count": 7626
+    }
+  },
+  "circuits": {
+    "aes_core": {
+      "attempt": {
+        "cohort_counts": {
+          "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 4055
+        },
+        "environment_cohort_counts": {
+          "phase4_20260825_A_phase4_v2_base_environment_unverified": 4055
+        },
+        "family_counts": {
+          "iwls_aes_core": 4055
+        },
+        "missing_wall_count": 0,
+        "nonzero_exit_count": 0,
+        "outcome_counts": {
+          "SUCCESS": 270,
+          "UNKNOWN_LEGACY_STATUS": 3785
+        },
+        "parse_status_counts": {
+          "PASS": 270,
+          "PASS_RUNTIME_OUTCOME_PENDING": 3785
+        },
+        "retry_order_status_counts": {
+          "UNKNOWN_ORDER": 4055
+        },
+        "role_counts": {
+          "TRAIN": 4055
+        },
+        "row_count": 4055,
+        "semantics_status_counts": {
+          "FOOTER_VERIFIED": 4055
+        },
+        "timeout_status_counts": {
+          "unknown": 4055
+        }
+      },
+      "family": "iwls_aes_core",
+      "file_sha256": {
+        "attempt_tsv": "83d6a726606c646a9a44cd80933193dfc52f797d4a4e907f3f6ca148fb3f46fd",
+        "inventory_json": "591ec903f5eef24d805e63318a8b8c73c9bb1d683a0ac1d3f5580fad2aead67b",
+        "join_audit_json": "f736df643c8d440d77f81f348aede45238c66ceda9f5b891fcbebde0aab19b3d",
+        "join_tsv": "bde0200b1f034bd61bc9ddd8416391de153e9e69ffab551b0621c86d17a540e7"
+      },
+      "inventory_counts": {
+        "atpg_status_marker_count": 270,
+        "driver_log_count": 4055,
+        "elapsed_footer_count": 4055,
+        "exit_footer_count": 4055,
+        "missing_atpg_status_count": 3785,
+        "missing_elapsed_count": 0,
+        "missing_exit_count": 0,
+        "nonpass_atpg_status_count": 0,
+        "nonzero_exit_count": 0,
+        "system_footer_count": 4055,
+        "user_footer_count": 4055
+      },
+      "inventory_provenance": {
+        "cohort": "phase4_v2_base_plus_full_boundaries_r6",
+        "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
+        "inventory_manifest_sha256": "f4fa71c48411dea2bddbb246fb3213be35fd612e5ce9ebf56b3e83c13b598fa2"
+      },
+      "join": {
+        "cross_stage_unique_count": 19,
+        "distinct_cross_stage_attempt_count": 2,
+        "explicit_pass_unique_count": 969,
+        "join_status_counts": {
+          "NOT_RUN": 504,
+          "NO_RESULT_PATH": 21,
+          "UNIQUE": 2131
+        },
+        "marker_run_id_mismatch_count": 969,
+        "row_count": 2656,
+        "unique_join_count": 2131,
+        "unknown_legacy_status_unique_count": 1162
+      },
+      "role": "TRAIN"
+    },
+    "b20": {
+      "attempt": {
+        "cohort_counts": {
+          "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 4223
+        },
+        "environment_cohort_counts": {
+          "phase4_20260825_A_phase4_v2_base_environment_unverified": 4223
+        },
+        "family_counts": {
+          "itc99_b14_connected": 4223
+        },
+        "missing_wall_count": 0,
+        "nonzero_exit_count": 0,
+        "outcome_counts": {
+          "SUCCESS": 221,
+          "UNKNOWN_LEGACY_STATUS": 4002
+        },
+        "parse_status_counts": {
+          "PASS": 221,
+          "PASS_RUNTIME_OUTCOME_PENDING": 4002
+        },
+        "retry_order_status_counts": {
+          "UNKNOWN_ORDER": 4223
+        },
+        "role_counts": {
+          "PILOT": 4223
+        },
+        "row_count": 4223,
+        "semantics_status_counts": {
+          "FOOTER_VERIFIED": 4223
+        },
+        "timeout_status_counts": {
+          "unknown": 4223
+        }
+      },
+      "family": "itc99_b14_connected",
+      "file_sha256": {
+        "attempt_tsv": "08fa10fa2bd57160194940c0a0cf0af7492f2b37f4b41238baa909bde8608be5",
+        "inventory_json": "f41c5c066bf598f79670b6f04f6d668c36bff0beefbc6e29d81f77e644589869",
+        "join_audit_json": "491c2abe49e713053bcb02ab6022f43b29c90dbc1076b0c0b59dd175d12bde55",
+        "join_tsv": "8a4bbef124ecb6356ce3045fb93da1fd04a83e63569baec4b00b279288e61752"
+      },
+      "inventory_counts": {
+        "atpg_status_marker_count": 221,
+        "driver_log_count": 4223,
+        "elapsed_footer_count": 4223,
+        "exit_footer_count": 4223,
+        "missing_atpg_status_count": 4002,
+        "missing_elapsed_count": 0,
+        "missing_exit_count": 0,
+        "nonpass_atpg_status_count": 0,
+        "nonzero_exit_count": 0,
+        "system_footer_count": 4223,
+        "user_footer_count": 4223
+      },
+      "inventory_provenance": {
+        "cohort": "phase4_v2_base_plus_full_boundaries_r6",
+        "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
+        "inventory_manifest_sha256": "5865b6a1bd062905293295dbd0b6a4c2829a0845c37ff6c5021e6928e6000fde"
+      },
+      "join": {
+        "cross_stage_unique_count": 24,
+        "distinct_cross_stage_attempt_count": 2,
+        "explicit_pass_unique_count": 911,
+        "join_status_counts": {
+          "NOT_RUN": 445,
+          "NO_RESULT_PATH": 21,
+          "UNIQUE": 2092
+        },
+        "marker_run_id_mismatch_count": 911,
+        "row_count": 2558,
+        "unique_join_count": 2092,
+        "unknown_legacy_status_unique_count": 1181
+      },
+      "role": "PILOT"
+    },
+    "b21": {
+      "attempt": {
+        "cohort_counts": {
+          "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 5076
+        },
+        "environment_cohort_counts": {
+          "phase4_20260825_A_phase4_v2_base_environment_unverified": 5076
+        },
+        "family_counts": {
+          "itc99_b14_connected": 5076
+        },
+        "missing_wall_count": 0,
+        "nonzero_exit_count": 0,
+        "outcome_counts": {
+          "SUCCESS": 264,
+          "UNKNOWN_LEGACY_STATUS": 4812
+        },
+        "parse_status_counts": {
+          "PASS": 264,
+          "PASS_RUNTIME_OUTCOME_PENDING": 4812
+        },
+        "retry_order_status_counts": {
+          "UNKNOWN_ORDER": 5076
+        },
+        "role_counts": {
+          "PILOT": 5076
+        },
+        "row_count": 5076,
+        "semantics_status_counts": {
+          "FOOTER_VERIFIED": 5076
+        },
+        "timeout_status_counts": {
+          "unknown": 5076
+        }
+      },
+      "family": "itc99_b14_connected",
+      "file_sha256": {
+        "attempt_tsv": "8aea7f79140055dc77e5f12e1db76376534ea11298976d266eee33f355987854",
+        "inventory_json": "3ad8bb0d24d5d8cef7ac92636a1849892e5e4767788e8f01142b0f4614204bc3",
+        "join_audit_json": "96847c6aec253c02ff687d730231b9cbf4205371e4527fd2c359ce086bbcfe45",
+        "join_tsv": "b6bfde9acf9853fdb6a60a66ca260549dc197ea9f1bfc01f756ce75f58f5bb34"
+      },
+      "inventory_counts": {
+        "atpg_status_marker_count": 264,
+        "driver_log_count": 5076,
+        "elapsed_footer_count": 5076,
+        "exit_footer_count": 5076,
+        "missing_atpg_status_count": 4812,
+        "missing_elapsed_count": 0,
+        "missing_exit_count": 0,
+        "nonpass_atpg_status_count": 0,
+        "nonzero_exit_count": 0,
+        "system_footer_count": 5076,
+        "user_footer_count": 5076
+      },
+      "inventory_provenance": {
+        "cohort": "phase4_v2_base_plus_full_boundaries_r6",
+        "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
+        "inventory_manifest_sha256": "722cd495244a576ec1626858d05b2e98824ade124252f33900e3f8cc527adcd2"
+      },
+      "join": {
+        "cross_stage_unique_count": 24,
+        "distinct_cross_stage_attempt_count": 2,
+        "explicit_pass_unique_count": 977,
+        "join_status_counts": {
+          "NOT_RUN": 418,
+          "NO_RESULT_PATH": 21,
+          "UNIQUE": 2296
+        },
+        "marker_run_id_mismatch_count": 977,
+        "row_count": 2735,
+        "unique_join_count": 2296,
+        "unknown_legacy_status_unique_count": 1319
+      },
+      "role": "PILOT"
+    },
+    "b22": {
+      "attempt": {
+        "cohort_counts": {
+          "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 4711
+        },
+        "environment_cohort_counts": {
+          "phase4_20260825_A_phase4_v2_base_environment_unverified": 4711
+        },
+        "family_counts": {
+          "itc99_b14_connected": 4711
+        },
+        "missing_wall_count": 0,
+        "nonzero_exit_count": 0,
+        "outcome_counts": {
+          "SUCCESS": 246,
+          "UNKNOWN_LEGACY_STATUS": 4465
+        },
+        "parse_status_counts": {
+          "PASS": 246,
+          "PASS_RUNTIME_OUTCOME_PENDING": 4465
+        },
+        "retry_order_status_counts": {
+          "UNKNOWN_ORDER": 4711
+        },
+        "role_counts": {
+          "PILOT": 4711
+        },
+        "row_count": 4711,
+        "semantics_status_counts": {
+          "FOOTER_VERIFIED": 4711
+        },
+        "timeout_status_counts": {
+          "unknown": 4711
+        }
+      },
+      "family": "itc99_b14_connected",
+      "file_sha256": {
+        "attempt_tsv": "812c0bd66b3706672d3c5afe3726377b74fd396a2597e5507361b6e74a7efcb2",
+        "inventory_json": "b4346e040b58bd543191d4866286a3baab6f5f61dc0edbd213f4c24b35a82f31",
+        "join_audit_json": "739972e17c0e01efe5cc0802fc43ce400c6133885cce9aab33635eaef49be6c0",
+        "join_tsv": "ca2d5adb8096f087816ced21173df6bac42458bfe7493fc16b8833485081d3de"
+      },
+      "inventory_counts": {
+        "atpg_status_marker_count": 246,
+        "driver_log_count": 4711,
+        "elapsed_footer_count": 4711,
+        "exit_footer_count": 4711,
+        "missing_atpg_status_count": 4465,
+        "missing_elapsed_count": 0,
+        "missing_exit_count": 0,
+        "nonpass_atpg_status_count": 0,
+        "nonzero_exit_count": 0,
+        "system_footer_count": 4711,
+        "user_footer_count": 4711
+      },
+      "inventory_provenance": {
+        "cohort": "phase4_v2_base_plus_full_boundaries_r6",
+        "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
+        "inventory_manifest_sha256": "39cf3b554e6d88a1c2dbdae7cc931f56c72ddc6f68ab26ec4a57efdf470aaaa7"
+      },
+      "join": {
+        "cross_stage_unique_count": 24,
+        "distinct_cross_stage_attempt_count": 2,
+        "explicit_pass_unique_count": 958,
+        "join_status_counts": {
+          "NOT_RUN": 439,
+          "NO_RESULT_PATH": 21,
+          "UNIQUE": 2230
+        },
+        "marker_run_id_mismatch_count": 958,
+        "row_count": 2690,
+        "unique_join_count": 2230,
+        "unknown_legacy_status_unique_count": 1272
+      },
+      "role": "PILOT"
+    },
+    "spi": {
+      "attempt": {
+        "cohort_counts": {
+          "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 8186
+        },
+        "environment_cohort_counts": {
+          "phase4_20260825_A_phase4_v2_base_environment_unverified": 8186
+        },
+        "family_counts": {
+          "iwls_spi": 8186
+        },
+        "missing_wall_count": 0,
+        "nonzero_exit_count": 0,
+        "outcome_counts": {
+          "SUCCESS": 201,
+          "UNKNOWN_LEGACY_STATUS": 7985
+        },
+        "parse_status_counts": {
+          "PASS": 201,
+          "PASS_RUNTIME_OUTCOME_PENDING": 7985
+        },
+        "retry_order_status_counts": {
+          "UNKNOWN_ORDER": 8186
+        },
+        "role_counts": {
+          "TRAIN": 8186
+        },
+        "row_count": 8186,
+        "semantics_status_counts": {
+          "FOOTER_VERIFIED": 8186
+        },
+        "timeout_status_counts": {
+          "unknown": 8186
+        }
+      },
+      "family": "iwls_spi",
+      "file_sha256": {
+        "attempt_tsv": "e56a21bb70ecc7b33063ecc5323a050c974f976f552276a8da21054d52274e77",
+        "inventory_json": "1abb0937cdc675c73303b163d5fe5e53a64c88442e491ad4063c649679680364",
+        "join_audit_json": "9d117e555c9486ada3dc738a343c5daaf029c7b4584fad9d632dba50ecf21577",
+        "join_tsv": "53fe0a1e6375800c9c25688901d2cacd37b5f65947c842b5345d30b1cb230326"
+      },
+      "inventory_counts": {
+        "atpg_status_marker_count": 201,
+        "driver_log_count": 8186,
+        "elapsed_footer_count": 8186,
+        "exit_footer_count": 8186,
+        "missing_atpg_status_count": 7985,
+        "missing_elapsed_count": 0,
+        "missing_exit_count": 0,
+        "nonpass_atpg_status_count": 0,
+        "nonzero_exit_count": 0,
+        "system_footer_count": 8186,
+        "user_footer_count": 8186
+      },
+      "inventory_provenance": {
+        "cohort": "phase4_v2_base_plus_full_boundaries_r6",
+        "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
+        "inventory_manifest_sha256": "c3715bde2c0ba7d628ff3b60fc432962f7c920a969d4101c2fb0f46bb549df11"
+      },
+      "join": {
+        "cross_stage_unique_count": 38,
+        "distinct_cross_stage_attempt_count": 2,
+        "explicit_pass_unique_count": 815,
+        "join_status_counts": {
+          "NO_RESULT_PATH": 4,
+          "UNIQUE": 2258
+        },
+        "marker_run_id_mismatch_count": 815,
+        "row_count": 2262,
+        "unique_join_count": 2258,
+        "unknown_legacy_status_unique_count": 1443
+      },
+      "role": "TRAIN"
+    },
+    "tv80": {
+      "attempt": {
+        "cohort_counts": {
+          "phase4_v2_r1_full_gnu_time_plus_full_boundaries_r6": 4743
+        },
+        "environment_cohort_counts": {
+          "phase4_20260825_A_phase4_v2_base_environment_unverified": 4743
+        },
+        "family_counts": {
+          "iwls_tv80": 4743
+        },
+        "missing_wall_count": 0,
+        "nonzero_exit_count": 0,
+        "outcome_counts": {
+          "SUCCESS": 239,
+          "UNKNOWN_LEGACY_STATUS": 4504
+        },
+        "parse_status_counts": {
+          "PASS": 239,
+          "PASS_RUNTIME_OUTCOME_PENDING": 4504
+        },
+        "retry_order_status_counts": {
+          "UNKNOWN_ORDER": 4743
+        },
+        "role_counts": {
+          "VALIDATION": 4743
+        },
+        "row_count": 4743,
+        "semantics_status_counts": {
+          "FOOTER_VERIFIED": 4743
+        },
+        "timeout_status_counts": {
+          "unknown": 4743
+        }
+      },
+      "family": "iwls_tv80",
+      "file_sha256": {
+        "attempt_tsv": "7ccb330ec982a842dd9476aff6950b26a918f43ebb7f5269c5eb31ee1f56e0aa",
+        "inventory_json": "ab1914b59bb7cf09b19787747c8fc197622fd33c80aaa5e79e1407816ba1d030",
+        "join_audit_json": "93f35fd165a6318b5cafefac6afca79ab27a0c5c55bcfecfd75a23635c8ec2aa",
+        "join_tsv": "e1085d916498021be0bbee8a3e144184faa5f53354ef45e2034c506fff7affdb"
+      },
+      "inventory_counts": {
+        "atpg_status_marker_count": 239,
+        "driver_log_count": 4743,
+        "elapsed_footer_count": 4743,
+        "exit_footer_count": 4743,
+        "missing_atpg_status_count": 4504,
+        "missing_elapsed_count": 0,
+        "missing_exit_count": 0,
+        "nonpass_atpg_status_count": 0,
+        "nonzero_exit_count": 0,
+        "system_footer_count": 4743,
+        "user_footer_count": 4743
+      },
+      "inventory_provenance": {
+        "cohort": "phase4_v2_base_plus_full_boundaries_r6",
+        "field_policy": "aggregate-only; no path, run_id, elapsed value, candidate, pattern, cycle, or outcome fields",
+        "inventory_manifest_sha256": "8013fae3ef791d852959ee88cd62ce619e1c6e54376c3a475008edd250d5c19a"
+      },
+      "join": {
+        "cross_stage_unique_count": 24,
+        "distinct_cross_stage_attempt_count": 2,
+        "explicit_pass_unique_count": 931,
+        "join_status_counts": {
+          "NOT_RUN": 403,
+          "NO_RESULT_PATH": 21,
+          "UNIQUE": 2180
+        },
+        "marker_run_id_mismatch_count": 931,
+        "row_count": 2604,
+        "unique_join_count": 2180,
+        "unknown_legacy_status_unique_count": 1249
+      },
+      "role": "VALIDATION"
+    }
+  },
+  "schema_version": "runtime_recovery_summary_v1",
+  "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda"
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "phase4-nonblind-determinism-r6",
+  "first_run": "summaries_r6/summary_r6.json",
+  "repeat_run": "summaries_r6_repeat1/summary_r6_repeat1.json",
+  "first_run_sha256": "482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2",
+  "repeat_run_sha256": "482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2",
+  "byte_identical": true,
+  "blind_data_accessed": false
+}

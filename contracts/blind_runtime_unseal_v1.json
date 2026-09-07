@@ -1,0 +1,120 @@
+{
+  "schema_version": "blind-runtime-unseal-v1",
+  "status": "SEALED_ONE_SHOT_COVERAGE_AUDIT_ONLY",
+  "purpose": "A model-independent, one-time audit that may unseal BLIND runtime evidence only long enough to measure runtime-join coverage. It is not a P0 unlock and cannot create a performance outcome.",
+  "scope": {
+    "split_contract": "contracts/data_split_v1.json",
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+    "blind_circuits": [
+      "s9234",
+      "s38584",
+      "wb_dma"
+    ],
+    "blind_circuit_count": 3
+  },
+  "preconditions": {
+    "required_split_sealed": true,
+    "required_assessment": "contracts/runtime_recovery_gate_assessment_v1.json",
+    "required_assessment_status": "BLOCKED",
+    "required_check_status": {
+      "R01": "PASS",
+      "R02": "PASS",
+      "R03": "PASS",
+      "R04": "PASS",
+      "R05": "PASS",
+      "R06": "PASS",
+      "R08": "PASS",
+      "R09": "PASS",
+      "R10": "PASS",
+      "R11": "PASS",
+      "R12": "PASS",
+      "R14": "PASS"
+    },
+    "only_checks_allowed_to_remain_blocked_before_unseal": [
+      "R07",
+      "R13"
+    ],
+    "required_pre_access_proof": "The frozen formal-runtime membership hash above was recorded before candidate-level BLIND runtime-join inspection.",
+    "p0_remains_blocked": true
+  },
+  "roles": {
+    "blind_custodian": "Performs the one allowed coverage join inside the sealed BLIND environment and releases only the prescribed aggregate receipt.",
+    "independent_auditor": "Checks the receipt hashes, fixed circuit set, and R07/R13 decision rules without receiving candidate-level BLIND records.",
+    "model_or_tuning_operator": "Must not receive BLIND records or use this audit for training, selection, calibration, or tuning."
+  },
+  "one_shot_protocol": {
+    "maximum_unseal_attempts": 1,
+    "replay_allowed": false,
+    "permitted_operation": "coverage-only candidate-stage-to-runtime-attempt join audit",
+    "permitted_derivations": [
+      "executed-stage action count",
+      "unique runtime-join count",
+      "missing runtime-join count",
+      "ambiguous runtime-join count",
+      "per-method frozen runtime-eligible action-space hash"
+    ],
+    "receipt_only": true,
+    "failure_action": "Immediately reseal all BLIND artifacts; publish no partial candidate-level result; record only a failed aggregate receipt; do not retry under this contract."
+  },
+  "prohibited": {
+    "outcome_or_runtime_fields": [
+      "elapsed",
+      "wall_time",
+      "user_time",
+      "system_time",
+      "runtime_value",
+      "timeout_outcome",
+      "pass_fail_outcome",
+      "coverage_outcome",
+      "fault_coverage",
+      "pattern_count",
+      "candidate_rank"
+    ],
+    "model_or_tuning_uses": [
+      "training",
+      "feature_selection",
+      "model_selection",
+      "hyperparameter_tuning",
+      "threshold_tuning",
+      "candidate_order_tuning",
+      "calibration",
+      "early_stopping",
+      "performance_comparison"
+    ],
+    "release_forms": [
+      "candidate_level_records",
+      "candidate_to_attempt_mapping",
+      "per_candidate_join_status",
+      "paths",
+      "run_ids",
+      "raw_logs"
+    ]
+  },
+  "allowed_receipt": {
+    "aggregation": "per blind circuit and method only; no candidate-level rows",
+    "fields": [
+      "circuit",
+      "method",
+      "executed_stage_action_count",
+      "unique_runtime_join_count",
+      "missing_runtime_join_count",
+      "ambiguous_runtime_join_count",
+      "coverage_rate",
+      "frozen_runtime_eligible_action_space_sha256",
+      "source_artifact_sha256",
+      "receipt_sha256"
+    ],
+    "forbid_outcomes": true
+  },
+  "decision_rules": {
+    "R07": {
+      "pass_when": "For each of s9234, s38584, and wb_dma, every executed-stage action has exactly one runtime join: missing_runtime_join_count == 0, ambiguous_runtime_join_count == 0, and coverage_rate == 1.0.",
+      "otherwise": "BLOCKED and reseal."
+    },
+    "R13": {
+      "pass_when": "R07 passes and, within each of s9234, s38584, and wb_dma, every audited method has the identical frozen runtime-eligible action-space hash, with no exclusion introduced after unseal.",
+      "otherwise": "BLOCKED and reseal."
+    },
+    "p0": "This receipt can inform a later runtime_recovery_gate assessment only. P0 remains BLOCKED until an independent assessment establishes every R01 through R14 as PASS."
+  }
+}

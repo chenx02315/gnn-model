@@ -64,10 +64,16 @@ def source_rows(kind, row):
     return [(mode, value(row, mode.lower() + "_result")) for mode in modes]
 
 
-def is_not_run(row):
+def is_not_run(row, mode, marker):
     state = source_state(row)
-    return ("TARGET_BEFORE_F" in state or "NOT_RUN" in state or
-            "PRUNED_OR_UNREACHED" in state or "INFEASIBLE_AT_D95" in state)
+    # These states explain why the final F stage was not executed; H/M paths
+    # on the same row are real executions.  F stays NOT_RUN even if a stale F
+    # path was accidentally retained in the source table.
+    if "TARGET_BEFORE_F" in state or "INFEASIBLE_AT_D95" in state:
+        return mode == "F"
+    # For generic row states, a concrete result path is stronger evidence of
+    # execution.  Only the pathless mode is classified as non-executed.
+    return not marker and ("NOT_RUN" in state or "PRUNED_OR_UNREACHED" in state)
 
 
 def source_state(row):
@@ -116,11 +122,14 @@ def build(circuit, measurements_root, attempt_manifest, contract):
                                    "normalized_result_basename": marker,
                                    "source_file": os.path.relpath(path, measurements_root).replace("\\", "/"),
                                    "source_row": str(row_number)})
-                    if not marker:
+                    if kind != "repeatability" and is_not_run(row, mode, marker):
+                        # The source execution state is authoritative.  A stale
+                        # result path must never turn a contract-defined
+                        # non-execution into a charged runtime attempt.
+                        result.update(join_status="NOT_RUN", join_reason=source_state(row))
+                    elif not marker:
                         if kind == "repeatability":
                             result.update(join_status="NO_RESULT_PATH", join_reason="repeatability_has_no_result_path")
-                        elif is_not_run(row):
-                            result.update(join_status="NOT_RUN", join_reason=source_state(row))
                         else:
                             result.update(join_status="MISSING_RESULT_PATH", join_reason="empty_result_path")
                     else:
@@ -161,11 +170,14 @@ def write(rows, output_tsv, output_audit):
         by_key.setdefault(key, {}).setdefault(row["join_status"], 0)
         by_key[key][row["join_status"]] += 1
     ambiguity_count = sum(row["join_status"] == "AMBIGUOUS" for row in rows)
-    cross_stage = sum(row["join_status"] == "UNIQUE" and row["stage_relation"] == "CROSS_STAGE" for row in rows)
+    cross_stage_rows = [row for row in rows if row["join_status"] == "UNIQUE" and row["stage_relation"] == "CROSS_STAGE"]
+    cross_stage = len(cross_stage_rows)
+    distinct_cross_stage_attempts = len(set(row["attempt_id"] for row in cross_stage_rows if row["attempt_id"]))
     marker_mismatches = sum(row["marker_run_id_mismatch"] == "true" for row in rows)
     audit = {"row_count": len(rows), "by_role_circuit_stage_mode": by_key,
              "ambiguity_count": ambiguity_count, "ambiguity_zero": ambiguity_count == 0,
              "cross_stage_unique_count": cross_stage,
+             "distinct_cross_stage_attempt_count": distinct_cross_stage_attempts,
              "source_basename_marker_run_id_mismatch_count": marker_mismatches}
     with open(output_audit, "w", encoding="utf-8", newline="\n") as stream:
         json.dump(audit, stream, ensure_ascii=False, indent=2, sort_keys=True)

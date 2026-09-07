@@ -99,7 +99,7 @@ def attempt_summary(path, circuit, role, family, inventory_manifest_sha256):
 
 
 def join_summary(path, circuit, role, family):
-    required = ("circuit", "role", "family", "join_status", "atpg_status", "parse_status", "attempt_outcome_class", "stage_relation", "marker_run_id_mismatch")
+    required = ("attempt_id", "circuit", "role", "family", "join_status", "atpg_status", "parse_status", "attempt_outcome_class", "stage_relation", "marker_run_id_mismatch")
     rows = count_rows(path, required, circuit)
     if any(text(row, "role") != role or text(row, "family") != family for row in rows):
         raise ValueError("join split membership mismatch in %s" % path)
@@ -109,9 +109,11 @@ def join_summary(path, circuit, role, family):
     unknown = [row for row in unique if text(row, "atpg_status") == "" and text(row, "parse_status") == "PASS_RUNTIME_OUTCOME_PENDING" and text(row, "attempt_outcome_class") == "UNKNOWN_LEGACY_STATUS"]
     if len(unique) != len(explicit) + len(unknown):
         raise ValueError("unexpected UNIQUE runtime status in %s" % path)
+    cross_stage = [row for row in unique if text(row, "stage_relation") == "CROSS_STAGE"]
     return {"row_count": len(rows), "join_status_counts": statuses, "unique_join_count": len(unique),
             "explicit_pass_unique_count": len(explicit), "unknown_legacy_status_unique_count": len(unknown),
-            "cross_stage_unique_count": sum(text(row, "stage_relation") == "CROSS_STAGE" for row in unique),
+            "cross_stage_unique_count": len(cross_stage),
+            "distinct_cross_stage_attempt_count": len(set(text(row, "attempt_id") for row in cross_stage)),
             "marker_run_id_mismatch_count": sum(text(row, "marker_run_id_mismatch").lower() == "true" for row in rows)}
 
 
@@ -140,11 +142,12 @@ def checked_circuit(circuit, paths, role, family):
     joins = join_summary(join_path, circuit, role, family)
     with open(audit_path, "r", encoding="utf-8") as stream:
         audit = json.load(stream)
-    required = ("row_count", "ambiguity_count", "cross_stage_unique_count", "source_basename_marker_run_id_mismatch_count")
+    required = ("row_count", "ambiguity_count", "cross_stage_unique_count", "distinct_cross_stage_attempt_count", "source_basename_marker_run_id_mismatch_count")
     if not isinstance(audit, dict) or not set(required).issubset(set(audit)):
         raise ValueError("schema mismatch in %s" % audit_path)
     expected = {"row_count": joins["row_count"], "ambiguity_count": joins["join_status_counts"].get("AMBIGUOUS", 0),
                 "cross_stage_unique_count": joins["cross_stage_unique_count"],
+                "distinct_cross_stage_attempt_count": joins["distinct_cross_stage_attempt_count"],
                 "source_basename_marker_run_id_mismatch_count": joins["marker_run_id_mismatch_count"]}
     for key, value in expected.items():
         if audit[key] != value:
