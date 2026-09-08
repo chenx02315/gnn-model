@@ -1,0 +1,33 @@
+{
+  "artifacts": {
+    "phase2.b18.raw_inventory_manifest": "3f76c1dd798f6df721d033a18f9cb7ae4e47664c3f825fe1629a50f3cfd36239",
+    "phase2.s35932.raw_inventory_manifest": "8fc1b79ffbe4d0332a1a196f3ddd3e26cb8e94437035ee888d85032bc01f0365",
+    "phase2.s38417.raw_inventory_manifest": "4382b2c5e22b867ae2bead4d83e75e4632215f04c462914c96d09bf5b2b32c00",
+    "phase2.s38584.inventory_manifest": "73fc713b8d0795dec69307cf43a96d2133b5d253a0986f33761e5ffb0c152a09",
+    "phase2.s38584.source": "e506507d0d1f5c9e8264307a1c9dcef4f312de7235ee3e78d1aa336003819246",
+    "phase3.s13207.inventory_manifest": "895c325c23609b059b4fab0027b2d790c0d515390ad474052b20e3026ee6ec52",
+    "phase3.s15850.inventory_manifest": "643215f90884023f212a2dde56cafeadb4c335461d951e0d586fb57859f604f0",
+    "phase3.s5378.authority_baseline_inventory_manifest": "f624ea4c2f92e622ec4a9bf142861695423c2fbae6c811c6a350b92b912925b0",
+    "phase3.s5378.coverage_subtree_inventory_manifest": "ac5ad79e96598af11301bb99c941fbd65f138feedad1631944305f176c59273a",
+    "phase3.s5378.inventory_manifest": "28be4c039edab0eed7102dd8786e796840599159ace06beae8f430f8a7b103d1",
+    "phase3.s9234.inventory_manifest": "cd226c86807c6e80bfe2210db46eab5d3305c322626829f7e163467d4b562826",
+    "phase4.wb_dma.inventory_manifest": "4755a03a9da7eb9bf8fab2ec6f2c95e5c83919c42e236b72ccaed763786b3f4f",
+    "phase4_r6.aes_core.raw_inventory_manifest": "f4fa71c48411dea2bddbb246fb3213be35fd612e5ce9ebf56b3e83c13b598fa2",
+    "phase4_r6.b20.raw_inventory_manifest": "5865b6a1bd062905293295dbd0b6a4c2829a0845c37ff6c5021e6928e6000fde",
+    "phase4_r6.b21.raw_inventory_manifest": "722cd495244a576ec1626858d05b2e98824ade124252f33900e3f8cc527adcd2",
+    "phase4_r6.b22.raw_inventory_manifest": "39cf3b554e6d88a1c2dbdae7cc931f56c72ddc6f68ab26ec4a57efdf470aaaa7",
+    "phase4_r6.spi.raw_inventory_manifest": "c3715bde2c0ba7d628ff3b60fc432962f7c920a969d4101c2fb0f46bb549df11",
+    "phase4_r6.tv80.raw_inventory_manifest": "8013fae3ef791d852959ee88cd62ce619e1c6e54376c3a475008edd250d5c19a"
+  },
+  "audit_tool_sha256": "ab1ed797e4bbd58ef9aee04a46c24a4843c63d5436f296eeb1f7a48d5e99ac61",
+  "counts": {
+    "entry_count": 18,
+    "file_count": 1,
+    "inventory_count": 17
+  },
+  "field_policy": "logical IDs, SHA-256 values, and aggregate counts only",
+  "receipt_version": "r03-canonical-18-v2",
+  "recheck_tool_sha256": "65d2ba936536fde2f04dcceb5bd42fb8b992996ad5fd080598f0286ee3f53fce",
+  "schema_version": "canonical-digest-recheck-receipt-v1",
+  "specification_sha256": "256e03ced7dccbc21022cd1df6c37392dd327e6581e83d0246e379afd55c5b4c"
+}

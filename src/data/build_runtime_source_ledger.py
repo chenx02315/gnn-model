@@ -23,18 +23,23 @@ LOCAL_INPUTS = (
     "contracts/runtime_policy_v1.json",
     "contracts/runtime_policy_v2.json",
     "contracts/runtime_recovery_gate_v1.json",
+    "contracts/runtime_source_digest_recheck_v2.json",
     "data/manifests/runtime_recovery_inventory_v1.json",
     "data/manifests/runtime_nonblind_join_audit_v2.json",
     "data/manifests/runtime_authority_package_audit_v1.json",
     "data/manifests/runtime_source_reconciliation_v1.json",
+    "data/manifests/runtime_source_digest_recheck_receipt_v2.json",
+    "data/manifests/runtime_source_digest_recheck_verification_v2.json",
     "data/manifests/phase2_wall_time_semantics_v1.json",
     "src/data/audit_phase2_wall_time_semantics.py",
     "src/data/audit_runtime_log_inventory.py",
     "src/data/audit_runtime_authority_package.py",
     "src/data/build_runtime_join_v2.py",
+    "src/data/recheck_runtime_source_digests.py",
     "src/data/recover_runtime_attempts.py",
     "src/data/runtime_schema.py",
     "src/data/summarize_runtime_recovery.py",
+    "src/data/verify_runtime_source_digest_receipt.py",
 )
 
 R6_TOOL_TARGETS = {
@@ -315,6 +320,102 @@ def merge_readback_delta(base, delta, expected):
     }, replaced, confirmed)
 
 
+def merge_digest_recheck(receipt, supplement, contract, verification,
+                         expected, local_hashes):
+    """Fill only still-missing IDs from the independently verified v2 receipt."""
+    contract_fields = {
+        "schema_version", "receipt_version", "expected_entry_count",
+        "trusted_raw_spec_sha256", "canonical_specification_sha256",
+        "trusted_recheck_tool_sha256", "trusted_audit_tool_sha256",
+        "trusted_receipt_sha256", "scope", "remaining_unresolved_logical_ids",
+        "gate_result",
+    }
+    if not isinstance(contract, dict) or set(contract) != contract_fields:
+        raise ValueError("digest recheck contract fields are invalid")
+    if contract["schema_version"] != "runtime-source-digest-recheck-contract-v2":
+        raise ValueError("digest recheck contract schema is invalid")
+    if contract["receipt_version"] != "r03-canonical-18-v2":
+        raise ValueError("digest recheck contract version is invalid")
+    receipt_relative = "data/manifests/runtime_source_digest_recheck_receipt_v2.json"
+    if contract["trusted_receipt_sha256"] != local_hashes[receipt_relative]:
+        raise ValueError("digest recheck contract does not bind the receipt")
+    if contract["trusted_recheck_tool_sha256"] != local_hashes[
+            "src/data/recheck_runtime_source_digests.py"]:
+        raise ValueError("digest recheck contract does not bind the recheck tool")
+    if contract["trusted_audit_tool_sha256"] != local_hashes[
+            "src/data/audit_runtime_log_inventory.py"]:
+        raise ValueError("digest recheck contract does not bind the audit tool")
+
+    receipt_fields = {
+        "schema_version", "receipt_version", "specification_sha256",
+        "audit_tool_sha256", "recheck_tool_sha256", "artifacts", "counts",
+        "field_policy",
+    }
+    if not isinstance(supplement, dict) or set(supplement) != receipt_fields:
+        raise ValueError("digest recheck receipt fields are invalid")
+    if supplement["schema_version"] != "canonical-digest-recheck-receipt-v1":
+        raise ValueError("digest recheck receipt schema is invalid")
+    if supplement["receipt_version"] != contract["receipt_version"]:
+        raise ValueError("digest recheck receipt version is invalid")
+    if supplement["specification_sha256"] != contract["canonical_specification_sha256"]:
+        raise ValueError("digest recheck canonical specification is unbound")
+    if supplement["audit_tool_sha256"] != contract["trusted_audit_tool_sha256"]:
+        raise ValueError("digest recheck receipt audit tool is unbound")
+    if supplement["recheck_tool_sha256"] != contract["trusted_recheck_tool_sha256"]:
+        raise ValueError("digest recheck receipt tool is unbound")
+    if supplement["counts"] != {"entry_count": 18, "file_count": 1,
+                                "inventory_count": 17}:
+        raise ValueError("digest recheck receipt counts are invalid")
+    if supplement["field_policy"] != "logical IDs, SHA-256 values, and aggregate counts only":
+        raise ValueError("digest recheck field policy is invalid")
+    if contract["expected_entry_count"] != 18:
+        raise ValueError("digest recheck expected entry count is invalid")
+
+    verification_fields = {
+        "receipt_sha256", "receipt_version", "schema_version", "status",
+        "trusted_raw_spec_sha256", "trusted_recheck_tool_sha256",
+        "verified_entry_count",
+    }
+    if not isinstance(verification, dict) or set(verification) != verification_fields:
+        raise ValueError("digest recheck verification fields are invalid")
+    if (verification["schema_version"] != "canonical-digest-receipt-verification-v1" or
+            verification["status"] != "VERIFIED" or
+            verification["receipt_version"] != contract["receipt_version"] or
+            verification["receipt_sha256"] != contract["trusted_receipt_sha256"] or
+            verification["trusted_raw_spec_sha256"] != contract["trusted_raw_spec_sha256"] or
+            verification["trusted_recheck_tool_sha256"] != contract["trusted_recheck_tool_sha256"] or
+            verification["verified_entry_count"] != contract["expected_entry_count"]):
+        raise ValueError("digest recheck verification is not bound to the contract")
+
+    artifacts = supplement.get("artifacts")
+    if not isinstance(artifacts, dict):
+        raise ValueError("digest recheck artifacts are invalid")
+    prior = compare_readback(receipt, expected)
+    remaining = contract["remaining_unresolved_logical_ids"]
+    if (not isinstance(remaining, list) or len(remaining) != len(set(remaining)) or
+            any(item not in expected for item in remaining)):
+        raise ValueError("digest recheck unresolved ID list is invalid")
+    expected_supplement = set(prior["missing_expected_logical_ids"]) - set(remaining)
+    if set(artifacts) != expected_supplement or len(artifacts) != 18:
+        raise ValueError("digest recheck must fill exactly 18 previously missing IDs")
+    merged = dict(receipt["artifacts"])
+    for logical_id, observed in sorted(artifacts.items()):
+        if logical_id in merged:
+            raise ValueError("digest recheck may not overwrite an existing readback")
+        if observed != expected[logical_id]:
+            raise ValueError("digest recheck does not match authority: %s" % logical_id)
+        merged[logical_id] = observed
+    result = {"schema_version": "runtime-source-readback-v1", "artifacts": merged}
+    post = compare_readback(result, expected)
+    if (post["status"] != "PARTIAL" or post["matched_count"] != 70 or
+            post["receipt_artifact_count"] != 70 or
+            post["mismatched_count"] != 0 or post["unbound_count"] != 0 or
+            post["missing_expected_logical_ids"] != remaining or
+            contract["gate_result"] != "R03_PARTIAL_70_OF_73"):
+        raise ValueError("digest recheck post-merge gate state is invalid")
+    return result
+
+
 def validate_reconciliation(reconciliation, base, delta, package_receipt,
                             expected, local_hashes):
     if reconciliation.get("schema_version") != "runtime-source-reconciliation-v1":
@@ -401,12 +502,22 @@ def readback_status(root, documents, inventory, join_audit, r6):
     if delta_relative in documents:
         receipt, replaced, confirmed = merge_readback_delta(
             receipt, documents[delta_relative], expected)
+    supplement_relative = "data/manifests/runtime_source_digest_recheck_receipt_v2.json"
+    supplement_present = supplement_relative in documents
+    if supplement_present:
+        receipt = merge_digest_recheck(
+            receipt, documents[supplement_relative],
+            documents["contracts/runtime_source_digest_recheck_v2.json"],
+            documents["data/manifests/runtime_source_digest_recheck_verification_v2.json"],
+            expected, checked_in_hashes(root, artifact_inputs(root)))
     result = compare_readback(receipt, expected)
     result["delta_receipt_present"] = delta_relative in documents
     result["delta_replaced_count"] = len(replaced)
     result["delta_replaced_logical_ids"] = replaced
     result["delta_confirmed_count"] = len(confirmed)
     result["delta_confirmed_logical_ids"] = confirmed
+    result["digest_recheck_receipt_present"] = supplement_present
+    result["digest_recheck_added_count"] = 18 if supplement_present else 0
     return result
 
 

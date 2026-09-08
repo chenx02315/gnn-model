@@ -1,0 +1,9 @@
+{
+  "receipt_sha256": "4e3f75819cd3dd4c013fdf09445d292fe7ab0e2eb32346da987941797b2a8407",
+  "receipt_version": "r03-canonical-18-v2",
+  "schema_version": "canonical-digest-receipt-verification-v1",
+  "status": "VERIFIED",
+  "trusted_raw_spec_sha256": "573aa4167fe067e4944808b0e91328ddf52633f852dac5f82e787c1ecf23e988",
+  "trusted_recheck_tool_sha256": "65d2ba936536fde2f04dcceb5bd42fb8b992996ad5fd080598f0286ee3f53fce",
+  "verified_entry_count": 18
+}

@@ -41,6 +41,11 @@ class RuntimeSourceLedgerTest(unittest.TestCase):
         self.assertFalse(ledger["validation"]["external_artifacts_reread_locally"])
         self.assertIn("No BLIND candidate", ledger["blind_policy"])
         self.assertNotIn("P0 unblocked", json.dumps(ledger, sort_keys=True))
+        self.assertEqual(70, ledger["external_readback"]["matched_count"])
+        self.assertEqual(3, ledger["external_readback"]["missing_expected_count"])
+        self.assertEqual(0, ledger["external_readback"]["mismatched_count"])
+        self.assertEqual(18, ledger["external_readback"]["digest_recheck_added_count"])
+        self.assertEqual("PARTIAL", ledger["external_readback"]["status"])
 
     def test_phase2_audit_and_sha_validation_are_recorded(self):
         with open(LEDGER, "r") as handle:
@@ -167,6 +172,40 @@ class RuntimeSourceLedgerTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             ledger_builder.validate_reconciliation(
                 reconciliation, base, delta, tampered_package, expected, hashes)
+
+    def test_digest_recheck_rejects_tamper_and_overwrite(self):
+        def load(relative):
+            return ledger_builder.load_json(os.path.join(ROOT, *relative.split("/")))
+        inventory = load("data/manifests/runtime_recovery_inventory_v1.json")
+        join_audit = load("data/manifests/runtime_nonblind_join_audit_v2.json")
+        r6 = load("data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json")
+        expected = ledger_builder.expected_external_hashes(inventory, join_audit, r6)
+        base = load("data/manifests/runtime_source_readback_v1.json")
+        delta = load("data/manifests/runtime_source_readback_delta_v1.json")
+        prior, _replaced, _confirmed = ledger_builder.merge_readback_delta(base, delta, expected)
+        supplement = load("data/manifests/runtime_source_digest_recheck_receipt_v2.json")
+        contract = load("contracts/runtime_source_digest_recheck_v2.json")
+        verification = load("data/manifests/runtime_source_digest_recheck_verification_v2.json")
+        hashes = ledger_builder.checked_in_hashes(ROOT, ledger_builder.artifact_inputs(ROOT))
+        merged = ledger_builder.merge_digest_recheck(
+            prior, supplement, contract, verification, expected, hashes)
+        self.assertEqual(70, ledger_builder.compare_readback(merged, expected)["matched_count"])
+        tampered = json.loads(json.dumps(supplement))
+        tampered["artifacts"][sorted(tampered["artifacts"])[0]] = "0" * 64
+        with self.assertRaises(ValueError):
+            ledger_builder.merge_digest_recheck(
+                prior, tampered, contract, verification, expected, hashes)
+        overlap = json.loads(json.dumps(prior))
+        logical_id = sorted(supplement["artifacts"])[0]
+        overlap["artifacts"][logical_id] = supplement["artifacts"][logical_id]
+        with self.assertRaises(ValueError):
+            ledger_builder.merge_digest_recheck(
+                overlap, supplement, contract, verification, expected, hashes)
+        unbound = json.loads(json.dumps(prior))
+        unbound["artifacts"]["extra.unbound"] = "0" * 64
+        with self.assertRaises(ValueError):
+            ledger_builder.merge_digest_recheck(
+                unbound, supplement, contract, verification, expected, hashes)
 
 
 if __name__ == "__main__":

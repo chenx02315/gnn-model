@@ -16,7 +16,7 @@
     },
     "R03": {
       "status": "PARTIAL",
-      "evidence": "data/manifests/runtime_source_ledger_v1.json freezes one cross-phase ledger with r6 as sole Phase4 authority; versioned delta receipt d5297e92... reconciles all 7 prior mismatches (52 matched, 0 mismatched), while 21 canonical or sealed aggregate digests still require reproduction, so R03 remains PARTIAL"
+      "evidence": "data/manifests/runtime_source_ledger_v1.json freezes one cross-phase ledger with r6 as sole Phase4 authority; the versioned delta reconciles all 7 prior mismatches and the independently verified 18-item digest recheck receipt raises coverage to 70/73 with 0 mismatched and 0 unbound; three ephemeral Phase2 early manifests remain unreproduced, so R03 remains PARTIAL"
     },
     "R04": {
       "status": "PARTIAL",
@@ -64,7 +64,7 @@
     }
   },
   "next_gates": [
-    "reconcile the seven A-side readback mismatches and reproduce the 21 missing canonical or sealed aggregate digests in the frozen cross-phase source ledger",
+    "classify or recover the three remaining ephemeral Phase2 early manifests without inventing or substituting digests",
     "reconstruct or explicitly classify lifecycle retry lineage and verify environment cohorts without imputing order",
     "satisfy all nonblind preconditions in contracts/blind_runtime_unseal_v1.json before the model-free one-shot BLIND coverage audit",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",

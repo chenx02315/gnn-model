@@ -1,0 +1,17 @@
+{
+  "schema_version": "runtime-source-digest-recheck-contract-v2",
+  "receipt_version": "r03-canonical-18-v2",
+  "expected_entry_count": 18,
+  "trusted_raw_spec_sha256": "573aa4167fe067e4944808b0e91328ddf52633f852dac5f82e787c1ecf23e988",
+  "canonical_specification_sha256": "256e03ced7dccbc21022cd1df6c37392dd327e6581e83d0246e379afd55c5b4c",
+  "trusted_recheck_tool_sha256": "65d2ba936536fde2f04dcceb5bd42fb8b992996ad5fd080598f0286ee3f53fce",
+  "trusted_audit_tool_sha256": "ab1ed797e4bbd58ef9aee04a46c24a4843c63d5436f296eeb1f7a48d5e99ac61",
+  "trusted_receipt_sha256": "4e3f75819cd3dd4c013fdf09445d292fe7ab0e2eb32346da987941797b2a8407",
+  "scope": "Aggregate-only reproduction of 18 previously missing R03 digests; no candidate-level BLIND access",
+  "remaining_unresolved_logical_ids": [
+    "phase2.b18.manifest",
+    "phase2.s35932.manifest",
+    "phase2.s38417.manifest"
+  ],
+  "gate_result": "R03_PARTIAL_70_OF_73"
+}
