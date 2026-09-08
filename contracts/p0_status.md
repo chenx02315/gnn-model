@@ -30,6 +30,8 @@ Phase4 非盲 r6 已在不修改 r3 的前提下收敛状态语义：`TARGET_BEF
 
 P0 仍未解锁。当前剩余关键阻断是 R07 的三个 BLIND 家族 executed-stage runtime 100% 覆盖尚未证明，以及 R03/R05/R11 所需的全源文件哈希、失败/重试 lineage 与真实环境 cohort 仍需形成统一 gate assessment；Phase4 r6 的 30,994 个 attempts 目前只能记录为环境未核验、retry order 未知。一次性、无模型、仅覆盖率的 BLIND 解封流程已冻结在 `contracts/blind_runtime_unseal_v1.json`，但只有 R07/R13 之外的全部门禁先通过后才能执行；当前前置条件不满足，任何候选级 BLIND join 仍保持封存。R01-R14 全部通过前，不得训练、调参、比较方法或做正式泛化结论。
 
-R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessment_v1.json`：R01、R02、R08、R09、R12、R14 为 PASS；R03、R04、R05、R06、R10、R11 为 PARTIAL；R07、R13 为 BLOCKED。该表只报告门禁状态，不会把 PARTIAL 当作通过。
+Phase2 wall-time 语义门禁 R10 已独立通过：`collect_b14_all_results.py`（SHA-256 `78d433bb1a1cf9b21da37f993b165bc46d6a828de149896ae895fb3a4ec2bd83`）直接从 driver log 的 GNU `Elapsed (wall clock)` footer 写入 CSV `wall_time`。对 b18 2,057、s35932 841、s38417 1,711，共 4,609 个非盲 source rows 逐行核对，缺日志、缺 footer、非法 CSV/footer 格式、缺 CSV wall_time、重复 `(mode,run_id)` 和 footer 不一致均为 0；严格格式审计工具 SHA-256 为 `d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f`，聚合审计 SHA-256 为 `f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59`。该 PASS 只关闭 R10，不改变 R03/R04/R05/R06/R11 或 BLIND 门禁。
+
+R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessment_v1.json`：R01、R02、R08、R09、R10、R12、R14 为 PASS；R03、R04、R05、R06、R11 为 PARTIAL；R07、R13 为 BLOCKED。该表只报告门禁状态，不会把 PARTIAL 当作通过。
 
 时间主终点固定为“命中 epsilon-near-optimal 前所有实际 Tessent attempts 的累计 elapsed”，包括失败和重试。命中后如另做独立确认，该确认只在端到端次指标计时，不与 search 重复计算。

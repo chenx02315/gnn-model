@@ -1,0 +1,70 @@
+{
+  "circuits": {
+    "b18": {
+      "checks": {
+        "circuit_mismatch_count": 0,
+        "duplicate_run_id_count": 0,
+        "footer_mismatch_count": 0,
+        "invalid_footer_wall_count": 0,
+        "invalid_wall_count": 0,
+        "missing_csv_wall_count": 0,
+        "missing_driver_count": 0,
+        "missing_footer_count": 0,
+        "row_count": 2057
+      },
+      "source_csv_sha256": "681943ab7d379169542a3c81956c79b124e17f7ee5fe718cf78400dc4eb89c71",
+      "source_row_count": 2057,
+      "validation_status": "PASS"
+    },
+    "s35932": {
+      "checks": {
+        "circuit_mismatch_count": 0,
+        "duplicate_run_id_count": 0,
+        "footer_mismatch_count": 0,
+        "invalid_footer_wall_count": 0,
+        "invalid_wall_count": 0,
+        "missing_csv_wall_count": 0,
+        "missing_driver_count": 0,
+        "missing_footer_count": 0,
+        "row_count": 841
+      },
+      "source_csv_sha256": "63ed68527f1f5fedf60d5d1f08fdefff6b814e74de58e7c6a1754dbb3fbc62ee",
+      "source_row_count": 841,
+      "validation_status": "PASS"
+    },
+    "s38417": {
+      "checks": {
+        "circuit_mismatch_count": 0,
+        "duplicate_run_id_count": 0,
+        "footer_mismatch_count": 0,
+        "invalid_footer_wall_count": 0,
+        "invalid_wall_count": 0,
+        "missing_csv_wall_count": 0,
+        "missing_driver_count": 0,
+        "missing_footer_count": 0,
+        "row_count": 1711
+      },
+      "source_csv_sha256": "ec169a9db102cd74e0856c2536fd7ae5fee0ec4a0f6927d1f4515eb2d28f58b6",
+      "source_row_count": 1711,
+      "validation_status": "PASS"
+    }
+  },
+  "collector_script_sha256": "78d433bb1a1cf9b21da37f993b165bc46d6a828de149896ae895fb3a4ec2bd83",
+  "excluded_wait_classes": [
+    "external_scheduler_queue"
+  ],
+  "failed_attempt_policy": "include_observed_elapsed",
+  "included_wait_classes": [
+    "internal_license_wait",
+    "internal_io_wait"
+  ],
+  "missing_elapsed_policy": "never_impute",
+  "retry_attempt_policy": "include_each_attempt_elapsed",
+  "runtime_policy_sha256": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
+  "schema_version": "phase2-wall-time-semantics-audit-v1",
+  "semantics_contract": "tessent_process_wall_seconds",
+  "source_field": "GNU time Elapsed (wall clock) time (h:mm:ss or m:ss)",
+  "start_event": "timed_tessent_process_exec",
+  "stop_event": "timed_tessent_process_exit_or_kill",
+  "validation_status": "PASS"
+}

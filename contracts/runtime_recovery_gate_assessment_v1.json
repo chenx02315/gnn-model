@@ -43,8 +43,8 @@
       "evidence": "recovery code preserves missing elapsed and contains no runtime imputation path"
     },
     "R10": {
-      "status": "PARTIAL",
-      "evidence": "Phase2 wall_time is traced to GNU-time elapsed parsing, but the cross-phase gate still lacks one consolidated PASS artifact"
+      "status": "PASS",
+      "evidence": "data/manifests/phase2_wall_time_semantics_v1.json validates all 4609 nonblind Phase2 CSV rows against their GNU Elapsed driver footers with zero missing duplicate invalid or mismatched records"
     },
     "R11": {
       "status": "PARTIAL",
