@@ -1,0 +1,42 @@
+{
+  "schema_version": "runtime-source-reconciliation-v1",
+  "scope": "aggregate-only reconciliation of seven R03 readback mismatches; no BLIND candidate-level access",
+  "phase2": {
+    "historical_generation_epoch": 1788359850,
+    "corrected_generation_epoch": 1788360724,
+    "generation_order": "historical_pre_mode_aware_before_corrected_authority",
+    "historical_artifacts": {
+      "phase2.b18.join_audit_json": "4eb3f3f299a44c517a7359b240f6b7863335ea3e661413c49f2d186e38486183",
+      "phase2.b18.join_join_tsv": "9ef027592ca2cfdf4cee9ede1a09f3d2274abb28b53fa40f805a405e4e8a87cc",
+      "phase2.s35932.join_audit_json": "7f2d44912a11fc4168372e74f7236fef95c03a77f21e71f7f26431b964197d73",
+      "phase2.s35932.join_join_tsv": "82db49bb39fdcaee87c598a48f1cb09ce0b91b39ab529529c754a3030bd50d1c",
+      "phase2.s38417.join_audit_json": "8b8732094cc778ba494b0e4dda0d79af1929fe11f8fdcd83f32dc01678cdbe27",
+      "phase2.s38417.join_join_tsv": "0e5b0af5ac26322cd39c1cb57c7494653f681fbf1f21c6675d7200b3f746232c"
+    },
+    "authority_artifacts": {
+      "phase2.b18.join_audit_json": "1a0b40d8bd04c8a476a17d09e491c37137cdbe38097e38fc1367877e7b406464",
+      "phase2.b18.join_join_tsv": "91137acfb3c864838a5a4390b751bb93e5c2d4307c4222125d2cf1497e94558f",
+      "phase2.s35932.join_audit_json": "1efc0b7197c89684edf6bc179f5d5083aff720d402ca5230360cb1cf7641c733",
+      "phase2.s35932.join_join_tsv": "a6446231355cd7d38c2fd634af9bce7a49cd2a5fab113025325cc3983b07b8cf",
+      "phase2.s38417.join_audit_json": "7ab10994cf46b104fd97ad48c34b97a5a5f314c04b1615df9257708493948ac4",
+      "phase2.s38417.join_join_tsv": "df433abf64269be762f64650ae3a8b3dfc103d01d0994cc253aece063bd133b5"
+    },
+    "versioned_a_side_package": {
+      "version": "joins_nonblind_v3_authority",
+      "archive_sha256": "549ad4faa509f56fc364f787b4d91966452a1384064e46cf71364e50eacb65fa",
+      "manifest_sha256": "a6eaedfb5171aacc3ea870d696757b67a232134b2f778db2998f26a5036dc349",
+      "audit_receipt_sha256": "96e34abead1fa061d8f7cdc1ec1decd177d93d526ca90fb5240b9339cc8f3a66",
+      "payload_file_count": 6,
+      "bounded_extract_status": "PASS"
+    }
+  },
+  "phase3_s5378": {
+    "logical_id": "phase3.s5378.raw_attempt_manifest",
+    "transcription_error_sha256": "2abc708a7b496fcfb928a6d51d62d8e6ad96067100789e780f904e221b1c3c73",
+    "reread_sha256": "2abc708a7b496fcbf928a6d51d62d8e6ad96067100789e780f904e221b1c3c73",
+    "authority_attempt_manifest_sha256": "7024ee4222790f2bf283f9d4b1e73caae8fa8b9492477c1e1e577c4b5974b32e",
+    "role_policy": "raw and authority manifests remain distinct"
+  },
+  "delta_receipt_sha256": "d5297e9231b85341c15dbdc85e8118b1bff534be1e9e3c92395a57cff8e8a018",
+  "result": "SEVEN_MISMATCHES_RECONCILED_R03_REMAINS_PARTIAL_FOR_21_MISSING_DIGESTS"
+}

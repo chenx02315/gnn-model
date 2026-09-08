@@ -50,7 +50,7 @@ class RuntimeSourceLedgerTest(unittest.TestCase):
         self.assertTrue(ledger["validation"]["all_nested_referenced_sha256_lowercase_hex"])
         self.assertGreater(ledger["validation"]["nested_referenced_sha256_field_count"], 10)
         self.assertTrue(ledger["validation"]["all_local_cross_references_match"])
-        self.assertEqual(20, ledger["validation"]["local_cross_reference_binding_count"])
+        self.assertEqual(27, ledger["validation"]["local_cross_reference_binding_count"])
 
     def test_tampered_r6_nested_hash_is_rejected(self):
         summary_path = os.path.join(ROOT, "data", "manifests", "phase4_runtime_nonblind_v2_r6", "summary_r6.json")
@@ -117,12 +117,56 @@ class RuntimeSourceLedgerTest(unittest.TestCase):
         self.assertEqual("MATCHED", full["status"])
         self.assertEqual(0, full["missing_expected_count"])
 
+    def test_corrective_delta_must_match_authority_and_only_replace_mismatch(self):
+        expected = {"phase2.b18.join": "1" * 64}
+        base = {"schema_version": "runtime-source-readback-v1",
+                "artifacts": {"phase2.b18.join": "0" * 64}}
+        delta = {"schema_version": "runtime-source-readback-v1",
+                 "artifacts": {"phase2.b18.join": "1" * 64}}
+        merged, replaced, confirmed = ledger_builder.merge_readback_delta(base, delta, expected)
+        self.assertEqual(["phase2.b18.join"], replaced)
+        self.assertEqual([], confirmed)
+        self.assertEqual("1" * 64, merged["artifacts"]["phase2.b18.join"])
+        with self.assertRaises(ValueError):
+            ledger_builder.merge_readback_delta(base, {
+                "schema_version": "runtime-source-readback-v1",
+                "artifacts": {"phase2.b18.join": "2" * 64},
+            }, expected)
+        same, replaced, confirmed = ledger_builder.merge_readback_delta(merged, delta, expected)
+        self.assertEqual(merged, same)
+        self.assertEqual([], replaced)
+        self.assertEqual(["phase2.b18.join"], confirmed)
+
     def test_readback_rejects_unsafe_logical_id(self):
         with self.assertRaises(ValueError):
             ledger_builder.compare_readback({
                 "schema_version": "runtime-source-readback-v1",
                 "artifacts": {"../unsafe": "0" * 64},
             }, {})
+
+    def test_reconciliation_rejects_extra_delta_and_package_tamper(self):
+        def load(relative):
+            return ledger_builder.load_json(os.path.join(ROOT, *relative.split("/")))
+        inventory = load("data/manifests/runtime_recovery_inventory_v1.json")
+        join_audit = load("data/manifests/runtime_nonblind_join_audit_v2.json")
+        r6 = load("data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json")
+        expected = ledger_builder.expected_external_hashes(inventory, join_audit, r6)
+        base = load("data/manifests/runtime_source_readback_v1.json")
+        delta = load("data/manifests/runtime_source_readback_delta_v1.json")
+        reconciliation = load("data/manifests/runtime_source_reconciliation_v1.json")
+        package = load("data/manifests/runtime_authority_package_audit_v1.json")
+        hashes = ledger_builder.checked_in_hashes(ROOT, ledger_builder.artifact_inputs(ROOT))
+        extra = json.loads(json.dumps(delta))
+        extra_id = "phase2.b18.manifest"
+        extra["artifacts"][extra_id] = expected[extra_id]
+        with self.assertRaises(ValueError):
+            ledger_builder.validate_reconciliation(
+                reconciliation, base, extra, package, expected, hashes)
+        tampered_package = json.loads(json.dumps(package))
+        tampered_package["archive_sha256"] = "0" * 64
+        with self.assertRaises(ValueError):
+            ledger_builder.validate_reconciliation(
+                reconciliation, base, delta, tampered_package, expected, hashes)
 
 
 if __name__ == "__main__":

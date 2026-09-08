@@ -74,7 +74,7 @@
         "authority_baseline_inventory_manifest_sha256": "f624ea4c2f92e622ec4a9bf142861695423c2fbae6c811c6a350b92b912925b0",
         "coverage_subtree_inventory_manifest_sha256": "ac5ad79e96598af11301bb99c941fbd65f138feedad1631944305f176c59273a",
         "inventory_manifest_sha256": "28be4c039edab0eed7102dd8786e796840599159ace06beae8f430f8a7b103d1",
-        "raw_attempt_manifest_sha256": "2abc708a7b496fcfb928a6d51d62d8e6ad96067100789e780f904e221b1c3c73"
+        "raw_attempt_manifest_sha256": "2abc708a7b496fcbf928a6d51d62d8e6ad96067100789e780f904e221b1c3c73"
       },
       "phase": "phase3",
       "role": "VALIDATION",
@@ -100,18 +100,24 @@
     }
   ],
   "external_readback": {
-    "expected_bindable_count": 73,
-    "matched_count": 45,
-    "mismatched_count": 7,
-    "mismatched_logical_ids": [
+    "delta_confirmed_count": 1,
+    "delta_confirmed_logical_ids": [
+      "phase3.s5378.raw_attempt_manifest"
+    ],
+    "delta_receipt_present": true,
+    "delta_replaced_count": 6,
+    "delta_replaced_logical_ids": [
       "phase2.b18.join_audit_json",
       "phase2.b18.join_join_tsv",
       "phase2.s35932.join_audit_json",
       "phase2.s35932.join_join_tsv",
       "phase2.s38417.join_audit_json",
-      "phase2.s38417.join_join_tsv",
-      "phase3.s5378.raw_attempt_manifest"
+      "phase2.s38417.join_join_tsv"
     ],
+    "expected_bindable_count": 73,
+    "matched_count": 52,
+    "mismatched_count": 0,
+    "mismatched_logical_ids": [],
     "missing_expected_count": 21,
     "missing_expected_logical_ids": [
       "phase2.b18.manifest",
@@ -196,10 +202,14 @@
     "data/manifests/phase4_runtime_nonblind_v2_r6/tools_r6.sha256": "487257a630a4c1a8f71ee4f520b2ede8db747b28f167fce3aa06f7a64ffe9e34",
     "data/manifests/phase4_runtime_nonblind_v2_r6/tv80_audit_r6.json": "93f35fd165a6318b5cafefac6afca79ab27a0c5c55bcfecfd75a23635c8ec2aa",
     "data/manifests/phase4_runtime_nonblind_v2_r6/tv80_inventory_r6.json": "ab1914b59bb7cf09b19787747c8fc197622fd33c80aaa5e79e1407816ba1d030",
+    "data/manifests/runtime_authority_package_audit_v1.json": "96e34abead1fa061d8f7cdc1ec1decd177d93d526ca90fb5240b9339cc8f3a66",
     "data/manifests/runtime_nonblind_join_audit_v2.json": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
-    "data/manifests/runtime_recovery_inventory_v1.json": "4ac4dd638c754f5717d7b6f8b2c1c2dc2eb6f5c926be64f9c322261c5ebfaf84",
+    "data/manifests/runtime_recovery_inventory_v1.json": "bd62885f8a8810acfcf195a9be426c2299073baa729398e6e51be9d90bd4b0a8",
+    "data/manifests/runtime_source_readback_delta_v1.json": "d5297e9231b85341c15dbdc85e8118b1bff534be1e9e3c92395a57cff8e8a018",
     "data/manifests/runtime_source_readback_v1.json": "c47f845911ab66b1c6d61d668c8733ad70365a2b5077113d617d58b8050c0871",
+    "data/manifests/runtime_source_reconciliation_v1.json": "c2f552c4687af90a49eafcdf428990f33727563f772a48f21295525941332ffd",
     "src/data/audit_phase2_wall_time_semantics.py": "d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f",
+    "src/data/audit_runtime_authority_package.py": "6968413d547bf7e0f5234e4a551c8721603ab6766510d0e8303b676da89c362f",
     "src/data/audit_runtime_log_inventory.py": "ab1ed797e4bbd58ef9aee04a46c24a4843c63d5436f296eeb1f7a48d5e99ac61",
     "src/data/build_runtime_join_v2.py": "0d69942aba67b93b1ec7fb8a92042cd5b26b4c9c803913ac557549430a69840d",
     "src/data/recover_runtime_attempts.py": "5ba70908879a8eb53d11bc4901146db244e36e4fe704ab065411ce65ca95729f",
@@ -240,9 +250,9 @@
     "all_local_cross_references_match": true,
     "all_nested_referenced_sha256_lowercase_hex": true,
     "external_artifacts_reread_locally": false,
-    "local_cross_reference_binding_count": 20,
+    "local_cross_reference_binding_count": 27,
     "local_inputs_recomputed": true,
-    "nested_referenced_sha256_field_count": 110
+    "nested_referenced_sha256_field_count": 120
   },
   "verification_boundary": {
     "external_attested": "SHA-256 values transcribed from checked-in recovery inventories; raw A-side tables, logs, and manifests were not reread locally",

@@ -16,7 +16,7 @@
     },
     "R03": {
       "status": "PARTIAL",
-      "evidence": "data/manifests/runtime_source_ledger_v1.json freezes one cross-phase ledger with r6 as sole Phase4 authority; A-side readback c47f8459... has 45 matched 7 mismatched and 21 missing expected hashes, so R03 remains PARTIAL"
+      "evidence": "data/manifests/runtime_source_ledger_v1.json freezes one cross-phase ledger with r6 as sole Phase4 authority; versioned delta receipt d5297e92... reconciles all 7 prior mismatches (52 matched, 0 mismatched), while 21 canonical or sealed aggregate digests still require reproduction, so R03 remains PARTIAL"
     },
     "R04": {
       "status": "PARTIAL",

@@ -1,0 +1,18 @@
+{
+  "archive_entry_count": 8,
+  "archive_sha256": "549ad4faa509f56fc364f787b4d91966452a1384064e46cf71364e50eacb65fa",
+  "audit_tool_sha256": "6968413d547bf7e0f5234e4a551c8721603ab6766510d0e8303b676da89c362f",
+  "bounded_extract_status": "PASS",
+  "manifest_sha256": "a6eaedfb5171aacc3ea870d696757b67a232134b2f778db2998f26a5036dc349",
+  "path_policy": "basenames and SHA-256 only; no source roots or runtime values",
+  "payload_file_count": 6,
+  "payload_sha256": {
+    "b18_audit_v2.json": "1a0b40d8bd04c8a476a17d09e491c37137cdbe38097e38fc1367877e7b406464",
+    "b18_join_v2.tsv": "91137acfb3c864838a5a4390b751bb93e5c2d4307c4222125d2cf1497e94558f",
+    "s35932_audit_v2.json": "1efc0b7197c89684edf6bc179f5d5083aff720d402ca5230360cb1cf7641c733",
+    "s35932_join_v2.tsv": "a6446231355cd7d38c2fd634af9bce7a49cd2a5fab113025325cc3983b07b8cf",
+    "s38417_audit_v2.json": "7ab10994cf46b104fd97ad48c34b97a5a5f314c04b1615df9257708493948ac4",
+    "s38417_join_v2.tsv": "df433abf64269be762f64650ae3a8b3dfc103d01d0994cc253aece063bd133b5"
+  },
+  "schema_version": "runtime-authority-package-audit-v1"
+}

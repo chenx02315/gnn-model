@@ -25,9 +25,12 @@ LOCAL_INPUTS = (
     "contracts/runtime_recovery_gate_v1.json",
     "data/manifests/runtime_recovery_inventory_v1.json",
     "data/manifests/runtime_nonblind_join_audit_v2.json",
+    "data/manifests/runtime_authority_package_audit_v1.json",
+    "data/manifests/runtime_source_reconciliation_v1.json",
     "data/manifests/phase2_wall_time_semantics_v1.json",
     "src/data/audit_phase2_wall_time_semantics.py",
     "src/data/audit_runtime_log_inventory.py",
+    "src/data/audit_runtime_authority_package.py",
     "src/data/build_runtime_join_v2.py",
     "src/data/recover_runtime_attempts.py",
     "src/data/runtime_schema.py",
@@ -86,6 +89,9 @@ def artifact_inputs(root):
     readback = "data/manifests/runtime_source_readback_v1.json"
     if os.path.isfile(os.path.join(root, readback.replace("/", os.sep))):
         inputs.append(readback)
+    delta = "data/manifests/runtime_source_readback_delta_v1.json"
+    if os.path.isfile(os.path.join(root, delta.replace("/", os.sep))):
+        inputs.append(delta)
     return tuple(sorted(set(inputs)))
 
 
@@ -282,6 +288,96 @@ def compare_readback(receipt, expected):
     }
 
 
+def merge_readback_delta(base, delta, expected):
+    """Overlay a versioned corrective receipt without hiding prior evidence."""
+    for receipt in (base, delta):
+        if receipt.get("schema_version") != "runtime-source-readback-v1":
+            raise ValueError("unsupported runtime source readback schema")
+        if not isinstance(receipt.get("artifacts"), dict):
+            raise ValueError("invalid runtime source readback artifacts")
+    merged = dict(base["artifacts"])
+    replaced = []
+    confirmed = []
+    for logical_id, observed in sorted(delta["artifacts"].items()):
+        if logical_id not in expected:
+            raise ValueError("delta contains unbound logical ID: %s" % logical_id)
+        if observed != expected[logical_id]:
+            raise ValueError("delta does not match authority: %s" % logical_id)
+        if logical_id in merged and merged[logical_id] == expected[logical_id]:
+            confirmed.append(logical_id)
+            continue
+        if logical_id in merged:
+            replaced.append(logical_id)
+        merged[logical_id] = observed
+    return ({
+        "schema_version": "runtime-source-readback-v1",
+        "artifacts": merged,
+    }, replaced, confirmed)
+
+
+def validate_reconciliation(reconciliation, base, delta, package_receipt,
+                            expected, local_hashes):
+    if reconciliation.get("schema_version") != "runtime-source-reconciliation-v1":
+        raise ValueError("unsupported runtime source reconciliation schema")
+    if reconciliation["delta_receipt_sha256"] != local_hashes[
+            "data/manifests/runtime_source_readback_delta_v1.json"]:
+        raise ValueError("reconciliation does not bind delta receipt")
+    phase2 = reconciliation["phase2"]
+    package = phase2["versioned_a_side_package"]
+    if package["audit_receipt_sha256"] != local_hashes[
+            "data/manifests/runtime_authority_package_audit_v1.json"]:
+        raise ValueError("reconciliation does not bind package receipt")
+    for field in ("archive_sha256", "manifest_sha256", "payload_file_count",
+                  "bounded_extract_status"):
+        if package[field] != package_receipt[field]:
+            raise ValueError("package receipt mismatch: %s" % field)
+    if package_receipt.get("archive_entry_count") != 8:
+        raise ValueError("package archive entry count mismatch")
+    if package_receipt.get("audit_tool_sha256") != local_hashes[
+            "src/data/audit_runtime_authority_package.py"]:
+        raise ValueError("package audit tool binding mismatch")
+    if phase2["corrected_generation_epoch"] <= phase2["historical_generation_epoch"]:
+        raise ValueError("reconciliation generation order is invalid")
+    s5378 = reconciliation["phase3_s5378"]
+    declared_delta = set(phase2["authority_artifacts"]) | set([s5378["logical_id"]])
+    if set(delta["artifacts"]) != declared_delta:
+        raise ValueError("reconciliation delta logical-ID set mismatch")
+    for logical_id, authority_hash in sorted(phase2["authority_artifacts"].items()):
+        if expected.get(logical_id) != authority_hash:
+            raise ValueError("reconciliation authority mismatch: %s" % logical_id)
+        if delta["artifacts"].get(logical_id) != authority_hash:
+            raise ValueError("reconciliation delta mismatch: %s" % logical_id)
+        if base["artifacts"].get(logical_id) != phase2["historical_artifacts"].get(logical_id):
+            raise ValueError("reconciliation historical mismatch: %s" % logical_id)
+        if authority_hash == phase2["historical_artifacts"].get(logical_id):
+            raise ValueError("reconciliation did not preserve distinct historical evidence")
+    expected_payload = {
+        "b18_audit_v2.json": phase2["authority_artifacts"]["phase2.b18.join_audit_json"],
+        "b18_join_v2.tsv": phase2["authority_artifacts"]["phase2.b18.join_join_tsv"],
+        "s35932_audit_v2.json": phase2["authority_artifacts"]["phase2.s35932.join_audit_json"],
+        "s35932_join_v2.tsv": phase2["authority_artifacts"]["phase2.s35932.join_join_tsv"],
+        "s38417_audit_v2.json": phase2["authority_artifacts"]["phase2.s38417.join_audit_json"],
+        "s38417_join_v2.tsv": phase2["authority_artifacts"]["phase2.s38417.join_join_tsv"],
+    }
+    if package_receipt.get("payload_sha256") != expected_payload:
+        raise ValueError("package payload receipt mismatch")
+    logical_id = s5378["logical_id"]
+    if s5378["transcription_error_sha256"] == s5378["reread_sha256"]:
+        raise ValueError("s5378 transcription correction is not distinct")
+    if expected.get(logical_id) != s5378["reread_sha256"]:
+        raise ValueError("s5378 corrected inventory does not match reread")
+    if base["artifacts"].get(logical_id) != s5378["reread_sha256"]:
+        raise ValueError("s5378 base receipt does not match reread")
+    if delta["artifacts"].get(logical_id) != s5378["reread_sha256"]:
+        raise ValueError("s5378 delta receipt does not confirm reread")
+    inventory_authority = reconciliation["phase3_s5378"]["authority_attempt_manifest_sha256"]
+    if inventory_authority != expected["phase3.s5378.authority_attempt_manifest"]:
+        raise ValueError("s5378 authority manifest binding mismatch")
+    if inventory_authority == s5378["reread_sha256"]:
+        raise ValueError("s5378 raw and authority manifests must remain distinct")
+    return len(phase2["authority_artifacts"]) + 1
+
+
 def readback_status(root, documents, inventory, join_audit, r6):
     relative = "data/manifests/runtime_source_readback_v1.json"
     expected = expected_external_hashes(inventory, join_audit, r6)
@@ -298,7 +394,20 @@ def readback_status(root, documents, inventory, join_audit, r6):
             "unbound_logical_ids": [],
             "missing_expected_logical_ids": sorted(expected),
         }
-    return compare_readback(documents[relative], expected)
+    receipt = documents[relative]
+    delta_relative = "data/manifests/runtime_source_readback_delta_v1.json"
+    replaced = []
+    confirmed = []
+    if delta_relative in documents:
+        receipt, replaced, confirmed = merge_readback_delta(
+            receipt, documents[delta_relative], expected)
+    result = compare_readback(receipt, expected)
+    result["delta_receipt_present"] = delta_relative in documents
+    result["delta_replaced_count"] = len(replaced)
+    result["delta_replaced_logical_ids"] = replaced
+    result["delta_confirmed_count"] = len(confirmed)
+    result["delta_confirmed_logical_ids"] = confirmed
+    return result
 
 
 def build_ledger(root):
@@ -314,6 +423,8 @@ def build_ledger(root):
     inventory = documents["data/manifests/runtime_recovery_inventory_v1.json"]
     phase2 = documents["data/manifests/phase2_wall_time_semantics_v1.json"]
     join_audit = documents["data/manifests/runtime_nonblind_join_audit_v2.json"]
+    reconciliation = documents["data/manifests/runtime_source_reconciliation_v1.json"]
+    package_receipt = documents["data/manifests/runtime_authority_package_audit_v1.json"]
     r6 = documents["data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json"]
     determinism = documents["data/manifests/phase4_runtime_nonblind_v2_r6/determinism_r6.json"]
     r6_summary_hash = local_hashes["data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json"]
@@ -329,6 +440,11 @@ def build_ledger(root):
     if policy_v2["replacements"]["missing_historical_timing"]["phase4_nonblind_r3_summary_sha256"] != local_hashes[r3_summary_path]:
         raise ValueError("runtime policy v2 does not bind checked-in historical r3 summary")
     local_binding_count += 1
+    readback = documents["data/manifests/runtime_source_readback_v1.json"]
+    delta = documents["data/manifests/runtime_source_readback_delta_v1.json"]
+    local_binding_count += validate_reconciliation(
+        reconciliation, readback, delta, package_receipt,
+        expected_external_hashes(inventory, join_audit, r6), local_hashes)
     if r6.get("split_contract_sha256") != local_hashes["contracts/data_split_v1.json"]:
         raise ValueError("r6 summary split contract binding mismatch")
     local_binding_count += 1
