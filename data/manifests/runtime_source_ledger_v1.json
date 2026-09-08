@@ -1,0 +1,208 @@
+{
+  "blind_policy": "No BLIND candidate, run_id, result path, or elapsed value is present. BLIND source hashes remain sealed external attestations only.",
+  "external_attestations": [
+    {
+      "circuit": "b18",
+      "hashes": {
+        "manifest_sha256": "e251e482f070e2e80a6535ff1621a064cfb56e4c04b041c8d219c2505b6253e8",
+        "raw_attempt_manifest_sha256": "2d3a24cb247188cb49dc7c011c83c5cdca1c8eef615103f8e49ebafc990aea66",
+        "raw_inventory_manifest_sha256": "3f76c1dd798f6df721d033a18f9cb7ae4e47664c3f825fe1629a50f3cfd36239",
+        "source_sha256": "681943ab7d379169542a3c81956c79b124e17f7ee5fe718cf78400dc4eb89c71"
+      },
+      "phase": "phase2",
+      "role": "PILOT",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s35932",
+      "hashes": {
+        "manifest_sha256": "9eeb437f12598ddc08d5539800e0faaeab2508a0285e15d49b33f348538fe45f",
+        "raw_attempt_manifest_sha256": "0043aa6983bd53c85a811dde1b0ca5c93ef4e3c467f16d6f32f43d725250452d",
+        "raw_inventory_manifest_sha256": "8fc1b79ffbe4d0332a1a196f3ddd3e26cb8e94437035ee888d85032bc01f0365",
+        "source_sha256": "63ed68527f1f5fedf60d5d1f08fdefff6b814e74de58e7c6a1754dbb3fbc62ee"
+      },
+      "phase": "phase2",
+      "role": "TRAIN",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s38417",
+      "hashes": {
+        "manifest_sha256": "416dfdbddee67964ebfbd93618d6cf63d8645553d7050804122b7b63f34f749c",
+        "raw_attempt_manifest_sha256": "b2c60df614648be12a70cbb1d20e6b53059604165f25aa8a93a9bafedf2e87a0",
+        "raw_inventory_manifest_sha256": "4382b2c5e22b867ae2bead4d83e75e4632215f04c462914c96d09bf5b2b32c00",
+        "source_sha256": "ec169a9db102cd74e0856c2536fd7ae5fee0ec4a0f6927d1f4515eb2d28f58b6"
+      },
+      "phase": "phase2",
+      "role": "TRAIN",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s38584",
+      "hashes": {
+        "inventory_manifest_sha256": "73fc713b8d0795dec69307cf43a96d2133b5d253a0986f33761e5ffb0c152a09",
+        "source_sha256": "e506507d0d1f5c9e8264307a1c9dcef4f312de7235ee3e78d1aa336003819246"
+      },
+      "phase": "phase2",
+      "role": "BLIND_TEST",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s13207",
+      "hashes": {
+        "attempt_manifest_sha256": "261ae483a6a44a2b3cb20b9e0e4bc199b4a0138563bd5f3413bbddbfea76a9a2",
+        "inventory_manifest_sha256": "895c325c23609b059b4fab0027b2d790c0d515390ad474052b20e3026ee6ec52"
+      },
+      "phase": "phase3",
+      "role": "TRAIN",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s15850",
+      "hashes": {
+        "attempt_manifest_sha256": "2a78ee98b0dc1749766d51983973c82244cc551dbe9f031b4d7a113fe4b4470c",
+        "inventory_manifest_sha256": "643215f90884023f212a2dde56cafeadb4c335461d951e0d586fb57859f604f0"
+      },
+      "phase": "phase3",
+      "role": "TRAIN",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s5378",
+      "hashes": {
+        "authority_attempt_manifest_sha256": "7024ee4222790f2bf283f9d4b1e73caae8fa8b9492477c1e1e577c4b5974b32e",
+        "authority_baseline_inventory_manifest_sha256": "f624ea4c2f92e622ec4a9bf142861695423c2fbae6c811c6a350b92b912925b0",
+        "coverage_subtree_inventory_manifest_sha256": "ac5ad79e96598af11301bb99c941fbd65f138feedad1631944305f176c59273a",
+        "inventory_manifest_sha256": "28be4c039edab0eed7102dd8786e796840599159ace06beae8f430f8a7b103d1",
+        "raw_attempt_manifest_sha256": "2abc708a7b496fcfb928a6d51d62d8e6ad96067100789e780f904e221b1c3c73"
+      },
+      "phase": "phase3",
+      "role": "VALIDATION",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "s9234",
+      "hashes": {
+        "inventory_manifest_sha256": "cd226c86807c6e80bfe2210db46eab5d3305c322626829f7e163467d4b562826"
+      },
+      "phase": "phase3",
+      "role": "BLIND_TEST",
+      "verification": "external_attested_not_reread_locally"
+    },
+    {
+      "circuit": "wb_dma",
+      "hashes": {
+        "inventory_manifest_sha256": "4755a03a9da7eb9bf8fab2ec6f2c95e5c83919c42e236b72ccaed763786b3f4f"
+      },
+      "phase": "phase4",
+      "role": "BLIND_TEST",
+      "verification": "external_attested_not_reread_locally"
+    }
+  ],
+  "formal_split": {
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+    "sealed_blind_test": true
+  },
+  "local_artifacts": {
+    "contracts/data_split_v1.json": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+    "contracts/runtime_policy_v1.json": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
+    "contracts/runtime_policy_v2.json": "94e5e903f1debfafab35131bb9245a681db7df6616e1d869f651fdb5ceaadc35",
+    "contracts/runtime_recovery_gate_v1.json": "7eeb37a6868e90d633d241f7be6c0a37d7d0c725d4278d8b1a37af9cbfaa5c5c",
+    "data/manifests/phase2_wall_time_semantics_v1.json": "f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/aes_core.json": "d712686814a9b568c33a92ab059f6cfdcadaaedecd323111df07b65de190c6ae",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/b20.json": "3c13063a5c1d8b61a749f0ecc43afe1d12936ec665268e9302e3addd1d8eec2a",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/b21.json": "d87fc19678b9cdec045c59c3e82ba4e454f24db7425501cfa49c4cf5dd449c7f",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/b22.json": "d47aa0bfdb7584d2b0852396ea16d7320ee1bb33c6b2279ef43f33059f6a9f9b",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/spi.json": "93149ee6cac0da7721bc40c687163dcb2ea28351c543092423d39c5643fb8863",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/tv80.json": "9948905bad345bb47055d7a0b2bf43014e05bb3b681214b3809223570970df26",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/join_audits/aes_core_audit_v2_r2.json": "5665bcb350ec1ed50923b123d6d4c99d830764a0c201d99e8cb9fea5a9c3f873",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/join_audits/b20_audit_v2_r2.json": "473ebdfbcbeaa3f06bc78f6cb834dd07c6294a5e338d299c85a47762509ac63c",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/join_audits/b21_audit_v2_r2.json": "7d1e6d6578a34242053c65ea9228a28256081b0d1ad0e4ddf31fc496dc611c72",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/join_audits/b22_audit_v2_r2.json": "a15ed755997d49c4bd879c0cd6d9ea8f9b2571740cacb7fa8d71e6ce8b8d55a4",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/join_audits/spi_audit_v2_r2.json": "b6c58d54243a2e28d6b0a725916db363ed62f64bb5c1d64b8a8d336125b375d9",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/join_audits/tv80_audit_v2_r2.json": "a91f971832ea262b1cfe21e23bc40cb7d2a806b5242499b7b71ebbd4ba252cba",
+    "data/manifests/phase4_runtime_nonblind_v2_r2/summary_r2.json": "d254205e9fb894739243109c3923b25aa6d70c9a0180aa069d40a0e58a6e8dc9",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/README.md": "d69aeb34a5bcc09f29785949e9568666406f6363b5a68c5f40ce3070c3888103",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/inventory/aes_core_inventory_v2_r3.json": "17ea381aaf4e2d0264bc4fb8687ae589db285afcd5957d9ad86778f4b22dd5f4",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/inventory/b20_inventory_v2_r3.json": "6de72d6c54cf149e00c7cee7fc5097d8dce42f0bdde8ed2d250a153d8c88131f",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/inventory/b21_inventory_v2_r3.json": "7e7e2368cb71d6eba433a6baa5cad826be6b53e92e14b11040a98d5c7f618dc5",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/inventory/b22_inventory_v2_r3.json": "f020fa390e6077cd7387b8d8302f24a8b826dfa874df26bf0548428252a95898",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/inventory/spi_inventory_v2_r3.json": "e5aa4f2f172ab63bb676a4b9a125d008b5355e3dc7e7cc848c7cd22c0414e134",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/inventory/tv80_inventory_v2_r3.json": "81ed959227c7a6dd12804ffbeb36e168fba4b9d161814bb859bf6790cb42d2ab",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/join_audits/aes_core_audit_v2_r3.json": "6102a1fe9794ba5deab50317186370d8e4aa0ebc744f36a06f91e79c76a6da3a",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/join_audits/b20_audit_v2_r3.json": "fffb3b321962622d72ffcf0f983230814b1a18513f65606c14ecbf601b82c954",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/join_audits/b21_audit_v2_r3.json": "5d6602f1842bc2a0ada6cdb9a88ea51b0e76a6f9d757ee026d38dc15f675e6b3",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/join_audits/b22_audit_v2_r3.json": "dd9dca80202802f2427356618e2b5f173a55e18462c27a943487758e88272f33",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/join_audits/spi_audit_v2_r3.json": "b418cfb7b9e20bdfcf0115362d12443a8ad2301d3c8913f7708af994430e141d",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/join_audits/tv80_audit_v2_r3.json": "474a41de8db2af0d32c2dd89e736bea96e91d8bb78c178442c1c481fb5b902bd",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/provenance/orchestration_r3.sha256": "5eed13349ddeac34c5d720cef7f536f083b1604e4caf1720ef27585d1accb252",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/provenance/summary_r3.json": "352a66b50956fd9607274b0c28ac139adb071487da761e4faefd670edc203752",
+    "data/manifests/phase4_runtime_nonblind_v2_r3/provenance/tools_r3.sha256": "7034a9b5b9852b726594b6ce02e6b9958c5a0af330a15e37f4b60976663522ba",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/aes_core_audit_r6.json": "f736df643c8d440d77f81f348aede45238c66ceda9f5b891fcbebde0aab19b3d",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/aes_core_inventory_r6.json": "591ec903f5eef24d805e63318a8b8c73c9bb1d683a0ac1d3f5580fad2aead67b",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/b20_audit_r6.json": "491c2abe49e713053bcb02ab6022f43b29c90dbc1076b0c0b59dd175d12bde55",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/b20_inventory_r6.json": "f41c5c066bf598f79670b6f04f6d668c36bff0beefbc6e29d81f77e644589869",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/b21_audit_r6.json": "96847c6aec253c02ff687d730231b9cbf4205371e4527fd2c359ce086bbcfe45",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/b21_inventory_r6.json": "3ad8bb0d24d5d8cef7ac92636a1849892e5e4767788e8f01142b0f4614204bc3",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/b22_audit_r6.json": "739972e17c0e01efe5cc0802fc43ce400c6133885cce9aab33635eaef49be6c0",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/b22_inventory_r6.json": "b4346e040b58bd543191d4866286a3baab6f5f61dc0edbd213f4c24b35a82f31",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/determinism_r6.json": "8bba63d944864dbfa7097f708dc258a764baf2fa2e891e2c44462f093cef0964",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/spi_audit_r6.json": "9d117e555c9486ada3dc738a343c5daaf029c7b4584fad9d632dba50ecf21577",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/spi_inventory_r6.json": "1abb0937cdc675c73303b163d5fe5e53a64c88442e491ad4063c649679680364",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json": "482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/tools_r6.sha256": "487257a630a4c1a8f71ee4f520b2ede8db747b28f167fce3aa06f7a64ffe9e34",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/tv80_audit_r6.json": "93f35fd165a6318b5cafefac6afca79ab27a0c5c55bcfecfd75a23635c8ec2aa",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/tv80_inventory_r6.json": "ab1914b59bb7cf09b19787747c8fc197622fd33c80aaa5e79e1407816ba1d030",
+    "data/manifests/runtime_nonblind_join_audit_v2.json": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
+    "data/manifests/runtime_recovery_inventory_v1.json": "4ac4dd638c754f5717d7b6f8b2c1c2dc2eb6f5c926be64f9c322261c5ebfaf84",
+    "src/data/audit_phase2_wall_time_semantics.py": "d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f",
+    "src/data/audit_runtime_log_inventory.py": "ab1ed797e4bbd58ef9aee04a46c24a4843c63d5436f296eeb1f7a48d5e99ac61",
+    "src/data/build_runtime_join_v2.py": "0d69942aba67b93b1ec7fb8a92042cd5b26b4c9c803913ac557549430a69840d",
+    "src/data/recover_runtime_attempts.py": "5ba70908879a8eb53d11bc4901146db244e36e4fe704ab065411ce65ca95729f",
+    "src/data/runtime_schema.py": "a885e93a21968e9c31634b54c2295bfd315035f1d5cdf6a76a94f74ed37f1897",
+    "src/data/summarize_runtime_recovery.py": "3d5e3adcb8587c9cb0332f4d6bdeabfa14fe889e5e3dd4d4e4dc0d4991fc8857"
+  },
+  "phase2_wall_time_semantics": {
+    "circuit_count": 3,
+    "local_manifest_recomputed": true,
+    "row_count": 4609,
+    "validation_status": "PASS"
+  },
+  "phase4_version_policy": {
+    "authoritative": {
+      "aggregate_attempt_row_count": 30994,
+      "aggregate_join_unique_count": 13187,
+      "determinism_receipt": "data/manifests/phase4_runtime_nonblind_v2_r6/determinism_r6.json",
+      "status": "AUTHORITATIVE_NONBLIND",
+      "summary": "data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json",
+      "summary_sha256": "482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2",
+      "version": "r6"
+    },
+    "historical_only": [
+      {
+        "reason": "pre-cross-stage repair; never current PASS authority",
+        "version": "r2"
+      },
+      {
+        "reason": "pre-mode-aware r6 semantics; never current PASS authority",
+        "version": "r3"
+      }
+    ]
+  },
+  "schema_version": "runtime-source-ledger-v1",
+  "scope": "aggregate-only source provenance for R03; no runtime eligibility or P0 decision",
+  "status": "PARTIAL_LOCAL_HASHES_AND_EXTERNAL_ATTESTATIONS",
+  "validation": {
+    "all_local_cross_references_match": true,
+    "all_nested_referenced_sha256_lowercase_hex": true,
+    "external_artifacts_reread_locally": false,
+    "local_cross_reference_binding_count": 20,
+    "local_inputs_recomputed": true,
+    "nested_referenced_sha256_field_count": 110
+  },
+  "verification_boundary": {
+    "external_attested": "SHA-256 values transcribed from checked-in recovery inventories; raw A-side tables, logs, and manifests were not reread locally",
+    "local_recomputed": "SHA-256 of checked-in files listed in local_artifacts",
+    "not_a_pass_claim": "This ledger does not by itself satisfy R03 or unblock P0."
+  }
+}
