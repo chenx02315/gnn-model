@@ -16,6 +16,7 @@ import sys
 
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+LOGICAL_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
 
 LOCAL_INPUTS = (
     "contracts/data_split_v1.json",
@@ -82,6 +83,9 @@ def artifact_inputs(root):
                     absolute = os.path.join(directory, name)
                     relative = os.path.relpath(absolute, root).replace(os.sep, "/")
                     inputs.append(relative)
+    readback = "data/manifests/runtime_source_readback_v1.json"
+    if os.path.isfile(os.path.join(root, readback.replace("/", os.sep))):
+        inputs.append(readback)
     return tuple(sorted(set(inputs)))
 
 
@@ -203,6 +207,100 @@ def external_attestations(inventory):
     return attestations
 
 
+def expected_external_hashes(inventory, join_audit, r6):
+    """Logical IDs bound by existing checked-in inventories, never raw paths."""
+    expected = {}
+
+    def add(logical_id, value):
+        if logical_id in expected:
+            raise ValueError("duplicate expected logical ID: %s" % logical_id)
+        if not isinstance(value, str) or not SHA256_RE.match(value):
+            raise ValueError("invalid expected SHA-256: %s" % logical_id)
+        expected[logical_id] = value
+
+    for phase in ("phase2", "phase3", "phase4"):
+        for circuit, item in sorted(inventory.get(phase, {}).get("circuits", {}).items()):
+            for key, value in sorted(item.items()):
+                if "sha256" not in key:
+                    continue
+                suffix = key[:-7] if key.endswith("_sha256") else key
+                logical_id = "%s.%s.%s" % (phase, circuit, suffix)
+                add(logical_id, value)
+    for circuit, item in sorted(join_audit.get("circuits", {}).items()):
+        phase = "phase2" if circuit in ("b18", "s35932", "s38417") else "phase3"
+        for key, value in sorted(item.items()):
+            if not key.endswith("_sha256"):
+                continue
+            suffix = key[:-7]
+            add("%s.%s.join_%s" % (phase, circuit, suffix), value)
+    for circuit, item in sorted(r6.get("circuits", {}).items()):
+        for key, value in sorted(item.get("file_sha256", {}).items()):
+            add("phase4_r6.%s.%s" % (circuit, key), value)
+        provenance = item.get("inventory_provenance", {})
+        if "inventory_manifest_sha256" in provenance:
+            # This is a digest of a raw-log inventory manifest, not the
+            # digest of the checked-in aggregate inventory JSON.
+            add("phase4_r6.%s.raw_inventory_manifest" % circuit,
+                provenance["inventory_manifest_sha256"])
+    return expected
+
+
+def compare_readback(receipt, expected):
+    if receipt.get("schema_version") != "runtime-source-readback-v1":
+        raise ValueError("unsupported runtime source readback schema")
+    artifacts = receipt.get("artifacts")
+    if not isinstance(artifacts, dict):
+        raise ValueError("invalid runtime source readback artifacts")
+    matched = []
+    mismatched = []
+    unbound = []
+    for logical_id, observed in sorted(artifacts.items()):
+        if not LOGICAL_ID_RE.match(logical_id):
+            raise ValueError("unsafe logical ID in readback receipt")
+        if not isinstance(observed, str) or not SHA256_RE.match(observed):
+            raise ValueError("invalid SHA-256 in readback receipt: %s" % logical_id)
+        if logical_id not in expected:
+            unbound.append(logical_id)
+        elif observed == expected[logical_id]:
+            matched.append(logical_id)
+        else:
+            mismatched.append(logical_id)
+    missing = sorted(set(expected) - set(artifacts))
+    return {
+        "status": "MATCHED" if (len(matched) == len(expected) and not mismatched and
+                                   not unbound and not missing) else "PARTIAL",
+        "receipt_present": True,
+        "expected_bindable_count": len(expected),
+        "receipt_artifact_count": len(artifacts),
+        "matched_count": len(matched),
+        "mismatched_count": len(mismatched),
+        "unbound_count": len(unbound),
+        "missing_expected_count": len(missing),
+        "mismatched_logical_ids": mismatched,
+        "unbound_logical_ids": unbound,
+        "missing_expected_logical_ids": missing,
+    }
+
+
+def readback_status(root, documents, inventory, join_audit, r6):
+    relative = "data/manifests/runtime_source_readback_v1.json"
+    expected = expected_external_hashes(inventory, join_audit, r6)
+    if relative not in documents:
+        return {
+            "status": "ABSENT",
+            "receipt_present": False,
+            "expected_bindable_count": len(expected),
+            "matched_count": 0,
+            "mismatched_count": 0,
+            "unbound_count": 0,
+            "missing_expected_count": len(expected),
+            "mismatched_logical_ids": [],
+            "unbound_logical_ids": [],
+            "missing_expected_logical_ids": sorted(expected),
+        }
+    return compare_readback(documents[relative], expected)
+
+
 def build_ledger(root):
     documents = {}
     inputs = artifact_inputs(root)
@@ -215,6 +313,7 @@ def build_ledger(root):
     split = documents["contracts/data_split_v1.json"]
     inventory = documents["data/manifests/runtime_recovery_inventory_v1.json"]
     phase2 = documents["data/manifests/phase2_wall_time_semantics_v1.json"]
+    join_audit = documents["data/manifests/runtime_nonblind_join_audit_v2.json"]
     r6 = documents["data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json"]
     determinism = documents["data/manifests/phase4_runtime_nonblind_v2_r6/determinism_r6.json"]
     r6_summary_hash = local_hashes["data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json"]
@@ -264,6 +363,7 @@ def build_ledger(root):
             "sealed_blind_test": split["sealed_blind_test"],
         },
         "phase2_wall_time_semantics": phase2_audit_status(phase2),
+        "external_readback": readback_status(root, documents, inventory, join_audit, r6),
         "local_artifacts": local_hashes,
         "external_attestations": external_attestations(inventory),
         "validation": {

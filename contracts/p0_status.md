@@ -34,4 +34,6 @@ Phase2 wall-time 语义门禁 R10 已独立通过：`collect_b14_all_results.py`
 
 R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessment_v1.json`：R01、R02、R08、R09、R10、R12、R14 为 PASS；R03、R04、R05、R06、R11 为 PARTIAL；R07、R13 为 BLOCKED。该表只报告门禁状态，不会把 PARTIAL 当作通过。
 
+R03 的统一来源账本已建立，但尚未通过：本地 58 个签入文件已重算，20 条关键本地交叉引用一致；A 端只读收据（SHA-256 `c47f845911ab66b1c6d61d668c8733ad70365a2b5077113d617d58b8050c0871`）对 73 个预期绑定项回读了 52 个，其中 45 匹配、7 失配、21 缺失、0 未绑定。七个失配为 Phase2 的 b18/s35932/s38417 各自 join audit 与 join TSV，以及 Phase3 s5378 的 raw attempt manifest。账本因此维持 `PARTIAL`，不会把历史 r2/r3 与当前权威 r6 混用，也不会触发 BLIND 解封。
+
 时间主终点固定为“命中 epsilon-near-optimal 前所有实际 Tessent attempts 的累计 elapsed”，包括失败和重试。命中后如另做独立确认，该确认只在端到端次指标计时，不与 search 重复计算。

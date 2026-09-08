@@ -76,6 +76,54 @@ class RuntimeSourceLedgerTest(unittest.TestCase):
         finally:
             ledger_builder.parse_sha_file = original
 
+    def test_readback_reports_mismatch_and_unbound_ids(self):
+        inventory = ledger_builder.load_json(os.path.join(
+            ROOT, "data", "manifests", "runtime_recovery_inventory_v1.json"))
+        join_audit = ledger_builder.load_json(os.path.join(
+            ROOT, "data", "manifests", "runtime_nonblind_join_audit_v2.json"))
+        r6 = ledger_builder.load_json(os.path.join(
+            ROOT, "data", "manifests", "phase4_runtime_nonblind_v2_r6", "summary_r6.json"))
+        expected = ledger_builder.expected_external_hashes(inventory, join_audit, r6)
+        known_id = sorted(expected)[0]
+        receipt = {
+            "schema_version": "runtime-source-readback-v1",
+            "artifacts": {known_id: "0" * 64, "custom.unbound": "1" * 64},
+        }
+        result = ledger_builder.compare_readback(receipt, expected)
+        self.assertEqual("PARTIAL", result["status"])
+        self.assertEqual([known_id], result["mismatched_logical_ids"])
+        self.assertEqual(["custom.unbound"], result["unbound_logical_ids"])
+        self.assertEqual(len(expected) - 1, result["missing_expected_count"])
+
+    def test_subset_readback_is_partial_and_full_readback_matches(self):
+        inventory = ledger_builder.load_json(os.path.join(
+            ROOT, "data", "manifests", "runtime_recovery_inventory_v1.json"))
+        join_audit = ledger_builder.load_json(os.path.join(
+            ROOT, "data", "manifests", "runtime_nonblind_join_audit_v2.json"))
+        r6 = ledger_builder.load_json(os.path.join(
+            ROOT, "data", "manifests", "phase4_runtime_nonblind_v2_r6", "summary_r6.json"))
+        expected = ledger_builder.expected_external_hashes(inventory, join_audit, r6)
+        first_id = sorted(expected)[0]
+        subset = ledger_builder.compare_readback({
+            "schema_version": "runtime-source-readback-v1",
+            "artifacts": {first_id: expected[first_id]},
+        }, expected)
+        self.assertEqual("PARTIAL", subset["status"])
+        self.assertEqual(len(expected) - 1, subset["missing_expected_count"])
+        full = ledger_builder.compare_readback({
+            "schema_version": "runtime-source-readback-v1",
+            "artifacts": expected,
+        }, expected)
+        self.assertEqual("MATCHED", full["status"])
+        self.assertEqual(0, full["missing_expected_count"])
+
+    def test_readback_rejects_unsafe_logical_id(self):
+        with self.assertRaises(ValueError):
+            ledger_builder.compare_readback({
+                "schema_version": "runtime-source-readback-v1",
+                "artifacts": {"../unsafe": "0" * 64},
+            }, {})
+
 
 if __name__ == "__main__":
     unittest.main()

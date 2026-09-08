@@ -16,3 +16,6 @@ data/manifests/phase2_wall_time_semantics_v1.json text eol=lf
 src/data/build_runtime_source_ledger.py text eol=lf
 tests/test_runtime_source_ledger.py text eol=lf
 data/manifests/runtime_source_ledger_v1.json text eol=lf
+src/data/build_runtime_source_readback.py text eol=lf
+tests/test_runtime_source_readback.py text eol=lf
+data/manifests/runtime_source_readback_v1.json text eol=lf

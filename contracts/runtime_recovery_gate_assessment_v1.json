@@ -16,7 +16,7 @@
     },
     "R03": {
       "status": "PARTIAL",
-      "evidence": "Phase2/3 manifests and Phase4 r6 log inventories/attempt/join artifacts have SHA-256; a single cross-phase source-table hash ledger is not yet frozen"
+      "evidence": "data/manifests/runtime_source_ledger_v1.json freezes one cross-phase ledger with r6 as sole Phase4 authority; A-side readback c47f8459... has 45 matched 7 mismatched and 21 missing expected hashes, so R03 remains PARTIAL"
     },
     "R04": {
       "status": "PARTIAL",
@@ -64,7 +64,7 @@
     }
   },
   "next_gates": [
-    "freeze one cross-phase source artifact SHA-256 ledger and Phase2 wall-time semantics PASS record",
+    "reconcile the seven A-side readback mismatches and reproduce the 21 missing canonical or sealed aggregate digests in the frozen cross-phase source ledger",
     "reconstruct or explicitly classify lifecycle retry lineage and verify environment cohorts without imputing order",
     "satisfy all nonblind preconditions in contracts/blind_runtime_unseal_v1.json before the model-free one-shot BLIND coverage audit",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",

@@ -99,6 +99,49 @@
       "verification": "external_attested_not_reread_locally"
     }
   ],
+  "external_readback": {
+    "expected_bindable_count": 73,
+    "matched_count": 45,
+    "mismatched_count": 7,
+    "mismatched_logical_ids": [
+      "phase2.b18.join_audit_json",
+      "phase2.b18.join_join_tsv",
+      "phase2.s35932.join_audit_json",
+      "phase2.s35932.join_join_tsv",
+      "phase2.s38417.join_audit_json",
+      "phase2.s38417.join_join_tsv",
+      "phase3.s5378.raw_attempt_manifest"
+    ],
+    "missing_expected_count": 21,
+    "missing_expected_logical_ids": [
+      "phase2.b18.manifest",
+      "phase2.b18.raw_inventory_manifest",
+      "phase2.s35932.manifest",
+      "phase2.s35932.raw_inventory_manifest",
+      "phase2.s38417.manifest",
+      "phase2.s38417.raw_inventory_manifest",
+      "phase2.s38584.inventory_manifest",
+      "phase2.s38584.source",
+      "phase3.s13207.inventory_manifest",
+      "phase3.s15850.inventory_manifest",
+      "phase3.s5378.authority_baseline_inventory_manifest",
+      "phase3.s5378.coverage_subtree_inventory_manifest",
+      "phase3.s5378.inventory_manifest",
+      "phase3.s9234.inventory_manifest",
+      "phase4.wb_dma.inventory_manifest",
+      "phase4_r6.aes_core.raw_inventory_manifest",
+      "phase4_r6.b20.raw_inventory_manifest",
+      "phase4_r6.b21.raw_inventory_manifest",
+      "phase4_r6.b22.raw_inventory_manifest",
+      "phase4_r6.spi.raw_inventory_manifest",
+      "phase4_r6.tv80.raw_inventory_manifest"
+    ],
+    "receipt_artifact_count": 52,
+    "receipt_present": true,
+    "status": "PARTIAL",
+    "unbound_count": 0,
+    "unbound_logical_ids": []
+  },
   "formal_split": {
     "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
     "sealed_blind_test": true
@@ -155,6 +198,7 @@
     "data/manifests/phase4_runtime_nonblind_v2_r6/tv80_inventory_r6.json": "ab1914b59bb7cf09b19787747c8fc197622fd33c80aaa5e79e1407816ba1d030",
     "data/manifests/runtime_nonblind_join_audit_v2.json": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
     "data/manifests/runtime_recovery_inventory_v1.json": "4ac4dd638c754f5717d7b6f8b2c1c2dc2eb6f5c926be64f9c322261c5ebfaf84",
+    "data/manifests/runtime_source_readback_v1.json": "c47f845911ab66b1c6d61d668c8733ad70365a2b5077113d617d58b8050c0871",
     "src/data/audit_phase2_wall_time_semantics.py": "d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f",
     "src/data/audit_runtime_log_inventory.py": "ab1ed797e4bbd58ef9aee04a46c24a4843c63d5436f296eeb1f7a48d5e99ac61",
     "src/data/build_runtime_join_v2.py": "0d69942aba67b93b1ec7fb8a92042cd5b26b4c9c803913ac557549430a69840d",
