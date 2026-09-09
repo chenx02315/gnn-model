@@ -18,6 +18,8 @@ class BlindUnsealPreflightTest(unittest.TestCase):
         self.assertFalse(result["blind_data_read"])
         self.assertFalse(result["candidate_join_performed"])
         self.assertFalse(result["training_allowed"])
+        self.assertTrue(result["checks"]["receipt_digest_is_external"])
+        self.assertTrue(result["checks"]["consumption_marker_precedes_blind_read"])
 
 
 if __name__ == "__main__":

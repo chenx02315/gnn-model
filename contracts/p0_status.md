@@ -30,7 +30,11 @@ Phase4 非盲 r6 已在不修改 r3 的前提下收敛状态语义：`TARGET_BEF
 
 P0 仍未解锁。R04、R05、R11 已由 7,854 条 BLIND 日志的聚合前置审计关闭；环境未知性与 retry order 未知性均被显式保留，不作等价或顺序推断。当前剩余关键阻断是 R06 的 BLIND 候选阶段到 attempt 歧义、R07 的三个 BLIND 家族 executed-stage runtime 100% 覆盖，以及依赖覆盖交集冻结的 R13。旧 v1 的 R06 循环前置条件和 v2 将未来推荐方法误写进解封收据的问题均保留为版本化审计证据，不执行。当前权威合同为 `contracts/blind_runtime_unseal_v3.json`：一次性、无模型、仅覆盖率的原子审计只按三个电路计算 R06/R07 和各自候选空间哈希；复封后再把 `contracts/recommendation_method_registry_v1.json` 中预注册的三种方法全部绑定到同一组哈希以判定 R13。v3 与执行工具必须先完成独立复核，当前仍不得执行候选级 BLIND join。R01-R14 全部通过前，不得训练、调参、比较方法或做正式泛化结论。
 
-v3 静态预检已 PASS：权威合同、历史 v2、方法注册表、正式 split 哈希均闭合；当前 assessment 的非 PASS 集合精确为 R06/R07/R13；收据字段与禁止的 runtime/outcome/逐候选字段无交集，且一次性、不可复跑、禁止训练约束均成立。预检工具没有读取 BLIND 数据，也没有进行候选连接。该 PASS 只说明合同具备送交独立复核的条件，不代表一次性解封已经执行。
+v3 静态预检曾 PASS，但封闭执行器实现复核发现其要求收据包含自身 SHA-256，属于不可实现的自引用摘要。v3 与其预检收据均保留为失败边界证据。当前权威合同升级为 `contracts/blind_runtime_unseal_v4.json`：任何 BLIND 数据读取前先用排他创建写入不可逆 `CONSUMED` 标记，之后候选级状态只驻留内存；三个电路全部完成后才写最终 JSON，再生成外部 `receipt.json.sha256`。进程崩溃也会消耗唯一机会，禁止把崩溃当作可重跑。失败只能发布无分电路明细的失败 envelope 与外部摘要。v4 静态预检现已 PASS，明确验证自哈希不存在、当前仅 R06/R07/R13 非 PASS、BLIND 集合与 split 完全一致；仍须独立复核封闭执行器，一次性解封尚未执行。
+
+v4 封闭执行器 `src/data/run_blind_unseal_v4.py` 已实现但未在真实 BLIND 数据上执行。它在消费标记创建后才读取数据，逐候选连接与 action key 只驻留内存；成功只输出三个电路的计数与哈希，任一电路失败则只输出无分电路值的统一失败 envelope。单元测试覆盖排他防重放、消费标记先于数据读取、HF/HMF action key 去重且不使用 F/outcome、成功 sidecar，以及失败不泄露部分结果。真实一次性运行必须等独立复核通过。
+
+独立复核清单已冻结在 `contracts/blind_unseal_independent_review_v1.json`，当前状态为 `PENDING_INDEPENDENT_REVIEW`。复核者不得改写执行器或读取 BLIND 数据，只能对固定提交、SHA-256、失败/崩溃语义、输出字段和非盲语义一致性作静态审计；复核 PASS 前执行权限为 false。
 
 Phase2 wall-time 语义门禁 R10 已独立通过：`collect_b14_all_results.py`（SHA-256 `78d433bb1a1cf9b21da37f993b165bc46d6a828de149896ae895fb3a4ec2bd83`）直接从 driver log 的 GNU `Elapsed (wall clock)` footer 写入 CSV `wall_time`。对 b18 2,057、s35932 841、s38417 1,711，共 4,609 个非盲 source rows 逐行核对，缺日志、缺 footer、非法 CSV/footer 格式、缺 CSV wall_time、重复 `(mode,run_id)` 和 footer 不一致均为 0；严格格式审计工具 SHA-256 为 `d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f`，聚合审计 SHA-256 为 `f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59`。该 PASS 只关闭 R10，不改变 R03/R04/R05/R06/R11 或 BLIND 门禁。
 

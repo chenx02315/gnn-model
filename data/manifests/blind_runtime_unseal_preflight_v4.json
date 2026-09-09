@@ -1,0 +1,41 @@
+{
+  "assessment_nonpass_checks": [
+    "R06",
+    "R07",
+    "R13"
+  ],
+  "blind_circuits": [
+    "s9234",
+    "s38584",
+    "wb_dma"
+  ],
+  "blind_data_read": false,
+  "candidate_join_performed": false,
+  "checks": {
+    "all_required_checks_pass": true,
+    "assessment_remains_blocked": true,
+    "authority_is_v4": true,
+    "blind_circuit_count_matches": true,
+    "blind_circuit_set_and_order_match": true,
+    "candidate_level_output_forbidden": true,
+    "consumption_marker_precedes_blind_read": true,
+    "method_registry_digest_matches": true,
+    "method_specific_exclusion_forbidden": true,
+    "methods_are_preregistered": true,
+    "one_shot_is_irreplayable": true,
+    "only_r06_r07_r13_nonpass": true,
+    "prior_contract_digest_matches": true,
+    "receipt_digest_is_external": true,
+    "receipt_fields_exclude_forbidden": true,
+    "split_membership_digest_matches": true,
+    "training_remains_forbidden": true
+  },
+  "contract": "contracts/blind_runtime_unseal_v4.json",
+  "contract_sha256": "39764f0e86dbe3648d52f5ee95f966281b262a02f65681dd3559dc8183dbe31d",
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "method_registry": "contracts/recommendation_method_registry_v1.json",
+  "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+  "schema_version": "blind-runtime-unseal-preflight-v4",
+  "status": "PASS",
+  "training_allowed": false
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "blind-unseal-independent-review-v1",
+  "status": "PENDING_INDEPENDENT_REVIEW",
+  "authority_contract": "contracts/blind_runtime_unseal_v4.json",
+  "sealed_runner": "src/data/run_blind_unseal_v4.py",
+  "preflight_receipt": "data/manifests/blind_runtime_unseal_preflight_v4.json",
+  "required_reviewer_independence": "Reviewer must not modify the runner or consume BLIND data; any defect returns the package to the author under a new version.",
+  "required_checks": [
+    "reviewed git commit and all reviewed file SHA-256 values are recorded",
+    "historical build_runtime_join_v2.py digest remains unchanged",
+    "BLIND scope and formal split hash match exactly",
+    "exclusive CONSUMED marker is created before the first BLIND read",
+    "any crash or failure after marker creation cannot be replayed",
+    "candidate-level rows paths run IDs runtime values and outcomes cannot be released",
+    "failure receipt contains no per-circuit partial values",
+    "HF/HMF action key excludes F and all outcome fields",
+    "join state rules match the preserved non-BLIND v2 semantics",
+    "receipt JSON and external SHA-256 sidecar are deterministic",
+    "real execution has not occurred during review"
+  ],
+  "review_receipt": "data/manifests/blind_unseal_independent_review_v1.json",
+  "execution_allowed_before_review_pass": false,
+  "training_allowed": false
+}
