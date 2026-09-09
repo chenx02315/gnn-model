@@ -1,0 +1,63 @@
+{
+  "schema_version": "blind-unseal-independent-review-receipt-v4",
+  "status": "FAIL",
+  "reviewed_commit": "74636c0aae8cf3ba8a58cb25774017d071a725c3",
+  "review_scope": "READ_ONLY_NO_A_B_NO_BLIND",
+  "findings": [
+    {
+      "code": "P0_MODE_AWARE_JOIN_SEMANTICS_DIVERGED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The draft omits TARGET_BEFORE_F, INFEASIBLE_AT_D95, NOT_RUN and PRUNED_OR_UNREACHED handling, so executed-stage membership and the R07 denominator can differ from the authoritative join policy."
+    },
+    {
+      "code": "P0_RUNTIME_ATTEMPT_SEMANTICS_NOT_RECOVERED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "Raw log presence is indexed without validating wall time, exit status, ATPG status, timeout, failure retention, retry lineage, or environment cohort."
+    },
+    {
+      "code": "P0_CANONICAL_RESULT_BASENAME_DIVERGED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The v7 marker mapping does not reproduce the authoritative suffix-stripping basename normalization."
+    },
+    {
+      "code": "P0_ACTION_COVERAGE_AND_R13_UNPROVEN",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The draft does not retain enough per-action status to prove every formal action is covered or bind all preregistered methods to one identical frozen action space."
+    },
+    {
+      "code": "P0_LSF_REGISTRATION_AND_HISTORY_UNVERIFIED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The registration receipt and immutable held-job fields are not verified, and bhist/bacct evidence is neither captured nor required by RELEASED_VERIFIED."
+    },
+    {
+      "code": "P1_GIT_BLOB_HASH_NOT_BYTE_EXACT",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "git show output is decoded and stripped before hashing, which changes trailing bytes and makes reviewed blob verification incorrect."
+    },
+    {
+      "code": "P1_RELEASE_PASS_INVARIANTS_INCOMPLETE",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "Release verification checks field shape but not PASS count equations, zero missing and ambiguity, unit coverage, or action-space invariants."
+    }
+  ],
+  "passed_checks": [
+    "single-file standard-library-only implementation direction",
+    "fixed command-line argument shape and basic LSF job-id refusal",
+    "exclusive durable CONSUMED marker",
+    "atomic receipt sidecar and RELEASED writes",
+    "success path invokes semantic release verification",
+    "ten focused tests and all 141 repository tests passed"
+  ],
+  "execution_allowed": false,
+  "blind_data_read": false,
+  "candidate_join_performed": false,
+  "real_unseal_executed": false,
+  "required_disposition": "Preserve v7 as failed draft evidence. Implement v8 by faithfully embedding the authoritative recovery and mode-aware join semantics, byte-exact Git binding, complete held-job registration and scheduler-history verification, and full release invariants."
+}

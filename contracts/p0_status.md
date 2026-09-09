@@ -44,6 +44,10 @@ v6 已实现并保持封存。`src/data/bootstrap_blind_unseal_v6.py` 顶层只�
 
 v6 对提交 `8a6f8d83671b509d84de655a15004ff5215624bd` 的独立只读复核已 FAIL，正式回执为 `data/manifests/blind_unseal_independent_review_v3.json`。复核确认提交和七项工具摘要绑定、import 前标准库 bootstrap、消费后输入重哈希、R07 分母以及聚合字段白名单方向正确，但发现两个 P0：当前门禁只是读取未固定摘要的 assessment 状态，并未从冻结证据重算；导入 runner 后仍可用可伪造字典直接调用公开 API 绕过 bootstrap。另有三个 P1：成功路径未调用发布语义验证器、同用户可删除 `/temp` 消费标记后重放、复核回执的只读/未解封范围字段未被强制验证。复核未访问 A/B/BLIND，也未运行真实解封。v6 作为失败证据保留；任何 v7 实现前必须先确认 A 端是否存在进程用户不可删除的外部账本或等价 LSF 审计边界。
 
+A 端只读权限盘点确认 Phase4 根目录及 logs 均由 `jiangchuanc` 所有并可由同用户写入，单靠 `/temp` 标记无法声称敌手级不可逆；LSF 9.1 的 `bsub/bjobs/bhist/bacct` 可用，但现场 `HIST_HOURS=5`，调度历史必须在 resume 后五小时内捕获。`contracts/blind_runtime_unseal_protocol_v7.json` 因而把目标收敛为诚实操作员假设下的 operational one-shot：先冻结证据，再只提交一个 held 非数组 job，登记其 Job ID 后独立复核，PASS 后只允许 `bresume` 该 ID，运行后用四件套和 LSF 历史共同审计。该边界不能阻止同账户恶意删除、伪造环境或直接读取 BLIND，论文不得写成密码学或权限级不可逆。
+
+v7 单文件执行器草案提交 `74636c0aae8cf3ba8a58cb25774017d071a725c3` 的独立只读复核已 FAIL，正式回执为 `data/manifests/blind_unseal_independent_review_v4.json`。虽然 10 项聚焦测试和全套 141 项测试通过，但执行器没有等价移植权威的 mode-aware `NOT_RUN`/`TARGET_BEFORE_F` 语义、wall-time/exit/timeout/失败重试恢复、canonical basename，也未完整证明逐动作 R07/R13；held-job 注册字段和 `bhist/bacct` 亦未进入 release 门禁，Git blob 摘要还错误地去除了尾部字节。复核未访问 A/B/BLIND，未注册或执行 LSF job。v7 只作为失败草案保留；修复必须进入 v8，且 v8 独立 PASS 前禁止 held-job 注册、BLIND 解封和训练。
+
 Phase2 wall-time 语义门禁 R10 已独立通过：`collect_b14_all_results.py`（SHA-256 `78d433bb1a1cf9b21da37f993b165bc46d6a828de149896ae895fb3a4ec2bd83`）直接从 driver log 的 GNU `Elapsed (wall clock)` footer 写入 CSV `wall_time`。对 b18 2,057、s35932 841、s38417 1,711，共 4,609 个非盲 source rows 逐行核对，缺日志、缺 footer、非法 CSV/footer 格式、缺 CSV wall_time、重复 `(mode,run_id)` 和 footer 不一致均为 0；严格格式审计工具 SHA-256 为 `d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f`，聚合审计 SHA-256 为 `f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59`。该 PASS 只关闭 R10，不改变 R03/R04/R05/R06/R11 或 BLIND 门禁。
 
 R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessment_v1.json`：R01、R02、R03、R04、R05、R08、R09、R10、R11、R12、R14 为 PASS；R06 为 PARTIAL；R07、R13 为 BLOCKED。该表只报告门禁状态，不会把 PARTIAL 当作通过。
