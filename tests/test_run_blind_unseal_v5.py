@@ -35,9 +35,9 @@ class BlindUnsealV5RunnerTest(unittest.TestCase):
                 runner.validate_review({}, contract_sha, {})
             self.assertEqual("INDEPENDENT_REVIEW_NOT_PASS", str(failure.exception))
 
-    def test_real_bundle_missing_review_receipt_is_refused(self):
+    def test_real_bundle_without_pass_review_is_refused(self):
         with self.assertRaisesRegex(runner.PreflightError,
-                                    "INDEPENDENT_REVIEW_RECEIPT_MISSING"):
+                                    "INDEPENDENT_REVIEW_(RECEIPT_MISSING|NOT_PASS)"):
             runner.validate_before_consumption(ROOT)
 
     def test_stale_or_forged_review_bindings_are_refused(self):

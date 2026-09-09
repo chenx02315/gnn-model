@@ -1,0 +1,41 @@
+{
+  "schema_version": "blind-unseal-independent-review-receipt-v2",
+  "status": "FAIL",
+  "reviewed_commit": "075d3b0e4c1f13fe6af0efd52e6f006ae31ce84c",
+  "review_scope": "READ_ONLY_NO_A_B_NO_BLIND",
+  "findings": [
+    {
+      "code": "P0_REVIEW_COMMIT_NOT_RESOLVED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The runner validates only the 40-hex shape of reviewed_commit and never proves that it resolves to the reviewed deployed revision; a synthetic test accepts an arbitrary valid-looking commit."
+    },
+    {
+      "code": "P0_TOOL_IMPORT_PRECEDES_HASH_CHECK",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "Hashed project helper modules are imported before their digests are verified, so substituted import-time code could execute before mismatch refusal."
+    },
+    {
+      "code": "P1_RELEASE_SEMANTICS_UNDERVALIDATED",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "The release consumer checks artifact presence and receipt digest but not CONSUMED content, RELEASED contract binding, receipt schema, or the allowed output field set."
+    }
+  ],
+  "passed_checks": [
+    "contract job freeze split registry and toolchain digests matched the reviewed tree",
+    "source-set preregistration and post-consumption comparison were implemented",
+    "output paths were fixed and isolated",
+    "CONSUMED was exclusive and fsynced",
+    "MISSING_RESULT_PATH remained in the R07 denominator",
+    "HF/HMF action keys excluded F and outcome fields",
+    "aggregate-only success and failure receipts and replay refusal were implemented",
+    "fourteen focused synthetic v5 tests passed"
+  ],
+  "execution_allowed": false,
+  "blind_data_read": false,
+  "candidate_join_performed": false,
+  "real_unseal_executed": false,
+  "required_disposition": "Preserve v5 as failed review evidence. Remediate under v6 with a minimal externally integrity-checked bootstrap that validates the exact reviewed commit and every project module before importing them, plus semantic release verification."
+}
