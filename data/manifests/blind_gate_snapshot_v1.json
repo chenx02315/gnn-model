@@ -1,0 +1,166 @@
+{
+  "assessment": {
+    "assessment_status": "BLOCKED",
+    "observed_statuses": {
+      "R01": "PASS",
+      "R02": "PASS",
+      "R03": "PASS",
+      "R04": "PASS",
+      "R05": "PASS",
+      "R06": "PARTIAL",
+      "R07": "BLOCKED",
+      "R08": "PASS",
+      "R09": "PASS",
+      "R10": "PASS",
+      "R11": "PASS",
+      "R12": "PASS",
+      "R13": "BLOCKED",
+      "R14": "PASS"
+    },
+    "path": "contracts/runtime_recovery_gate_assessment_v1.json",
+    "sha256": "4c027fef987f7962547cd7e59209e1095eef9e8183076b609021b8c94dd69d69"
+  },
+  "blind_data_accessed": false,
+  "candidate_level_blind_join_performed": false,
+  "frozen_checks": {
+    "R01": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/data_split_v1.json",
+        "contracts/runtime_recovery_gate_assessment_v1.json"
+      ]
+    },
+    "R02": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/data_split_v1.json",
+        "contracts/runtime_recovery_gate_assessment_v1.json"
+      ]
+    },
+    "R03": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/runtime_recovery_gate_assessment_v1.json",
+        "contracts/runtime_recovery_gate_v1.json",
+        "data/manifests/phase2_manifest_recovery_receipt_v1.json",
+        "data/manifests/runtime_source_ledger_v1.json"
+      ]
+    },
+    "R04": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/blind_attempt_preconditions_v1.json",
+        "data/manifests/blind_attempt_preconditions_v1/assessment.json",
+        "data/manifests/blind_attempt_preconditions_v1/s38584.json",
+        "data/manifests/blind_attempt_preconditions_v1/s9234.json",
+        "data/manifests/blind_attempt_preconditions_v1/wb_dma.json",
+        "data/manifests/runtime_nonblind_join_audit_v2.json"
+      ]
+    },
+    "R05": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/blind_attempt_preconditions_v1.json",
+        "contracts/runtime_policy_v1.json",
+        "data/manifests/blind_attempt_preconditions_v1/assessment.json",
+        "data/manifests/blind_attempt_preconditions_v1/s38584.json",
+        "data/manifests/blind_attempt_preconditions_v1/s9234.json",
+        "data/manifests/blind_attempt_preconditions_v1/wb_dma.json",
+        "data/manifests/runtime_nonblind_join_audit_v2.json"
+      ]
+    },
+    "R06": {
+      "reason": "candidate-level BLIND audit is sealed and this snapshot must not infer its result",
+      "status": "PENDING_BLIND_AUDIT",
+      "supporting_files": []
+    },
+    "R07": {
+      "reason": "candidate-level BLIND audit is sealed and this snapshot must not infer its result",
+      "status": "PENDING_BLIND_AUDIT",
+      "supporting_files": []
+    },
+    "R08": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/runtime_policy_v1.json",
+        "contracts/runtime_recovery_gate_v1.json",
+        "data/manifests/runtime_nonblind_join_audit_v2.json"
+      ]
+    },
+    "R09": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/runtime_policy_v1.json",
+        "contracts/runtime_recovery_gate_v1.json",
+        "data/manifests/phase2_wall_time_semantics_v1.json"
+      ]
+    },
+    "R10": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/runtime_recovery_gate_assessment_v1.json",
+        "data/manifests/phase2_wall_time_semantics_v1.json"
+      ]
+    },
+    "R11": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/blind_attempt_preconditions_v1.json",
+        "data/manifests/blind_attempt_preconditions_v1/assessment.json",
+        "data/manifests/blind_attempt_preconditions_v1/s38584.json",
+        "data/manifests/blind_attempt_preconditions_v1/s9234.json",
+        "data/manifests/blind_attempt_preconditions_v1/wb_dma.json",
+        "data/manifests/runtime_nonblind_join_audit_v2.json"
+      ]
+    },
+    "R12": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/runtime_recovery_gate_v1.json",
+        "data/manifests/candidate_space_audit_v1.json"
+      ]
+    },
+    "R13": {
+      "reason": "candidate-level BLIND audit is sealed and this snapshot must not infer its result",
+      "status": "PENDING_BLIND_AUDIT",
+      "supporting_files": []
+    },
+    "R14": {
+      "status": "PASS",
+      "supporting_files": [
+        "contracts/data_split_v1.json",
+        "contracts/runtime_recovery_gate_assessment_v1.json",
+        "data/manifests/runtime_source_ledger_v1.json"
+      ]
+    }
+  },
+  "gate_contract": {
+    "path": "contracts/runtime_recovery_gate_v1.json",
+    "sha256": "7eeb37a6868e90d633d241f7be6c0a37d7d0c725d4278d8b1a37af9cbfaa5c5c"
+  },
+  "pending_blind_checks": [
+    "R06",
+    "R07",
+    "R13"
+  ],
+  "purpose": "deterministic digest-bound precondition snapshot for a future sealed BLIND audit",
+  "schema_version": "blind-gate-snapshot-v1",
+  "snapshot_status": "SEALED_PENDING_BLIND_AUDIT",
+  "training_allowed": false,
+  "upstream_files": {
+    "contracts/blind_attempt_preconditions_v1.json": "32836e4d817270138fcaff79684ad55270893ca0455b84f998adbee605b61ef6",
+    "contracts/data_split_v1.json": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+    "contracts/runtime_policy_v1.json": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
+    "contracts/runtime_recovery_gate_assessment_v1.json": "4c027fef987f7962547cd7e59209e1095eef9e8183076b609021b8c94dd69d69",
+    "contracts/runtime_recovery_gate_v1.json": "7eeb37a6868e90d633d241f7be6c0a37d7d0c725d4278d8b1a37af9cbfaa5c5c",
+    "data/manifests/blind_attempt_preconditions_v1/assessment.json": "ed1bdca0b6d605b1b51b90a8ed95a5db83891abea2865af4c502a3fc47fca839",
+    "data/manifests/blind_attempt_preconditions_v1/s38584.json": "8e647b0445745425702f6e14d48fec2bac76a80f20c2f85e8228cff86e144b20",
+    "data/manifests/blind_attempt_preconditions_v1/s9234.json": "f1d66562bbf0dd3dc8629fdf8e36b07746bd6177e9bb7d3862c8b7bde6d9106b",
+    "data/manifests/blind_attempt_preconditions_v1/wb_dma.json": "f889f88663cd86c8320b92745b117dd4ff632635f63703b2e953ff143c60ee47",
+    "data/manifests/candidate_space_audit_v1.json": "b8d26b39bf76f9439694792c1922d6371e4dbc271305f1c0f7693e4dde049b9a",
+    "data/manifests/phase2_manifest_recovery_receipt_v1.json": "d2dfff003d0da9cc3013f2b474d4f3ce83ad94b745126fdba30e88ef1e59fb22",
+    "data/manifests/phase2_wall_time_semantics_v1.json": "f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59",
+    "data/manifests/runtime_nonblind_join_audit_v2.json": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
+    "data/manifests/runtime_source_ledger_v1.json": "45d00b6fc66c4e274c87b397bd6e09176b388e956dcf846c39c5ae79044a2afd"
+  }
+}

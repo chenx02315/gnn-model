@@ -1,0 +1,102 @@
+{
+  "schema_version": "blind-runtime-unseal-operational-protocol-v7",
+  "status": "FROZEN",
+  "purpose": "Operational, auditable one-shot control for the sealed BLIND runtime recovery; it is not a claim of adversarially irreversible execution.",
+  "threat_model": {
+    "protected_against": [
+      "accidental duplicate resume",
+      "operator resume of an unregistered LSF job",
+      "loss of the required scheduler and release audit trail"
+    ],
+    "not_protected_against": [
+      "a same-account adversary who can delete or recreate state",
+      "a privileged administrator",
+      "scheduler history retention outside the documented observation window"
+    ],
+    "claim_boundary": "This protocol provides operational one-shot discipline and audit evidence only. It does not claim cryptographic or adversarial irreversibility for a same-user environment."
+  },
+  "state_machine": {
+    "initial_state": "FROZEN",
+    "terminal_state": "RELEASED_VERIFIED",
+    "ordered_states": [
+      "FROZEN",
+      "REGISTERED_HELD",
+      "REVIEW_PASS",
+      "RESUMED_ONCE",
+      "CONSUMED",
+      "RELEASED_VERIFIED"
+    ],
+    "transition_rules": {
+      "FROZEN_to_REGISTERED_HELD": "Submit exactly one held, non-array LSF job and record its scheduler-assigned job id plus every frozen registration field before any resume.",
+      "REGISTERED_HELD_to_REVIEW_PASS": "An independent PASS receipt binds the exact registered job id, commit, protocol digest, gate snapshot digest, command, queue, resource request, cwd, stdout, and stderr paths; it must also state no_blind_parse=true and no_blind_output=true.",
+      "REVIEW_PASS_to_RESUMED_ONCE": "Only bresume of the preregistered job id is allowed. bsub, bmod, rerun, requeue, retry, array submission, and resume of any other id are forbidden.",
+      "RESUMED_ONCE_to_CONSUMED": "The execution writes CONSUMED before parsing BLIND inputs. Any non-release outcome remains consumed and is not retried.",
+      "CONSUMED_to_RELEASED_VERIFIED": "Release only after the canonical four-artifact audit passes and scheduler evidence is captured within HIST_HOURS."
+    },
+    "forbidden_transitions": [
+      "FROZEN_to_RESUMED_ONCE",
+      "REGISTERED_HELD_to_RESUMED_ONCE",
+      "REVIEW_PASS_to_REGISTERED_HELD",
+      "RESUMED_ONCE_to_REVIEW_PASS",
+      "CONSUMED_to_RESUMED_ONCE",
+      "RELEASED_VERIFIED_to_any_state"
+    ]
+  },
+  "registration": {
+    "registration_mode": "two_phase_held_lsf_job",
+    "job_id": null,
+    "job_id_rule": "No real job id is embedded in this frozen protocol. At REGISTERED_HELD the scheduler-assigned id becomes immutable and must be copied byte-exactly into the registration record and independent PASS receipt.",
+    "required_immutable_fields": [
+      "job_id",
+      "git_commit",
+      "protocol_sha256",
+      "gate_snapshot_sha256",
+      "command_argv",
+      "queue",
+      "resource_request",
+      "cwd",
+      "stdout_path",
+      "stderr_path"
+    ],
+    "held_job_requirements": {
+      "initial_scheduler_state": "PSUSP",
+      "array_allowed": false,
+      "rerun_allowed": false,
+      "requeue_allowed": false,
+      "retry_allowed": false,
+      "job_modification_after_registration_allowed": false,
+      "only_resume_command": "bresume <registered_job_id>"
+    }
+  },
+  "review_gate": {
+    "required_status": "PASS",
+    "receipt_must_bind_registration_exactly": true,
+    "required_no_blind_flags": {
+      "no_blind_parse": true,
+      "no_blind_output": true
+    },
+    "resume_before_pass_allowed": false
+  },
+  "execution_and_audit": {
+    "pre_parse_marker": "CONSUMED",
+    "canonical_release_artifacts": [
+      "CONSUMED",
+      "receipt.json",
+      "receipt.json.sha256",
+      "RELEASED"
+    ],
+    "required_scheduler_evidence": [
+      "bhist",
+      "bacct"
+    ],
+    "scheduler_evidence_must_bind_registered_job_id": true,
+    "HIST_HOURS": 5,
+    "history_window_rule": "HIST_HOURS=5 is an observed environment fact, not a guarantee. Capture bhist and bacct for the registered job id within five hours of resume; missing or late scheduler evidence fails RELEASED_VERIFIED."
+  },
+  "prohibitions": {
+    "candidate_level_blind_output_allowed": false,
+    "training_before_released_verified_allowed": false,
+    "alternative_scheduler_submission_allowed": false,
+    "same_account_adversarial_irreversibility_claim_allowed": false
+  }
+}
