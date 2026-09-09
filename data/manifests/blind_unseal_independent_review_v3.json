@@ -1,0 +1,52 @@
+{
+  "schema_version": "blind-unseal-independent-review-receipt-v3",
+  "status": "FAIL",
+  "reviewed_commit": "8a6f8d83671b509d84de655a15004ff5215624bd",
+  "review_scope": "READ_ONLY_NO_A_B_NO_BLIND",
+  "findings": [
+    {
+      "code": "P0_GATE_ASSESSMENT_NOT_DIGEST_BOUND",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The bootstrap trusts stored statuses in an assessment whose digest and reviewed Git blob are not pinned, rather than recomputing R01-R14 from hash-pinned evidence."
+    },
+    {
+      "code": "P0_PUBLIC_RUNNER_API_BYPASSES_BOOTSTRAP",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "An imported caller can invoke execute_from_bootstrap with a forgeable dictionary attestation and bypass bootstrap integrity, Git binding, and static-gate checks."
+    },
+    {
+      "code": "P1_RELEASE_VERIFIER_NOT_IN_SUCCESS_PATH",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "The semantic four-artifact verifier exists but the successful execution path does not call it before reporting success."
+    },
+    {
+      "code": "P1_ONE_SHOT_LEDGER_MUTABLE",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "The consumption marker is under a same-user mutable /temp output directory, so deletion permits replay without an external append-only or permission-protected ledger."
+    },
+    {
+      "code": "P1_REVIEW_SCOPE_SCHEMA_NOT_ENFORCED",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "The bootstrap does not require the PASS receipt to attest the exact review scope and false blind-data-read and real-unseal-executed flags."
+    }
+  ],
+  "passed_checks": [
+    "reviewed commit resolved to HEAD and the checkout was clean",
+    "all seven pinned artifact digests matched working files and reviewed Git blobs",
+    "stdlib-only bootstrap preceded dynamic project imports",
+    "source inventories were rehashed after durable CONSUMED and before parsing",
+    "R07 retained MISSING_RESULT_PATH in its denominator",
+    "released schema excluded candidate-level paths run IDs times and outcomes",
+    "eight focused v6 tests and all 122 repository tests passed"
+  ],
+  "execution_allowed": false,
+  "blind_data_read": false,
+  "candidate_join_performed": false,
+  "real_unseal_executed": false,
+  "required_disposition": "Preserve v6 as failed review evidence. Do not unseal. Remediate only in v7 after establishing a digest-bound gate snapshot, an unbypassable entry path, integrated release verification, exact review receipt validation, and an external append-only or permission-protected consumption ledger."
+}
