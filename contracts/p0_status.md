@@ -34,7 +34,7 @@ v3 静态预检曾 PASS，但封闭执行器实现复核发现其要求收据包
 
 v4 封闭执行器 `src/data/run_blind_unseal_v4.py` 已实现但未在真实 BLIND 数据上执行。它在消费标记创建后才读取数据，逐候选连接与 action key 只驻留内存；成功只输出三个电路的计数与哈希，任一电路失败则只输出无分电路值的统一失败 envelope。单元测试覆盖排他防重放、消费标记先于数据读取、HF/HMF action key 去重且不使用 F/outcome、成功 sidecar，以及失败不泄露部分结果。真实一次性运行必须等独立复核通过。
 
-独立复核清单已冻结在 `contracts/blind_unseal_independent_review_v1.json`，当前状态为 `PENDING_INDEPENDENT_REVIEW`。复核者不得改写执行器或读取 BLIND 数据，只能对固定提交、SHA-256、失败/崩溃语义、输出字段和非盲语义一致性作静态审计；复核 PASS 前执行权限为 false。
+独立复核清单已冻结在 `contracts/blind_unseal_independent_review_v1.json`。对提交 `a67ad679f80678d552d8c42d18fa6787e582c9f4` 的只读复核已形成 `data/manifests/blind_unseal_independent_review_v1.json`，结论为 FAIL：v4 未强制复核回执和现场门禁，BLIND 输入集合及工具依赖未做预注册摘要绑定，发布状态也未达到崩溃原子性；另有输出路径别名、R07 分母定义和负向/一致性测试缺口。复核期间未访问 A/B 或 BLIND 数据，真实一次性解封仍未执行。v4 作为失败证据保留，修复只进入新 v5 链；v5 再获独立 PASS 前执行权限为 false。
 
 Phase2 wall-time 语义门禁 R10 已独立通过：`collect_b14_all_results.py`（SHA-256 `78d433bb1a1cf9b21da37f993b165bc46d6a828de149896ae895fb3a4ec2bd83`）直接从 driver log 的 GNU `Elapsed (wall clock)` footer 写入 CSV `wall_time`。对 b18 2,057、s35932 841、s38417 1,711，共 4,609 个非盲 source rows 逐行核对，缺日志、缺 footer、非法 CSV/footer 格式、缺 CSV wall_time、重复 `(mode,run_id)` 和 footer 不一致均为 0；严格格式审计工具 SHA-256 为 `d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f`，聚合审计 SHA-256 为 `f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59`。该 PASS 只关闭 R10，不改变 R03/R04/R05/R06/R11 或 BLIND 门禁。
 

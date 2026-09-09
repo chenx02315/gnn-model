@@ -1,0 +1,68 @@
+{
+  "schema_version": "blind-unseal-independent-review-receipt-v1",
+  "status": "FAIL",
+  "reviewed_commit": "a67ad679f80678d552d8c42d18fa6787e582c9f4",
+  "review_scope": "READ_ONLY_NO_A_B_NO_BLIND",
+  "reviewed_artifacts": {
+    "contracts/blind_runtime_unseal_v4.json": "39764f0e86dbe3648d52f5ee95f966281b262a02f65681dd3559dc8183dbe31d",
+    "src/data/run_blind_unseal_v4.py": "2530893778be23b9e14636ae253424351c75935b6f16a5fded92a5dcb200b612",
+    "src/data/build_runtime_join_v2.py": "0d69942aba67b93b1ec7fb8a92042cd5b26b4c9c803913ac557549430a69840d",
+    "src/data/recover_runtime_attempts.py": "5ba70908879a8eb53d11bc4901146db244e36e4fe704ab065411ce65ca95729f",
+    "src/data/runtime_schema.py": "a885e93a21968e9c31634b54c2295bfd315035f1d5cdf6a76a94f74ed37f1897",
+    "data/manifests/blind_runtime_unseal_preflight_v4.json": "32c84e3763bf25d5f03ada876a22f29db3edafdec3baaa2ec438072c4b6bef79"
+  },
+  "findings": [
+    {
+      "code": "P0_REVIEW_AND_GATE_NOT_ENFORCED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "The runner neither requires an independent PASS receipt nor recomputes the current preflight and gate assessment before creating the consumption marker."
+    },
+    {
+      "code": "P0_BLIND_SOURCE_SCOPE_NOT_PREREGISTERED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "Job paths and BLIND aggregate input inventories are not bound to preregistered digests, so a substituted input set could pass only retrospective hashing."
+    },
+    {
+      "code": "P0_DEPENDENCIES_NOT_PINNED",
+      "priority": "P0",
+      "result": "FAIL",
+      "summary": "Historical join and runtime-recovery dependency digests are reported but not compared with frozen expected values before BLIND consumption."
+    },
+    {
+      "code": "P1_RELEASE_NOT_CRASH_ATOMIC",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "Receipt and sidecar publication lacks a durable completion marker and file and directory fsync boundaries, allowing an orphaned apparent PASS after interruption."
+    },
+    {
+      "code": "P1_OUTPUT_PATH_ALIASING",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "Receipt, sidecar and marker paths are not required to be distinct canonical non-symlink paths inside a dedicated empty output directory."
+    },
+    {
+      "code": "P1_R07_DENOMINATOR_MISMATCH",
+      "priority": "P1",
+      "result": "FAIL",
+      "summary": "The contract denominator says path-backed references while the implementation also counts MISSING_RESULT_PATH, so the gate meaning is inconsistent."
+    },
+    {
+      "code": "P2_NEGATIVE_AND_PARITY_TESTS_MISSING",
+      "priority": "P2",
+      "result": "FAIL",
+      "summary": "Tests do not yet cover forged or stale preflight, review and source substitution, crash publication states, path aliases, concurrency, or full state-rule parity."
+    }
+  ],
+  "positive_findings": [
+    "The v4 receipt schema excludes runtime values, outcomes, paths, run IDs and candidate-level records.",
+    "The HF/HMF action key excludes F and outcome fields.",
+    "The preserved historical build_runtime_join_v2.py digest matched the reviewed commit."
+  ],
+  "execution_allowed": false,
+  "blind_data_read": false,
+  "candidate_join_performed": false,
+  "real_unseal_executed": false,
+  "required_disposition": "Preserve v4 as failed review evidence and remediate only under a new v5 contract, runner and independent review receipt."
+}
