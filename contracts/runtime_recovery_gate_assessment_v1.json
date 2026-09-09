@@ -4,6 +4,13 @@
   "gate_contract_sha256": "7eeb37a6868e90d633d241f7be6c0a37d7d0c725d4278d8b1a37af9cbfaa5c5c",
   "assessment_status": "BLOCKED",
   "assessment_scope": "evidence available through Phase4 nonblind runtime recovery r6 plus aggregate-only BLIND attempt preconditions; BLIND candidate-level artifacts remain sealed",
+  "blind_unseal_preflight": {
+    "status": "PASS",
+    "contract": "contracts/blind_runtime_unseal_v3.json",
+    "receipt": "data/manifests/blind_runtime_unseal_preflight_v3.json",
+    "blind_data_read": false,
+    "candidate_join_performed": false
+  },
   "training_allowed": false,
   "checks": {
     "R01": {
@@ -64,8 +71,8 @@
     }
   },
   "next_gates": [
-    "independently review contracts/blind_runtime_unseal_v2.json, which removes the v1 circular dependency by measuring R06 R07 and R13 jointly in the same one-shot aggregate-only audit",
-    "after that review execute the model-free one-shot BLIND coverage audit exactly once and release only its atomic aggregate receipt",
+    "independently review the static-PASS contracts/blind_runtime_unseal_v3.json and its sealed runner before consuming the one permitted execution",
+    "after that review execute the model-free one-shot BLIND coverage audit exactly once and release only its atomic three-circuit aggregate receipt",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",
     "start training only if every R01-R14 status is PASS"
   ]

@@ -1,0 +1,22 @@
+{
+  "schema_version": "recommendation-method-registry-v1",
+  "status": "SEALED_METHOD_SET_PENDING_BLIND_ELIGIBLE_HASH_BINDING",
+  "source_contract": "contracts/p6_pilot_matrix_v1.json",
+  "source_contract_sha256": "7a317681d0180665b4b656224b13aad8566ff7a1d5f50d74a894ee1ed9f8a6d4",
+  "methods": [
+    "fixed_heuristic",
+    "d95_safe_then_predicted_cycles",
+    "d95_safe_cost_aware_topk"
+  ],
+  "method_count": 3,
+  "blind_circuits": ["s9234", "s38584", "wb_dma"],
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "binding_policy": {
+    "candidate_space_scope": "full frozen runtime-eligible action set per circuit",
+    "all_methods_must_use_identical_hash": true,
+    "method_specific_exclusion_allowed": false,
+    "binding_time": "after the one-shot aggregate coverage receipt and after reseal, before training or evaluation",
+    "binding_artifact": "data/manifests/blind_runtime_method_binding_v1.json"
+  },
+  "training_allowed": false
+}
