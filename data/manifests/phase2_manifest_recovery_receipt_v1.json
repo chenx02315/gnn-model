@@ -1,0 +1,44 @@
+{
+  "artifacts": {
+    "phase2.b18.manifest": {
+      "byte_count": 1040905,
+      "data_row_count": 2057,
+      "manifest_sha256": "e251e482f070e2e80a6535ff1621a064cfb56e4c04b041c8d219c2505b6253e8",
+      "source_table_sha256": "681943ab7d379169542a3c81956c79b124e17f7ee5fe718cf78400dc4eb89c71",
+      "unique_attempt_id_count": 2057
+    },
+    "phase2.s35932.manifest": {
+      "byte_count": 417130,
+      "data_row_count": 841,
+      "manifest_sha256": "9eeb437f12598ddc08d5539800e0faaeab2508a0285e15d49b33f348538fe45f",
+      "source_table_sha256": "63ed68527f1f5fedf60d5d1f08fdefff6b814e74de58e7c6a1754dbb3fbc62ee",
+      "unique_attempt_id_count": 841
+    },
+    "phase2.s38417.manifest": {
+      "byte_count": 867631,
+      "data_row_count": 1711,
+      "manifest_sha256": "416dfdbddee67964ebfbd93618d6cf63d8645553d7050804122b7b63f34f749c",
+      "source_table_sha256": "ec169a9db102cd74e0856c2536fd7ae5fee0ec4a0f6927d1f4515eb2d28f58b6",
+      "unique_attempt_id_count": 1711
+    }
+  },
+  "counts": {
+    "artifact_count": 3,
+    "byte_count": 2325666,
+    "data_row_count": 4609
+  },
+  "field_policy": "logical IDs, SHA-256 values, byte counts, row counts, and aggregate validation status only",
+  "receipt_version": "r03-phase2-three-v1",
+  "schema_version": "phase2-historical-manifest-recovery-receipt-v1",
+  "scope": "three non-BLIND historical Phase2 outcome-free runtime manifests",
+  "source_boundary": "external local recovery directory; manifests are not checked into Git",
+  "validation": {
+    "all_attempt_ids_unique_per_manifest": true,
+    "all_forbidden_outcome_fields_absent": true,
+    "all_rows_collected_success_only": true,
+    "all_rows_have_wall_time": true,
+    "all_source_table_digests_match": true,
+    "all_target_digests_match": true,
+    "blind_data_accessed": false
+  }
+}

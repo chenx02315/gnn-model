@@ -15,8 +15,8 @@
       "evidence": "itc99_b14_connected is confined to PILOT in contracts/data_split_v1.json"
     },
     "R03": {
-      "status": "PARTIAL",
-      "evidence": "data/manifests/runtime_source_ledger_v1.json freezes one cross-phase ledger with r6 as sole Phase4 authority; the versioned delta reconciles all 7 prior mismatches and the independently verified 18-item digest recheck receipt raises coverage to 70/73 with 0 mismatched and 0 unbound; three ephemeral Phase2 early manifests remain unreproduced, so R03 remains PARTIAL"
+      "status": "PASS",
+      "evidence": "data/manifests/runtime_source_ledger_v1.json now matches all 73/73 expected source digests with 0 missing, 0 mismatched, and 0 unbound. The final three non-BLIND historical Phase2 manifests were reread from the preserved local recovery directory: 4609 rows, exact frozen SHA-256 matches, unique attempt IDs, required wall-time semantics, and no forbidden outcome fields; the 2.3 MB manifests remain outside Git and only the aggregate receipt is checked in."
     },
     "R04": {
       "status": "PARTIAL",
@@ -64,7 +64,6 @@
     }
   },
   "next_gates": [
-    "classify or recover the three remaining ephemeral Phase2 early manifests without inventing or substituting digests",
     "reconstruct or explicitly classify lifecycle retry lineage and verify environment cohorts without imputing order",
     "satisfy all nonblind preconditions in contracts/blind_runtime_unseal_v1.json before the model-free one-shot BLIND coverage audit",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",

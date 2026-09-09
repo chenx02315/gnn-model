@@ -117,18 +117,16 @@
     "digest_recheck_added_count": 18,
     "digest_recheck_receipt_present": true,
     "expected_bindable_count": 73,
-    "matched_count": 70,
+    "matched_count": 73,
     "mismatched_count": 0,
     "mismatched_logical_ids": [],
-    "missing_expected_count": 3,
-    "missing_expected_logical_ids": [
-      "phase2.b18.manifest",
-      "phase2.s35932.manifest",
-      "phase2.s38417.manifest"
-    ],
-    "receipt_artifact_count": 70,
+    "missing_expected_count": 0,
+    "missing_expected_logical_ids": [],
+    "phase2_manifest_recovery_added_count": 3,
+    "phase2_manifest_recovery_receipt_present": true,
+    "receipt_artifact_count": 73,
     "receipt_present": true,
-    "status": "PARTIAL",
+    "status": "MATCHED",
     "unbound_count": 0,
     "unbound_logical_ids": []
   },
@@ -138,10 +136,12 @@
   },
   "local_artifacts": {
     "contracts/data_split_v1.json": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+    "contracts/phase2_manifest_recovery_v1.json": "95b1c880247bea877111824dbc3e5375d050ac41b37a6664d47e45ef80550310",
     "contracts/runtime_policy_v1.json": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
     "contracts/runtime_policy_v2.json": "94e5e903f1debfafab35131bb9245a681db7df6616e1d869f651fdb5ceaadc35",
     "contracts/runtime_recovery_gate_v1.json": "7eeb37a6868e90d633d241f7be6c0a37d7d0c725d4278d8b1a37af9cbfaa5c5c",
     "contracts/runtime_source_digest_recheck_v2.json": "5814591caf7dbc9faef741a71b83b7182f524b49619050ef16a7848a8574a379",
+    "data/manifests/phase2_manifest_recovery_receipt_v1.json": "d2dfff003d0da9cc3013f2b474d4f3ce83ad94b745126fdba30e88ef1e59fb22",
     "data/manifests/phase2_wall_time_semantics_v1.json": "f274c639d83206d0ceaab88dd741213b42bf0bbc88bdec15daf14ee9dba24f59",
     "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/aes_core.json": "d712686814a9b568c33a92ab059f6cfdcadaaedecd323111df07b65de190c6ae",
     "data/manifests/phase4_runtime_nonblind_v2_r2/inventory/b20.json": "3c13063a5c1d8b61a749f0ecc43afe1d12936ec665268e9302e3addd1d8eec2a",
@@ -195,6 +195,7 @@
     "data/manifests/runtime_source_readback_delta_v1.json": "d5297e9231b85341c15dbdc85e8118b1bff534be1e9e3c92395a57cff8e8a018",
     "data/manifests/runtime_source_readback_v1.json": "c47f845911ab66b1c6d61d668c8733ad70365a2b5077113d617d58b8050c0871",
     "data/manifests/runtime_source_reconciliation_v1.json": "c2f552c4687af90a49eafcdf428990f33727563f772a48f21295525941332ffd",
+    "src/data/audit_phase2_manifest_recovery.py": "e58f6edcfdde2e89f6dc0013e6a5aa45ddd98e2af9c850bf98b48c57c8c23770",
     "src/data/audit_phase2_wall_time_semantics.py": "d82c0573c88d0ae26bac1d7f54b3015cffa4c35a831eeaabb96d711b419e645f",
     "src/data/audit_runtime_authority_package.py": "6968413d547bf7e0f5234e4a551c8721603ab6766510d0e8303b676da89c362f",
     "src/data/audit_runtime_log_inventory.py": "ab1ed797e4bbd58ef9aee04a46c24a4843c63d5436f296eeb1f7a48d5e99ac61",
@@ -234,18 +235,19 @@
   },
   "schema_version": "runtime-source-ledger-v1",
   "scope": "aggregate-only source provenance for R03; no runtime eligibility or P0 decision",
-  "status": "PARTIAL_LOCAL_HASHES_AND_EXTERNAL_ATTESTATIONS",
+  "status": "MATCHED_ALL_EXPECTED_SOURCE_DIGESTS",
   "validation": {
     "all_local_cross_references_match": true,
     "all_nested_referenced_sha256_lowercase_hex": true,
     "external_artifacts_reread_locally": false,
     "local_cross_reference_binding_count": 27,
     "local_inputs_recomputed": true,
-    "nested_referenced_sha256_field_count": 131
+    "nested_referenced_sha256_field_count": 139,
+    "phase2_historical_manifests_reread_locally": true
   },
   "verification_boundary": {
-    "external_attested": "SHA-256 values transcribed from checked-in recovery inventories; raw A-side tables, logs, and manifests were not reread locally",
+    "external_attested": "SHA-256 values transcribed from checked-in recovery inventories; three historical Phase2 manifests were separately reread locally",
     "local_recomputed": "SHA-256 of checked-in files listed in local_artifacts",
-    "not_a_pass_claim": "This ledger does not by itself satisfy R03 or unblock P0."
+    "not_a_pass_claim": "This ledger closes R03 digest completeness only; it does not unblock P0 or satisfy other recovery gates."
   }
 }

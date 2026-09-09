@@ -23,6 +23,7 @@ LOCAL_INPUTS = (
     "contracts/runtime_policy_v1.json",
     "contracts/runtime_policy_v2.json",
     "contracts/runtime_recovery_gate_v1.json",
+    "contracts/phase2_manifest_recovery_v1.json",
     "contracts/runtime_source_digest_recheck_v2.json",
     "data/manifests/runtime_recovery_inventory_v1.json",
     "data/manifests/runtime_nonblind_join_audit_v2.json",
@@ -30,8 +31,10 @@ LOCAL_INPUTS = (
     "data/manifests/runtime_source_reconciliation_v1.json",
     "data/manifests/runtime_source_digest_recheck_receipt_v2.json",
     "data/manifests/runtime_source_digest_recheck_verification_v2.json",
+    "data/manifests/phase2_manifest_recovery_receipt_v1.json",
     "data/manifests/phase2_wall_time_semantics_v1.json",
     "src/data/audit_phase2_wall_time_semantics.py",
+    "src/data/audit_phase2_manifest_recovery.py",
     "src/data/audit_runtime_log_inventory.py",
     "src/data/audit_runtime_authority_package.py",
     "src/data/build_runtime_join_v2.py",
@@ -416,6 +419,87 @@ def merge_digest_recheck(receipt, supplement, contract, verification,
     return result
 
 
+def merge_phase2_manifest_recovery(receipt, supplement, contract,
+                                   expected, local_hashes):
+    """Fill the final three R03 IDs from the locally reread Phase2 manifests."""
+    contract_fields = {
+        "schema_version", "receipt_version", "expected_entry_count",
+        "expected_logical_ids", "trusted_audit_tool_sha256",
+        "trusted_receipt_sha256", "source_boundary", "gate_result",
+    }
+    if not isinstance(contract, dict) or set(contract) != contract_fields:
+        raise ValueError("Phase2 manifest recovery contract fields are invalid")
+    if contract["schema_version"] != "phase2-historical-manifest-recovery-contract-v1":
+        raise ValueError("Phase2 manifest recovery contract schema is invalid")
+    receipt_relative = "data/manifests/phase2_manifest_recovery_receipt_v1.json"
+    tool_relative = "src/data/audit_phase2_manifest_recovery.py"
+    if contract["trusted_receipt_sha256"] != local_hashes[receipt_relative]:
+        raise ValueError("Phase2 manifest recovery contract does not bind receipt")
+    if contract["trusted_audit_tool_sha256"] != local_hashes[tool_relative]:
+        raise ValueError("Phase2 manifest recovery contract does not bind audit tool")
+
+    receipt_fields = {
+        "schema_version", "receipt_version", "scope", "source_boundary",
+        "field_policy", "artifacts", "counts", "validation",
+    }
+    if not isinstance(supplement, dict) or set(supplement) != receipt_fields:
+        raise ValueError("Phase2 manifest recovery receipt fields are invalid")
+    if (supplement["schema_version"] !=
+            "phase2-historical-manifest-recovery-receipt-v1" or
+            supplement["receipt_version"] != contract["receipt_version"]):
+        raise ValueError("Phase2 manifest recovery receipt version is invalid")
+    expected_ids = contract["expected_logical_ids"]
+    if (contract["expected_entry_count"] != 3 or
+            not isinstance(expected_ids, list) or
+            len(expected_ids) != len(set(expected_ids)) or
+            set(supplement["artifacts"]) != set(expected_ids)):
+        raise ValueError("Phase2 manifest recovery logical IDs are invalid")
+    if supplement["counts"] != {
+            "artifact_count": 3, "byte_count": 2325666,
+            "data_row_count": 4609}:
+        raise ValueError("Phase2 manifest recovery counts are invalid")
+    required_validation = {
+        "all_attempt_ids_unique_per_manifest": True,
+        "all_forbidden_outcome_fields_absent": True,
+        "all_rows_collected_success_only": True,
+        "all_rows_have_wall_time": True,
+        "all_source_table_digests_match": True,
+        "all_target_digests_match": True,
+        "blind_data_accessed": False,
+    }
+    if supplement["validation"] != required_validation:
+        raise ValueError("Phase2 manifest recovery validation is invalid")
+
+    merged = dict(receipt["artifacts"])
+    for logical_id in sorted(expected_ids):
+        if logical_id in merged:
+            raise ValueError("Phase2 manifest recovery may not overwrite existing ID")
+        artifact = supplement["artifacts"][logical_id]
+        allowed = {
+            "byte_count", "data_row_count", "manifest_sha256",
+            "source_table_sha256", "unique_attempt_id_count",
+        }
+        if set(artifact) != allowed:
+            raise ValueError("Phase2 manifest recovery artifact fields are invalid")
+        if artifact["manifest_sha256"] != expected[logical_id]:
+            raise ValueError("Phase2 manifest recovery digest does not match authority")
+        source_logical_id = logical_id[:-len(".manifest")] + ".source"
+        if artifact["source_table_sha256"] != expected[source_logical_id]:
+            raise ValueError("Phase2 manifest recovery source digest does not match authority")
+        if artifact["data_row_count"] != artifact["unique_attempt_id_count"]:
+            raise ValueError("Phase2 manifest recovery attempt IDs are incomplete")
+        merged[logical_id] = artifact["manifest_sha256"]
+    result = {"schema_version": "runtime-source-readback-v1", "artifacts": merged}
+    post = compare_readback(result, expected)
+    if (post["status"] != "MATCHED" or post["matched_count"] != 73 or
+            post["receipt_artifact_count"] != 73 or
+            post["missing_expected_count"] != 0 or
+            post["mismatched_count"] != 0 or post["unbound_count"] != 0 or
+            contract["gate_result"] != "R03_MATCHED_73_OF_73"):
+        raise ValueError("Phase2 manifest recovery post-merge gate is invalid")
+    return result
+
+
 def validate_reconciliation(reconciliation, base, delta, package_receipt,
                             expected, local_hashes):
     if reconciliation.get("schema_version") != "runtime-source-reconciliation-v1":
@@ -510,6 +594,13 @@ def readback_status(root, documents, inventory, join_audit, r6):
             documents["contracts/runtime_source_digest_recheck_v2.json"],
             documents["data/manifests/runtime_source_digest_recheck_verification_v2.json"],
             expected, checked_in_hashes(root, artifact_inputs(root)))
+    phase2_relative = "data/manifests/phase2_manifest_recovery_receipt_v1.json"
+    phase2_present = phase2_relative in documents
+    if phase2_present:
+        receipt = merge_phase2_manifest_recovery(
+            receipt, documents[phase2_relative],
+            documents["contracts/phase2_manifest_recovery_v1.json"],
+            expected, checked_in_hashes(root, artifact_inputs(root)))
     result = compare_readback(receipt, expected)
     result["delta_receipt_present"] = delta_relative in documents
     result["delta_replaced_count"] = len(replaced)
@@ -518,6 +609,8 @@ def readback_status(root, documents, inventory, join_audit, r6):
     result["delta_confirmed_logical_ids"] = confirmed
     result["digest_recheck_receipt_present"] = supplement_present
     result["digest_recheck_added_count"] = 18 if supplement_present else 0
+    result["phase2_manifest_recovery_receipt_present"] = phase2_present
+    result["phase2_manifest_recovery_added_count"] = 3 if phase2_present else 0
     return result
 
 
@@ -562,13 +655,13 @@ def build_ledger(root):
 
     return {
         "schema_version": "runtime-source-ledger-v1",
-        "status": "PARTIAL_LOCAL_HASHES_AND_EXTERNAL_ATTESTATIONS",
+        "status": "MATCHED_ALL_EXPECTED_SOURCE_DIGESTS",
         "scope": "aggregate-only source provenance for R03; no runtime eligibility or P0 decision",
         "blind_policy": "No BLIND candidate, run_id, result path, or elapsed value is present. BLIND source hashes remain sealed external attestations only.",
         "verification_boundary": {
             "local_recomputed": "SHA-256 of checked-in files listed in local_artifacts",
-            "external_attested": "SHA-256 values transcribed from checked-in recovery inventories; raw A-side tables, logs, and manifests were not reread locally",
-            "not_a_pass_claim": "This ledger does not by itself satisfy R03 or unblock P0.",
+            "external_attested": "SHA-256 values transcribed from checked-in recovery inventories; three historical Phase2 manifests were separately reread locally",
+            "not_a_pass_claim": "This ledger closes R03 digest completeness only; it does not unblock P0 or satisfy other recovery gates.",
         },
         "phase4_version_policy": {
             "authoritative": {
@@ -600,6 +693,7 @@ def build_ledger(root):
             "local_cross_reference_binding_count": local_binding_count,
             "all_local_cross_references_match": True,
             "external_artifacts_reread_locally": False,
+            "phase2_historical_manifests_reread_locally": True,
         },
     }
 
@@ -619,8 +713,9 @@ def main(argv=None):
     output = args.output if os.path.isabs(args.output) else os.path.join(root, args.output.replace("/", os.sep))
     ledger = build_ledger(root)
     write_json(output, ledger)
-    print("RUNTIME_SOURCE_LEDGER=PARTIAL local_artifacts=%d external_attestations=%d" %
-          (len(ledger["local_artifacts"]), len(ledger["external_attestations"])))
+    print("RUNTIME_SOURCE_LEDGER=%s local_artifacts=%d external_attestations=%d" %
+          (ledger["external_readback"]["status"], len(ledger["local_artifacts"]),
+           len(ledger["external_attestations"])))
 
 
 if __name__ == "__main__":

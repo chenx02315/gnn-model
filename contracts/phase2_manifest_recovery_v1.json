@@ -1,0 +1,14 @@
+{
+  "schema_version": "phase2-historical-manifest-recovery-contract-v1",
+  "receipt_version": "r03-phase2-three-v1",
+  "expected_entry_count": 3,
+  "expected_logical_ids": [
+    "phase2.b18.manifest",
+    "phase2.s35932.manifest",
+    "phase2.s38417.manifest"
+  ],
+  "trusted_audit_tool_sha256": "e58f6edcfdde2e89f6dc0013e6a5aa45ddd98e2af9c850bf98b48c57c8c23770",
+  "trusted_receipt_sha256": "d2dfff003d0da9cc3013f2b474d4f3ce83ad94b745126fdba30e88ef1e59fb22",
+  "source_boundary": "read-only local recovery directory outside Git; original manifests remain external",
+  "gate_result": "R03_MATCHED_73_OF_73"
+}
