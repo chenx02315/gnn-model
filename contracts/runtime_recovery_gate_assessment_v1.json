@@ -64,8 +64,8 @@
     }
   },
   "next_gates": [
-    "independently review the remaining R06 precondition and the frozen one-shot BLIND unseal procedure without opening candidate-level BLIND runtime data",
-    "satisfy all non-R07 and non-R13 preconditions in contracts/blind_runtime_unseal_v1.json before the model-free one-shot BLIND coverage audit",
+    "independently review contracts/blind_runtime_unseal_v2.json, which removes the v1 circular dependency by measuring R06 R07 and R13 jointly in the same one-shot aggregate-only audit",
+    "after that review execute the model-free one-shot BLIND coverage audit exactly once and release only its atomic aggregate receipt",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",
     "start training only if every R01-R14 status is PASS"
   ]

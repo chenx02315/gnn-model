@@ -1,0 +1,126 @@
+{
+  "schema_version": "blind-runtime-unseal-v2",
+  "status": "SEALED_ONE_SHOT_COVERAGE_AUDIT_ONLY",
+  "supersedes": {
+    "contract": "contracts/blind_runtime_unseal_v1.json",
+    "sha256": "ede16d046d6530fb29daef4e3eb083c7a6a37d997ab0424c2038df36f77ef8b4",
+    "reason": "v1 circularly required R06 before the only permitted join that can measure R06 ambiguity"
+  },
+  "purpose": "A model-independent, one-time sealed audit that jointly measures R06 ambiguity, R07 runtime-join coverage, and the R13 common eligible action-space hash. It cannot create or reveal a performance outcome.",
+  "scope": {
+    "split_contract": "contracts/data_split_v1.json",
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+    "blind_circuits": ["s9234", "s38584", "wb_dma"],
+    "blind_circuit_count": 3
+  },
+  "preconditions": {
+    "required_split_sealed": true,
+    "required_assessment": "contracts/runtime_recovery_gate_assessment_v1.json",
+    "required_assessment_status": "BLOCKED",
+    "required_check_status": {
+      "R01": "PASS",
+      "R02": "PASS",
+      "R03": "PASS",
+      "R04": "PASS",
+      "R05": "PASS",
+      "R08": "PASS",
+      "R09": "PASS",
+      "R10": "PASS",
+      "R11": "PASS",
+      "R12": "PASS",
+      "R14": "PASS"
+    },
+    "checks_measured_jointly_by_one_shot_audit": ["R06", "R07", "R13"],
+    "only_checks_allowed_to_remain_nonpass_before_unseal": ["R06", "R07", "R13"],
+    "required_pre_access_proof": "The frozen formal-runtime membership hash above was recorded before candidate-level BLIND runtime-join inspection.",
+    "p0_remains_blocked": true
+  },
+  "roles": {
+    "blind_custodian": "Runs the one allowed join inside the sealed BLIND environment and releases only the prescribed aggregate receipt.",
+    "independent_auditor": "Verifies contract and tool hashes, fixed circuit set, aggregate receipt schema, and R06/R07/R13 decision rules without receiving candidate-level records.",
+    "model_or_tuning_operator": "Must not receive BLIND records or use this audit for training, selection, calibration, tuning, or performance comparison."
+  },
+  "one_shot_protocol": {
+    "maximum_unseal_attempts": 1,
+    "replay_allowed": false,
+    "permitted_operation": "coverage-only candidate-stage-to-runtime-attempt join audit",
+    "permitted_derivations": [
+      "executed-stage action count",
+      "unique runtime-join count",
+      "missing runtime-join count",
+      "ambiguous runtime-join count",
+      "per-method frozen runtime-eligible action-space hash"
+    ],
+    "receipt_only": true,
+    "atomic_release": "Release one final aggregate receipt only after all three circuits complete; do not release partial per-circuit results.",
+    "failure_action": "Immediately reseal all BLIND artifacts; publish no candidate-level or partial per-circuit result; record only one failed aggregate receipt; do not retry under this contract."
+  },
+  "prohibited": {
+    "outcome_or_runtime_fields": [
+      "elapsed",
+      "wall_time",
+      "user_time",
+      "system_time",
+      "runtime_value",
+      "timeout_outcome",
+      "pass_fail_outcome",
+      "coverage_outcome",
+      "fault_coverage",
+      "pattern_count",
+      "candidate_rank"
+    ],
+    "model_or_tuning_uses": [
+      "training",
+      "feature_selection",
+      "model_selection",
+      "hyperparameter_tuning",
+      "threshold_tuning",
+      "candidate_order_tuning",
+      "calibration",
+      "early_stopping",
+      "performance_comparison"
+    ],
+    "release_forms": [
+      "candidate_level_records",
+      "candidate_to_attempt_mapping",
+      "per_candidate_join_status",
+      "paths",
+      "run_ids",
+      "raw_logs"
+    ]
+  },
+  "allowed_receipt": {
+    "aggregation": "one atomic receipt containing per blind circuit and method counts only; no candidate-level rows",
+    "fields": [
+      "circuit",
+      "method",
+      "executed_stage_action_count",
+      "unique_runtime_join_count",
+      "missing_runtime_join_count",
+      "ambiguous_runtime_join_count",
+      "coverage_rate",
+      "frozen_runtime_eligible_action_space_sha256",
+      "source_artifact_sha256",
+      "tool_sha256",
+      "contract_sha256",
+      "receipt_sha256"
+    ],
+    "forbid_outcomes": true
+  },
+  "decision_rules": {
+    "R06": {
+      "pass_when": "For every audited BLIND circuit and method, ambiguous_runtime_join_count == 0.",
+      "otherwise": "BLOCKED and reseal."
+    },
+    "R07": {
+      "pass_when": "For each of s9234, s38584, and wb_dma, every executed-stage action has exactly one runtime join: missing_runtime_join_count == 0, ambiguous_runtime_join_count == 0, and coverage_rate == 1.0.",
+      "otherwise": "BLOCKED and reseal."
+    },
+    "R13": {
+      "pass_when": "R06 and R07 pass and, within each BLIND circuit, every audited method has the identical frozen runtime-eligible action-space hash, with no exclusion introduced after unseal.",
+      "otherwise": "BLOCKED and reseal."
+    },
+    "p0": "The receipt informs a later runtime-recovery assessment only. P0 remains BLOCKED until an independent assessment establishes every R01 through R14 as PASS."
+  },
+  "training_allowed": false
+}
