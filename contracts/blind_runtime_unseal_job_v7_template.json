@@ -1,0 +1,32 @@
+{
+  "schema_version": "blind-runtime-unseal-job-v7",
+  "status": "SEALED_PENDING_REGISTRATION_AND_REVIEW",
+  "authority_contract": "contracts/blind_runtime_unseal_v7.json",
+  "registration": {
+    "job_id": null,
+    "array_allowed": false,
+    "initial_scheduler_state": "PSUSP",
+    "command_argv": ["python3", "src/data/run_blind_unseal_v7.py", "--bundle-root", "."],
+    "queue": null,
+    "resource_request": null,
+    "cwd": null,
+    "stdout_path": null,
+    "stderr_path": null
+  },
+  "registration_receipt": "data/manifests/blind_runtime_unseal_v7_registration.json",
+  "review_receipt": "data/manifests/blind_unseal_independent_review_v4.json",
+  "inventory_freeze_receipt": "data/manifests/blind_input_inventory_freeze_v1.json",
+  "measurement_files": [
+    "01_single_boundaries/measurements.tsv",
+    "02_hf_coarse/measurements.tsv",
+    "03_hmf_coarse/measurements.tsv",
+    "04_integer_refine/hf_measurements.tsv",
+    "04_integer_refine/hmf_measurements.tsv",
+    "05_repeatability/measurements.tsv"
+  ],
+  "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/11_blind_runtime_unseal_v7_one_shot",
+  "circuits": [],
+  "candidate_join_performed": false,
+  "training_allowed": false,
+  "template_rule": "This template is intentionally non-executable. A separate registration artifact must be created only after a scheduler-assigned held non-array job id exists, then independently reviewed and digest-bound in a new immutable execution bundle."
+}

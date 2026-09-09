@@ -1,0 +1,9 @@
+{
+  "schema_version": "blind-unseal-independent-review-v4",
+  "status": "PENDING_REGISTRATION_AND_REVIEW",
+  "execution_allowed": false,
+  "purpose": "Reserved receipt path only. It is not evidence of independent review, registration, scheduler state, BLIND access, or execution.",
+  "blind_data_read": false,
+  "real_unseal_executed": false,
+  "required_for_future_pass": ["exact registered LSF job id", "non-array held scheduler evidence", "clean reviewed implementation commit and blob hashes", "bound contract job protocol gate snapshot split registry and inventory digests", "no_blind_parse=true", "no_blind_output=true"]
+}
