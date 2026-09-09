@@ -1,0 +1,19 @@
+{
+  "schema_version": "blind-attempt-preconditions-assessment-v1",
+  "status": "PASS",
+  "contract": "contracts/blind_attempt_preconditions_v1.json",
+  "scope": "aggregate-only BLIND attempt metadata preconditions",
+  "circuits": {
+    "s38584": {"attempt_count": 753, "receipt": "data/manifests/blind_attempt_preconditions_v1/s38584.json", "receipt_sha256": "8e647b0445745425702f6e14d48fec2bac76a80f20c2f85e8228cff86e144b20"},
+    "s9234": {"attempt_count": 4520, "receipt": "data/manifests/blind_attempt_preconditions_v1/s9234.json", "receipt_sha256": "f1d66562bbf0dd3dc8629fdf8e36b07746bd6177e9bb7d3862c8b7bde6d9106b"},
+    "wb_dma": {"attempt_count": 2581, "receipt": "data/manifests/blind_attempt_preconditions_v1/wb_dma.json", "receipt_sha256": "f889f88663cd86c8320b92745b117dd4ff632635f63703b2e953ff143c60ee47"}
+  },
+  "total_attempt_count": 7854,
+  "determinism": "PASS_BYTE_IDENTICAL_REPEAT",
+  "r04_precondition": "PASS",
+  "r05_precondition": "PASS",
+  "r11_precondition": "PASS",
+  "candidate_join_performed": false,
+  "training_allowed": false,
+  "next_gate": "independent review of all non-R07/R13 gates before the one-shot model-free BLIND coverage audit"
+}

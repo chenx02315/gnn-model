@@ -3,7 +3,7 @@
   "gate_contract": "contracts/runtime_recovery_gate_v1.json",
   "gate_contract_sha256": "7eeb37a6868e90d633d241f7be6c0a37d7d0c725d4278d8b1a37af9cbfaa5c5c",
   "assessment_status": "BLOCKED",
-  "assessment_scope": "evidence available through Phase4 nonblind runtime recovery r6; BLIND candidate-level artifacts remain sealed",
+  "assessment_scope": "evidence available through Phase4 nonblind runtime recovery r6 plus aggregate-only BLIND attempt preconditions; BLIND candidate-level artifacts remain sealed",
   "training_allowed": false,
   "checks": {
     "R01": {
@@ -19,12 +19,12 @@
       "evidence": "data/manifests/runtime_source_ledger_v1.json now matches all 73/73 expected source digests with 0 missing, 0 mismatched, and 0 unbound. The final three non-BLIND historical Phase2 manifests were reread from the preserved local recovery directory: 4609 rows, exact frozen SHA-256 matches, unique attempt IDs, required wall-time semantics, and no forbidden outcome fields; the 2.3 MB manifests remain outside Git and only the aggregate receipt is checked in."
     },
     "R04": {
-      "status": "PARTIAL",
-      "evidence": "all nonblind recovered attempts have parse status and failures are retained; BLIND attempts remain aggregate-only"
+      "status": "PASS",
+      "evidence": "all nonblind recovered attempts retain parse status including failures; aggregate-only A-side audit also retained and classified all 7854 BLIND logs across s38584 s9234 and wb_dma without releasing row-level data"
     },
     "R05": {
-      "status": "PARTIAL",
-      "evidence": "nonblind recovery retains every discovered attempt and performs no fastest-success selection; retry lineage/order remains unverified for Phase4 r6"
+      "status": "PASS",
+      "evidence": "nonblind recovery and aggregate-only BLIND audit retain every discovered attempt and perform no fastest-success selection; unknown retry order remains explicitly UNKNOWN_ORDER and is not imputed"
     },
     "R06": {
       "status": "PARTIAL",
@@ -47,8 +47,8 @@
       "evidence": "data/manifests/phase2_wall_time_semantics_v1.json validates all 4609 nonblind Phase2 CSV rows against their GNU Elapsed driver footers with zero missing duplicate invalid or mismatched records"
     },
     "R11": {
-      "status": "PARTIAL",
-      "evidence": "source and environment cohort fields are recorded; Phase4 r6 environment is explicitly marked unverified and retry order is UNKNOWN_ORDER for 30994 attempts"
+      "status": "PASS",
+      "evidence": "every recovered nonblind and aggregate-audited BLIND attempt records source digest phase cohort and environment cohort; unverified environments remain explicitly labeled environment_unverified rather than inferred equivalent"
     },
     "R12": {
       "status": "PASS",
@@ -64,8 +64,8 @@
     }
   },
   "next_gates": [
-    "reconstruct or explicitly classify lifecycle retry lineage and verify environment cohorts without imputing order",
-    "satisfy all nonblind preconditions in contracts/blind_runtime_unseal_v1.json before the model-free one-shot BLIND coverage audit",
+    "independently review the remaining R06 precondition and the frozen one-shot BLIND unseal procedure without opening candidate-level BLIND runtime data",
+    "satisfy all non-R07 and non-R13 preconditions in contracts/blind_runtime_unseal_v1.json before the model-free one-shot BLIND coverage audit",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",
     "start training only if every R01-R14 status is PASS"
   ]

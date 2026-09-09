@@ -1,0 +1,24 @@
+{
+  "schema_version": "blind-attempt-preconditions-contract-v1",
+  "purpose": "Close aggregate R04 R05 and R11 preconditions without candidate-level BLIND runtime inspection",
+  "scope": ["s38584", "s9234", "wb_dma"],
+  "required_counts": {"s38584": 753, "s9234": 4520, "wb_dma": 2581},
+  "required_true_validations": [
+    "all_discovered_logs_retained",
+    "all_attempt_ids_unique",
+    "all_attempts_have_parse_status",
+    "all_attempts_have_source_digest",
+    "all_attempts_bind_inventory",
+    "all_attempts_record_phase",
+    "all_attempts_record_cohort",
+    "all_attempts_record_environment_cohort",
+    "retry_order_not_imputed"
+  ],
+  "required_false_validations": [
+    "fastest_success_selection_performed",
+    "candidate_join_performed",
+    "blind_row_level_data_released"
+  ],
+  "boundary": "This contract does not test candidate-to-attempt ambiguity, executed-stage coverage, runtime-eligible action intersection, model quality, or BLIND outcomes.",
+  "training_allowed": false
+}
