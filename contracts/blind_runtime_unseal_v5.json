@@ -1,0 +1,88 @@
+{
+  "schema_version": "blind-runtime-unseal-v5",
+  "status": "SEALED_PENDING_INDEPENDENT_REVIEW",
+  "supersedes": {
+    "contract": "contracts/blind_runtime_unseal_v4.json",
+    "sha256": "39764f0e86dbe3648d52f5ee95f966281b262a02f65681dd3559dc8183dbe31d",
+    "reason": "v4 independent review failed because the runner did not enforce review/current gates, input and tool digests were not fully pinned, and release durability and path isolation were incomplete"
+  },
+  "purpose": "Consume at most one candidate-level BLIND join attempt to decide R06 and R07 and freeze one runtime-eligible HF/HMF action-space hash per BLIND circuit, without releasing runtime values, outcomes, paths, run IDs or candidate records.",
+  "scope": {
+    "split_contract": "contracts/data_split_v1.json",
+    "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+    "method_registry": "contracts/recommendation_method_registry_v1.json",
+    "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+    "blind_circuits": ["s9234", "s38584", "wb_dma"],
+    "blind_circuit_count": 3
+  },
+  "inputs": {
+    "job_spec": "contracts/blind_runtime_unseal_job_v5.json",
+    "job_spec_sha256": "773101f342cdfaebbbc352ec517dee1acc95c145df51a2898c47de8094915c1e",
+    "inventory_freeze_receipt": "data/manifests/blind_input_inventory_freeze_v1.json",
+    "inventory_freeze_receipt_sha256": "a157c399e783110c9776bf26cfaac656f85887f96d73a2c06d10c6d09cbada35",
+    "post_consumption_rule": "The exact six-file measurement digest, complete driver-log digest and driver-log count must match the preregistered job for every circuit before parsing or joining; any mismatch produces a sealed aggregate FAIL."
+  },
+  "toolchain": {
+    "artifact_sha256": {
+      "src/data/run_blind_unseal_v5.py": "97930be22136dd23fff2c87e75368051eb70e458955d50221c38e11ab1f2f11d",
+      "src/data/validate_blind_unseal_preflight_v5.py": "19a6f7e9c4b38ece821f56c11be15fd3e8a04e42a7bcad43de9c2b13aa773f24",
+      "src/data/build_runtime_join_v2.py": "0d69942aba67b93b1ec7fb8a92042cd5b26b4c9c803913ac557549430a69840d",
+      "src/data/recover_runtime_attempts.py": "5ba70908879a8eb53d11bc4901146db244e36e4fe704ab065411ce65ca95729f",
+      "src/data/runtime_schema.py": "a885e93a21968e9c31634b54c2295bfd315035f1d5cdf6a76a94f74ed37f1897"
+    },
+    "mismatch_action": "REFUSE_BEFORE_CONSUMPTION"
+  },
+  "preconditions": {
+    "required_assessment": "contracts/runtime_recovery_gate_assessment_v1.json",
+    "required_assessment_status": "BLOCKED",
+    "required_check_status": {
+      "R01": "PASS", "R02": "PASS", "R03": "PASS", "R04": "PASS",
+      "R05": "PASS", "R08": "PASS", "R09": "PASS", "R10": "PASS",
+      "R11": "PASS", "R12": "PASS", "R14": "PASS"
+    },
+    "only_checks_allowed_to_remain_nonpass_before_unseal": ["R06", "R07", "R13"],
+    "recompute_current_preflight_in_runner": true,
+    "p0_remains_blocked": true
+  },
+  "review_gate": {
+    "receipt": "data/manifests/blind_unseal_independent_review_v2.json",
+    "required_status": "PASS",
+    "execution_allowed_without_receipt": false,
+    "required_bindings": ["reviewed_commit", "contract_sha256", "reviewed_artifacts"],
+    "reviewer_scope": "READ_ONLY_NO_A_B_NO_BLIND"
+  },
+  "one_shot_protocol": {
+    "maximum_unseal_attempts": 1,
+    "replay_allowed": false,
+    "candidate_level_output_allowed": false,
+    "in_memory_candidate_rows_only": true,
+    "executed_stage_reference_definition": "Every HF/HMF stage-mode reference in 02_hf_coarse, 03_hmf_coarse and 04_integer_refine except contract-defined NOT_RUN. Repeatability NO_RESULT_PATH is outside the formal stages; a pathless formal stage-mode reference is MISSING_RESULT_PATH, remains in the denominator and fails R07.",
+    "output_directory_rule": "Use only the exact preregistered dedicated output directory. It must be a canonical non-symlink directory that is absent or empty before consumption; CONSUMED, receipt.json, receipt.json.sha256 and RELEASED are distinct fixed paths.",
+    "consumption_order": "After all local contracts, current assessment, tool hashes, job hashes, aggregate receipts and independent review PASS are verified, create and fsync CONSUMED with O_EXCL before the first BLIND input read.",
+    "required_release_artifacts": ["CONSUMED", "receipt.json", "receipt.json.sha256", "RELEASED"],
+    "release_order": "Durably publish receipt.json, then its external digest sidecar, then fsync an exclusive RELEASED completion marker. Consumers reject any state missing one artifact or failing the digest check.",
+    "crash_rule": "Any crash after durable CONSUMED consumes the sole attempt. An incomplete directory without RELEASED is INCOMPLETE_CONSUMED and must never be replayed.",
+    "failure_action": "After consumption, publish only an outcome-free aggregate FAIL envelope with no per-circuit partial values when possible; never retry."
+  },
+  "allowed_receipt": {
+    "circuit_row_fields": [
+      "circuit", "executed_stage_reference_count", "unique_runtime_join_count",
+      "missing_runtime_join_count", "ambiguous_runtime_join_count", "coverage_rate",
+      "frozen_runtime_eligible_action_space_sha256", "source_artifact_set_sha256"
+    ],
+    "envelope_fields": [
+      "schema_version", "status", "formal_runtime_membership_sha256",
+      "method_registry_sha256", "tool_set_sha256", "contract_sha256",
+      "circuits", "failure_code"
+    ],
+    "forbid_outcomes_runtime_paths_run_ids_and_candidate_records": true
+  },
+  "decision_rules": {
+    "R06": "PASS only when ambiguous_runtime_join_count is zero for every BLIND circuit.",
+    "R07": "PASS only when missing and ambiguous counts are zero, unique equals the formal denominator, and coverage is 1.0 for every BLIND circuit.",
+    "R13": "After reseal, bind every preregistered method to the exact same per-circuit action hashes with no method-specific exclusion.",
+    "p0": "P0 remains BLOCKED until an independent reassessment establishes R01 through R14 all PASS."
+  },
+  "training_allowed": false
+}

@@ -1,0 +1,44 @@
+{
+  "assessment_nonpass_checks": [
+    "R06",
+    "R07",
+    "R13"
+  ],
+  "blind_circuits": [
+    "s9234",
+    "s38584",
+    "wb_dma"
+  ],
+  "blind_data_read": false,
+  "candidate_join_performed": false,
+  "checks": {
+    "all_required_checks_pass": true,
+    "assessment_remains_blocked": true,
+    "authority_is_v5": true,
+    "blind_scope_and_order_match": true,
+    "candidate_output_forbidden": true,
+    "durable_four_artifact_release": true,
+    "inventory_freeze_digest_matches": true,
+    "job_spec_digest_matches": true,
+    "method_registry_digest_matches": true,
+    "method_registry_is_complete": true,
+    "no_blind_read_in_preflight": true,
+    "only_r06_r07_r13_nonpass": true,
+    "pathless_formal_rows_are_missing": true,
+    "review_required_before_execution": true,
+    "source_set_bindings_match": true,
+    "split_file_digest_matches": true,
+    "split_membership_digest_matches": true,
+    "toolchain_hashes_match": true,
+    "training_remains_forbidden": true,
+    "v4_is_preserved_and_pinned": true
+  },
+  "contract": "contracts/blind_runtime_unseal_v5.json",
+  "contract_sha256": "6908c6cbf3d6184879dc3437dfd3e4713f9df297f368ca7fc69f6288d575ac51",
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "inventory_freeze_receipt_sha256": "a157c399e783110c9776bf26cfaac656f85887f96d73a2c06d10c6d09cbada35",
+  "job_spec_sha256": "773101f342cdfaebbbc352ec517dee1acc95c145df51a2898c47de8094915c1e",
+  "schema_version": "blind-runtime-unseal-preflight-v5",
+  "status": "PASS",
+  "training_allowed": false
+}

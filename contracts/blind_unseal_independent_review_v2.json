@@ -1,0 +1,26 @@
+{
+  "schema_version": "blind-unseal-independent-review-v2",
+  "status": "PENDING_INDEPENDENT_REVIEW",
+  "authority_contract": "contracts/blind_runtime_unseal_v5.json",
+  "sealed_runner": "src/data/run_blind_unseal_v5.py",
+  "preflight_validator": "src/data/validate_blind_unseal_preflight_v5.py",
+  "required_reviewer_independence": "Reviewer must not modify files or access A/B/BLIND data. Any defect preserves v5 and returns remediation to the author under a new version.",
+  "required_checks": [
+    "current assessment and preflight are recomputed rather than trusting a supplied PASS file",
+    "independent PASS receipt is mandatory and bound to reviewed commit plus exact contract and tool hashes",
+    "split file, method registry, job specification, aggregate receipts and input inventory freeze hashes are exact",
+    "observed measurement and driver-log source sets must equal preregistered hashes after CONSUMED and before parsing",
+    "dedicated output directory and four fixed artifacts cannot alias or traverse symlinks",
+    "CONSUMED is O_EXCL and durably fsynced before the first BLIND read",
+    "receipt and sidecar are durably published before RELEASED and incomplete states are rejected",
+    "crash or failure after CONSUMED cannot be replayed",
+    "MISSING_RESULT_PATH is included in the formal R07 denominator and fails coverage",
+    "HF/HMF action key excludes F and outcomes",
+    "success and failure releases contain no runtime values outcomes paths run IDs or candidate rows",
+    "negative tests cover stale or forged gates, input substitution, tool substitution, path aliases and crash windows",
+    "real execution has not occurred during review"
+  ],
+  "review_receipt": "data/manifests/blind_unseal_independent_review_v2.json",
+  "execution_allowed_before_review_pass": false,
+  "training_allowed": false
+}

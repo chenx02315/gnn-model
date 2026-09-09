@@ -1,0 +1,32 @@
+{
+  "schema_version": "blind-input-inventory-freeze-v1",
+  "status": "PASS_AGGREGATE_ONLY",
+  "captured_on": "2026-09-09",
+  "host": "jiangchuanc@10.161.89.6",
+  "scope": "Exact file-set digests and counts only; no measurement rows, paths below the registered roots, run IDs, runtime values, outcomes, patterns or cycles were released.",
+  "digest_algorithm": {
+    "measurement_file_set_sha256": "SHA-256 of concatenated sha256sum lines in the fixed six-file order recorded by the v5 job specification.",
+    "driver_log_file_set_sha256": "SHA-256 of concatenated sha256sum lines for all *.driver.log files under the registered root, using ./ relative paths sorted bytewise.",
+    "measurement_file_count": 6
+  },
+  "circuits": {
+    "s9234": {
+      "measurement_file_set_sha256": "6fa277e0094f48498fa29ab2a7540e95942911c9e4fff248fbea3c196ddb763d",
+      "driver_log_file_set_sha256": "18667b93b640ec8a86da2e4e438211269f08e01ea9e9549325a5d1b05e939f9b",
+      "driver_log_count": 4520
+    },
+    "s38584": {
+      "measurement_file_set_sha256": "4c0b8402533f16ec00adedca389daef0ebb7f898981def6f387cf4553c535bce",
+      "driver_log_file_set_sha256": "a04f26a36ed3b12f5dfa07846ac12414b7d66d089e67a4afe908bfce4360ffe4",
+      "driver_log_count": 753
+    },
+    "wb_dma": {
+      "measurement_file_set_sha256": "6759d31cd1d8d076e7a785091e5d4cc26abbda68b7d9d2af18371ef006e8a36f",
+      "driver_log_file_set_sha256": "48cda86af2a5359f2e4b55c2fd7b27c6ce47fd2e0493127b8b2cf5ad95f1decf",
+      "driver_log_count": 2581
+    }
+  },
+  "blind_candidate_rows_read": false,
+  "candidate_join_performed": false,
+  "training_allowed": false
+}
