@@ -1,0 +1,86 @@
+{
+  "schema_version": "blind-runtime-unseal-v6",
+  "status": "SEALED_PENDING_INDEPENDENT_REVIEW",
+  "supersedes": {
+    "contract": "contracts/blind_runtime_unseal_v5.json",
+    "sha256": "6908c6cbf3d6184879dc3437dfd3e4713f9df297f368ca7fc69f6288d575ac51",
+    "reason": "v5 review failed because reviewed_commit was not resolved and hashed project modules were imported before digest verification"
+  },
+  "scope": {
+    "split_contract": "contracts/data_split_v1.json",
+    "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+    "method_registry": "contracts/recommendation_method_registry_v1.json",
+    "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+    "blind_circuits": ["s9234", "s38584", "wb_dma"]
+  },
+  "inputs": {
+    "job_spec": "contracts/blind_runtime_unseal_job_v6.json",
+    "job_spec_sha256": "36dcf1447c7822d4a55df1b4b4ffb6ca11d8264a5d98a7bc926f60b72d4c75e8",
+    "inventory_freeze_receipt": "data/manifests/blind_input_inventory_freeze_v1.json",
+    "inventory_freeze_receipt_sha256": "a157c399e783110c9776bf26cfaac656f85887f96d73a2c06d10c6d09cbada35"
+  },
+  "bootstrap": {
+    "only_permitted_entrypoint": "src/data/bootstrap_blind_unseal_v6.py",
+    "external_checksum_sidecar": "data/manifests/bootstrap_blind_unseal_v6.py.sha256",
+    "external_checksum_sidecar_sha256": "2221917d71099de918a7f10c98b5313720140993bc345c8d2781eba9629a22c3",
+    "required_launch_sequence": "From the clean Git checkout root on A: sha256sum -c data/manifests/bootstrap_blind_unseal_v6.py.sha256, and only on PASS run python3 src/data/bootstrap_blind_unseal_v6.py --bundle-root .",
+    "required_git_state": "A complete clean Git checkout whose HEAD contains the PASS review receipt and descends from reviewed_commit; every reviewed artifact and contract blob at reviewed_commit must match its frozen digest.",
+    "reviewed_artifact_sha256": {
+      "src/data/bootstrap_blind_unseal_v6.py": "9b38925f4225d30f1dfe14f0e8d13bd729a90ad9568a58afc600dd78d178e0dd",
+      "src/data/run_blind_unseal_v6.py": "0e12032e22c3373bc5e0fa7c9a6daccee4c837e95665b45bf23e7b3e926a0575",
+      "src/data/run_blind_unseal_v5.py": "97930be22136dd23fff2c87e75368051eb70e458955d50221c38e11ab1f2f11d",
+      "src/data/validate_blind_unseal_preflight_v5.py": "19a6f7e9c4b38ece821f56c11be15fd3e8a04e42a7bcad43de9c2b13aa773f24",
+      "src/data/build_runtime_join_v2.py": "0d69942aba67b93b1ec7fb8a92042cd5b26b4c9c803913ac557549430a69840d",
+      "src/data/recover_runtime_attempts.py": "5ba70908879a8eb53d11bc4901146db244e36e4fe704ab065411ce65ca95729f",
+      "src/data/runtime_schema.py": "a885e93a21968e9c31634b54c2295bfd315035f1d5cdf6a76a94f74ed37f1897"
+    },
+    "pre_import_rule": "The stdlib-only bootstrap verifies its externally checked digest, every reviewed artifact, the PASS receipt, resolved reviewed commit, commit ancestry and committed blob digests before dynamically importing any project module.",
+    "direct_runner_execution_allowed": false
+  },
+  "preconditions": {
+    "required_assessment": "contracts/runtime_recovery_gate_assessment_v1.json",
+    "required_assessment_status": "BLOCKED",
+    "required_check_status": {
+      "R01": "PASS", "R02": "PASS", "R03": "PASS", "R04": "PASS",
+      "R05": "PASS", "R08": "PASS", "R09": "PASS", "R10": "PASS",
+      "R11": "PASS", "R12": "PASS", "R14": "PASS"
+    },
+    "only_checks_allowed_to_remain_nonpass_before_unseal": ["R06", "R07", "R13"]
+  },
+  "review_gate": {
+    "receipt": "data/manifests/blind_unseal_independent_review_v3.json",
+    "required_status": "PASS",
+    "execution_allowed_without_receipt": false,
+    "required_commit_rule": "reviewed_commit must resolve as a commit in the deployed checkout, be an ancestor of HEAD, and contain byte-exact reviewed artifact and contract blobs"
+  },
+  "one_shot_protocol": {
+    "maximum_unseal_attempts": 1,
+    "replay_allowed": false,
+    "candidate_level_output_allowed": false,
+    "executed_stage_reference_definition": "Every HF/HMF stage-mode reference in the three formal search stages except contract-defined NOT_RUN; MISSING_RESULT_PATH remains in the denominator and fails R07.",
+    "source_set_rule": "After durable CONSUMED and before parsing, exact measurement and driver-log digests and counts must match the preregistered v6 job.",
+    "required_release_artifacts": ["CONSUMED", "receipt.json", "receipt.json.sha256", "RELEASED"],
+    "consumer_rule": "Reject unless all four canonical non-symlink artifacts exist and CONSUMED, receipt schema and allowed fields, sidecar digest, RELEASED receipt digest and both contract/tool bindings are exact.",
+    "crash_rule": "Any state after CONSUMED without a semantically verified RELEASED is INCOMPLETE_CONSUMED and cannot be replayed."
+  },
+  "allowed_receipt": {
+    "circuit_row_fields": [
+      "circuit", "executed_stage_reference_count", "unique_runtime_join_count",
+      "missing_runtime_join_count", "ambiguous_runtime_join_count", "coverage_rate",
+      "frozen_runtime_eligible_action_space_sha256", "source_artifact_set_sha256"
+    ],
+    "envelope_fields": [
+      "schema_version", "status", "formal_runtime_membership_sha256",
+      "method_registry_sha256", "tool_set_sha256", "contract_sha256",
+      "circuits", "failure_code"
+    ],
+    "forbid_runtime_outcome_path_run_id_candidate_fields": true
+  },
+  "decision_rules": {
+    "R06": "PASS only with zero ambiguity for all three circuits.",
+    "R07": "PASS only with zero missing and ambiguity, unique equal denominator and coverage 1.0 for all three circuits.",
+    "R13": "After reseal bind every preregistered method to the same frozen per-circuit action hashes."
+  },
+  "training_allowed": false
+}

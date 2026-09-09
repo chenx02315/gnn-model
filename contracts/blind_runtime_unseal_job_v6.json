@@ -1,0 +1,59 @@
+{
+  "schema_version": "blind-runtime-unseal-job-v6",
+  "status": "PREREGISTERED_SEALED",
+  "authority_contract": "contracts/blind_runtime_unseal_v6.json",
+  "inventory_freeze_receipt": "data/manifests/blind_input_inventory_freeze_v1.json",
+  "measurement_files": [
+    "01_single_boundaries/measurements.tsv",
+    "02_hf_coarse/measurements.tsv",
+    "03_hmf_coarse/measurements.tsv",
+    "04_integer_refine/hf_measurements.tsv",
+    "04_integer_refine/hmf_measurements.tsv",
+    "05_repeatability/measurements.tsv"
+  ],
+  "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/11_blind_runtime_unseal_v6_one_shot",
+  "circuits": [
+    {
+      "circuit": "s9234", "family": "iscas89_s9234", "phase": "phase3",
+      "cohort": "phase3_gnu_time", "environment_cohort": "phase3_20260811_A_environment_unverified",
+      "measurements_root": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/10_circuits/s9234/10_coverage95_v3_merge_reclassify",
+      "log_root": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/10_circuits/s9234/10_coverage95_v3_merge_reclassify",
+      "evidence_root": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A",
+      "aggregate_precondition_receipt": "data/manifests/blind_attempt_preconditions_v1/s9234.json",
+      "aggregate_precondition_receipt_sha256": "f1d66562bbf0dd3dc8629fdf8e36b07746bd6177e9bb7d3862c8b7bde6d9106b",
+      "source_inventory_manifest_sha256": "cd226c8609cb95cb3f72cd39c2c1f3f41bd1791801870876756d5a2d3362826",
+      "measurement_file_set_sha256": "6fa277e0094f48498fa29ab2a7540e95942911c9e4fff248fbea3c196ddb763d",
+      "driver_log_file_set_sha256": "18667b93b640ec8a86da2e4e438211269f08e01ea9e9549325a5d1b05e939f9b",
+      "expected_driver_log_count": 4520
+    },
+    {
+      "circuit": "s38584", "family": "iscas89_s38584", "phase": "phase2",
+      "cohort": "phase2_gnu_time", "environment_cohort": "phase2_20260808_A_environment_unverified",
+      "measurements_root": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/10_circuits/s38584/10_coverage95_v1",
+      "log_root": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/10_circuits/s38584/10_coverage95_v1",
+      "evidence_root": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A",
+      "aggregate_precondition_receipt": "data/manifests/blind_attempt_preconditions_v1/s38584.json",
+      "aggregate_precondition_receipt_sha256": "8e647b0445745425702f6e14d48fec2bac76a80f20c2f85e8228cff86e144b20",
+      "source_inventory_manifest_sha256": "73fc713b1939fd2b2928d68bfd012bc9f52b045102c379c07a75a3f23c152a09",
+      "measurement_file_set_sha256": "4c0b8402533f16ec00adedca389daef0ebb7f898981def6f387cf4553c535bce",
+      "driver_log_file_set_sha256": "a04f26a36ed3b12f5dfa07846ac12414b7d66d089e67a4afe908bfce4360ffe4",
+      "expected_driver_log_count": 753
+    },
+    {
+      "circuit": "wb_dma", "family": "iwls_wb_dma", "phase": "phase4",
+      "cohort": "phase4_v2_r1_blind_gnu_time_precondition_v1",
+      "environment_cohort": "phase4_20260825_A_phase4_v2_base_environment_unverified",
+      "measurements_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma/10_coverage95_phase4_v2",
+      "log_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma/10_coverage95_phase4_v2",
+      "evidence_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A",
+      "aggregate_precondition_receipt": "data/manifests/blind_attempt_preconditions_v1/wb_dma.json",
+      "aggregate_precondition_receipt_sha256": "f889f88663cd86c8320b92745b117dd4ff632635f63703b2e953ff143c60ee47",
+      "source_inventory_manifest_sha256": "4755a03a34364308529339a853a8cd6476bc65e836f913fd0c27f8f302db3f4f",
+      "measurement_file_set_sha256": "6759d31cd1d8d076e7a785091e5d4cc26abbda68b7d9d2af18371ef006e8a36f",
+      "driver_log_file_set_sha256": "48cda86af2a5359f2e4b55c2fd7b27c6ce47fd2e0493127b8b2cf5ad95f1decf",
+      "expected_driver_log_count": 2581
+    }
+  ],
+  "candidate_join_performed": false,
+  "training_allowed": false
+}

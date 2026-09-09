@@ -5,17 +5,19 @@
   "assessment_status": "BLOCKED",
   "assessment_scope": "evidence available through Phase4 nonblind runtime recovery r6 plus aggregate-only BLIND attempt preconditions; BLIND candidate-level artifacts remain sealed",
   "blind_unseal_preflight": {
-    "status": "V5_INDEPENDENT_REVIEW_FAIL",
-    "contract": "contracts/blind_runtime_unseal_v5.json",
-    "receipt": "data/manifests/blind_runtime_unseal_preflight_v5.json",
+    "status": "V6_IMPLEMENTED_TESTED_PENDING_INDEPENDENT_REVIEW",
+    "contract": "contracts/blind_runtime_unseal_v6.json",
+    "receipt": "BOOTSTRAP_RECOMPUTES_CURRENT_GATE_NO_STORED_PASS_TRUSTED",
     "superseded_receipts": [
       "data/manifests/blind_runtime_unseal_preflight_v3.json",
-      "data/manifests/blind_runtime_unseal_preflight_v4.json"
+      "data/manifests/blind_runtime_unseal_preflight_v4.json",
+      "data/manifests/blind_runtime_unseal_preflight_v5.json"
     ],
-    "sealed_runner": "src/data/run_blind_unseal_v5.py",
-    "sealed_runner_status": "REVIEW_FAILED_NOT_EXECUTED",
+    "sealed_runner": "src/data/bootstrap_blind_unseal_v6.py",
+    "sealed_runner_status": "BOOTSTRAP_AND_RUNNER_IMPLEMENTED_TESTED_NOT_EXECUTED_PENDING_REVIEW",
     "failed_v4_independent_review_receipt": "data/manifests/blind_unseal_independent_review_v1.json",
     "required_v5_independent_review_receipt": "data/manifests/blind_unseal_independent_review_v2.json",
+    "required_v6_independent_review_receipt": "data/manifests/blind_unseal_independent_review_v3.json",
     "blind_data_read": false,
     "candidate_join_performed": false
   },
@@ -79,8 +81,8 @@
     }
   },
   "next_gates": [
-    "preserve the v5 review FAIL and implement a v6 minimal bootstrap that verifies commit and tool integrity before importing project modules",
-    "independently review the v6 bootstrap runner and semantic release verifier, then obtain an exact PASS receipt before any BLIND read",
+    "independently review the v6 stdlib-only bootstrap commit binding pre-import integrity gate and semantic release verifier",
+    "obtain an exact v6 PASS receipt before creating the A-side clean Git checkout or reading any candidate-level BLIND data",
     "only after that PASS execute the model-free one-shot BLIND coverage audit exactly once and release only its atomic three-circuit aggregate receipt",
     "after the one-shot coverage audit freeze the common runtime-eligible action space and rerun this assessment",
     "start training only if every R01-R14 status is PASS"

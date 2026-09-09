@@ -1,0 +1,23 @@
+{
+  "schema_version": "blind-unseal-independent-review-v3",
+  "status": "PENDING_INDEPENDENT_REVIEW",
+  "authority_contract": "contracts/blind_runtime_unseal_v6.json",
+  "required_checks": [
+    "external bootstrap checksum is pinned and the required launch sequence checks it before Python execution",
+    "bootstrap imports only Python standard library modules until all artifact and review bindings pass",
+    "reviewed_commit resolves in the deployed Git checkout is an ancestor of HEAD and contains exact contract and reviewed artifact blobs",
+    "current working artifacts are non-symlink files with exact reviewed hashes",
+    "direct runner execution refuses without importing project helpers",
+    "split registry job freeze aggregate receipts current R01-R14 statuses and training seal are recomputed before consumption",
+    "source sets are rehashed after durable CONSUMED and before parsing",
+    "CONSUMED receipt sidecar and RELEASED are durable distinct and non-replayable",
+    "release verification checks CONSUMED content contract/tool bindings receipt schema allowed fields sidecar digest RELEASED binding and exact circuit order",
+    "MISSING_RESULT_PATH remains in the R07 denominator",
+    "no candidate-level runtime outcome path or run ID is released",
+    "negative tests cover arbitrary commit unresolved commit modified pre-import helper direct runner source substitution and semantic release splicing",
+    "review performs no A/B/BLIND access and no real execution"
+  ],
+  "review_receipt": "data/manifests/blind_unseal_independent_review_v3.json",
+  "execution_allowed_before_review_pass": false,
+  "training_allowed": false
+}
