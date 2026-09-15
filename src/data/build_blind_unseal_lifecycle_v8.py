@@ -21,6 +21,7 @@ MEASUREMENT_FILES = (
     "04_integer_refine/hmf_measurements.tsv", "05_repeatability/measurements.tsv",
 )
 BLIND_CIRCUITS = ("s9234", "s38584", "wb_dma")
+EXPECTED_COMMAND_ARGV = ["python3", "src/data/run_blind_unseal_v8.py", "--bundle-root", "."]
 JOB_SPEC_FIELDS = (
     "schema_version", "status", "contract_sha256", "job_template_sha256",
     "registration_receipt", "registration_receipt_sha256", "registration",
@@ -83,7 +84,7 @@ def _template_shape(value):
     _require(value["schema_version"] == "blind-runtime-unseal-job-v8" and value["status"] == "FINAL_HELD_JOB_TEMPLATE", "TEMPLATE_STATE")
     r = value["registration"]
     _require(r["initial_scheduler_state"] == "PSUSP" and all(r[x] is False for x in ("array_allowed", "retry_allowed", "requeue_allowed", "rerun_allowed")), "TEMPLATE_OPTIONS")
-    _require(isinstance(r["command_argv"], list) and r["command_argv"], "TEMPLATE_ARGV")
+    _require(r["command_argv"] == EXPECTED_COMMAND_ARGV, "TEMPLATE_ARGV")
     for key in ("job_id", "git_commit", "queue", "resource_request", "cwd", "stdout_path", "stderr_path"): _text(r[key], "TEMPLATE_" + key.upper())
     _require(JOB_RE.match(r["job_id"]) is not None and COMMIT_RE.match(r["git_commit"]) is not None, "TEMPLATE_ID_OR_COMMIT")
     _require(value["lifecycle"]["implementation_freeze_commit"] == r["git_commit"] and value["lifecycle"]["held_job_id"] == r["job_id"], "TEMPLATE_LIFECYCLE_BINDING")
@@ -129,6 +130,7 @@ def materialize_final_template(draft_template, held_job, circuit_roots):
     _draft_measurement_shape(draft_template.get("measurement_files"))
     _require(draft_template.get("circuits") == [], "TEMPLATE_DRAFT_CIRCUITS")
     _exact(held_job, ("job_id", "git_commit", "command_argv", "queue", "resource_request", "cwd", "stdout_path", "stderr_path"), "HELD_JOB_FIELDS")
+    _require(held_job["command_argv"] == EXPECTED_COMMAND_ARGV, "HELD_JOB_ARGV")
     _require(isinstance(circuit_roots, dict) and set(circuit_roots) == set(BLIND_CIRCUITS), "CIRCUIT_ROOTS")
     circuits = [{"name": name, "root": circuit_roots[name]} for name in BLIND_CIRCUITS]
     _circuit_shape(circuits)

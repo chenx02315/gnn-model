@@ -30,6 +30,7 @@ CONTROL_ARTIFACTS = frozenset((
 ))
 MARKERS = {"run_id": re.compile(r"^MAPPED_COMMON_ATPG_RUN_ID=(.+)$", re.M), "mode": re.compile(r"^MAPPED_COMMON_ATPG_MODE=(.+)$", re.M), "atpg_status": re.compile(r"^MAPPED_COMMON_ATPG_STATUS=(.+)$", re.M), "user_s": re.compile(r"^\s*User time \(seconds\):\s*(\S+)", re.M), "system_s": re.compile(r"^\s*System time \(seconds\):\s*(\S+)", re.M), "elapsed": re.compile(r"^\s*Elapsed \(wall clock\) time \(h:mm:ss or m:ss\):\s*(\S+)", re.M), "exit_status": re.compile(r"^\s*Exit status:\s*(\S+)", re.M)}
 TIMEOUT = re.compile(r"(?:^|\n)(?:TIMEOUT|TIMED_OUT|KILLED_FOR_TIMEOUT)(?:\b|=)", re.I)
+EXPECTED_COMMAND_ARGV = ["python3", "src/data/run_blind_unseal_v8.py", "--bundle-root", "."]
 # This is deliberately an in-memory object, rather than a serialisable
 # string.  The CONSUMED file is durable audit evidence, but it is not a
 # capability: a caller which merely writes a look-alike JSON file must not be
@@ -306,7 +307,7 @@ def validate_bundle(root):
         raise Refusal("REGISTRATION_SCHEMA")
     for key in ("job_id","owner","submission_host","submit_time_raw","reviewed_commit","queue","resource_request","cwd","stdout_path","stderr_path"):
         if registration.get(key) in (None,""): raise Refusal("REGISTRATION_FIELD_"+key.upper())
-    if registration.get("job_id") != str(template.get("job_id")) or registration.get("reviewed_commit") != template.get("git_commit") or registration.get("normalized_argv") != template.get("command_argv"):
+    if registration.get("job_id") != str(template.get("job_id")) or registration.get("reviewed_commit") != template.get("git_commit") or registration.get("normalized_argv") != template.get("command_argv") or registration.get("normalized_argv") != EXPECTED_COMMAND_ARGV:
         raise Refusal("REGISTRATION_TEMPLATE_MAPPING")
     argv_digest=hashlib.sha256(json.dumps(registration["normalized_argv"],ensure_ascii=True,separators=(",",":")).encode("utf-8")).hexdigest()
     if registration.get("normalized_argv_sha256") != argv_digest or not all(isinstance(x,str) and x and x==x.strip() and "\n" not in x and "\r" not in x and "^" not in x for x in registration["normalized_argv"]): raise Refusal("REGISTRATION_ARGV")

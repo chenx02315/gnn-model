@@ -12,6 +12,7 @@ import subprocess
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$")
 JOB_RE = re.compile(r"^[1-9][0-9]*$")
+EXPECTED_COMMAND_ARGV = ["python3", "src/data/run_blind_unseal_v8.py", "--bundle-root", "."]
 FIELDS = (
     "schema_version", "status", "job_id", "owner", "submission_host", "submit_time_raw", "reviewed_commit",
     "contract_sha256", "protocol_sha256", "gate_snapshot_sha256", "runner_sha256", "job_template_sha256", "normalized_argv",
@@ -90,6 +91,7 @@ def _validate_job_template(job_template, receipt):
     _require(registration["job_id"] == receipt["job_id"], "JOB_TEMPLATE_JOB_ID")
     _require(registration["git_commit"] == receipt["reviewed_commit"], "JOB_TEMPLATE_GIT_COMMIT")
     _require(registration["command_argv"] == receipt["normalized_argv"], "JOB_TEMPLATE_ARGV")
+    _require(registration["command_argv"] == EXPECTED_COMMAND_ARGV, "EXPECTED_COMMAND_ARGV")
     for key in ("queue", "resource_request", "cwd", "stdout_path", "stderr_path"):
         _require(registration[key] == receipt[key], "JOB_TEMPLATE_" + key)
     _require(registration["initial_scheduler_state"] == "PSUSP", "JOB_TEMPLATE_NOT_PSUSP")
@@ -144,6 +146,7 @@ def validate_registration(receipt, raw_bjobs, expected_job_id, job_template_path
     for key in ("contract_sha256", "protocol_sha256", "gate_snapshot_sha256", "runner_sha256", "job_template_sha256", "normalized_argv_sha256"):
         _require(SHA256_RE.match(receipt[key] or "") is not None, "DIGEST_" + key)
     argv = receipt["normalized_argv"]
+    _require(argv == EXPECTED_COMMAND_ARGV, "EXPECTED_RECEIPT_ARGV")
     _require(isinstance(argv, list) and argv and all(isinstance(x, str) and x and x == x.strip() and "\n" not in x and "\r" not in x and "^" not in x for x in argv), "NORMALIZED_ARGV")
     _require(receipt["normalized_argv_sha256"] == _argv_sha256(argv), "NORMALIZED_ARGV_DIGEST")
     _require(raw["command"] == " ".join(argv), "BJOBS_COMMAND")

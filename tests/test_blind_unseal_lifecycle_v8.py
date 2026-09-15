@@ -84,6 +84,11 @@ class BlindUnsealLifecycleV8Test(unittest.TestCase):
         self.assertEqual(review["reviewed_artifacts"], self.artifacts)
         self.assertNotIn(b'":null', tb + cb + rb + jb + vb)
 
+    def test_adversarial_argv_is_rejected(self):
+        bad = dict(self.held); bad["command_argv"] = ["python3", "-c", "print(123)"]
+        with self.assertRaises(LifecycleError):
+            materialize_final_template(self.draft_template, bad, self.roots)
+
     def test_synthetic_e2e_calls_runner_validate_bundle(self):
         self._bundle()
         old_bytecode = sys.dont_write_bytecode; sys.dont_write_bytecode = True
