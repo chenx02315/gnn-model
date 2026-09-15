@@ -1,0 +1,8 @@
+{
+  "schema_version": "blind-runtime-unseal-job-v8",
+  "status": "DRAFT_NO_EXECUTION",
+  "registration": {"job_id": null, "git_commit": null, "initial_scheduler_state": "PSUSP", "array_allowed": false, "retry_allowed": false, "requeue_allowed": false, "rerun_allowed": false, "command_argv": ["python3", "src/data/run_blind_unseal_v8.py", "--bundle-root", "."], "queue": null, "resource_request": null, "cwd": null, "stdout_path": null, "stderr_path": null},
+  "measurement_files": ["01_single_boundaries/measurements.tsv", "02_hf_coarse/measurements.tsv", "03_hmf_coarse/measurements.tsv", "04_integer_refine/hf_measurements.tsv", "04_integer_refine/hmf_measurements.tsv", "05_repeatability/measurements.tsv"],
+  "circuits": [],
+  "template_rule": "Non-executable draft. The implementation-freeze commit is made first. Only after bsub -H and raw bjobs capture may a one-time FINAL_HELD_JOB_TEMPLATE be materialized. The materializer must receive exactly the three ordered BLIND circuit roots (s9234, s38584, wb_dma); each final circuit is exactly {name,root}, with a nonempty absolute unique root. The final template never contains a receipt or its own digest, preventing a digest cycle."
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "blind-runtime-unseal-registration-v8",
+  "status": "DRAFT_NO_EXECUTION",
+  "purpose": "Fail-closed aggregate registration receipt for exactly one held non-array LSF job. The validator derives scheduler state and duplicate-job facts from an A-side raw bjobs capture; it does not trust hand-filled booleans or counts.",
+  "raw_capture_storage_rule": "The command output remains only in the A-side evidence directory. Git contains this schema and aggregate SHA-256 values, never bjobs rows.",
+  "real_lsf_fixture_status": "REAL_LSF_9_1_RESUME_FIXTURE_PASS",
+  "real_lsf_fixture_manifest": "data/manifests/lsf_probe_v8_20260910.json",
+  "real_lsf_fixture_capture": "A-side no-BLIND /bin/sleep 2 probe verified the custom bjobs row and separate no-JOBID global bjobs snapshot on LSF 9.1.3.0. submit_time is opaque scheduler text and is retained byte-for-byte as submit_time_raw, never parsed as ISO-Z.",
+  "frozen_bjobs_capture_command": "bjobs -noheader -o \"jobid stat user queue command from_host submit_time effective_resreq output_file error_file sub_cwd delimiter='^'\" JOBID",
+  "raw_bjobs_line_rule": "A target capture must contain exactly one nonempty line. Splitting it on '^' must yield exactly 11 printed LSF fields; LSF 9.1 does not emit a required empty terminal delimiter field. No field may contain '^' or untrimmed whitespace.",
+  "receipt_status": "REGISTERED_HELD",
+  "exact_top_level_fields": [
+    "schema_version", "status", "job_id", "owner", "submission_host", "submit_time_raw", "reviewed_commit", "contract_sha256", "protocol_sha256", "gate_snapshot_sha256", "runner_sha256", "job_template_sha256", "normalized_argv", "normalized_argv_sha256", "queue", "resource_request", "cwd", "stdout_path", "stderr_path", "raw_bjobs_capture_sha256", "raw_global_bjobs_capture_sha256"
+  ],
+  "job_template_mapping": {
+    "contracts/blind_runtime_unseal_v8.json bytes": "contract_sha256",
+    "contracts/blind_runtime_unseal_job_v8_template.json bytes": "job_template_sha256",
+    "registration.job_id": "job_id",
+    "registration.git_commit": "reviewed_commit",
+    "registration.command_argv": "normalized_argv",
+    "registration.queue": "queue",
+    "registration.resource_request": "resource_request",
+    "registration.cwd": "cwd",
+    "registration.stdout_path": "stdout_path",
+    "registration.stderr_path": "stderr_path",
+    "registration.initial_scheduler_state": "derived from raw bjobs stat and must be PSUSP",
+    "registration.array_allowed/retry_allowed/requeue_allowed/rerun_allowed": "derived fail-closed requirements; these booleans are not copied into the receipt"
+  },
+  "validation": {
+    "validator": "src/data/validate_blind_unseal_registration_v8.py",
+    "draft_and_final_rule": "DRAFT_NO_EXECUTION is documentation only and cannot validate a registration. A final registration requires FINAL_HELD_JOB_TEMPLATE and FINAL_HELD_UNSEAL_REVIEW_REQUIRED with no null or DRAFT/PENDING digest value.",
+    "required_derived_facts": ["job id equals expected id", "PSUSP", "non-array id", "one target raw bjobs row", "fixed command argv", "raw identity/path/resource fields equal receipt", "contract and job-template file byte SHA-256 values equal receipt", "global held-job snapshot hash is receipt-bound", "global held-job snapshot has exactly one target identity while unrelated held jobs remain allowed"],
+    "cycle_rule": "Order is implementation-freeze commit -> bsub -H -> raw bjobs capture -> final template -> stable final contract -> registration receipt -> final job spec -> independent review -> clean commit -> bresume. The receipt binds the already-final contract and template only. A final job spec may bind receipt SHA-256, and review may bind job-spec SHA-256. No artifact hashes a future artifact that hashes it back.",
+    "argv_rule": "normalized_argv_sha256 is SHA-256 of canonical JSON with separators ',' and ':'."
+  }
+}

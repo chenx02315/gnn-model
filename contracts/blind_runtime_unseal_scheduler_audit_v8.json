@@ -1,0 +1,23 @@
+{
+  "schema_version": "blind-runtime-unseal-scheduler-audit-v8",
+  "status": "PENDING_TEMPLATE",
+  "purpose": "Fail-closed post-run aggregate LSF audit. RELEASED_VERIFIED is valid only when validators independently parse the registered job's raw bjobs/bhist/bacct captures, scan stdout/stderr content, and recompute all four release-artifact digests.",
+  "raw_capture_storage_rule": "Raw bjobs, bhist, bacct, stdout and stderr captures remain only in the A-side evidence directory. Git stores only aggregate receipt SHA-256 values.",
+  "real_lsf_fixture_status": "REAL_LSF_9_1_RESUME_FIXTURE_PASS",
+  "real_lsf_fixture_manifest": "data/manifests/lsf_probe_v8_20260910.json",
+  "real_lsf_fixture_capture": "A-side no-BLIND /bin/sleep 2 probe captured LSF 9.1.3.0 held -> exactly one bresume -> DONE evidence. bhist uses Signal <CONT> requested, Waiting for scheduling after resumed, Starting (Pid), and Done successfully; bacct uses Status <DONE> plus Completed <done>.",
+  "frozen_history_capture_commands": {"bhist": "bhist -l JOBID", "bacct": "bacct -l JOBID"},
+  "history_capture_metadata_rule": "Each bhist and bacct capture begins with exactly three ASCII metadata lines: # registered_at_utc=<UTC>, # resumed_at_utc=<UTC>, # captured_at_utc=<UTC>; remaining bytes are unmodified command output. Wrapper UTC values agree across captures, establish only control-operation order and the capture-resume HIST_HOURS window, and must not be numerically equated to LSF event-text timestamps because host clock/timezone skew is allowed.",
+  "HIST_HOURS": 5,
+  "receipt_status": "RELEASED_VERIFIED",
+  "exact_top_level_fields": [
+    "schema_version", "status", "job_id", "registration_receipt_sha256", "protocol_sha256", "raw_bjobs_capture_sha256", "raw_global_bjobs_capture_sha256", "bhist_raw_capture_sha256", "bacct_raw_capture_sha256", "stdout_capture_sha256", "stderr_capture_sha256", "four_artifact_sha256"
+  ],
+  "four_artifact_keys": ["CONSUMED", "receipt.json", "receipt.json.sha256", "RELEASED"],
+  "validation": {
+    "validator": "src/data/validate_blind_unseal_scheduler_audit_v8.py",
+    "pending_template_rule": "A template, pending status, late/missing metadata, field drift, or raw parser failure fails closed.",
+    "derived_requirements": ["same registered job id", "target Job <ID> section has exactly one Signal <CONT> requested and one Waiting for scheduling after resumed", "target Job <ID> section has exactly one Starting (Pid) and one Done successfully or Exited terminal", "bacct Status <DONE|EXIT> agrees with Completed <done|exit>", "target section has no rerun/requeue/retry keyword", "foreign Job sections are not globally counted", "wrapper capture within HIST_HOURS without event-text clock equality", "stdout/stderr candidate leak scan PASS", "canonical four-artifact verification PASS"],
+    "same_job_rule": "The expected job id and validated registration receipt bind every raw capture. Counts and PASS states are derived, never accepted as receipt fields."
+  }
+}

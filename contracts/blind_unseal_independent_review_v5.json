@@ -1,0 +1,13 @@
+{
+  "schema_version": "blind-unseal-independent-review-v5",
+  "status": "DRAFT_NO_EXECUTION",
+  "execution_allowed": false,
+  "blind_data_read": false,
+  "real_unseal_executed": false,
+  "future_pass_exact_top_level_fields": ["schema_version", "status", "execution_allowed", "blind_data_read", "real_unseal_executed", "contract_sha256", "registration_receipt_sha256", "job_spec_sha256", "output_root", "job_id", "reviewed_commit", "protocol_sha256", "gate_snapshot_sha256", "scheduler_fixture_manifest_sha256", "normalized_argv", "raw_bjobs_capture_sha256", "raw_global_bjobs_capture_sha256", "queue", "resource_request", "cwd", "stdout_path", "stderr_path", "reviewed_artifacts", "registration_validator_pass", "psusp_verified", "nonarray_verified", "no_retry", "no_requeue", "no_rerun", "no_blind_parse", "no_blind_output"],
+  "future_pass_must_bind": ["registration_receipt_sha256", "job_spec_sha256", "output_root", "job_id", "reviewed_commit", "contract_sha256", "protocol_sha256", "gate_snapshot_sha256", "scheduler_fixture_manifest_sha256", "normalized_argv", "raw_bjobs_capture_sha256", "raw_global_bjobs_capture_sha256", "queue", "resource_request", "cwd", "stdout_path", "stderr_path", "reviewed_artifacts"],
+  "future_pass_boolean_requirements": {"execution_allowed": true, "blind_data_read": false, "real_unseal_executed": false, "registration_validator_pass": true, "psusp_verified": true, "nonarray_verified": true, "no_retry": true, "no_requeue": true, "no_rerun": true, "no_blind_parse": true, "no_blind_output": true},
+  "lsf_fixture_manifest": "data/manifests/lsf_probe_v8_20260910.json",
+  "lifecycle_required_order": ["implementation_freeze_commit", "bsub_H", "raw_bjobs_capture", "final_template", "final_contract", "registration_receipt", "final_job_spec", "independent_review", "clean_commit", "bresume"],
+  "review_precondition": "The review is PASS only after a stable FINAL_HELD_UNSEAL_REVIEW_REQUIRED contract, FINAL_HELD_JOB_TEMPLATE, REGISTERED_HELD receipt, and FINAL_HELD_JOB_SPEC are all byte-bound. The review itself is committed before bresume."
+}

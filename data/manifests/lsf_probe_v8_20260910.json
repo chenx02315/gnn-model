@@ -1,0 +1,28 @@
+{
+  "schema_version": "lsf-probe-v8-20260910",
+  "status": "REAL_LSF_9_1_RESUME_FIXTURE_PASS",
+  "evidence_scope": "A-side no-BLIND scheduler-control fixture only; raw captures remain A-only",
+  "a_side_evidence_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/lsf_probe_v8_20260910",
+  "job_id": "388728",
+  "lsf_version": "9.1.3.0",
+  "probe_command": "/bin/sleep 2",
+  "observed_lifecycle": "held then exactly one bresume then DONE",
+  "resumed_marker": {"filename": "resumed_at_utc.txt", "content": "2026-09-10T07:08:05Z"},
+  "aggregate_capture_sha256": {
+    "target_bjobs": "aaef0f30f0695539118d4e0325098fa08316571316520b66cad98641a0da265d",
+    "global_bjobs": "aaef0f30f0695539118d4e0325098fa08316571316520b66cad98641a0da265d",
+    "bhist": "8d8b917c6f57b2014ee54b44f002b8471f9272cb278a4a2eba1f120721628057",
+    "bacct": "7eecb7c47fdd066ae85d12b20884d9429aa2e4a0d9cdf728230f0f945e4f7439",
+    "stdout": "d2060dedf10e942738e33c337628add71572a9478bf2c7ce8462f5f23b2942b1",
+    "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "hash_representation": "Complete SHA-256 digests are recorded here; raw bytes remain A-side only.",
+  "semantic_observations": [
+    "custom bjobs delimiter rows have exactly 11 fields and no trailing delimiter field",
+    "bhist resume evidence is Signal <CONT> requested plus Waiting for scheduling after resumed",
+    "bhist start is Starting (Pid) and successful terminal is Done successfully",
+    "bacct successful terminal is Status <DONE> plus Completed <done>",
+    "wrapper UTC metadata establishes control-operation order and the five-hour capture window only; it is not numerically compared with LSF event-text timestamps"
+  ],
+  "raw_storage_rule": "No raw scheduler, stdout, stderr, candidate, result-path, run-id, or runtime rows are mirrored into Git."
+}
