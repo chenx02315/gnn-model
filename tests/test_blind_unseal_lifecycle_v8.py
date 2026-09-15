@@ -17,8 +17,14 @@ from build_blind_unseal_lifecycle_v8 import (LifecycleError, build_final_job_spe
 
 class BlindUnsealLifecycleV8Test(unittest.TestCase):
     def setUp(self):
-        self.draft_template = json.loads((ROOT / "contracts" / "blind_runtime_unseal_job_v8_template.json").read_text())
-        self.draft_contract = json.loads((ROOT / "contracts" / "blind_runtime_unseal_v8.json").read_text())
+        materialized_contract = json.loads((ROOT / "contracts" / "blind_runtime_unseal_v8.json").read_text())
+        freeze_commit = materialized_contract.get("lifecycle", {}).get("implementation_freeze_commit")
+        if freeze_commit:
+            self.draft_template = json.loads(subprocess.check_output(("git", "show", freeze_commit + ":contracts/blind_runtime_unseal_job_v8_template.json"), cwd=str(ROOT)).decode())
+            self.draft_contract = json.loads(subprocess.check_output(("git", "show", freeze_commit + ":contracts/blind_runtime_unseal_v8.json"), cwd=str(ROOT)).decode())
+        else:
+            self.draft_template = materialized_contract
+            self.draft_contract = materialized_contract
         self.tmp = tempfile.TemporaryDirectory(); self.repo = pathlib.Path(self.tmp.name)
         (self.repo / "src" / "data").mkdir(parents=True); (self.repo / "contracts").mkdir()
         self.runner = self.repo / "src" / "data" / "run_blind_unseal_v8.py"
