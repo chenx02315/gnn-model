@@ -1,0 +1,6 @@
+{
+  "schema_version": "blind-runtime-unseal-registration-v9",
+  "status": "DRAFT_NO_EXECUTION",
+  "job_id": null,
+  "execution_prohibited": true
+}

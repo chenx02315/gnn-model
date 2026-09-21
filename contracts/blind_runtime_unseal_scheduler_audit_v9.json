@@ -1,0 +1,6 @@
+{
+  "schema_version": "blind-runtime-unseal-scheduler-audit-v9",
+  "status": "DRAFT_NO_EXECUTION",
+  "required_captures": ["raw_target_bjobs", "raw_global_bjobs", "raw_bjobs_al", "external_control_manifest"],
+  "execution_prohibited": true
+}
