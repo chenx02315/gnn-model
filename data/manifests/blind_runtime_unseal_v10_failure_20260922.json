@@ -1,0 +1,47 @@
+{
+  "schema_version": "blind-runtime-unseal-failure-audit-v10",
+  "status": "FAILED_SCHEDULER_AUDIT",
+  "job_id": "388761",
+  "scheduler_terminal": "EXIT",
+  "exit_code": 1,
+  "runner_receipt_status": "FAIL",
+  "failure_code": "SEALED_AUDIT_FAILED",
+  "circuits": [],
+  "registration_receipt_sha256": "a1d0383534a8a2df93f28072e72fc9a50effa4dab15d24903469e1277233a56e",
+  "protocol_sha256": "741607325189489e621a8d24cdf74681d553d61a022f3f193e5178c439336a0a",
+  "raw_bjobs_capture_sha256": "4fed420681ca2b771639232d1478b05ea983650cbe68c61746a4157d260d09e4",
+  "raw_global_bjobs_capture_sha256": "4153b6dc5ed5ad6bbdb0be1a33a0962aeedb18e1100d7c2b43b5d07b1a99e0c0",
+  "raw_bjobs_al_capture_sha256": "efa4865707be9c1d404c137591ca38387839353c00fba95dbddc3d420c6e1dec",
+  "bhist_raw_capture_sha256": "1c5bb222467f65c2886bebf68f0b970dde6bcf29bd2313255a961aba80b4d74b",
+  "bacct_raw_capture_sha256": "f8030912fb7095d65ee710bdb18e9595df67b2b55e18ebceb616ad1066ba0789",
+  "stdout_capture_sha256": "56a54b686b9eea53f4af96ca71ae201b6276e0ef152aaa533262070185663fef",
+  "stderr_capture_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "external_control_manifest_sha256": "1c967eeb6072c3b7194b3d90f263da52576630b3b7ad5246f6768e10ffde250c",
+  "final_job_spec_sha256": "db6d1f7f6b9658fccf4579a73112bd1557625d10a16b34c5c4a5af0d259bfd8a",
+  "independent_review_sha256": "71b0b47ac448bb4fdf0b639b9b6f4d2cb1f0f34400e89b86a513ca18238d2dc6",
+  "evidence_file_map": {
+    "registration_receipt": "blind_runtime_unseal_registration_v10.json",
+    "target_bjobs": "raw_target_bjobs.txt",
+    "global_bjobs": "raw_global_bjobs.txt",
+    "bjobs_al": "raw_bjobs_al.txt",
+    "bhist": "bhist_audit_capture.txt",
+    "bacct": "bacct_audit_capture.txt",
+    "stdout": "stdout.log",
+    "stderr": "stderr.log",
+    "external_control_manifest": "blind_runtime_unseal_v10_control_manifest.json",
+    "final_job_spec": "blind_runtime_unseal_job_v10.json",
+    "independent_review": "blind_unseal_independent_review_v10.json",
+    "four_artifacts": {
+      "CONSUMED": "CONSUMED",
+      "RELEASED": "RELEASED",
+      "receipt.json": "receipt.json",
+      "receipt.json.sha256": "receipt.json.sha256"
+    }
+  },
+  "four_artifact_sha256": {
+    "CONSUMED": "4647c2183511d2ae699c0ae96b11b6869959800d0fcd7f9bc224d5d85c0f6a1f",
+    "receipt.json": "d5ba19b7e7dd37ab3728cb56b2fbaaa591d750ca21d766804dad4b983b1dd9d6",
+    "receipt.json.sha256": "6f03d002226e2d736f6bfc8aad44789f1bedbb44eebb3b713fd5fb92fcc8bef7",
+    "RELEASED": "89b135820445e04a4c42f864835dfc9a5e1dfd0f7831e0da0a1824c877a94f95"
+  }
+}

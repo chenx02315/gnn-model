@@ -1,0 +1,14 @@
+{
+  "schema_version": "blind-runtime-unseal-failure-audit-v10",
+  "purpose": "Fail-closed terminal evidence contract for v10 BLIND runner EXIT 1. This contract cannot certify a release.",
+  "required_status": "FAILED_SCHEDULER_AUDIT",
+  "required_scheduler_terminal": {"scheduler_terminal": "EXIT", "exit_code": 1},
+  "required_runner_receipt": {"status": "FAIL", "failure_code": "SEALED_AUDIT_FAILED", "circuits": []},
+  "forbidden_values": ["RELEASED_VERIFIED", "PASS", "DONE", "RETRY", "REQUEUE", "RERUN"],
+  "required_inputs": ["registration_receipt", "target_bjobs", "global_bjobs", "bjobs_al", "bhist", "bacct", "stdout", "stderr", "external_control_manifest", "final_job_spec", "independent_review", "four_artifacts"],
+  "four_artifacts": ["CONSUMED", "receipt.json", "receipt.json.sha256", "RELEASED"],
+  "history_capture_rule": "bhist and bacct begin with registered_at_utc, resumed_at_utc, captured_at_utc; capture must occur within five hours of resume. Target bhist events must be exactly CONT, resume, start, EXIT 1 in that textual order; bacct must have exactly Status EXIT and Completed exit.",
+  "evidence_file_map_rule": "Manifest contains the validator's exact logical basename map for all evidence and the four artifact names. It contains no A-side absolute paths; an A-only failure_evidence_index.json resolves those logical names.",
+  "binding_rule": "Final job spec output_root must realpath-equal the four-artifact directory, and its job id, registration digest and contract digest must bind to the validated registration. Independent review must bind exact final job bytes plus the same registration and contract digests.",
+  "validator": "src/data/validate_blind_unseal_failure_v10.py"
+}
