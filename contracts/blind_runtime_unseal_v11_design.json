@@ -1,0 +1,125 @@
+{
+  "schema_version": "blind-runtime-unseal-v11-design",
+  "status": "DESIGN_ONLY_NO_EXECUTION",
+  "purpose": "Define a non-secret failure taxonomy for a possible future v11 one-shot audit without authorizing BLIND access, LSF registration, execution, or training.",
+  "authority": {
+    "blind_read_allowed": false,
+    "execution_authorized": false,
+    "lsf_registration_allowed": false,
+    "training_allowed": false
+  },
+  "frozen_inputs": {
+    "runtime_recovery_closeout_v10": {
+      "path": "data/manifests/runtime_recovery_closeout_v10.json",
+      "sha256": "62a5c518b5ea7097769ed7126ed0fbbe8e0c3d65580e7f26abc66274a5bc43b2"
+    },
+    "v10_failure_audit": {
+      "path": "data/manifests/blind_runtime_unseal_v10_failure_20260922.json",
+      "sha256": "e438c44f63b13bd85340132958c791c474da6a3a709ff5d54eba7b957bbf287a"
+    },
+    "v10_runner_reference": {
+      "path": "src/data/run_blind_unseal_v10.py",
+      "sha256": "f5871261b5396a426022ea1c3af32c0369c58132cc788b0689ec0f81c1962848"
+    }
+  },
+  "failure_taxonomy": [
+    {
+      "stage": "SOURCE_INVENTORY",
+      "code": "INPUT_INVENTORY_DRIFT",
+      "after_consumed": true,
+      "retryable": false
+    },
+    {
+      "stage": "ATTEMPT_PARSE",
+      "code": "ATTEMPT_INTEGRITY_FAILURE",
+      "after_consumed": true,
+      "retryable": false
+    },
+    {
+      "stage": "MEASUREMENT_PARSE",
+      "code": "MEASUREMENT_SCHEMA_FAILURE",
+      "after_consumed": true,
+      "retryable": false
+    },
+    {
+      "stage": "JOIN_CLASSIFICATION",
+      "code": "JOIN_CLASSIFICATION_FAILURE",
+      "after_consumed": true,
+      "retryable": false
+    },
+    {
+      "stage": "COVERAGE_GATE",
+      "code": "R06_R07_FAILED",
+      "after_consumed": true,
+      "retryable": false
+    },
+    {
+      "stage": "RELEASE_INTEGRITY",
+      "code": "RELEASE_INTEGRITY_FAILURE",
+      "after_consumed": true,
+      "retryable": false
+    },
+    {
+      "stage": "INTERNAL_AUDIT",
+      "code": "INTERNAL_AUDIT_FAILURE",
+      "after_consumed": true,
+      "retryable": false
+    }
+  ],
+  "pre_consumption_refusal": {
+    "terminal_class": "REFUSED_NOT_CONSUMED",
+    "creates_consumed_marker": false,
+    "creates_public_failure_receipt": false,
+    "automatic_retry_allowed": false
+  },
+  "public_failure_receipt": {
+    "scope": "POST_CONSUMPTION_ONLY",
+    "exact_fields": [
+      "schema_version",
+      "status",
+      "contract_sha256",
+      "tool_set_sha256",
+      "failure_stage",
+      "failure_code",
+      "circuits"
+    ],
+    "binding_rules": {
+      "contract_sha256": "EXACT_FINALIZED_V11_CONTRACT_DIGEST",
+      "tool_set_sha256": "EXACT_PRE_REVIEWED_IMPLEMENTATION_SET_DIGEST"
+    },
+    "required_status": "FAIL",
+    "required_circuits": [],
+    "forbidden_fields": [
+      "candidate",
+      "result_path",
+      "source_path",
+      "run_identifier",
+      "wall_time",
+      "exception_text",
+      "traceback"
+    ]
+  },
+  "required_pre_execution_gates": [
+    "NEW_VERSIONED_CONTRACT",
+    "NEW_JOB_IDENTIFIER",
+    "NEW_OUTPUT_ROOT",
+    "NEW_EXTERNAL_CONTROL_MANIFEST",
+    "SYNTHETIC_FAILURE_STAGE_TESTS_PASS",
+    "INDEPENDENT_REVIEW_PASS",
+    "EXPLICIT_EXECUTION_AUTHORIZATION"
+  ],
+  "non_reuse_rules": {
+    "job_388761_must_not_be_retried_or_requeued": true,
+    "v10_consumed_marker_must_not_be_reused": true,
+    "v10_output_root_must_not_be_reused": true,
+    "nonblind_replay_must_not_be_claimed_as_v10_root_cause": true
+  },
+  "p0": {
+    "status": "BLOCKED",
+    "remaining_gates": {
+      "R06": "PARTIAL",
+      "R07": "BLOCKED",
+      "R13": "BLOCKED"
+    }
+  }
+}
