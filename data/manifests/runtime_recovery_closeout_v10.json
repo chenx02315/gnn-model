@@ -1,0 +1,55 @@
+{
+  "blind_aggregate_only": {
+    "candidate_join_performed": false,
+    "driver_log_count": {
+      "s38584": 753,
+      "s9234": 4520,
+      "wb_dma": 2581
+    },
+    "total_driver_log_count": 7854
+  },
+  "declarations": {
+    "candidate_level_blind_read_forbidden": true,
+    "nonblind_replay_is_not_root_cause": true,
+    "rerun_job_388761_forbidden": true,
+    "training_forbidden": true
+  },
+  "ledger_readback": {
+    "expected_bindable_count": 73,
+    "matched_count": 73,
+    "mismatched_count": 0,
+    "missing_expected_count": 0,
+    "unbound_count": 0
+  },
+  "nonblind_aggregate": {
+    "ambiguity_count": 0,
+    "circuit_count": 6,
+    "missing_count": 0,
+    "row_count": 7015,
+    "unique_join_count": 5659
+  },
+  "remaining_gates": {
+    "R06": "PARTIAL",
+    "R07": "BLOCKED",
+    "R13": "BLOCKED"
+  },
+  "schema_version": "runtime-recovery-closeout-v10",
+  "source_sha256": {
+    "blind_inventory": "a157c399e783110c9776bf26cfaac656f85887f96d73a2c06d10c6d09cbada35",
+    "gate_assessment": "4c027fef987f7962547cd7e59209e1095eef9e8183076b609021b8c94dd69d69",
+    "nonblind_join_audit": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
+    "source_ledger": "45d00b6fc66c4e274c87b397bd6e09176b388e956dcf846c39c5ae79044a2afd",
+    "v10_failure": "e438c44f63b13bd85340132958c791c474da6a3a709ff5d54eba7b957bbf287a"
+  },
+  "status": "BLOCKED_AFTER_V10_FAILURE",
+  "training_allowed": false,
+  "v10_failure": {
+    "circuits": [],
+    "exit_code": 1,
+    "failure_code": "SEALED_AUDIT_FAILED",
+    "failure_manifest_sha256": "e438c44f63b13bd85340132958c791c474da6a3a709ff5d54eba7b957bbf287a",
+    "job_id": "388761",
+    "runner_receipt_status": "FAIL",
+    "scheduler_terminal": "EXIT"
+  }
+}
