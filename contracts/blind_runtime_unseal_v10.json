@@ -1,0 +1,18 @@
+{
+  "schema_version": "blind-runtime-unseal-v10",
+  "status": "DRAFT_NO_EXECUTION",
+  "purpose": "v10 operational sealed BLIND runtime audit with verified pre-submission staging and exact absolute CWD/argv bindings.",
+  "scope": {"split_contract": "contracts/data_split_v1.json", "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda", "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac", "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f", "blind_circuits": ["s9234", "s38584", "wb_dma"]},
+  "inputs": {"job_spec": "contracts/blind_runtime_unseal_job_v10.json", "job_spec_sha_rule": "The future independent PASS review binds the actual final-job SHA-256; this immutable draft contains no circular final-job digest.", "inventory_freeze_receipt": "data/manifests/blind_input_inventory_freeze_v1.json", "inventory_freeze_receipt_sha256": "a157c399e783110c9776bf26cfaac656f85887f96d73a2c06d10c6d09cbada35"},
+  "job_template": {"path": "contracts/blind_runtime_unseal_job_v10_template.json", "sha256": "DRAFT_NO_DIGEST"},
+  "protocol": {"path": "contracts/blind_runtime_unseal_protocol_v7.json", "sha256": "741607325189489e621a8d24cdf74681d553d61a022f3f193e5178c439336a0a"},
+  "gate_snapshot": {"path": "data/manifests/blind_gate_snapshot_v1.json", "sha256": "1c898937fe0297bf64a31298775f6ed2ebbc0f3b51fa9710b218ce0caac05ae4"},
+  "scheduler_fixture": {"path": "data/manifests/lsf_probe_v8_20260910.json", "sha256": "53d655c6e3467a40b1adfbe317875e398fd144844099bdc0dbe9b07726288fba", "status": "REAL_LSF_9_1_RESUME_FIXTURE_PASS"},
+  "implementation": {"artifact_sha256": {}, "stdlib_only": true, "project_module_imports_allowed": false},
+  "review_gate": {"receipt": "contracts/blind_unseal_independent_review_v10.json", "required_status": "PASS"},
+  "post_run_scheduler_audit": {"status": "NOT_RUN", "required_artifacts": ["bhist", "bacct"], "within_hours": 5, "terminal_claim_rule": "Only a separately captured scheduler-audit artifact may claim RELEASED_VERIFIED."},
+  "receipt_schema": {"exact_envelope_fields": ["schema_version", "status", "formal_runtime_membership_sha256", "method_registry_sha256", "tool_set_sha256", "contract_sha256", "circuits", "failure_code"], "pass_failure_code_rule": "PASS uses JSON null.", "fail_circuits": [], "runtime_label_rule": "UNIQUE requires exactly one matched attempt with a nonempty measured wall_s. Timeout/nonzero attempts with wall_s remain chargeable; every no-wall attempt is MISSING_RUNTIME."},
+  "failure_codes": ["SEALED_AUDIT_FAILED", "INPUT_INVENTORY_DRIFT", "ATTEMPT_INTEGRITY_FAILURE", "R06_R07_FAILED", "STAGING_BINDING_FAILED"],
+  "training_allowed": false,
+  "lifecycle": {"draft_rule": "DRAFT_NO_EXECUTION is not submit-able and contains no final digest or job id.", "final_status": "FINAL_HELD_UNSEAL_REVIEW_REQUIRED", "required_order": ["implementation_freeze_commit", "create_bundle", "upload_stage_bundle", "write_external_immutable_control_manifest", "verify_clean_git_and_external_manifest", "bsub_H", "raw_bjobs_capture", "raw_bjobs_al_capture", "final_template", "final_contract", "registration_receipt", "final_job_spec", "pre_review_clean_commit", "independent_review", "final_review_clean_commit", "bresume"], "finalization_rule": "The external manifest contains only immutable pre-submission implementation and input-control files, avoiding a receipt self-digest cycle. Final artifacts are separately digest-linked. Both bjobs cwd and bjobs -al Specified CWD must equal the resolved bundle root; the independent review is committed before release so the runner sees a clean checkout."}
+}

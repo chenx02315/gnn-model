@@ -1,0 +1,38 @@
+{
+  "schema_version": "blind-runtime-unseal-failure-v9",
+  "status": "FAILED_PRE_BLIND_READ",
+  "job_id": "388758",
+  "implementation_freeze_commit": "0467832efe33ad9366d10a32fa7246cab7a1ed07",
+  "final_review_commit": "bc9f7e55497a4d7b15392173405175895fb9740a",
+  "resumed_at_utc": "2026-09-21T13:04:07Z",
+  "terminal_state": "EXIT",
+  "exit_code": 2,
+  "runner_refusal": "BLIND_UNSEAL=REFUSED_LSF_JOB_ID_OR_ARRAY",
+  "blind_data_read": false,
+  "output_root_created": false,
+  "retry_or_second_resume_performed": false,
+  "a_side_evidence_directory": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/blind_runtime_unseal_v9_registration",
+  "evidence_sha256": {
+    "bhist_l.raw": "c03305bc51f37c6ee048f01fc80b5e6359ce6b7dcbbce09f7b7060f883da6f0e",
+    "bacct_l.raw": "c846d101b36ab334bad68efb2b0cbac34bf9fd7519468fd16a4dbe6c651988e0",
+    "stdout.log": "970a3adab85e8283e54cff57e847c26b8af5ce40436eff0d41333cf6854636a8",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "resumed_at_utc.txt": "ac89aa4bb620b91d91d05e46a3e75053cfb75adb35951775c793fcbccff7f225"
+  },
+  "root_cause_probe": {
+    "job_id": "388760",
+    "scope": "non-BLIND LSF environment semantics only",
+    "terminal_state": "DONE",
+    "observed_lsb_jobid": "388760",
+    "observed_lsb_jobindex": "0",
+    "conclusion": "LSF 9.1 exports LSB_JOBINDEX=0 for a non-array job; v9 incorrectly required an empty value.",
+    "a_side_evidence_directory": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/lsf_job_env_probe_v9_failure_20260922",
+    "evidence_sha256": {
+      "bhist_l.raw": "8b57f6a3809ed1b38bb5b24348b99a6c94b15b0fc4f910b15b704699beee4e86",
+      "bacct_l.raw": "b1c60905e7529228c694afce6e36e6768c005a1279da9006429c277d3060b89f",
+      "stdout.log": "800402fc3ea4f8755fc71e56c4cc9f1a15b5ecf5e7300836450786cd4831eda7",
+      "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "repair_policy": "Preserve v9 as failure evidence. Implement an isolated v10 that requires exact LSB_JOBID binding and exact LSB_JOBINDEX=0, with all existing non-array scheduler, CWD, manifest, Git, and digest gates retained."
+}
