@@ -1,0 +1,26 @@
+{
+  "schema_version": "blind-inventory-ordering-v2",
+  "status": "FROZEN_DESIGN_ONLY",
+  "historical_freeze_ordering": {
+    "captured_at_utc": "2026-09-09T06:43:53Z",
+    "host": "jiangchuanc@10.161.89.6",
+    "command": "find . -type f -name '*.driver.log' -print0 | sort -z | xargs -0 sha256sum | sha256sum",
+    "locale_at_readback": {
+      "captured_at_utc": "2026-09-23",
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "",
+      "LC_COLLATE": "",
+      "charmap": "UTF-8",
+      "sort_version": "GNU coreutils 8.22"
+    },
+    "semantics": "GNU sort -z under the inherited host collation environment; the 2026-09-09 command did not set LC_ALL=C. The same host read back en_US.UTF-8 on 2026-09-23, and the exact historical command reproduced every frozen digest."
+  },
+  "v11_ordering": {
+    "implementation": "Python sorted() over normalized relative-path strings",
+    "equivalent_probe": "LC_ALL=C sort -z",
+    "semantics": "Bytewise ordering for the registered ASCII path set."
+  },
+  "required_v12_check": "A future v12 design must verify both the historical locale-ordered digest and a separately frozen bytewise digest before parsing any candidate rows.",
+  "execution_authorized": false,
+  "training_allowed": false
+}

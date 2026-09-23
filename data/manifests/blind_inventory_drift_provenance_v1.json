@@ -1,0 +1,46 @@
+{
+  "schema_version": "blind-inventory-drift-provenance-v1",
+  "status": "V11_FALSE_POSITIVE_CONFIRMED",
+  "historical_capture": {
+    "captured_at_utc": "2026-09-09T06:43:53Z",
+    "source_session_id": "019f99c2-b229-7f42-8f37-255b4339afc8",
+    "source_call_id": "call_wn08arZhaG2mxEQ4xw0iFztH",
+    "driver_log_command": "find . -type f -name '*.driver.log' -print0 | sort -z | xargs -0 sha256sum | sha256sum",
+    "count_command": "find . -type f -name '*.driver.log' -print0 | tr -cd '\\000' | wc -c"
+  },
+  "readback_20260923": {
+    "historical_command_all_three_match": true,
+    "c_locale_probe_matches_v11_python": true,
+    "locale": "en_US.UTF-8",
+    "sort_version": "GNU coreutils 8.22"
+  },
+  "circuit_findings": {
+    "s9234": {
+      "historical_digest_still_matches": true,
+      "bytewise_digest_equals_v11_current": true,
+      "v11_drift_classification": "FALSE_POSITIVE_ORDERING_MISMATCH"
+    },
+    "s38584": {
+      "historical_digest_still_matches": true,
+      "bytewise_digest_equals_v11_current": true,
+      "v11_drift_classification": "NO_DIFFERENCE_BECAUSE_ORDERINGS_COLLAPSE"
+    },
+    "wb_dma": {
+      "historical_digest_still_matches": true,
+      "bytewise_digest_equals_v11_current": true,
+      "v11_drift_classification": "FALSE_POSITIVE_ORDERING_MISMATCH"
+    }
+  },
+  "conclusions": {
+    "frozen_digest_transcription_error": false,
+    "source_content_drift_proven": false,
+    "source_path_set_drift_proven": false,
+    "v11_failure_root_cause": "The 2026-09-09 freeze used inherited GNU sort collation without LC_ALL=C, while v11 used Python/bytewise ordering. On 2026-09-23 the same host reported en_US.UTF-8; the inherited-locale command reproduced every frozen digest and LC_ALL=C reproduced every v11 digest. Both hashed the same file set in different orders.",
+    "v11_failure_evidence_must_be_preserved": true,
+    "v11_job_retry_requeue_rerun_forbidden": true,
+    "new_blind_execution_requires_v12_design_review_and_authorization": true
+  },
+  "candidate_rows_read": false,
+  "candidate_join_performed": false,
+  "training_allowed": false
+}

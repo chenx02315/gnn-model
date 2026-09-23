@@ -1,0 +1,54 @@
+{
+  "schema_version": "blind-runtime-unseal-v12-design",
+  "status": "DESIGN_ONLY_NO_EXECUTION",
+  "predecessor": {
+    "job_id": "388790",
+    "terminal": "EXIT_1",
+    "retry_requeue_rerun_forbidden": true,
+    "failure_evidence": "data/manifests/blind_runtime_unseal_v11_failure_20260923.json",
+    "failure_evidence_sha256": "c80e6b5760b03919b660d6e6bbb91cb11ca047fa3186cf20970d29486a9115e8"
+  },
+  "frozen_inputs": {
+    "ordering_contract": "contracts/blind_inventory_ordering_v2.json",
+    "ordering_contract_sha256": "dbe854b76d981eaed6df57cc04e16c14bc6a06df482c6ee29cd1bca18570ce0c",
+    "dual_inventory": "data/manifests/blind_input_inventory_freeze_v2.json",
+    "dual_inventory_sha256": "cf7b37773516b39b1e3001e43aba1d4157f577a1906fe81605e37b10cb5645c9",
+    "provenance": "data/manifests/blind_inventory_drift_provenance_v1.json",
+    "provenance_sha256": "6cbdb0a5e34d3ba6cdf870b9086cece30482f7a012d8b7db790c60ab4c821c0e"
+  },
+  "inventory_algorithm": {
+    "historical_lane": {
+      "ordering": "GNU sort -z with LANG=en_US.UTF-8, LC_ALL unset and LC_COLLATE unset",
+      "required_sort_version": "sort (GNU coreutils) 8.22",
+      "expected_field": "historical_locale_ordered_sha256"
+    },
+    "canonical_lane": {
+      "ordering": "bytewise C-locale ordering of ./ relative path bytes",
+      "expected_field": "bytewise_ordered_sha256"
+    },
+    "acceptance": "Both lanes and the frozen driver-log count must match for every circuit before any candidate row is opened.",
+    "partial_match_policy": "FAIL_CLOSED_NO_CANDIDATE_READ"
+  },
+  "required_state_machine": [
+    "external control bundle verification",
+    "exclusive durable CONSUMED creation",
+    "dual inventory verification",
+    "candidate parsing and R06/R07/R13 aggregation in memory",
+    "atomic receipt and sidecar publication",
+    "RELEASED written last",
+    "LSF history capture and scheduler audit"
+  ],
+  "required_negative_tests": [
+    "historical digest match plus bytewise mismatch refuses",
+    "bytewise digest match plus historical mismatch refuses",
+    "sort version or locale mismatch refuses",
+    "inventory refusal publishes circuits empty and no candidate values",
+    "v11 consumed output cannot be reused as v12 output",
+    "direct runner invocation refuses before source access"
+  ],
+  "new_output_root_required": true,
+  "held_job_registration_allowed": false,
+  "execution_authorized": false,
+  "training_allowed": false,
+  "next_gate": "Implement v12 in new files, run static and negative tests, then obtain an independent read-only review bound to exact commit and digests."
+}

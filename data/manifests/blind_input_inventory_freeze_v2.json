@@ -1,0 +1,30 @@
+{
+  "schema_version": "blind-input-inventory-freeze-v2",
+  "status": "PASS_DUAL_ORDERING_AGGREGATE_ONLY",
+  "captured_from": "Versioned reconciliation of the 2026-09-09 historical aggregate capture and the 2026-09-23 v11/current aggregate probes.",
+  "ordering_contract": "contracts/blind_inventory_ordering_v2.json",
+  "circuits": {
+    "s9234": {
+      "driver_log_count": 4520,
+      "historical_locale_ordered_sha256": "18667b93b640ec8a86da2e4e438211269f08e01ea9e9549325a5d1b05e939f9b",
+      "bytewise_ordered_sha256": "daed4e14a160438198fc6931f59fb26eb6762bee347c7c1bf7076d1bb76ce943",
+      "measurement_file_set_sha256": "6fa277e0094f48498fa29ab2a7540e95942911c9e4fff248fbea3c196ddb763d"
+    },
+    "s38584": {
+      "driver_log_count": 753,
+      "historical_locale_ordered_sha256": "a04f26a36ed3b12f5dfa07846ac12414b7d66d089e67a4afe908bfce4360ffe4",
+      "bytewise_ordered_sha256": "a04f26a36ed3b12f5dfa07846ac12414b7d66d089e67a4afe908bfce4360ffe4",
+      "measurement_file_set_sha256": "4c0b8402533f16ec00adedca389daef0ebb7f898981def6f387cf4553c535bce"
+    },
+    "wb_dma": {
+      "driver_log_count": 2581,
+      "historical_locale_ordered_sha256": "48cda86af2a5359f2e4b55c2fd7b27c6ce47fd2e0493127b8b2cf5ad95f1decf",
+      "bytewise_ordered_sha256": "2b94b993937876c219d72a4d41b6ed8137660549a2cfc01524711f6a9cd677df",
+      "measurement_file_set_sha256": "6759d31cd1d8d076e7a785091e5d4cc26abbda68b7d9d2af18371ef006e8a36f"
+    }
+  },
+  "candidate_rows_read": false,
+  "candidate_join_performed": false,
+  "execution_authorized": false,
+  "training_allowed": false
+}
