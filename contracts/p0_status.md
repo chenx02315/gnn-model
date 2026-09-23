@@ -1,6 +1,6 @@
-# P0 状态：BLOCKED_RECOVERY_AUDIT
+# P0 状态：BLOCKED_AFTER_V11_INPUT_INVENTORY_DRIFT
 
-P0 当前允许继续 P1/P2 数据审计，但禁止正式训练、盲测访问或 runtime 结论。
+P0 当前只允许继续来源追溯和非候选级聚合审计；禁止正式训练、调参、新的 BLIND 候选级访问或 runtime 泛化结论。
 
 正式家族划分已在候选级盲测 runtime 连接检查前预注册并封存（SHA-256 `c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac`）：PILOT 1 family / 4 circuits，TRAIN 6 families，VALIDATION 2 families，BLIND_TEST 3 families。b18/b20/b21/b22 的 `itc99_b14_connected` 整体只进入 PILOT；IWLS/OpenCores 电路统一采用已登记 Phase4 family map 的 `iwls_*` canonical 标签。
 
@@ -55,3 +55,5 @@ R01-R14 当前逐项状态已冻结在 `contracts/runtime_recovery_gate_assessme
 R03 的统一来源账本已通过：本地签入文件全部重算，27 条关键本地交叉引用一致；原始回读的 7 个失配已由版本化增量和解，A 端 v5 以冻结 18-ID 规格生成 2.6 KB 聚合回执（SHA-256 `4e3f75819cd3dd4c013fdf09445d292fe7ab0e2eb32346da987941797b2a8407`）；最后三个 Phase2 历史 manifest 在本地保留目录中重新发现，经 `audit_phase2_manifest_recovery.py` 全量核验 4,609 行并命中冻结摘要。账本现为 73/73 匹配、0 缺失、0 失配、0 未绑定。R03 PASS 只关闭来源摘要完整性，不自动触发 BLIND 解封或 P0 放行。
 
 时间主终点固定为“命中 epsilon-near-optimal 前所有实际 Tessent attempts 的累计 elapsed”，包括失败和重试。命中后如另做独立确认，该确认只在端到端次指标计时，不与 search 重复计算。
+
+v11 已按批准的 operational one-shot 流程真实执行一次。LSF 作业 `388790` 只有一次 `CONT`、一次恢复等待、一次启动，最终 `EXIT 1`；`bhist`/`bacct` 与四件套通过 `BLIND_UNSEAL_SCHEDULER_AUDIT_v11=PASS`，证明未发生 retry、requeue 或 rerun。聚合失败收据为 `SOURCE_INVENTORY / INPUT_INVENTORY_DRIFT`，`circuits=[]`，未发布候选行、run_id、耗时或逐电路 join 结果。三个 BLIND 电路的六个测量文件摘要仍全部匹配，driver-log 数量也仍为 s9234 4,520、s38584 753、wb_dma 2,581；但 s9234 与 wb_dma 的 driver-log 内容集合摘要不再等于 2026-09-09 冻结值，只有 s38584 仍匹配。三组日志的文件 mtime 均早于冻结日期，因此 mtime 不能证明漂移来源，也不能据此把当前摘要追认成新的权威输入。v11 输出与失败证据永久保留，作业 `388790` 禁止重试、重排队或重跑。当前 R06 仍为 PARTIAL，R07/R13 仍为 BLOCKED；下一门禁是先查明 s9234/wb_dma 摘要差异的来源并建立新的不可变输入快照。未经新版本设计、独立复核和新授权，不得再次执行 BLIND one-shot，更不得启动正式训练。

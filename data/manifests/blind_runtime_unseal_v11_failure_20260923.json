@@ -1,0 +1,79 @@
+{
+  "schema_version": "blind-runtime-unseal-failure-audit-v11",
+  "status": "FAILED_INPUT_INVENTORY_DRIFT_SCHEDULER_VERIFIED",
+  "job_id": "388790",
+  "scheduler_terminal": "EXIT",
+  "exit_code": 1,
+  "scheduler_audit_status": "RELEASED_VERIFIED",
+  "runner_receipt_status": "FAIL",
+  "failure_stage": "SOURCE_INVENTORY",
+  "failure_code": "INPUT_INVENTORY_DRIFT",
+  "circuits": [],
+  "candidate_rows_released": false,
+  "candidate_join_performed": false,
+  "registration_receipt_sha256": "07b08528b0b5f0891a59e7a74755531c495bf5f830d5d3c5276b0053c5c964ab",
+  "contract_sha256": "59190487e5219ce9099816c5fbd13a1eb1f2da0844963ebdb96caff193105817",
+  "protocol_sha256": "741607325189489e621a8d24cdf74681d553d61a022f3f193e5178c439336a0a",
+  "scheduler_audit_receipt_sha256": "c0b892446abbce25ae8955454af88f7446767999b90c2d8c4d5e44a088125d06",
+  "runner_receipt_sha256": "378ed0f0f384a702d73106c5d0b72ce0166af0070960ec4bd198bfaaaacbaf77",
+  "raw_bjobs_capture_sha256": "e6d3af4200894b07da20e3c59d50bd6978283d985512eb25c41f8a3e2fa51c06",
+  "raw_global_bjobs_capture_sha256": "35f3e63c428fb75ad523cd9780c96e6a741b238a2dc8a2c14f03ccef6f376159",
+  "raw_bjobs_al_capture_sha256": "bc272fd5201086e6960ca59f0e2a3a1b86d2ca476497ff5926078624f0ad5ca7",
+  "bhist_raw_capture_sha256": "142f895edc2abe987cb9d022f7183f17c9fa4cbd3793972d987ac9dff2968562",
+  "bacct_raw_capture_sha256": "4d6689145d35529433f3d76aadcd48a98fac068f59ea3f83aa92554a26b8b313",
+  "stdout_capture_sha256": "e82aa616d233c33ed8bab8fe62bf0c6287abb4b4aec326c624cc6884da268cee",
+  "stderr_capture_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "external_control_manifest_sha256": "bfd51e8d26cacb39fdb64872eaf4f016ae54d5d2bc5d92abd25ac2cbf8a35f28",
+  "final_job_spec_sha256": "960e8555fc7c5c7a40c6ae695c0abd06a76920c623979c9c968352446b79dc17",
+  "independent_review_sha256": "e965f64a5251070eeea926b403c8ad1e9db26bd8b99c1b4704ef0df94b374042",
+  "four_artifact_sha256": {
+    "CONSUMED": "0b1113ca8ed8d92d216e505253607cce8d9a429cc4067ec90424c6fdd53c1db7",
+    "RELEASED": "514f8028486da6c275593442be7f91f7dc2e63b205282016893c394b6660397a",
+    "receipt.json": "378ed0f0f384a702d73106c5d0b72ce0166af0070960ec4bd198bfaaaacbaf77",
+    "receipt.json.sha256": "53e80a4f7c0ea25791a41146c788bc5453d9a3647bc98c230fbd86b54e19a8aa"
+  },
+  "inventory_diagnosis": {
+    "measurement_file_count_per_circuit": 6,
+    "driver_log_counts_unchanged": true,
+    "driver_log_mtime_after_freeze_count": {
+      "s9234": 0,
+      "s38584": 0,
+      "wb_dma": 0
+    },
+    "circuits": {
+      "s9234": {
+        "measurement_status": "MATCH",
+        "measurement_file_set_sha256": "6fa277e0094f48498fa29ab2a7540e95942911c9e4fff248fbea3c196ddb763d",
+        "driver_log_status": "DRIFT",
+        "expected_driver_log_file_set_sha256": "18667b93b640ec8a86da2e4e438211269f08e01ea9e9549325a5d1b05e939f9b",
+        "current_driver_log_file_set_sha256": "daed4e14a160438198fc6931f59fb26eb6762bee347c7c1bf7076d1bb76ce943",
+        "driver_log_count": 4520
+      },
+      "s38584": {
+        "measurement_status": "MATCH",
+        "measurement_file_set_sha256": "4c0b8402533f16ec00adedca389daef0ebb7f898981def6f387cf4553c535bce",
+        "driver_log_status": "MATCH",
+        "expected_driver_log_file_set_sha256": "a04f26a36ed3b12f5dfa07846ac12414b7d66d089e67a4afe908bfce4360ffe4",
+        "current_driver_log_file_set_sha256": "a04f26a36ed3b12f5dfa07846ac12414b7d66d089e67a4afe908bfce4360ffe4",
+        "driver_log_count": 753
+      },
+      "wb_dma": {
+        "measurement_status": "MATCH",
+        "measurement_file_set_sha256": "6759d31cd1d8d076e7a785091e5d4cc26abbda68b7d9d2af18371ef006e8a36f",
+        "driver_log_status": "DRIFT",
+        "expected_driver_log_file_set_sha256": "48cda86af2a5359f2e4b55c2fd7b27c6ce47fd2e0493127b8b2cf5ad95f1decf",
+        "current_driver_log_file_set_sha256": "2b94b993937876c219d72a4d41b6ed8137660549a2cfc01524711f6a9cd677df",
+        "driver_log_count": 2581
+      }
+    },
+    "interpretation": "The six measurement files for every BLIND circuit still match the frozen inventory. Log counts also match, but the content-addressed driver-log sets for s9234 and wb_dma do not. File mtimes alone cannot establish provenance or authorize replacing the frozen digests."
+  },
+  "execution_policy": {
+    "job_388790_retry_forbidden": true,
+    "job_388790_requeue_forbidden": true,
+    "job_388790_rerun_forbidden": true,
+    "training_forbidden": true,
+    "blind_candidate_reinspection_forbidden": true,
+    "new_execution_requires_new_version_and_authorization": true
+  }
+}

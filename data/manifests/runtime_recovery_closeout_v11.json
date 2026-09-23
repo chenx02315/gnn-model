@@ -1,0 +1,49 @@
+{
+  "declarations": {
+    "frozen_digest_replacement_without_provenance_forbidden": true,
+    "job_388790_retry_requeue_rerun_forbidden": true,
+    "new_blind_execution_requires_new_version_and_authorization": true,
+    "training_forbidden": true
+  },
+  "inventory_result": {
+    "candidate_join_performed": false,
+    "candidate_rows_released": false,
+    "driver_log_counts_unchanged": true,
+    "driver_log_drift_circuits": [
+      "s9234",
+      "wb_dma"
+    ],
+    "driver_log_match_circuits": [
+      "s38584"
+    ],
+    "measurement_match_circuits": [
+      "s9234",
+      "s38584",
+      "wb_dma"
+    ]
+  },
+  "next_gate": "Establish provenance for the s9234 and wb_dma driver-log digest differences and freeze a new immutable source snapshot before designing any new one-shot audit.",
+  "remaining_gates": {
+    "R06": "PARTIAL",
+    "R07": "BLOCKED",
+    "R13": "BLOCKED"
+  },
+  "schema_version": "runtime-recovery-closeout-v11",
+  "source_sha256": {
+    "blind_inventory": "a157c399e783110c9776bf26cfaac656f85887f96d73a2c06d10c6d09cbada35",
+    "failure": "c80e6b5760b03919b660d6e6bbb91cb11ca047fa3186cf20970d29486a9115e8",
+    "gate_assessment": "4c027fef987f7962547cd7e59209e1095eef9e8183076b609021b8c94dd69d69",
+    "scheduler_audit": "c0b892446abbce25ae8955454af88f7446767999b90c2d8c4d5e44a088125d06"
+  },
+  "status": "BLOCKED_AFTER_V11_INPUT_INVENTORY_DRIFT",
+  "training_allowed": false,
+  "v11_failure": {
+    "circuits": [],
+    "exit_code": 1,
+    "failure_code": "INPUT_INVENTORY_DRIFT",
+    "failure_stage": "SOURCE_INVENTORY",
+    "job_id": "388790",
+    "scheduler_audit_status": "RELEASED_VERIFIED",
+    "scheduler_terminal": "EXIT"
+  }
+}

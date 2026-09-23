@@ -1,0 +1,19 @@
+{
+  "bacct_raw_capture_sha256": "4d6689145d35529433f3d76aadcd48a98fac068f59ea3f83aa92554a26b8b313",
+  "bhist_raw_capture_sha256": "142f895edc2abe987cb9d022f7183f17c9fa4cbd3793972d987ac9dff2968562",
+  "four_artifact_sha256": {
+    "CONSUMED": "0b1113ca8ed8d92d216e505253607cce8d9a429cc4067ec90424c6fdd53c1db7",
+    "RELEASED": "514f8028486da6c275593442be7f91f7dc2e63b205282016893c394b6660397a",
+    "receipt.json": "378ed0f0f384a702d73106c5d0b72ce0166af0070960ec4bd198bfaaaacbaf77",
+    "receipt.json.sha256": "53e80a4f7c0ea25791a41146c788bc5453d9a3647bc98c230fbd86b54e19a8aa"
+  },
+  "job_id": "388790",
+  "protocol_sha256": "741607325189489e621a8d24cdf74681d553d61a022f3f193e5178c439336a0a",
+  "raw_bjobs_capture_sha256": "e6d3af4200894b07da20e3c59d50bd6978283d985512eb25c41f8a3e2fa51c06",
+  "raw_global_bjobs_capture_sha256": "35f3e63c428fb75ad523cd9780c96e6a741b238a2dc8a2c14f03ccef6f376159",
+  "registration_receipt_sha256": "07b08528b0b5f0891a59e7a74755531c495bf5f830d5d3c5276b0053c5c964ab",
+  "schema_version": "blind-runtime-unseal-scheduler-audit-v11",
+  "status": "RELEASED_VERIFIED",
+  "stderr_capture_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_capture_sha256": "e82aa616d233c33ed8bab8fe62bf0c6287abb4b4aec326c624cc6884da268cee"
+}
