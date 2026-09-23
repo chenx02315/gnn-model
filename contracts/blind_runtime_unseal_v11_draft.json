@@ -1,0 +1,68 @@
+{
+  "schema_version": "blind-runtime-unseal-v11-draft",
+  "status": "DRAFT_NO_EXECUTION",
+  "purpose": "Fail-closed production draft for a future v11 runtime recovery audit; this file is not a job specification and authorizes no data access or execution.",
+  "authority": {
+    "execution_authorized": false,
+    "blind_read_allowed": false,
+    "lsf_registration_allowed": false,
+    "training_allowed": false
+  },
+  "p0": {
+    "status": "BLOCKED",
+    "remaining_gates": {
+      "R06": "PARTIAL",
+      "R07": "BLOCKED",
+      "R13": "BLOCKED"
+    }
+  },
+  "design_reference": {
+    "path": "contracts/blind_runtime_unseal_v11_design.json",
+    "sha256": "c5d5df154a1c677c9521cfaa6138bfb502b358761246f9baf7064d72d4f2ca8a"
+  },
+  "required_final_artifacts": [
+    "NEW_VERSIONED_CONTRACT",
+    "NEW_JOB_IDENTIFIER",
+    "NEW_OUTPUT_ROOT",
+    "NEW_EXTERNAL_CONTROL_MANIFEST",
+    "SYNTHETIC_FAILURE_STAGE_TESTS_PASS",
+    "INDEPENDENT_REVIEW_PASS",
+    "EXPLICIT_EXECUTION_AUTHORIZATION"
+  ],
+  "draft_bindings": {
+    "final_contract_sha256": null,
+    "pre_reviewed_tool_set_sha256": null,
+    "independent_review_receipt": null,
+    "job_spec": null,
+    "output_root": null,
+    "external_control_manifest": null
+  },
+  "post_consumption_failure_taxonomy": [
+    ["SOURCE_INVENTORY", "INPUT_INVENTORY_DRIFT"],
+    ["ATTEMPT_PARSE", "ATTEMPT_INTEGRITY_FAILURE"],
+    ["MEASUREMENT_PARSE", "MEASUREMENT_SCHEMA_FAILURE"],
+    ["JOIN_CLASSIFICATION", "JOIN_CLASSIFICATION_FAILURE"],
+    ["COVERAGE_GATE", "R06_R07_FAILED"],
+    ["RELEASE_INTEGRITY", "RELEASE_INTEGRITY_FAILURE"],
+    ["INTERNAL_AUDIT", "INTERNAL_AUDIT_FAILURE"]
+  ],
+  "pre_consumption_refusal": {
+    "terminal_class": "REFUSED_NOT_CONSUMED",
+    "creates_consumed_marker": false,
+    "creates_public_failure_receipt": false,
+    "creates_output_root": false
+  },
+  "public_failure_receipt": {
+    "exact_fields": ["schema_version", "status", "contract_sha256", "tool_set_sha256", "failure_stage", "failure_code", "circuits"],
+    "status": "FAIL",
+    "circuits": [],
+    "forbidden_fields": ["candidate", "result_path", "source_path", "run_identifier", "wall_time", "exception_text", "traceback"]
+  },
+  "v10_non_reuse": {
+    "job_id": "388761",
+    "retry_requeue_rerun_forbidden": true,
+    "consumed_marker_reuse_forbidden": true,
+    "output_root_reuse_forbidden": true,
+    "v10_failure_or_success_inheritance_forbidden": true
+  }
+}

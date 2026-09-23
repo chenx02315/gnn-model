@@ -69,7 +69,7 @@ def validate_design(repo_root, contract_path):
         contract = json.load(stream)
     expected_fields = {
         "schema_version", "status", "purpose", "authority", "frozen_inputs",
-        "failure_taxonomy", "pre_consumption_refusal", "public_failure_receipt", "required_pre_execution_gates",
+        "failure_taxonomy", "pre_consumption_refusal", "public_failure_receipt", "synthetic_failure_fixture", "required_pre_execution_gates",
         "non_reuse_rules", "p0",
     }
     _require(set(contract) == expected_fields, "CONTRACT_FIELDS")
@@ -118,6 +118,16 @@ def validate_design(repo_root, contract_path):
     }, "RECEIPT_BINDING")
     _require(receipt.get("required_status") == "FAIL" and receipt.get("required_circuits") == [], "RECEIPT_FAILURE_ONLY")
     _require(receipt.get("forbidden_fields") == list(FORBIDDEN_TOKENS), "RECEIPT_PRIVACY")
+
+    _require(contract.get("synthetic_failure_fixture") == {
+        "scope": "SHAPE_TEST_ONLY_NOT_PUBLIC_EVIDENCE",
+        "wrapper_schema_version": "blind-runtime-unseal-v11-synthetic-failure-fixture",
+        "wrapper_status": "SYNTHETIC_ONLY_NO_EXECUTION",
+        "execution_authorized": False,
+        "embedded_receipt_is_public_evidence": False,
+        "contract_sha256": "66b149ff7ac6090efd8cba9f490c52ef88ea1c03174709f9d3922ab9a5e6afe6",
+        "tool_set_sha256": "bd85881d2b4d985efc7ae0f4874c0836ca344b4a37a678ffa2c8180928e1dd8d",
+    }, "SYNTHETIC_FIXTURE_BINDING")
 
     _require(contract.get("required_pre_execution_gates") == EXPECTED_GATES, "PRE_EXECUTION_GATES")
     _require(contract.get("non_reuse_rules") == {

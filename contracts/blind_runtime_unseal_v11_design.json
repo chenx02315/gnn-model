@@ -99,6 +99,15 @@
       "traceback"
     ]
   },
+  "synthetic_failure_fixture": {
+    "scope": "SHAPE_TEST_ONLY_NOT_PUBLIC_EVIDENCE",
+    "wrapper_schema_version": "blind-runtime-unseal-v11-synthetic-failure-fixture",
+    "wrapper_status": "SYNTHETIC_ONLY_NO_EXECUTION",
+    "execution_authorized": false,
+    "embedded_receipt_is_public_evidence": false,
+    "contract_sha256": "66b149ff7ac6090efd8cba9f490c52ef88ea1c03174709f9d3922ab9a5e6afe6",
+    "tool_set_sha256": "bd85881d2b4d985efc7ae0f4874c0836ca344b4a37a678ffa2c8180928e1dd8d"
+  },
   "required_pre_execution_gates": [
     "NEW_VERSIONED_CONTRACT",
     "NEW_JOB_IDENTIFIER",

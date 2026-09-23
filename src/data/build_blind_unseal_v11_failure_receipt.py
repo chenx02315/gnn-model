@@ -12,7 +12,7 @@ import os
 import re
 
 DESIGN_PATH = "contracts/blind_runtime_unseal_v11_design.json"
-DESIGN_SHA256 = "db507511aad99785111ccad136c6618a7ec8a14f6ae1de1cfd2b69ef4e26a9c4"
+DESIGN_SHA256 = "c5d5df154a1c677c9521cfaa6138bfb502b358761246f9baf7064d72d4f2ca8a"
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 RECEIPT_FIELDS = {
     "schema_version", "status", "contract_sha256", "tool_set_sha256",
@@ -62,10 +62,24 @@ def _allowed_pairs(design):
     return set(pairs)
 
 
-def build_failure_receipt(repo_root, contract_sha256, tool_set_sha256, stage, code):
+def _synthetic_bindings(design):
+    fixture = design.get("synthetic_failure_fixture")
+    _require(isinstance(fixture, dict), "SYNTHETIC_FIXTURE")
+    _require(fixture.get("scope") == "SHAPE_TEST_ONLY_NOT_PUBLIC_EVIDENCE", "SYNTHETIC_SCOPE")
+    _require(fixture.get("wrapper_status") == "SYNTHETIC_ONLY_NO_EXECUTION", "SYNTHETIC_STATUS")
+    _require(fixture.get("execution_authorized") is False, "SYNTHETIC_AUTHORITY")
+    _require(fixture.get("embedded_receipt_is_public_evidence") is False, "SYNTHETIC_EVIDENCE")
+    contract_sha256 = fixture.get("contract_sha256")
+    tool_set_sha256 = fixture.get("tool_set_sha256")
+    _require(SHA256.fullmatch(contract_sha256 or "") is not None, "CONTRACT_DIGEST")
+    _require(SHA256.fullmatch(tool_set_sha256 or "") is not None, "TOOL_SET_DIGEST")
+    return contract_sha256, tool_set_sha256
+
+
+def _build_synthetic_expected_receipt(repo_root, stage, code):
+    """Build an embedded shape oracle, never a public execution receipt."""
     design = _load_design(repo_root)
-    _require(SHA256.match(contract_sha256 or "") is not None, "CONTRACT_DIGEST")
-    _require(SHA256.match(tool_set_sha256 or "") is not None, "TOOL_SET_DIGEST")
+    contract_sha256, tool_set_sha256 = _synthetic_bindings(design)
     _require((stage, code) in _allowed_pairs(design), "STAGE_CODE_PAIR")
     receipt = {
         "schema_version": "blind-runtime-unseal-receipt-v11",
@@ -76,29 +90,30 @@ def build_failure_receipt(repo_root, contract_sha256, tool_set_sha256, stage, co
         "failure_code": code,
         "circuits": [],
     }
-    validate_failure_receipt(repo_root, receipt)
+    validate_synthetic_expected_receipt(repo_root, receipt)
     return receipt
 
 
-def validate_failure_receipt(repo_root, receipt):
+def validate_synthetic_expected_receipt(repo_root, receipt):
     design = _load_design(repo_root)
+    contract_sha256, tool_set_sha256 = _synthetic_bindings(design)
     _require(isinstance(receipt, dict) and set(receipt) == RECEIPT_FIELDS, "RECEIPT_FIELDS")
     _require(receipt.get("schema_version") == "blind-runtime-unseal-receipt-v11", "RECEIPT_SCHEMA")
     _require(receipt.get("status") == "FAIL" and receipt.get("circuits") == [], "FAILURE_ONLY")
-    _require(SHA256.match(receipt.get("contract_sha256") or "") is not None, "CONTRACT_DIGEST")
-    _require(SHA256.match(receipt.get("tool_set_sha256") or "") is not None, "TOOL_SET_DIGEST")
+    _require(receipt.get("contract_sha256") == contract_sha256, "CONTRACT_DIGEST_BINDING")
+    _require(receipt.get("tool_set_sha256") == tool_set_sha256, "TOOL_SET_DIGEST_BINDING")
     _require((receipt.get("failure_stage"), receipt.get("failure_code")) in _allowed_pairs(design), "STAGE_CODE_PAIR")
     return True
 
 
-def build_synthetic_fixture(repo_root, contract_sha256, tool_set_sha256, stage, code):
+def build_synthetic_fixture(repo_root, stage, code):
     """Wrap the expected receipt so CLI output cannot be mistaken for a real run."""
     return {
         "schema_version": "blind-runtime-unseal-v11-synthetic-failure-fixture",
         "status": "SYNTHETIC_ONLY_NO_EXECUTION",
         "execution_authorized": False,
-        "expected_public_failure_receipt": build_failure_receipt(
-            repo_root, contract_sha256, tool_set_sha256, stage, code,
+        "embedded_shape_oracle_not_public_evidence": _build_synthetic_expected_receipt(
+            repo_root, stage, code,
         ),
     }
 
@@ -106,15 +121,12 @@ def build_synthetic_fixture(repo_root, contract_sha256, tool_set_sha256, stage, 
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", required=True)
-    parser.add_argument("--contract-sha256", required=True)
-    parser.add_argument("--tool-set-sha256", required=True)
     parser.add_argument("--stage", required=True)
     parser.add_argument("--code", required=True)
     args = parser.parse_args(argv)
     try:
         fixture = build_synthetic_fixture(
-            os.path.abspath(args.repo_root), args.contract_sha256,
-            args.tool_set_sha256, args.stage, args.code,
+            os.path.abspath(args.repo_root), args.stage, args.code,
         )
     except (OSError, UnicodeDecodeError, ValueError, ReceiptError) as error:
         print("BLIND_UNSEAL_V11_SYNTHETIC_RECEIPT=FAIL:%s" % error)

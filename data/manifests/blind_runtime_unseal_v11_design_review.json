@@ -1,0 +1,30 @@
+{
+  "schema_version": "blind-runtime-unseal-v11-design-review",
+  "status": "PASS_DESIGN_SYNTHETIC_ONLY",
+  "review_scope": "design contract, synthetic fixture builder, validators, and focused tests only",
+  "base_commit": "80874f5",
+  "reviewer_role": "independent_read_only_agentfleet_reviewer",
+  "first_review_status": "FAIL_RECEIPT_INTEGRITY",
+  "resolved_findings": [
+    "arbitrary_sha256_values_were_accepted",
+    "v10_sha256_values_were_accepted",
+    "sha256_trailing_newline_was_accepted",
+    "bare_public_failure_receipt_builder_was_exposed"
+  ],
+  "reviewed_artifacts": {
+    "contracts/blind_runtime_unseal_v11_design.json": "c5d5df154a1c677c9521cfaa6138bfb502b358761246f9baf7064d72d4f2ca8a",
+    "src/data/build_blind_unseal_v11_failure_receipt.py": "34dc6ce5b8ad999e6a785e6a0bff6f99c0367d9ea75d9fd960a58c84e5a9f032",
+    "src/data/validate_blind_unseal_v11_design.py": "676487d85bb909b042e225e7f86266cc0928ba4fcf0f14b4c5272fd8b66fffc3",
+    "tests/test_blind_unseal_v11_design.py": "5a1380cf0de65cc58933790529b9322c643f097643c18cefb0acba77d19ff516",
+    "tests/test_blind_unseal_v11_failure_receipt.py": "ecc1075f0e83a3cb661bad117667066ac73b7d81e8b900b03a89bf0d32cf17d4"
+  },
+  "focused_test_command": "python -B -m unittest tests.test_blind_unseal_v11_design tests.test_blind_unseal_v11_failure_receipt -v",
+  "focused_tests_passed": 10,
+  "execution_authorized": false,
+  "blind_data_read": false,
+  "lsf_registered": false,
+  "real_unseal_executed": false,
+  "training_allowed": false,
+  "p0_status": "BLOCKED",
+  "review_boundary": "This PASS cannot be used as a production execution, scheduler, BLIND data, or training authorization."
+}

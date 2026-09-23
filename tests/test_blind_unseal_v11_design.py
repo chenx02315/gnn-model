@@ -50,6 +50,8 @@ class BlindUnsealV11DesignTest(unittest.TestCase):
         self.validate_mutation(lambda value: value["public_failure_receipt"].update(scope="PRE_AND_POST_CONSUMPTION"))
         self.validate_mutation(lambda value: value["public_failure_receipt"]["forbidden_fields"].remove("wall_time"))
         self.validate_mutation(lambda value: value["public_failure_receipt"].update(required_circuits=[{"circuit": "partial"}]))
+        self.validate_mutation(lambda value: value["synthetic_failure_fixture"].update(embedded_receipt_is_public_evidence=True))
+        self.validate_mutation(lambda value: value["synthetic_failure_fixture"].update(contract_sha256="0" * 64))
 
     def test_frozen_input_digests_are_trust_anchors(self):
         self.validate_mutation(lambda value: value["frozen_inputs"]["v10_failure_audit"].update(sha256="0" * 64))

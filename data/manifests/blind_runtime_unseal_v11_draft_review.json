@@ -1,0 +1,28 @@
+{
+  "schema_version": "blind-runtime-unseal-v11-draft-review",
+  "status": "PASS_DRAFT_NO_EXECUTION",
+  "review_scope": "production draft contract, fail-closed validator, refusal-only runner, and focused tests",
+  "base_commit": "80874f5",
+  "reviewer_role": "independent_read_only_agentfleet_reviewer",
+  "first_review_status": "FAIL_BARE_RECEIPT_BUILDER_EXPOSED",
+  "resolved_findings": [
+    "public_test_helper_returned_bare_fail_receipt",
+    "synthetic_stage_fixture_lacked_no_execution_wrapper"
+  ],
+  "reviewed_artifacts": {
+    "contracts/blind_runtime_unseal_v11_draft.json": "331cbdb1d57a64dfd287d61b11b13663ae61745f11550f94d04953baf86a23df",
+    "src/data/validate_blind_unseal_v11_draft.py": "17e813c471a954ec4ca65b146563148d175d1f8f806b0047624607e05700caa8",
+    "src/data/run_blind_unseal_v11.py": "3116f016f3791e9487494d0d48f734dec80983e4d1ff84354de2e03e2338cac7",
+    "tests/test_blind_unseal_v11_draft.py": "928f8cdd9503499e783a4efb445a4940ea82a6f1197614e8d600a9c4dcae476b",
+    "tests/test_blind_unseal_v11_runner.py": "e0d85b049d382ab1b4712d55ed974395179d55f756f9dd87e106b40bd05e2fd3"
+  },
+  "focused_test_command": "python -B -m unittest tests.test_blind_unseal_v11_design tests.test_blind_unseal_v11_failure_receipt tests.test_blind_unseal_v11_draft tests.test_blind_unseal_v11_runner -v",
+  "focused_tests_passed": 19,
+  "execution_authorized": false,
+  "blind_data_read": false,
+  "lsf_registered": false,
+  "real_unseal_executed": false,
+  "training_allowed": false,
+  "p0_status": "BLOCKED",
+  "review_boundary": "This PASS validates a refusal-only draft. It does not authorize finalization, scheduler registration, BLIND access, execution, or training."
+}
