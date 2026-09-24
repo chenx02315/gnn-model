@@ -43,7 +43,7 @@ def validate(repo_root):
     _require(design["trust_anchor_state"] == "UNFINALIZED_FAIL_CLOSED", "ANCHOR_STATE")
     _require(design["platform_positive_integration"] == "PENDING_LINUX_ONLY", "PLATFORM_STATE")
     _require(impl["linux_integration_execution_summary"] ==
-             "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with testsRun and skipped; Linux gate requires testsRun>0 and skipped=0", "LINUX_SUMMARY")
+             "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with gate_pass; direct entry is nonzero unless testsRun>0 skipped=0 failures=0 errors=0 and Linux prerequisites hold", "LINUX_SUMMARY")
     _require(design["external_review_request_binding"] == "PENDING_EXACT_COMMIT", "EXTERNAL_REVIEW_BINDING")
     _require("SEALED_MEMFD_REQUIRED" in design["repair_rules"]["sort"], "SEALED_MEMFD_RULE")
     required = set(("SOURCE_CAPABILITY_CALLER_CONTROLLED", "LOG_OPEN_TOCTOU", "SORT_IDENTITY_PATH_CONTROLLED"))

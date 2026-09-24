@@ -6,6 +6,7 @@ import unittest
 from unittest import mock
 
 from src.data import blind_inventory_v12_r2 as r2
+from tests import test_blind_inventory_v12_r2_linux as linux_r2
 
 
 class BlindInventoryV12R2Tests(unittest.TestCase):
@@ -233,6 +234,34 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
 
     def test_direct_entrypoint_is_design_only(self):
         self.assertEqual(2, r2.main([]))
+
+    def test_linux_gate_decision_refuses_skips_and_empty_runs(self):
+        class Result(object):
+            def __init__(self, tests_run, skipped=0, failures=0, errors=0, successful=True):
+                self.testsRun = tests_run
+                self.skipped = [None] * skipped
+                self.failures = [None] * failures
+                self.errors = [None] * errors
+                self._successful = successful
+
+            def wasSuccessful(self):
+                return self._successful
+
+        skipped = linux_r2._gate_decision(Result(6, skipped=6), True)
+        self.assertFalse(skipped["gate_pass"])
+        self.assertEqual(2, skipped["exit_code"])
+        empty = linux_r2._gate_decision(Result(0), True)
+        self.assertFalse(empty["gate_pass"])
+        self.assertEqual(2, empty["exit_code"])
+        passed = linux_r2._gate_decision(Result(1), True)
+        self.assertTrue(passed["gate_pass"])
+        self.assertEqual(0, passed["exit_code"])
+        for result in (Result(1, failures=1, successful=False), Result(1, errors=1, successful=False)):
+            with self.subTest(kind="failure" if result.failures else "error"):
+                decision = linux_r2._gate_decision(result, True)
+                self.assertFalse(decision["gate_pass"])
+                self.assertEqual("FAIL_LOCAL_SYNTHETIC", decision["platform_positive_integration"])
+                self.assertEqual(1, decision["exit_code"])
 
 
 if __name__ == "__main__":

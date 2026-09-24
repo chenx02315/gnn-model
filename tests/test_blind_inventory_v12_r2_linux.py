@@ -48,6 +48,19 @@ def _gnu_sort_available():
 LINUX_PREREQUISITES = bool(LINUX_PREREQUISITES and _gnu_sort_available())
 
 
+def _gate_decision(result, prerequisites):
+    """Return the direct-entry gate state without treating skips as a pass."""
+    failures = len(result.failures)
+    errors = len(result.errors)
+    gate_pass = bool(prerequisites and result.testsRun > 0 and len(result.skipped) == 0 and
+                     failures == 0 and errors == 0 and result.wasSuccessful())
+    if gate_pass:
+        return {"gate_pass": True, "platform_positive_integration": "PASS_LOCAL_SYNTHETIC_ONLY", "exit_code": 0}
+    if failures or errors or not result.wasSuccessful():
+        return {"gate_pass": False, "platform_positive_integration": "FAIL_LOCAL_SYNTHETIC", "exit_code": 1}
+    return {"gate_pass": False, "platform_positive_integration": "PENDING_LINUX_ONLY", "exit_code": 2}
+
+
 @unittest.skipUnless(LINUX_PREREQUISITES, "Linux sealed-descriptor prerequisites required")
 class BlindInventoryV12R2LinuxTests(unittest.TestCase):
     def setUp(self):
@@ -222,12 +235,14 @@ class BlindInventoryV12R2LinuxTests(unittest.TestCase):
 def main():
     suite = unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__])
     result = unittest.TextTestRunner(verbosity=2).run(suite)
+    decision = _gate_decision(result, LINUX_PREREQUISITES)
     print("BLIND_INVENTORY_V12_R2_LINUX_SUMMARY=" + json.dumps({
         "platform": sys.platform, "testsRun": result.testsRun, "skipped": len(result.skipped),
         "failures": len(result.failures), "errors": len(result.errors),
-        "platform_positive_integration": "PENDING_LINUX_ONLY" if not LINUX_PREREQUISITES else "EXECUTED_LOCAL_SYNTHETIC_ONLY",
+        "gate_pass": decision["gate_pass"],
+        "platform_positive_integration": decision["platform_positive_integration"],
     }, sort_keys=True))
-    return 0 if result.wasSuccessful() else 1
+    return decision["exit_code"]
 
 
 if __name__ == "__main__":

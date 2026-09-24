@@ -21,10 +21,10 @@
     "inventory_module": "src/data/blind_inventory_v12_r2.py",
     "inventory_module_sha256": "28ad97cbf1a52e45dc69cb37b4a296397c285411cc3958a3d9f2db9cd0a20d9f",
     "focused_tests": "tests/test_blind_inventory_v12_r2.py",
-    "focused_tests_sha256": "0d63051e3374238a88bec8bd56de8dad04e682a8393356be1d9f54cf55bb0f2a",
+    "focused_tests_sha256": "637fca72b4feafcd7eb9204567eca35fa368ee0dd1b1fe04324b783f2505351f",
     "linux_integration_tests": "tests/test_blind_inventory_v12_r2_linux.py",
-    "linux_integration_tests_sha256": "508e06fa3fed31216b9b5311c5e2196f6cd301e8d51758a4a3c2efab8915bf73",
-    "linux_integration_execution_summary": "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with testsRun and skipped; Linux gate requires testsRun>0 and skipped=0"
+    "linux_integration_tests_sha256": "df1e36e61168c67142d497f41e3ba5ebbe7f1d1cd5c7141ec9541a66b1f03183",
+    "linux_integration_execution_summary": "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with gate_pass; direct entry is nonzero unless testsRun>0 skipped=0 failures=0 errors=0 and Linux prerequisites hold"
   },
   "authority": {
     "candidate_join_implemented": false,
