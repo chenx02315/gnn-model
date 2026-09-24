@@ -30,7 +30,7 @@ def validate(repo_root):
     path = os.path.join(repo_root, "contracts", "blind_runtime_unseal_v12_design.json")
     design = load(path)
     require(design["schema_version"] == "blind-runtime-unseal-v12-design", "SCHEMA")
-    require(design["status"] == "DESIGN_ONLY_NO_EXECUTION", "STATUS")
+    require(design["status"] == "IMPLEMENTATION_DRAFT_NO_EXECUTION", "STATUS")
     require(design["predecessor"]["job_id"] == "388790", "PREDECESSOR_JOB")
     require(design["predecessor"]["retry_requeue_rerun_forbidden"] is True, "PREDECESSOR_REPLAY")
 
@@ -55,6 +55,15 @@ def validate(repo_root):
     require("historical digest match plus bytewise mismatch refuses" in required, "NEGATIVE_HISTORICAL_ONLY")
     require("bytewise digest match plus historical mismatch refuses" in required, "NEGATIVE_BYTEWISE_ONLY")
     require("inventory refusal publishes circuits empty and no candidate values" in required, "NEGATIVE_NONDISCLOSURE")
+    implementation = design["implementation_draft"]
+    for path_field, digest_field in (("inventory_module", "inventory_module_sha256"), ("focused_tests", "focused_tests_sha256")):
+        relative = implementation[path_field]
+        expected = implementation[digest_field]
+        require(sha256_file(os.path.join(repo_root, *relative.split("/"))) == expected, "DIGEST_" + path_field.upper())
+    require(implementation["candidate_join_implemented"] is False, "CANDIDATE_JOIN_IMPLEMENTATION")
+    require(implementation["release_implemented"] is False, "RELEASE_IMPLEMENTATION")
+    require(implementation["scheduler_entrypoint_implemented"] is False, "SCHEDULER_IMPLEMENTATION")
+    require(implementation["direct_entrypoint_result"] == "DESIGN_ONLY_NO_EXECUTION", "DIRECT_ENTRYPOINT")
     require(design["new_output_root_required"] is True, "NEW_OUTPUT_ROOT")
     require(design["held_job_registration_allowed"] is False, "HELD_JOB_AUTHORITY")
     require(design["execution_authorized"] is False, "EXECUTION_AUTHORITY")

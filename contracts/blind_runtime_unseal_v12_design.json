@@ -1,6 +1,6 @@
 {
   "schema_version": "blind-runtime-unseal-v12-design",
-  "status": "DESIGN_ONLY_NO_EXECUTION",
+  "status": "IMPLEMENTATION_DRAFT_NO_EXECUTION",
   "predecessor": {
     "job_id": "388790",
     "terminal": "EXIT_1",
@@ -46,9 +46,19 @@
     "v11 consumed output cannot be reused as v12 output",
     "direct runner invocation refuses before source access"
   ],
+  "implementation_draft": {
+    "inventory_module": "src/data/blind_inventory_v12.py",
+    "inventory_module_sha256": "dce872da1114aef1b6c894be3118d126b4e1c341bf6536f0d58a0b9ccd58bb82",
+    "focused_tests": "tests/test_blind_inventory_v12.py",
+    "focused_tests_sha256": "b7f8bdee8f1054b3ce817e7b76b95afc49b718956031558c19da71628c217a75",
+    "candidate_join_implemented": false,
+    "release_implemented": false,
+    "scheduler_entrypoint_implemented": false,
+    "direct_entrypoint_result": "DESIGN_ONLY_NO_EXECUTION"
+  },
   "new_output_root_required": true,
   "held_job_registration_allowed": false,
   "execution_authorized": false,
   "training_allowed": false,
-  "next_gate": "Implement v12 in new files, run static and negative tests, then obtain an independent read-only review bound to exact commit and digests."
+  "next_gate": "Independently review the dual-order inventory module. Only after a PASS may a separate v12 candidate-join/release implementation be designed; held-job registration remains forbidden."
 }

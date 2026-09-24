@@ -14,6 +14,8 @@ FILES = (
     "data/manifests/blind_input_inventory_freeze_v2.json",
     "data/manifests/blind_inventory_drift_provenance_v1.json",
     "data/manifests/blind_runtime_unseal_v11_failure_20260923.json",
+    "src/data/blind_inventory_v12.py",
+    "tests/test_blind_inventory_v12.py",
 )
 
 
@@ -49,6 +51,16 @@ class BlindUnsealV12DesignTests(unittest.TestCase):
             document["execution_authorized"] = True
             path.write_text(json.dumps(document), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "EXECUTION_AUTHORITY"):
+                validate(str(root))
+        finally:
+            temporary.cleanup()
+
+    def test_inventory_module_digest_mutation_is_rejected(self):
+        temporary, root = self.fixture()
+        try:
+            path = root / "src/data/blind_inventory_v12.py"
+            path.write_bytes(path.read_bytes() + b"\n")
+            with self.assertRaisesRegex(ValueError, "DIGEST_INVENTORY_MODULE"):
                 validate(str(root))
         finally:
             temporary.cleanup()
