@@ -1,0 +1,34 @@
+{
+  "schema_version": "blind-runtime-unseal-v12-r2-design",
+  "status": "DESIGN_ONLY_NO_EXECUTION",
+  "purpose": "Correct the rejected v12 inventory trust, descriptor race, and sort identity designs without authorizing source access or execution.",
+  "old_v12_failure_authoritative": true,
+  "trust_anchor_state": "UNFINALIZED_FAIL_CLOSED",
+  "platform_positive_integration": "PENDING_LINUX_ONLY",
+  "threat_boundary": "Hostile code already executing in the same Python interpreter is not a supported isolation boundary; the private test issuer is not a production API.",
+  "remediation_implementation_status": {
+    "SOURCE_CAPABILITY_CALLER_CONTROLLED": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW",
+    "LOG_OPEN_TOCTOU": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW",
+    "SORT_IDENTITY_PATH_CONTROLLED": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW"
+  },
+  "repair_rules": {
+    "control": "The zero-argument production factory refuses TRUST_ANCHORS_NOT_FINALIZED; no public API accepts roots, marker paths, digests, sort paths, or environment values.",
+    "logs": "Linux POSIX descriptor-only traversal starts at slash, uses openat style dir_fd plus O_NOFOLLOW/O_CLOEXEC, hashes one opened regular-file descriptor, and rejects symlink, special file, nonportable name and observed races with no fallback.",
+    "sort": "A frozen absolute sort path, digest and exact version are required in a future trusted control. The verified descriptor is executed through /proc/self/fd with pass_fds and exactly LANG=en_US.UTF-8, never PATH or inherited environment."
+  },
+  "implementation": {
+    "inventory_module": "src/data/blind_inventory_v12_r2.py",
+    "inventory_module_sha256": "4f22651cd4b126286312c4ebd11c097645100d93e19e0f631d8b5207f8089441",
+    "focused_tests": "tests/test_blind_inventory_v12_r2.py",
+    "focused_tests_sha256": "7ede35dffaca91696d09b4a56c109fe43811265e683b57ae2e5f722c858aba79"
+  },
+  "authority": {
+    "candidate_join_implemented": false,
+    "release_implemented": false,
+    "scheduler_entrypoint_implemented": false,
+    "held_job_registration_allowed": false,
+    "execution_authorized": false,
+    "training_allowed": false,
+    "direct_entrypoint_result": "DESIGN_ONLY_NO_EXECUTION"
+  }
+}
