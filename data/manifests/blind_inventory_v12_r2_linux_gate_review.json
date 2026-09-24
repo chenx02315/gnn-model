@@ -1,0 +1,52 @@
+{
+  "schema_version": "blind-inventory-v12-r2-linux-gate-review",
+  "status": "PASS_DESIGN_GATE_LINUX_EXECUTION_PENDING",
+  "decision": "GATE_DESIGN_ACCEPTED_PLATFORM_POSITIVE_INTEGRATION_BLOCKED",
+  "review_target_commit": "be59c4195d9a768bf7f467830cf37f88bcc32349",
+  "review_request": "contracts/blind_inventory_v12_r2_linux_gate_review_request.json",
+  "review_request_sha256": "e27dce922f4fdde9b1458931d277b6fea70770a7284befcc6678d4e4cbe45c49",
+  "review_history": [
+    {
+      "commit": "c893dcf2f09f26d96cd1e22a48ff393823e6e8e5",
+      "decision": "FAIL",
+      "finding": "ALL_SKIPPED_DIRECT_ENTRY_EXITED_ZERO"
+    },
+    {
+      "commit": "be59c4195d9a768bf7f467830cf37f88bcc32349",
+      "decision": "PASS_DESIGN_GATE",
+      "finding": "SKIP_ZERO_TEST_AND_MISSING_PREREQUISITE_ARE_NONZERO"
+    }
+  ],
+  "design_decisions": {
+    "directory_membership_mutation_detection": "PASS",
+    "sort_special_file_nonblocking_refusal": "PASS",
+    "linux_syscall_test_design": "PASS",
+    "direct_gate_skip_refusal": "PASS"
+  },
+  "local_windows_verification": {
+    "focused_tests": 24,
+    "full_tests": 382,
+    "full_tests_skipped": 8,
+    "linux_gate_tests_run": 6,
+    "linux_gate_skipped": 6,
+    "linux_gate_exit_code": 2,
+    "linux_gate_pass": false,
+    "platform_positive_integration": "PENDING_LINUX_ONLY"
+  },
+  "required_linux_result": {
+    "tests_run_minimum": 1,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "gate_pass": true,
+    "exit_code": 0
+  },
+  "blind_data_read": false,
+  "a_or_b_host_accessed": false,
+  "lsf_or_held_job_used": false,
+  "candidate_join_or_release_performed": false,
+  "training_performed": false,
+  "execution_allowed": false,
+  "training_allowed": false,
+  "next_gate": "Run the direct Linux synthetic gate on a host satisfying every prerequisite. Until it returns gate_pass true with zero skips, BLIND, LSF, candidate join/release, and training remain forbidden."
+}

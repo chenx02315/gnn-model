@@ -1,0 +1,30 @@
+{
+  "schema_version": "blind-inventory-v12-r2-linux-gate-review-request",
+  "status": "SEALED_DESIGN_GATE_REVIEW_REQUEST",
+  "review_target_commit": "be59c4195d9a768bf7f467830cf37f88bcc32349",
+  "review_base_commit": "942bea44a7d896b18da58c36544dff3ea5fef36d",
+  "review_scope": "Production hardening and Linux-only synthetic gate design; not Linux positive execution and not BLIND readiness.",
+  "artifact_sha256": {
+    "contracts/blind_runtime_unseal_v12_r2_design.json": "b116e969a23e45925d9606f32333e1140fcec4d6de69e946c112712131363ffa",
+    "src/data/blind_inventory_v12_r2.py": "28ad97cbf1a52e45dc69cb37b4a296397c285411cc3958a3d9f2db9cd0a20d9f",
+    "src/data/validate_blind_unseal_v12_r2_design.py": "9ca71405acbe4ccfbbe3167389b1b81daac6c60b39a20a725cda06bd0b05afa0",
+    "tests/test_blind_inventory_v12_r2.py": "637fca72b4feafcd7eb9204567eca35fa368ee0dd1b1fe04324b783f2505351f",
+    "tests/test_blind_inventory_v12_r2_linux.py": "df1e36e61168c67142d497f41e3ba5ebbe7f1d1cd5c7141ec9541a66b1f03183",
+    "tests/test_blind_unseal_v12_r2_design.py": "b055cf601ab0dfe53900d6e003c27222ae496eff6c1682ebf884553c0a0c3c6c"
+  },
+  "required_decisions": [
+    "directory membership mutation detection",
+    "sort anchor special-file nonblocking refusal",
+    "real Linux syscall test design",
+    "skip and missing-prerequisite fail-closed direct gate"
+  ],
+  "prohibited_actions": {
+    "a_or_b_host_access": true,
+    "blind_data_read": true,
+    "lsf_or_held_job": true,
+    "candidate_join_or_release": true,
+    "training": true
+  },
+  "execution_authorized": false,
+  "training_allowed": false
+}
