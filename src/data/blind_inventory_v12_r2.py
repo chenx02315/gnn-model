@@ -15,6 +15,11 @@ import stat
 import subprocess
 import sys
 
+try:
+    import fcntl as _fcntl
+except ImportError:  # Windows and non-POSIX platforms must refuse, not emulate.
+    _fcntl = None
+
 SORT_ENV = {"LANG": "en_US.UTF-8"}
 _ISSUED = set()
 _TEST_ISSUER = object()
@@ -92,6 +97,58 @@ def _hash_fd(fd):
             break
         digest.update(block)
     return digest.hexdigest()
+
+
+def _read_and_hash_fd(fd):
+    """Consume one already-open source FD without ever reopening its path."""
+    digest = hashlib.sha256()
+    payload = bytearray()
+    while True:
+        block = os.read(fd, 1024 * 1024)
+        if not block:
+            break
+        digest.update(block)
+        payload.extend(block)
+    return digest.hexdigest(), bytes(payload)
+
+
+def _create_sealed_sort_fd(payload):
+    """Copy verified bytes to an immutable Linux memfd suitable for exec."""
+    required_os = ("memfd_create", "MFD_CLOEXEC", "MFD_ALLOW_SEALING")
+    required_fcntl = ("F_ADD_SEALS", "F_GET_SEALS", "F_SEAL_WRITE", "F_SEAL_GROW", "F_SEAL_SHRINK", "F_SEAL_SEAL")
+    if (not _secure_primitives_available() or _fcntl is None or
+            not all(hasattr(os, name) for name in required_os) or
+            not all(hasattr(_fcntl, name) for name in required_fcntl)):
+        raise Refusal("SECURE_DESCRIPTOR_IO_UNAVAILABLE")
+    if not isinstance(payload, bytes):
+        raise Refusal("SEALED_SORT_PAYLOAD_INVALID")
+    fd = None
+    try:
+        flags = os.MFD_CLOEXEC | os.MFD_ALLOW_SEALING
+        fd = os.memfd_create("blind-inventory-sort-r2", flags)
+        offset = 0
+        while offset < len(payload):
+            wrote = os.write(fd, payload[offset:])
+            if not isinstance(wrote, int) or wrote <= 0:
+                raise Refusal("SEALED_SORT_WRITE_FAILED")
+            offset += wrote
+        os.fchmod(fd, 0o500)
+        os.lseek(fd, 0, os.SEEK_SET)
+        seals = (_fcntl.F_SEAL_WRITE | _fcntl.F_SEAL_GROW | _fcntl.F_SEAL_SHRINK | _fcntl.F_SEAL_SEAL)
+        _fcntl.fcntl(fd, _fcntl.F_ADD_SEALS, seals)
+        actual = _fcntl.fcntl(fd, _fcntl.F_GET_SEALS)
+        if (actual & seals) != seals:
+            raise Refusal("SEALED_SORT_SEAL_FAILED")
+        result = fd
+        fd = None
+        return result
+    except Refusal:
+        raise
+    except (OSError, ValueError, TypeError):
+        raise Refusal("SEALED_SORT_CREATE_FAILED")
+    finally:
+        if fd is not None:
+            os.close(fd)
 
 
 def _metadata(record):
@@ -187,7 +244,7 @@ def _verified_sort_fd(control):
             os.close(fd)
             fd = None
             raise Refusal("SORT_RACE_DETECTED")
-        digest = _hash_fd(fd)
+        digest, payload = _read_and_hash_fd(fd)
         after_fd = os.fstat(fd)
         after_entry = os.stat(pieces[-1], dir_fd=parent, follow_symlinks=False)
         if _metadata(after_fd) != _metadata(opened) or _metadata(after_entry) != _metadata(entry):
@@ -198,7 +255,8 @@ def _verified_sort_fd(control):
             os.close(fd)
             fd = None
             raise Refusal("SORT_DIGEST_MISMATCH")
-        result = fd
+        result = _create_sealed_sort_fd(payload)
+        os.close(fd)
         fd = None
         return result
     finally:

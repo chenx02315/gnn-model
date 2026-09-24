@@ -50,6 +50,18 @@ class BlindUnsealV12R2DesignTests(unittest.TestCase):
         finally:
             temporary.cleanup()
 
+    def test_contract_cannot_claim_external_review_binding(self):
+        temporary, root = self.fixture()
+        try:
+            path = root / "contracts/blind_runtime_unseal_v12_r2_design.json"
+            document = json.loads(path.read_text(encoding="utf-8"))
+            document["external_review_request_binding"] = "SELF_ASSERTED"
+            path.write_text(json.dumps(document), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "EXTERNAL_REVIEW_BINDING"):
+                validate(str(root))
+        finally:
+            temporary.cleanup()
+
 
 if __name__ == "__main__":
     unittest.main()

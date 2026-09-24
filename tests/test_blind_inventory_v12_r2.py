@@ -1,6 +1,7 @@
 import inspect
 import os
 import stat
+import types
 import unittest
 from unittest import mock
 
@@ -62,6 +63,7 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
 
     def test_descriptor_walk_rejects_symlink_and_nonportable_names(self):
         with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
+             mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, create=True), \
              mock.patch.object(r2.os, "fstat", return_value=mock.Mock(st_dev=1, st_ino=1)), \
              mock.patch.object(r2.os, "listdir", return_value=["bad\\name.driver.log"]):
             with self.assertRaisesRegex(r2.Refusal, "^LOG_PATH_ENCODING$"):
@@ -146,6 +148,60 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
             with self.assertRaisesRegex(r2.Refusal, "^SORT_DIGEST_MISMATCH$"):
                 r2._run_verified_sort(self.control, ["a.driver.log"])
             run.assert_not_called()
+
+    def test_sealed_memfd_requires_linux_primitives_and_handles_short_writes(self):
+        fake_fcntl = types.SimpleNamespace(F_ADD_SEALS=10, F_GET_SEALS=11, F_SEAL_WRITE=1,
+                                           F_SEAL_GROW=2, F_SEAL_SHRINK=4, F_SEAL_SEAL=8,
+                                           fcntl=mock.Mock(side_effect=(0, 15)))
+        flags = 64 | 128
+        created = mock.Mock(return_value=71)
+        with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
+             mock.patch.object(r2, "_fcntl", fake_fcntl), \
+             mock.patch.multiple(r2.os, MFD_CLOEXEC=64, MFD_ALLOW_SEALING=128, memfd_create=created, create=True), \
+             mock.patch.object(r2.os, "write", side_effect=(2, 2)) as write, \
+             mock.patch.object(r2.os, "fchmod") as chmod, mock.patch.object(r2.os, "lseek") as seek, \
+             mock.patch.object(r2.os, "close") as closed:
+            self.assertEqual(71, r2._create_sealed_sort_fd(b"abcd"))
+        self.assertEqual(flags, created.call_args.args[1])
+        self.assertEqual([mock.call(71, b"abcd"), mock.call(71, b"cd")], write.call_args_list)
+        chmod.assert_called_once_with(71, 0o500)
+        seek.assert_called_once_with(71, 0, r2.os.SEEK_SET)
+        self.assertEqual([mock.call(71, 10, 15), mock.call(71, 11)], fake_fcntl.fcntl.call_args_list)
+        closed.assert_not_called()
+
+    def test_memfd_missing_primitive_and_digest_mismatch_refuse_before_memfd_or_subprocess(self):
+        with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
+             mock.patch.object(r2, "_fcntl", None):
+            with self.assertRaisesRegex(r2.Refusal, "^SECURE_DESCRIPTOR_IO_UNAVAILABLE$"):
+                r2._create_sealed_sort_fd(b"x")
+        executable = self.record(stat.S_IFREG | stat.S_IXUSR)
+        with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
+             mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, create=True), \
+             mock.patch.object(r2, "_open_root", return_value=10), mock.patch.object(r2.os, "stat", side_effect=(executable, executable)), \
+             mock.patch.object(r2.os, "open", return_value=11), mock.patch.object(r2.os, "fstat", side_effect=(executable, executable)), \
+             mock.patch.object(r2, "_read_and_hash_fd", return_value=("f" * 64, b"source")), \
+             mock.patch.object(r2, "_create_sealed_sort_fd") as sealed, mock.patch.object(r2.os, "close"):
+            with self.assertRaisesRegex(r2.Refusal, "^SORT_DIGEST_MISMATCH$"):
+                r2._verified_sort_fd(self.control)
+            sealed.assert_not_called()
+
+    def test_verified_source_is_closed_and_only_sealed_fd_can_reach_exec(self):
+        executable = self.record(stat.S_IFREG | stat.S_IXUSR)
+        source_digest = "a" * 64
+        control = r2._issue_test_control(self.circuits, "/frozen/sort", source_digest, "sort (GNU coreutils) 8.22")
+        try:
+            with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
+                 mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, create=True), \
+                 mock.patch.object(r2, "_open_root", return_value=10), mock.patch.object(r2.os, "stat", side_effect=(executable, executable)), \
+                 mock.patch.object(r2.os, "open", return_value=11), mock.patch.object(r2.os, "fstat", side_effect=(executable, executable)), \
+                 mock.patch.object(r2, "_read_and_hash_fd", return_value=(source_digest, b"sealed-copy")), \
+                 mock.patch.object(r2, "_create_sealed_sort_fd", return_value=22) as sealed, \
+                 mock.patch.object(r2.os, "close") as closed:
+                self.assertEqual(22, r2._verified_sort_fd(control))
+            sealed.assert_called_once_with(b"sealed-copy")
+            self.assertEqual([mock.call(11), mock.call(10)], closed.call_args_list)
+        finally:
+            r2._close_test_control(control)
 
     def test_single_lane_mismatch_refuses_and_never_opens_candidate_data(self):
         observed = {"driver_log_count": 1, "historical_locale_ordered_sha256": "a" * 64,

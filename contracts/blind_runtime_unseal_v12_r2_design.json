@@ -5,6 +5,7 @@
   "old_v12_failure_authoritative": true,
   "trust_anchor_state": "UNFINALIZED_FAIL_CLOSED",
   "platform_positive_integration": "PENDING_LINUX_ONLY",
+  "external_review_request_binding": "PENDING_EXACT_COMMIT",
   "threat_boundary": "Hostile code already executing in the same Python interpreter is not a supported isolation boundary; the private test issuer is not a production API.",
   "remediation_implementation_status": {
     "SOURCE_CAPABILITY_CALLER_CONTROLLED": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW",
@@ -14,13 +15,13 @@
   "repair_rules": {
     "control": "The zero-argument production factory refuses TRUST_ANCHORS_NOT_FINALIZED; no public API accepts roots, marker paths, digests, sort paths, or environment values.",
     "logs": "Linux POSIX descriptor-only traversal starts at slash, uses openat style dir_fd plus O_NOFOLLOW/O_CLOEXEC, hashes one opened regular-file descriptor, and rejects symlink, special file, nonportable name and observed races with no fallback.",
-    "sort": "A frozen absolute sort path, digest and exact version are required in a future trusted control. The verified descriptor is executed through /proc/self/fd with pass_fds and exactly LANG=en_US.UTF-8, never PATH or inherited environment."
+    "sort": "SEALED_MEMFD_REQUIRED: a frozen absolute sort path, digest and exact version are required in a future trusted control. Verified source bytes are copied to a Linux sealed memfd before execution through /proc/self/fd with pass_fds and exactly LANG=en_US.UTF-8, never PATH or inherited environment."
   },
   "implementation": {
     "inventory_module": "src/data/blind_inventory_v12_r2.py",
-    "inventory_module_sha256": "4f22651cd4b126286312c4ebd11c097645100d93e19e0f631d8b5207f8089441",
+    "inventory_module_sha256": "e0cc7df4dfa9af63cd798967d9c57ffb87504956ac740e092adc0d36ab28fd53",
     "focused_tests": "tests/test_blind_inventory_v12_r2.py",
-    "focused_tests_sha256": "7ede35dffaca91696d09b4a56c109fe43811265e683b57ae2e5f722c858aba79"
+    "focused_tests_sha256": "e65541c84e4dd546327bd7d61a0118a43da0496d4b070341e813b9427b9d1917"
   },
   "authority": {
     "candidate_join_implemented": false,

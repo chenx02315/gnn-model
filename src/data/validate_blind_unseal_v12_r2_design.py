@@ -41,6 +41,8 @@ def validate(repo_root):
     _require(controls["direct_entrypoint_result"] == "DESIGN_ONLY_NO_EXECUTION", "DIRECT_ENTRYPOINT")
     _require(design["trust_anchor_state"] == "UNFINALIZED_FAIL_CLOSED", "ANCHOR_STATE")
     _require(design["platform_positive_integration"] == "PENDING_LINUX_ONLY", "PLATFORM_STATE")
+    _require(design["external_review_request_binding"] == "PENDING_EXACT_COMMIT", "EXTERNAL_REVIEW_BINDING")
+    _require("SEALED_MEMFD_REQUIRED" in design["repair_rules"]["sort"], "SEALED_MEMFD_RULE")
     required = set(("SOURCE_CAPABILITY_CALLER_CONTROLLED", "LOG_OPEN_TOCTOU", "SORT_IDENTITY_PATH_CONTROLLED"))
     remediation = design["remediation_implementation_status"]
     _require(set(remediation) == required, "FINDINGS")
