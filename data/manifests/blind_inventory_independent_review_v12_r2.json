@@ -1,0 +1,47 @@
+{
+  "schema_version": "blind-inventory-independent-review-v12-r2",
+  "status": "PASS_REMEDIATION_DESIGN_ONLY",
+  "decision": "DESIGN_IMPLEMENTATION_ACCEPTED_EXECUTION_STILL_BLOCKED",
+  "implementation_commit": "3eba2831c777c523549b27a1b84d7b73f9c142c3",
+  "review_request": "contracts/blind_inventory_independent_review_v12_r2_request.json",
+  "review_request_sha256": "133b69a037176792876685726d14b56550eee20b6ba1bad6a5475af09ecd8bf0",
+  "review_history": [
+    {
+      "commit": "a06ce3d022853259cdb25a2fadfa9408bc031354",
+      "decision": "FAIL",
+      "finding": "SORT_HASH_TO_EXEC_RACE"
+    },
+    {
+      "commit": "3eba2831c777c523549b27a1b84d7b73f9c142c3",
+      "decision": "PASS_REMEDIATION_DESIGN_ONLY",
+      "finding": "SOURCE_BYTES_COPIED_TO_WRITE_SEALED_MEMFD_BEFORE_EXEC"
+    }
+  ],
+  "finding_decisions": {
+    "SOURCE_CAPABILITY_CALLER_CONTROLLED": "PASS_DESIGN_IMPLEMENTATION",
+    "LOG_OPEN_TOCTOU": "PASS_DESIGN_IMPLEMENTATION",
+    "SORT_IDENTITY_PATH_CONTROLLED": "PASS_DESIGN_IMPLEMENTATION"
+  },
+  "verification": {
+    "focused_tests": 21,
+    "full_tests": 373,
+    "full_tests_skipped": 2,
+    "design_validator": "PASS",
+    "old_v12_reviewed_artifacts_unchanged": true
+  },
+  "remaining_gates": {
+    "trusted_source_and_sort_anchors": "UNFINALIZED",
+    "linux_descriptor_and_memfd_positive_integration": "PENDING",
+    "production_control_factory": "FAIL_CLOSED",
+    "external_execution_review": "REQUIRED_BEFORE_ANY_OPERATION"
+  },
+  "blind_data_read": false,
+  "a_or_b_host_accessed": false,
+  "lsf_or_held_job_used": false,
+  "real_execution_performed": false,
+  "candidate_join_or_release_performed": false,
+  "training_performed": false,
+  "execution_allowed": false,
+  "training_allowed": false,
+  "next_gate": "Freeze trusted anchors and run Linux-only positive security integration under a separately reviewed request; BLIND, LSF, candidate join/release, and training remain forbidden."
+}

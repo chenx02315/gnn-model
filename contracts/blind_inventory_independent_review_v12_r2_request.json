@@ -1,0 +1,30 @@
+{
+  "schema_version": "blind-inventory-independent-review-v12-r2-request",
+  "status": "SEALED_DESIGN_REVIEW_REQUEST",
+  "implementation_commit": "3eba2831c777c523549b27a1b84d7b73f9c142c3",
+  "failed_predecessor_commit": "a06ce3d022853259cdb25a2fadfa9408bc031354",
+  "old_v12_failure": "data/manifests/blind_inventory_independent_review_v12.json",
+  "old_v12_failure_authoritative": true,
+  "review_scope": "Remediation design implementation only; not execution readiness.",
+  "artifact_sha256": {
+    "contracts/blind_runtime_unseal_v12_r2_design.json": "016fcba1086988f4f6c9049ff138d33f3c7156ffec9a084dc5ec0a30d9b48bce",
+    "src/data/blind_inventory_v12_r2.py": "e0cc7df4dfa9af63cd798967d9c57ffb87504956ac740e092adc0d36ab28fd53",
+    "src/data/validate_blind_unseal_v12_r2_design.py": "2c0cc9e3fc17a772a3ae30c6a57d945dde78680f71a4ab640939f351cbaa1a05",
+    "tests/test_blind_inventory_v12_r2.py": "e65541c84e4dd546327bd7d61a0118a43da0496d4b070341e813b9427b9d1917",
+    "tests/test_blind_unseal_v12_r2_design.py": "1b49195ca310cd0c38e2a639cfad8276865a7455a1ab422031e80ade6a0c0f2a"
+  },
+  "required_findings": [
+    "SOURCE_CAPABILITY_CALLER_CONTROLLED",
+    "LOG_OPEN_TOCTOU",
+    "SORT_IDENTITY_PATH_CONTROLLED"
+  ],
+  "prohibited_actions": {
+    "blind_read": true,
+    "a_or_b_host_access": true,
+    "lsf_or_held_job": true,
+    "candidate_join_or_release": true,
+    "training": true
+  },
+  "execution_authorized": false,
+  "training_allowed": false
+}
