@@ -1,0 +1,45 @@
+{
+  "schema_version": "blind-inventory-independent-review-v12",
+  "status": "FAIL",
+  "decision": "FAIL_CLOSED_REMEDIATION_REQUIRED",
+  "review_target_commit": "1f77383f367defcb6572a2ccf875a1b25be2e63f",
+  "review_request_commit": "e6898f4cc48473311ebce01d01a7cebcac07c156",
+  "review_request": "contracts/blind_inventory_independent_review_v12_request.json",
+  "review_request_sha256": "4da2b190634b14e60005e5aa4288f8d60a3f7d633591e0d82b79d46611ba2053",
+  "review_tracks": {
+    "implementation_security_review": "FAIL",
+    "commit_binding_and_authority_review": "PASS"
+  },
+  "arbitration_rule": "Any evidence-backed material implementation defect dominates a binding-only PASS and preserves the block.",
+  "findings": [
+    {
+      "code": "SOURCE_CAPABILITY_CALLER_CONTROLLED",
+      "severity": "P0",
+      "evidence": "The active capability defaults to None while marker path and expected hashes are supplied by the same caller; a matching attacker-controlled marker and None capability can reach source reads.",
+      "required_remediation": "Bind marker location and expected hashes in a trusted control object that cannot be synthesized from caller-selected values; add a shaped-guard bypass test."
+    },
+    {
+      "code": "LOG_OPEN_TOCTOU",
+      "severity": "P1",
+      "evidence": "A log is checked as a regular non-symlink path during discovery and reopened later for hashing, permitting replacement between check and open.",
+      "required_remediation": "Use descriptor-anchored no-follow discovery and hashing, or an equivalent race-resistant mechanism; add swap and nested/file symlink tests."
+    },
+    {
+      "code": "SORT_IDENTITY_PATH_CONTROLLED",
+      "severity": "P1",
+      "evidence": "The historical lane resolves sort through inherited PATH and accepts a version banner, which does not attest the executable identity.",
+      "required_remediation": "Pin and digest the executable or bind an externally attested absolute tool path; add substituted-binary rejection tests."
+    }
+  ],
+  "reviewed_artifact_hashes_matched": true,
+  "blind_data_read": false,
+  "a_or_b_host_accessed": false,
+  "real_execution_performed": false,
+  "execution_allowed": false,
+  "held_job_registration_allowed": false,
+  "candidate_join_allowed": false,
+  "release_implementation_allowed": false,
+  "training_allowed": false,
+  "p0_unlocked": false,
+  "next_gate": "Create a later remediation commit, freeze a new review request against that exact commit, and obtain a new independent read-only review."
+}

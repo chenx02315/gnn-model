@@ -65,3 +65,5 @@ v12 已建立为纯设计合同 `contracts/blind_runtime_unseal_v12_design.json`
 v12 双顺序 inventory 核心已作为实现草案加入 `src/data/blind_inventory_v12.py`，仍无候选 join、发布器或调度入口。该模块要求 v12 专属 CONSUMED 内存能力，先固定 GNU sort 8.22 与 `LANG=en_US.UTF-8` 的历史 lane，再从同一次受保护文件哈希快照计算 bytewise lane；路径集合不是严格排列、sort 版本不符、任一摘要或数量不符都会拒绝。直接入口只返回 `DESIGN_ONLY_NO_EXECUTION`。实现和聚焦测试摘要已绑定进 v12 设计合同；下一门禁改为独立只读复核这一小模块，而不是扩展 runner 或注册作业。
 
 v12 inventory 独立复核请求已冻结在 `contracts/blind_inventory_independent_review_v12_request.json`，目标严格绑定提交 `1f77383f367defcb6572a2ccf875a1b25be2e63f` 及五个 Git blob 摘要。请求状态仍为 `PENDING_INDEPENDENT_READ_ONLY_REVIEW`，只允许检查提交内对象，不允许访问 A/B/BLIND 数据；未来回执即使 PASS 也不得授予执行、训练或 held-job 注册权限。当前仍需真正独立的审查者完成所有条目，不能由该请求或作者自证通过。
+
+v12 inventory 对提交 `1f77383f367defcb6572a2ccf875a1b25be2e63f` 的独立只读复核结果为 FAIL，回执见 `data/manifests/blind_inventory_independent_review_v12.json`。提交绑定/无执行权限检查通过，但实现安全审查确认三个缺陷：调用方可用默认 `None` 能力与自选 marker/hash 绕过 source guard；日志先检查后重新按路径打开，存在换成 symlink 的竞态；历史 sort 仅由 PATH 解析并信任版本横幅，工具身份未被摘要绑定。按 fail-closed 规则，具体缺陷优先于仅证明提交绑定的 PASS 意见，因此不得签发通过回执。P0、candidate join/release、LSF 与训练全部继续阻断；下一步必须在新提交中修复并重新发起独立复核。
