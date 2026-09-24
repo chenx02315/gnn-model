@@ -158,7 +158,17 @@ def _metadata(record):
 
 
 def _same_directory_entry(left, right):
-    return (left.st_dev, left.st_ino) == (right.st_dev, right.st_ino)
+    return _metadata(left) == _metadata(right)
+
+
+def _directory_members(parent_fd):
+    """Snapshot every direct member, including metadata that records mutation."""
+    members = {}
+    for name in os.listdir(parent_fd):
+        if not _portable_component(name):
+            raise Refusal("LOG_PATH_ENCODING")
+        members[name] = _metadata(os.stat(name, dir_fd=parent_fd, follow_symlinks=False))
+    return members
 
 
 def _open_root(root):
@@ -182,10 +192,9 @@ def _open_root(root):
 def _walk_logs(parent_fd, prefix=""):
     """Return {relative: digest}, reading every selected file exactly once."""
     before = os.fstat(parent_fd)
+    before_members = _directory_members(parent_fd)
     result = {}
-    for name in sorted(os.listdir(parent_fd)):
-        if not _portable_component(name):
-            raise Refusal("LOG_PATH_ENCODING")
+    for name in sorted(before_members):
         entry = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
         relative = prefix + name
         if stat.S_ISLNK(entry.st_mode):
@@ -194,7 +203,7 @@ def _walk_logs(parent_fd, prefix=""):
             child = os.open(name, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | os.O_CLOEXEC, dir_fd=parent_fd)
             try:
                 opened = os.fstat(child)
-                if not stat.S_ISDIR(opened.st_mode) or (opened.st_dev, opened.st_ino) != (entry.st_dev, entry.st_ino):
+                if not stat.S_ISDIR(opened.st_mode) or not _same_directory_entry(opened, entry):
                     raise Refusal("LOG_RACE_DETECTED")
                 result.update(_walk_logs(child, relative + "/"))
                 after_entry = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
@@ -220,7 +229,8 @@ def _walk_logs(parent_fd, prefix=""):
         elif not stat.S_ISREG(entry.st_mode):
             raise Refusal("LOG_FILE_TYPE")
     after = os.fstat(parent_fd)
-    if (before.st_dev, before.st_ino) != (after.st_dev, after.st_ino):
+    after_members = _directory_members(parent_fd)
+    if _metadata(before) != _metadata(after) or before_members != after_members:
         raise Refusal("LOG_RACE_DETECTED")
     return result
 
@@ -237,7 +247,11 @@ def _verified_sort_fd(control):
     fd = None
     try:
         entry = os.stat(pieces[-1], dir_fd=parent, follow_symlinks=False)
-        fd = os.open(pieces[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC, dir_fd=parent)
+        if stat.S_ISLNK(entry.st_mode):
+            raise Refusal("SORT_SYMLINK")
+        if not stat.S_ISREG(entry.st_mode):
+            raise Refusal("SORT_FILE_TYPE")
+        fd = os.open(pieces[-1], os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC | os.O_NONBLOCK, dir_fd=parent)
         opened = os.fstat(fd)
         if (not stat.S_ISREG(opened.st_mode) or not (opened.st_mode & (stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)) or
                 (opened.st_dev, opened.st_ino) != (entry.st_dev, entry.st_ino)):

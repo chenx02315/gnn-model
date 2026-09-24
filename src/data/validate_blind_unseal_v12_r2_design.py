@@ -31,7 +31,8 @@ def validate(repo_root):
     _require(design["old_v12_failure_authoritative"] is True, "OLD_V12_FAILURE")
     impl = design["implementation"]
     for path_key, digest_key in (("inventory_module", "inventory_module_sha256"),
-                                 ("focused_tests", "focused_tests_sha256")):
+                                 ("focused_tests", "focused_tests_sha256"),
+                                 ("linux_integration_tests", "linux_integration_tests_sha256")):
         path = os.path.join(repo_root, *impl[path_key].split("/"))
         _require(_sha256(path) == impl[digest_key], "DIGEST_" + path_key.upper())
     controls = design["authority"]
@@ -41,6 +42,8 @@ def validate(repo_root):
     _require(controls["direct_entrypoint_result"] == "DESIGN_ONLY_NO_EXECUTION", "DIRECT_ENTRYPOINT")
     _require(design["trust_anchor_state"] == "UNFINALIZED_FAIL_CLOSED", "ANCHOR_STATE")
     _require(design["platform_positive_integration"] == "PENDING_LINUX_ONLY", "PLATFORM_STATE")
+    _require(impl["linux_integration_execution_summary"] ==
+             "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with testsRun and skipped; Linux gate requires testsRun>0 and skipped=0", "LINUX_SUMMARY")
     _require(design["external_review_request_binding"] == "PENDING_EXACT_COMMIT", "EXTERNAL_REVIEW_BINDING")
     _require("SEALED_MEMFD_REQUIRED" in design["repair_rules"]["sort"], "SEALED_MEMFD_RULE")
     required = set(("SOURCE_CAPABILITY_CALLER_CONTROLLED", "LOG_OPEN_TOCTOU", "SORT_IDENTITY_PATH_CONTROLLED"))

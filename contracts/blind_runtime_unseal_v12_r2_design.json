@@ -19,9 +19,12 @@
   },
   "implementation": {
     "inventory_module": "src/data/blind_inventory_v12_r2.py",
-    "inventory_module_sha256": "e0cc7df4dfa9af63cd798967d9c57ffb87504956ac740e092adc0d36ab28fd53",
+    "inventory_module_sha256": "28ad97cbf1a52e45dc69cb37b4a296397c285411cc3958a3d9f2db9cd0a20d9f",
     "focused_tests": "tests/test_blind_inventory_v12_r2.py",
-    "focused_tests_sha256": "e65541c84e4dd546327bd7d61a0118a43da0496d4b070341e813b9427b9d1917"
+    "focused_tests_sha256": "0d63051e3374238a88bec8bd56de8dad04e682a8393356be1d9f54cf55bb0f2a",
+    "linux_integration_tests": "tests/test_blind_inventory_v12_r2_linux.py",
+    "linux_integration_tests_sha256": "508e06fa3fed31216b9b5311c5e2196f6cd301e8d51758a4a3c2efab8915bf73",
+    "linux_integration_execution_summary": "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with testsRun and skipped; Linux gate requires testsRun>0 and skipped=0"
   },
   "authority": {
     "candidate_join_implemented": false,

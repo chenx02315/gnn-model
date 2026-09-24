@@ -12,6 +12,7 @@ FILES = (
     "contracts/blind_runtime_unseal_v12_r2_design.json",
     "src/data/blind_inventory_v12_r2.py",
     "tests/test_blind_inventory_v12_r2.py",
+    "tests/test_blind_inventory_v12_r2_linux.py",
 )
 
 
@@ -58,6 +59,18 @@ class BlindUnsealV12R2DesignTests(unittest.TestCase):
             document["external_review_request_binding"] = "SELF_ASSERTED"
             path.write_text(json.dumps(document), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "EXTERNAL_REVIEW_BINDING"):
+                validate(str(root))
+        finally:
+            temporary.cleanup()
+
+    def test_contract_cannot_claim_linux_platform_pass(self):
+        temporary, root = self.fixture()
+        try:
+            path = root / "contracts/blind_runtime_unseal_v12_r2_design.json"
+            document = json.loads(path.read_text(encoding="utf-8"))
+            document["platform_positive_integration"] = "PASS"
+            path.write_text(json.dumps(document), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "PLATFORM_STATE"):
                 validate(str(root))
         finally:
             temporary.cleanup()

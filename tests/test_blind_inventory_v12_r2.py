@@ -63,7 +63,7 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
 
     def test_descriptor_walk_rejects_symlink_and_nonportable_names(self):
         with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
-             mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, create=True), \
+             mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, O_NONBLOCK=4, create=True), \
              mock.patch.object(r2.os, "fstat", return_value=mock.Mock(st_dev=1, st_ino=1)), \
              mock.patch.object(r2.os, "listdir", return_value=["bad\\name.driver.log"]):
             with self.assertRaisesRegex(r2.Refusal, "^LOG_PATH_ENCODING$"):
@@ -149,6 +149,18 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
                 r2._run_verified_sort(self.control, ["a.driver.log"])
             run.assert_not_called()
 
+    def test_sort_symlink_and_special_file_refuse_before_open(self):
+        for mode, code in ((stat.S_IFLNK, "SORT_SYMLINK"), (stat.S_IFIFO, "SORT_FILE_TYPE")):
+            with self.subTest(code=code), \
+                 mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
+                 mock.patch.object(r2, "_open_root", return_value=10), \
+                 mock.patch.object(r2.os, "stat", return_value=self.record(mode)), \
+                 mock.patch.object(r2.os, "open") as opened, \
+                 mock.patch.object(r2.os, "close"):
+                with self.assertRaisesRegex(r2.Refusal, "^" + code + "$"):
+                    r2._verified_sort_fd(self.control)
+                opened.assert_not_called()
+
     def test_sealed_memfd_requires_linux_primitives_and_handles_short_writes(self):
         fake_fcntl = types.SimpleNamespace(F_ADD_SEALS=10, F_GET_SEALS=11, F_SEAL_WRITE=1,
                                            F_SEAL_GROW=2, F_SEAL_SHRINK=4, F_SEAL_SEAL=8,
@@ -176,7 +188,7 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
                 r2._create_sealed_sort_fd(b"x")
         executable = self.record(stat.S_IFREG | stat.S_IXUSR)
         with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
-             mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, create=True), \
+             mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, O_NONBLOCK=4, create=True), \
              mock.patch.object(r2, "_open_root", return_value=10), mock.patch.object(r2.os, "stat", side_effect=(executable, executable)), \
              mock.patch.object(r2.os, "open", return_value=11), mock.patch.object(r2.os, "fstat", side_effect=(executable, executable)), \
              mock.patch.object(r2, "_read_and_hash_fd", return_value=("f" * 64, b"source")), \
@@ -191,14 +203,16 @@ class BlindInventoryV12R2Tests(unittest.TestCase):
         control = r2._issue_test_control(self.circuits, "/frozen/sort", source_digest, "sort (GNU coreutils) 8.22")
         try:
             with mock.patch.object(r2, "_secure_primitives_available", return_value=True), \
-                 mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, create=True), \
+                 mock.patch.multiple(r2.os, O_NOFOLLOW=1, O_CLOEXEC=2, O_NONBLOCK=4, create=True), \
                  mock.patch.object(r2, "_open_root", return_value=10), mock.patch.object(r2.os, "stat", side_effect=(executable, executable)), \
-                 mock.patch.object(r2.os, "open", return_value=11), mock.patch.object(r2.os, "fstat", side_effect=(executable, executable)), \
+                 mock.patch.object(r2.os, "fstat", side_effect=(executable, executable)), \
                  mock.patch.object(r2, "_read_and_hash_fd", return_value=(source_digest, b"sealed-copy")), \
                  mock.patch.object(r2, "_create_sealed_sort_fd", return_value=22) as sealed, \
-                 mock.patch.object(r2.os, "close") as closed:
+                 mock.patch.object(r2.os, "close") as closed, \
+                 mock.patch.object(r2.os, "open", return_value=11) as opened:
                 self.assertEqual(22, r2._verified_sort_fd(control))
             sealed.assert_called_once_with(b"sealed-copy")
+            self.assertEqual(4, opened.call_args.args[1] & 4)
             self.assertEqual([mock.call(11), mock.call(10)], closed.call_args_list)
         finally:
             r2._close_test_control(control)
