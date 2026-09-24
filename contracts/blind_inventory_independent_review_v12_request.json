@@ -1,0 +1,42 @@
+{
+  "schema_version": "blind-inventory-independent-review-v12-request",
+  "status": "PENDING_INDEPENDENT_READ_ONLY_REVIEW",
+  "review_target_commit": "1f77383f367defcb6572a2ccf875a1b25be2e63f",
+  "reviewed_artifacts": {
+    "contracts/blind_runtime_unseal_v12_design.json": "c01fb7d80bb548a6b201f2e4ea37e5528710c6bb08839c383c9b6736b31fbc10",
+    "src/data/blind_inventory_v12.py": "dce872da1114aef1b6c894be3118d126b4e1c341bf6536f0d58a0b9ccd58bb82",
+    "src/data/validate_blind_unseal_v12_design.py": "1e3a6f2f1a1eb0ad70499f115b1f2c0887b2b4a674d15e89fcade5a398266da6",
+    "tests/test_blind_inventory_v12.py": "b7f8bdee8f1054b3ce817e7b76b95afc49b718956031558c19da71628c217a75",
+    "tests/test_blind_unseal_v12_design.py": "9423b3ef0875f8b56c9ccca9ad791177cd6694f9e96c988a383934420761209e"
+  },
+  "review_scope": "READ_ONLY_GIT_BLOBS_NO_A_B_OR_BLIND_ACCESS",
+  "required_reviewer_independence": "The reviewer must not modify the reviewed commit or use author-supplied conclusions as evidence. Any defect keeps P0 blocked and returns remediation under a later commit.",
+  "required_checks": [
+    "all reviewed artifacts are read from the exact target commit and match the frozen SHA-256 values",
+    "the design validator passes while execution_authorized and training_allowed remain false",
+    "source access refuses before an exact v12 CONSUMED marker and opaque in-process capability",
+    "the log root is a real non-symlink directory and all nested directory and log symlinks refuse",
+    "only portable ASCII relative log paths accepted by the frozen sha256sum line grammar are allowed",
+    "historical ordering requires exact GNU coreutils sort 8.22 with LANG en_US.UTF-8 and no LC_ALL or LC_COLLATE override",
+    "historical ordering output must be an exact permutation of the discovered relative paths",
+    "both ordered digests are computed from one file-hash snapshot and either single-lane mismatch refuses",
+    "the expected inventory schema is exact and cannot omit either ordering lane or the driver-log count",
+    "the public API exposes no injected orderer or bypass hook",
+    "no candidate join release publisher scheduler entrypoint held job registration or execution authority exists",
+    "direct module execution exits with code 2 before source access",
+    "focused negative tests cover guard refusal sort version permutation symlink path grammar and both single-lane mismatches",
+    "review performs no A B or BLIND source access and no real execution"
+  ],
+  "future_review_receipt": "data/manifests/blind_inventory_independent_review_v12.json",
+  "future_pass_requirements": {
+    "reviewed_commit_must_equal": "1f77383f367defcb6572a2ccf875a1b25be2e63f",
+    "all_required_checks_must_pass": true,
+    "execution_allowed": false,
+    "training_allowed": false,
+    "blind_data_read": false,
+    "real_execution_performed": false
+  },
+  "execution_allowed_before_review_pass": false,
+  "held_job_registration_allowed": false,
+  "training_allowed": false
+}

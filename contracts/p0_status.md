@@ -63,3 +63,5 @@ v11 的“输入漂移”现已完成版本化根因纠正，但 v11 失败事�
 v12 已建立为纯设计合同 `contracts/blind_runtime_unseal_v12_design.json`，没有 runner、held job 或执行授权。它把 v11 失败证据、双顺序冻结清单和根因回执逐文件绑定 SHA-256，并要求未来实现必须在读取任何候选行前同时通过历史 locale 摘要、bytewise 摘要和日志数量；任一 lane 不匹配都以 `circuits=[]` 失败。设计还冻结 sort 版本/locale 拒绝、单 lane 假通过、v11 输出复用和直接 runner 调用等负向测试。当前下一门禁只是实现新文件并做独立只读复核；在 exact-commit PASS 回执和新授权之前，不得注册或恢复任何 v12 LSF 作业。
 
 v12 双顺序 inventory 核心已作为实现草案加入 `src/data/blind_inventory_v12.py`，仍无候选 join、发布器或调度入口。该模块要求 v12 专属 CONSUMED 内存能力，先固定 GNU sort 8.22 与 `LANG=en_US.UTF-8` 的历史 lane，再从同一次受保护文件哈希快照计算 bytewise lane；路径集合不是严格排列、sort 版本不符、任一摘要或数量不符都会拒绝。直接入口只返回 `DESIGN_ONLY_NO_EXECUTION`。实现和聚焦测试摘要已绑定进 v12 设计合同；下一门禁改为独立只读复核这一小模块，而不是扩展 runner 或注册作业。
+
+v12 inventory 独立复核请求已冻结在 `contracts/blind_inventory_independent_review_v12_request.json`，目标严格绑定提交 `1f77383f367defcb6572a2ccf875a1b25be2e63f` 及五个 Git blob 摘要。请求状态仍为 `PENDING_INDEPENDENT_READ_ONLY_REVIEW`，只允许检查提交内对象，不允许访问 A/B/BLIND 数据；未来回执即使 PASS 也不得授予执行、训练或 held-job 注册权限。当前仍需真正独立的审查者完成所有条目，不能由该请求或作者自证通过。
