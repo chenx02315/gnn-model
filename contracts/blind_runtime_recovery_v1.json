@@ -33,7 +33,7 @@
       "src/data/build_blind_runtime_recovery_plan_v1.py": "3448c7eddc8cac90607236b6021ef8d8ce680449378c1a7939f23df60288ca5b",
       "src/data/run_blind_runtime_recovery_plan_v1.py": "12e6696277b00fb4031d575e246764523293c6a58284489e1434f7ecc42d703e",
       "tests/test_build_blind_runtime_recovery_plan_v1.py": "0b16be91e6f8e45fb229b7b0868f2dc5d04482ae57e998d7fc2e3718d1293072",
-      "tests/test_run_blind_runtime_recovery_plan_v1.py": "5825ffd04e809c70286a51b6600f789a4189dd4ffc04dea8587ce0f9be621dd6"
+      "tests/test_run_blind_runtime_recovery_plan_v1.py": "2c1a6d73d0caabd12b120815f79dc92e6dd87d115f289b30ed685c2a80a29104"
     },
     "seal_rule": "A primary-agent reviewed final seal must replace every PENDING_ROOT_SEAL value with a SHA-256 before deployment beyond local tests."
   },

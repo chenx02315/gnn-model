@@ -71,9 +71,11 @@ class RunBlindRuntimeRecoveryPlanV1Tests(unittest.TestCase):
             invoked.assert_not_called()
 
     def test_unsealed_contract_refuses_without_output(self):
-        for patcher in self.patches:
+        for patcher in list(self.patches):
             if getattr(patcher, "attribute", None) == "validate_recovery_contract":
                 patcher.stop()
+                self.patches.remove(patcher)
+                break
         with mock.patch.object(runner, "validate_recovery_contract", side_effect=runner.Refusal("CONTRACT_NOT_SEALED")):
             with self.assertRaisesRegex(runner.Refusal, "CONTRACT_NOT_SEALED"):
                 runner.run()
