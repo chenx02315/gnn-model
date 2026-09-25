@@ -1,0 +1,41 @@
+{
+  "schema_version": "blind-runtime-recovery-v1",
+  "status": "PLAN_ONLY_AUTHORIZED_REVIEWED",
+  "purpose": "Build a minimal, A-private, deduplicated recovery plan for missing formal BLIND runtime attempts before any separate execution gate.",
+  "circuits": ["s9234", "s38584", "wb_dma"],
+  "inputs": {
+    "source": "in-memory immutable log and measurement snapshots accepted by blind-runtime-join-v12-r5",
+    "formal_stages": ["02_hf_coarse", "03_hmf_coarse", "04_integer_refine"]
+  },
+  "private_plan": {
+    "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_private",
+    "permissions": "0700 directory and 0600 plan files",
+    "allowed_fields": ["circuit", "stage", "mode", "run_id", "source_marker", "pattern_limit", "run_kind", "depends_on_h_marker"],
+    "forbidden_fields": ["result_path", "coverage", "wall_time", "runtime", "log_payload", "measurement_row", "candidate_features"]
+  },
+  "classification": {
+    "plan": "exactly zero matching logs for a formal H or M measurement reference with a legal, stage-consistent run_id; M records bind an H dependency derived from the same measurement row and declare full or limited execution",
+    "out_of_scope": "a missing formal F reference is refused rather than planned",
+    "skip": "exactly one matching log with nonempty measured wall time",
+    "refuse": ["ambiguous log match", "mode conflict", "existing log without measured wall time", "missing result marker", "illegal or stage-inconsistent run_id", "unsupported recovery stage"]
+  },
+  "isolation": {
+    "historical_directories": "read-only; never write, rename, remove, or reuse historical output roots",
+    "execution": "this contract and its plan builder do not contain a Tessent command or submit an LSF job",
+    "merge": "any recovered evidence requires a later immutable source manifest and an independent candidate-to-runtime join audit"
+  },
+  "gates": {
+    "lsf_submission": "requires a separately reviewed recovery-runner contract, exact command binding, private-plan digest, and explicit execution authorization",
+    "training": "false until recovery, R06/R07/R13, and independent audit all pass"
+  },
+  "implementation": {
+    "artifact_sha256": {
+      "src/data/build_blind_runtime_recovery_plan_v1.py": "3448c7eddc8cac90607236b6021ef8d8ce680449378c1a7939f23df60288ca5b",
+      "src/data/run_blind_runtime_recovery_plan_v1.py": "12e6696277b00fb4031d575e246764523293c6a58284489e1434f7ecc42d703e",
+      "tests/test_build_blind_runtime_recovery_plan_v1.py": "0b16be91e6f8e45fb229b7b0868f2dc5d04482ae57e998d7fc2e3718d1293072",
+      "tests/test_run_blind_runtime_recovery_plan_v1.py": "5825ffd04e809c70286a51b6600f789a4189dd4ffc04dea8587ce0f9be621dd6"
+    },
+    "seal_rule": "A primary-agent reviewed final seal must replace every PENDING_ROOT_SEAL value with a SHA-256 before deployment beyond local tests."
+  },
+  "training_allowed": false
+}
