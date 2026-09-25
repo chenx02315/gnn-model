@@ -1,21 +1,12 @@
 test_coordinated_directory_member_addition_refuses (__main__.BlindInventoryV12R2LinuxTests.test_coordinated_directory_member_addition_refuses) ... ok
 test_end_to_end_synthetic_nested_logs_with_gnu_sort (__main__.BlindInventoryV12R2LinuxTests.test_end_to_end_synthetic_nested_logs_with_gnu_sort) ... ok
-test_sealed_memfd_rejects_write_and_truncate (__main__.BlindInventoryV12R2LinuxTests.test_sealed_memfd_rejects_write_and_truncate) ... ERROR
+test_sealed_memfd_rejects_write_and_truncate (__main__.BlindInventoryV12R2LinuxTests.test_sealed_memfd_rejects_write_and_truncate) ... ok
 test_sealed_sort_exec_survives_source_replacement (__main__.BlindInventoryV12R2LinuxTests.test_sealed_sort_exec_survives_source_replacement) ... ok
 test_sort_anchor_fifo_refuses_without_blocking (__main__.BlindInventoryV12R2LinuxTests.test_sort_anchor_fifo_refuses_without_blocking) ... ok
 test_symlink_file_directory_and_fifo_refuse_without_blocking (__main__.BlindInventoryV12R2LinuxTests.test_symlink_file_directory_and_fifo_refuse_without_blocking) ... ok
 
-======================================================================
-ERROR: test_sealed_memfd_rejects_write_and_truncate (__main__.BlindInventoryV12R2LinuxTests.test_sealed_memfd_rejects_write_and_truncate)
 ----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/home/runner/work/gnn-model/gnn-model/tests/test_blind_inventory_v12_r2_linux.py", line 175, in test_sealed_memfd_rejects_write_and_truncate
-    with self.assertRaisesOSError(errno.EPERM):
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'BlindInventoryV12R2LinuxTests' object has no attribute 'assertRaisesOSError'. Did you mean: 'assertRaisesRegex'?
+Ran 6 tests in 0.021s
 
-----------------------------------------------------------------------
-Ran 6 tests in 0.029s
-
-FAILED (errors=1)
-BLIND_INVENTORY_V12_R2_LINUX_SUMMARY={"errors": 1, "failures": 0, "gate_pass": false, "platform": "linux", "platform_positive_integration": "FAIL_LOCAL_SYNTHETIC", "skipped": 0, "testsRun": 6}
+OK
+BLIND_INVENTORY_V12_R2_LINUX_SUMMARY={"errors": 0, "failures": 0, "gate_pass": true, "platform": "linux", "platform_positive_integration": "PASS_LOCAL_SYNTHETIC_ONLY", "skipped": 0, "testsRun": 6}
