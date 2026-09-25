@@ -29,7 +29,11 @@ class RunBlindJoinV12R5Tests(unittest.TestCase):
         self.output_patch.start(); self.bundle_patch.start(); self.platform_patch.start()
 
     def tearDown(self):
-        self.platform_patch.stop(); self.bundle_patch.stop(); self.output_patch.stop(); self.tmp.cleanup()
+        for name in ("platform_patch", "bundle_patch", "output_patch"):
+            patcher = getattr(self, name)
+            if patcher is not None:
+                patcher.stop()
+        self.tmp.cleanup()
 
     def test_verified_fd_is_hashed_then_reused_for_both_execs(self):
         fd = 71
@@ -113,6 +117,7 @@ class RunBlindJoinV12R5Tests(unittest.TestCase):
 
     def test_runtime_platform_mismatch_refuses_before_snapshot(self):
         self.platform_patch.stop()
+        self.platform_patch = None
         expected = runner.PLATFORM_ANCHORS
         for key, bad in (("host", "wrong-host"), ("linux", "wrong-kernel"), ("python", "3.6.7")):
             with self.subTest(key=key), \
@@ -139,6 +144,7 @@ class RunBlindJoinV12R5Tests(unittest.TestCase):
 
     def test_contract_mutation_of_inventory_or_anchor_is_rejected(self):
         self.bundle_patch.stop()
+        self.bundle_patch = None
         root = pathlib.Path(self.tmp.name) / "bundle"; (root / "contracts").mkdir(parents=True)
         required = {"src/data/blind_inventory_v12_r2.py", "src/data/blind_join_core_v12_r3.py",
                     "src/data/run_blind_join_v12_r3.py", "src/data/run_blind_join_v12_r5.py",

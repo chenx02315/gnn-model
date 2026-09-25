@@ -20,7 +20,7 @@
       "src/data/build_blind_method_binding_v12_r3.py": "6a9ae00f51777f505facd86267f4c706adae815a5569eec0e459581eb80a2e5e",
       "tests/test_blind_join_core_v12_r3.py": "46335e27b3c0cfbd88d72a891aca66dd05408fab8b91359d2fb16627b5090f00",
       "tests/test_run_blind_join_v12_r3.py": "b4fa77b5aba2b789d26d759af50f4e777c84158983669bc2784b05a31553252e",
-      "tests/test_run_blind_join_v12_r5.py": "e26125aa0125401f77e4ea4abd70cfd2bac28cd6220718f9cb55c9390e81efa0",
+      "tests/test_run_blind_join_v12_r5.py": "2cb278c8c0fdbd1e4212ca117198b182578bc71112a7d4bf0ca967b60ab7791e",
       "tests/test_build_blind_method_binding_v12_r3.py": "096cde3ffe8e1f5a41ea4f1ebc8e96c462d0c7121743f28127e65b4d7ed8c242"
     },
     "binding_rule": "The runner validates the complete inventory and platform anchor objects and hashes every listed file before opening BLIND evidence; sort is hashed and executed through one inherited descriptor; the receipt records both contract_sha256 and implementation_set_sha256."
