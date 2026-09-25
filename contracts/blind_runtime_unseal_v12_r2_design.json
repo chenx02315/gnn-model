@@ -23,7 +23,7 @@
     "focused_tests": "tests/test_blind_inventory_v12_r2.py",
     "focused_tests_sha256": "637fca72b4feafcd7eb9204567eca35fa368ee0dd1b1fe04324b783f2505351f",
     "linux_integration_tests": "tests/test_blind_inventory_v12_r2_linux.py",
-    "linux_integration_tests_sha256": "df1e36e61168c67142d497f41e3ba5ebbe7f1d1cd5c7141ec9541a66b1f03183",
+    "linux_integration_tests_sha256": "6f947efa0acae773af3dfe43e3dada96e528a65a55abf9d03cebd4f3a95b398b",
     "linux_integration_execution_summary": "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with gate_pass; direct entry is nonzero unless testsRun>0 skipped=0 failures=0 errors=0 and Linux prerequisites hold"
   },
   "authority": {

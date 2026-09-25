@@ -172,12 +172,15 @@ class BlindInventoryV12R2LinuxTests(unittest.TestCase):
             self.assertEqual(required, seals & required)
             os.lseek(fd, 0, os.SEEK_SET)
             self.assertEqual(b"sealed", os.read(fd, 64))
-            with self.assertRaisesOSError(errno.EPERM):
+            with self.assertRaises(OSError) as write_error:
                 os.write(fd, b"x")
-            with self.assertRaisesOSError(errno.EPERM):
+            self.assertEqual(errno.EPERM, write_error.exception.errno)
+            with self.assertRaises(OSError) as shrink_error:
                 os.ftruncate(fd, 0)
-            with self.assertRaisesOSError(errno.EPERM):
+            self.assertEqual(errno.EPERM, shrink_error.exception.errno)
+            with self.assertRaises(OSError) as grow_error:
                 os.ftruncate(fd, 64)
+            self.assertEqual(errno.EPERM, grow_error.exception.errno)
         finally:
             os.close(fd)
 
