@@ -1,0 +1,63 @@
+{
+  "schema_version": "blind-inventory-v12-r2-linux-gate-closeout-v1",
+  "status": "PASS_LINUX_SYNTHETIC_GATE_CLOSED",
+  "decision": "PLATFORM_POSITIVE_INTEGRATION_COMPLETE_PRODUCTION_AUTHORITY_BLOCKED",
+  "design_review": {
+    "review_target_commit": "be59c4195d9a768bf7f467830cf37f88bcc32349",
+    "decision": "PASS_DESIGN_GATE",
+    "post_review_delta": "The only implementation delta was the Linux test assertion API correction committed at 31d8d496d8700e07b702b713465d39f95246b8cc."
+  },
+  "execution_history": [
+    {
+      "run_id": "36088036215",
+      "source_commit": "2262a9a8b0944c1b836e4120895a8c75f3c3732c",
+      "status": "FAIL_LOCAL_SYNTHETIC",
+      "tests_run": 6,
+      "errors": 1,
+      "finding": "INVALID_UNITTEST_ASSERTION_API"
+    },
+    {
+      "run_id": "36088355510",
+      "source_commit": "31d8d496d8700e07b702b713465d39f95246b8cc",
+      "evidence_commit": "eaf6d2fa67e68d0179ecd0fcf7d0ddc4efa8e1b0",
+      "status": "PASS_LOCAL_SYNTHETIC_ONLY",
+      "tests_run": 6,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "gate_pass": true,
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "gnu_sort": "sort (GNU coreutils) 9.4"
+  },
+  "artifact_git_blob_sha256": {
+    ".github/workflows/v12-r2-linux-gate.yml": "6dde1bc4341466fe93f64e63bb67117ca4c3dc800f2d66db19f001262b043908",
+    "contracts/blind_runtime_unseal_v12_r2_design.json": "a0561fc2aeb535346b3649b0f4dbebb0a62d19d8952a0b1dd500d3138d9eee3b",
+    "data/manifests/blind_inventory_v12_r2_linux_gate_execution.json": "6608c24f3431bc691c4ddb81c4ed918f87f213c8498f5ab53e56a77174781f15",
+    "data/manifests/blind_inventory_v12_r2_linux_gate_execution.log": "29c54fae630ab81fccc4b5be8837b4613bb331b2db4b3f860f1f89c2338b80b1",
+    "src/data/blind_inventory_v12_r2.py": "28ad97cbf1a52e45dc69cb37b4a296397c285411cc3958a3d9f2db9cd0a20d9f",
+    "src/data/validate_blind_unseal_v12_r2_design.py": "9a1d46786659f66f8033a26770293d252bde6f9c5bd127fca40730704d3e38f1",
+    "tests/test_blind_inventory_v12_r2_linux.py": "6f947efa0acae773af3dfe43e3dada96e528a65a55abf9d03cebd4f3a95b398b",
+    "tests/test_blind_unseal_v12_r2_design.py": "9f56cc95367417c6536367e8e1a932b2d724b58167675aa719b4fd6f5cf5bf02"
+  },
+  "verification": {
+    "focused_tests": 26,
+    "full_tests": 384,
+    "full_tests_skipped": 8,
+    "design_validator": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "authority": {
+    "blind_read": false,
+    "a_or_b_host_access": false,
+    "lsf_or_tessent": false,
+    "candidate_join_or_release": false,
+    "production_execution": false,
+    "training": false
+  },
+  "next_gate": "Require a new explicit authorization before BLIND source access, A/B access, LSF/Tessent execution, candidate join/release, or training."
+}

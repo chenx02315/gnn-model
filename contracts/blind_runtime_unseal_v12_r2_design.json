@@ -1,16 +1,16 @@
 {
   "schema_version": "blind-runtime-unseal-v12-r2-design",
-  "status": "DESIGN_ONLY_NO_EXECUTION",
-  "purpose": "Correct the rejected v12 inventory trust, descriptor race, and sort identity designs without authorizing source access or execution.",
+  "status": "SYNTHETIC_LINUX_VALIDATED_NO_EXECUTION_AUTHORITY",
+  "purpose": "Validate the corrected v12 inventory trust, descriptor race, and sort identity designs on synthetic Linux inputs without authorizing BLIND source access or production execution.",
   "old_v12_failure_authoritative": true,
   "trust_anchor_state": "UNFINALIZED_FAIL_CLOSED",
-  "platform_positive_integration": "PENDING_LINUX_ONLY",
-  "external_review_request_binding": "PENDING_EXACT_COMMIT",
+  "platform_positive_integration": "PASS_LOCAL_SYNTHETIC_ONLY",
+  "external_review_request_binding": "PASS_DESIGN_GATE_BE59C419_TEST_ONLY_DELTA_31D8D49",
   "threat_boundary": "Hostile code already executing in the same Python interpreter is not a supported isolation boundary; the private test issuer is not a production API.",
   "remediation_implementation_status": {
-    "SOURCE_CAPABILITY_CALLER_CONTROLLED": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW",
-    "LOG_OPEN_TOCTOU": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW",
-    "SORT_IDENTITY_PATH_CONTROLLED": "IMPLEMENTED_DESIGN_ONLY_PENDING_INDEPENDENT_REVIEW"
+    "SOURCE_CAPABILITY_CALLER_CONTROLLED": "DESIGN_REVIEW_PASSED_LINUX_SYNTHETIC_PASS",
+    "LOG_OPEN_TOCTOU": "DESIGN_REVIEW_PASSED_LINUX_SYNTHETIC_PASS",
+    "SORT_IDENTITY_PATH_CONTROLLED": "DESIGN_REVIEW_PASSED_LINUX_SYNTHETIC_PASS"
   },
   "repair_rules": {
     "control": "The zero-argument production factory refuses TRUST_ANCHORS_NOT_FINALIZED; no public API accepts roots, marker paths, digests, sort paths, or environment values.",
@@ -24,7 +24,13 @@
     "focused_tests_sha256": "637fca72b4feafcd7eb9204567eca35fa368ee0dd1b1fe04324b783f2505351f",
     "linux_integration_tests": "tests/test_blind_inventory_v12_r2_linux.py",
     "linux_integration_tests_sha256": "6f947efa0acae773af3dfe43e3dada96e528a65a55abf9d03cebd4f3a95b398b",
-    "linux_integration_execution_summary": "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with gate_pass; direct entry is nonzero unless testsRun>0 skipped=0 failures=0 errors=0 and Linux prerequisites hold"
+    "linux_integration_execution_summary": "BLIND_INVENTORY_V12_R2_LINUX_SUMMARY JSON with gate_pass; direct entry is nonzero unless testsRun>0 skipped=0 failures=0 errors=0 and Linux prerequisites hold",
+    "linux_execution_receipt": "data/manifests/blind_inventory_v12_r2_linux_gate_execution.json",
+    "linux_execution_receipt_git_blob_sha256": "6608c24f3431bc691c4ddb81c4ed918f87f213c8498f5ab53e56a77174781f15",
+    "linux_execution_log": "data/manifests/blind_inventory_v12_r2_linux_gate_execution.log",
+    "linux_execution_log_git_blob_sha256": "29c54fae630ab81fccc4b5be8837b4613bb331b2db4b3f860f1f89c2338b80b1",
+    "linux_execution_source_commit": "31d8d496d8700e07b702b713465d39f95246b8cc",
+    "linux_execution_evidence_commit": "eaf6d2fa67e68d0179ecd0fcf7d0ddc4efa8e1b0"
   },
   "authority": {
     "candidate_join_implemented": false,
@@ -33,6 +39,6 @@
     "held_job_registration_allowed": false,
     "execution_authorized": false,
     "training_allowed": false,
-    "direct_entrypoint_result": "DESIGN_ONLY_NO_EXECUTION"
+    "direct_entrypoint_result": "LINUX_SYNTHETIC_PASS_NO_PRODUCTION_EXECUTION"
   }
 }
