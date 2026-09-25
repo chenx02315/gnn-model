@@ -1,0 +1,41 @@
+{
+  "artifacts": {
+    "inventory_module_sha256": "28ad97cbf1a52e45dc69cb37b4a296397c285411cc3958a3d9f2db9cd0a20d9f",
+    "linux_test_sha256": "df1e36e61168c67142d497f41e3ba5ebbe7f1d1cd5c7141ec9541a66b1f03183",
+    "raw_log": "data/manifests/blind_inventory_v12_r2_linux_gate_execution.log",
+    "raw_log_sha256": "f55a2ede0d9fcb968d424367b0b674446960fcdfe6622bda8ed1ee7837d4bb46"
+  },
+  "authority": {
+    "a_or_b_host_access": false,
+    "blind_read": false,
+    "candidate_join_or_release": false,
+    "lsf_or_tessent": false,
+    "training": false
+  },
+  "environment": {
+    "gnu_sort": "sort (GNU coreutils) 9.4",
+    "kernel": "6.17.0-1022-azure",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.13.15"
+  },
+  "gate_exit_code": 1,
+  "gate_summary": {
+    "errors": 1,
+    "failures": 0,
+    "gate_pass": false,
+    "platform": "linux",
+    "platform_positive_integration": "FAIL_LOCAL_SYNTHETIC",
+    "skipped": 0,
+    "testsRun": 6
+  },
+  "schema_version": "blind-inventory-v12-r2-linux-gate-execution-v1",
+  "scope": "Synthetic Linux syscall integration only; no BLIND, A/B, LSF, candidate join/release, or training.",
+  "source_commit": "2262a9a8b0944c1b836e4120895a8c75f3c3732c",
+  "status": "FAIL_LOCAL_SYNTHETIC",
+  "workflow": {
+    "run_attempt": "1",
+    "run_id": "36088036215",
+    "runner_arch": "X64",
+    "runner_os": "Linux"
+  }
+}
