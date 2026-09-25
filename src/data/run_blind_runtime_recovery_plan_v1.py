@@ -20,7 +20,7 @@ from src.data import run_blind_join_v12_r5 as r5
 HERE = os.path.dirname(os.path.abspath(__file__))
 BUNDLE_ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 CONTRACT_RELATIVE = "contracts/blind_runtime_recovery_v1.json"
-OUTPUT_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_private"
+OUTPUT_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r2_private"
 CIRCUITS = planner.FIXED_CIRCUITS
 REQUIRED_ARTIFACTS = frozenset((
     "src/data/build_blind_runtime_recovery_plan_v1.py",
@@ -151,6 +151,11 @@ def _plan_document(groups):
             "training_allowed": False, "circuits": groups}
 
 
+def _bind_r5_verified_sort():
+    """Use the r5 descriptor-bound sorter before opening any BLIND snapshot."""
+    r5.impl.secure._run_verified_sort = r5._verified_sort_fd
+
+
 def _publish_payload(plan_raw, summary_raw):
     """Publish row-level data only after all files are durably staged."""
     staging = os.path.join(OUTPUT_ROOT, "payload.staging")
@@ -186,6 +191,7 @@ def run():
     r5_contract_sha256, r5_implementation_sha256 = r5.validate_bundle()
     recovery_contract_sha256 = validate_recovery_contract()
     r5._validate_runtime_platform()
+    _bind_r5_verified_sort()
     _mkdir_private_root()
     try:
         control = r5.impl.open_trusted_control()

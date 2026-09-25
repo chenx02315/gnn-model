@@ -70,6 +70,27 @@ class RunBlindRuntimeRecoveryPlanV1Tests(unittest.TestCase):
             self.assertEqual(2, runner.main(["--attacker"]))
             invoked.assert_not_called()
 
+    def test_r5_sort_binding_precedes_snapshot_and_binding_refuses_closed(self):
+        sentinel = object()
+        observed = []
+        def snapshot(control, circuit):
+            observed.append(runner.r5.impl.secure._run_verified_sort)
+            return {}, {}
+        with mock.patch.object(runner.r5.impl, "snapshot_circuit", side_effect=snapshot), \
+             mock.patch.object(runner.planner, "build_recovery_plan", return_value=[]), \
+             mock.patch.object(runner.r5.impl.secure, "_run_verified_sort", sentinel):
+            self.assertEqual(0, runner.run())
+        self.assertEqual([runner.r5._verified_sort_fd] * len(runner.CIRCUITS), observed)
+        self.tmp.cleanup(); self.tmp = tempfile.TemporaryDirectory()
+        out = str(pathlib.Path(self.tmp.name) / "private_bind_failure")
+        with mock.patch.object(runner, "OUTPUT_ROOT", out), \
+             mock.patch.object(runner, "_bind_r5_verified_sort", side_effect=runner.Refusal("SORT_BIND_FAILED")), \
+             mock.patch.object(runner.r5.impl, "snapshot_circuit") as snapshot:
+            with self.assertRaisesRegex(runner.Refusal, "SORT_BIND_FAILED"):
+                runner.run()
+            snapshot.assert_not_called()
+        self.assertFalse(pathlib.Path(out).exists())
+
     def test_unsealed_contract_refuses_without_output(self):
         for patcher in list(self.patches):
             if getattr(patcher, "attribute", None) == "validate_recovery_contract":
