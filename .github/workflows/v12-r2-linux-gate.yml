@@ -1,0 +1,153 @@
+name: v12-r2 Linux synthetic gate
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/v12-r2-linux-gate.yml
+      - src/data/blind_inventory_v12_r2.py
+      - tests/test_blind_inventory_v12_r2.py
+      - tests/test_blind_inventory_v12_r2_linux.py
+      - contracts/blind_runtime_unseal_v12_r2_design.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v12-r2-linux-synthetic-gate
+  cancel-in-progress: false
+
+jobs:
+  linux-synthetic-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run fail-closed Linux gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          log=data/manifests/blind_inventory_v12_r2_linux_gate_execution.log
+          set +e
+          python tests/test_blind_inventory_v12_r2_linux.py >"$log" 2>&1
+          code=$?
+          set -e
+          cat "$log"
+          if [[ "$code" -ne 0 ]]; then
+            echo "Linux gate refused with exit code $code" >&2
+            exit "$code"
+          fi
+
+      - name: Build bounded execution receipt
+        shell: bash
+        env:
+          SOURCE_COMMIT: ${{ github.sha }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
+          WORKFLOW_RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUNNER_IMAGE_OS: ${{ runner.os }}
+          RUNNER_IMAGE_ARCH: ${{ runner.arch }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import platform
+          import subprocess
+
+          root = pathlib.Path('.')
+          log_path = root / 'data/manifests/blind_inventory_v12_r2_linux_gate_execution.log'
+          receipt_path = root / 'data/manifests/blind_inventory_v12_r2_linux_gate_execution.json'
+          prefix = 'BLIND_INVENTORY_V12_R2_LINUX_SUMMARY='
+          summaries = [line[len(prefix):] for line in log_path.read_text(encoding='utf-8').splitlines()
+                       if line.startswith(prefix)]
+          if len(summaries) != 1:
+              raise SystemExit('expected exactly one Linux gate summary')
+          summary = json.loads(summaries[0])
+          expected = {
+              'testsRun': 6,
+              'skipped': 0,
+              'failures': 0,
+              'errors': 0,
+              'gate_pass': True,
+              'platform_positive_integration': 'PASS_LOCAL_SYNTHETIC_ONLY',
+          }
+          for key, value in expected.items():
+              if summary.get(key) != value:
+                  raise SystemExit('Linux gate summary mismatch for %s' % key)
+
+          def sha256(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          sort_version = subprocess.run(['sort', '--version'], check=True, stdout=subprocess.PIPE,
+                                        text=True).stdout.splitlines()[0]
+          receipt = {
+              'schema_version': 'blind-inventory-v12-r2-linux-gate-execution-v1',
+              'status': 'PASS_LOCAL_SYNTHETIC_ONLY',
+              'scope': 'Synthetic Linux syscall integration only; no BLIND, A/B, LSF, candidate join/release, or training.',
+              'source_commit': os.environ['SOURCE_COMMIT'],
+              'workflow': {
+                  'run_id': os.environ['WORKFLOW_RUN_ID'],
+                  'run_attempt': os.environ['WORKFLOW_RUN_ATTEMPT'],
+                  'runner_os': os.environ['RUNNER_IMAGE_OS'],
+                  'runner_arch': os.environ['RUNNER_IMAGE_ARCH'],
+              },
+              'environment': {
+                  'platform': platform.platform(),
+                  'python': platform.python_version(),
+                  'kernel': platform.release(),
+                  'gnu_sort': sort_version,
+              },
+              'gate_summary': summary,
+              'artifacts': {
+                  'raw_log': str(log_path.relative_to(root)).replace('\\\\', '/'),
+                  'raw_log_sha256': sha256(log_path),
+                  'inventory_module_sha256': sha256(root / 'src/data/blind_inventory_v12_r2.py'),
+                  'linux_test_sha256': sha256(root / 'tests/test_blind_inventory_v12_r2_linux.py'),
+              },
+              'authority': {
+                  'blind_read': False,
+                  'a_or_b_host_access': False,
+                  'lsf_or_tessent': False,
+                  'candidate_join_or_release': False,
+                  'training': False,
+              },
+          }
+          receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          PY
+
+      - name: Upload bounded evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v12-r2-linux-synthetic-gate-${{ github.run_id }}
+          path: |
+            data/manifests/blind_inventory_v12_r2_linux_gate_execution.log
+            data/manifests/blind_inventory_v12_r2_linux_gate_execution.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Commit successful evidence without retriggering
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -- \
+            data/manifests/blind_inventory_v12_r2_linux_gate_execution.log \
+            data/manifests/blind_inventory_v12_r2_linux_gate_execution.json
+          git diff --cached --check
+          git commit -m "record v12-r2 linux synthetic gate"
+          git push origin HEAD:main
