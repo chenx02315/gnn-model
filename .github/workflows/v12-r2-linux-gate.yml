@@ -35,6 +35,7 @@ jobs:
           python-version: "3.13"
 
       - name: Run fail-closed Linux gate
+        id: linux_gate
         shell: bash
         run: |
           set -euo pipefail
@@ -44,12 +45,10 @@ jobs:
           code=$?
           set -e
           cat "$log"
-          if [[ "$code" -ne 0 ]]; then
-            echo "Linux gate refused with exit code $code" >&2
-            exit "$code"
-          fi
+          echo "exit_code=$code" >>"$GITHUB_OUTPUT"
 
       - name: Build bounded execution receipt
+        if: always()
         shell: bash
         env:
           SOURCE_COMMIT: ${{ github.sha }}
@@ -57,6 +56,7 @@ jobs:
           WORKFLOW_RUN_ATTEMPT: ${{ github.run_attempt }}
           RUNNER_IMAGE_OS: ${{ runner.os }}
           RUNNER_IMAGE_ARCH: ${{ runner.arch }}
+          GATE_EXIT_CODE: ${{ steps.linux_gate.outputs.exit_code }}
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -76,7 +76,7 @@ jobs:
           if len(summaries) != 1:
               raise SystemExit('expected exactly one Linux gate summary')
           summary = json.loads(summaries[0])
-          expected = {
+          pass_expected = {
               'testsRun': 6,
               'skipped': 0,
               'failures': 0,
@@ -84,9 +84,11 @@ jobs:
               'gate_pass': True,
               'platform_positive_integration': 'PASS_LOCAL_SYNTHETIC_ONLY',
           }
-          for key, value in expected.items():
-              if summary.get(key) != value:
-                  raise SystemExit('Linux gate summary mismatch for %s' % key)
+          gate_exit_code = int(os.environ['GATE_EXIT_CODE'])
+          gate_pass = gate_exit_code == 0 and all(summary.get(key) == value
+                                                  for key, value in pass_expected.items())
+          if gate_exit_code == 0 and not gate_pass:
+              raise SystemExit('zero exit code without the complete PASS summary')
 
           def sha256(path):
               return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -95,9 +97,10 @@ jobs:
                                         text=True).stdout.splitlines()[0]
           receipt = {
               'schema_version': 'blind-inventory-v12-r2-linux-gate-execution-v1',
-              'status': 'PASS_LOCAL_SYNTHETIC_ONLY',
+              'status': 'PASS_LOCAL_SYNTHETIC_ONLY' if gate_pass else 'FAIL_LOCAL_SYNTHETIC',
               'scope': 'Synthetic Linux syscall integration only; no BLIND, A/B, LSF, candidate join/release, or training.',
               'source_commit': os.environ['SOURCE_COMMIT'],
+              'gate_exit_code': gate_exit_code,
               'workflow': {
                   'run_id': os.environ['WORKFLOW_RUN_ID'],
                   'run_attempt': os.environ['WORKFLOW_RUN_ATTEMPT'],
@@ -139,7 +142,8 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
 
-      - name: Commit successful evidence without retriggering
+      - name: Commit bounded evidence without retriggering
+        if: always()
         shell: bash
         run: |
           set -euo pipefail
@@ -149,5 +153,21 @@ jobs:
             data/manifests/blind_inventory_v12_r2_linux_gate_execution.log \
             data/manifests/blind_inventory_v12_r2_linux_gate_execution.json
           git diff --cached --check
-          git commit -m "record v12-r2 linux synthetic gate"
+          git commit -m "record v12-r2 linux synthetic gate evidence"
           git push origin HEAD:main
+
+      - name: Enforce fail-closed result
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import pathlib
+
+          receipt = json.loads(pathlib.Path(
+              'data/manifests/blind_inventory_v12_r2_linux_gate_execution.json'
+          ).read_text(encoding='utf-8'))
+          if receipt['status'] != 'PASS_LOCAL_SYNTHETIC_ONLY' or receipt['gate_exit_code'] != 0:
+              raise SystemExit(receipt['gate_exit_code'] or 1)
+          PY
