@@ -1,0 +1,64 @@
+{
+  "schema_version": "blind-runtime-join-v12-r3",
+  "status": "AUTHORIZED_EXECUTION_REVIEWED",
+  "authorization": {
+    "source": "explicit user authorization in the current task",
+    "allowed": [
+      "read-only access to frozen BLIND runtime evidence on A",
+      "one-shot in-memory candidate-to-runtime join",
+      "aggregate-only R06/R07 receipt",
+      "R13 identical-method binding",
+      "independent audit"
+    ],
+    "forbidden": [
+      "LSF or Tessent submission",
+      "B-side access",
+      "v10/v11 retry, requeue, rerun, or output reuse",
+      "row-level BLIND data persistence",
+      "training before R06, R07, R13 and independent audit all pass"
+    ]
+  },
+  "circuits": ["s9234", "s38584", "wb_dma"],
+  "inventory_freeze": {
+    "path": "data/manifests/blind_input_inventory_freeze_v2.json",
+    "sha256": "cf7b37773516b39b1e3001e43aba1d4157f577a1906fe81605e37b10cb5645c9"
+  },
+  "platform_anchors": {
+    "host": "bupt-vncs2",
+    "linux": "3.10.0-1160.119.1.el7.x86_64",
+    "python": "3.6.8",
+    "sort_path": "/usr/bin/sort",
+    "sort_version": "sort (GNU coreutils) 8.22",
+    "sort_sha256": "5f0e1c7aa4d9280a86af8132e3f4aac751bece1d45b817324aaa7f8f437e8f3b",
+    "LANG": "en_US.UTF-8"
+  },
+  "join_policy": {
+    "formal_stages": ["02_hf_coarse", "03_hmf_coarse", "04_integer_refine"],
+    "unique_rule": "exactly one same-mode source-basename match, falling back to exact run_id, with nonempty measured wall time",
+    "timeout_nonzero_rule": "chargeable when measured wall time is present",
+    "not_run_rule": "TARGET_BEFORE_F and INFEASIBLE_AT_D95 suppress only F; generic NOT_RUN or PRUNED suppresses only pathless modes",
+    "canonical_action_uid": "circuit:HF:hN or circuit:HMF:hN:mN",
+    "failure_envelope": "circuits must be empty",
+    "persisted_scope": "aggregate counts and SHA-256 only"
+  },
+  "gates": {
+    "R06": "ambiguous_runtime_join_count == 0",
+    "R07": "unique == executed references, missing == 0, coverage == 1.0, and every eligible action has all required references UNIQUE",
+    "R13": "every registered method binds to the identical per-circuit eligible action hash",
+    "training": "allowed only after independent audit seals PASS for R06, R07 and R13"
+  },
+  "implementation": {
+    "artifact_sha256": {
+      "src/data/blind_inventory_v12_r2.py": "28ad97cbf1a52e45dc69cb37b4a296397c285411cc3958a3d9f2db9cd0a20d9f",
+      "src/data/blind_join_core_v12_r3.py": "71db4658fda56abab642d30eb950066dac8ad2b7dabb026aea03a5ab301fabd4",
+      "src/data/build_blind_method_binding_v12_r3.py": "6a9ae00f51777f505facd86267f4c706adae815a5569eec0e459581eb80a2e5e",
+      "src/data/run_blind_join_v12_r3.py": "29fd8433ecc6ea1d2e718d678c258508569c4b35f676a924532322e7c4a2c9ba",
+      "tests/test_blind_join_core_v12_r3.py": "46335e27b3c0cfbd88d72a891aca66dd05408fab8b91359d2fb16627b5090f00",
+      "tests/test_build_blind_method_binding_v12_r3.py": "096cde3ffe8e1f5a41ea4f1ebc8e96c462d0c7121743f28127e65b4d7ed8c242",
+      "tests/test_run_blind_join_v12_r3.py": "b4fa77b5aba2b789d26d759af50f4e777c84158983669bc2784b05a31553252e"
+    },
+    "binding_rule": "The runner hashes every listed file before opening BLIND evidence; the receipt records both contract_sha256 and implementation_set_sha256."
+  },
+  "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/11_blind_runtime_join_v12_r3",
+  "training_allowed": false
+}
