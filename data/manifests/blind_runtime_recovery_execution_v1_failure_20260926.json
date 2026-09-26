@@ -1,0 +1,31 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v1-failure",
+  "status": "FAILED_PRE_ATPG",
+  "job_id": "388791",
+  "terminal_state": "EXIT",
+  "exit_code": 2,
+  "runner_refusal": "AUTHORIZATION_ARRAY_JOB",
+  "attempts_started": 0,
+  "output_root_created": false,
+  "retry_or_requeue_performed": false,
+  "job_reusable": false,
+  "implementation_commit": "0401a5c17b0dfe7e69796d9ee077a9adc0a4483b",
+  "seal_commit": "51d1a7b00ddde6cf53d6d3229674d41bc74cb8b8",
+  "a_side_evidence_directory": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/blind_runtime_recovery_execution_v1_registration_r1",
+  "evidence_sha256": {
+    "bresume.txt": "800144cffa34928ce21a57b55f0971e58e0513c8d7830123eb1e9ef428bea8ae",
+    "bjobs_exit.txt": "baa94f138cc9505064e9866214ffd2d41d55db35337afa4dbe712ed1e61def95",
+    "bjobs_al_exit.txt": "152907c562cd8ccce4abfab43b54801df752197a8140fb72d006b963c2397f3b",
+    "bhist_exit.txt": "bf7689587f5f8739f39007839b13c1da5d3022a67dfbbf65a9831ff07d2a5924",
+    "stdout.log": "04b9f823030a7df07775fbfb8bc36499efdcb29aa2f88d01300be92db21b0f01",
+    "stderr.log": "46e8e07d5293853150f521c3dad9ec9c8f948eca41a1c85fc4175a91e757148d",
+    "failure_status.txt": "926fca438422e6a4a758161e28dbdddedbaa37774039db9beac891bc621e8c47",
+    "failure_sha256.txt": "93462fbba5c5964229011611424bb966bc60f2f6e65d1776309dfc20ad59f634"
+  },
+  "root_cause": {
+    "observed_platform_rule": "LSF 9.1 exports LSB_JOBINDEX=0 for a non-array job.",
+    "implementation_defect": "The v1 recovery runner required LSB_JOBINDEX, LSB_JOBINDEX_END and LSB_JOBINDEX_STEP to be absent or empty.",
+    "existing_repository_evidence": "src/data/run_blind_unseal_v10.py:362-365 and data/manifests/blind_runtime_unseal_v9_failure_20260921.json"
+  },
+  "repair_boundary": "Preserve Job 388791 and v1 evidence. Permit only an isolated v2 local repair, tests and independent review. Any new LSF job requires new explicit user authorization."
+}
