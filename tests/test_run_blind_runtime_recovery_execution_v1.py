@@ -55,12 +55,43 @@ def contract():
         return json.load(handle)
 
 
+def file_sha256(path):
+    with open(path, "rb") as handle:
+        return hashlib.sha256(handle.read()).hexdigest()
+
+
 class BlindRuntimeRecoveryExecutionV1Tests(unittest.TestCase):
-    def test_checked_in_contract_is_design_only(self):
+    def test_job_template_is_exactly_held_nonarray_nonretry(self):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(root, runner.JOB_TEMPLATE_RELATIVE),
+                  "r", encoding="utf-8") as handle:
+            document = json.load(handle)
+        self.assertEqual("PSUSP",
+                         runner.validate_job_template(document)["registration"][
+                             "initial_scheduler_state"])
+        mutations = []
+        for field in ("array_allowed", "retry_allowed", "requeue_allowed",
+                      "rerun_allowed"):
+            bad = copy.deepcopy(document)
+            bad["registration"][field] = True
+            mutations.append(bad)
+        bad = copy.deepcopy(document)
+        bad["registration"]["initial_scheduler_state"] = "PEND"
+        mutations.append(bad)
+        bad = copy.deepcopy(document)
+        bad["lifecycle"]["register"] = "bsub twice"
+        mutations.append(bad)
+        for bad in mutations:
+            with self.subTest(bad=bad), self.assertRaises(runner.Refusal):
+                runner.validate_job_template(bad)
+
+    def test_checked_in_contract_is_authorized_but_training_closed(self):
         root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         document, digest = runner.validate_contract(root)
-        self.assertEqual("DESIGN_REVIEW_PENDING_NO_EXECUTION", document["status"])
-        self.assertFalse(document["authority"]["execution_authorized"])
+        self.assertEqual("REVIEWED_EXECUTION_AUTHORIZED", document["status"])
+        self.assertTrue(document["authority"]["execution_authorized"])
+        self.assertTrue(document["authority"]["lsf_submission_allowed"])
+        self.assertFalse(document["authority"]["training_allowed"])
         self.assertEqual(64, len(digest))
 
     def test_valid_plan_builds_h_before_m_exact_commands(self):
@@ -106,7 +137,7 @@ class BlindRuntimeRecoveryExecutionV1Tests(unittest.TestCase):
 
     def test_authority_tampering_and_execute_flag_refuse(self):
         document = contract()
-        document["authority"]["execution_authorized"] = True
+        document["authority"]["training_allowed"] = True
         with tempfile.TemporaryDirectory() as tmp:
             path = os.path.join(tmp, runner.CONTRACT_RELATIVE)
             os.makedirs(os.path.dirname(path))
@@ -126,25 +157,103 @@ class BlindRuntimeRecoveryExecutionV1Tests(unittest.TestCase):
         self.assertEqual(len(manifest), len(set(item["output"] for item in manifest)))
 
     def test_external_authorization_is_exactly_bound(self):
-        document = {"schema_version": "blind-runtime-recovery-execution-v1-authorization",
-                    "status": "PASS", "execution_allowed": True,
-                    "contract_sha256": "c" * 64,
-                    "plan_sha256": runner.PLAN_SHA256,
-                    "runner_sha256": "r" * 64,
-                    "reviewed_commit": "a" * 40, "lsf_job_id": "12345",
-                    "no_retry": True, "no_requeue": True, "nonarray": True,
-                    "training_allowed": False}
         with tempfile.TemporaryDirectory() as tmp:
+            bjobs = os.path.join(tmp, "bjobs.txt")
+            bjobs_al = os.path.join(tmp, "bjobs_al.txt")
+            review = os.path.join(tmp, "independent_review.json")
+            for path, payload in ((bjobs, b"JOBID USER STAT\n12345 user PSUSP\n"),
+                                  (bjobs_al, b"Job <12345>, Job Name <blind_rt_recovery_v1_r1>, PSUSP\n")):
+                with open(path, "wb") as handle:
+                    handle.write(payload)
+            checked_contract = contract()
+            implementation = checked_contract["implementation"]["artifact_sha256"]
+            document = {
+                "schema_version": "blind-runtime-recovery-execution-v1-authorization",
+                "status": "PASS", "execution_allowed": True,
+                "contract_sha256": "c" * 64, "plan_sha256": runner.PLAN_SHA256,
+                "runner_sha256": "r" * 64,
+                "launcher_sha256": implementation[
+                    "src/data/launch_blind_runtime_recovery_execution_v1.sh"],
+                "job_template_sha256": implementation[runner.JOB_TEMPLATE_RELATIVE],
+                "bundle_manifest_sha256": checked_contract["bundle_manifest"]["sha256"],
+                "reviewed_commit": checked_contract["bundle_manifest"]["reviewed_commit"],
+                "lsf_job_id": "12345",
+                "no_retry": True, "no_requeue": True, "nonarray": True,
+                "training_allowed": False, "registration_review_path": review,
+                "registration_review_sha256": "0" * 64,
+                "bjobs_path": bjobs,
+                "bjobs_sha256": file_sha256(bjobs),
+                "bjobs_al_path": bjobs_al,
+                "bjobs_al_sha256": file_sha256(bjobs_al)}
+            review_document = {
+                "schema_version": "blind-runtime-recovery-execution-v1-registration-review",
+                "status": "PASS", "lsf_job_id": "12345",
+                "initial_scheduler_state": "PSUSP", "submission_count": 1,
+                "contract_sha256": "c" * 64, "plan_sha256": runner.PLAN_SHA256,
+                "runner_sha256": "r" * 64,
+                "launcher_sha256": document["launcher_sha256"],
+                "job_template_sha256": document["job_template_sha256"],
+                "bundle_manifest_sha256": document["bundle_manifest_sha256"],
+                "reviewed_commit": document["reviewed_commit"],
+                "no_retry": True, "no_requeue": True, "nonarray": True,
+                "training_allowed": False, "bjobs_path": bjobs,
+                "bjobs_sha256": document["bjobs_sha256"],
+                "bjobs_al_path": bjobs_al,
+                "bjobs_al_sha256": document["bjobs_al_sha256"]}
+            with open(review, "w", encoding="utf-8", newline="\n") as handle:
+                json.dump(review_document, handle, sort_keys=True)
+                handle.write("\n")
+            document["registration_review_sha256"] = file_sha256(review)
             path = os.path.join(tmp, "authorization.json")
             with open(path, "w", encoding="utf-8") as handle:
                 json.dump(document, handle)
-            result = runner.validate_authorization(path, "c" * 64, "r" * 64)
-            self.assertEqual("12345", result["lsf_job_id"])
-            document["no_retry"] = False
-            with open(path, "w", encoding="utf-8") as handle:
-                json.dump(document, handle)
-            with self.assertRaisesRegex(runner.Refusal, "AUTHORIZATION_SCHEDULER"):
-                runner.validate_authorization(path, "c" * 64, "r" * 64)
+            patches = (mock.patch.object(runner, "REGISTRATION_REVIEW_PATH", review),
+                       mock.patch.object(runner, "BJOBS_CAPTURE_PATH", bjobs),
+                       mock.patch.object(runner, "BJOBS_AL_CAPTURE_PATH", bjobs_al))
+            with patches[0], patches[1], patches[2]:
+                result = runner.validate_authorization(
+                    path, "c" * 64, "r" * 64, checked_contract,
+                    environment={"LSB_JOBID": "12345"})
+                self.assertEqual("12345", result["lsf_job_id"])
+                for mutation, code, environment in (
+                        (("no_retry", False), "AUTHORIZATION_SCHEDULER",
+                         {"LSB_JOBID": "12345"}),
+                        (("lsf_job_id", "54321"), "REGISTRATION_REVIEW_BINDING",
+                         {"LSB_JOBID": "54321"}),
+                        (("reviewed_commit", "f" * 40),
+                         "AUTHORIZATION_BUNDLE_BINDING", {"LSB_JOBID": "12345"}),
+                        (("bundle_manifest_sha256", "e" * 64),
+                         "AUTHORIZATION_BUNDLE_BINDING", {"LSB_JOBID": "12345"}),
+                        (None, "AUTHORIZATION_CURRENT_JOB", {"LSB_JOBID": "99999"}),
+                        (None, "AUTHORIZATION_CURRENT_JOB", {}),
+                        (None, "AUTHORIZATION_ARRAY_JOB",
+                         {"LSB_JOBID": "12345", "LSB_JOBINDEX": "1"})):
+                    bad = copy.deepcopy(document)
+                    if mutation:
+                        bad[mutation[0]] = mutation[1]
+                    with open(path, "w", encoding="utf-8") as handle:
+                        json.dump(bad, handle)
+                    with self.subTest(code=code), self.assertRaisesRegex(
+                            runner.Refusal, code):
+                        runner.validate_authorization(
+                            path, "c" * 64, "r" * 64, checked_contract,
+                            environment=environment)
+                with open(path, "w", encoding="utf-8") as handle:
+                    json.dump(document, handle)
+                with open(bjobs, "ab") as handle:
+                    handle.write(b"tamper\n")
+                with self.assertRaisesRegex(runner.Refusal,
+                                            "AUTHORIZATION_CAPTURE_DIGEST"):
+                    runner.validate_authorization(
+                        path, "c" * 64, "r" * 64, checked_contract,
+                        environment={"LSB_JOBID": "12345"})
+                with open(bjobs, "wb") as handle:
+                    handle.write(b"JOBID USER STAT\n12345 user PSUSP\n")
+                os.remove(review)
+                with self.assertRaises(OSError):
+                    runner.validate_authorization(
+                        path, "c" * 64, "r" * 64, checked_contract,
+                        environment={"LSB_JOBID": "12345"})
 
     def test_process_start_failure_writes_fail_receipt(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -24,6 +24,15 @@ PLAN_FIELDS = frozenset(("circuit", "stage", "mode", "run_id", "source_marker",
 PLAN_SHA256 = "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1"
 PLAN_COUNTS = {"s9234": 1, "s38584": 42, "wb_dma": 1}
 RUN_ID = re.compile(r"^[A-Za-z0-9_]+$")
+JOB_TEMPLATE_RELATIVE = "contracts/blind_runtime_recovery_execution_v1_job_template.json"
+BUNDLE_MANIFEST_RELATIVE = "bundle_manifest.json"
+JOB_BUNDLE_ROOT = "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_authorized_r1_bundle"
+JOB_REGISTRATION_ROOT = ("/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/"
+                         "blind_runtime_recovery_execution_v1_registration_r1")
+AUTHORIZATION_PATH = JOB_REGISTRATION_ROOT + "/authorization.json"
+REGISTRATION_REVIEW_PATH = JOB_REGISTRATION_ROOT + "/independent_review.json"
+BJOBS_CAPTURE_PATH = JOB_REGISTRATION_ROOT + "/bjobs.txt"
+BJOBS_AL_CAPTURE_PATH = JOB_REGISTRATION_ROOT + "/bjobs_al.txt"
 
 
 class Refusal(Exception):
@@ -49,6 +58,78 @@ def _load_json_bytes(payload, code):
         return json.loads(payload.decode("utf-8"))
     except (UnicodeDecodeError, ValueError):
         raise Refusal(code)
+
+
+def validate_job_template(document):
+    _require(isinstance(document, dict) and set(document) == {
+        "schema_version", "status", "registration", "lifecycle"},
+        "JOB_TEMPLATE_CONTAINER")
+    _require(document.get("schema_version") ==
+             "blind-runtime-recovery-execution-v1-job-template" and
+             document.get("status") == "AUTHORIZED_PRE_REGISTRATION_TEMPLATE",
+             "JOB_TEMPLATE_STATUS")
+    registration = document.get("registration")
+    _require(isinstance(registration, dict) and set(registration) == {
+        "queue", "initial_scheduler_state", "job_name", "command_argv", "cwd",
+        "stdout_path", "stderr_path", "array_allowed", "retry_allowed",
+        "requeue_allowed", "rerun_allowed"}, "JOB_TEMPLATE_REGISTRATION")
+    _require(registration == {
+        "queue": "normal",
+        "initial_scheduler_state": "PSUSP",
+        "job_name": "blind_rt_recovery_v1_r1",
+        "command_argv": [
+            "/bin/bash",
+            JOB_BUNDLE_ROOT + "/src/data/launch_blind_runtime_recovery_execution_v1.sh"],
+        "cwd": JOB_BUNDLE_ROOT,
+        "stdout_path": JOB_REGISTRATION_ROOT + "/stdout.log",
+        "stderr_path": JOB_REGISTRATION_ROOT + "/stderr.log",
+        "array_allowed": False,
+        "retry_allowed": False,
+        "requeue_allowed": False,
+        "rerun_allowed": False,
+    }, "JOB_TEMPLATE_EXACT_REGISTRATION")
+    lifecycle = document.get("lifecycle")
+    _require(isinstance(lifecycle, dict) and set(lifecycle) == {
+        "register", "after_registration", "resume", "forbidden"},
+        "JOB_TEMPLATE_LIFECYCLE")
+    _require(lifecycle.get("register") == "bsub -H exactly once" and
+             lifecycle.get("resume") ==
+             "only bresume of the independently reviewed registered Job ID" and
+             lifecycle.get("forbidden") == [
+                 "second bsub", "bmod", "rerun", "requeue", "array submission",
+                 "resume before PASS review"], "JOB_TEMPLATE_EXACT_LIFECYCLE")
+    return document
+
+
+def validate_bundle_manifest(root, contract):
+    binding = contract.get("bundle_manifest")
+    _require(isinstance(binding, dict) and set(binding) == {
+        "root", "path", "sha256", "reviewed_commit"},
+        "BUNDLE_MANIFEST_BINDING")
+    _require(binding.get("root") == JOB_BUNDLE_ROOT and
+             binding.get("path") == BUNDLE_MANIFEST_RELATIVE and
+             re.match(r"^[0-9a-f]{64}$", binding.get("sha256", "")) and
+             re.match(r"^[0-9a-f]{40}$", binding.get("reviewed_commit", "")),
+             "BUNDLE_MANIFEST_BINDING")
+    payload = _read_bytes(os.path.join(root, binding["path"]))
+    _require(_sha256_bytes(payload) == binding["sha256"],
+             "BUNDLE_MANIFEST_DIGEST")
+    document = _load_json_bytes(payload, "BUNDLE_MANIFEST_JSON")
+    _require(isinstance(document, dict) and set(document) == {
+        "schema_version", "status", "reviewed_commit", "artifact_sha256"},
+        "BUNDLE_MANIFEST_SCHEMA")
+    _require(document.get("schema_version") ==
+             "blind-runtime-recovery-execution-v1-bundle-manifest" and
+             document.get("status") == "SEALED" and
+             document.get("reviewed_commit") == binding["reviewed_commit"],
+             "BUNDLE_MANIFEST_STATUS")
+    artifacts = contract.get("implementation", {}).get("artifact_sha256", {})
+    _require(document.get("artifact_sha256") == artifacts,
+             "BUNDLE_MANIFEST_ARTIFACTS")
+    for relative, expected in artifacts.items():
+        _require(_sha256_bytes(_read_bytes(os.path.join(root, relative))) == expected,
+                 "BUNDLE_MANIFEST_ARTIFACT_DIGEST")
+    return document
 
 
 def validate_contract(root):
@@ -83,6 +164,9 @@ def validate_contract(root):
     _require(contract.get("command", {}).get("tessent_argv") == [
         "/cad/mentor/tessent2021_2/bin/tessent", "-shell", "-license_wait", "5"],
         "TESSENT_COMMAND")
+    template_path = os.path.join(root, JOB_TEMPLATE_RELATIVE)
+    validate_job_template(_load_json_bytes(_read_bytes(template_path),
+                                           "JOB_TEMPLATE_JSON"))
     command_hashes = contract.get("command", {}).get("artifact_sha256", {})
     _require(command_hashes == {
         "/usr/bin/time": "54643b2f510907c0bc0a1d13373f1d8233deb38c90dd97ebd9ecb27010e4d803",
@@ -93,6 +177,8 @@ def validate_contract(root):
     artifacts = contract.get("implementation", {}).get("artifact_sha256", {})
     expected_artifacts = {
         "src/data/run_blind_runtime_recovery_execution_v1.py",
+        "src/data/launch_blind_runtime_recovery_execution_v1.sh",
+        "contracts/blind_runtime_recovery_execution_v1_job_template.json",
         "tests/test_run_blind_runtime_recovery_execution_v1.py",
     }
     _require(set(artifacts) == expected_artifacts, "IMPLEMENTATION_SET")
@@ -101,6 +187,7 @@ def validate_contract(root):
                  "IMPLEMENTATION_DIGEST_SCHEMA")
         _require(_sha256_bytes(_read_bytes(os.path.join(root, relative))) == expected,
                  "IMPLEMENTATION_DIGEST")
+    validate_bundle_manifest(root, contract)
     return contract, _sha256_bytes(payload)
 
 
@@ -497,12 +584,54 @@ def validate_only(root, plan_path, source_preflight=False):
             "training_allowed": authority["training_allowed"]}
 
 
-def validate_authorization(path, contract_sha, runner_sha):
+def validate_registration_review(path, authorization, contract_sha, runner_sha):
+    payload = _read_bytes(path)
+    document = _load_json_bytes(payload, "REGISTRATION_REVIEW_JSON")
+    expected_fields = {
+        "schema_version", "status", "lsf_job_id", "initial_scheduler_state",
+        "submission_count", "contract_sha256", "plan_sha256", "runner_sha256",
+        "launcher_sha256", "job_template_sha256", "bundle_manifest_sha256",
+        "reviewed_commit", "no_retry", "no_requeue", "nonarray",
+        "training_allowed", "bjobs_path", "bjobs_sha256", "bjobs_al_path",
+        "bjobs_al_sha256"}
+    _require(isinstance(document, dict) and set(document) == expected_fields,
+             "REGISTRATION_REVIEW_SCHEMA")
+    _require(document.get("schema_version") ==
+             "blind-runtime-recovery-execution-v1-registration-review" and
+             document.get("status") == "PASS" and
+             document.get("initial_scheduler_state") == "PSUSP" and
+             document.get("submission_count") == 1 and
+             document.get("training_allowed") is False,
+             "REGISTRATION_REVIEW_STATUS")
+    for field in ("lsf_job_id", "launcher_sha256", "job_template_sha256",
+                  "bundle_manifest_sha256", "reviewed_commit", "bjobs_path",
+                  "bjobs_sha256", "bjobs_al_path", "bjobs_al_sha256"):
+        _require(document.get(field) == authorization.get(field),
+                 "REGISTRATION_REVIEW_BINDING")
+    _require(document.get("contract_sha256") == contract_sha and
+             document.get("plan_sha256") == PLAN_SHA256 and
+             document.get("runner_sha256") == runner_sha,
+             "REGISTRATION_REVIEW_BINDING")
+    _require(document.get("no_retry") is True and
+             document.get("no_requeue") is True and
+             document.get("nonarray") is True,
+             "REGISTRATION_REVIEW_SCHEDULER")
+    _require(_sha256_bytes(payload) == authorization.get("registration_review_sha256"),
+             "REGISTRATION_REVIEW_DIGEST")
+    return document
+
+
+def validate_authorization(path, contract_sha, runner_sha, contract,
+                           environment=None):
     document = _load_json_bytes(_read_bytes(path), "AUTHORIZATION_JSON")
     expected_fields = {"schema_version", "status", "execution_allowed",
                        "contract_sha256", "plan_sha256", "runner_sha256",
-                       "reviewed_commit", "lsf_job_id", "no_retry",
-                       "no_requeue", "nonarray", "training_allowed"}
+                       "launcher_sha256", "job_template_sha256",
+                       "bundle_manifest_sha256",
+                       "reviewed_commit", "lsf_job_id", "no_retry", "no_requeue",
+                       "nonarray", "training_allowed", "registration_review_path",
+                       "registration_review_sha256", "bjobs_path", "bjobs_sha256",
+                       "bjobs_al_path", "bjobs_al_sha256"}
     _require(isinstance(document, dict) and set(document) == expected_fields,
              "AUTHORIZATION_SCHEMA")
     _require(document.get("schema_version") ==
@@ -513,6 +642,20 @@ def validate_authorization(path, contract_sha, runner_sha):
     _require(document.get("contract_sha256") == contract_sha and
              document.get("plan_sha256") == PLAN_SHA256 and
              document.get("runner_sha256") == runner_sha, "AUTHORIZATION_BINDING")
+    implementation = contract.get("implementation", {}).get("artifact_sha256", {})
+    _require(document.get("launcher_sha256") == implementation.get(
+                 "src/data/launch_blind_runtime_recovery_execution_v1.sh") and
+             document.get("job_template_sha256") == implementation.get(
+                 JOB_TEMPLATE_RELATIVE), "AUTHORIZATION_IMPLEMENTATION_BINDING")
+    _require(document.get("bundle_manifest_sha256") ==
+             contract.get("bundle_manifest", {}).get("sha256") and
+             document.get("reviewed_commit") ==
+             contract.get("bundle_manifest", {}).get("reviewed_commit"),
+             "AUTHORIZATION_BUNDLE_BINDING")
+    for field in ("bundle_manifest_sha256", "registration_review_sha256", "bjobs_sha256",
+                  "bjobs_al_sha256"):
+        _require(re.match(r"^[0-9a-f]{64}$", document.get(field, "")),
+                 "AUTHORIZATION_DIGEST_SCHEMA")
     _require(re.match(r"^[0-9a-f]{40}$", document.get("reviewed_commit", "")),
              "AUTHORIZATION_COMMIT")
     _require(re.match(r"^[1-9][0-9]*$", document.get("lsf_job_id", "")),
@@ -520,6 +663,22 @@ def validate_authorization(path, contract_sha, runner_sha):
     _require(document.get("no_retry") is True and
              document.get("no_requeue") is True and
              document.get("nonarray") is True, "AUTHORIZATION_SCHEDULER")
+    _require(document.get("registration_review_path") == REGISTRATION_REVIEW_PATH and
+             document.get("bjobs_path") == BJOBS_CAPTURE_PATH and
+             document.get("bjobs_al_path") == BJOBS_AL_CAPTURE_PATH,
+             "AUTHORIZATION_CONTROL_PATH")
+    for path_field, digest_field in (("bjobs_path", "bjobs_sha256"),
+                                     ("bjobs_al_path", "bjobs_al_sha256")):
+        capture = _read_bytes(document[path_field])
+        _require(capture and _sha256_bytes(capture) == document[digest_field],
+                 "AUTHORIZATION_CAPTURE_DIGEST")
+    validate_registration_review(document["registration_review_path"], document,
+                                 contract_sha, runner_sha)
+    current = os.environ if environment is None else environment
+    _require(current.get("LSB_JOBID") == document.get("lsf_job_id"),
+             "AUTHORIZATION_CURRENT_JOB")
+    for field in ("LSB_JOBINDEX", "LSB_JOBINDEX_END", "LSB_JOBINDEX_STEP"):
+        _require(not current.get(field), "AUTHORIZATION_ARRAY_JOB")
     return document
 
 
@@ -542,7 +701,10 @@ def main(argv=None):
             _require(args.authorization, "AUTHORIZATION_REQUIRED")
             runner_sha = contract["implementation"]["artifact_sha256"][
                 "src/data/run_blind_runtime_recovery_execution_v1.py"]
-            validate_authorization(args.authorization, contract_sha, runner_sha)
+            _require(os.path.realpath(args.authorization) == AUTHORIZATION_PATH,
+                     "AUTHORIZATION_FIXED_PATH")
+            validate_authorization(args.authorization, contract_sha, runner_sha,
+                                   contract)
             plan = validate_plan_bytes(_read_bytes(args.plan), contract)
             manifest = build_command_manifest(plan, contract)
             config_values, source_manifest_sha = prepare_workspaces(contract)

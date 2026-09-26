@@ -1,11 +1,15 @@
 {
   "schema_version": "blind-runtime-recovery-execution-v1",
-  "status": "DESIGN_REVIEW_PENDING_NO_EXECUTION",
-  "purpose": "Bind the sealed 44-attempt A-private recovery plan to isolated H-before-M Tessent commands without authorizing execution.",
+  "status": "REVIEWED_EXECUTION_AUTHORIZED",
+  "purpose": "Bind the sealed 44-attempt A-private recovery plan to one independently reviewed held LSF job and isolated H-before-M Tessent commands.",
   "authority": {
-    "execution_authorized": false,
-    "lsf_submission_allowed": false,
+    "execution_authorized": true,
+    "lsf_submission_allowed": true,
     "training_allowed": false
+  },
+  "user_authorization": {
+    "received_at_utc": "2026-09-26T06:54:48Z",
+    "scope": "Register one held non-array non-retry LSF recovery job; after independent review, resume only that Job ID for 44 attempts."
   },
   "private_plan": {
     "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r4_private/payload/plan.json",
@@ -65,20 +69,30 @@
     }
   },
   "scheduler": {
-    "mode": "NOT_REGISTERED",
+    "mode": "AUTHORIZED_PRE_REGISTRATION",
+    "job_template": "contracts/blind_runtime_recovery_execution_v1_job_template.json",
     "array_allowed": false,
     "retry_allowed": false,
     "requeue_allowed": false,
-    "submission_requires": ["independent review PASS", "sealed implementation hashes", "explicit LSF execution authorization"]
+    "submission_requires": ["design review PASS", "sealed implementation hashes", "explicit user LSF execution authorization"],
+    "resume_requires": ["registered PSUSP Job ID", "raw scheduler captures", "independent registration review PASS", "exact external authorization receipt"]
   },
   "post_execution_gate": {
     "requires": ["44 unique receipts", "44 wall-time footers", "44 zero exits", "44 expected success markers", "immutable source manifest", "independent candidate-to-runtime join audit"],
     "training_before_gate": false
   },
+  "bundle_manifest": {
+    "root": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_authorized_r1_bundle",
+    "path": "bundle_manifest.json",
+    "sha256": "b3d14c9dedaa1c1d542c59a4f775ab44c38e0a37f6dfec5fa3dda42b0d2b03b3",
+    "reviewed_commit": "299e69fcfc72bde0221b68f16c7feb5678a41842"
+  },
   "implementation": {
     "artifact_sha256": {
-      "src/data/run_blind_runtime_recovery_execution_v1.py": "af2f748fcd908c9425c9accc1beb19aa70721b2c9b7a1632427b0351204d5d00",
-      "tests/test_run_blind_runtime_recovery_execution_v1.py": "abd740a5bfb76c2fb62a27c46c651d3227cc0df5f0f4545173d3e4fc12ec9eda"
+      "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
+      "src/data/launch_blind_runtime_recovery_execution_v1.sh": "803ead3709700b81da5659f4b88ede8fa89912d9fc8f80bcf85352c112ed1b5b",
+      "contracts/blind_runtime_recovery_execution_v1_job_template.json": "ca7dcb0e2f023521836437571d4f0cacf14cd8d7bfaf704d0e221c7ca7d32483",
+      "tests/test_run_blind_runtime_recovery_execution_v1.py": "6c4d5d36b6b0b50d465597c7d7896c360a2c5409fd19ba2a2c02369494e90cd9"
     }
   }
 }

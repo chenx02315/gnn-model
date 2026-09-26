@@ -1,0 +1,11 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v1-bundle-manifest",
+  "status": "SEALED",
+  "reviewed_commit": "299e69fcfc72bde0221b68f16c7feb5678a41842",
+  "artifact_sha256": {
+    "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
+    "src/data/launch_blind_runtime_recovery_execution_v1.sh": "803ead3709700b81da5659f4b88ede8fa89912d9fc8f80bcf85352c112ed1b5b",
+    "contracts/blind_runtime_recovery_execution_v1_job_template.json": "ca7dcb0e2f023521836437571d4f0cacf14cd8d7bfaf704d0e221c7ca7d32483",
+    "tests/test_run_blind_runtime_recovery_execution_v1.py": "6c4d5d36b6b0b50d465597c7d7896c360a2c5409fd19ba2a2c02369494e90cd9"
+  }
+}
