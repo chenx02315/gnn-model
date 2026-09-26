@@ -1,4 +1,5 @@
 import copy
+import datetime
 import hashlib
 import json
 import os
@@ -65,7 +66,14 @@ class BlindRuntimeRecoveryExecutionV2Tests(unittest.TestCase):
         with open(bjobs, "wb") as handle:
             handle.write(b"45678 PSUSP blind_rt_recovery_v2_r1 normal\n")
         with open(bjobs_al, "wb") as handle:
-            handle.write(b"Job <45678>, Job Name <blind_rt_recovery_v2_r1>, PSUSP\n")
+            handle.write((
+                "Job <45678>, Job Name <blind_rt_recovery_v2_r1>, Status <PSUSP>, "
+                "Queue <normal>, Command </bin/bash %s/src/data/"
+                "launch_blind_runtime_recovery_execution_v2.sh>\n"
+                "Submitted from host <test> with hold, CWD <%s>, Output File "
+                "<%s/stdout.log>, Error File <%s/stderr.log>, Not Re-runnable;\n" %
+                (runner.JOB_BUNDLE_ROOT, runner.JOB_BUNDLE_ROOT,
+                 runner.JOB_REGISTRATION_ROOT, runner.JOB_REGISTRATION_ROOT)).encode("utf-8"))
         with open(bsub, "wb") as handle:
             handle.write(b"Job <45678> is submitted to queue <normal>.\n")
         command = (
@@ -78,10 +86,16 @@ class BlindRuntimeRecoveryExecutionV2Tests(unittest.TestCase):
         with open(pre_resume_bjobs, "wb") as handle:
             handle.write(b"45678 PSUSP blind_rt_recovery_v2_r1 normal\n")
         with open(pre_resume_bjobs_al, "wb") as handle:
-            handle.write(b"Job <45678>, Job Name <blind_rt_recovery_v2_r1>, PSUSP\n")
+            with open(bjobs_al, "rb") as source:
+                handle.write(source.read())
+        now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
+        registered_at = (now - datetime.timedelta(minutes=5)).strftime(
+            "%Y-%m-%dT%H:%M:%SZ")
+        checked_at = now.strftime("%Y-%m-%dT%H:%M:%SZ")
         document = {
             "schema_version": "blind-runtime-recovery-execution-v2-authorization",
             "status": "PASS", "execution_allowed": True,
+            "registered_at_utc": registered_at,
             "contract_sha256": "c" * 64, "plan_sha256": runner.base.PLAN_SHA256,
             "runner_sha256": implementation[
                 "src/data/run_blind_runtime_recovery_execution_v2.py"],
@@ -106,7 +120,8 @@ class BlindRuntimeRecoveryExecutionV2Tests(unittest.TestCase):
             "pre_resume_bjobs_al_sha256": file_sha256(pre_resume_bjobs_al)}
         review_document = {
             "schema_version": "blind-runtime-recovery-execution-v2-registration-review",
-            "status": "PASS", "lsf_job_id": "45678",
+            "status": "PASS", "registered_at_utc": registered_at,
+            "lsf_job_id": "45678",
             "initial_scheduler_state": "PSUSP", "submission_count": 1,
             "contract_sha256": document["contract_sha256"],
             "plan_sha256": document["plan_sha256"],
@@ -129,7 +144,8 @@ class BlindRuntimeRecoveryExecutionV2Tests(unittest.TestCase):
         document["registration_review_sha256"] = file_sha256(review)
         pre_resume_document = {
             "schema_version": "blind-runtime-recovery-execution-v2-pre-resume-review",
-            "status": "PASS", "checked_at_utc": "2026-09-26T12:00:00Z",
+            "status": "PASS", "registered_at_utc": registered_at,
+            "checked_at_utc": checked_at,
             "lsf_job_id": "45678", "scheduler_state": "PSUSP",
             "contract_sha256": document["contract_sha256"],
             "runner_sha256": document["runner_sha256"],
@@ -275,6 +291,51 @@ class BlindRuntimeRecoveryExecutionV2Tests(unittest.TestCase):
                     runner.validate_authorization(
                         authorization, "c" * 64, runner_sha, contract,
                         environment={"LSB_JOBID": "45678", "LSB_JOBINDEX": "0"})
+
+    def test_scheduler_detail_identity_and_stale_review_fail_closed(self):
+        with tempfile.TemporaryDirectory() as root:
+            (contract, document, authorization, review, bjobs, bjobs_al,
+             bsub, command, pre_review, pre_bjobs, pre_bjobs_al) = \
+                self._authorization_fixture(root)
+            runner_sha = document["runner_sha256"]
+            patches = (
+                mock.patch.object(runner, "REGISTRATION_REVIEW_PATH", review),
+                mock.patch.object(runner, "BJOBS_CAPTURE_PATH", bjobs),
+                mock.patch.object(runner, "BJOBS_AL_CAPTURE_PATH", bjobs_al),
+                mock.patch.object(runner, "BSUB_CAPTURE_PATH", bsub),
+                mock.patch.object(runner, "REGISTRATION_COMMAND_PATH", command),
+                mock.patch.object(runner, "PRE_RESUME_REVIEW_PATH", pre_review),
+                mock.patch.object(runner, "PRE_RESUME_BJOBS_PATH", pre_bjobs),
+                mock.patch.object(runner, "PRE_RESUME_BJOBS_AL_PATH", pre_bjobs_al))
+            with patches[0], patches[1], patches[2], patches[3], patches[4], \
+                    patches[5], patches[6], patches[7]:
+                with open(bjobs_al, "rb") as handle:
+                    original = handle.read()
+                for old, new in ((b"Not Re-runnable", b"Re-runnable"),
+                                 (b"/bin/bash", b"/bin/false"),
+                                 (b"CWD <", b"CWD </wrong/")):
+                    with open(bjobs_al, "wb") as handle:
+                        handle.write(original.replace(old, new, 1))
+                    document["bjobs_al_sha256"] = file_sha256(bjobs_al)
+                    with open(authorization, "w", encoding="utf-8") as handle:
+                        json.dump(document, handle)
+                    with self.subTest(replacement=new), self.assertRaisesRegex(
+                            runner.Refusal, "AUTHORIZATION_SCHEDULER_CAPTURE"):
+                        runner.validate_authorization(
+                            authorization, "c" * 64, runner_sha, contract,
+                            environment={"LSB_JOBID": "45678", "LSB_JOBINDEX": "0"})
+                with open(bjobs_al, "wb") as handle:
+                    handle.write(original)
+                document["bjobs_al_sha256"] = file_sha256(bjobs_al)
+                with open(authorization, "w", encoding="utf-8") as handle:
+                    json.dump(document, handle)
+                stale_now = datetime.datetime.now(datetime.timezone.utc) + \
+                    datetime.timedelta(hours=1)
+                with self.assertRaisesRegex(runner.Refusal,
+                                            "PRE_RESUME_REVIEW_STALE"):
+                    runner.validate_pre_resume_review(
+                        pre_review, document, "c" * 64, runner_sha,
+                        now_utc=stale_now)
 
     def test_v1_failure_is_bound_nonreusable(self):
         document = load_json(runner.CONTRACT_RELATIVE)

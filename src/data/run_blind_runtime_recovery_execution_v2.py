@@ -8,6 +8,7 @@ LSF 9.1 non-array rule LSB_JOBINDEX == "0".
 from __future__ import print_function
 
 import argparse
+import datetime
 import json
 import os
 import re
@@ -177,7 +178,7 @@ def validate_registration_review(path, authorization, contract_sha, runner_sha):
     payload = _read_bytes(path)
     document = _load_json_bytes(payload, "REGISTRATION_REVIEW_JSON")
     expected_fields = {
-        "schema_version", "status", "lsf_job_id", "initial_scheduler_state",
+        "schema_version", "status", "registered_at_utc", "lsf_job_id", "initial_scheduler_state",
         "submission_count", "contract_sha256", "plan_sha256", "runner_sha256",
         "launcher_sha256", "job_template_sha256", "bundle_manifest_sha256",
         "reviewed_commit", "no_retry", "no_requeue", "nonarray",
@@ -193,7 +194,7 @@ def validate_registration_review(path, authorization, contract_sha, runner_sha):
              document.get("submission_count") == 1 and
              document.get("training_allowed") is False,
              "REGISTRATION_REVIEW_STATUS")
-    for field in ("lsf_job_id", "launcher_sha256", "job_template_sha256",
+    for field in ("registered_at_utc", "lsf_job_id", "launcher_sha256", "job_template_sha256",
                   "bundle_manifest_sha256", "reviewed_commit", "bsub_path",
                   "bsub_sha256", "registration_command_path",
                   "registration_command_sha256", "bjobs_path", "bjobs_sha256",
@@ -232,19 +233,40 @@ def _validate_scheduler_captures(document, prefix=""):
                           re.escape(job_id))
     _require(len(compact) == 1 and expected.match(compact[0]),
              "AUTHORIZATION_SCHEDULER_CAPTURE")
-    _require(detail.count("Job <%s>" % job_id) == 1 and
-             "Job Name <blind_rt_recovery_v2_r1>" in detail and
-             re.search(r"\bPSUSP\b", detail) and
+    normalized = re.sub(r"\s+", "", detail)
+    expected_command = ("Command</bin/bash%s/src/data/"
+                        "launch_blind_runtime_recovery_execution_v2.sh>" %
+                        JOB_BUNDLE_ROOT)
+    _require(normalized.count("Job<%s>" % job_id) == 1 and
+             "JobName<blind_rt_recovery_v2_r1>" in normalized and
+             "Status<PSUSP>" in normalized and "Queue<normal>" in normalized and
+             expected_command in normalized and
+             "withhold,CWD<%s>" % JOB_BUNDLE_ROOT in normalized and
+             "OutputFile<%s/stdout.log>" % JOB_REGISTRATION_ROOT in normalized and
+             "ErrorFile<%s/stderr.log>" % JOB_REGISTRATION_ROOT in normalized and
+             "NotRe-runnable;" in normalized and
              not re.search(r"job\s*array|jobindex|\[[0-9]+\]", detail,
                            re.IGNORECASE),
              "AUTHORIZATION_SCHEDULER_CAPTURE")
 
 
-def validate_pre_resume_review(path, authorization, contract_sha, runner_sha):
+def _parse_utc(value, code):
+    _require(isinstance(value, str) and
+             re.match(r"^20[0-9]{2}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
+                      value), code)
+    try:
+        return datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(
+            tzinfo=datetime.timezone.utc)
+    except ValueError:
+        raise Refusal(code)
+
+
+def validate_pre_resume_review(path, authorization, contract_sha, runner_sha,
+                               now_utc=None):
     payload = _read_bytes(path)
     document = _load_json_bytes(payload, "PRE_RESUME_REVIEW_JSON")
     expected_fields = {
-        "schema_version", "status", "checked_at_utc", "lsf_job_id",
+        "schema_version", "status", "registered_at_utc", "checked_at_utc", "lsf_job_id",
         "scheduler_state", "contract_sha256", "runner_sha256",
         "bundle_manifest_sha256", "reviewed_commit", "nonarray", "no_retry",
         "no_requeue", "training_allowed", "pre_resume_bjobs_path",
@@ -255,20 +277,27 @@ def validate_pre_resume_review(path, authorization, contract_sha, runner_sha):
     _require(document.get("schema_version") ==
              "blind-runtime-recovery-execution-v2-pre-resume-review" and
              document.get("status") == "PASS" and
-             re.match(r"^20[0-9]{2}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$",
-                      document.get("checked_at_utc", "")) and
              document.get("scheduler_state") == "PSUSP" and
              document.get("nonarray") is True and
              document.get("no_retry") is True and
              document.get("no_requeue") is True and
              document.get("training_allowed") is False,
              "PRE_RESUME_REVIEW_STATUS")
-    for field in ("lsf_job_id", "contract_sha256", "runner_sha256",
+    for field in ("registered_at_utc", "lsf_job_id", "contract_sha256", "runner_sha256",
                   "bundle_manifest_sha256", "reviewed_commit",
                   "pre_resume_bjobs_path", "pre_resume_bjobs_sha256",
                   "pre_resume_bjobs_al_path", "pre_resume_bjobs_al_sha256"):
         _require(document.get(field) == authorization.get(field),
                  "PRE_RESUME_REVIEW_BINDING")
+    registered = _parse_utc(document.get("registered_at_utc"),
+                            "PRE_RESUME_REVIEW_TIME")
+    checked = _parse_utc(document.get("checked_at_utc"),
+                         "PRE_RESUME_REVIEW_TIME")
+    now = (datetime.datetime.now(datetime.timezone.utc) if now_utc is None
+           else now_utc)
+    _require(registered <= checked <= now + datetime.timedelta(minutes=2) and
+             now - checked <= datetime.timedelta(minutes=15),
+             "PRE_RESUME_REVIEW_STALE")
     _validate_scheduler_captures(document, prefix="pre_resume_")
     _require(_sha256_bytes(payload) == authorization.get("pre_resume_review_sha256"),
              "PRE_RESUME_REVIEW_DIGEST")
@@ -279,7 +308,7 @@ def validate_authorization(path, contract_sha, runner_sha, contract,
                            environment=None):
     document = _load_json_bytes(_read_bytes(path), "AUTHORIZATION_JSON")
     expected_fields = {
-        "schema_version", "status", "execution_allowed", "contract_sha256",
+        "schema_version", "status", "execution_allowed", "registered_at_utc", "contract_sha256",
         "plan_sha256", "runner_sha256", "launcher_sha256",
         "job_template_sha256", "bundle_manifest_sha256", "reviewed_commit",
         "lsf_job_id", "no_retry", "no_requeue", "nonarray", "training_allowed",
