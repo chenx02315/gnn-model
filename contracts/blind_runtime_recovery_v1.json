@@ -7,10 +7,10 @@
     "source": "in-memory immutable log and measurement snapshots accepted by blind-runtime-join-v12-r5",
     "formal_stages": ["02_hf_coarse", "03_hmf_coarse", "04_integer_refine"],
     "authorized_execution_stages": ["01_single_mode_full", "02_hf_coarse", "03_hmf_coarse"],
-    "phase3_full_source_rule": "01_single_mode_full is allowed only for the exact s9234/wb_dma *_H_full_phase3_v1 source reused by formal HF/HMF measurement tables; it is one deduplicated H full attempt per circuit."
+    "single_full_source_rule": "01_single_mode_full is allowed only for exact run ids s9234_H_full_phase3_v2 and wb_dma_H_full_phase4_v2 when reused by formal HF/HMF measurement tables; it is one deduplicated H full attempt per circuit."
   },
   "private_plan": {
-    "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r3_private",
+    "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r4_private",
     "permissions": "0700 directory and 0600 plan files",
     "allowed_fields": ["circuit", "stage", "mode", "run_id", "source_marker", "pattern_limit", "run_kind", "depends_on_h_marker"],
     "forbidden_fields": ["result_path", "coverage", "wall_time", "runtime", "log_payload", "measurement_row", "candidate_features"]
@@ -32,9 +32,9 @@
   },
   "implementation": {
     "artifact_sha256": {
-      "src/data/build_blind_runtime_recovery_plan_v1.py": "63d691f5e97c1254a10d6b529c65022bbd1a029255fc1bf5237e008fefc8dd4c",
-      "src/data/run_blind_runtime_recovery_plan_v1.py": "301958c38cc4eadd8d2cf7b191f3cbb30fdbde04717b1a60c36e8a89cebdd950",
-      "tests/test_build_blind_runtime_recovery_plan_v1.py": "a33d53c3856c6a100375a895d78a22f2c34f5c0089cdb5392cdb82909ac7fefa",
+      "src/data/build_blind_runtime_recovery_plan_v1.py": "c640ffaea8a4a8c11fc8082a986cf34687370b91f53e28eb8233a4c93b8d4f55",
+      "src/data/run_blind_runtime_recovery_plan_v1.py": "7991012ff22a0184c2680be37f31b8226a058924b74051f1febe2abf641cc5b7",
+      "tests/test_build_blind_runtime_recovery_plan_v1.py": "b03a6e7da1eac4d38a5a99b6c6a1c6c0020f5f862d85332daf97ff0ea12b307c",
       "tests/test_run_blind_runtime_recovery_plan_v1.py": "9b5e959a581069e68dc437aedb4ddd81bc892701859f0a59589be08dc6cd7c71"
     },
     "seal_rule": "A primary-agent reviewed final seal must replace every PENDING_ROOT_SEAL value with a SHA-256 before deployment beyond local tests."

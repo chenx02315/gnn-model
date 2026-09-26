@@ -20,7 +20,7 @@ from src.data import run_blind_join_v12_r5 as r5
 HERE = os.path.dirname(os.path.abspath(__file__))
 BUNDLE_ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 CONTRACT_RELATIVE = "contracts/blind_runtime_recovery_v1.json"
-OUTPUT_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r3_private"
+OUTPUT_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r4_private"
 CIRCUITS = planner.FIXED_CIRCUITS
 REQUIRED_ARTIFACTS = frozenset((
     "src/data/build_blind_runtime_recovery_plan_v1.py",

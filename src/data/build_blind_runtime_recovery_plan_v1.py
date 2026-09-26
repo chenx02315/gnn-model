@@ -27,7 +27,10 @@ _P2_HMF_H = re.compile(r"^s38584_HMF_src_H_(?P<h_pct>[1-9][0-9]*)pct_p(?P<limit>
 _P2_HMF_MFULL = re.compile(r"^s38584_HMF_H_(?P<h_pct>[1-9][0-9]*)pct_p(?P<h_limit>[1-9][0-9]*)_Mfull_v0_1$")
 _P2_HMF_MLIMIT = re.compile(r"^s38584_HMF_H_(?P<h_pct>[1-9][0-9]*)pct_p(?P<h_limit>[1-9][0-9]*)_M_(?P<m_pct>[1-9][0-9]*)pct_p(?P<limit>[1-9][0-9]*)_v0_1$")
 _POSITIVE_COUNT = re.compile(r"^[1-9][0-9]*$")
-_PHASE3_SINGLE_FULL_H = re.compile(r"^(s9234|wb_dma)_H_full_phase3_v1$")
+_SINGLE_FULL_H_RUN_IDS = {
+    "s9234": "s9234_H_full_phase3_v2",
+    "wb_dma": "wb_dma_H_full_phase4_v2",
+}
 
 
 class RecoveryPlanFailure(Exception):
@@ -61,11 +64,10 @@ def _parse_attempts(log_snapshots):
 def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_h_patterns,
                    measured_m_patterns):
     """Validate only a recovery-safe subset of historical run-id grammar."""
-    phase3_full = _PHASE3_SINGLE_FULL_H.match(marker)
-    if phase3_full:
+    if marker in _SINGLE_FULL_H_RUN_IDS.values():
         if stage not in ("02_hf_coarse", "03_hmf_coarse"):
             raise RecoveryPlanFailure("RUN_ID", "RUN_ID_STAGE_MISMATCH")
-        if mode != "H" or phase3_full.group(1) != circuit:
+        if mode != "H" or _SINGLE_FULL_H_RUN_IDS.get(circuit) != marker:
             raise RecoveryPlanFailure("RUN_ID", "RUN_ID_SCOPE_MISMATCH")
         if not _POSITIVE_COUNT.match(measured_h_patterns):
             raise RecoveryPlanFailure("RUN_ID", "PHASE3_FULL_H_PATTERN_INVALID")

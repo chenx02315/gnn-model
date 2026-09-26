@@ -157,7 +157,7 @@ class BuildBlindRuntimeRecoveryPlanV1Tests(unittest.TestCase):
                 "64\t0\t%s\t%s\t%s\n" % (h_hmf, m, f)))
 
     def test_phase3_full_h_is_exact_deduplicated_and_conflict_checked(self):
-        full = "H_s9234_H_full_phase3_v1"
+        full = "H_s9234_H_full_phase3_v2"
         f_hf = "F_hf_existing"; f_hmf = "F_hmf_existing"; m = "M_existing"
         logs = {
             "x/%s.driver.log" % f_hf: log("hf_existing", "F"),
@@ -168,7 +168,7 @@ class BuildBlindRuntimeRecoveryPlanV1Tests(unittest.TestCase):
         plan = recovery.build_recovery_plan(self.circuit, logs, measurements(
             "64\t%s\t%s\n" % (full, f_hf), hmf_rows))
         self.assertEqual([{"circuit": "s9234", "stage": "01_single_mode_full", "mode": "H",
-                           "run_id": "s9234_H_full_phase3_v1", "source_marker": full,
+                           "run_id": "s9234_H_full_phase3_v2", "source_marker": full,
                            "pattern_limit": 64, "run_kind": "full", "depends_on_h_marker": ""}], plan)
         with self.assertRaisesRegex(recovery.RecoveryPlanFailure, "DUPLICATE_ATTEMPT_CONFLICT"):
             recovery.build_recovery_plan(self.circuit, logs, measurements("",
@@ -176,15 +176,25 @@ class BuildBlindRuntimeRecoveryPlanV1Tests(unittest.TestCase):
 
     def test_phase3_full_h_rejects_wrong_circuit_version_and_nonpositive_limit(self):
         f = "F_existing"; logs = {"x/%s.driver.log" % f: log("existing", "F")}
-        for marker in ("H_s38584_H_full_phase3_v1", "H_s9234_H_full_phase3_v2"):
+        for marker in ("H_s38584_H_full_phase3_v1", "H_s9234_H_full_phase3_v1"):
             with self.subTest(marker=marker), self.assertRaisesRegex(recovery.RecoveryPlanFailure, "ILLEGAL_RUN_ID"):
                 recovery.build_recovery_plan(self.circuit, logs, measurements("64\t%s\t%s\n" % (marker, f), ""))
         with self.assertRaisesRegex(recovery.RecoveryPlanFailure, "PHASE3_FULL_H_PATTERN_INVALID"):
             recovery.build_recovery_plan(self.circuit, logs, measurements(
-                "0\tH_s9234_H_full_phase3_v1\t%s\n" % f, ""))
+                "0\tH_s9234_H_full_phase3_v2\t%s\n" % f, ""))
         with self.assertRaisesRegex(recovery.RecoveryPlanFailure, "RUN_ID_STAGE_MISMATCH"):
             recovery.build_recovery_plan(self.circuit, logs, measurements("", "", [
-                "64\t\tH_s9234_H_full_phase3_v1\t%s\n" % f]))
+                "64\t\tH_s9234_H_full_phase3_v2\t%s\n" % f]))
+
+    def test_wb_dma_phase4_full_h_exact_name_is_accepted(self):
+        full = "H_wb_dma_H_full_phase4_v2"
+        f = "F_existing"
+        plan = recovery.build_recovery_plan(
+            "wb_dma", {"x/%s.driver.log" % f: log("existing", "F")},
+            measurements("128\t%s\t%s\n" % (full, f), ""))
+        self.assertEqual(("01_single_mode_full", "wb_dma_H_full_phase4_v2", 128, "full"),
+                         (plan[0]["stage"], plan[0]["run_id"],
+                          plan[0]["pattern_limit"], plan[0]["run_kind"]))
 
 
 if __name__ == "__main__":
