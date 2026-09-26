@@ -1,0 +1,13 @@
+{
+    "schema_version": "blind-runtime-recovery-execution-v3-bundle-manifest",
+    "status": "LOCAL_DESIGN_REVIEW_PENDING",
+    "artifact_sha256": {
+        "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
+        "src/data/run_blind_runtime_recovery_execution_v3.py": "91232b4dd2f62727d90d2bd9fdc5f69e582661b3dd7681b0ac7eb087a4fbb688",
+        "src/data/launch_blind_runtime_recovery_execution_v3.sh": "aac0e974db553d2539581a3d9d84c29024beb6c5f2abf9b226717142c3b9b631",
+        "src/data/register_blind_runtime_recovery_execution_v3.sh": "54bdd3228ef3faff6f6a51608dffd9b062e8b01c879abb538df23f0bab288e82",
+        "contracts/blind_runtime_recovery_execution_v3_job_template.json": "c8690cc4dc003e78c4350165b6d2d99d729c6846f29d1e535f0c52ba6aba1f77",
+        "tests/test_run_blind_runtime_recovery_execution_v3.py": "3105daa42ed0773e77c7e5a26e2da73e8d4cf8da17d9123e25bda0154dabbe86",
+        "data/manifests/blind_runtime_recovery_execution_v2_registration_failure_20260926.json": "360de7f4c6c22099eb165245a081ac239ab328ae3b73194031e082d6e2fd4a6b"
+    }
+}
