@@ -88,7 +88,11 @@
     },
     "bundle_manifest": {
         "path": "bundle_manifest_v3.json",
-        "sha256": "8c9657f9689bbce2f2fe7cc7a53cfc268e6c118bd51a8efca764546ebe478aa3"
+        "sha256": "1d09902165885c481973114182ed71ca6947aa4c8bf38cc94778d9d8aa8d8b1f"
+    },
+    "independent_review": {
+        "path": "contracts/blind_runtime_recovery_execution_v3_review.json",
+        "sha256": "adc58b81130b8331bc89c969113d461dd641c99a8fe41dca8017f2062db330fe"
     },
     "implementation": {
         "artifact_sha256": {
