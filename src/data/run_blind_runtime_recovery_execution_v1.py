@@ -154,11 +154,14 @@ def validate_plan_bytes(payload, contract):
         counts[circuit] += 1
         if mode == "H":
             _require(not row.get("depends_on_h_marker"), "H_HAS_DEPENDENCY")
+            _require((circuit, marker) not in h_markers, "H_MARKER_AMBIGUOUS")
             h_markers[(circuit, marker)] = row
         else:
             _require(stage == "03_hmf_coarse", "M_STAGE")
             dependency = row.get("depends_on_h_marker")
             _require((circuit, dependency) in h_markers, "M_DEPENDENCY_ORDER")
+            _require(h_markers[(circuit, dependency)]["stage"] == "03_hmf_coarse",
+                     "M_DEPENDENCY_STAGE")
             _require(row.get("run_kind") in ("full", "limited"), "M_RUN_KIND")
     _require(counts == PLAN_COUNTS, "PLAN_COUNTS")
     return plan
@@ -268,6 +271,72 @@ def _copy_tree(source, target):
     shutil.copytree(source, target, symlinks=False)
 
 
+def _tree_entries(root, logical_prefix):
+    _require(os.path.isdir(root) and not os.path.islink(root), "MANIFEST_ROOT")
+    entries = []
+    for current, directories, files in os.walk(root):
+        directories.sort()
+        files.sort()
+        for name in directories:
+            _require(not os.path.islink(os.path.join(current, name)), "SOURCE_SYMLINK")
+        for name in files:
+            path = os.path.join(current, name)
+            _require(os.path.isfile(path) and not os.path.islink(path), "MANIFEST_FILE")
+            relative = os.path.relpath(path, root).replace(os.sep, "/")
+            entries.append({"logical_path": logical_prefix + "/" + relative,
+                            "bytes": os.path.getsize(path),
+                            "sha256": _sha256_bytes(_read_bytes(path))})
+    _require(entries, "MANIFEST_EMPTY")
+    return entries
+
+
+def _file_entry(path, logical_path):
+    _require(os.path.isfile(path) and not os.path.islink(path), "MANIFEST_FILE")
+    return {"logical_path": logical_path, "bytes": os.path.getsize(path),
+            "sha256": _sha256_bytes(_read_bytes(path))}
+
+
+def build_source_manifest(contract):
+    entries = []
+    for circuit in sorted(PLAN_COUNTS):
+        binding = _circuit_binding(contract, circuit)
+        root = binding["source_root"]
+        entries.append(_file_entry(binding["config"], circuit + "/01_config/config.env"))
+        for mode in ("H", "M"):
+            entries.extend(_tree_entries(os.path.join(root, "99_tmp", mode + "_mapped_tsdb"),
+                                         circuit + "/99_tmp/" + mode + "_mapped_tsdb"))
+        entries.extend(_tree_entries(os.path.join(root, "03_fault_universe",
+                                                  binding["common_fault_dir"]),
+                                     circuit + "/03_fault_universe/" +
+                                     binding["common_fault_dir"]))
+    entries.sort(key=lambda item: item["logical_path"])
+    logical_paths = [item["logical_path"] for item in entries]
+    _require(len(logical_paths) == len(set(logical_paths)), "MANIFEST_DUPLICATE")
+    return {"schema_version": "blind-runtime-recovery-source-manifest-v1",
+            "plan_sha256": PLAN_SHA256, "entries": entries}
+
+
+def build_copy_manifest(contract):
+    output_root = contract["output"]["root"]
+    entries = []
+    for circuit in sorted(PLAN_COUNTS):
+        binding = _circuit_binding(contract, circuit)
+        workspace = os.path.join(output_root, "workspaces", circuit)
+        entries.append(_file_entry(os.path.join(workspace, "01_config", "config.env"),
+                                   circuit + "/01_config/config.env"))
+        for mode in ("H", "M"):
+            entries.extend(_tree_entries(os.path.join(workspace, "99_tmp",
+                                                      mode + "_mapped_tsdb"),
+                                         circuit + "/99_tmp/" + mode + "_mapped_tsdb"))
+        entries.extend(_tree_entries(os.path.join(workspace, "03_fault_universe",
+                                                  binding["common_fault_dir"]),
+                                     circuit + "/03_fault_universe/" +
+                                     binding["common_fault_dir"]))
+    entries.sort(key=lambda item: item["logical_path"])
+    return {"schema_version": "blind-runtime-recovery-copy-manifest-v1",
+            "plan_sha256": PLAN_SHA256, "entries": entries}
+
+
 def _parse_config(path, expected_circuit):
     values = {}
     with open(path, "r") as handle:
@@ -295,6 +364,10 @@ def prepare_workspaces(contract):
         os.makedirs(output_root, 0o700)
         os.makedirs(os.path.join(output_root, "logs"), 0o700)
         os.makedirs(os.path.join(output_root, "receipts"), 0o700)
+        source_manifest = build_source_manifest(contract)
+        source_manifest_path = os.path.join(output_root, "source_manifest.json")
+        _write_json_new(source_manifest_path, source_manifest)
+        source_manifest_sha = _sha256_bytes(_read_bytes(source_manifest_path))
         config_values = {}
         for circuit in sorted(PLAN_COUNTS):
             binding = _circuit_binding(contract, circuit)
@@ -315,7 +388,15 @@ def prepare_workspaces(contract):
             config_target = os.path.join(workspace, "01_config", "config.env")
             shutil.copy2(binding["config"], config_target)
             config_values[circuit] = _parse_config(binding["config"], circuit)
-        return config_values
+        copy_manifest = build_copy_manifest(contract)
+        _require(copy_manifest["entries"] == source_manifest["entries"],
+                 "COPY_MANIFEST_MISMATCH")
+        copy_document = {"schema_version": "blind-runtime-recovery-copy-verification-v1",
+                         "source_manifest_sha256": source_manifest_sha,
+                         "copy_matches_source": True,
+                         "entries": copy_manifest["entries"]}
+        _write_json_new(os.path.join(output_root, "copy_verification.json"), copy_document)
+        return config_values, source_manifest_sha
     except Exception:
         # Evidence is deliberately retained.  A new versioned output root is
         # required after any preparation failure.
@@ -352,7 +433,7 @@ def _log_result(driver_log, mode):
     return _sha256_bytes(payload), elapsed
 
 
-def execute_manifest(manifest, contract, config_values):
+def execute_manifest(manifest, contract, config_values, source_manifest_sha):
     """Execute exactly once in manifest order; any failure stops the chain."""
     output_root = contract["output"]["root"]
     receipts = []
@@ -367,19 +448,21 @@ def execute_manifest(manifest, contract, config_values):
         receipt_path = os.path.join(output_root, "receipts",
                                     "%03d_%s_%s.json" % (
                                         item["attempt_index"], item["mode"], item["run_id"]))
-        with open(item["driver_log"], "xb") as log_handle:
-            process = subprocess.Popen(item["argv"], cwd=item["workspace"],
-                                       env=environment, stdout=log_handle,
-                                       stderr=subprocess.STDOUT)
-            return_code = process.wait()
         document = {"schema_version": "blind-runtime-recovery-attempt-receipt-v1",
                     "attempt_index": item["attempt_index"],
                     "circuit": item["circuit"], "stage": item["stage"],
                     "mode": item["mode"], "run_id": item["run_id"],
-                    "return_code": return_code, "retry_count": 0,
+                    "return_code": None, "retry_count": 0,
                     "output": item["output"], "driver_log": item["driver_log"],
+                    "source_manifest_sha256": source_manifest_sha,
                     "status": "FAIL"}
         try:
+            with open(item["driver_log"], "xb") as log_handle:
+                process = subprocess.Popen(item["argv"], cwd=item["workspace"],
+                                           env=environment, stdout=log_handle,
+                                           stderr=subprocess.STDOUT)
+                return_code = process.wait()
+            document["return_code"] = return_code
             _require(return_code == 0, "ATPG_EXIT")
             _require(os.path.isdir(item["output"]), "ATPG_OUTPUT_MISSING")
             _require(os.path.isfile(os.path.join(item["output"], "faults.mtfi")),
@@ -392,7 +475,8 @@ def execute_manifest(manifest, contract, config_values):
             _write_json_new(receipt_path, document)
             receipts.append(document)
         except Exception:
-            document["driver_log_sha256"] = _sha256_bytes(_read_bytes(item["driver_log"]))
+            document["driver_log_sha256"] = (_sha256_bytes(_read_bytes(item["driver_log"]))
+                                                if os.path.isfile(item["driver_log"]) else "")
             _write_json_new(receipt_path, document)
             raise
     _require(len(receipts) == 44, "EXECUTION_RECEIPT_COUNT")
@@ -461,8 +545,8 @@ def main(argv=None):
             validate_authorization(args.authorization, contract_sha, runner_sha)
             plan = validate_plan_bytes(_read_bytes(args.plan), contract)
             manifest = build_command_manifest(plan, contract)
-            config_values = prepare_workspaces(contract)
-            execute_manifest(manifest, contract, config_values)
+            config_values, source_manifest_sha = prepare_workspaces(contract)
+            execute_manifest(manifest, contract, config_values, source_manifest_sha)
             result["status"] = "PASS_EXECUTION_COMPLETE_AUDIT_PENDING"
         print(json.dumps(result, sort_keys=True))
         return 0

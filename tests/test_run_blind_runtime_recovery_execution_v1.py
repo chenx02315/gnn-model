@@ -86,6 +86,16 @@ class BlindRuntimeRecoveryExecutionV1Tests(unittest.TestCase):
         bad = valid_plan()
         next(item for item in bad if item["mode"] == "M")["depends_on_h_marker"] = "H_missing"
         mutations.append((bad, "M_DEPENDENCY_ORDER"))
+        bad = valid_plan()
+        hf_h = next(item for item in bad if item["stage"] == "02_hf_coarse")
+        next(item for item in bad if item["mode"] == "M")["depends_on_h_marker"] = hf_h["source_marker"]
+        mutations.append((bad, "M_DEPENDENCY_STAGE"))
+        bad = valid_plan()
+        hf_h = next(item for item in bad if item["stage"] == "02_hf_coarse")
+        hmf_h = next(item for item in bad if item["stage"] == "03_hmf_coarse" and item["mode"] == "H")
+        hmf_h["run_id"] = hf_h["run_id"]
+        hmf_h["source_marker"] = hf_h["source_marker"]
+        mutations.append((bad, "H_MARKER_AMBIGUOUS"))
         bad = valid_plan()[:-1]; mutations.append((bad, "PLAN_ENVELOPE_COUNTS"))
         for bad, code in mutations:
             payload = json.dumps(envelope(bad), sort_keys=True).encode("utf-8")
@@ -135,6 +145,32 @@ class BlindRuntimeRecoveryExecutionV1Tests(unittest.TestCase):
                 json.dump(document, handle)
             with self.assertRaisesRegex(runner.Refusal, "AUTHORIZATION_SCHEDULER"):
                 runner.validate_authorization(path, "c" * 64, "r" * 64)
+
+    def test_process_start_failure_writes_fail_receipt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            os.makedirs(os.path.join(tmp, "logs", "s9234"))
+            os.makedirs(os.path.join(tmp, "receipts"))
+            workspace = os.path.join(tmp, "workspace")
+            os.makedirs(workspace)
+            item = {"attempt_index": 1, "circuit": "s9234",
+                    "stage": "01_single_mode_full", "mode": "H",
+                    "run_id": "s9234_H_full_phase3_v2",
+                    "output": os.path.join(workspace, "out"), "status_file": "",
+                    "environment": {}, "argv": ["missing"], "workspace": workspace,
+                    "driver_log": os.path.join(tmp, "logs", "s9234", "driver.log")}
+            document = contract()
+            document["output"]["root"] = tmp
+            with mock.patch.object(runner.subprocess, "Popen", side_effect=OSError("start")):
+                with self.assertRaises(OSError):
+                    runner.execute_manifest([item], document,
+                                            {"s9234": {"TOP_MODULE": "s9234",
+                                                       "CELL_LIBRARY": "celllib"}}, "m" * 64)
+            receipt = os.path.join(tmp, "receipts", "001_H_s9234_H_full_phase3_v2.json")
+            self.assertTrue(os.path.isfile(receipt))
+            with open(receipt, "r", encoding="utf-8") as handle:
+                result = json.load(handle)
+            self.assertEqual(("FAIL", None, 0),
+                             (result["status"], result["return_code"], result["retry_count"]))
 
 
 if __name__ == "__main__":

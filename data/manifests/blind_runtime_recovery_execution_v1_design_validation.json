@@ -2,16 +2,16 @@
   "schema_version": "blind-runtime-recovery-execution-v1-design-validation",
   "created_at_utc": "2026-09-26T02:57:13Z",
   "status": "PASS_DESIGN_NO_EXECUTION",
-  "git_base_commit": "f0f6ceeb6a70e2af34208b9397f3ee2adc032013",
+  "git_base_commit": "2e5a9b2fa6575607d7437410c2a4e70ff3b8147b",
   "a_bundle": {
-    "path": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_r5_f0f6cee.tar.gz",
-    "sha256": "53f8a960dc1ddad79c74fd78022349c1a8f4a9d4f09b96a7a9de913de207c86c",
+    "path": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_r6_2e5a9b2.tar.gz",
+    "sha256": "b5a0a8cb8175faa06897653fffc86f45226c5b90e111e6ad64f00b03891dcff6",
     "entries": 3,
-    "bytes": 8911,
-    "extracted_root": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_bundle_r5_f0f6cee"
+    "bytes": 9949,
+    "extracted_root": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_bundle_r6_2e5a9b2"
   },
   "bindings": {
-    "contract_sha256": "4f9b01e0dccd2b77d5cdb57b0adb85211cf19609265f5e20964b21b61bca977a",
+    "contract_sha256": "dffb0669ea30699c4cddb213cf2fe39e377ad8fc2a80334518c1cd3ee3641ec3",
     "private_plan_sha256": "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1",
     "attempts": 44,
     "counts": {
@@ -28,6 +28,9 @@
     "source_config_gate": true,
     "source_h_m_tsdb_gate": true,
     "source_common_fault_gate": true,
+    "same_stage_unique_h_dependency_gate": true,
+    "source_manifest_and_copy_verification_designed": true,
+    "startup_failure_receipt_designed_and_tested": true,
     "isolated_output_absent": true,
     "temp_available_gib": 213,
     "estimated_input_copy_mib_lt": 32
@@ -36,7 +39,8 @@
     "r1 used a nonexistent top-level plan path and refused before reading attempts",
     "r2 exposed the real plan envelope and refused PLAN_CONTAINER",
     "r3 passed the real plan envelope but did not yet bind command/Tcl digests",
-    "r4 passed command/input preflight but did not yet implement isolated copy and attempt receipts"
+    "r4 passed command/input preflight but did not yet implement isolated copy and attempt receipts",
+    "r5 implemented execution but independent review found three Medium issues; r6 contains the focused fixes"
   ],
   "authority": {
     "tessent_executed": false,
@@ -44,5 +48,11 @@
     "execution_authorized": false,
     "training_allowed": false
   },
-  "next_gate": "Independent read-only review must PASS before a separate explicit LSF execution authorization can be requested."
+  "independent_review": {
+    "status": "PASS",
+    "high_findings": 0,
+    "medium_findings": 0,
+    "receipt": "contracts/blind_runtime_recovery_execution_v1_review.json"
+  },
+  "next_gate": "A separate explicit LSF execution authorization is required before changing the contract authority or registering any held job."
 }

@@ -1,0 +1,44 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v1-independent-review",
+  "status": "PASS",
+  "reviewed_contract_sha256": "dffb0669ea30699c4cddb213cf2fe39e377ad8fc2a80334518c1cd3ee3641ec3",
+  "reviewed_runner_sha256": "af2f748fcd908c9425c9accc1beb19aa70721b2c9b7a1632427b0351204d5d00",
+  "reviewed_test_sha256": "abd740a5bfb76c2fb62a27c46c651d3227cc0df5f0f4545173d3e4fc12ec9eda",
+  "checks": {
+    "plan_digest_count_and_scope": "PASS",
+    "same_stage_unique_h_dependency": "PASS",
+    "historical_roots_read_only": "PASS",
+    "isolated_copy_and_overwrite_refusal": "PASS",
+    "command_and_tcl_digest_binding": "PASS",
+    "startup_failure_receipt": "PASS",
+    "source_manifest_and_copy_hash_equality": "PASS",
+    "no_retry_requeue_or_array": "PASS",
+    "external_authorization_binding": "PASS",
+    "execution_and_training_disabled": "PASS"
+  },
+  "tests": {
+    "focused_run": 7,
+    "focused_failures": 0,
+    "full_run": 437,
+    "full_failures": 0,
+    "full_skipped": 8
+  },
+  "findings": {
+    "high": 0,
+    "medium": 0,
+    "low": 1,
+    "low_note": "A future non-blocking test may exercise source/copy manifest success and one-byte mismatch using temporary directories."
+  },
+  "review_boundaries": {
+    "a_or_b_access": false,
+    "blind_row_read": false,
+    "tessent_or_lsf": false,
+    "training": false,
+    "files_modified_by_reviewer": false
+  },
+  "authority": {
+    "execution_allowed": false,
+    "lsf_submission_allowed": false,
+    "training_allowed": false
+  }
+}
