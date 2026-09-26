@@ -32,7 +32,14 @@ class V3Tests(unittest.TestCase):
         root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         contract,digest=runner.validate_contract(root)
         self.assertEqual(64,len(digest))
-        self.assertFalse(contract["authority"]["execution_authorized"])
+        self.assertFalse(contract["authority"]["training_allowed"])
+        if contract["status"]=="DESIGN_REVIEW_PENDING_NO_EXECUTION":
+            self.assertFalse(contract["authority"]["execution_authorized"])
+            self.assertFalse(contract["authority"]["lsf_submission_allowed"])
+        else:
+            self.assertEqual("REVIEWED_EXECUTION_AUTHORIZED",contract["status"])
+            self.assertTrue(contract["authority"]["execution_authorized"])
+            self.assertTrue(contract["authority"]["lsf_submission_allowed"])
 
     def test_wrapped_bjobs_al_binds_fields_and_raw_time(self):
         value=runner._scheduler(detail(),"45678","+08:00","2026-09-25T16:00:30Z")
@@ -101,6 +108,7 @@ class V3Tests(unittest.TestCase):
         with open(os.path.join(repo,runner.CONTRACT_RELATIVE),encoding="utf-8") as handle: contract=json.load(handle)
         contract["status"]="REVIEWED_EXECUTION_AUTHORIZED"
         contract["authority"]={"execution_authorized":True,"lsf_submission_allowed":True,"training_allowed":False}
+        contract["independent_review"]={"path":runner.DESIGN_REVIEW_RELATIVE,"sha256":"f"*64}
         impl=contract["implementation"]["artifact_sha256"]; job="45678"
         capture=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
         submitted=capture-datetime.timedelta(seconds=30)
