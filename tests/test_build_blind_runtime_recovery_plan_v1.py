@@ -156,6 +156,36 @@ class BuildBlindRuntimeRecoveryPlanV1Tests(unittest.TestCase):
             recovery.build_recovery_plan(self.circuit, logs, measurements("",
                 "64\t0\t%s\t%s\t%s\n" % (h_hmf, m, f)))
 
+    def test_phase3_full_h_is_exact_deduplicated_and_conflict_checked(self):
+        full = "H_s9234_H_full_phase3_v1"
+        f_hf = "F_hf_existing"; f_hmf = "F_hmf_existing"; m = "M_existing"
+        logs = {
+            "x/%s.driver.log" % f_hf: log("hf_existing", "F"),
+            "x/%s.driver.log" % f_hmf: log("hmf_existing", "F"),
+            "x/%s.driver.log" % m: log("existing", "M"),
+        }
+        hmf_rows = "".join("64\t16\t%s\t%s\t%s\n" % (full, m, f_hmf) for unused in range(21))
+        plan = recovery.build_recovery_plan(self.circuit, logs, measurements(
+            "64\t%s\t%s\n" % (full, f_hf), hmf_rows))
+        self.assertEqual([{"circuit": "s9234", "stage": "01_single_mode_full", "mode": "H",
+                           "run_id": "s9234_H_full_phase3_v1", "source_marker": full,
+                           "pattern_limit": 64, "run_kind": "full", "depends_on_h_marker": ""}], plan)
+        with self.assertRaisesRegex(recovery.RecoveryPlanFailure, "DUPLICATE_ATTEMPT_CONFLICT"):
+            recovery.build_recovery_plan(self.circuit, logs, measurements("",
+                "64\t16\t%s\t%s\t%s\n32\t16\t%s\t%s\t%s\n" % (full, m, f_hmf, full, m, f_hmf)))
+
+    def test_phase3_full_h_rejects_wrong_circuit_version_and_nonpositive_limit(self):
+        f = "F_existing"; logs = {"x/%s.driver.log" % f: log("existing", "F")}
+        for marker in ("H_s38584_H_full_phase3_v1", "H_s9234_H_full_phase3_v2"):
+            with self.subTest(marker=marker), self.assertRaisesRegex(recovery.RecoveryPlanFailure, "ILLEGAL_RUN_ID"):
+                recovery.build_recovery_plan(self.circuit, logs, measurements("64\t%s\t%s\n" % (marker, f), ""))
+        with self.assertRaisesRegex(recovery.RecoveryPlanFailure, "PHASE3_FULL_H_PATTERN_INVALID"):
+            recovery.build_recovery_plan(self.circuit, logs, measurements(
+                "0\tH_s9234_H_full_phase3_v1\t%s\n" % f, ""))
+        with self.assertRaisesRegex(recovery.RecoveryPlanFailure, "RUN_ID_STAGE_MISMATCH"):
+            recovery.build_recovery_plan(self.circuit, logs, measurements("", "", [
+                "64\t\tH_s9234_H_full_phase3_v1\t%s\n" % f]))
+
 
 if __name__ == "__main__":
     unittest.main()

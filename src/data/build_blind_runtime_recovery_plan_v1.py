@@ -27,6 +27,7 @@ _P2_HMF_H = re.compile(r"^s38584_HMF_src_H_(?P<h_pct>[1-9][0-9]*)pct_p(?P<limit>
 _P2_HMF_MFULL = re.compile(r"^s38584_HMF_H_(?P<h_pct>[1-9][0-9]*)pct_p(?P<h_limit>[1-9][0-9]*)_Mfull_v0_1$")
 _P2_HMF_MLIMIT = re.compile(r"^s38584_HMF_H_(?P<h_pct>[1-9][0-9]*)pct_p(?P<h_limit>[1-9][0-9]*)_M_(?P<m_pct>[1-9][0-9]*)pct_p(?P<limit>[1-9][0-9]*)_v0_1$")
 _POSITIVE_COUNT = re.compile(r"^[1-9][0-9]*$")
+_PHASE3_SINGLE_FULL_H = re.compile(r"^(s9234|wb_dma)_H_full_phase3_v1$")
 
 
 class RecoveryPlanFailure(Exception):
@@ -57,8 +58,18 @@ def _parse_attempts(log_snapshots):
     return attempts
 
 
-def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_m_patterns):
+def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_h_patterns,
+                   measured_m_patterns):
     """Validate only a recovery-safe subset of historical run-id grammar."""
+    phase3_full = _PHASE3_SINGLE_FULL_H.match(marker)
+    if phase3_full:
+        if stage not in ("02_hf_coarse", "03_hmf_coarse"):
+            raise RecoveryPlanFailure("RUN_ID", "RUN_ID_STAGE_MISMATCH")
+        if mode != "H" or phase3_full.group(1) != circuit:
+            raise RecoveryPlanFailure("RUN_ID", "RUN_ID_SCOPE_MISMATCH")
+        if not _POSITIVE_COUNT.match(measured_h_patterns):
+            raise RecoveryPlanFailure("RUN_ID", "PHASE3_FULL_H_PATTERN_INVALID")
+        return int(measured_h_patterns), "", "full", "01_single_mode_full"
     if stage == "04_integer_refine":
         raise RecoveryPlanFailure("RUN_ID", "RECOVERY_STAGE_UNSUPPORTED")
     if mode not in ("H", "M"):
@@ -69,7 +80,7 @@ def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_m
             raise RecoveryPlanFailure("RUN_ID", "ILLEGAL_RUN_ID")
         if circuit != "s38584" and match.group("circuit") != circuit:
             raise RecoveryPlanFailure("RUN_ID", "RUN_ID_SCOPE_MISMATCH")
-        return int(match.group("limit")), "", ""
+        return int(match.group("limit")), "", "", stage
     if stage != "03_hmf_coarse":
         raise RecoveryPlanFailure("RUN_ID", "RUN_ID_STAGE_MISMATCH")
     if mode == "H":
@@ -78,7 +89,7 @@ def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_m
             raise RecoveryPlanFailure("RUN_ID", "ILLEGAL_RUN_ID")
         if circuit != "s38584" and match.group("circuit") != circuit:
             raise RecoveryPlanFailure("RUN_ID", "RUN_ID_SCOPE_MISMATCH")
-        return int(match.group("limit")), "", ""
+        return int(match.group("limit")), "", "", stage
     if not depends_on_h_marker:
         raise RecoveryPlanFailure("DEPENDENCY", "MISSING_H_DEPENDENCY")
     if circuit == "s38584":
@@ -94,10 +105,10 @@ def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_m
             limit = int(match.group("limit"))
             if limit != int(measured_m_patterns):
                 raise RecoveryPlanFailure("RUN_ID", "M_PATTERN_LIMIT_MISMATCH")
-            return limit, depends_on_h_marker, "limited"
+            return limit, depends_on_h_marker, "limited", stage
         if not _POSITIVE_COUNT.match(measured_m_patterns):
             raise RecoveryPlanFailure("RUN_ID", "MFULL_M_PATTERN_INVALID")
-        return int(measured_m_patterns), depends_on_h_marker, "full"
+        return int(measured_m_patterns), depends_on_h_marker, "full", stage
     match = _V2_HMF_MFULL.match(marker) or _V2_HMF_MLIMIT.match(marker)
     expected = _V2_HMF_H.match(depends_on_h_marker)
     if not match or not expected:
@@ -112,10 +123,10 @@ def _run_id_fields(circuit, stage, mode, marker, depends_on_h_marker, measured_m
         limit = int(match.group("limit"))
         if limit != int(measured_m_patterns):
             raise RecoveryPlanFailure("RUN_ID", "M_PATTERN_LIMIT_MISMATCH")
-        return limit, depends_on_h_marker, "limited"
+        return limit, depends_on_h_marker, "limited", stage
     if not _POSITIVE_COUNT.match(measured_m_patterns):
         raise RecoveryPlanFailure("RUN_ID", "MFULL_M_PATTERN_INVALID")
-    return int(measured_m_patterns), depends_on_h_marker, "full"
+    return int(measured_m_patterns), depends_on_h_marker, "full", stage
 
 
 def _all_marker_matches(attempts, marker):
@@ -182,7 +193,7 @@ def _iter_formal_references(circuit, measurement_snapshots):
                     measured_m_patterns = _value(row, "m_patterns")
                     if not depends_on_h_marker:
                         raise RecoveryPlanFailure("DEPENDENCY", "MISSING_H_DEPENDENCY")
-                yield stage, mode, marker, depends_on_h_marker, measured_m_patterns
+                yield stage, mode, marker, depends_on_h_marker, _value(row, "h_patterns"), measured_m_patterns
 
 
 def build_recovery_plan(circuit, log_snapshots, measurement_snapshots):
@@ -198,7 +209,7 @@ def build_recovery_plan(circuit, log_snapshots, measurement_snapshots):
         raise RecoveryPlanFailure("SOURCE_INVENTORY", "SNAPSHOT_CONTAINER_SCHEMA")
     attempts = _parse_attempts(log_snapshots)
     planned = {}
-    for stage, mode, marker, depends_on_h_marker, measured_m_patterns in _iter_formal_references(circuit, measurement_snapshots):
+    for stage, mode, marker, depends_on_h_marker, measured_h_patterns, measured_m_patterns in _iter_formal_references(circuit, measurement_snapshots):
         state = _reference_state(attempts, mode, marker)
         if state == "UNIQUE":
             continue
@@ -207,9 +218,9 @@ def build_recovery_plan(circuit, log_snapshots, measurement_snapshots):
         run_id = _bare_run_id(mode, marker)
         dependency_run_id = (_bare_run_id("H", depends_on_h_marker)
                              if depends_on_h_marker else "")
-        limit, unused_dependency, variant = _run_id_fields(
-            circuit, stage, mode, run_id, dependency_run_id, measured_m_patterns)
-        record = {"circuit": circuit, "stage": stage, "mode": mode,
+        limit, unused_dependency, variant, execution_stage = _run_id_fields(
+            circuit, stage, mode, run_id, dependency_run_id, measured_h_patterns, measured_m_patterns)
+        record = {"circuit": circuit, "stage": execution_stage, "mode": mode,
                   "run_id": run_id, "source_marker": marker,
                   "pattern_limit": limit, "run_kind": variant,
                   "depends_on_h_marker": depends_on_h_marker}
