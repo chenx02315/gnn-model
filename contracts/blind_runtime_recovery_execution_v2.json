@@ -1,0 +1,107 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v2",
+  "status": "REVIEWED_EXECUTION_AUTHORIZED",
+  "purpose": "Isolated v2 repair for LSF 9.1 non-array index semantics, binding the sealed 44-attempt plan to one new held job while preserving failed v1 evidence.",
+  "authority": {
+    "execution_authorized": true,
+    "lsf_submission_allowed": true,
+    "training_allowed": false
+  },
+  "user_authorization": {
+    "received_at_utc": "2026-09-26T00:00:00Z",
+    "scope": "Implement and independently review v2; after PASS register exactly one new held non-array non-retry LSF job, then stop for a fresh pre-resume check."
+  },
+  "private_plan": {
+    "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/14_blind_runtime_recovery_execution_v2_inputs_r1/plan.json",
+    "sha256": "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1",
+    "expected_attempts": 44,
+    "expected_counts": {
+      "s9234": 1,
+      "s38584": 42,
+      "wb_dma": 1
+    },
+    "read_policy": "A_PRIVATE_IN_MEMORY_ONLY"
+  },
+  "historical_evidence": {
+    "write_policy": "READ_ONLY",
+    "forbidden": ["rename", "remove", "overwrite", "append", "reuse historical output directory"]
+  },
+  "output": {
+    "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/15_blind_runtime_recovery_execution_v2_r1_private",
+    "permissions": "0700 directories and 0600 control files/logs",
+    "overwrite": "REFUSE",
+    "workspace_rule": "copy required H/M TSDB inputs into a new per-circuit workspace; copy exact common-fault inputs; do not symlink writable Tessent state"
+  },
+  "attempt_order": ["H", "M"],
+  "dependency_rule": "Every M STATUS_FILE must be the faults.mtfi produced by the same-plan H marker in the isolated 03_hmf_coarse workspace.",
+  "command": {
+    "time_argv": ["/usr/bin/time", "-v"],
+    "tessent_argv": ["/cad/mentor/tessent2021_2/bin/tessent", "-shell", "-license_wait", "5"],
+    "artifact_sha256": {
+      "/usr/bin/time": "54643b2f510907c0bc0a1d13373f1d8233deb38c90dd97ebd9ecb27010e4d803",
+      "/cad/mentor/tessent2021_2/bin/tessent": "d92e81eaacf0727fd18d4cafa67d7c9a066069c6d8f7fc05caaf1252c3e44905",
+      "stage_mapped_common_atpg_no_tsdb.tcl": "100d58c816d7e318e81e03aae2d9436405cbb90bf629c4104f462b4c7047d529",
+      "stage_mapped_incremental_atpg_no_tsdb.tcl": "c2419bac5569192bfa04987d2e71c3e0aa4dadb8d8c22e755cc08318b2aaca95"
+    },
+    "common_dofile": "stage_mapped_common_atpg_no_tsdb.tcl",
+    "incremental_dofile": "stage_mapped_incremental_atpg_no_tsdb.tcl",
+    "success_markers": ["MAPPED_COMMON_ATPG_STATUS=PASS", "MAPPED_INCREMENTAL_ATPG_STATUS=PASS"],
+    "required_footer": ["Elapsed (wall clock) time", "Exit status: 0"]
+  },
+  "circuit_bindings": {
+    "s38584": {
+      "source_root": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/10_circuits/s38584",
+      "framework": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/00_framework/mapped_flow_v1",
+      "common_fault_dir": "common_s38584_m16_v0_1",
+      "config": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/10_circuits/s38584/01_config/config.env"
+    },
+    "s9234": {
+      "source_root": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/10_circuits/s9234",
+      "framework": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/00_framework/mapped_flow_v1",
+      "common_fault_dir": "common_s9234_m16_phase3_v1",
+      "config": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/10_circuits/s9234/01_config/config.env"
+    },
+    "wb_dma": {
+      "source_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma",
+      "framework": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/mapped_flow_v2",
+      "common_fault_dir": "common_wb_dma_m16_phase4_v2",
+      "config": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma/01_config/config.env"
+    }
+  },
+  "scheduler": {
+    "mode": "AUTHORIZED_PRE_REGISTRATION",
+    "job_template": "contracts/blind_runtime_recovery_execution_v2_job_template.json",
+    "array_allowed": false,
+    "retry_allowed": false,
+    "requeue_allowed": false,
+    "submission_requires": ["v2 design review PASS", "sealed v2 implementation hashes", "explicit user v2 LSF registration authorization"],
+    "resume_requires": ["registered PSUSP Job ID", "raw scheduler captures", "independent registration review PASS", "fresh pre-resume check", "new explicit resume authorization"]
+  },
+  "post_execution_gate": {
+    "requires": ["44 unique receipts", "44 wall-time footers", "44 zero exits", "44 expected success markers", "immutable source manifest", "independent candidate-to-runtime join audit"],
+    "training_before_gate": false
+  },
+  "prior_failure": {
+    "path": "data/manifests/blind_runtime_recovery_execution_v1_failure_20260926.json",
+    "sha256": "13bf448de65fd3f301d9f29551f1c6051a46437383f0e52c8a3ab7325534894a",
+    "job_id": "388791",
+    "attempts_started": 0,
+    "reuse_allowed": false
+  },
+  "bundle_manifest": {
+    "root": "/temp/jiangchuanc/blind_runtime_recovery_execution_v2_authorized_r1_bundle",
+    "path": "bundle_manifest_v2.json",
+    "sha256": "5a6bdb38a8d72d36169b0b519311400ac99cc8511ce4bc800a5855cac0d5f074",
+    "reviewed_commit": "3a75a2a4a84dc3fd4751a3050cb3c7213f06cfc9"
+  },
+  "implementation": {
+    "artifact_sha256": {
+      "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
+      "src/data/run_blind_runtime_recovery_execution_v2.py": "89f94afbcd81692b43ef3ecaa10b47ecac31c4c3e00a0b3217d8ed0507b5bad5",
+      "src/data/launch_blind_runtime_recovery_execution_v2.sh": "076bae8c3d6d17c7032240cc07ee3d509086597c17dad4adbb6584022bd8e05a",
+      "contracts/blind_runtime_recovery_execution_v2_job_template.json": "bc34192213c9a185688945aee98fa81bba15a9f79fca4b1be82c927559c5286f",
+      "tests/test_run_blind_runtime_recovery_execution_v2.py": "7e772b12cad9969cf8c983a4db3f5ea93c6e47a83717b6260777ebcc30e80527",
+      "data/manifests/blind_runtime_recovery_execution_v1_failure_20260926.json": "13bf448de65fd3f301d9f29551f1c6051a46437383f0e52c8a3ab7325534894a"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v2-bundle-manifest",
+  "status": "SEALED",
+  "reviewed_commit": "3a75a2a4a84dc3fd4751a3050cb3c7213f06cfc9",
+  "artifact_sha256": {
+    "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
+    "src/data/run_blind_runtime_recovery_execution_v2.py": "89f94afbcd81692b43ef3ecaa10b47ecac31c4c3e00a0b3217d8ed0507b5bad5",
+    "src/data/launch_blind_runtime_recovery_execution_v2.sh": "076bae8c3d6d17c7032240cc07ee3d509086597c17dad4adbb6584022bd8e05a",
+    "contracts/blind_runtime_recovery_execution_v2_job_template.json": "bc34192213c9a185688945aee98fa81bba15a9f79fca4b1be82c927559c5286f",
+    "tests/test_run_blind_runtime_recovery_execution_v2.py": "7e772b12cad9969cf8c983a4db3f5ea93c6e47a83717b6260777ebcc30e80527",
+    "data/manifests/blind_runtime_recovery_execution_v1_failure_20260926.json": "13bf448de65fd3f301d9f29551f1c6051a46437383f0e52c8a3ab7325534894a"
+  }
+}
