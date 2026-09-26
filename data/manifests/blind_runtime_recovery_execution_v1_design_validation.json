@@ -1,0 +1,47 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v1-design-validation",
+  "created_at_utc": "2026-09-26T02:57:13Z",
+  "status": "PASS_DESIGN_NO_EXECUTION",
+  "git_base_commit": "7c0a1aea88ed238196b78f9a08fe17b5aa5ea90a",
+  "a_bundle": {
+    "path": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_r4_7c0a1ae.tar.gz",
+    "sha256": "6ba2c814ee1154801250d72a27f7dbc0bc8e0d4941e72db70959e311b78c0c60",
+    "entries": 3,
+    "bytes": 6641,
+    "extracted_root": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_bundle_r4_7c0a1ae"
+  },
+  "bindings": {
+    "contract_sha256": "9969fdfbc49637748fb4c258956b39ede0ed09dee09b61d4045e43f7f76c449b",
+    "private_plan_sha256": "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1",
+    "attempts": 44,
+    "counts": {
+      "s9234": 1,
+      "s38584": 42,
+      "wb_dma": 1
+    }
+  },
+  "a_preflight": {
+    "python3_exit_code": 0,
+    "plan_schema_and_dependency_gate": true,
+    "command_digest_gate": true,
+    "tcl_digest_gate": true,
+    "source_config_gate": true,
+    "source_h_m_tsdb_gate": true,
+    "source_common_fault_gate": true,
+    "isolated_output_absent": true,
+    "temp_available_gib": 213,
+    "estimated_input_copy_mib_lt": 32
+  },
+  "preserved_failures": [
+    "r1 used a nonexistent top-level plan path and refused before reading attempts",
+    "r2 exposed the real plan envelope and refused PLAN_CONTAINER",
+    "r3 passed the real plan envelope but did not yet bind command/Tcl digests"
+  ],
+  "authority": {
+    "tessent_executed": false,
+    "lsf_job_submitted": false,
+    "execution_authorized": false,
+    "training_allowed": false
+  },
+  "next_gate": "Independent read-only review must PASS before a separate explicit LSF execution authorization can be requested."
+}

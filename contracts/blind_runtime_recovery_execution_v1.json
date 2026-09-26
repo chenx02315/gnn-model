@@ -1,0 +1,84 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v1",
+  "status": "DESIGN_REVIEW_PENDING_NO_EXECUTION",
+  "purpose": "Bind the sealed 44-attempt A-private recovery plan to isolated H-before-M Tessent commands without authorizing execution.",
+  "authority": {
+    "execution_authorized": false,
+    "lsf_submission_allowed": false,
+    "training_allowed": false
+  },
+  "private_plan": {
+    "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/12_blind_runtime_recovery_v1_r4_private/payload/plan.json",
+    "sha256": "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1",
+    "expected_attempts": 44,
+    "expected_counts": {
+      "s9234": 1,
+      "s38584": 42,
+      "wb_dma": 1
+    },
+    "read_policy": "A_PRIVATE_IN_MEMORY_ONLY"
+  },
+  "historical_evidence": {
+    "write_policy": "READ_ONLY",
+    "forbidden": ["rename", "remove", "overwrite", "append", "reuse historical output directory"]
+  },
+  "output": {
+    "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/13_blind_runtime_recovery_execution_v1_private",
+    "permissions": "0700 directories and 0600 control files/logs",
+    "overwrite": "REFUSE",
+    "workspace_rule": "copy required H/M TSDB inputs into a new per-circuit workspace; copy exact common-fault inputs; do not symlink writable Tessent state"
+  },
+  "attempt_order": ["H", "M"],
+  "dependency_rule": "Every M STATUS_FILE must be the faults.mtfi produced by the same-plan H marker in the isolated 03_hmf_coarse workspace.",
+  "command": {
+    "time_argv": ["/usr/bin/time", "-v"],
+    "tessent_argv": ["/cad/mentor/tessent2021_2/bin/tessent", "-shell", "-license_wait", "5"],
+    "artifact_sha256": {
+      "/usr/bin/time": "54643b2f510907c0bc0a1d13373f1d8233deb38c90dd97ebd9ecb27010e4d803",
+      "/cad/mentor/tessent2021_2/bin/tessent": "d92e81eaacf0727fd18d4cafa67d7c9a066069c6d8f7fc05caaf1252c3e44905",
+      "stage_mapped_common_atpg_no_tsdb.tcl": "100d58c816d7e318e81e03aae2d9436405cbb90bf629c4104f462b4c7047d529",
+      "stage_mapped_incremental_atpg_no_tsdb.tcl": "c2419bac5569192bfa04987d2e71c3e0aa4dadb8d8c22e755cc08318b2aaca95"
+    },
+    "common_dofile": "stage_mapped_common_atpg_no_tsdb.tcl",
+    "incremental_dofile": "stage_mapped_incremental_atpg_no_tsdb.tcl",
+    "success_markers": ["MAPPED_COMMON_ATPG_STATUS=PASS", "MAPPED_INCREMENTAL_ATPG_STATUS=PASS"],
+    "required_footer": ["Elapsed (wall clock) time", "Exit status: 0"]
+  },
+  "circuit_bindings": {
+    "s38584": {
+      "source_root": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/10_circuits/s38584",
+      "framework": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/00_framework/mapped_flow_v1",
+      "common_fault_dir": "common_s38584_m16_v0_1",
+      "config": "/temp/jiangchuanc/multimode_ate_phase2_20260808_A/10_circuits/s38584/01_config/config.env"
+    },
+    "s9234": {
+      "source_root": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/10_circuits/s9234",
+      "framework": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/00_framework/mapped_flow_v1",
+      "common_fault_dir": "common_s9234_m16_phase3_v1",
+      "config": "/temp/jiangchuanc/multimode_ate_phase3_20260811_A/10_circuits/s9234/01_config/config.env"
+    },
+    "wb_dma": {
+      "source_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma",
+      "framework": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/mapped_flow_v2",
+      "common_fault_dir": "common_wb_dma_m16_phase4_v2",
+      "config": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/wb_dma/01_config/config.env"
+    }
+  },
+  "scheduler": {
+    "mode": "NOT_REGISTERED",
+    "array_allowed": false,
+    "retry_allowed": false,
+    "requeue_allowed": false,
+    "submission_requires": ["independent review PASS", "sealed implementation hashes", "explicit LSF execution authorization"]
+  },
+  "post_execution_gate": {
+    "requires": ["44 unique receipts", "44 wall-time footers", "44 zero exits", "44 expected success markers", "immutable source manifest", "independent candidate-to-runtime join audit"],
+    "training_before_gate": false
+  },
+  "implementation": {
+    "artifact_sha256": {
+      "src/data/run_blind_runtime_recovery_execution_v1.py": "0a42bb598a805b52e0db7908103275bcb2403ab786081ad8b83e7422adc7ef78",
+      "tests/test_run_blind_runtime_recovery_execution_v1.py": "a096d4c98a1965d3a54179fdf6cb2bf15f353c0bc91a68b25db1e8e749da3e0c"
+    }
+  }
+}

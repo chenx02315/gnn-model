@@ -1,0 +1,27 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v1-review-request",
+  "status": "REVIEW_REQUESTED",
+  "scope": "Read-only review of the 44-attempt recovery execution design; no BLIND row content, Tessent, LSF, candidate join, or training is permitted.",
+  "reviewed_files": [
+    "contracts/blind_runtime_recovery_execution_v1.json",
+    "src/data/run_blind_runtime_recovery_execution_v1.py",
+    "tests/test_run_blind_runtime_recovery_execution_v1.py",
+    "data/manifests/blind_runtime_recovery_execution_v1_design_validation.json"
+  ],
+  "required_findings": {
+    "plan_digest_and_44_count_bound": true,
+    "only_H_and_M_attempts": true,
+    "H_before_M_dependency_unique": true,
+    "historical_roots_read_only": true,
+    "isolated_output_refuses_overwrite": true,
+    "time_tessent_and_tcl_digests_bound": true,
+    "no_retry_requeue_or_array": true,
+    "execution_and_training_remain_false": true
+  },
+  "pass_condition": "All required findings are true and no high/medium correctness or safety finding remains.",
+  "authority": {
+    "execution_allowed": false,
+    "lsf_submission_allowed": false,
+    "training_allowed": false
+  }
+}
