@@ -13,6 +13,8 @@ import hashlib
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 
 
@@ -55,12 +57,18 @@ def validate_contract(root):
     contract = _load_json_bytes(payload, "CONTRACT_JSON")
     _require(contract.get("schema_version") == "blind-runtime-recovery-execution-v1",
              "CONTRACT_SCHEMA")
-    _require(contract.get("status") == "DESIGN_REVIEW_PENDING_NO_EXECUTION",
-             "CONTRACT_STATUS")
+    status = contract.get("status")
     authority = contract.get("authority", {})
-    _require(authority == {"execution_authorized": False,
-                           "lsf_submission_allowed": False,
-                           "training_allowed": False}, "CONTRACT_AUTHORITY")
+    allowed_states = {
+        "DESIGN_REVIEW_PENDING_NO_EXECUTION": {
+            "execution_authorized": False, "lsf_submission_allowed": False,
+            "training_allowed": False},
+        "REVIEWED_EXECUTION_AUTHORIZED": {
+            "execution_authorized": True, "lsf_submission_allowed": True,
+            "training_allowed": False},
+    }
+    _require(status in allowed_states, "CONTRACT_STATUS")
+    _require(authority == allowed_states[status], "CONTRACT_AUTHORITY")
     plan = contract.get("private_plan", {})
     _require(plan.get("sha256") == PLAN_SHA256, "PLAN_SHA_BINDING")
     _require(plan.get("expected_attempts") == 44, "PLAN_COUNT_BINDING")
@@ -247,6 +255,150 @@ def preflight_sources(contract):
     return True
 
 
+def _refuse_symlinks(root):
+    for current, directories, files in os.walk(root):
+        for name in directories + files:
+            _require(not os.path.islink(os.path.join(current, name)),
+                     "SOURCE_SYMLINK")
+
+
+def _copy_tree(source, target):
+    _require(os.path.isdir(source) and not os.path.lexists(target), "COPY_TREE_BOUNDARY")
+    _refuse_symlinks(source)
+    shutil.copytree(source, target, symlinks=False)
+
+
+def _parse_config(path, expected_circuit):
+    values = {}
+    with open(path, "r") as handle:
+        for raw in handle:
+            line = raw.strip()
+            if not line or line.startswith("#"):
+                continue
+            _require("=" in line, "CONFIG_LINE")
+            key, value = line.split("=", 1)
+            _require(re.match(r"^[A-Z][A-Z0-9_]*$", key) and value, "CONFIG_FIELD")
+            _require(key not in values, "CONFIG_DUPLICATE")
+            values[key] = value
+    _require(values.get("CIRCUIT") == expected_circuit, "CONFIG_CIRCUIT")
+    _require(values.get("TOP_MODULE") and values.get("CELL_LIBRARY"), "CONFIG_REQUIRED")
+    _require(os.path.isfile(values["CELL_LIBRARY"]), "CELL_LIBRARY")
+    return {"TOP_MODULE": values["TOP_MODULE"], "CELL_LIBRARY": values["CELL_LIBRARY"]}
+
+
+def prepare_workspaces(contract):
+    """Copy only required mutable Tessent state into a new isolated root."""
+    preflight_sources(contract)
+    output_root = contract["output"]["root"]
+    old_umask = os.umask(0o077)
+    try:
+        os.makedirs(output_root, 0o700)
+        os.makedirs(os.path.join(output_root, "logs"), 0o700)
+        os.makedirs(os.path.join(output_root, "receipts"), 0o700)
+        config_values = {}
+        for circuit in sorted(PLAN_COUNTS):
+            binding = _circuit_binding(contract, circuit)
+            source = binding["source_root"]
+            workspace = os.path.join(output_root, "workspaces", circuit)
+            os.makedirs(os.path.join(workspace, "99_tmp"), 0o700)
+            os.makedirs(os.path.join(workspace, "03_fault_universe"), 0o700)
+            os.makedirs(os.path.join(workspace, "01_config"), 0o700)
+            os.makedirs(os.path.join(output_root, "logs", circuit), 0o700)
+            _copy_tree(os.path.join(source, "99_tmp", "H_mapped_tsdb"),
+                       os.path.join(workspace, "99_tmp", "H_mapped_tsdb"))
+            _copy_tree(os.path.join(source, "99_tmp", "M_mapped_tsdb"),
+                       os.path.join(workspace, "99_tmp", "M_mapped_tsdb"))
+            _copy_tree(os.path.join(source, "03_fault_universe",
+                                    binding["common_fault_dir"]),
+                       os.path.join(workspace, "03_fault_universe",
+                                    binding["common_fault_dir"]))
+            config_target = os.path.join(workspace, "01_config", "config.env")
+            shutil.copy2(binding["config"], config_target)
+            config_values[circuit] = _parse_config(binding["config"], circuit)
+        return config_values
+    except Exception:
+        # Evidence is deliberately retained.  A new versioned output root is
+        # required after any preparation failure.
+        raise
+    finally:
+        os.umask(old_umask)
+
+
+def _write_json_new(path, document):
+    _require(not os.path.lexists(path), "RECEIPT_EXISTS")
+    tmp = path + ".tmp"
+    _require(not os.path.lexists(tmp), "RECEIPT_TMP_EXISTS")
+    payload = (json.dumps(document, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+    with open(tmp, "xb") as handle:
+        handle.write(payload)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.chmod(tmp, 0o600)
+    os.rename(tmp, path)
+
+
+def _log_result(driver_log, mode):
+    payload = _read_bytes(driver_log)
+    expected = (b"MAPPED_COMMON_ATPG_STATUS=PASS" if mode == "H" else
+                b"MAPPED_INCREMENTAL_ATPG_STATUS=PASS")
+    _require(expected in payload, "ATPG_SUCCESS_MARKER")
+    _require(b"Elapsed (wall clock) time" in payload and b"Exit status: 0" in payload,
+             "GNU_TIME_FOOTER")
+    elapsed = ""
+    for raw in payload.splitlines():
+        if b"Elapsed (wall clock) time" in raw:
+            elapsed = raw.split(b": ", 1)[-1].decode("ascii", "strict").strip()
+    _require(elapsed, "ELAPSED_VALUE")
+    return _sha256_bytes(payload), elapsed
+
+
+def execute_manifest(manifest, contract, config_values):
+    """Execute exactly once in manifest order; any failure stops the chain."""
+    output_root = contract["output"]["root"]
+    receipts = []
+    for item in manifest:
+        _require(not os.path.lexists(item["output"]), "ATTEMPT_OUTPUT_EXISTS")
+        _require(not os.path.lexists(item["driver_log"]), "ATTEMPT_LOG_EXISTS")
+        if item["mode"] == "M":
+            _require(os.path.isfile(item["status_file"]), "M_STATUS_FILE_MISSING")
+        environment = os.environ.copy()
+        environment.update(item["environment"])
+        environment.update(config_values[item["circuit"]])
+        receipt_path = os.path.join(output_root, "receipts",
+                                    "%03d_%s_%s.json" % (
+                                        item["attempt_index"], item["mode"], item["run_id"]))
+        with open(item["driver_log"], "xb") as log_handle:
+            process = subprocess.Popen(item["argv"], cwd=item["workspace"],
+                                       env=environment, stdout=log_handle,
+                                       stderr=subprocess.STDOUT)
+            return_code = process.wait()
+        document = {"schema_version": "blind-runtime-recovery-attempt-receipt-v1",
+                    "attempt_index": item["attempt_index"],
+                    "circuit": item["circuit"], "stage": item["stage"],
+                    "mode": item["mode"], "run_id": item["run_id"],
+                    "return_code": return_code, "retry_count": 0,
+                    "output": item["output"], "driver_log": item["driver_log"],
+                    "status": "FAIL"}
+        try:
+            _require(return_code == 0, "ATPG_EXIT")
+            _require(os.path.isdir(item["output"]), "ATPG_OUTPUT_MISSING")
+            _require(os.path.isfile(os.path.join(item["output"], "faults.mtfi")),
+                     "ATPG_FAULTS_MISSING")
+            log_sha, elapsed = _log_result(item["driver_log"], item["mode"])
+            document.update({"status": "PASS", "driver_log_sha256": log_sha,
+                             "elapsed_raw": elapsed,
+                             "faults_mtfi_sha256": _sha256_bytes(_read_bytes(
+                                 os.path.join(item["output"], "faults.mtfi")))})
+            _write_json_new(receipt_path, document)
+            receipts.append(document)
+        except Exception:
+            document["driver_log_sha256"] = _sha256_bytes(_read_bytes(item["driver_log"]))
+            _write_json_new(receipt_path, document)
+            raise
+    _require(len(receipts) == 44, "EXECUTION_RECEIPT_COUNT")
+    return receipts
+
+
 def validate_only(root, plan_path, source_preflight=False):
     contract, contract_sha = validate_contract(root)
     plan_payload = _read_bytes(plan_path)
@@ -254,9 +406,37 @@ def validate_only(root, plan_path, source_preflight=False):
     manifest = build_command_manifest(plan, contract)
     if source_preflight:
         preflight_sources(contract)
+    authority = contract["authority"]
     return {"status": "PASS_DESIGN_NO_EXECUTION", "attempts": len(manifest),
             "contract_sha256": contract_sha, "plan_sha256": PLAN_SHA256,
-            "execution_authorized": False, "training_allowed": False}
+            "execution_authorized": authority["execution_authorized"],
+            "training_allowed": authority["training_allowed"]}
+
+
+def validate_authorization(path, contract_sha, runner_sha):
+    document = _load_json_bytes(_read_bytes(path), "AUTHORIZATION_JSON")
+    expected_fields = {"schema_version", "status", "execution_allowed",
+                       "contract_sha256", "plan_sha256", "runner_sha256",
+                       "reviewed_commit", "lsf_job_id", "no_retry",
+                       "no_requeue", "nonarray", "training_allowed"}
+    _require(isinstance(document, dict) and set(document) == expected_fields,
+             "AUTHORIZATION_SCHEMA")
+    _require(document.get("schema_version") ==
+             "blind-runtime-recovery-execution-v1-authorization" and
+             document.get("status") == "PASS" and
+             document.get("execution_allowed") is True and
+             document.get("training_allowed") is False, "AUTHORIZATION_STATUS")
+    _require(document.get("contract_sha256") == contract_sha and
+             document.get("plan_sha256") == PLAN_SHA256 and
+             document.get("runner_sha256") == runner_sha, "AUTHORIZATION_BINDING")
+    _require(re.match(r"^[0-9a-f]{40}$", document.get("reviewed_commit", "")),
+             "AUTHORIZATION_COMMIT")
+    _require(re.match(r"^[1-9][0-9]*$", document.get("lsf_job_id", "")),
+             "AUTHORIZATION_JOB")
+    _require(document.get("no_retry") is True and
+             document.get("no_requeue") is True and
+             document.get("nonarray") is True, "AUTHORIZATION_SCHEDULER")
+    return document
 
 
 def main(argv=None):
@@ -265,12 +445,25 @@ def main(argv=None):
     parser.add_argument("--plan", required=True)
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--source-preflight", action="store_true")
+    parser.add_argument("--authorization")
     args = parser.parse_args(argv)
     try:
         result = validate_only(os.path.abspath(args.root), args.plan,
                                source_preflight=args.source_preflight)
         if args.execute:
-            raise Refusal("EXECUTION_NOT_AUTHORIZED")
+            contract, contract_sha = validate_contract(os.path.abspath(args.root))
+            _require(contract["authority"]["execution_authorized"] is True and
+                     contract["authority"]["lsf_submission_allowed"] is True,
+                     "EXECUTION_NOT_AUTHORIZED")
+            _require(args.authorization, "AUTHORIZATION_REQUIRED")
+            runner_sha = contract["implementation"]["artifact_sha256"][
+                "src/data/run_blind_runtime_recovery_execution_v1.py"]
+            validate_authorization(args.authorization, contract_sha, runner_sha)
+            plan = validate_plan_bytes(_read_bytes(args.plan), contract)
+            manifest = build_command_manifest(plan, contract)
+            config_values = prepare_workspaces(contract)
+            execute_manifest(manifest, contract, config_values)
+            result["status"] = "PASS_EXECUTION_COMPLETE_AUDIT_PENDING"
         print(json.dumps(result, sort_keys=True))
         return 0
     except (IOError, OSError, Refusal) as exc:

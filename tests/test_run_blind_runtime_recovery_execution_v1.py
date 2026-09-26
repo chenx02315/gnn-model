@@ -115,6 +115,27 @@ class BlindRuntimeRecoveryExecutionV1Tests(unittest.TestCase):
         self.assertNotIn("PATTERN_LIMIT", manifest[m_index]["environment"])
         self.assertEqual(len(manifest), len(set(item["output"] for item in manifest)))
 
+    def test_external_authorization_is_exactly_bound(self):
+        document = {"schema_version": "blind-runtime-recovery-execution-v1-authorization",
+                    "status": "PASS", "execution_allowed": True,
+                    "contract_sha256": "c" * 64,
+                    "plan_sha256": runner.PLAN_SHA256,
+                    "runner_sha256": "r" * 64,
+                    "reviewed_commit": "a" * 40, "lsf_job_id": "12345",
+                    "no_retry": True, "no_requeue": True, "nonarray": True,
+                    "training_allowed": False}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "authorization.json")
+            with open(path, "w", encoding="utf-8") as handle:
+                json.dump(document, handle)
+            result = runner.validate_authorization(path, "c" * 64, "r" * 64)
+            self.assertEqual("12345", result["lsf_job_id"])
+            document["no_retry"] = False
+            with open(path, "w", encoding="utf-8") as handle:
+                json.dump(document, handle)
+            with self.assertRaisesRegex(runner.Refusal, "AUTHORIZATION_SCHEDULER"):
+                runner.validate_authorization(path, "c" * 64, "r" * 64)
+
 
 if __name__ == "__main__":
     unittest.main()
