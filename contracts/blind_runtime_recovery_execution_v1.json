@@ -84,8 +84,8 @@
   "bundle_manifest": {
     "root": "/temp/jiangchuanc/blind_runtime_recovery_execution_v1_authorized_r1_bundle",
     "path": "bundle_manifest.json",
-    "sha256": "b3d14c9dedaa1c1d542c59a4f775ab44c38e0a37f6dfec5fa3dda42b0d2b03b3",
-    "reviewed_commit": "299e69fcfc72bde0221b68f16c7feb5678a41842"
+    "sha256": "e24ac72ba66662840469deee58e831d757230a2160c83af7347c8f8e57af7276",
+    "reviewed_commit": "0401a5c17b0dfe7e69796d9ee077a9adc0a4483b"
   },
   "implementation": {
     "artifact_sha256": {
