@@ -1,0 +1,35 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v2-design-review",
+  "status": "PASS_REGISTRATION_ONLY",
+  "review_scope": "Independent read-only final review before LSF registration",
+  "implementation_commit": "7c581016dbb148d7b4f7eee1d2116ffe274ba1a2",
+  "seal_commit": "b0d4cec",
+  "bundle_manifest_sha256": "1b9ddcecc84175708a52bdf08a245cbc78cd425b163072eb31839e2a84d0224b",
+  "focused_tests": {
+    "tests_run": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 446,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "findings": {
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "verified": [
+    "reviewed commit contains every digest-bound implementation artifact",
+    "scheduler detail binds Job ID, name, PSUSP, queue, command, CWD, output, error and Not Re-runnable",
+    "LSF 9.1 non-array semantics require LSB_JOBINDEX=0 and no nonzero range",
+    "fresh pre-resume review is digest-bound and no older than 15 minutes",
+    "v1 Job 388791 and evidence are read-only and non-reusable",
+    "v2 paths are isolated and training remains forbidden"
+  ],
+  "allowed_next_action": "Register exactly one new held non-array non-retry LSF job with bsub -H -rn, then stop.",
+  "forbidden_next_action": "Do not bresume before fresh pre-resume captures, independent review and new explicit resume authorization."
+}
