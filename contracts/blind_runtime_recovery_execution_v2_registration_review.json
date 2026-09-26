@@ -1,0 +1,34 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v2-registration-review",
+  "status": "FAIL",
+  "lsf_job_id": "388792",
+  "scheduler_state": "PSUSP",
+  "attempts_started": 0,
+  "execution_allowed": false,
+  "bresume_allowed": false,
+  "bmod_allowed": false,
+  "retry_or_requeue_allowed": false,
+  "contract_sha256": "86ac9b6fde4d6c69f108ce42fe8b83fd887d213e466cfdfa81ea0f5e11d50cf6",
+  "evidence_directory": "audit_tmp/blind_runtime_recovery_execution_v2_registration_r1",
+  "findings": [
+    {
+      "severity": "HIGH",
+      "code": "SCHEDULER_CWD_MISMATCH",
+      "observed": "bjobs -al reports CWD <$HOME>",
+      "required": "CWD </temp/jiangchuanc/blind_runtime_recovery_execution_v2_authorized_r1_bundle>"
+    },
+    {
+      "severity": "HIGH",
+      "code": "SCHEDULER_OUTPUT_FORMAT_UNSUPPORTED",
+      "observed": "LSF 9.1 reports Output File (overwrite) and Error File (overwrite)",
+      "required": "runner must parse the observed scheduler format without weakening path identity"
+    },
+    {
+      "severity": "HIGH",
+      "code": "REGISTRATION_TIME_ANCHOR_INVALID",
+      "observed": "registered_at_utc.txt predates the scheduler Submitted event by about 341 seconds",
+      "required": "registration time must be derived from and bound to the scheduler receipt"
+    }
+  ],
+  "required_disposition": "Keep Job 388792 held as immutable failure evidence. Do not bresume, bmod, retry, requeue or reuse it."
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v2-registration-failure",
+  "status": "FAILED_REGISTRATION_REVIEW_PRE_EXECUTION",
+  "job_id": "388792",
+  "scheduler_state": "PSUSP",
+  "attempts_started": 0,
+  "output_root_created": false,
+  "authorization_created": false,
+  "retry_or_requeue_performed": false,
+  "job_reusable": false,
+  "implementation_commit": "7c581016dbb148d7b4f7eee1d2116ffe274ba1a2",
+  "seal_commit": "b0d4cec",
+  "review_record_commit": "1a6481d6bf317f6a5042bd3f3d758f2dce5e008a",
+  "contract_sha256": "86ac9b6fde4d6c69f108ce42fe8b83fd887d213e466cfdfa81ea0f5e11d50cf6",
+  "a_side_evidence_directory": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/blind_runtime_recovery_execution_v2_registration_r1",
+  "local_evidence_sha256": {
+    "registration_command.txt": "f096fc64e5254fa91e901bb3498bcaacdba1965303992c7508bf56056320daf0",
+    "registered_at_utc.txt": "26ce1e2a3720132eb28d607cbd04f9c749d2b4e1c495eb8eb92a6a33e4bf5d8c",
+    "bsub.txt": "2510df42c9fd7f119dc576dd0d5a38f2343ea41ba41fa9ede8880cbe1cab0b6c",
+    "job_id.txt": "1c89487cd0effd7df3e69e39639c290055326cad4f69f7563ab2851b1dbd6f3c",
+    "bjobs.txt": "9261e58558f8ee66c0b87eca1b112719a909b3ec056a7478d0c30bcc17a9a73e",
+    "bjobs_al.txt": "ff970737c52e29e1d64fc6e58a224a156c2314107c758c22581914c32840e90e"
+  },
+  "root_cause": {
+    "cwd": "The literal bsub command was issued from the login home directory and did not bind scheduler CWD to the bundle root.",
+    "scheduler_format": "The reviewed parser did not model LSF 9.1 overwrite annotations in bjobs -al.",
+    "time_anchor": "The local timestamp was captured before submission and therefore cannot attest to scheduler submission time."
+  },
+  "repair_boundary": "Preserve v1/v2 artifacts and Jobs 388791/388792. Permit only an isolated local successor implementation and independent review. Any further LSF registration requires new explicit user authorization."
+}
