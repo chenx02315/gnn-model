@@ -1,22 +1,22 @@
 {
   "schema_version": "blind-runtime-recovery-execution-v3-design-review",
   "status": "PASS",
-  "reviewed_at_utc": "2026-09-26T14:15:22Z",
-  "reviewed_commit": "ebe2e8063ca5eab369183eaeffddcd27b6b5e4eb",
+  "reviewed_at_utc": "2026-09-27T03:28:21Z",
+  "reviewed_commit": "3ca15f370b3d6cf1821c44a18c12e2d21ac256c8",
   "high_findings": 0,
   "medium_findings": 0,
-  "focused_tests": {"run": 7, "failures": 0, "errors": 0},
-  "full_regression": {"run": 453, "skipped": 8, "failures": 0, "errors": 0},
+  "focused_tests": {"run": 8, "failures": 0, "errors": 0},
+  "full_regression": {"run": 454, "skipped": 8, "failures": 0, "errors": 0},
   "remote_execution_performed": false,
   "lsf_submission_performed": false,
   "training_performed": false,
   "artifact_sha256": {
     "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
-    "src/data/run_blind_runtime_recovery_execution_v3.py": "91232b4dd2f62727d90d2bd9fdc5f69e582661b3dd7681b0ac7eb087a4fbb688",
+    "src/data/run_blind_runtime_recovery_execution_v3.py": "be48044a8518e6ef81587c7a7f57c9235e82551b717378d7d649e4e429353ebb",
     "src/data/launch_blind_runtime_recovery_execution_v3.sh": "aac0e974db553d2539581a3d9d84c29024beb6c5f2abf9b226717142c3b9b631",
     "src/data/register_blind_runtime_recovery_execution_v3.sh": "54bdd3228ef3faff6f6a51608dffd9b062e8b01c879abb538df23f0bab288e82",
     "contracts/blind_runtime_recovery_execution_v3_job_template.json": "c8690cc4dc003e78c4350165b6d2d99d729c6846f29d1e535f0c52ba6aba1f77",
-    "tests/test_run_blind_runtime_recovery_execution_v3.py": "3105daa42ed0773e77c7e5a26e2da73e8d4cf8da17d9123e25bda0154dabbe86",
+    "tests/test_run_blind_runtime_recovery_execution_v3.py": "ea8c07aaabcd54b2b50799544eee6127ae29475458c61d9e5218c4b1a3737550",
     "data/manifests/blind_runtime_recovery_execution_v2_registration_failure_20260926.json": "360de7f4c6c22099eb165245a081ac239ab328ae3b73194031e082d6e2fd4a6b"
   }
 }
