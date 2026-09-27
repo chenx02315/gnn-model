@@ -69,6 +69,15 @@ def validate_job_template(document):
     lifecycle={"register":"bsub -H exactly once","resume":"only bresume after a fresh independent pre-resume review","forbidden":["second bsub","bmod","rerun","requeue","array submission","resume before PASS review"]}
     _require(isinstance(document,dict) and set(document)=={"schema_version","status","registration","lifecycle"} and document.get("schema_version")=="blind-runtime-recovery-execution-v3-job-template" and document.get("status")=="AUTHORIZED_PRE_REGISTRATION_TEMPLATE" and document.get("registration")==expected and document.get("lifecycle")==lifecycle,"JOB_TEMPLATE_EXACT"); return document
 
+def _validate_bound_design_review(root,contract,artifacts,bundle):
+    binding=contract.get("independent_review",{}); review_path=os.path.join(root,DESIGN_REVIEW_RELATIVE)
+    _require(binding.get("path")==DESIGN_REVIEW_RELATIVE and binding.get("sha256")==_sha(review_path),"DESIGN_REVIEW_BINDING")
+    review=_json(review_path,"DESIGN_REVIEW_JSON")
+    expected_fields={"schema_version","status","reviewed_at_utc","reviewed_commit","high_findings","medium_findings","focused_tests","full_regression","remote_execution_performed","lsf_submission_performed","training_performed","artifact_sha256"}
+    _require(set(review)==expected_fields and review.get("schema_version")=="blind-runtime-recovery-execution-v3-design-review" and review.get("status")=="PASS" and review.get("high_findings")==0 and review.get("medium_findings")==0 and review.get("remote_execution_performed") is False and review.get("lsf_submission_performed") is False and review.get("training_performed") is False and review.get("artifact_sha256")==artifacts and re.match(r"^[0-9a-f]{40}$",review.get("reviewed_commit","")),"DESIGN_REVIEW_RECEIPT")
+    _require(bundle.get("status")=="PASS_INDEPENDENT_DESIGN_REVIEW_NO_EXECUTION" and bundle.get("artifact_sha256")==artifacts and bundle.get("reviewed_commit")==review.get("reviewed_commit"),"DESIGN_REVIEW_COMMIT")
+    return review
+
 def validate_contract(root):
     path=os.path.join(root,CONTRACT_RELATIVE); payload=_read(path); contract=_json(path,"CONTRACT_JSON")
     allowed={"DESIGN_REVIEW_PENDING_NO_EXECUTION":{"execution_authorized":False,"lsf_submission_allowed":False,"training_allowed":False},"REVIEWED_EXECUTION_AUTHORIZED":{"execution_authorized":True,"lsf_submission_allowed":True,"training_allowed":False}}
@@ -84,11 +93,7 @@ def validate_contract(root):
     bundle_binding=contract.get("bundle_manifest",{})
     _require(bundle.get("schema_version")=="blind-runtime-recovery-execution-v3-bundle-manifest" and bundle.get("status") in ("LOCAL_DESIGN_REVIEW_PENDING","PASS_INDEPENDENT_DESIGN_REVIEW_NO_EXECUTION") and bundle.get("artifact_sha256")==artifacts and bundle_binding.get("path")==BUNDLE_MANIFEST_RELATIVE and bundle_binding.get("sha256")==_sha(bundle_path),"BUNDLE_MANIFEST_BINDING")
     if bundle.get("status")=="PASS_INDEPENDENT_DESIGN_REVIEW_NO_EXECUTION":
-        binding=contract.get("independent_review",{}); review_path=os.path.join(root,DESIGN_REVIEW_RELATIVE)
-        _require(binding.get("path")==DESIGN_REVIEW_RELATIVE and binding.get("sha256")==_sha(review_path),"DESIGN_REVIEW_BINDING")
-        review=_json(review_path,"DESIGN_REVIEW_JSON")
-        _require(review.get("schema_version")=="blind-runtime-recovery-execution-v3-design-review" and review.get("status")=="PASS" and review.get("high_findings")==0 and review.get("medium_findings")==0 and review.get("artifact_sha256")==artifacts and re.match(r"^[0-9a-f]{40}$",review.get("reviewed_commit","")),"DESIGN_REVIEW_RECEIPT")
-        _require(bundle.get("reviewed_commit")==review.get("reviewed_commit"),"DESIGN_REVIEW_COMMIT")
+        _validate_bound_design_review(root,contract,artifacts,bundle)
     else:
         _require("independent_review" not in contract and "reviewed_commit" not in bundle,"DESIGN_REVIEW_PENDING_EXACT")
     prior=contract.get("prior_failure",{}); _require(prior.get("path")==V2_FAILURE_RELATIVE and prior.get("sha256")==artifacts[V2_FAILURE_RELATIVE] and prior.get("reuse_allowed") is False,"PRIOR_FAILURE_BINDING")
@@ -124,11 +129,15 @@ def _validate_review(path, authorization, contract_sha, runner_sha, pre=False):
         _require(initial<=captured<=checked<=now and now-checked<=datetime.timedelta(minutes=15) and checked-captured<=datetime.timedelta(minutes=2), "PRE_RESUME_REVIEW_STALE")
     return doc
 
-def validate_authorization(path, contract_sha, runner_sha, contract, environment=None):
+def validate_authorization(path, contract_sha, runner_sha, contract, environment=None, root=None):
     doc = _json(path, "AUTHORIZATION_JSON")
     fields = {"schema_version","status","execution_allowed","training_allowed","contract_sha256","plan_sha256","runner_sha256","launcher_sha256","job_template_sha256","bundle_manifest_sha256","lsf_job_id","timezone_offset_path","timezone_offset_sha256","timezone_offset","capture_utc_path","capture_utc_sha256","capture_utc","parsed_submit_utc","registration_command_path","registration_command_sha256","bsub_path","bsub_sha256","bjobs_path","bjobs_sha256","bjobs_al_path","bjobs_al_sha256","registration_review_path","registration_review_sha256","pre_resume_review_path","pre_resume_review_sha256","pre_resume_bjobs_path","pre_resume_bjobs_sha256","pre_resume_bjobs_al_path","pre_resume_bjobs_al_sha256","pre_resume_capture_utc_path","pre_resume_capture_utc_sha256"}
     _require(set(doc) == fields and doc.get("schema_version") == "blind-runtime-recovery-execution-v3-authorization" and doc.get("status") == "PASS" and doc.get("execution_allowed") is True and doc.get("training_allowed") is False, "AUTHORIZATION_SCHEMA")
-    _require(contract.get("status")=="REVIEWED_EXECUTION_AUTHORIZED" and contract.get("authority")=={"execution_authorized":True,"lsf_submission_allowed":True,"training_allowed":False} and "independent_review" in contract,"AUTHORIZATION_CONTRACT_STATE")
+    root=os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) if root is None else os.path.abspath(root)
+    bundle_path=os.path.join(root,BUNDLE_MANIFEST_RELATIVE); bundle=_json(bundle_path,"BUNDLE_MANIFEST_JSON"); artifacts=contract.get("implementation",{}).get("artifact_sha256",{})
+    _require(contract.get("status")=="REVIEWED_EXECUTION_AUTHORIZED" and contract.get("authority")=={"execution_authorized":True,"lsf_submission_allowed":True,"training_allowed":False},"AUTHORIZATION_CONTRACT_STATE")
+    _require(contract.get("bundle_manifest",{}).get("path")==BUNDLE_MANIFEST_RELATIVE and contract.get("bundle_manifest",{}).get("sha256")==_sha(bundle_path),"BUNDLE_MANIFEST_BINDING")
+    _validate_bound_design_review(root,contract,artifacts,bundle)
     fixed = {"registration_command_path":REGISTRATION_COMMAND_PATH,"bsub_path":BSUB_CAPTURE_PATH,"bjobs_path":BJOBS_CAPTURE_PATH,"bjobs_al_path":BJOBS_AL_CAPTURE_PATH,"timezone_offset_path":TIMEZONE_PATH,"capture_utc_path":CAPTURE_UTC_PATH,"registration_review_path":REGISTRATION_REVIEW_PATH,"pre_resume_review_path":PRE_RESUME_REVIEW_PATH,"pre_resume_bjobs_path":PRE_BJOBS_PATH,"pre_resume_bjobs_al_path":PRE_BJOBS_AL_PATH,"pre_resume_capture_utc_path":PRE_CAPTURE_UTC_PATH}
     _require(all(doc.get(k) == v for k,v in fixed.items()) and doc.get("contract_sha256") == contract_sha and doc.get("plan_sha256") == base.PLAN_SHA256 and doc.get("runner_sha256") == runner_sha and re.match(r"^[1-9][0-9]*$",doc.get("lsf_job_id","")), "AUTHORIZATION_BINDING")
     pairs = (("registration_command_path","registration_command_sha256"),("bsub_path","bsub_sha256"),("bjobs_path","bjobs_sha256"),("bjobs_al_path","bjobs_al_sha256"),("timezone_offset_path","timezone_offset_sha256"),("capture_utc_path","capture_utc_sha256"),("registration_review_path","registration_review_sha256"),("pre_resume_review_path","pre_resume_review_sha256"),("pre_resume_bjobs_path","pre_resume_bjobs_sha256"),("pre_resume_bjobs_al_path","pre_resume_bjobs_al_sha256"),("pre_resume_capture_utc_path","pre_resume_capture_utc_sha256"))
@@ -161,7 +170,7 @@ def main(argv=None):
         if args.source_preflight: base.preflight_sources(contract)
         result={"status":"PASS_V3_DESIGN_NO_EXECUTION","attempts":len(manifest),"training_allowed":False}
         if args.execute:
-            _require(os.getcwd() == JOB_BUNDLE_ROOT and contract["authority"]["execution_authorized"] is True and args.authorization and os.path.realpath(args.authorization)==AUTHORIZATION_PATH,"EXECUTION_NOT_AUTHORIZED"); validate_authorization(args.authorization,contract_sha,contract["implementation"]["artifact_sha256"]["src/data/run_blind_runtime_recovery_execution_v3.py"],contract); values,source_sha=base.prepare_workspaces(contract); base.execute_manifest(manifest,contract,values,source_sha); result["status"]="PASS_V3_EXECUTION_COMPLETE_AUDIT_PENDING"
+            _require(os.getcwd() == JOB_BUNDLE_ROOT and contract["authority"]["execution_authorized"] is True and args.authorization and os.path.realpath(args.authorization)==AUTHORIZATION_PATH,"EXECUTION_NOT_AUTHORIZED"); validate_authorization(args.authorization,contract_sha,contract["implementation"]["artifact_sha256"]["src/data/run_blind_runtime_recovery_execution_v3.py"],contract,root=root); values,source_sha=base.prepare_workspaces(contract); base.execute_manifest(manifest,contract,values,source_sha); result["status"]="PASS_V3_EXECUTION_COMPLETE_AUDIT_PENDING"
         print(json.dumps(result,sort_keys=True)); return 0
     except (IOError,OSError,Refusal) as exc:
         print("BLIND_RUNTIME_RECOVERY_EXECUTION_V3=REFUSED:%s"%exc,file=sys.stderr); return 2

@@ -3,11 +3,11 @@
     "status": "LOCAL_DESIGN_REVIEW_PENDING",
     "artifact_sha256": {
         "src/data/run_blind_runtime_recovery_execution_v1.py": "a20c0882177ab21189a0c3b3175a8d2ff49d53243588be8fcecc43160dd47015",
-        "src/data/run_blind_runtime_recovery_execution_v3.py": "c0949419b30063c2bd7df1391fdf38fd92ac731a22a66847327a252707eda182",
+        "src/data/run_blind_runtime_recovery_execution_v3.py": "e4a338b543ab004acffe33d9f3baa6c880eb6d2a6898b8f5a47603d096b1d54b",
         "src/data/launch_blind_runtime_recovery_execution_v3.sh": "aac0e974db553d2539581a3d9d84c29024beb6c5f2abf9b226717142c3b9b631",
         "src/data/register_blind_runtime_recovery_execution_v3.sh": "54bdd3228ef3faff6f6a51608dffd9b062e8b01c879abb538df23f0bab288e82",
         "contracts/blind_runtime_recovery_execution_v3_job_template.json": "c8690cc4dc003e78c4350165b6d2d99d729c6846f29d1e535f0c52ba6aba1f77",
-        "tests/test_run_blind_runtime_recovery_execution_v3.py": "785375be41b90051a485a48a1b1be57147fdc93ccdeb34ee4251b23e9c533f73",
+        "tests/test_run_blind_runtime_recovery_execution_v3.py": "f67b42bc343687a7e6661c097b10b99ca7e10947dcd05191e7bb6f00ccae01fa",
         "data/manifests/blind_runtime_recovery_execution_v2_registration_failure_20260926.json": "360de7f4c6c22099eb165245a081ac239ab328ae3b73194031e082d6e2fd4a6b"
     }
 }

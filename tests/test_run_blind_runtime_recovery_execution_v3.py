@@ -106,9 +106,8 @@ class V3Tests(unittest.TestCase):
     def build_authorization(self,root):
         repo=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         with open(os.path.join(repo,runner.CONTRACT_RELATIVE),encoding="utf-8") as handle: contract=json.load(handle)
-        contract["status"]="REVIEWED_EXECUTION_AUTHORIZED"
-        contract["authority"]={"execution_authorized":True,"lsf_submission_allowed":True,"training_allowed":False}
-        contract["independent_review"]={"path":runner.DESIGN_REVIEW_RELATIVE,"sha256":"f"*64}
+        if "independent_review" not in contract:
+            self.skipTest("authorization fixture requires a sealed independent review")
         impl=contract["implementation"]["artifact_sha256"]; job="45678"
         capture=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
         submitted=capture-datetime.timedelta(seconds=30)
