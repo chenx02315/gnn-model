@@ -1,0 +1,35 @@
+{
+  "schema_version": "blind-runtime-join-v12-r6-independent-review",
+  "status": "PASS_LOCAL_DESIGN_AND_INDEPENDENT_REVIEW_REMOTE_EXECUTION_PENDING",
+  "review_date": "2026-09-27",
+  "contract_sha256": "1d4970ee2b7eea8a367cbab23f51522cee19bd8eb0cd64567890e7c2c075a61a",
+  "artifact_sha256": {
+    "src/data/run_blind_join_v12_r6.py": "522f01f894e4ec2850888185184724833ae27a08d0e389cbf856694c73f96c2a",
+    "src/data/build_blind_method_binding_v12_r6.py": "5b853da8c213bc5f4ae20ee205f79d79647de7109b507e112f66eb0e5de0ee95",
+    "tests/test_run_blind_join_v12_r6.py": "d5c90658ca0e1e6b4012f6043ff0d69812a9323c7c7f3abcc82924c0fb5b0069",
+    "tests/test_build_blind_method_binding_v12_r6.py": "3f4af6f5023e52c0cdd52daa524b0feb3479710a7d2972acb4b55dcee2056cc0"
+  },
+  "focused_tests": {
+    "tests_run": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 466,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "review_findings": {
+    "recovery_receipt_and_log_binding": "PASS",
+    "plan_derived_attempt_index_binding": "PASS",
+    "authorized_contract_and_artifact_binding": "PASS",
+    "r13_digest_and_anchor_validation": "PASS",
+    "aggregate_only_persistence": "PASS"
+  },
+  "remote_execution_performed": false,
+  "r06_r07_passed": false,
+  "r13_passed": false,
+  "training_allowed": false
+}
