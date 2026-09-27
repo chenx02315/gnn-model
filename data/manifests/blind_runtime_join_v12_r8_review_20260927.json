@@ -1,0 +1,31 @@
+{
+  "schema_version": "blind-runtime-join-v12-r8-independent-review",
+  "status": "PASS_LOCAL_DESIGN_AND_INDEPENDENT_REVIEW_REMOTE_EXECUTION_PENDING",
+  "date": "2026-09-27",
+  "contract_sha256": "bd083c1ed7d6dbbc193d55e58620f4ce011e059b3fd6633c71439abb37ef3643",
+  "runner_sha256": "466ffd8800199f05779ee3416a00362efe92ea6294eac8a363e821e79d975d05",
+  "test_sha256": "6f03e7877719acb988576ec0352af386a3179cae4bc7847c4657b72799e7b775",
+  "v12_r7_failure_closeout_sha256": "33b1701ff12e060cefffd394c56970516d0cccc10103f72d7661f57001f2f5d9",
+  "receipt_set_algorithm": "sha256(LF-joined '<filename> <sha256(receipt_bytes)>' lines with one trailing LF, in validated manifest order)",
+  "focused_tests": {
+    "tests_run": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 473,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "independent_review": "PASS",
+  "high_findings": 0,
+  "medium_findings": 0,
+  "artifact_sha256_set_matches_contract": true,
+  "failed_v12_r6_output_preserved": true,
+  "failed_v12_r7_output_preserved": true,
+  "remote_execution_performed": false,
+  "lsf_or_tessent_submitted": false,
+  "training_allowed": false
+}

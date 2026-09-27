@@ -1,0 +1,25 @@
+{
+  "schema_version": "blind-runtime-join-v12-r7-failure-closeout",
+  "status": "FAIL_CLOSED_NEW_VERSION_REQUIRED",
+  "date": "2026-09-27",
+  "commit": "4781b3a944b484cfe80e651974d7dfe5243d4452",
+  "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/19_blind_runtime_join_v12_r7",
+  "receipt_sha256": "4e4819268d2bc7cd632fec05b454dd8fdd2334c91ac290edca8a2c435a2aa26a",
+  "receipt_status": "FAIL",
+  "failure_stage": "SOURCE_INVENTORY",
+  "failure_code": "RECOVERY_RECEIPT_SET_DIGEST",
+  "circuits": [],
+  "training_allowed": false,
+  "root_cause": {
+    "kind": "receipt_set_canonicalization_mismatch",
+    "incorrect_v12_r7_algorithm": "sha256(concatenated raw receipt bytes in sorted filename order)",
+    "sealed_v3_algorithm": "sha256(LF-joined '<filename> <sha256(receipt_bytes)>' lines with one trailing LF, in validated manifest order)",
+    "sealed_receipt_set_sha256": "87955e9abc32970a8af2febdec7856734b9ee1d59e11098240f66fa816f39f19"
+  },
+  "r06_r07_evaluated": false,
+  "r13_evaluated": false,
+  "lsf_or_tessent_submitted": false,
+  "training_performed": false,
+  "rerun_allowed_in_same_output_root": false,
+  "required_next_version": "v12-r8 with a fresh output root and exact sealed v3 receipt-set canonicalization"
+}
