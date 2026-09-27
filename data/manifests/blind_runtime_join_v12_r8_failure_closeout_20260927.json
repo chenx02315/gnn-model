@@ -1,0 +1,26 @@
+{
+  "schema_version": "blind-runtime-join-v12-r8-failure-closeout",
+  "status": "FAIL_CLOSED_NEW_VERSION_REQUIRED",
+  "date": "2026-09-27",
+  "commit": "2d04263a522b1c721a54b6a03b70e0f61c28b9c8",
+  "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/20_blind_runtime_join_v12_r8",
+  "receipt_sha256": "ae3830d546310416b0f71a54efaf3f9be68d26d246643f5889541c1639a66156",
+  "receipt_status": "FAIL",
+  "failure_stage": "SOURCE_INVENTORY",
+  "failure_code": "NOFOLLOW_OPEN",
+  "circuits": [],
+  "training_allowed": false,
+  "root_cause": {
+    "kind": "execution_bundle_dependency_omission",
+    "missing_relative_path": "data/manifests/blind_runtime_recovery_execution_v3_audit_20260927.json",
+    "expected_sha256": "671410d9687a725a0a1ac610bbac7c5247dd4ab4ebe918738c9ea5e9309806a5",
+    "detail": "The r8 worktree package contained the contract and eight implementation artifacts but omitted the locally read recovery closeout manifest; base._validate_closeout therefore refused before recovery receipt access."
+  },
+  "receipt_set_digest_evaluated": false,
+  "r06_r07_evaluated": false,
+  "r13_evaluated": false,
+  "lsf_or_tessent_submitted": false,
+  "training_performed": false,
+  "rerun_allowed_in_same_output_root": false,
+  "required_next_version": "v12-r9 with a fresh output root and every runtime bundle dependency digest-bound by the contract"
+}

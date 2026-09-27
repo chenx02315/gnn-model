@@ -1,0 +1,31 @@
+{
+  "schema_version": "blind-runtime-join-v12-r9-independent-review",
+  "status": "PASS_LOCAL_DESIGN_AND_INDEPENDENT_REVIEW_REMOTE_EXECUTION_PENDING",
+  "date": "2026-09-27",
+  "contract_sha256": "e1aa77af8b1e28683b9a9ac6a7bf2b342438b3a7d9df8eb53160508c62421d38",
+  "runner_sha256": "4f013783a5d23dec1aa4dd65b5b589ef4ae5a59c9cfd98ae1fb6e60631b2e4ad",
+  "test_sha256": "e6134b53ea1315a5a2546657972020855390629866064377f34590838a3de6b7",
+  "v12_r8_failure_closeout_sha256": "b36cc052043f5dfac9c99b7e3f3ec623265eef5a2fa45ed201cb4f39cdefa503",
+  "focused_tests": {
+    "tests_run": 4,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 477,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "independent_review": "PASS",
+  "high_findings": 0,
+  "medium_findings": 0,
+  "artifact_sha256_set_matches_contract": true,
+  "artifact_sha256_count": 11,
+  "local_runtime_dependency_set_complete": true,
+  "failed_v12_r6_r7_r8_outputs_preserved": true,
+  "remote_execution_performed": false,
+  "lsf_or_tessent_submitted": false,
+  "training_allowed": false
+}
