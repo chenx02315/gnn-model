@@ -1,0 +1,51 @@
+{
+  "schema_version": "runtime-training-preflight-v1-independent-review",
+  "status": "PASS_TRAINING_IMPLEMENTATION_PREFLIGHT_SEALED",
+  "date": "2026-09-28",
+  "runtime_recovery_gate_assessment_sha256": "b31daef525240cd64553f678a5330834b6f583ca959ef22693520ba172170b5b",
+  "training_preflight_contract_sha256": "d13126edb1c8884d5af295aae8faa678b26a5fb8cbbe25deffa8f9f5fcb39f56",
+  "validator_sha256": "65830c00797e7886a0f72880b49ab40752042e7c1b21181cc2ca227a3ebbd9af",
+  "test_sha256": "cfd7581dc7960122622753ec03ce7c4535dac07e02fc6deced0d0731ab8439c5",
+  "preflight_receipt_sha256": "181661635665da0242f0d044a40f0571075d07b582a1818f1f5c655e35bb0ae8",
+  "source_artifacts_checked": 12,
+  "source_artifact_mismatches": 0,
+  "source_set_sha256": "eeb00be7287a80b95dc8931fd4873294b27cacb77a49aa021a359de8aa4591d4",
+  "r01_r14_all_pass": true,
+  "family_split": {
+    "circuits": 15,
+    "families": 12,
+    "nonblind_circuits": 12,
+    "blind_circuits": 3,
+    "family_leakage_count": 0
+  },
+  "runtime_semantics_cross_checked": {
+    "charge_all_attempts": true,
+    "select_fastest_success": false,
+    "failed_and_retry_elapsed_charged": true,
+    "timeout_retry_allowed": false,
+    "missing_runtime_imputation_allowed": false,
+    "zero_cost_attempt_allowed": false,
+    "unique_attempt_accounting": true
+  },
+  "focused_tests": {
+    "tests_run": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 490,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "receipt_rebuild_byte_identical": true,
+  "independent_review": "PASS",
+  "high_findings": 0,
+  "medium_findings": 0,
+  "training_performed": false,
+  "lsf_or_tessent_submitted": false,
+  "blind_candidate_rows_persisted": false,
+  "training_execution_allowed": false,
+  "allowed_next_action": "Implement and independently review the formal family-isolated runtime training chain without executing training."
+}

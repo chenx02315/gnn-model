@@ -1,0 +1,55 @@
+{
+  "schema_version": "runtime-training-preflight-v1",
+  "status": "AUTHORIZED_TRAINING_IMPLEMENTATION_PREFLIGHT_ONLY",
+  "purpose": "Validate the frozen family split, runtime evidence, objectives, accounting rules, and method set before implementing or executing formal training.",
+  "source_sha256": {
+    "contracts/p0_contract_v1.json": "5f42b69cf92e55037811efb49ccbf2116d749a6225df9b3c2c852bc36a6e94b7",
+    "contracts/data_split_v1.json": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+    "contracts/runtime_policy_v1.json": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
+    "contracts/runtime_policy_v2.json": "94e5e903f1debfafab35131bb9245a681db7df6616e1d869f651fdb5ceaadc35",
+    "contracts/recommendation_method_registry_v1.json": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+    "contracts/runtime_recovery_gate_assessment_v2.json": "b31daef525240cd64553f678a5330834b6f583ca959ef22693520ba172170b5b",
+    "contracts/blind_method_binding_v12_r9.json": "6bd22a5e5171ce9265480aa150af4252effbe17c9a15418768077cb9adf6422f",
+    "data/manifests/runtime_nonblind_join_audit_v2.json": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
+    "data/manifests/phase4_runtime_nonblind_v2_r6/summary_r6.json": "482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2",
+    "data/manifests/blind_runtime_join_r13_v12_r9_independent_review_20260928.json": "8416908af0db779c5da30d6155e074efdd2261c5faccb4e9e133fded53d0707e",
+    "data/manifests/blind_runtime_join_v12_r9_receipt_20260927.json": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+    "data/manifests/blind_runtime_method_binding_v12_r9_20260927.json": "70d47a66c12ad132af0c88c201335410d932f979e4d8d1a46454a8edc73bd245"
+  },
+  "objective": {
+    "primary_endpoint": "cumulative_tessent_process_elapsed_s_to_epsilon_hit",
+    "epsilon": 0.01,
+    "top_k": 10,
+    "d95_is_hard_constraint": true,
+    "ate_cycles_are_not_runtime_labels": true,
+    "pattern_count_is_not_runtime_label": true
+  },
+  "roles": {
+    "TRAIN": ["s13207", "s15850", "s35932", "s38417", "aes_core", "spi"],
+    "VALIDATION": ["s5378", "tv80"],
+    "PILOT": ["b18", "b20", "b21", "b22"],
+    "BLIND_TEST": ["s9234", "s38584", "wb_dma"]
+  },
+  "runtime_accounting": {
+    "charge_all_attempts": true,
+    "select_fastest_success": false,
+    "timeout_retry_allowed": false,
+    "missing_runtime_imputation_allowed": false,
+    "failed_attempt_elapsed_is_charged": true,
+    "retry_elapsed_is_charged": true
+  },
+  "required_training_contract_fields": [
+    "input_dataset_manifest_and_sha256",
+    "feature_allowlist_and_leakage_blacklist",
+    "runtime_label_adapter_sha256",
+    "trainer_and_baseline_sha256",
+    "dependency_lock_sha256",
+    "fixed_seeds_and_determinism_policy",
+    "hyperparameters_and_validation_only_selection",
+    "fresh_output_root_and_checkpoint_receipt_policy",
+    "blind_row_level_nonpersistence_policy"
+  ],
+  "lsf_or_tessent_allowed": false,
+  "blind_candidate_rows_allowed": false,
+  "training_execution_allowed": false
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "runtime-recovery-gate-assessment-v2",
+  "assessment_status": "PASS_R01_R14",
+  "supersedes_assessment": "contracts/runtime_recovery_gate_assessment_v1.json",
+  "supersedes_assessment_sha256": "4c027fef987f7962547cd7e59209e1095eef9e8183076b609021b8c94dd69d69",
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+  "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+  "nonblind_evidence": {
+    "phase2_phase3_join_audit_sha256": "d453c8a672b2766311c4541e581bf562d7a057676324e88d781bbad0b8081d1e",
+    "phase4_summary_sha256": "482d447ed46dc5af5e225b78dad4e2c4ae2cab4333d800ab5ce7dc5602289ad2",
+    "formal_nonblind_circuit_count": 12,
+    "ambiguity_count": 0,
+    "runtime_imputation_performed": false,
+    "fastest_success_selection_performed": false
+  },
+  "blind_evidence": {
+    "r06_r07_r13_review": "data/manifests/blind_runtime_join_r13_v12_r9_independent_review_20260928.json",
+    "r06_r07_r13_review_sha256": "8416908af0db779c5da30d6155e074efdd2261c5faccb4e9e133fded53d0707e",
+    "join_receipt_sha256": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+    "r13_binding_sha256": "70d47a66c12ad132af0c88c201335410d932f979e4d8d1a46454a8edc73bd245",
+    "candidate_level_data_persisted": false
+  },
+  "checks": {
+    "R01": "PASS",
+    "R02": "PASS",
+    "R03": "PASS",
+    "R04": "PASS",
+    "R05": "PASS",
+    "R06": "PASS",
+    "R07": "PASS",
+    "R08": "PASS",
+    "R09": "PASS",
+    "R10": "PASS",
+    "R11": "PASS",
+    "R12": "PASS",
+    "R13": "PASS",
+    "R14": "PASS"
+  },
+  "data_gate_completed": true,
+  "training_implementation_preflight_allowed": true,
+  "training_execution_allowed": false,
+  "reason_training_execution_is_false": "No current runtime-cost training runner, input dataset package, dependency lock, deterministic three-seed contract, baseline implementation, or checkpoint/output receipt validator has been frozen and independently reviewed."
+}

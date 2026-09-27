@@ -1,0 +1,14 @@
+{
+  "allowed_next_action": "implement_and_independently_review_runtime_training_chain",
+  "blind_data_gate_sealed": true,
+  "family_isolated": true,
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "lsf_or_tessent_allowed": false,
+  "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+  "r01_r14_pass": true,
+  "schema_version": "runtime-training-preflight-receipt-v1",
+  "source_set_sha256": "eeb00be7287a80b95dc8931fd4873294b27cacb77a49aa021a359de8aa4591d4",
+  "status": "PASS_TRAINING_IMPLEMENTATION_PREFLIGHT",
+  "training_contract_requirements_complete": true,
+  "training_execution_allowed": false
+}
