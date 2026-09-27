@@ -74,7 +74,11 @@ def _validate_bound_design_review(root,contract,artifacts,bundle):
     _require(binding.get("path")==DESIGN_REVIEW_RELATIVE and binding.get("sha256")==_sha(review_path),"DESIGN_REVIEW_BINDING")
     review=_json(review_path,"DESIGN_REVIEW_JSON")
     expected_fields={"schema_version","status","reviewed_at_utc","reviewed_commit","high_findings","medium_findings","focused_tests","full_regression","remote_execution_performed","lsf_submission_performed","training_performed","artifact_sha256"}
+    focused=review.get("focused_tests",{}); full=review.get("full_regression",{})
     _require(set(review)==expected_fields and review.get("schema_version")=="blind-runtime-recovery-execution-v3-design-review" and review.get("status")=="PASS" and review.get("high_findings")==0 and review.get("medium_findings")==0 and review.get("remote_execution_performed") is False and review.get("lsf_submission_performed") is False and review.get("training_performed") is False and review.get("artifact_sha256")==artifacts and re.match(r"^[0-9a-f]{40}$",review.get("reviewed_commit","")),"DESIGN_REVIEW_RECEIPT")
+    _utc(review.get("reviewed_at_utc"),"DESIGN_REVIEW_TIME")
+    _require(set(focused)=={"run","failures","errors"} and isinstance(focused.get("run"),int) and focused["run"]>=1 and focused.get("failures")==0 and focused.get("errors")==0,"DESIGN_REVIEW_TESTS")
+    _require(set(full)=={"run","skipped","failures","errors"} and isinstance(full.get("run"),int) and full["run"]>=1 and isinstance(full.get("skipped"),int) and full["skipped"]>=0 and full.get("failures")==0 and full.get("errors")==0,"DESIGN_REVIEW_TESTS")
     _require(bundle.get("status")=="PASS_INDEPENDENT_DESIGN_REVIEW_NO_EXECUTION" and bundle.get("artifact_sha256")==artifacts and bundle.get("reviewed_commit")==review.get("reviewed_commit"),"DESIGN_REVIEW_COMMIT")
     return review
 
@@ -146,7 +150,7 @@ def validate_authorization(path, contract_sha, runner_sha, contract, environment
     _require(_read(REGISTRATION_COMMAND_PATH).decode("utf-8").strip() == command and _read(BSUB_CAPTURE_PATH).decode("utf-8").strip() == "Job <%s> is submitted to queue <normal>." % doc["lsf_job_id"], "AUTHORIZATION_REGISTRATION_CAPTURE")
     _require(_read(TIMEZONE_PATH).decode("utf-8").strip()==doc["timezone_offset"] and _read(CAPTURE_UTC_PATH).decode("utf-8").strip()==doc["capture_utc"],"AUTHORIZATION_TIME_CAPTURE")
     expected_impl=contract["implementation"]["artifact_sha256"]
-    _require(doc["launcher_sha256"]==expected_impl["src/data/launch_blind_runtime_recovery_execution_v3.sh"] and doc["job_template_sha256"]==expected_impl[JOB_TEMPLATE_RELATIVE] and doc["bundle_manifest_sha256"]==_sha(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))),BUNDLE_MANIFEST_RELATIVE)),"AUTHORIZATION_ARTIFACT_BINDING")
+    _require(doc["launcher_sha256"]==expected_impl["src/data/launch_blind_runtime_recovery_execution_v3.sh"] and doc["job_template_sha256"]==expected_impl[JOB_TEMPLATE_RELATIVE] and doc["bundle_manifest_sha256"]==_sha(os.path.join(root,BUNDLE_MANIFEST_RELATIVE)),"AUTHORIZATION_ARTIFACT_BINDING")
     compact = [x.strip() for x in _read(BJOBS_CAPTURE_PATH).decode("utf-8").splitlines() if x.strip()]
     _require(compact == ["%s PSUSP %s normal" % (doc["lsf_job_id"], JOB_NAME)], "AUTHORIZATION_BJOBS_CAPTURE")
     parsed = _scheduler(_read(BJOBS_AL_CAPTURE_PATH).decode("utf-8"),doc["lsf_job_id"],doc["timezone_offset"],doc["capture_utc"])

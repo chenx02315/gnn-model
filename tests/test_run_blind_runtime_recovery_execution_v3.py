@@ -106,9 +106,17 @@ class V3Tests(unittest.TestCase):
     def build_authorization(self,root):
         repo=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         with open(os.path.join(repo,runner.CONTRACT_RELATIVE),encoding="utf-8") as handle: contract=json.load(handle)
-        if "independent_review" not in contract:
-            self.skipTest("authorization fixture requires a sealed independent review")
         impl=contract["implementation"]["artifact_sha256"]; job="45678"
+        reviewed_commit="1"*40
+        bundle={"schema_version":"blind-runtime-recovery-execution-v3-bundle-manifest","status":"PASS_INDEPENDENT_DESIGN_REVIEW_NO_EXECUTION","reviewed_commit":reviewed_commit,"artifact_sha256":impl}
+        bundle_path=os.path.join(root,runner.BUNDLE_MANIFEST_RELATIVE)
+        with open(bundle_path,"w",encoding="utf-8",newline="\n") as handle: json.dump(bundle,handle,sort_keys=True,separators=(",",":"))
+        review={"schema_version":"blind-runtime-recovery-execution-v3-design-review","status":"PASS","reviewed_at_utc":"2026-09-27T00:00:00Z","reviewed_commit":reviewed_commit,"high_findings":0,"medium_findings":0,"focused_tests":{"run":7,"failures":0,"errors":0},"full_regression":{"run":453,"skipped":8,"failures":0,"errors":0},"remote_execution_performed":False,"lsf_submission_performed":False,"training_performed":False,"artifact_sha256":impl}
+        review_path=os.path.join(root,runner.DESIGN_REVIEW_RELATIVE); os.makedirs(os.path.dirname(review_path))
+        with open(review_path,"w",encoding="utf-8",newline="\n") as handle: json.dump(review,handle,sort_keys=True,separators=(",",":"))
+        contract["status"]="REVIEWED_EXECUTION_AUTHORIZED"; contract["authority"]={"execution_authorized":True,"lsf_submission_allowed":True,"training_allowed":False}
+        contract["bundle_manifest"]={"path":runner.BUNDLE_MANIFEST_RELATIVE,"sha256":sha(bundle_path)}
+        contract["independent_review"]={"path":runner.DESIGN_REVIEW_RELATIVE,"sha256":sha(review_path)}
         capture=datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0)
         submitted=capture-datetime.timedelta(seconds=30)
         stamp=submitted.strftime("%a %b %d %H:%M:%S"); capture_text=capture.strftime("%Y-%m-%dT%H:%M:%SZ"); parsed_text=submitted.strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -116,7 +124,7 @@ class V3Tests(unittest.TestCase):
         captures={runner.REGISTRATION_COMMAND_PATH:command+"\n",runner.BSUB_CAPTURE_PATH:"Job <%s> is submitted to queue <normal>.\n"%job,runner.BJOBS_CAPTURE_PATH:"%s PSUSP %s normal\n"%(job,runner.JOB_NAME),runner.BJOBS_AL_CAPTURE_PATH:detail(job,stamp),runner.TIMEZONE_PATH:"+00:00\n",runner.CAPTURE_UTC_PATH:capture_text+"\n",runner.PRE_BJOBS_PATH:"%s PSUSP %s normal\n"%(job,runner.JOB_NAME),runner.PRE_BJOBS_AL_PATH:detail(job,stamp),runner.PRE_CAPTURE_UTC_PATH:capture_text+"\n"}
         for path,text in captures.items():
             with open(path,"w",encoding="utf-8",newline="\n") as handle: handle.write(text)
-        contract_sha="a"*64; runner_sha=impl["src/data/run_blind_runtime_recovery_execution_v3.py"]; bundle_sha=sha(os.path.join(repo,runner.BUNDLE_MANIFEST_RELATIVE))
+        contract_sha="a"*64; runner_sha=impl["src/data/run_blind_runtime_recovery_execution_v3.py"]; bundle_sha=sha(bundle_path)
         common={"status":"PASS","lsf_job_id":job,"scheduler_state":"PSUSP","submission_count":1,"contract_sha256":contract_sha,"plan_sha256":runner.base.PLAN_SHA256,"runner_sha256":runner_sha,"launcher_sha256":impl["src/data/launch_blind_runtime_recovery_execution_v3.sh"],"job_template_sha256":impl[runner.JOB_TEMPLATE_RELATIVE],"bundle_manifest_sha256":bundle_sha,"parsed_submit_utc":parsed_text,"capture_utc":capture_text,"timezone_offset":"+00:00","nonarray":True,"no_retry":True,"no_requeue":True,"training_allowed":False}
         registration=dict(common,schema_version="blind-runtime-recovery-execution-v3-registration-review",bjobs_path=runner.BJOBS_CAPTURE_PATH,bjobs_sha256=sha(runner.BJOBS_CAPTURE_PATH),bjobs_al_path=runner.BJOBS_AL_CAPTURE_PATH,bjobs_al_sha256=sha(runner.BJOBS_AL_CAPTURE_PATH))
         pre=dict(common,schema_version="blind-runtime-recovery-execution-v3-pre-resume-review",checked_at_utc=capture_text,pre_resume_capture_utc_path=runner.PRE_CAPTURE_UTC_PATH,pre_resume_capture_utc_sha256=sha(runner.PRE_CAPTURE_UTC_PATH),bjobs_path=runner.PRE_BJOBS_PATH,bjobs_sha256=sha(runner.PRE_BJOBS_PATH),bjobs_al_path=runner.PRE_BJOBS_AL_PATH,bjobs_al_sha256=sha(runner.PRE_BJOBS_AL_PATH))
@@ -128,21 +136,21 @@ class V3Tests(unittest.TestCase):
         auth=os.path.join(root,"authorization.json")
         with open(auth,"w",encoding="utf-8",newline="\n") as handle: json.dump(doc,handle,sort_keys=True,separators=(",",":"))
         env={"LSB_JOBID":job,"LSB_JOBINDEX":"0","LSB_JOBINDEX_END":"0","LSB_JOBINDEX_STEP":"0"}
-        return auth,contract_sha,runner_sha,contract,env,doc
+        return auth,contract_sha,runner_sha,contract,env,doc,root,review_path,bundle_path
 
     def test_positive_authorization_and_capture_tamper(self):
         with self.authorization_fixture() as root:
             args=self.build_authorization(root)
-            self.assertEqual("PASS",runner.validate_authorization(*args[:4],environment=args[4])["status"])
+            self.assertEqual("PASS",runner.validate_authorization(*args[:4],environment=args[4],root=args[6])["status"])
             with open(runner.BJOBS_AL_CAPTURE_PATH,"a",encoding="utf-8") as handle: handle.write("tamper\n")
             with self.assertRaisesRegex(runner.Refusal,"CAPTURE_DIGEST"):
-                runner.validate_authorization(*args[:4],environment=args[4])
+                runner.validate_authorization(*args[:4],environment=args[4],root=args[6])
 
     def test_wrong_fixed_path_weak_review_wrong_cwd_and_array_refuse(self):
         with self.authorization_fixture() as root:
             args=list(self.build_authorization(root)); doc=args[5]; doc["bjobs_path"]=os.path.join(root,"wrong.txt")
             with open(args[0],"w",encoding="utf-8") as handle: json.dump(doc,handle)
-            with self.assertRaisesRegex(runner.Refusal,"AUTHORIZATION_BINDING"): runner.validate_authorization(*args[:4],environment=args[4])
+            with self.assertRaisesRegex(runner.Refusal,"AUTHORIZATION_BINDING"): runner.validate_authorization(*args[:4],environment=args[4],root=args[6])
         with self.authorization_fixture() as root:
             args=list(self.build_authorization(root))
             with open(runner.REGISTRATION_REVIEW_PATH,encoding="utf-8") as handle: review=json.load(handle)
@@ -150,11 +158,29 @@ class V3Tests(unittest.TestCase):
             with open(runner.REGISTRATION_REVIEW_PATH,"w",encoding="utf-8") as handle: json.dump(review,handle)
             args[5]["registration_review_sha256"]=sha(runner.REGISTRATION_REVIEW_PATH)
             with open(args[0],"w",encoding="utf-8") as handle: json.dump(args[5],handle)
-            with self.assertRaisesRegex(runner.Refusal,"REVIEW_SCHEMA"): runner.validate_authorization(*args[:4],environment=args[4])
+            with self.assertRaisesRegex(runner.Refusal,"REVIEW_SCHEMA"): runner.validate_authorization(*args[:4],environment=args[4],root=args[6])
         with self.assertRaises(runner.Refusal): runner._scheduler(detail().replace("CWD <%s>"%runner.JOB_BUNDLE_ROOT,"CWD <$HOME>"),"45678","+08:00","2026-09-25T16:00:30Z")
         with self.authorization_fixture() as root:
             args=list(self.build_authorization(root)); args[4]["LSB_JOBINDEX"]="1"
-            with self.assertRaisesRegex(runner.Refusal,"AUTHORIZATION_ARRAY"): runner.validate_authorization(*args[:4],environment=args[4])
+            with self.assertRaisesRegex(runner.Refusal,"AUTHORIZATION_ARRAY"): runner.validate_authorization(*args[:4],environment=args[4],root=args[6])
+
+    def test_design_review_binding_rejects_path_sha_map_status_and_commit_tamper(self):
+        mutations=(
+            ("path",lambda a: a[3]["independent_review"].update(path="wrong.json"),"DESIGN_REVIEW_BINDING"),
+            ("sha",lambda a: a[3]["independent_review"].update(sha256="0"*64),"DESIGN_REVIEW_BINDING"),
+            ("status",lambda a: self._mutate_review(a,"status","FAIL",True),"DESIGN_REVIEW_RECEIPT"),
+            ("map",lambda a: self._mutate_review(a,"artifact_sha256",{},True),"DESIGN_REVIEW_RECEIPT"),
+            ("commit",lambda a: self._mutate_review(a,"reviewed_commit","2"*40,True),"DESIGN_REVIEW_COMMIT"))
+        for name,mutate,code in mutations:
+            with self.subTest(name=name),self.authorization_fixture() as root:
+                args=list(self.build_authorization(root)); mutate(args)
+                with self.assertRaisesRegex(runner.Refusal,code): runner.validate_authorization(*args[:4],environment=args[4],root=args[6])
+
+    def _mutate_review(self,args,key,value,refresh_contract_sha):
+        with open(args[7],encoding="utf-8") as handle: review=json.load(handle)
+        review[key]=value
+        with open(args[7],"w",encoding="utf-8") as handle: json.dump(review,handle,sort_keys=True,separators=(",",":"))
+        if refresh_contract_sha: args[3]["independent_review"]["sha256"]=sha(args[7])
 
 
 if __name__=="__main__": unittest.main()
