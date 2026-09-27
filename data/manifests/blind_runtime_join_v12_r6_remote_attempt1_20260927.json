@@ -1,0 +1,17 @@
+{
+  "schema_version": "blind-runtime-join-v12-r6-remote-attempt",
+  "attempt": 1,
+  "status": "FAIL_BEFORE_EVIDENCE_ACCESS",
+  "date": "2026-09-27",
+  "commit": "cbfd34d7e2f557af78652039c30186ec1cd209a9",
+  "bundle_sha256": "a90d02185a65092204e77f893c87b6f2461da98ff7057a4eb6a0d2d60d8a99bf",
+  "bundle_bytes": 22098,
+  "bounded_extract_pass": true,
+  "runner_exit_code": 1,
+  "failure": "ModuleNotFoundError: No module named 'src'",
+  "blind_evidence_read": false,
+  "output_root_created": false,
+  "lsf_or_tessent_submitted": false,
+  "training_performed": false,
+  "repair_policy": "one focused import-path repair followed by complete regression and independent review"
+}

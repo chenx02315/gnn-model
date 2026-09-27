@@ -3,10 +3,14 @@
 from __future__ import print_function
 import hashlib, json, os, sys
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+BUNDLE_ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+if BUNDLE_ROOT not in sys.path:
+    sys.path.insert(0, BUNDLE_ROOT)
+
 from src.data import blind_join_core_v12_r3 as core
 from src.data import run_blind_join_v12_r5 as historical
 
-BUNDLE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 CONTRACT_RELATIVE = "contracts/blind_runtime_join_v12_r6.json"
 OUTPUT_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/18_blind_runtime_join_v12_r6"
 RECOVERY_ROOT = "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/17_blind_runtime_recovery_execution_v3_r1_private"

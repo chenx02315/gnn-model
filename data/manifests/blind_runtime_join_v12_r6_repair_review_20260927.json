@@ -1,0 +1,27 @@
+{
+  "schema_version": "blind-runtime-join-v12-r6-focused-repair-review",
+  "status": "PASS_REPAIR_REVIEW_REMOTE_RERUN_PENDING",
+  "date": "2026-09-27",
+  "prior_commit": "cbfd34d7e2f557af78652039c30186ec1cd209a9",
+  "prior_attempt_status": "FAIL_BEFORE_EVIDENCE_ACCESS",
+  "repair_scope": "prepend the location-derived bundle root to sys.path before importing src",
+  "contract_sha256": "60cb45a1a67e6d8a0f175e8c781584009d340cc0b6de993df7edc29d14f0783b",
+  "runner_sha256": "5692a32d8c31389251464bb1ab70cbac25856b37fbef2ec4f03b97d017d44ccd",
+  "direct_script_fixed_argv_smoke": "PASS",
+  "focused_tests": {
+    "tests_run": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 466,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "independent_review": "PASS",
+  "artifact_sha256_set_matches_contract": true,
+  "remote_rerun_performed": false,
+  "training_allowed": false
+}
