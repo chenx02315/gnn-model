@@ -1,0 +1,87 @@
+{
+  "schema_version": "blind-runtime-recovery-execution-v3-closeout",
+  "status": "PASS_V3_EXECUTION_AUDIT_JOIN_PENDING",
+  "job_id": "388797",
+  "job_name": "blind_rt_recovery_v3_r1",
+  "scheduler_final_state": "DONE",
+  "submission_count": 1,
+  "resume_count": 1,
+  "nonarray": true,
+  "no_retry": true,
+  "no_requeue": true,
+  "training_allowed": false,
+  "training_performed": false,
+  "candidate_join_performed": false,
+  "contract_sha256": "524d6fff761443cfe25aef81cb26539c2a66c4693bdb39c243fa1987a4dab0b3",
+  "plan_sha256": "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1",
+  "authorization_sha256": "757da93e8d6d2943b76a8f4b83264bfd489cb8665f4d9ba3f39278bf0cfbbfb1",
+  "execution": {
+    "attempt_count": 44,
+    "completed_attempt_count": 44,
+    "unique_run_id_count": 44,
+    "receipt_count": 44,
+    "driver_log_count": 44,
+    "zero_exit_count": 44,
+    "zero_retry_count": 44,
+    "success_marker_count": 44,
+    "wall_time_footer_count": 44,
+    "faults_digest_match_count": 44,
+    "counts_by_circuit": {
+      "s38584": 42,
+      "s9234": 1,
+      "wb_dma": 1
+    },
+    "counts_by_mode": {
+      "H": 22,
+      "M": 22
+    },
+    "counts_by_stage": {
+      "01_single_mode_full": 2,
+      "02_hf_coarse": 12,
+      "03_hmf_coarse": 30
+    }
+  },
+  "runtime_seconds": {
+    "attempt_wall_sum": 412.65,
+    "by_circuit": {
+      "s38584": 393.11,
+      "s9234": 10.24,
+      "wb_dma": 9.3
+    },
+    "by_mode": {
+      "H": 210.3,
+      "M": 202.35
+    },
+    "lsf_run_elapsed": 417,
+    "lsf_cpu_time": 453.35,
+    "scope_note": "attempt_wall_sum is the sum of GNU time wall-clock footers for the 44 Tessent attempts; it is not ATE cycles and excludes job setup/copy overhead"
+  },
+  "data_integrity": {
+    "source_manifest_sha256": "06e6160ccacc3adbcb844751ccc56e2d0f9ab745ec81a7bac3493f9c6a3ad867",
+    "copy_verification_sha256": "dbd3691085f740aa3589541fc61c57aebe6d8220e1485e4be11237f72901bbfd",
+    "receipt_set_sha256": "87955e9abc32970a8af2febdec7856734b9ee1d59e11098240f66fa816f39f19"
+  },
+  "a_side_paths": {
+    "output": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/17_blind_runtime_recovery_execution_v3_r1_private",
+    "registration_evidence": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/blind_runtime_recovery_execution_v3_registration_r1"
+  },
+  "a_side_evidence_sha256": {
+    "pre_resume_review.json": "4b7929078422adc3c19c81242d3bd8905294365590be9d0bf0678db7f895557a",
+    "pre_resume_bjobs.txt": "4a48f2bea56f910257c2c1fac84b488103feee0c64232a8b4d4e764740e88bdd",
+    "pre_resume_bjobs_al.txt": "2f6d5b1f78672e3a3ad3d7bbf9185429eb666ecaf0acf6d72341f586f642daab",
+    "pre_resume_capture_utc.txt": "e785545a0bb007e89a680840b69b99ef32494275a5baa4644e4915818ee18db6",
+    "pre_resume_authorization_validation.txt": "393366250216f1b085798102709042c9ff8d3b1c355e7a4ebc0dc1f790bd6375",
+    "authorization.json": "757da93e8d6d2943b76a8f4b83264bfd489cb8665f4d9ba3f39278bf0cfbbfb1",
+    "bjobs_immediately_before_resume.txt": "4a48f2bea56f910257c2c1fac84b488103feee0c64232a8b4d4e764740e88bdd",
+    "resume_command_issued_at_utc.txt": "5008cae9f7933dce2bcbb0eb6051f0f071d12eeeee028441309a05567d95fecd",
+    "bresume.txt": "e04dc27b46d75890079249cba1dde3d41bdee9b6636185eeef4fc4c4d4ab08dc",
+    "resumed_at_utc.txt": "5008cae9f7933dce2bcbb0eb6051f0f071d12eeeee028441309a05567d95fecd",
+    "stdout.log": "16fe118d8031a26e4b9f34a5f059576ce36a291441156f25315361f6470f968c",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution_audit.json": "38f2f99dd50da71ddfc20445edd40dfa6a82bb2177e195a38900620de4c56de9",
+    "bjobs_final.txt": "8f14ff8e4dd55edc08f45e31fdcab3ce99227e8370bdb831fce924a1cea6fce0",
+    "bhist_final.txt": "c2f44f3e5eb33d7fe45204d54f3c7622853c8fad6b2f8f0407d59802ef59b1dc",
+    "completion_capture_utc.txt": "57def3ce3e104a3391bdca9dee7f7b3bd3d07dc55b2af7d6758e165f9f25bf7e"
+  },
+  "next_gate": "Run the independently audited candidate-to-runtime unique join and R06/R07/R13 data gates. Formal family-isolated training remains forbidden until that gate passes."
+}
