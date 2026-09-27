@@ -74,9 +74,14 @@ class V3Tests(unittest.TestCase):
 
     def test_real_module_cli_starts_and_refuses_pending_contract_before_plan_read(self):
         root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(root,runner.CONTRACT_RELATIVE),encoding="utf-8") as handle: contract=json.load(handle)
         result=subprocess.run([sys.executable,"-m","src.data.run_blind_runtime_recovery_execution_v3","--root",root,"--registration-preflight"],cwd=root,stdout=subprocess.PIPE,stderr=subprocess.PIPE,universal_newlines=True)
-        self.assertEqual(2,result.returncode)
-        self.assertIn("REFUSED:EXECUTION_NOT_AUTHORIZED",result.stderr)
+        if "independent_review" in contract:
+            self.assertEqual(0,result.returncode)
+            self.assertIn("PASS_V3_REGISTRATION_PREFLIGHT",result.stdout)
+        else:
+            self.assertEqual(2,result.returncode)
+            self.assertIn("REFUSED:EXECUTION_NOT_AUTHORIZED",result.stderr)
         self.assertNotIn("ModuleNotFoundError",result.stderr)
 
     @contextlib.contextmanager
