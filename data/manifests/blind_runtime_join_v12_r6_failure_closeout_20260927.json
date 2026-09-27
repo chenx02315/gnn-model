@@ -1,0 +1,26 @@
+{
+  "schema_version": "blind-runtime-join-v12-r6-failure-closeout",
+  "status": "FAIL_CLOSED_NEW_VERSION_REQUIRED",
+  "date": "2026-09-27",
+  "commit": "fc893d0641486611622f05448c524f387444736b",
+  "output_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/18_blind_runtime_join_v12_r6",
+  "receipt_sha256": "533ebe83ce80284cc86efbafd01265cc5038f4970ed2d8e06769c8ed357209da",
+  "receipt_status": "FAIL",
+  "failure_stage": "SOURCE_INVENTORY",
+  "failure_code": "EXECUTION_AUDIT_BINDING",
+  "circuits": [],
+  "training_allowed": false,
+  "root_cause": {
+    "kind": "execution_audit_digest_transcription_error",
+    "contract_and_runner_value": "38f2f99dd50da71ddfc20445edd40dfa6a82bb217e195a38900620de4c56de9",
+    "contract_and_runner_value_length": 63,
+    "sealed_actual_value": "38f2f99dd50da71ddfc20445edd40dfa6a82bb2177e195a38900620de4c56de9",
+    "sealed_actual_value_length": 64
+  },
+  "r06_r07_evaluated": false,
+  "r13_evaluated": false,
+  "lsf_or_tessent_submitted": false,
+  "training_performed": false,
+  "rerun_allowed_in_same_output_root": false,
+  "required_next_version": "v12-r7 with a fresh output root and 64-hex validation for every recovery anchor"
+}

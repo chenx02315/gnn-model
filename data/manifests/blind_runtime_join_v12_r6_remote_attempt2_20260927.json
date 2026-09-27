@@ -1,0 +1,20 @@
+{
+  "schema_version": "blind-runtime-join-v12-r6-remote-attempt",
+  "attempt": 2,
+  "status": "REFUSED_BEFORE_EVIDENCE_ACCESS",
+  "date": "2026-09-27",
+  "commit": "fc893d0641486611622f05448c524f387444736b",
+  "bundle_sha256": "ae8c94616602c4558fd495c5a4b57ab8d8a387d91584cd3d7863d5d740c2480d",
+  "bundle_bytes": 22105,
+  "bounded_extract_pass": true,
+  "runner_exit_code": 2,
+  "failure": "ARTIFACT_DIGEST_MISMATCH",
+  "root_cause": "git archive normalized Windows worktree CRLF bytes to repository LF bytes while the sealed contract bound the actual worktree bytes",
+  "contract_artifact_mismatch_count": 8,
+  "blind_evidence_read": false,
+  "output_root_created": false,
+  "lsf_or_tessent_submitted": false,
+  "training_performed": false,
+  "code_or_contract_repair_required": false,
+  "deployment_correction": "package the exact contract-bound worktree bytes and require 8-of-8 post-extraction digest equality before execution"
+}

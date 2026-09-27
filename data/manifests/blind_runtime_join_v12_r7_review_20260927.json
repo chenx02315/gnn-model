@@ -1,0 +1,26 @@
+{
+  "schema_version": "blind-runtime-join-v12-r7-independent-review",
+  "status": "PASS_LOCAL_DESIGN_AND_INDEPENDENT_REVIEW_REMOTE_EXECUTION_PENDING",
+  "date": "2026-09-27",
+  "contract_sha256": "cfdeaba866e9efacdd5f0e0a32f098a2c62743dfaec8b72a2a7d3dd4e8cfb10e",
+  "runner_sha256": "48dd5c3fc0dc52a5f28a9cad3695e1aa2e70ae30eb537b67f8dd2e551f60b594",
+  "test_sha256": "adb5bc5912a3520fef08e62c0db33c8bda71d2eb353bdeee1e4c9470f0b7add1",
+  "corrected_execution_audit_sha256": "38f2f99dd50da71ddfc20445edd40dfa6a82bb2177e195a38900620de4c56de9",
+  "focused_tests": {
+    "tests_run": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 469,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "independent_review": "PASS",
+  "artifact_sha256_set_matches_contract": true,
+  "failed_v12_r6_output_preserved": true,
+  "remote_execution_performed": false,
+  "training_allowed": false
+}
