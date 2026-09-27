@@ -1,0 +1,21 @@
+{
+  "schema_version": "blind-runtime-method-binding-v12-r9-toolchain",
+  "status": "AUTHORIZED_R13_BINDING_REVIEW_PENDING",
+  "join_contract_sha256": "e1aa77af8b1e28683b9a9ac6a7bf2b342438b3a7d9df8eb53160508c62421d38",
+  "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+  "join_receipt_sha256": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+  "receipt_sidecar_sha256": "38484f8838ef73217d5c2913ecae13b2092df9b94c69e360dfa9e11523c1b1c6",
+  "released_sha256": "6bbf394aa2df80b6fa7793347a21b1803ae9218586500af0618d843098461d0f",
+  "released_status": "RELEASED_AUDIT_PENDING",
+  "released_receipt_sha256": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+  "artifact_sha256": {
+    "src/data/build_blind_method_binding_v12_r9.py": "74d09f26878b7241c0c2665879158b53e6d63f9c3cf48d52e6fcf00b909d6884",
+    "tests/test_build_blind_method_binding_v12_r9.py": "d066da11b8254e70bcec1980af93d15e2ebbff509661be961722e3ea3329ebfe",
+    "data/manifests/blind_runtime_join_v12_r9_receipt_20260927.json": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+    "data/manifests/blind_runtime_join_v12_r9_receipt_20260927.json.sha256": "38484f8838ef73217d5c2913ecae13b2092df9b94c69e360dfa9e11523c1b1c6",
+    "data/manifests/blind_runtime_join_v12_r9_RELEASED_20260927.json": "6bbf394aa2df80b6fa7793347a21b1803ae9218586500af0618d843098461d0f"
+  },
+  "output": "data/manifests/blind_runtime_method_binding_v12_r9_20260927.json",
+  "lsf_or_tessent_allowed": false,
+  "training_allowed": false
+}

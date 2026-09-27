@@ -1,0 +1,60 @@
+{
+  "schema_version": "blind-runtime-join-r13-v12-r9-independent-review",
+  "status": "PASS_R06_R07_R13_DATA_GATE_SEALED",
+  "date": "2026-09-28",
+  "join_receipt_sha256": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+  "receipt_sidecar_sha256": "38484f8838ef73217d5c2913ecae13b2092df9b94c69e360dfa9e11523c1b1c6",
+  "released_sha256": "6bbf394aa2df80b6fa7793347a21b1803ae9218586500af0618d843098461d0f",
+  "released_status": "RELEASED_AUDIT_PENDING",
+  "join_contract_sha256": "e1aa77af8b1e28683b9a9ac6a7bf2b342438b3a7d9df8eb53160508c62421d38",
+  "join_implementation_set_sha256": "29b960b4a87d305462dbffbc56f538a3821fb76a1a71ce243ab03f5e14e8810e",
+  "r13_toolchain_manifest_sha256": "6bd22a5e5171ce9265480aa150af4252effbe17c9a15418768077cb9adf6422f",
+  "r13_binding_sha256": "70d47a66c12ad132af0c88c201335410d932f979e4d8d1a46454a8edc73bd245",
+  "builder_sha256": "74d09f26878b7241c0c2665879158b53e6d63f9c3cf48d52e6fcf00b909d6884",
+  "test_sha256": "d066da11b8254e70bcec1980af93d15e2ebbff509661be961722e3ea3329ebfe",
+  "circuits": ["s9234", "s38584", "wb_dma"],
+  "methods": [
+    "fixed_heuristic",
+    "d95_safe_then_predicted_cycles",
+    "d95_safe_cost_aware_topk"
+  ],
+  "r06": {
+    "pass": true,
+    "missing_runtime_join_count": 0,
+    "ambiguous_runtime_join_count": 0
+  },
+  "r07": {
+    "pass": true,
+    "coverage_rate_per_circuit": 1.0
+  },
+  "r13": {
+    "pass": true,
+    "all_methods_identical_per_circuit": true,
+    "method_specific_exclusion_allowed": false
+  },
+  "focused_tests": {
+    "tests_run": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "full_regression": {
+    "tests_run": 484,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 8
+  },
+  "independent_review": "PASS",
+  "high_findings": 0,
+  "medium_findings": 0,
+  "join_contract_artifact_mismatches": 0,
+  "r13_toolchain_artifact_mismatches": 0,
+  "binding_rebuild_byte_identical": true,
+  "candidate_level_data_persisted": false,
+  "lsf_or_tessent_submitted": false,
+  "training_performed": false,
+  "data_gate_completed": true,
+  "family_isolated_training_preflight_allowed": true,
+  "training_execution_allowed": false,
+  "required_next_stage": "Freeze and independently review a family-isolated training contract, dataset manifest, objective, baselines, seeds, timeout accounting, and output boundary before executing training."
+}

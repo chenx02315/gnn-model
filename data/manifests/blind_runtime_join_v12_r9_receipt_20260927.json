@@ -1,0 +1,62 @@
+{
+  "circuits": [
+    {
+      "all_unique_action_count": 736,
+      "ambiguous_runtime_join_count": 0,
+      "circuit": "s9234",
+      "coverage_rate": 1.0,
+      "cross_stage_reference_count": 22,
+      "distinct_runtime_attempt_count": 1282,
+      "eligible_action_count": 736,
+      "executed_stage_reference_count": 1908,
+      "frozen_runtime_eligible_action_space_sha256": "cc628ba991f9566dfa2ad735bc7a4fc350083de5dc58df0c819c4231f0b70cfa",
+      "missing_runtime_join_count": 0,
+      "source_artifact_set_sha256": "c3fe4162e3d32286a4ebf7b215283ef3c80398a7db8d6611118e8e025dc93127",
+      "unique_runtime_join_count": 1908
+    },
+    {
+      "all_unique_action_count": 64,
+      "ambiguous_runtime_join_count": 0,
+      "circuit": "s38584",
+      "coverage_rate": 1.0,
+      "cross_stage_reference_count": 0,
+      "distinct_runtime_attempt_count": 147,
+      "eligible_action_count": 64,
+      "executed_stage_reference_count": 164,
+      "frozen_runtime_eligible_action_space_sha256": "bfa5acd1c06445a9b83327cbb8308ed45ed9979b642e4606d3d5818ff7c09da3",
+      "missing_runtime_join_count": 0,
+      "source_artifact_set_sha256": "035a2cebb473b6f09a00c01a13e0b13fca260a1ff3837123ca68d6adcf06ac57",
+      "unique_runtime_join_count": 164
+    },
+    {
+      "all_unique_action_count": 651,
+      "ambiguous_runtime_join_count": 0,
+      "circuit": "wb_dma",
+      "coverage_rate": 1.0,
+      "cross_stage_reference_count": 22,
+      "distinct_runtime_attempt_count": 960,
+      "eligible_action_count": 651,
+      "executed_stage_reference_count": 1521,
+      "frozen_runtime_eligible_action_space_sha256": "9d1f6d4620a444c35d777d5b8c8eb5d09324d6c7a1d789c20dd267e9efbd0ee8",
+      "missing_runtime_join_count": 0,
+      "source_artifact_set_sha256": "7b550cce6f8b0dc2a4cda7cd91cf9f4694dd38277624e5aaad29c254ecfda403",
+      "unique_runtime_join_count": 1521
+    }
+  ],
+  "contract_sha256": "e1aa77af8b1e28683b9a9ac6a7bf2b342438b3a7d9df8eb53160508c62421d38",
+  "failure_code": null,
+  "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac",
+  "implementation_set_sha256": "29b960b4a87d305462dbffbc56f538a3821fb76a1a71ce243ab03f5e14e8810e",
+  "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+  "recovery_closeout_sha256": "671410d9687a725a0a1ac610bbac7c5247dd4ab4ebe918738c9ea5e9309806a5",
+  "recovery_copy_verification_sha256": "dbd3691085f740aa3589541fc61c57aebe6d8220e1485e4be11237f72901bbfd",
+  "recovery_execution_audit_sha256": "38f2f99dd50da71ddfc20445edd40dfa6a82bb2177e195a38900620de4c56de9",
+  "recovery_job_id": "388797",
+  "recovery_plan_sha256": "b5cf0525b635fd4832fb1b1d7cc9f88f61c2d13cedbe77b9ce0d7b0d5dd2d4e1",
+  "recovery_receipt_set_sha256": "87955e9abc32970a8af2febdec7856734b9ee1d59e11098240f66fa816f39f19",
+  "recovery_source_manifest_sha256": "06e6160ccacc3adbcb844751ccc56e2d0f9ab745ec81a7bac3493f9c6a3ad867",
+  "schema_version": "blind-runtime-join-receipt-v12-r9",
+  "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+  "status": "PASS_R06_R07_AUDIT_PENDING",
+  "training_allowed": false
+}

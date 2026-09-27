@@ -1,0 +1,76 @@
+{
+  "all_methods_identical_per_circuit": true,
+  "circuits": [
+    {
+      "circuit": "s9234",
+      "eligible_action_count": 736,
+      "frozen_runtime_eligible_action_space_sha256": "cc628ba991f9566dfa2ad735bc7a4fc350083de5dc58df0c819c4231f0b70cfa",
+      "method_bindings": [
+        {
+          "action_space_sha256": "cc628ba991f9566dfa2ad735bc7a4fc350083de5dc58df0c819c4231f0b70cfa",
+          "method": "fixed_heuristic"
+        },
+        {
+          "action_space_sha256": "cc628ba991f9566dfa2ad735bc7a4fc350083de5dc58df0c819c4231f0b70cfa",
+          "method": "d95_safe_then_predicted_cycles"
+        },
+        {
+          "action_space_sha256": "cc628ba991f9566dfa2ad735bc7a4fc350083de5dc58df0c819c4231f0b70cfa",
+          "method": "d95_safe_cost_aware_topk"
+        }
+      ]
+    },
+    {
+      "circuit": "s38584",
+      "eligible_action_count": 64,
+      "frozen_runtime_eligible_action_space_sha256": "bfa5acd1c06445a9b83327cbb8308ed45ed9979b642e4606d3d5818ff7c09da3",
+      "method_bindings": [
+        {
+          "action_space_sha256": "bfa5acd1c06445a9b83327cbb8308ed45ed9979b642e4606d3d5818ff7c09da3",
+          "method": "fixed_heuristic"
+        },
+        {
+          "action_space_sha256": "bfa5acd1c06445a9b83327cbb8308ed45ed9979b642e4606d3d5818ff7c09da3",
+          "method": "d95_safe_then_predicted_cycles"
+        },
+        {
+          "action_space_sha256": "bfa5acd1c06445a9b83327cbb8308ed45ed9979b642e4606d3d5818ff7c09da3",
+          "method": "d95_safe_cost_aware_topk"
+        }
+      ]
+    },
+    {
+      "circuit": "wb_dma",
+      "eligible_action_count": 651,
+      "frozen_runtime_eligible_action_space_sha256": "9d1f6d4620a444c35d777d5b8c8eb5d09324d6c7a1d789c20dd267e9efbd0ee8",
+      "method_bindings": [
+        {
+          "action_space_sha256": "9d1f6d4620a444c35d777d5b8c8eb5d09324d6c7a1d789c20dd267e9efbd0ee8",
+          "method": "fixed_heuristic"
+        },
+        {
+          "action_space_sha256": "9d1f6d4620a444c35d777d5b8c8eb5d09324d6c7a1d789c20dd267e9efbd0ee8",
+          "method": "d95_safe_then_predicted_cycles"
+        },
+        {
+          "action_space_sha256": "9d1f6d4620a444c35d777d5b8c8eb5d09324d6c7a1d789c20dd267e9efbd0ee8",
+          "method": "d95_safe_cost_aware_topk"
+        }
+      ]
+    }
+  ],
+  "contract_sha256": "e1aa77af8b1e28683b9a9ac6a7bf2b342438b3a7d9df8eb53160508c62421d38",
+  "implementation_set_sha256": "29b960b4a87d305462dbffbc56f538a3821fb76a1a71ce243ab03f5e14e8810e",
+  "join_receipt_sha256": "ead0b90ba5822d80ad9c46bbf0123f1f0349465d83d5656a1c7b65a0494ac00e",
+  "method_registry_sha256": "8fb8d4a90981c2479e3e6ea3a8a4669286080e921ad0c2ff8d82e8a2a5c4191f",
+  "method_specific_exclusion_allowed": false,
+  "methods": [
+    "fixed_heuristic",
+    "d95_safe_then_predicted_cycles",
+    "d95_safe_cost_aware_topk"
+  ],
+  "r13_toolchain_manifest_sha256": "6bd22a5e5171ce9265480aa150af4252effbe17c9a15418768077cb9adf6422f",
+  "schema_version": "blind-runtime-method-binding-v12-r9",
+  "status": "PASS_R13_INDEPENDENT_AUDIT_PENDING",
+  "training_allowed": false
+}
