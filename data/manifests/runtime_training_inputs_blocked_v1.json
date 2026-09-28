@@ -1,0 +1,60 @@
+{
+  "schema_version": "runtime-training-inputs-blocked-v1",
+  "status": "BLOCKED_PENDING_EXECUTION_EVIDENCE",
+  "base_commit": "92819911ca78fe881fa510a972538031249399cc",
+  "scope": {
+    "circuits": [
+      "aes_core",
+      "s13207",
+      "s15850",
+      "s35932",
+      "s38417",
+      "s5378",
+      "spi",
+      "tv80"
+    ],
+    "roles": {
+      "TRAIN": 6,
+      "VALIDATION": 2,
+      "BLIND_TEST": 0
+    }
+  },
+  "denominator": {
+    "status": "DESIGN_REVIEW_PASS_EXECUTION_PENDING",
+    "formal_receipt_present": false,
+    "native_universe_copy_performed": false,
+    "required_next_evidence": "Recompute the H/M/F intersection from the 24 explicitly SHA-bound complete native faults.mtfi files in an immutable A-side staging area and return only the aggregate receipt plus SHA-256.",
+    "contract_sha256": "e7484c908fd7766c56f36e429483b15c57acb61666fba43712dfb5398abdc721",
+    "auditor_sha256": "4d499735b484e7114c63c957e1c23bea5a2500333fcd8967042f93381ef0d104",
+    "tests_sha256": "1118ea274ecdf1331fc6affe315eb13da4dc9c43d2411a71549de0e199fd14d8"
+  },
+  "graphs": {
+    "status": "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST",
+    "graph_count": 8,
+    "historical_node_edge_count_parity_pass": true,
+    "historical_topology_parity_pass": false,
+    "historical_edge_digest_export_performed": false,
+    "local_r5_receipt_sha256": "99ae79729068db768ff3574fe3333f786ab57805ac2a8664f55f1213d56909a8",
+    "required_next_evidence": "Compute canonical edge-index digests from the eight non-protected historical graph artifacts in place on B and compare them exactly with the new graph edge-index digests; export digests only.",
+    "contract_sha256": "c6232311bd2a218fd871a4847a0969dde365f0b325fdbf4a76ecf4755f35b155",
+    "builder_sha256": "c05622ca8d74068b8bfcee90ccc362c5a682479d76b262e3adf5e67ce304e964",
+    "tests_sha256": "1410a607e164fba898114cc4c73ff7e02074379b3751264e38c4be55328039f4"
+  },
+  "verification": {
+    "focused_tests_run": 23,
+    "focused_tests_skipped": 1,
+    "focused_failures": 0,
+    "full_tests_run": 530,
+    "full_tests_skipped": 12,
+    "full_failures": 0,
+    "independent_review": "PASS_AS_EXPLICITLY_BLOCKED_DESIGN_TOOLCHAIN"
+  },
+  "boundaries": {
+    "training_execution_allowed": false,
+    "blind_rows_read": false,
+    "candidate_or_outcome_data_persisted": false,
+    "lsf_or_tessent_submitted": false,
+    "protected_b_directory_accessed": false,
+    "package_release_allowed": false
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "runtime-graph-v1-contract",
+  "status": "FROZEN_IMPLEMENTATION_ONLY",
+  "purpose": "Build deterministic, outcome-free circuit graphs from explicitly bound mapped Verilog netlists.",
+  "required_roster": [
+    {"circuit": "s13207", "family": "iscas89_s13207", "role": "TRAIN"},
+    {"circuit": "s15850", "family": "iscas89_s15850", "role": "TRAIN"},
+    {"circuit": "s35932", "family": "iscas89_s35932", "role": "TRAIN"},
+    {"circuit": "s38417", "family": "iscas89_s38417", "role": "TRAIN"},
+    {"circuit": "aes_core", "family": "iwls_aes_core", "role": "TRAIN"},
+    {"circuit": "spi", "family": "iwls_spi", "role": "TRAIN"},
+    {"circuit": "s5378", "family": "iscas89_s5378", "role": "VALIDATION"},
+    {"circuit": "tv80", "family": "iwls_tv80", "role": "VALIDATION"}
+  ],
+  "input": {
+    "bindings_schema_version": "runtime-graph-netlist-bindings-v1",
+    "bindings_key": "bindings",
+    "top_level_fields": ["schema_version", "parity_manifest", "bindings"],
+    "parity_manifest_fields": ["path", "sha256"],
+    "parity_manifest_required_columns": ["circuit", "nodes", "edges", "feature_dim", "graph_sha256"],
+    "parity_manifest_sha256_required": true,
+    "binding_fields": ["circuit", "role", "family", "path", "sha256"],
+    "allowed_roles": ["TRAIN", "VALIDATION"],
+    "glob_allowed": false,
+    "symlink_allowed": false,
+    "path_must_be_under_bindings_root": true,
+    "netlist_sha256_required": true
+  },
+  "parser": {
+    "mapped_verilog_only": true,
+    "named_pin_connections_required": true,
+    "assign_aliases_are_unioned": true,
+    "node_semantics": "one standard-cell instance per node",
+    "sequential_cell_name_regex": "^(?:S?D|DF|FD|LATCH|LAT)[A-Z0-9_]*Q",
+    "output_pin_names": ["Q", "QN", "Z", "ZN", "Y", "CO", "COUT", "SO", "X"],
+    "sum_pin_output_cell_regex": "^(?:AD|FA|HA)",
+    "edge_semantics": "directed output-pin driver to input-pin consumer after assign alias union",
+    "instance_order": "mapped netlist source order",
+    "unsupported_pin_expressions": "ignored exactly as in the frozen historical graph generator"
+  },
+  "output": {
+    "graph_schema_version": "runtime-graph-v1",
+    "graph_top_level_fields": ["schema_version", "circuit", "nodes", "edge_index"],
+    "node_fields": ["node_type", "cell_type", "sequential_flag"],
+    "graph_manifest_fields": ["graph_key", "circuit", "graph_path", "graph_sha256"],
+    "aggregate_receipt": "runtime_graphs_aggregate_receipt_v1.json",
+    "historical_node_edge_count_parity_required": true,
+    "historical_topology_parity_required_before_package_release": true,
+    "historical_graph_artifact_sha256_bound": true,
+    "topology_sha256_emitted": true,
+    "deterministic_json": true,
+    "failed_build_leaves_output_root": false,
+    "training_execution_allowed": false,
+    "current_release_status": "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST"
+  },
+  "boundary": {
+    "no_outcome_or_runtime_fields": true,
+    "no_torch_dependency": true,
+    "no_lsf_or_tessent": true,
+    "no_blind_rows": true
+  }
+}

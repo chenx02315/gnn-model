@@ -1,0 +1,78 @@
+{
+  "schema_version": "common-fault-denominator-v2",
+  "status": "DESIGN_FROZEN_LOCAL_AUDIT_ONLY",
+  "purpose": "Recompute each H/M/F stuck-at intersection from explicitly bound complete native MTFI universes, prove the canonical mapping is exactly that intersection, and audit the D95 denominator.",
+  "required_roster": [
+    {"circuit": "s13207", "family": "iscas89_s13207", "role": "TRAIN"},
+    {"circuit": "s15850", "family": "iscas89_s15850", "role": "TRAIN"},
+    {"circuit": "s35932", "family": "iscas89_s35932", "role": "TRAIN"},
+    {"circuit": "s38417", "family": "iscas89_s38417", "role": "TRAIN"},
+    {"circuit": "aes_core", "family": "iwls_aes_core", "role": "TRAIN"},
+    {"circuit": "spi", "family": "iwls_spi", "role": "TRAIN"},
+    {"circuit": "s5378", "family": "iscas89_s5378", "role": "VALIDATION"},
+    {"circuit": "tv80", "family": "iwls_tv80", "role": "VALIDATION"}
+  ],
+  "binding_schema": {
+    "schema_version": "common-fault-denominator-bindings-v2",
+    "top_level_fields": ["schema_version", "evidence_root", "circuits"],
+    "circuit_fields": ["circuit", "family", "role", "manifest", "mapping", "readback", "modes", "native_universes"],
+    "artifact_fields": ["path", "sha256"],
+    "mode_keys": ["H", "M", "F"],
+    "minimum_circuit_count": 8,
+    "exact_required_roster": true,
+    "paths_are_relative_to_evidence_root": true,
+    "glob_paths_allowed": false,
+    "symlinks_allowed": false,
+    "path_escape_allowed": false,
+    "ambiguous_or_reused_artifact_paths_allowed": false
+  },
+  "manifest_contract": {
+    "schema": "multimode_common_fault_universe_v1",
+    "fault_model": "stuck-at",
+    "required_fields": ["schema", "fault_model", "common_fault_count", "files", "mapping", "f_flat_instance_offset", "native_fault_counts", "minimum_fraction"],
+    "mapping_required_fields": ["path", "sha256", "row_count_excluding_header"],
+    "mode_required_fields": ["path", "sha256", "fault_count"],
+    "recompute_intersection_from_native_mtfi": true
+  },
+  "readback_contract": {
+    "required_fields": ["status", "errors", "expected", "readback_counts"],
+    "status": "PASS",
+    "errors": [],
+    "mode_keys": ["H", "M", "F"],
+    "all_counts_equal_common_fault_count": true
+  },
+  "accepted_mapping_headers": [
+    ["stuck_value", "canonical_core_path", "F_native_path", "M_native_path", "H_native_path"],
+    ["stuck_value", "canonical_path", "F_path", "M_path", "H_path"]
+  ],
+  "identity_rules": {
+    "stuck_values": ["0", "1"],
+    "mapping_canonical_identity": ["stuck_value", "canonical_path"],
+    "mapping_mode_identity": ["stuck_value", "mode_native_path"],
+    "basic_identity": ["stuck_value", "path"],
+    "basic_class_is_ignored": true,
+    "duplicate_identities_allowed": false,
+    "mode_set_rule": "For each of H, M and F, the set of identities parsed from the .basic file must equal the corresponding mode-native identity set in canonical_fault_mapping.tsv.",
+    "native_intersection_rule": "Parse each complete native faults.mtfi universe, shift every F /U<number>/ token by the sealed f_flat_instance_offset, intersect shifted-F with M and H, and require exact equality with the canonical mapping identity set."
+  },
+  "denominator_rules": {
+    "common_fault_count": "number_of_unique_mapping_rows",
+    "d95": "ceil(0.95 * common_fault_count)",
+    "all_mode_counts_equal_common_fault_count": true,
+    "fault_model": "stuck-at"
+  },
+  "receipt_policy": {
+    "schema_version": "common-fault-denominator-audit-receipt-v2",
+    "aggregate_only": true,
+    "per_circuit_counts_and_sha256_allowed": true,
+    "fault_identities_allowed": false,
+    "candidate_or_outcome_fields_allowed": false,
+    "raw_source_paths_allowed": false
+  },
+  "execution_boundary": {
+    "remote_access_allowed": false,
+    "training_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "input_discovery_allowed": false
+  }
+}
