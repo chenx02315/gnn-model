@@ -1,0 +1,41 @@
+{
+  "schema_version": "runtime-training-v1-implementation-review-v1",
+  "status": "PASS_RUNTIME_TRAINING_V1_IMPLEMENTATION_SEALED",
+  "scope": "Code, contracts, package validation, and validation replay only; no model training and no external execution.",
+  "artifacts_sha256": {
+    "contracts/runtime_feature_schema_v1.json": "7b2a2ab793b06b67d4554532fc322a55a6d8f37c8bdbe63678237e52161b26b0",
+    "contracts/runtime_training_v1.json": "c648ab2ae57e19c09e2096bd96c7c9c1377a3288fa25a7bb60831637d8ac693d",
+    "src/data/build_runtime_training_package_v1.py": "f25459101b9c4f9f27d5fb92050ed26d9869d3b55ac95d6b016271651bc0ef54",
+    "src/data/validate_runtime_training_package_v1.py": "19abc73c5743636035cbf6ce5fd23ae38333410a54b1619b3664df214139df14",
+    "src/replay/replay_runtime_topk_v1.py": "f9ac8260c3a51315e247a1fa07ad746db55d9a65f61860b6baa050c583484ae6",
+    "src/replay/runtime_accounting_v1.py": "7b468e07e07bcaddc5689bd58beb2ba53bb7588e5c1ac32ccfe571d9c985d0cf",
+    "tests/test_runtime_accounting_v1.py": "bd9941ba43cee239ecb459f9e7deed287e9f64147500e7576d18f69ec65df8e0",
+    "tests/test_runtime_training_package_v1.py": "d29fa6ffc57b3a9c201a4716a9bc5a8527e549a4f12bada6bef3fe68b6e7658a"
+  },
+  "verification": {
+    "focused_tests_run": 17,
+    "focused_failures": 0,
+    "focused_errors": 0,
+    "focused_skipped_windows_symlink": 3,
+    "full_tests_run": 507,
+    "full_failures": 0,
+    "full_errors": 0,
+    "full_skipped": 11,
+    "independent_review": "PASS",
+    "independent_review_high": 0,
+    "independent_review_medium": 0,
+    "source_inventory_byte_bound": true,
+    "retry_review_receipt_byte_bound": true,
+    "graph_payload_strict_allowlist": true,
+    "ranking_generator_byte_bound": true,
+    "preoutcome_receipt_byte_bound": true,
+    "outcome_access_hash_chain_required": true,
+    "pre_read_symlink_boundary_closed": true
+  },
+  "authority": {
+    "training_execution_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "blind_candidate_access_allowed": false,
+    "next_action": "Construct and independently audit an immutable non-BLIND TRAIN and VALIDATION source package."
+  }
+}
