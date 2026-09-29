@@ -1,6 +1,6 @@
 {
   "schema_version": "runtime-training-inputs-blocked-v1",
-  "status": "BLOCKED_REMOTE_RECEIPT_FETCH_PENDING",
+  "status": "PASS_INPUT_AUDITS_PACKAGE_RELEASE_PENDING",
   "base_commit": "a2bd2300c759ccbd2dfe21eb0995ceb9ac4127e1",
   "scope": {
     "circuits": [
@@ -20,12 +20,17 @@
     }
   },
   "denominator": {
-    "status": "REMOTE_PASS_OBSERVED_RECEIPT_FETCH_PENDING",
-    "formal_receipt_present": false,
+    "status": "PASS_REMOTE_AGGREGATE_AUDIT",
+    "formal_receipt_present": true,
     "native_universe_copy_performed": false,
     "remote_execution_stdout_observed": "status=PASS circuits=8 total_faults=228832",
     "remote_receipt_sha256_observed": "3025e5f23fa9c48383cbc9321882358ebab7f7df4945d44b60ec1fd07479da15",
-    "required_next_evidence": "Fetch only the aggregate receipt, input SHA ledger, and small logs from the isolated A-side audit directory; independently verify JSON fields, bound input hashes, empty stderr, and receipt SHA-256 before sealing PASS.",
+    "required_next_evidence": null,
+    "remote_audit_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remote_audit_stdout_sha256": "cb649a24c15684260901b245d27c2f38879f00d498b871433a88ed6d15be5be4",
+    "remote_input_ledger_sha256": "e64248d6a04110aa6e2f4fa6c27d08e279b513409ec2225ade007811bdb38363",
+    "remote_bindings_sha256": "eb80903b0ff1aa770d3f7559e76ee6a77af5d9781f13cbf207c732ce62a492df",
+    "independent_review": "PASS_REMOTE_AGGREGATE_AUDIT_TRAINING_NOT_AUTHORIZED",
     "contract_sha256": "e7484c908fd7766c56f36e429483b15c57acb61666fba43712dfb5398abdc721",
     "auditor_sha256": "4d499735b484e7114c63c957e1c23bea5a2500333fcd8967042f93381ef0d104",
     "tests_sha256": "1118ea274ecdf1331fc6affe315eb13da4dc9c43d2411a71549de0e199fd14d8"
@@ -68,12 +73,12 @@
   },
   "verification": {
     "focused_tests_run": 21,
-    "focused_tests_skipped": 0,
+    "focused_tests_skipped": 1,
     "focused_failures": 0,
     "full_tests_run": 544,
     "full_tests_skipped": 12,
     "full_failures": 0,
-    "independent_review": "PASS_B_TOPOLOGY_PARITY_A_DENOMINATOR_RECEIPT_UNVERIFIED"
+    "independent_review": "PASS_A_DENOMINATOR_AND_B_TOPOLOGY_PACKAGE_RELEASE_PENDING"
   },
   "boundaries": {
     "training_execution_allowed": false,
