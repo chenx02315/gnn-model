@@ -1,0 +1,48 @@
+{
+  "schema_version": "runtime-graph-topology-parity-v1-contract",
+  "status": "DESIGN_FROZEN_REMOTE_RECEIPT_SHA_PENDING",
+  "purpose": "Fail closed unless the verified legacy canonical edge-index digests exactly equal the blocked local runtime graph edge-index digests for the required roster.",
+  "input": {
+    "bindings_schema_version": "runtime-graph-topology-parity-bindings-v1",
+    "required_circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "s5378", "spi", "tv80"],
+    "evidence_root_absolute": true,
+    "symlinks_allowed": false,
+    "glob_allowed": false,
+    "path_escape_allowed": false,
+    "receipt_binding_fields": ["path", "sha256"]
+  },
+  "remote_receipt": {
+    "schema_version": "legacy-graph-topology-receipt-v1",
+    "status": "PASS_DIGEST_ONLY",
+    "comparison_key": "canonical_edge_index_sha256",
+    "auditor_contract_sha256": "f3f969bd5a9cc4036f78cd983116ed6de419d22582567e4c894074a33c0f5bda",
+    "historical_artifact_sha256": {
+      "aes_core": "6a80adf31462ec3c8f59ff81ff824e41f48dfe04ee5d8bf326cd984179be7d37",
+      "s13207": "c0dd02034937a92bd68358fe738bf352d615702444950350527f942497d5f0a8",
+      "s15850": "9a03e8985e7f72f72e96e2a989ef8b305fd9de46502bbbbcebb784b56c54b3e0",
+      "s35932": "18db55ac1a96406213bc5350abf2bad8da495b8c0d5f9a98f148b36816ee2c3a",
+      "s38417": "8a9564a545ad26ca44e1aba321256b09921b9ed32e06afff1f9a31bf54a0eb2e",
+      "s5378": "cba75e68e46fc12c409fa523135bf02372f94c56d4d947f520a0c6415718a31b",
+      "spi": "a9d4b5f11a684746ff1eebc2b05acca77e59b06194ecebee87a4c451ea85653d",
+      "tv80": "35fb8bd99d8bdbe481e8342fd39140cbc587f8532b680ae4fd8a2ed560defe40"
+    }
+  },
+  "local_receipt": {
+    "schema_version": "runtime-graphs-aggregate-receipt-v1",
+    "status": "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST",
+    "comparison_key": "edge_index_sha256",
+    "runtime_graph_contract_sha256": "c1fb2934147d4a28b291dff0417a3805b0a921e07b2f8b0a05beaf5b6af2ef24",
+    "training_execution_allowed": false
+  },
+  "trust_anchors": {
+    "remote_receipt_sha256": null,
+    "local_receipt_sha256": "dbe2c6701b2bafa249bc69f888c20a2b0e350d5a9e18d904b539846ec1036d0c"
+  },
+  "output": {
+    "schema_version": "runtime-graph-topology-parity-receipt-v1",
+    "status": "PASS_TOPOLOGY_PARITY_DIGEST_ONLY",
+    "aggregate_only": true,
+    "raw_nodes_or_edges_allowed": false,
+    "training_execution_allowed": false
+  }
+}

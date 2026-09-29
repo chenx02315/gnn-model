@@ -46,13 +46,25 @@
     "tests_sha256": "f6a6107320ab8481e36b8c767e779165b7c528f0edd95b557fd07ddd3a149ff2",
     "legacy_auditor_contract_sha256": "f3f969bd5a9cc4036f78cd983116ed6de419d22582567e4c894074a33c0f5bda",
     "legacy_auditor_sha256": "12b53b6bb5da7f5dc0f9e32a02b28841dd729a87fceb3213b219bfe91e0ab6e9",
-    "legacy_auditor_tests_sha256": "7fed669052c2924a7f46a57187d112fdc24dd586e255fd3da4c80b9ab194c17c"
+    "legacy_auditor_tests_sha256": "7fed669052c2924a7f46a57187d112fdc24dd586e255fd3da4c80b9ab194c17c",
+    "topology_parity_comparator": {
+      "status": "DESIGN_FROZEN_REMOTE_RECEIPT_SHA_PENDING",
+      "remote_receipt_trust_anchor_sha256": null,
+      "local_receipt_trust_anchor_sha256": "dbe2c6701b2bafa249bc69f888c20a2b0e350d5a9e18d904b539846ec1036d0c",
+      "contract_sha256": "25a7e5cb72c0d4a2600d7bf88c1b6a5241a99a953d292e794e9e7664f207f999",
+      "auditor_sha256": "1a7f9adb43665d0f3c2e1ca446b6d96a5dbc63d4a262d45d2a2b2bcc830d1b1b",
+      "tests_sha256": "2154a74b67f6023a65da9f21b03697bf4679bc770a583f367c3949b38453581a",
+      "focused_tests_run": 5,
+      "focused_tests_skipped": 0,
+      "focused_failures": 0,
+      "independent_review": "PASS_FAIL_CLOSED_IMPLEMENTATION_REMOTE_RECEIPT_UNVERIFIED"
+    }
   },
   "verification": {
-    "focused_tests_run": 16,
+    "focused_tests_run": 21,
     "focused_tests_skipped": 0,
     "focused_failures": 0,
-    "full_tests_run": 539,
+    "full_tests_run": 544,
     "full_tests_skipped": 12,
     "full_failures": 0,
     "independent_review": "PASS_LOCAL_BRIDGE_REMOTE_RECEIPTS_UNVERIFIED"
