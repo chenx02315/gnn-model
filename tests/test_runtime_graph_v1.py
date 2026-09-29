@@ -1,10 +1,13 @@
 import hashlib
+import io
 import json
 import pathlib
+import struct
 import tempfile
 import unittest
 from unittest import mock
 
+from src.audit import audit_legacy_graph_topology_v1 as topology_audit
 from src.data import build_runtime_graphs_v1 as graphs
 
 
@@ -59,6 +62,8 @@ endmodule
                              receipt["status"])
             self.assertFalse(receipt["historical_topology_parity_pass"])
             self.assertRegex(receipt["source_hashes"]["s13207"]["topology_sha256"],
+                             r"^[0-9a-f]{64}$")
+            self.assertRegex(receipt["source_hashes"]["s13207"]["edge_index_sha256"],
                              r"^[0-9a-f]{64}$")
             self.assertEqual((first / "graphs" / "s13207.json").read_bytes(), (second / "graphs" / "s13207.json").read_bytes())
 
@@ -139,6 +144,40 @@ endmodule
                   "sequential_flag": False} for _ in range(3)]
         self.assertNotEqual(graphs._topology_sha256(nodes, [[0, 1], [1, 2]]),
                             graphs._topology_sha256(nodes, [[0, 2], [2, 1]]))
+
+    def test_edge_index_digest_matches_legacy_auditor_canonicalization(self):
+        pairs = [[2, 1], [0, 1], [1, 2]]
+        artifact = io.BytesIO()
+        with topology_audit.zipfile.ZipFile(artifact, "w") as archive:
+            archive.writestr("s13207/data/1", struct.pack(
+                "<6q", 2, 0, 1, 1, 1, 2))
+            archive.writestr("s13207/byteorder", "little")
+        self.assertEqual(
+            topology_audit.edge_digest(artifact.getvalue(), "s13207", 3, 3),
+            graphs._edge_index_sha256(list(reversed(pairs))))
+
+    def test_edge_index_digest_changes_when_adjacency_changes(self):
+        self.assertNotEqual(graphs._edge_index_sha256([[0, 1], [1, 2]]),
+                            graphs._edge_index_sha256([[0, 2], [1, 2]]))
+
+    def test_edge_index_digest_rejects_duplicates(self):
+        with self.assertRaisesRegex(graphs.GraphBuildError,
+                                    "DUPLICATE_EDGE_INDEX"):
+            graphs._edge_index_sha256([[0, 1], [0, 1]])
+
+    def test_topology_bridge_contract_drift_refuses(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory) / "root"; root.mkdir()
+            _, _, contract_path = self.fixture(root)
+            contract = json.loads(contract_path.read_text(encoding="utf-8"))
+            contract["historical_topology_bridge"][
+                "legacy_auditor_contract_sha256"] = "0" * 64
+            contract_path.write_text(json.dumps(contract), encoding="utf-8")
+            with self.assertRaisesRegex(graphs.GraphBuildError,
+                                        "CONTRACT_INVALID"):
+                graphs.build("bindings.json", str(root),
+                             str(pathlib.Path(directory) / "out"),
+                             str(contract_path))
 
 
 if __name__ == "__main__":

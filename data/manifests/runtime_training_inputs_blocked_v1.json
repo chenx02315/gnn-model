@@ -1,7 +1,7 @@
 {
   "schema_version": "runtime-training-inputs-blocked-v1",
-  "status": "BLOCKED_PENDING_EXECUTION_EVIDENCE",
-  "base_commit": "92819911ca78fe881fa510a972538031249399cc",
+  "status": "BLOCKED_REMOTE_RECEIPT_FETCH_PENDING",
+  "base_commit": "a2bd2300c759ccbd2dfe21eb0995ceb9ac4127e1",
   "scope": {
     "circuits": [
       "aes_core",
@@ -20,10 +20,12 @@
     }
   },
   "denominator": {
-    "status": "DESIGN_REVIEW_PASS_EXECUTION_PENDING",
+    "status": "REMOTE_PASS_OBSERVED_RECEIPT_FETCH_PENDING",
     "formal_receipt_present": false,
     "native_universe_copy_performed": false,
-    "required_next_evidence": "Recompute the H/M/F intersection from the 24 explicitly SHA-bound complete native faults.mtfi files in an immutable A-side staging area and return only the aggregate receipt plus SHA-256.",
+    "remote_execution_stdout_observed": "status=PASS circuits=8 total_faults=228832",
+    "remote_receipt_sha256_observed": "3025e5f23fa9c48383cbc9321882358ebab7f7df4945d44b60ec1fd07479da15",
+    "required_next_evidence": "Fetch only the aggregate receipt, input SHA ledger, and small logs from the isolated A-side audit directory; independently verify JSON fields, bound input hashes, empty stderr, and receipt SHA-256 before sealing PASS.",
     "contract_sha256": "e7484c908fd7766c56f36e429483b15c57acb61666fba43712dfb5398abdc721",
     "auditor_sha256": "4d499735b484e7114c63c957e1c23bea5a2500333fcd8967042f93381ef0d104",
     "tests_sha256": "1118ea274ecdf1331fc6affe315eb13da4dc9c43d2411a71549de0e199fd14d8"
@@ -34,20 +36,26 @@
     "historical_node_edge_count_parity_pass": true,
     "historical_topology_parity_pass": false,
     "historical_edge_digest_export_performed": false,
-    "local_r5_receipt_sha256": "99ae79729068db768ff3574fe3333f786ab57805ac2a8664f55f1213d56909a8",
-    "required_next_evidence": "Compute canonical edge-index digests from the eight non-protected historical graph artifacts in place on B and compare them exactly with the new graph edge-index digests; export digests only.",
-    "contract_sha256": "c6232311bd2a218fd871a4847a0969dde365f0b325fdbf4a76ecf4755f35b155",
-    "builder_sha256": "c05622ca8d74068b8bfcee90ccc362c5a682479d76b262e3adf5e67ce304e964",
-    "tests_sha256": "1410a607e164fba898114cc4c73ff7e02074379b3751264e38c4be55328039f4"
+    "remote_digest_stdout_observed": "LEGACY_GRAPH_TOPOLOGY=PASS_DIGEST_ONLY graphs=8",
+    "remote_receipt_sha256_observed": "0f1adf9c533dafdd303fe54fea78a2bb6210c36f7a5dff9030da339818c26672",
+    "remote_wrapper_terminal_status_verified": false,
+    "local_r7_receipt_sha256": "dbe2c6701b2bafa249bc69f888c20a2b0e350d5a9e18d904b539846ec1036d0c",
+    "required_next_evidence": "Fetch only the aggregate digest receipt, input SHA ledger, and small logs from the isolated B-side audit directory; independently verify the receipt and compare all eight canonical_edge_index_sha256 values exactly with local r7 edge_index_sha256 values.",
+    "contract_sha256": "c1fb2934147d4a28b291dff0417a3805b0a921e07b2f8b0a05beaf5b6af2ef24",
+    "builder_sha256": "f2a4ebf80d340c663cbcd1878ab38d92159b520551c9c1abac079f42df29bc6d",
+    "tests_sha256": "f6a6107320ab8481e36b8c767e779165b7c528f0edd95b557fd07ddd3a149ff2",
+    "legacy_auditor_contract_sha256": "f3f969bd5a9cc4036f78cd983116ed6de419d22582567e4c894074a33c0f5bda",
+    "legacy_auditor_sha256": "12b53b6bb5da7f5dc0f9e32a02b28841dd729a87fceb3213b219bfe91e0ab6e9",
+    "legacy_auditor_tests_sha256": "7fed669052c2924a7f46a57187d112fdc24dd586e255fd3da4c80b9ab194c17c"
   },
   "verification": {
-    "focused_tests_run": 23,
-    "focused_tests_skipped": 1,
+    "focused_tests_run": 16,
+    "focused_tests_skipped": 0,
     "focused_failures": 0,
-    "full_tests_run": 530,
+    "full_tests_run": 539,
     "full_tests_skipped": 12,
     "full_failures": 0,
-    "independent_review": "PASS_AS_EXPLICITLY_BLOCKED_DESIGN_TOOLCHAIN"
+    "independent_review": "PASS_LOCAL_BRIDGE_REMOTE_RECEIPTS_UNVERIFIED"
   },
   "boundaries": {
     "training_execution_allowed": false,

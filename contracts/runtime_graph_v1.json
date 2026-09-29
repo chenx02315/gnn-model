@@ -48,10 +48,21 @@
     "historical_topology_parity_required_before_package_release": true,
     "historical_graph_artifact_sha256_bound": true,
     "topology_sha256_emitted": true,
+    "edge_index_sha256_emitted": true,
+    "edge_index_canonicalization": "sorted unique [source,destination] pairs serialized as compact JSON plus LF",
     "deterministic_json": true,
     "failed_build_leaves_output_root": false,
     "training_execution_allowed": false,
     "current_release_status": "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST"
+  },
+  "historical_topology_bridge": {
+    "legacy_auditor_contract_schema": "legacy-graph-topology-audit-v1-contract",
+    "legacy_auditor_contract_sha256": "f3f969bd5a9cc4036f78cd983116ed6de419d22582567e4c894074a33c0f5bda",
+    "required_circuit_count": 8,
+    "comparison_key": "canonical_edge_index_sha256",
+    "local_comparison_key": "edge_index_sha256",
+    "release_rule": "all eight circuit digests must be exactly equal before historical_topology_parity_pass may become true",
+    "mismatch_or_missing_digest_status": "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST"
   },
   "boundary": {
     "no_outcome_or_runtime_fields": true,

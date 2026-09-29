@@ -1,0 +1,29 @@
+{
+  "schema_version": "legacy-graph-topology-audit-v1-contract",
+  "status": "FROZEN_DIGEST_ONLY",
+  "purpose": "Compute canonical edge-index SHA-256 values in place from explicitly bound legacy PyTorch zip artifacts without importing torch or executing pickle.",
+  "input": {
+    "bindings_schema_version": "legacy-graph-topology-bindings-v1",
+    "required_graph_count": 8,
+    "required_circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "s5378", "spi", "tv80"],
+    "artifact_fields": ["circuit", "path", "sha256", "nodes", "edges"],
+    "symlinks_allowed": false,
+    "glob_allowed": false,
+    "path_escape_allowed": false
+  },
+  "format": {
+    "container": "pytorch-zip",
+    "pickle_execution_allowed": false,
+    "edge_storage_member": "<circuit>/data/1",
+    "byteorder_member": "<circuit>/byteorder",
+    "edge_dtype": "signed-int64",
+    "edge_shape": "2 x edges",
+    "canonicalization": "sorted unique [source,destination] pairs serialized as compact JSON plus LF"
+  },
+  "output": {
+    "schema_version": "legacy-graph-topology-receipt-v1",
+    "aggregate_only": true,
+    "raw_nodes_or_edges_allowed": false,
+    "training_execution_allowed": false
+  }
+}

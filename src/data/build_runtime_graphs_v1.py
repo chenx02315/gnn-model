@@ -220,6 +220,17 @@ def _topology_sha256(nodes, edge_index):
         separators=(",", ":")) + "\n").encode("utf-8"))
 
 
+def _edge_index_sha256(edge_index):
+    """Return the legacy-auditor canonical digest for an edge index."""
+    pairs = [(edge[0], edge[1]) for edge in edge_index]
+    if len(set(pairs)) != len(pairs):
+        _fail("DUPLICATE_EDGE_INDEX")
+    pairs = sorted(pairs)
+    encoded = (json.dumps([list(pair) for pair in pairs],
+                          separators=(",", ":")) + "\n").encode("utf-8")
+    return sha256_bytes(encoded)
+
+
 def _load_bindings(path, bindings_bytes, bindings_root, contract):
     document = _json_bytes(bindings_bytes, "BINDINGS_JSON_INVALID")
     if (set(document) != set(contract["input"]["top_level_fields"]) or
@@ -303,9 +314,25 @@ def build(bindings_json, bindings_root, output_root, contract_path=CONTRACT_PATH
     """Build a new graph package from explicit local bindings."""
     contract_bytes = _read_regular_bytes(contract_path)
     contract = _json_bytes(contract_bytes, "CONTRACT_JSON_INVALID")
+    bridge = contract.get("historical_topology_bridge", {})
+    output_contract = contract.get("output", {})
     if (contract.get("schema_version") != "runtime-graph-v1-contract" or
             contract.get("status") != "FROZEN_IMPLEMENTATION_ONLY" or
-            contract.get("output", {}).get("graph_schema_version") != "runtime-graph-v1" or
+            output_contract.get("graph_schema_version") != "runtime-graph-v1" or
+            output_contract.get("edge_index_sha256_emitted") is not True or
+            output_contract.get("edge_index_canonicalization") !=
+            "sorted unique [source,destination] pairs serialized as compact JSON plus LF" or
+            bridge.get("legacy_auditor_contract_schema") !=
+            "legacy-graph-topology-audit-v1-contract" or
+            bridge.get("legacy_auditor_contract_sha256") !=
+            "f3f969bd5a9cc4036f78cd983116ed6de419d22582567e4c894074a33c0f5bda" or
+            bridge.get("required_circuit_count") != 8 or
+            bridge.get("comparison_key") != "canonical_edge_index_sha256" or
+            bridge.get("local_comparison_key") != "edge_index_sha256" or
+            bridge.get("release_rule") !=
+            "all eight circuit digests must be exactly equal before historical_topology_parity_pass may become true" or
+            bridge.get("mismatch_or_missing_digest_status") !=
+            "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST" or
             contract.get("boundary", {}).get("no_lsf_or_tessent") is not True or
             contract.get("boundary", {}).get("no_outcome_or_runtime_fields") is not True or
             contract.get("boundary", {}).get("no_torch_dependency") is not True or
@@ -380,6 +407,7 @@ def build(bindings_json, bindings_root, output_root, contract_path=CONTRACT_PATH
                 "historical_feature_dim": expected["feature_dim"],
                 "historical_graph_sha256": expected["graph_sha256"],
                 "topology_sha256": topology_sha,
+                "edge_index_sha256": _edge_index_sha256(edge_index),
             }
         manifest_path = os.path.join(temporary, "graph_manifest.tsv")
         with open(manifest_path, "x", encoding="utf-8", newline="") as stream:
