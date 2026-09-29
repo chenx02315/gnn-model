@@ -1,0 +1,46 @@
+{
+  "schema_version": "runtime-training-source-readiness-v1",
+  "status": "DESIGN_FROZEN_AUDIT_ONLY",
+  "purpose": "Fail closed before constructing the immutable non-BLIND TRAIN/VALIDATION runtime source package.",
+  "required_roster": [
+    {"circuit": "s13207", "family": "iscas89_s13207", "role": "TRAIN"},
+    {"circuit": "s15850", "family": "iscas89_s15850", "role": "TRAIN"},
+    {"circuit": "s35932", "family": "iscas89_s35932", "role": "TRAIN"},
+    {"circuit": "s38417", "family": "iscas89_s38417", "role": "TRAIN"},
+    {"circuit": "aes_core", "family": "iwls_aes_core", "role": "TRAIN"},
+    {"circuit": "spi", "family": "iwls_spi", "role": "TRAIN"},
+    {"circuit": "s5378", "family": "iscas89_s5378", "role": "VALIDATION"},
+    {"circuit": "tv80", "family": "iwls_tv80", "role": "VALIDATION"}
+  ],
+  "source_rules": {
+    "roles_allowed": ["TRAIN", "VALIDATION"],
+    "blind_or_pilot_rows_allowed": false,
+    "attempt_id_unique_within_circuit": true,
+    "attempt_manifest_fields_exactly_runtime_schema_v2": true,
+    "join_attempt_ids_must_reference_bound_attempt_manifest": true,
+    "retry_order_status_required": "KNOWN_ORDER",
+    "retry_order_positive_integer_required": true,
+    "timeout_status_allowed": ["NO_TIMEOUT", "NOT_TIMEOUT", "TIMEOUT", "TIMED_OUT", "TIMEOUT_KILLED"],
+    "attempt_outcome_class_allowed": ["SUCCESS", "FAILURE", "TIMEOUT"],
+    "fastest_success_selection_allowed": false,
+    "unknown_status_inference_allowed": false,
+    "missing_attempt_omission_allowed": false
+  },
+  "receipt_policy": {
+    "aggregate_only": true,
+    "source_paths_allowed": false,
+    "run_ids_allowed": false,
+    "attempt_ids_allowed": false,
+    "candidate_or_outcome_rows_allowed": false,
+    "input_sha256_required": true
+  },
+  "pass_status": "PASS_SOURCE_PACKAGE_READY_FOR_INDEPENDENT_REVIEW",
+  "blocked_status": "BLOCKED_RETRY_ORDER_AND_OUTCOME_COMPLETENESS",
+  "execution_boundary": {
+    "training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "remote_access_allowed": false,
+    "package_release_allowed": false
+  }
+}

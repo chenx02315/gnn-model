@@ -1,0 +1,69 @@
+{
+  "schema_version": "runtime-training-source-readiness-seal-v1",
+  "status": "BLOCKED_RETRY_ORDER_AND_OUTCOME_COMPLETENESS",
+  "base_commit": "cc15d77bc6d070ad5a493864dc98026a0ab9e8df",
+  "scope": {
+    "circuits": 8,
+    "roles": {"TRAIN": 6, "VALIDATION": 2, "BLIND_TEST": 0, "PILOT": 0},
+    "attempt_count": 37264,
+    "join_row_count": 14251,
+    "joined_unique_attempt_count": 8166
+  },
+  "blocking_counts": {
+    "unknown_retry_order_count": 37264,
+    "invalid_retry_order_count": 37264,
+    "unknown_timeout_status_count": 37264,
+    "unknown_attempt_outcome_count": 35051,
+    "attempts_not_referenced_by_current_join": 29098,
+    "multi_attempt_retry_group_count": 1017
+  },
+  "multi_attempt_retry_groups": {
+    "s5378": {"group_count": 1010, "max_group_size": 3},
+    "s38417": {"group_count": 7, "max_group_size": 2}
+  },
+  "input_binding": {
+    "contract_sha256": "112ac06509a3381b929b49acb7a0e87b48d55e2eb4c8c2a65355f1ff3154b4b8",
+    "auditor_sha256": "f0af88f992ec0dd9d844e774aa27929321a770d26f437f7d6428a009baf52a0d",
+    "tests_sha256": "4bb628b7e4727a66ca8d31ffcf04e57f8d2b9087d4468b38fbdd97276e810e24",
+    "local_bindings_sha256": "89676908b6e0efccf298d6fb7949e08c41ccf804cfc516150ce80e126ab24830",
+    "aggregate_receipt_sha256": "0d8a804f9f344bd8a46a392d32bfb8d753f4eb67b65e0792d71d475e5610f317"
+  },
+  "interpretation": {
+    "runtime_evidence_missing": false,
+    "runtime_training_source_package_ready": false,
+    "singleton_retry_order_may_be_inferred_without_new_contract": false,
+    "exit_zero_may_be_inferred_as_atpg_success": false,
+    "fastest_success_or_selective_failure_drop_allowed": false,
+    "required_remediation": [
+      "recover or independently bind exact retry chronology for every source attempt",
+      "recover authoritative timeout and ATPG outcome classification without inference",
+      "construct action-attempt edges that account for every packaged attempt",
+      "rerun this gate and obtain an independent read-only review before package release"
+    ]
+  },
+  "verification": {
+    "focused_tests_run": 7,
+    "focused_tests_skipped": 1,
+    "focused_failures": 0,
+    "full_tests_run": 551,
+    "full_tests_skipped": 13,
+    "full_failures": 0,
+    "audit_exit_code": 2,
+    "audit_exit_code_semantics": "expected fail-closed blocked result",
+    "independent_review": "PASS_BLOCKED_SEAL_TRAINING_NOT_AUTHORIZED",
+    "independent_review_findings_closed": [
+      "local-root relative-path binding with UNC, escape, symlink and reparse rejection",
+      "all non-KNOWN_ORDER retry statuses included in unknown count",
+      "artifact hash and TSV parse consume the same opened bytes",
+      "contract and bindings parse and hash consume the same opened bytes"
+    ],
+    "residual_non_authorizing_note": null
+  },
+  "boundaries": {
+    "training_execution_allowed": false,
+    "package_release_allowed": false,
+    "blind_rows_read": false,
+    "lsf_or_tessent_submitted": false,
+    "remote_access_performed": false
+  }
+}

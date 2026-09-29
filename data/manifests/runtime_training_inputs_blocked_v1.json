@@ -1,6 +1,6 @@
 {
   "schema_version": "runtime-training-inputs-blocked-v1",
-  "status": "PASS_INPUT_AUDITS_PACKAGE_RELEASE_PENDING",
+  "status": "BLOCKED_SOURCE_PACKAGE_RETRY_AND_OUTCOME_COMPLETENESS",
   "base_commit": "a2bd2300c759ccbd2dfe21eb0995ceb9ac4127e1",
   "scope": {
     "circuits": [
@@ -71,14 +71,28 @@
       "independent_review": "PASS_B_TOPOLOGY_PARITY_LOCAL_EVIDENCE_CLOSED"
     }
   },
+  "source_package_readiness": {
+    "status": "BLOCKED_RETRY_ORDER_AND_OUTCOME_COMPLETENESS",
+    "seal": "data/manifests/runtime_training_source_readiness_v1_20260929.json",
+    "seal_sha256": "756389b723439cb5bfeb233a751506725eb1ba3464634aed424c59ffd00147f6",
+    "attempt_count": 37264,
+    "unknown_retry_order_count": 37264,
+    "unknown_timeout_status_count": 37264,
+    "unknown_attempt_outcome_count": 35051,
+    "attempts_not_referenced_by_current_join": 29098,
+    "multi_attempt_retry_group_count": 1017,
+    "training_data_may_be_imputed": false,
+    "fastest_success_selection_allowed": false,
+    "independent_review": "PASS_BLOCKED_SEAL_TRAINING_NOT_AUTHORIZED"
+  },
   "verification": {
     "focused_tests_run": 21,
     "focused_tests_skipped": 1,
     "focused_failures": 0,
-    "full_tests_run": 544,
-    "full_tests_skipped": 12,
+    "full_tests_run": 551,
+    "full_tests_skipped": 13,
     "full_failures": 0,
-    "independent_review": "PASS_A_DENOMINATOR_AND_B_TOPOLOGY_PACKAGE_RELEASE_PENDING"
+    "independent_review": "PASS_BLOCKED_SOURCE_PACKAGE_READINESS_TRAINING_NOT_AUTHORIZED"
   },
   "boundaries": {
     "training_execution_allowed": false,
