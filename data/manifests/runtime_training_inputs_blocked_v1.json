@@ -31,16 +31,21 @@
     "tests_sha256": "1118ea274ecdf1331fc6affe315eb13da4dc9c43d2411a71549de0e199fd14d8"
   },
   "graphs": {
-    "status": "BLOCKED_HISTORICAL_TOPOLOGY_DIGEST",
+    "status": "PASS_TOPOLOGY_PARITY_DIGEST_ONLY",
     "graph_count": 8,
     "historical_node_edge_count_parity_pass": true,
-    "historical_topology_parity_pass": false,
-    "historical_edge_digest_export_performed": false,
+    "historical_topology_parity_pass": true,
+    "historical_edge_digest_export_performed": true,
     "remote_digest_stdout_observed": "LEGACY_GRAPH_TOPOLOGY=PASS_DIGEST_ONLY graphs=8",
     "remote_receipt_sha256_observed": "0f1adf9c533dafdd303fe54fea78a2bb6210c36f7a5dff9030da339818c26672",
     "remote_wrapper_terminal_status_verified": false,
     "local_r7_receipt_sha256": "dbe2c6701b2bafa249bc69f888c20a2b0e350d5a9e18d904b539846ec1036d0c",
-    "required_next_evidence": "Fetch only the aggregate digest receipt, input SHA ledger, and small logs from the isolated B-side audit directory; independently verify the receipt and compare all eight canonical_edge_index_sha256 values exactly with local r7 edge_index_sha256 values.",
+    "required_next_evidence": null,
+    "remote_audit_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "remote_audit_stdout_sha256": "6e4e17343411f877665a2bfc8f9ac01b15d6ac111fe1d9c3784efc5b20467e9f",
+    "remote_input_ledger_sha256": "52c9190248d0bd026323935807bcb752bb8684e754113f892c1447baeb5b8aa7",
+    "remote_bindings_sha256": "6c0a2f42a13ccf76d478cc76a7061115ed2e42bb3f24cc7d21c1290105e7e845",
+    "topology_parity_receipt_sha256": "ed9967e8eca6c1b574a34d1ffafc62102e9103de363d35ede071feb1a77cd5d9",
     "contract_sha256": "c1fb2934147d4a28b291dff0417a3805b0a921e07b2f8b0a05beaf5b6af2ef24",
     "builder_sha256": "f2a4ebf80d340c663cbcd1878ab38d92159b520551c9c1abac079f42df29bc6d",
     "tests_sha256": "f6a6107320ab8481e36b8c767e779165b7c528f0edd95b557fd07ddd3a149ff2",
@@ -48,16 +53,17 @@
     "legacy_auditor_sha256": "12b53b6bb5da7f5dc0f9e32a02b28841dd729a87fceb3213b219bfe91e0ab6e9",
     "legacy_auditor_tests_sha256": "7fed669052c2924a7f46a57187d112fdc24dd586e255fd3da4c80b9ab194c17c",
     "topology_parity_comparator": {
-      "status": "DESIGN_FROZEN_REMOTE_RECEIPT_SHA_PENDING",
-      "remote_receipt_trust_anchor_sha256": null,
+      "status": "PASS_TOPOLOGY_PARITY_DIGEST_ONLY",
+      "remote_receipt_trust_anchor_sha256": "0f1adf9c533dafdd303fe54fea78a2bb6210c36f7a5dff9030da339818c26672",
       "local_receipt_trust_anchor_sha256": "dbe2c6701b2bafa249bc69f888c20a2b0e350d5a9e18d904b539846ec1036d0c",
-      "contract_sha256": "25a7e5cb72c0d4a2600d7bf88c1b6a5241a99a953d292e794e9e7664f207f999",
+      "contract_sha256": "7ba4ce2bcf9e2d0aaa3555ae9828473c14e9279b749ea4e73d98c0dc32e6cef6",
       "auditor_sha256": "1a7f9adb43665d0f3c2e1ca446b6d96a5dbc63d4a262d45d2a2b2bcc830d1b1b",
-      "tests_sha256": "2154a74b67f6023a65da9f21b03697bf4679bc770a583f367c3949b38453581a",
+      "tests_sha256": "c698da71fa403d8c30f10efc6c478599a6bce178a2059d13c62185fc6b9cfb42",
+      "receipt_sha256": "ed9967e8eca6c1b574a34d1ffafc62102e9103de363d35ede071feb1a77cd5d9",
       "focused_tests_run": 5,
       "focused_tests_skipped": 0,
       "focused_failures": 0,
-      "independent_review": "PASS_FAIL_CLOSED_IMPLEMENTATION_REMOTE_RECEIPT_UNVERIFIED"
+      "independent_review": "PASS_B_TOPOLOGY_PARITY_LOCAL_EVIDENCE_CLOSED"
     }
   },
   "verification": {
@@ -67,7 +73,7 @@
     "full_tests_run": 544,
     "full_tests_skipped": 12,
     "full_failures": 0,
-    "independent_review": "PASS_LOCAL_BRIDGE_REMOTE_RECEIPTS_UNVERIFIED"
+    "independent_review": "PASS_B_TOPOLOGY_PARITY_A_DENOMINATOR_RECEIPT_UNVERIFIED"
   },
   "boundaries": {
     "training_execution_allowed": false,

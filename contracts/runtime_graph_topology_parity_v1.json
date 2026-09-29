@@ -1,6 +1,6 @@
 {
   "schema_version": "runtime-graph-topology-parity-v1-contract",
-  "status": "DESIGN_FROZEN_REMOTE_RECEIPT_SHA_PENDING",
+  "status": "ACTIVE_VERIFIED_REMOTE_RECEIPT_SHA",
   "purpose": "Fail closed unless the verified legacy canonical edge-index digests exactly equal the blocked local runtime graph edge-index digests for the required roster.",
   "input": {
     "bindings_schema_version": "runtime-graph-topology-parity-bindings-v1",
@@ -35,7 +35,7 @@
     "training_execution_allowed": false
   },
   "trust_anchors": {
-    "remote_receipt_sha256": null,
+    "remote_receipt_sha256": "0f1adf9c533dafdd303fe54fea78a2bb6210c36f7a5dff9030da339818c26672",
     "local_receipt_sha256": "dbe2c6701b2bafa249bc69f888c20a2b0e350d5a9e18d904b539846ec1036d0c"
   },
   "output": {

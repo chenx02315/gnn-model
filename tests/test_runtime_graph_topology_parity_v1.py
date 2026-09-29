@@ -54,8 +54,16 @@ class RuntimeGraphTopologyParityV1Test(unittest.TestCase):
         path.write_text(json.dumps(value), encoding="utf-8")
         return path
 
+    def pending_contract(self):
+        value = json.loads((ROOT / "contracts" / "runtime_graph_topology_parity_v1.json").read_text(encoding="utf-8"))
+        value["status"] = "DESIGN_FROZEN_REMOTE_RECEIPT_SHA_PENDING"
+        value["trust_anchors"]["remote_receipt_sha256"] = None
+        path = self.temp / "pending-contract.json"
+        path.write_text(json.dumps(value), encoding="utf-8")
+        return path
+
     def test_pending_anchor_refuses_before_any_binding_or_evidence_io(self):
-        contract = str(ROOT / "contracts" / "runtime_graph_topology_parity_v1.json")
+        contract = str(self.pending_contract())
         missing_bindings = str(self.temp / "must-not-be-read.json")
         original = parity.read_regular_bytes
         with mock.patch.object(parity, "read_regular_bytes", wraps=original) as reader:
