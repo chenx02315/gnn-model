@@ -1,0 +1,37 @@
+{
+  "schema_version": "runtime-attempt-session-audit-v1",
+  "status": "AUDIT_ONLY_TRAINING_BLOCKED",
+  "scope": {
+    "roles_allowed": ["TRAIN", "VALIDATION"],
+    "circuits": ["s13207", "s15850", "s35932", "s38417", "aes_core", "spi", "s5378", "tv80"],
+    "blind_rows_allowed": false
+  },
+  "evidence_rules": {
+    "source_log_sha256_must_match_manifest": true,
+    "source_path_must_remain_under_bound_evidence_root": true,
+    "symlink_or_reparse_allowed": false,
+    "common_status_marker": "MAPPED_COMMON_ATPG_STATUS",
+    "incremental_status_marker": "MAPPED_INCREMENTAL_ATPG_STATUS",
+    "elapsed_footer": "GNU time Elapsed (wall clock) time",
+    "exit_footer": "GNU time Exit status",
+    "embedded_start_time": "Siemens software executing ... on ...",
+    "filesystem_mtime_as_chronology_allowed": false,
+    "absence_of_timeout_marker_as_no_timeout_allowed": false,
+    "exit_zero_as_atpg_success_allowed": false,
+    "one_file_one_attempt_assumption_allowed": false
+  },
+  "receipt_policy": {
+    "git_receipt_is_aggregate_only": true,
+    "detailed_nonblind_audit_stays_external": true,
+    "input_manifest_sha256_required": true,
+    "auditor_sha256_required": true
+  },
+  "execution_boundary": {
+    "read_only_source_access": true,
+    "training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "source_mutation_allowed": false,
+    "package_release_allowed": false
+  }
+}

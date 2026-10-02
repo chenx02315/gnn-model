@@ -1,0 +1,37 @@
+{
+  "schema_version": "runtime-training-package-v2-contract",
+  "status": "FROZEN_BUILD_AND_REVIEW_PENDING",
+  "purpose": "Build the family-isolated non-BLIND training package from the audited eight-circuit candidate, elapsed-runtime, denominator and graph evidence.",
+  "scope": {
+    "fixed_modes": ["H64", "M16", "F4"],
+    "allowed_roles": ["TRAIN", "VALIDATION"],
+    "blind_rows_allowed": false,
+    "pilot_rows_allowed": false
+  },
+  "runtime_label": {
+    "field": "policy_charged_runtime_s",
+    "source": "action_runtime_costs_v1.tsv",
+    "repeat_policy": "ARITHMETIC_MEAN_ALL_INVOCATIONS",
+    "fastest_success_selection_allowed": false,
+    "missing_runtime_imputation_allowed": false,
+    "ate_cycles_are_runtime_labels": false
+  },
+  "safety_and_endpoint": {
+    "d95_is_hard_constraint": true,
+    "epsilon": 0.01,
+    "epsilon_reference": "minimum total_cycles among measured D95-safe actions in the same circuit",
+    "total_cycles_role": "epsilon-near-optimal hit definition only"
+  },
+  "required_upstream_status": {
+    "candidate_space": "PASS_BUILD_REPEAT_AGGREGATION_PENDING",
+    "cost_independent_review": "PASS_COST_LABEL_GATE",
+    "denominator": "PASS",
+    "topology_parity": "PASS_TOPOLOGY_PARITY_DIGEST_ONLY"
+  },
+  "output": {
+    "features_fields": ["role", "family", "circuit", "action_uid", "action_scheme", "h_limit", "m_limit", "common_fault_count", "graph_key"],
+    "outcomes_fields": ["action_uid", "execution_status", "is_d95_feasible", "total_cycles", "policy_charged_runtime_s", "epsilon_hit"],
+    "provenance_fields": ["action_uid", "source_invocation_count", "attempt_session_count", "success_session_count", "failed_session_count", "aggregation_policy", "source_candidate_uids"],
+    "training_execution_allowed_before_independent_review": false
+  }
+}

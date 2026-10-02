@@ -1,0 +1,29 @@
+{
+  "schema_version": "formal-candidate-space-v2",
+  "status": "DESIGN_FROZEN_BUILD_ONLY",
+  "purpose": "Build one eight-circuit formal HF/HMF action space from immutable Phase2/3/4 measurement evidence without selecting runtime outcomes.",
+  "required_circuits": ["s13207", "s15850", "s35932", "s38417", "aes_core", "spi", "s5378", "tv80"],
+  "eligible_measurement_rule": {
+    "formal_stages": ["hf_coarse", "hmf_coarse", "hf_refine", "hmf_refine"],
+    "result_status": "PASS",
+    "formal_scheme": 1,
+    "f_patterns_in_action_key": false
+  },
+  "phase4_compatibility_gate": "Generated aes_core/spi/tv80 source invocations and action rows must exactly reproduce candidate_space_v1 semantics.",
+  "phase2_refine_candidate_rule": "When the historical refine table has no candidate column, assign the stable one-based source row order within that file.",
+  "deduplication_rule": "Group by circuit, HF/HMF, H and optional M; retain every source candidate UID and reject outcome conflicts.",
+  "pass_conditions": {
+    "circuit_roster_exact": true,
+    "source_candidate_uid_unique": true,
+    "action_uid_unique": true,
+    "outcome_conflict_count": 0,
+    "phase4_source_reproduction_exact": true,
+    "phase4_action_reproduction_exact": true
+  },
+  "execution_boundary": {
+    "training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "package_release_allowed": false
+  }
+}

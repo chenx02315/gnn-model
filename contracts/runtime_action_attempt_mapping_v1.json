@@ -1,0 +1,30 @@
+{
+  "schema_version": "runtime-action-attempt-mapping-v1",
+  "status": "DESIGN_FROZEN_AUDIT_ONLY",
+  "purpose": "Map every action-specific non-BLIND runtime session to its exact historical candidate invocation without selecting a repeat or dropping a failed/search attempt.",
+  "required_circuits": ["s13207", "s15850", "s35932", "s38417", "aes_core", "spi", "s5378", "tv80"],
+  "formal_sources": {
+    "hf_coarse": {"stage": "02_hf_coarse", "file": "02_hf_coarse__measurements.tsv", "scheme": "HF"},
+    "hmf_coarse": {"stage": "03_hmf_coarse", "file": "03_hmf_coarse__measurements.tsv", "scheme": "HMF"},
+    "hf_refine": {"stage": "04_integer_refine", "file": "04_integer_refine__hf_measurements.tsv", "scheme": "HF"},
+    "hmf_refine": {"stage": "04_integer_refine", "file": "04_integer_refine__hmf_measurements.tsv", "scheme": "HMF"}
+  },
+  "mapping_rules": {
+    "direct_h_m_f": "exact source result basename within the same circuit and mode; same-stage match is preferred, otherwise exactly one cross-stage manifest match is required for shared full-prefix evidence",
+    "f_search_probe": "exact circuit, stage, scheme, h_patterns and m_patterns parsed from the F run_id",
+    "shared_h_prefix": "charge the same observed H attempt to every historical HMF invocation that names it; reuse is not free",
+    "retry_sessions": "retain every remediated session and its known retry order",
+    "allowed_exclusions": ["OUT_OF_SCOPE_STAGE", "COARSE_M_FULL_PROBE", "NON_ELIGIBLE_SOURCE_INVOCATION", "OUT_OF_SCOPE_EVIDENCE_VERSION", "NON_TERMINAL_SEARCH_PROBE"],
+    "filesystem_time_allowed": false,
+    "fastest_repeat_selection_allowed": false,
+    "repeat_aggregation_allowed": false
+  },
+  "pass_status": "PASS_MAPPING_REPEAT_AGGREGATION_PENDING",
+  "blocked_status": "BLOCKED_ACTION_ATTEMPT_MAPPING",
+  "execution_boundary": {
+    "training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "package_release_allowed": false
+  }
+}

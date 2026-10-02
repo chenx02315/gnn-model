@@ -1,0 +1,25 @@
+{
+  "schema_version": "runtime-action-cost-aggregation-v1",
+  "status": "DESIGN_FROZEN_BUILD_ONLY",
+  "purpose": "Create leakage-free action runtime labels while retaining every mapped retry and failure session.",
+  "invocation_cost": "Sum wall_s over all mapped attempt sessions for one source_candidate_uid. Shared prefix attempts are charged wherever the audited mapping attaches them.",
+  "repeat_action_cost": "Arithmetic mean of complete invocation costs for the same deployable action.",
+  "diagnostics": ["population_stddev", "min_invocation_cost", "max_invocation_cost", "success_session_count", "failed_session_count"],
+  "forbidden": ["fastest_success", "minimum_repeat_selection", "failed_attempt_drop", "retry_drop", "ATE_cycles_as_runtime", "CPU_time_as_wall_time", "runtime_imputation"],
+  "pass_conditions": {
+    "mapping_receipt_status": "PASS_MAPPING_REPEAT_AGGREGATION_PENDING",
+    "candidate_hash_match": true,
+    "edge_hash_match": true,
+    "manifest_hashes_match": true,
+    "all_source_invocations_have_cost": true,
+    "all_actions_have_cost": true,
+    "repeat_count_match": true,
+    "wall_time_missing_or_invalid": 0
+  },
+  "execution_boundary": {
+    "training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "package_release_allowed": false
+  }
+}

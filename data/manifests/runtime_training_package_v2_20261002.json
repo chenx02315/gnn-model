@@ -1,0 +1,74 @@
+{
+  "schema_version": "runtime-training-package-v2-stage-seal",
+  "status": "PASS_DATASET_PACKAGE_GATE_TRAINER_PREFLIGHT_PENDING",
+  "date": "2026-10-02",
+  "scope": "Non-BLIND TRAIN and VALIDATION only; no model training, tuning, LSF, Tessent, PILOT, or BLIND access in this stage.",
+  "package": {
+    "path": "C:/Users/86155/Desktop/new lab/runtime_training_staging_20260928/runtime_training_package_v2_r1",
+    "manifest_sha256": "66c6776c033c87c2b41fa6cdeb05852e650eb1fe5173600fae2f0d2a8907eafc",
+    "independent_review_sha256": "64cde4f005380f63492abd4349e6719a2b02fab80ec27cc6305b1398956935d8",
+    "action_count": 2521,
+    "circuit_count": 8,
+    "family_count": 8,
+    "train_circuit_count": 6,
+    "validation_circuit_count": 2,
+    "repeat_action_count": 109,
+    "epsilon_hit_action_count": 17,
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac"
+  },
+  "verified_data_sha256": {
+    "candidate_space": "f55420e29e94ae74dff90f042c72fd7bd76ffa511b214ac89d7a238a18bd678e",
+    "normalized_measurements": "59be15d3cb9e0c3a1d96bc368472df419c4a3d26fafdf491563a8bd7639d503a",
+    "action_runtime_costs": "1c24dfb69195e8ed1e1e157029a3789e0b60544d092e50172afcc7a140a10a2e",
+    "mapping_edges": "d5b25fdd934a18a352c286f572172ad8ba79fa064cf70dbe3f68e8e44e0fdfea",
+    "features": "8a46094f0bfb7112ffca9cb098fd69f545d8dda0d37be3c03e3eff43cb13e05d",
+    "outcomes": "649955e188f687398f6eb579e4b39777ae5997f8584c1a9423d4287288c4dc3a",
+    "action_provenance": "ad05b15a4f1d172ecab1654542aa6ae8d96b1c79c4eb5e840182a82c729080e3",
+    "graph_manifest": "4422ce817f18c41bb2df55b066a5afed51ebfaab01261445883c5f2aaced89f3"
+  },
+  "implementation_sha256": {
+    "contracts/formal_candidate_space_v2.json": "e43bdf4064010460d7959f0cc23c612619a9394d3749d607f33d00b9624c5384",
+    "contracts/runtime_action_attempt_mapping_v1.json": "44ead5e8e73149758b6c0bb99f3a9a3041c0297cf35ef68ca48792af7db0d166",
+    "contracts/runtime_action_cost_aggregation_v1.json": "80f484f1ef24bfd5e55c85f66d8c60d07257e87ef11d6952a266e6ce2175a7f0",
+    "contracts/runtime_attempt_remediation_v2.json": "c72e35c6bd8e8d72bf3821f40767a0b2fff23b1e2fd7e4354ef0c351cdc46c68",
+    "contracts/runtime_attempt_session_audit_v1.json": "8aade8b904506288c279ac1fa3162413a2248d7b79fe5a76d343e3b44e2cd4ff",
+    "contracts/runtime_training_package_v2.json": "47afd693156a2362ca3b7ef11e3f73112a64670fee104a5c3f56dcb26529f4c1",
+    "src/data/build_formal_candidate_space_v2.py": "e8b3a49c0ff70fb69ef2e16e4c6794585f0d030862dbe80b52da429e080d8ed4",
+    "src/data/audit_runtime_action_attempt_mapping_v1.py": "fb8e3a175309f74dede80a33162df8d512fcffeb219b633781287739ad12b75e",
+    "src/data/aggregate_runtime_action_costs_v1.py": "3f147813782faae3010e60606a8a156c83df680dac3b7be67b0878243af9b08a",
+    "src/data/audit_runtime_action_cost_aggregation_v1.py": "5ba5c7051974fe05d90db972fc91305706b5e2528aae87ddf3bf4f84ff24421c",
+    "src/data/remediate_runtime_attempts_v2.py": "5db1dbb1792a04f9a5354ccc843475579be82d7374e0d465f95495068563394b",
+    "src/data/audit_runtime_attempt_sessions_v1.py": "baf216212234fd759e51cfd7ff26093087b71157b06d1fdf47981cd499ea37ae",
+    "src/data/build_runtime_training_package_v2.py": "5ff9fe4d14079f47dd979669ff72dd78c79b18ca7314185c2db6bf1f87747cc5",
+    "src/data/audit_runtime_training_package_v2.py": "ca82f433bae389129f088029a048e673bfee34098c52c93dd3c3a1bd9e41b6cc"
+  },
+  "verification": {
+    "focused_tests_run": 18,
+    "focused_failures": 0,
+    "focused_errors": 0,
+    "full_tests_run": 571,
+    "full_failures": 0,
+    "full_errors": 0,
+    "full_skipped": 13,
+    "independent_package_review": "PASS_DATASET_PACKAGE_GATE"
+  },
+  "gates": {
+    "all_actions_d95_safe": true,
+    "family_isolated": true,
+    "blind_rows_read": false,
+    "fastest_success_selection_used": false,
+    "missing_runtime_imputation_used": false,
+    "graph_topology_parity_pass": true,
+    "training_execution_allowed": false,
+    "lsf_or_tessent_allowed": false
+  },
+  "environment_preflight": {
+    "b_host": "10.161.89.11",
+    "b_storage_root": "/ssd/cjc",
+    "system_python": "3.11.2",
+    "required_ml_dependencies_present": false,
+    "reusable_environment_found_outside_protected_directory": false,
+    "protected_directory_accessed": false,
+    "next_gate": "freeze safe-by-construction trainer v2, create fresh isolated dependency environment, independently review, then authorize three fixed seeds"
+  }
+}

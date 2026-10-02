@@ -1,0 +1,49 @@
+{
+  "schema_version": "runtime-attempt-remediation-v2",
+  "status": "DESIGN_FROZEN_EXECUTION_PENDING",
+  "purpose": "Recover explicit non-BLIND attempt outcome, timeout status and retry order without dropping failures or selecting fastest successes.",
+  "authority": {
+    "session_audit_contract": "contracts/runtime_attempt_session_audit_v1.json",
+    "required_session_audit_status": "PASS_READ_ONLY_INVENTORY",
+    "required_manifest_roster": ["s13207", "s15850", "s35932", "s38417", "aes_core", "spi", "s5378", "tv80"]
+  },
+  "classification_rules": {
+    "success": "exact MAPPED_COMMON_ATPG_STATUS=PASS or MAPPED_INCREMENTAL_ATPG_STATUS=PASS plus GNU-time exit 0",
+    "timeout": "explicit TIMEOUT, TIMED_OUT or KILLED_FOR_TIMEOUT marker only",
+    "failure": "explicit non-PASS status, or nonzero exit plus one of the exact whitelisted deterministic error markers",
+    "whitelisted_non_timeout_errors": [
+      "ERROR: refusing to overwrite",
+      "Error: Incorrect argument",
+      "Error: Unable to open (or close) file"
+    ],
+    "exit_zero_as_success_allowed": false,
+    "absence_of_timeout_marker_alone_as_no_timeout_allowed": false,
+    "unknown_outcome_allowed": false
+  },
+  "session_rules": {
+    "session_terminator": "GNU-time Exit status footer",
+    "each_session_requires_exactly_one_elapsed_footer": true,
+    "each_session_requires_exactly_one_exit_footer": true,
+    "single_session_preserves_parent_attempt_id": true,
+    "multi_session_terminal_session_preserves_parent_attempt_id": true,
+    "earlier_session_id": "sha256(parent_attempt_id|session_index|source_log_sha256) prefix attempt_",
+    "all_sessions_retained": true
+  },
+  "retry_order_rules": {
+    "singleton_group_order": 1,
+    "cross_file_multi_attempt_order": "unique embedded Siemens execution start timestamp",
+    "same_file_multi_session_order": "GNU-time footer emission order",
+    "filesystem_mtime_allowed": false,
+    "unknown_or_tied_order_allowed": false,
+    "fastest_success_selection_allowed": false
+  },
+  "execution_boundary": {
+    "read_only_source_access": true,
+    "new_version_output_only": true,
+    "training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "source_mutation_allowed": false,
+    "package_release_allowed": false
+  }
+}
