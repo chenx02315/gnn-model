@@ -1,0 +1,50 @@
+{
+  "schema_version": "runtime-training-v2-independent-review",
+  "status": "PASS_TRAINER_CODE_GATE",
+  "reviewed_at": "2026-10-02",
+  "reviewer_role": "independent_read_only_agentfleet_reviewer",
+  "reviewed_base_commit": "284b8ddc906e592569139f59399f05cf51f09039",
+  "contract_sha256": "e936f7264fae75d766d0b18dcc3be5ffcba4c54a49aebdbcb46bf1e8cf636614",
+  "implementation_sha256": {
+    "src/models/runtime_training_v2.py": "83a67c0a95190bc60bcb9e0af929e803dcf4cd78f88a027927540a92abbd10c5",
+    "src/models/train_runtime_v2.py": "5dbe6d1c4c9f0c52c087e52ce6cb5e371e32dd7c4cd8ffd1b6062c43686b2b29",
+    "src/models/preflight_runtime_v2.py": "7367dadaade92abac3b01d600faa1430799fcc1e919d650dc3093fbdb5f1ff49",
+    "src/models/aggregate_runtime_v2.py": "ba9ff3b64bafb9ccf756d8c8c27765dcfeb9aadef4567949ee13a626c085982f"
+  },
+  "supporting_artifact_sha256": {
+    "src/data/split_runtime_v2_outcomes.py": "ca9ce985b6530c231a0a0914314432cf82bbc78059ec9483bca241d021463bd1",
+    "scripts/bootstrap_runtime_v2_b.sh": "2b2d47f7c2e292bbe42162af4ae35007377de50f6b2ec9d48f921bd48746cf34",
+    "requirements/runtime_v2.in": "dd21d8c70bd47e83c652dd7090dbaf4dddd36ee1a0add2d72b8dd8748b74d778",
+    "tests/test_runtime_training_v2.py": "5296b62618e8e8b6578e881add99dc4265abde4134733f34f07487f80ea5bce7",
+    "tests/test_runtime_v2_preflight.py": "495978c6953dde7f261e28ce47480c52f4a0000a69046862e8e5320ba5c4b093",
+    "tests/test_aggregate_runtime_v2.py": "3885d4d2c79c866a772178e1550dbd60c6cee1c3b10a832ccb60c89ce67233b8"
+  },
+  "review_findings": {
+    "d95_single_class_head_absent": true,
+    "graphsage_candidate_mlp_boundary_matches_contract": true,
+    "validation_outcomes_read_only_after_persisted_ranking_freeze": true,
+    "persisted_ranking_digest_rechecked_before_replay": true,
+    "train_validation_outcomes_physically_split": true,
+    "exact_role_family_mapping_enforced": true,
+    "three_fixed_seed_and_ensemble_anchors_enforced": true,
+    "protected_root_and_symlink_aliases_rejected_before_side_effects": true
+  },
+  "review_validation": {
+    "focused_tests_passed": 16,
+    "focused_tests_skipped_for_missing_local_ml_dependencies": 2,
+    "reviewer_py_compile": "PASS",
+    "reviewer_git_diff_check": "PASS",
+    "primary_full_regression_tests_passed": 587,
+    "primary_full_regression_tests_skipped": 15,
+    "primary_full_regression_status": "PASS"
+  },
+  "authorization_boundary": {
+    "code_gate_passed": true,
+    "linux_b_environment_installation_pending": true,
+    "synthetic_smoke_pending": true,
+    "formal_three_seed_training_allowed_only_after_environment_and_smoke_pass": true,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false,
+    "protected_root_access_allowed": false
+  }
+}

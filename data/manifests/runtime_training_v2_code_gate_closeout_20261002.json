@@ -1,0 +1,39 @@
+{
+  "schema_version": "runtime-training-v2-code-gate-closeout",
+  "status": "PASS_LOCAL_CODE_GATE_B_ENVIRONMENT_PENDING",
+  "base_commit": "284b8ddc906e592569139f59399f05cf51f09039",
+  "contract": "contracts/runtime_training_v2.json",
+  "contract_sha256": "e936f7264fae75d766d0b18dcc3be5ffcba4c54a49aebdbcb46bf1e8cf636614",
+  "independent_review": "data/manifests/runtime_training_v2_independent_review_20261002.json",
+  "independent_review_sha256": "baf64098cc8ee61641d7aa1970f8ea9567bcf9635d8f4c62cf7a1542380f1328",
+  "local_validation": {
+    "full_regression": "587 passed, 15 skipped",
+    "focused_independent_review": "16 passed, 2 dependency-only skips",
+    "python_compile": "PASS",
+    "shell_syntax_local": "UNAVAILABLE_RECHECK_ON_B",
+    "git_diff_check": "PASS"
+  },
+  "completed_gates": [
+    "safe_by_construction_objective_frozen",
+    "graphsage_and_candidate_mlp_implemented",
+    "xgboost_fair_baseline_implemented",
+    "role_separated_outcome_split_sealed",
+    "determinism_and_leakage_tests_implemented",
+    "independent_code_review_passed"
+  ],
+  "next_required_gates": [
+    "commit_and_push_exact_reviewed_artifacts",
+    "fresh_b_environment_bootstrap_under_ssd_cjc",
+    "exact_dependency_lock_and_environment_preflight",
+    "linux_shell_and_synthetic_smoke",
+    "independent_environment_evidence_check",
+    "three_fixed_seed_formal_training"
+  ],
+  "boundaries": {
+    "training_started": false,
+    "blind_accessed": false,
+    "lsf_or_tessent_submitted": false,
+    "protected_root_accessed": false,
+    "checkpoints_in_git": false
+  }
+}

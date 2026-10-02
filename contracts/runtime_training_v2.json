@@ -1,0 +1,145 @@
+{
+  "schema_version": "runtime-training-v2",
+  "status": "DESIGN_FROZEN_IMPLEMENTATION_REVIEW_PENDING",
+  "purpose": "Train a family-isolated safe-by-construction cost-aware action ranker that minimizes cumulative observed Tessent wall time to the first epsilon-near-optimal action.",
+  "trust_anchors": {
+    "stage_seal": "data/manifests/runtime_training_package_v2_20261002.json",
+    "stage_seal_sha256": "08c29d3ef4c316730b3b87a34fd3f355cd2084af2b54ba3a6cea806e1e827008",
+    "dataset_manifest_sha256": "66c6776c033c87c2b41fa6cdeb05852e650eb1fe5173600fae2f0d2a8907eafc",
+    "dataset_independent_review_sha256": "64cde4f005380f63492abd4349e6719a2b02fab80ec27cc6305b1398956935d8",
+    "features_sha256": "8a46094f0bfb7112ffca9cb098fd69f545d8dda0d37be3c03e3eff43cb13e05d",
+    "outcomes_sha256": "649955e188f687398f6eb579e4b39777ae5997f8584c1a9423d4287288c4dc3a",
+    "outcome_split_receipt_sha256": "000a57771c1ad7184c03a66eac86509f3496f4f8a6bad7646752be02134fe418",
+    "train_outcomes_sha256": "df3c9f370305027e895199049e4d282d6b2e76de3284abadd63e273dead21318",
+    "validation_outcomes_sha256": "79d89734db89d478c8a5d81aad023a934253318d95e8f3f9db994d87ab3ff1c3",
+    "graph_manifest_sha256": "4422ce817f18c41bb2df55b066a5afed51ebfaab01261445883c5f2aaced89f3",
+    "formal_runtime_membership_sha256": "c8f589d67d80470dcf49ffbcab51da763162e9ae82af0308b36d6771cbd97cac"
+  },
+  "scope": {
+    "fixed_modes": ["H64", "M16", "F4"],
+    "epsilon": 0.01,
+    "train_roles": ["TRAIN"],
+    "report_only_roles": ["VALIDATION"],
+    "forbidden_roles": ["PILOT", "BLIND_TEST"],
+    "train_circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "spi"],
+    "validation_circuits": ["s5378", "tv80"]
+    ,"exact_role_family_mapping": {
+      "TRAIN": {
+        "aes_core": "iwls_aes_core",
+        "s13207": "iscas89_s13207",
+        "s15850": "iscas89_s15850",
+        "s35932": "iscas89_s35932",
+        "s38417": "iscas89_s38417",
+        "spi": "iwls_spi"
+      },
+      "VALIDATION": {
+        "s5378": "iscas89_s5378",
+        "tv80": "iwls_tv80"
+      }
+    }
+  },
+  "safety": {
+    "construction": "Every action admitted by runtime-training-package-v2 is independently verified D95-safe before model training.",
+    "d95_head_present": false,
+    "reason": "A D95 head would have one class because all 2521 formal actions are D95-safe; it is statistically unidentifiable and must not be presented as learned safety.",
+    "model_may_override_candidate_safety": false,
+    "all_actions_d95_safe_required": true,
+    "unsafe_or_unknown_action_policy": "reject_before_feature_construction"
+  },
+  "features": {
+    "candidate": [
+      "scheme_hf",
+      "scheme_hmf",
+      "log1p_h_limit",
+      "log1p_m_limit",
+      "h_limit_fraction_of_circuit_max",
+      "m_limit_fraction_of_circuit_max",
+      "log1p_common_fault_count"
+    ],
+    "graph_raw": ["node_type", "cell_type", "sequential_flag", "edge_index"],
+    "node_type_buckets": 16,
+    "cell_type_hash_buckets": 64,
+    "cell_hash": "sha256_utf8_mod_bucket_count",
+    "normalization_fit_role": "TRAIN",
+    "identifier_as_feature_allowed": false,
+    "family_or_role_as_feature_allowed": false,
+    "outcome_or_runtime_as_feature_allowed": false
+  },
+  "targets": {
+    "epsilon_hit": "binary label defined by total_cycles <= 1.01 * same-circuit measured oracle cycles",
+    "cycles": "log1p(total_cycles/common_fault_count)",
+    "runtime": "log1p(policy_charged_runtime_s)",
+    "target_roles": ["TRAIN"],
+    "validation_targets_available_only_after_ranking_freeze": true
+  },
+  "graphsage": {
+    "implementation": "pure_pytorch_mean_aggregation_without_torch_geometric",
+    "layers": 2,
+    "hidden_dim": 32,
+    "graph_pool": "node_mean",
+    "candidate_mlp_hidden": [32, 32],
+    "fusion_mlp_hidden": [64, 32],
+    "dropout": 0.0,
+    "heads": ["epsilon_hit_logit", "normalized_cycles", "runtime"],
+    "epochs": 120,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "positive_class_weight": "train_negative_count_divided_by_train_positive_count",
+    "loss_weights": {"epsilon_hit": 1.0, "cycles": 1.0, "runtime": 1.0},
+    "early_stopping_allowed": false
+  },
+  "xgboost_baseline": {
+    "feature_boundary": "same allowlisted candidate scalar features; graph embedding and graph-derived scalars are excluded",
+    "models": ["epsilon_hit_classifier", "cycles_regressor", "runtime_regressor"],
+    "n_estimators": 300,
+    "max_depth": 4,
+    "learning_rate": 0.03,
+    "subsample": 1.0,
+    "colsample_bytree": 1.0,
+    "n_jobs": 1,
+    "tree_method": "hist"
+  },
+  "ranking": {
+    "methods": ["fixed_heuristic", "predicted_cycles", "cost_aware"],
+    "fixed_heuristic_order": ["scheme_hmf_desc", "h_limit_fraction_desc", "m_limit_fraction_desc", "action_uid_asc"],
+    "predicted_cycles_order": ["predicted_cycles_asc", "action_uid_asc"],
+    "cost_aware_score": "predicted_epsilon_hit_probability/max(predicted_runtime_s,1e-9)",
+    "cost_aware_order": ["cost_aware_score_desc", "predicted_cycles_asc", "action_uid_asc"],
+    "validation_ranking_must_be_frozen_before_outcome_access": true,
+    "primary_endpoint": "cumulative_observed_policy_charged_runtime_s_to_first_epsilon_hit",
+    "aggregation": "family_equal_macro_average",
+    "top_k": 10,
+    "no_hit_cost": "sum_observed_runtime_through_top_k"
+  },
+  "determinism": {
+    "seeds": [20260824, 20260825, 20260826],
+    "seed_selection_allowed": false,
+    "ensemble": "arithmetic_mean_predictions_across_all_three_fixed_seeds",
+    "python_hash_seed_equals_seed": true,
+    "torch_deterministic_algorithms": true,
+    "torch_threads": 1,
+    "xgboost_threads": 1,
+    "same_seed_prediction_sha256_must_match": true
+  },
+  "environment": {
+    "fresh_root_template": "/ssd/cjc/gnn_model_runtime_v2_<commit>_<timestamp>",
+    "fresh_root_must_not_exist": true,
+    "protected_root_forbidden": "/ssd/cjc/multimode_ate_gnn_v1",
+    "dependency_input": "requirements/runtime_v2.in",
+    "dependency_lock_name": "requirements-runtime-v2-lock.txt",
+    "python_major_minor": "3.11",
+    "checkpoint_in_git_allowed": false
+  },
+  "gates": {
+    "dataset_package_review_pass": true,
+    "trainer_tests_pass": false,
+    "leakage_tests_pass": false,
+    "determinism_tests_pass": false,
+    "fresh_environment_lock_frozen": false,
+    "synthetic_smoke_pass": false,
+    "independent_code_review_pass": false,
+    "formal_three_seed_training_allowed": false,
+    "blind_access_allowed": false,
+    "lsf_or_tessent_allowed": false
+  }
+}
