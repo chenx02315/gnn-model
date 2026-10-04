@@ -1,0 +1,18 @@
+{
+  "schema_version": "ranking-v4-synthetic-independent-review-v1",
+  "status": "PASS_SYNTHETIC_SUBPROCESS_EVIDENCE",
+  "reviewer": "ranking_evidence_review",
+  "code_review": "ranking_isolation_review: PASS synthetic-only integration code gate",
+  "execution_receipt_sha256": "f1faa7237bed0d7beb7e4e3fb429b51c74199542eee87a4090c9276fb22517c5",
+  "deployment_receipt_sha256": "a31d4a560c2a96230c76145d7599f0576c7d81659d111dcfa44cc7387fc09fb3",
+  "archive_sha256": "7ce79f15d746965b2bd830f6c59e91b6791c5574c34865f85f4c53bf422b08c9",
+  "worker_receipt_aggregate_sha256": "ad45f5c702e52fa19e3ecba3419dc112c631926d4f59698c3cbd962963e7779a",
+  "process_receipt_aggregate_sha256": "b53ccc7cd6aea6f29ce71128e2b755feb5929b4a5194c84eff6dbd42289de1dd",
+  "checks": {"overlay_files": 5, "base_code_files": 39, "subprocesses": 24, "unique_family_seed_units": 18, "identical_freeze_checkpoint_repeats": 6, "request_raw_and_canonical_binding": true, "generated_fixture_only": true, "persisted_freeze_replay": true, "all_process_exit_zero": true},
+  "linux_focused_tests": {"tests_run": 8, "skipped": 0, "failures": 0, "errors": 0},
+  "local_full_regression": {"tests_run": 661, "skipped": 22, "failures": 0, "errors": 0, "exit_code": 0},
+  "historical_pending_flag": "Original execution receipt is immutable; its independent_review_pending flag is superseded only by this SHA-bound independent receipt",
+  "environment": "Existing locked interpreter read-only shared, not a new independent venv",
+  "real_training_release": false,
+  "scientific_boundary": "Synthetic execution and determinism only; no real-data speedup or generalization claim"
+}

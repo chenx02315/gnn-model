@@ -10,6 +10,10 @@ v4 只将 CandidateMLP 的拟合排序对改为“同家族近优动作优先于
 
 当前纯 Python 模块只构造和核验 recipe，不拟合模型，不读取真实数据，也不绕过旧 runner 的冻结门禁。不能将纯函数测试称为训练完成或泄漏端到端验证。
 
+后续已接入独立的 synthetic-only worker：只接收拟合家族 cycles、全部候选 allowlist 特征，留出 cycles 和 runtime 不进入请求。旧 MLP 的架构、120 epochs、Adam 参数与标准化方法直接复用；仅排序对改变。CLI 核验原始请求 SHA，并将 raw/canonical request SHA、pair recipe SHA 和 freeze SHA 写入回执。先保存 checkpoint 和持久化 freeze，再由合成 evaluator 读取冻结排序并选择留出生成标签。
+
+本地 worker 的4项测试采用 fake fit/predict，不冒充真正神经拟合。Linux 合成 harness 另运行18个唯一家族/seed组合和6次同seed重复，核对排序及checkpoint SHA；合成数据只有每家族3个动作，所以即使命中也没有科学性能含义。B环境使用既有锁定解释器，只读共享依赖，不宣称新建独立venv。
+
 ## 连续执行清单
 
 1. 封存 v3 的全部结果、磁盘 freeze 连接和独立审计；保留历史证据。

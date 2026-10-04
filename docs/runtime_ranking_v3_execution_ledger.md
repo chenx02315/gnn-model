@@ -84,3 +84,15 @@ r5已完成19个不同测试，零跳过、失败、错误；直接worker54次�
 自动进入v4本地设计：仅改变CandidateMLP近优正负排序对，固定旧epsilon/K/seed/特征与架构参数，家族等权、SHA确定性工程cap。v3-r2合同为历史证据，不覆盖；另建v4合同与纯函数合成测试。该模块没有训练runner或实际执行权限，后续集成/合成闭环/新release不冒充已完成。
 
 v4本地kernel独立复核PASS：4项纯合成测试通过，包括准确epsilon、非法输入拒绝、超cap置换确定性、家族等权及评分方向。最新全量回归657 tests、22 skips、0 failures/errors、exit0（58.965s）。只封存本地实现，不宣称v4实际训练、泄漏端到端门禁或耗时改善。
+
+## 2026-10-05：v4 synthetic-only worker 与实际 Linux 合成闭环
+
+已实现新worker和固定合成harness，不改封存v3代码。worker严格拒绝非synthetic scope、额外字段、留出cycles/非法数值；fit normalizer只使用拟合家族。沿用旧CandidateMLP架构、120 epochs、Adam及seed，仅改变质量排序对。CLI将真实读取request的raw SHA与canonical SHA写入回执，先保存checkpoint/持久化freeze，再由harness评估留出生成标签。
+
+独立代码复核PASS后，在全新B目录`/ssd/cjc/gnn_model_ranking_v4_synthetic_445af8f_20261005_r1`执行实际神经模型子进程。仅克隆既有新实验的39个代码文件并叠加5个新代码文件，不读取其真实数据；7319-byte tar.gz经SHA、5条目、单文件与解包总字节门禁后提取。环境复用旧锁定venv解释器、禁止写pyc，并非新建独立依赖。
+
+实际合成18个家族/seed组合加6次相同seed复跑，24子进程全部exit0，重复freeze payload与model.pt SHA一致。生成数据每家族3候选，不能用合成命中率主张效果。execution receipt SHA为`f1faa7237bed0d7beb7e4e3fb429b51c74199542eee87a4090c9276fb22517c5`；deployment SHA为`a31d4a560c2a96230c76145d7599f0576c7d81659d111dcfa44cc7387fc09fb3`。
+
+本地完整回归661 tests、22 skips、0 failures/errors、exit0；本地8项kernel/worker测试中神经调用使用fake adapter，不冒充本地ML执行。Linux实际24次拟合是另一个证据层。结果独立回读正封存；真实v4 runner/execution release尚未建立，不启动真实拟合，不打开VALIDATION/BLIND、A或LSF/Tessent。
+
+独立结果回读现已PASS：5个overlay/39个base code SHA、24组request raw/canonical连接、固定argv与exit0、24组持久化freeze再评估、6组重复checkpoint/排序全部核对一致。Linux同环境8项focused测试0skip/0fail/0error。原始execution receipt的pending标记不覆盖，由新增SHA-bound independent review回执消除本阶段审核挂起；不是实时训练release。

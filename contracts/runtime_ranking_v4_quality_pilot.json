@@ -1,6 +1,6 @@
 {
   "schema_version": "ranking-v4-quality-pilot-design-1",
-  "status": "PASS_LOCAL_KERNEL_REVIEW_NO_REAL_TRAINING_RELEASE",
+  "status": "PASS_INDEPENDENT_SYNTHETIC_GATE_NO_REAL_TRAINING_RELEASE",
   "purpose": "Test whether prioritizing within-family near-optimal versus non-near-optimal pairs improves held-family top-10 quality ranking",
   "hypothesis_not_established_cause": "Continuous regret pairs may dilute scarce near-optimal distinctions",
   "fixed_modes": ["H64", "M16", "F4"],
@@ -12,7 +12,9 @@
   "role": "TRAIN",
   "families": ["iscas89_s13207", "iscas89_s15850", "iscas89_s35932", "iscas89_s38417", "iwls_aes_core", "iwls_spi"],
   "evaluation": "Six leave-one-family-out folds; primary descriptive result excludes exhaustive s35932; seeds are not independent families",
-  "changed_component": "CandidateMLP quality pair construction only; runner integration is not yet implemented",
+  "changed_component": "CandidateMLP quality pair construction; synthetic-only worker and subprocess harness implemented, real runner/release not implemented",
+  "synthetic_worker_scope": "RANKING_V4_SYNTHETIC_ONLY",
+  "synthetic_grid": {"unique_family_seed_count": 18, "additional_determinism_repeats": 6, "subprocess_count": 24},
   "pair_input_fields": ["action_uid", "family", "total_cycles"],
   "pair_order": "SHA-256 canonical family and positive/negative UID pair, deterministic tie-break",
   "maximum_pairs_per_fitting_family": 4096,

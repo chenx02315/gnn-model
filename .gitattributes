@@ -73,3 +73,8 @@ scripts/ranking_v4_near_optimal_pairs.py text eol=lf
 tests/test_ranking_v4_near_optimal_pairs.py text eol=lf
 contracts/runtime_ranking_v4_quality_pilot.json text eol=lf
 data/manifests/ranking_v4_*_20261005.json -text
+src/models/ranking_v4_training_worker.py text eol=lf
+tests/test_ranking_v4_training_worker.py text eol=lf
+scripts/verify_ranking_v4_synthetic.py text eol=lf
+scripts/build_ranking_v4_synthetic_bundle.py text eol=lf
+scripts/deploy_ranking_v4_synthetic.py text eol=lf
