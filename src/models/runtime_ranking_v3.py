@@ -61,6 +61,8 @@ def transform(matrix, normalizer):
         raise ValueError('NORMALIZER_SHAPE')
     if any(len(r)!=len(FEATURES) for r in matrix):
         raise ValueError('FEATURE_SHAPE')
+    mean=tuple(finite(m) for m in mean)
+    std=tuple(finite(s,positive=True) for s in std)
     return tuple(tuple((finite(v)-m)/s for v,m,s in zip(r,mean,std)) for r in matrix)
 
 def fitting_targets(rows, outcomes, fold):

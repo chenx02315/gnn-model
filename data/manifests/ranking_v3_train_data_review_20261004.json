@@ -1,0 +1,14 @@
+{
+  "status": "PASS_DATA_GATE_PACKAGE_ONLY",
+  "reviewer": "/root/ranking_isolation_review",
+  "review_mode": "independent_remote_read_only_new_package_only",
+  "package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "source_sha256": "b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c",
+  "train_actions": 1706,
+  "graphs": 6,
+  "fold_held_counts": {"iscas89_s13207":295,"iscas89_s15850":276,"iscas89_s35932":10,"iscas89_s38417":39,"iwls_aes_core":350,"iwls_spi":736},
+  "gates": {"source_anchor_binding":true,"shard_hashes":true,"exact_uid_join":true,"train_only_roles":true,"all_d95_safe_success":true,"positive_finite_cycles_and_charged_runtime":true,"outcome_free_graphs":true},
+  "source_directory_rehashed_by_reviewer": false,
+  "formal_training_executed": false,
+  "blind_accessed": false
+}

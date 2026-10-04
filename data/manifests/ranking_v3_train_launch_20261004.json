@@ -1,0 +1,12 @@
+{
+  "status": "STARTED",
+  "pid": 2050273,
+  "started_unix": 1791126640.3392007,
+  "source_archive_sha256": "780d244ecc09218943b0d61bbe789626eda59bc6c96ddf71b61ec1f70d56b3b1",
+  "release_sha256": "ad6b7721ae543cb0eb37765394d249922a6a114d49ecbb78d46b006d9a285205",
+  "package_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "launcher_sha256": "e4b5f3f07a3a7373558ebc801d8b9a85f8b67b229eebda6d3665c14f02cd9b9e",
+  "retries": 0,
+  "lsf_tessent": false,
+  "blind": false
+}

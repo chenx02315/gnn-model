@@ -36,3 +36,31 @@
 - 本地回传核验通过：原始日志digest、父子回执连接、封存源码清单、扩展测试源码digest均一致，详见`data/manifests/ranking_v3_synthetic_integrity_20261004.json`。此项是执行者完整性核验，不是独立代码复核。
 
 下一节点为物理fold层、模型接口和证据的独立只读复核；之后才能申请真实TRAIN数据release。独立复核及正式release仍未通过，BLIND与正式训练保持关闭。合成PASS不提供近优命中率或累计ATPG耗时改善的科学证据。
+
+## 后续授权与 r2 固定执行入口
+
+用户已授权：独立复核通过后不逐节点暂停，继续TRAIN-only数据导出、门禁和六折实验。BLIND、VALIDATION标签和新增LSF/Tessent不在此次范围。
+
+独立复核发现并推动修复：扩展启动器/子回执缺固定hash绑定；通用回调不足以证明持久化冻结；normalizer未严格拒绝非法尺度；实际源导出与evaluator回执字段不兼容。历史合成回执不覆盖，新增r2完整性回执封存。
+
+新固定worker子进程只接收拟合标签、全部候选特征和无outcome图；固定evaluator在ranking文件fsync及完整fold SHA回读后才打开留出标签。此为科研数据流防泄漏，不宣称阻挡恶意同用户代码。真实源导出绑定已审核v2输入摘要，仅投影六TRAIN家族；允许读取既有features/graph manifest中的VALIDATION元数据以筛选，但不读取其标签或图JSON。
+
+代码独立复核已PASS。B端r4新目录23次测试执行零跳过/失败，其中4次是被重复发现的exporter测试，故只有19个不同测试；直接worker覆盖54模型拟合+18启发式，子进程端到端仅覆盖18启发式。该范围已独立封存。为了验证所有正式模型的子进程路径，r5正执行全部72个toy子进程/评估流程，且移除了重复测试发现。r5通过并独立封存前，不使用预备source release导出真实数据。
+
+### r5 合成闭环和真实数据门禁已完成
+
+r5已完成19个不同测试，零跳过、失败、错误；直接worker54次模型拟合+18启发式，完整子进程54次模型+18启发式端到端，已独立readback封存。新B正式目录`/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1`依赖预检PASS，仍使用新venv共享只读锁定依赖。
+
+真实TRAIN-only导出已执行，source SHA `b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c`，package receipt SHA `964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868`。独立审查实际新包的1706 UID、六图、24 shard、六fold互斥/全集、D95与正finite cycles/runtime全部PASS。审核只重读新包，原源文件SHA由固定exporter核验，不冒充第二次源目录复哈希。
+
+本地focused回归47 tests、4个缺ML依赖skip、零失败；标准`python -m unittest discover -s tests -q`全回归退出0。自建staging回归wrapper先因模块搜索路径失败，失败日志保留；不改模型代码，改用标准命令完成全回归。skip不充作B ML PASS。
+
+执行release已create-once并绑定r5代码/ML回执、独立data review、package SHA和固定源码清单，最终独立链接检查进行中。只有该检查PASS后才启动一次性固定训练；不自动重试、不覆盖checkpoint、BLIND/VALIDATION标签保持关闭。
+
+### 真实 TRAIN-only 六折实验已启动
+
+最终独立复核已返回 `PASS_TRAIN_ONLY_EXECUTION_RELEASE`。固定执行release SHA为 `ad6b7721ae543cb0eb37765394d249922a6a114d49ecbb78d46b006d9a285205`。上述“检查进行中”是历史节点，不再是当前阻塞。
+
+新B目录已启动一次性监督进程 PID `2050273`，回执见 `ranking_v3_train_launch_20261004.json`。预期六家族 × 三固定seed × 四方法，共72份评估（54次模型拟合，18次启发式）。最新现场检查为进程存活、12/72完成；这不是最终结果，不据此宣称命中率或ATPG耗时改善。
+
+用户授权已覆盖复核通过后的自动衔接：运行监控 -> 完整回执/摘要核验 -> 独立结果审计 -> 中文结果汇总 -> 版本同步。不逐步等待“继续”。仍不打开BLIND/VALIDATION标签，不新增LSF/Tessent或自动重试；checkpoint保留B端，Git只收代码、合同、小型指标和摘要。

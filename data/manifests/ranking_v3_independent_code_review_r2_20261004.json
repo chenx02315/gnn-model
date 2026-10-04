@@ -1,0 +1,26 @@
+{
+  "status": "PASS_CODE_GATE",
+  "reviewer": "/root/ranking_isolation_review",
+  "role": "terra_reviewer",
+  "review_mode": "independent_read_only",
+  "code_inventory_receipt": "data/manifests/ranking_v3_real_entrypoint_gate_20261004.json",
+  "resolved_findings": [
+    "formal fixed worker/evaluator replaces injectable callbacks",
+    "persisted ranking readback precedes held-label access",
+    "normalizer requires finite means and finite strictly positive scales",
+    "single-buffer SHA/parse for real package shards",
+    "external SHA-bound release and anchored source loader",
+    "consistent exporter/evaluator source and graph receipt schema",
+    "bounded VALIDATION metadata read-and-filter exception explicitly disclosed"
+  ],
+  "evidence_reviewer": "/root/ranking_evidence_review",
+  "r2_synthetic_integrity_review": "PASS",
+  "r4_synthetic_seal_review": "PASS_BOUNDED_DIRECT_WORKER_AND_BASELINE_SUBPROCESS",
+  "r5_all_model_subprocess_review": "PENDING",
+  "threat_model": "audited scientific data flow; not malicious same-user OS isolation",
+  "real_source_export_executed": false,
+  "real_data_gate_pass": false,
+  "formal_training_executed": false,
+  "blind_accessed": false,
+  "training_release": false
+}

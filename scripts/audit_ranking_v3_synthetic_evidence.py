@@ -7,6 +7,9 @@ import tarfile
 
 ARCHIVE_SHA = 'a928e34f7674378c7e8a41ddc95873e3f0cf76bcab0cec7e43a358ff370410cd'
 PARENT_SHA = '43aca787fd8302e164a2b7a56e5620859054acc416efc54e0fd2b7277b954400'
+GRID_SHA = '69c8943dfc2a37feb6f62e6398fc5fcf323528f9c1f8ee24a01ae6b1b2f55175'
+LAUNCHER_SHA = '9434073a1e68ad6eecc1b3aae2ea45160457816b28f7e869acb706952f18c56c'
+EXTENSION_SHA = 'f9e37d36a325e629c4df5bb0063feaefc7c25f4b0b669a6b919e29d68fa6c39f'
 
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -19,6 +22,9 @@ def audit(stage, extension):
     stage = Path(stage)
     require(digest(stage / 'source.tar.gz') == ARCHIVE_SHA, 'archive digest')
     require(digest(stage / 'receipt.json') == PARENT_SHA, 'parent receipt digest')
+    require(digest(stage / 'followup/receipt.json') == GRID_SHA, 'grid receipt digest')
+    require(digest(stage / 'followup/run_full_grid.py') == LAUNCHER_SHA, 'launcher digest')
+    require(digest(stage / 'followup/full_grid_test.py') == EXTENSION_SHA, 'sealed extension digest')
     parent = json.loads((stage / 'receipt.json').read_text())
     child = json.loads((stage / 'followup/receipt.json').read_text())
     for receipt, count, log in ((parent, 30, stage / 'tests.log'),
@@ -45,6 +51,9 @@ def audit(stage, extension):
             'grid_receipt_sha256': digest(stage / 'followup/receipt.json'),
             'archive_sha256': ARCHIVE_SHA,
             'extension_sha256': child['extension_sha256'],
+            'launcher_sha256': LAUNCHER_SHA,
+            'audit_revision': 2,
+            'audit_script_sha256': digest(Path(__file__)),
             'tests': [30, 3], 'skips': 0, 'failures': 0, 'errors': 0,
             'generated_data_grid_fits': 54,
             'independent_code_review': False, 'formal_release': False}

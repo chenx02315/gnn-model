@@ -1,0 +1,11 @@
+{
+  "status": "PASS_STANDARD_FULL_REGRESSION",
+  "command": "D:\\Python\\Python313\\python.exe -m unittest discover -s tests -q",
+  "exit_code": 0,
+  "tool_session_id": 85405,
+  "focused_tests": {"testsRun":47,"skipped":4,"failures":0,"errors":0},
+  "skips_are_ml_gate_pass": false,
+  "ml_gate_evidence": "data/manifests/ranking_v3_real_entrypoint_gate_r5_20261004.json",
+  "retained_wrapper_failure": "staging/v3_real_entrypoint_synthetic_r5_20261004/local_regression.log",
+  "wrapper_failure_reason": "running a staging script did not include repo root on sys.path; canonical unittest module invocation passed without modifying model code"
+}

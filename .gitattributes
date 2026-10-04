@@ -39,3 +39,26 @@ scripts/audit_ranking_v3_synthetic_evidence.py text eol=lf
 tests/test_ranking_v3_real_synthetic.py text eol=lf
 tests/test_ranking_v3_synthetic_evidence.py text eol=lf
 data/manifests/ranking_v3_synthetic_*_20261004.json text eol=lf
+src/models/runtime_ranking_v3.py text eol=lf
+src/models/runtime_training_v2.py text eol=lf
+src/models/preflight_runtime_v2.py text eol=lf
+src/models/neural_ranking_v3.py text eol=lf
+src/models/xgboost_ranking_v3.py text eol=lf
+src/models/run_runtime_ranking_v3_real.py text eol=lf
+src/models/ranking_v3_training_worker.py text eol=lf
+src/models/ranking_v3_freeze_io.py text eol=lf
+src/data/ranking_v3_real_fold_package.py text eol=lf
+scripts/export_ranking_v3_real_inputs.py text eol=lf
+scripts/run_ranking_v3_real_experiment.py text eol=lf
+scripts/seal_ranking_v3_entrypoint.py text eol=lf
+contracts/runtime_ranking_v3_r2.json text eol=lf
+requirements/runtime_v2.lock.txt text eol=lf
+tests/test_ranking_v3_real_fold_package.py text eol=lf
+tests/test_runtime_ranking_v3_real_runner.py text eol=lf
+tests/test_export_ranking_v3_real_inputs.py text eol=lf
+tests/test_ranking_v3_training_worker.py text eol=lf
+tests/test_ranking_v3_real_experiment.py text eol=lf
+# Raw review/release receipts are externally SHA-256 anchored: preserve bytes.
+data/manifests/ranking_v3_*_20261004.json -text
+scripts/seal_ranking_v3_entrypoint_r5.py text eol=lf
+scripts/create_ranking_v3_training_release.py text eol=lf

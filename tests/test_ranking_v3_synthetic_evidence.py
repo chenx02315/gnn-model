@@ -22,6 +22,8 @@ class EvidenceTests(unittest.TestCase):
         for name in ('src/__init__.py', 'src/models/__init__.py', 'src/data/__init__.py', 'tests/__init__.py'):
             inventory[name] = hashlib.sha256(b'').hexdigest()
         (root / 'extension.py').write_bytes(b'# extension\n')
+        (root / 'followup/full_grid_test.py').write_bytes(b'# extension\n')
+        (root / 'followup/run_full_grid.py').write_bytes(b'# launcher\n')
         base = dict(scope='GENERATED_SYNTHETIC_NO_EXTERNAL_DATA', status='PASS',
                     skipped=0, failures=0, errors=0, real_circuit_rows_read=False,
                     blind_accessed=False, formal_training=False)
@@ -39,7 +41,10 @@ class EvidenceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder); self.make_stage(root)
             with patch.object(verifier, 'ARCHIVE_SHA', verifier.digest(root / 'source.tar.gz')), \
-                 patch.object(verifier, 'PARENT_SHA', verifier.digest(root / 'receipt.json')):
+                 patch.object(verifier, 'PARENT_SHA', verifier.digest(root / 'receipt.json')), \
+                 patch.object(verifier, 'GRID_SHA', verifier.digest(root / 'followup/receipt.json')), \
+                 patch.object(verifier, 'LAUNCHER_SHA', verifier.digest(root / 'followup/run_full_grid.py')), \
+                 patch.object(verifier, 'EXTENSION_SHA', verifier.digest(root / 'extension.py')):
                 self.assertEqual(verifier.audit(root, root / 'extension.py')['status'], 'PASS_SYNTHETIC_EVIDENCE_INTEGRITY')
                 (root / 'followup/tests.log').write_bytes(b'tampered')
                 with self.assertRaisesRegex(ValueError, 'log digest'):
@@ -52,9 +57,25 @@ class EvidenceTests(unittest.TestCase):
             record['skipped'] = 1
             (root / 'followup/receipt.json').write_text(json.dumps(record))
             with patch.object(verifier, 'ARCHIVE_SHA', verifier.digest(root / 'source.tar.gz')), \
-                 patch.object(verifier, 'PARENT_SHA', verifier.digest(root / 'receipt.json')):
+                 patch.object(verifier, 'PARENT_SHA', verifier.digest(root / 'receipt.json')), \
+                 patch.object(verifier, 'GRID_SHA', verifier.digest(root / 'followup/receipt.json')), \
+                 patch.object(verifier, 'LAUNCHER_SHA', verifier.digest(root / 'followup/run_full_grid.py')), \
+                 patch.object(verifier, 'EXTENSION_SHA', verifier.digest(root / 'extension.py')):
                 with self.assertRaisesRegex(ValueError, 'failures/skips'):
                     verifier.audit(root, root / 'extension.py')
+
+    def test_child_receipt_and_launcher_substitution(self):
+        for target, message in (('followup/receipt.json', 'grid receipt digest'),
+                                ('followup/run_full_grid.py', 'launcher digest')):
+            with tempfile.TemporaryDirectory() as folder:
+                root = Path(folder); self.make_stage(root)
+                with patch.object(verifier, 'ARCHIVE_SHA', verifier.digest(root / 'source.tar.gz')), \
+                     patch.object(verifier, 'PARENT_SHA', verifier.digest(root / 'receipt.json')), \
+                     patch.object(verifier, 'GRID_SHA', verifier.digest(root / 'followup/receipt.json')), \
+                     patch.object(verifier, 'LAUNCHER_SHA', verifier.digest(root / 'followup/run_full_grid.py')):
+                    (root / target).write_bytes(b'replaced')
+                    with self.assertRaisesRegex(ValueError, message):
+                        verifier.audit(root, root / 'extension.py')
 
 if __name__ == '__main__':
     unittest.main()

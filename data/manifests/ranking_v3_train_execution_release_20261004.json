@@ -1,0 +1,42 @@
+{
+  "status": "PASS_TRAIN_ONLY_EXECUTION_RELEASE",
+  "independent_review_pass": true,
+  "data_gate_pass": true,
+  "roles": [
+    "TRAIN"
+  ],
+  "source_sha256": "b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c",
+  "reviewed_sources": {
+    "scripts/run_ranking_v3_real_experiment.py": "f9e29a1b0a4419febb4dd0d0263f61cb0d50de9dec250701ebcfd8ed4f11b161",
+    "scripts/export_ranking_v3_real_inputs.py": "f7af2ef20ffac7a99fecb8fb954e8624562410cebe66308871f072068e8a4392",
+    "src/data/ranking_v3_real_fold_package.py": "cb44a4e8f4fa0f9e2a1e88be31f948d013e96585c84c1ece603aa894d924a3cd",
+    "src/models/ranking_v3_training_worker.py": "cfef3f36d0d12780828b28b43111414ee56db15e340b84433004ec509da276c4",
+    "src/models/runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c",
+    "src/models/run_runtime_ranking_v3_real.py": "99aaaaf3ebf64daffb0eba386b7d3a2f46b0c80bae37217af65a2158135b3229",
+    "src/models/neural_ranking_v3.py": "1d3edf6c9d4605c438c1d683274ff3bc85cf0d87d1b57c53d79649aafcff69c3",
+    "src/models/xgboost_ranking_v3.py": "93790f5d7b60a521641fd110aa5cb4a64c8f645c323c733c798c99cceacc0fcb",
+    "src/models/ranking_v3_freeze_io.py": "4f904a6e4e553f39e4d9cecf4d41bad50f1fe826f60ffda4d5a3f5a9a9dcd58d",
+    "src/models/runtime_training_v2.py": "83a67c0a95190bc60bcb9e0af929e803dcf4cd78f88a027927540a92abbd10c5",
+    "src/models/preflight_runtime_v2.py": "446e16b20082db2d940d0ffe3cb8ec1ff14d78a81d802d5fd6a96c67d90e7028",
+    "requirements/runtime_v2.lock.txt": "a9427b7cbf01048a317009dcf0f625ace51cc739b4e7e2e626a17166ed14c96f"
+  },
+  "code_ml_gate_receipt_sha256": "0ccb1d47f89d26b07987ee4c2113ab1d601ea1503f99d2b75daf3dd735e44ec2",
+  "data_review_receipt_sha256": "96f3cae59dda31129ea6d2a7302a73633819850c4924f92509386523de291afd",
+  "package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "user_authorization": "continue automatically after independent review and data gates",
+  "methods": [
+    "candidate_mlp",
+    "graphsage",
+    "xgboost",
+    "fixed_heuristic"
+  ],
+  "seeds": [
+    20260824,
+    20260825,
+    20260826
+  ],
+  "training_release": true,
+  "blind_allowed": false,
+  "validation_allowed": false,
+  "lsf_tessent_allowed": false
+}
