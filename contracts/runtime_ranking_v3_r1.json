@@ -1,0 +1,155 @@
+{
+  "schema_version": "runtime-ranking-v3-r1-design",
+  "status": "RUNNER_ADAPTERS_IMPLEMENTED_ML_TESTS_AND_INDEPENDENT_REVIEW_PENDING",
+  "scope": {
+    "fixed_modes": [
+      "H64",
+      "M16",
+      "F4"
+    ],
+    "epsilon": 0.01,
+    "top_k": 10,
+    "allowed_role": "TRAIN",
+    "forbidden_roles": [
+      "VALIDATION",
+      "BLIND_TEST",
+      "PILOT"
+    ],
+    "families": {
+      "aes_core": "iwls_aes_core",
+      "s13207": "iscas89_s13207",
+      "s15850": "iscas89_s15850",
+      "s35932": "iscas89_s35932",
+      "s38417": "iscas89_s38417",
+      "spi": "iwls_spi"
+    }
+  },
+  "anchors": {
+    "v2_source_commit": "218457790f08b6c4351b58aa12fefbfbd32ea449",
+    "train_outcomes_sha256": "df3c9f370305027e895199049e4d282d6b2e76de3284abadd63e273dead21318",
+    "features_sha256": "8a46094f0bfb7112ffca9cb098fd69f545d8dda0d37be3c03e3eff43cb13e05d",
+    "v2_results": "data/manifests/runtime_training_v2_results_20261004.json"
+  },
+  "folds": {
+    "method": "leave_one_TRAIN_family_out",
+    "count": 6,
+    "normalizer_fit": "five_fitting_families_only",
+    "training_targets": "five_fitting_families_only",
+    "heldout_outcome_access": "after_full_fold_prediction_digest_frozen",
+    "early_stopping": false,
+    "fold_selection": false,
+    "hyperparameter_search": false
+  },
+  "objective": {
+    "quality_score": "higher_is_better_uncalibrated_not_probability",
+    "training_label": "log(total_cycles / fitting_same_circuit_measured_oracle_cycles)",
+    "primary_loss": "mean_per_fitting_family(mean_pairwise_softplus(-(score_better-score_worse)))",
+    "pair_scope": "within_same_circuit_only",
+    "pair_selection": "smallest_sha256(seed,circuit,better_uid,worse_uid)",
+    "max_pairs_per_family": 4096,
+    "tie_log_gap": 1e-9,
+    "epsilon_head": false,
+    "d95_head": false,
+    "runtime_head": false
+  },
+  "features": {
+    "candidate": [
+      "scheme_hf",
+      "scheme_hmf",
+      "log1p_h_limit",
+      "log1p_m_limit",
+      "h_limit_fraction_of_circuit_max",
+      "m_limit_fraction_of_circuit_max",
+      "log1p_common_fault_count"
+    ],
+    "graph": "reuse_v2_hashed_node_types_mean_GraphSAGE",
+    "identifiers_as_features": false,
+    "outcomes_as_features": false,
+    "oracle_at_inference": false
+  },
+  "models": {
+    "candidate_mlp": {
+      "hidden": [
+        32,
+        32
+      ],
+      "graph": false
+    },
+    "graphsage_candidate_mlp": {
+      "graph_hidden": 32,
+      "candidate_hidden": [
+        32,
+        32
+      ],
+      "fusion_hidden": [
+        64,
+        32
+      ],
+      "graph": true
+    },
+    "xgboost_ranker": {
+      "status": "ADAPTER_IMPLEMENTED_REAL_EXECUTION_NOT_VERIFIED",
+      "objective": "rank:pairwise",
+      "same_candidate_features": true,
+      "graph": false,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "learning_rate": 0.03,
+      "subsample": 1,
+      "colsample_bytree": 1,
+      "n_jobs": 1,
+      "tree_method": "hist",
+      "label": "within_fitting_family_reverse_dense_rank_of_log_regret",
+      "group_weight": 1,
+      "baseline_limitation": "XGBoost uses library-generated pairs; equal query weights do not assert identical neural family-macro loss or sampled pairs"
+    }
+  },
+  "protocol": {
+    "seeds": [
+      20260824,
+      20260825,
+      20260826
+    ],
+    "seed_selection": false,
+    "epochs": 120,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "device": "cpu",
+    "threads": 1,
+    "quality_ranking": [
+      "quality_score_desc",
+      "action_uid_asc"
+    ],
+    "baseline": "v2_fixed_heuristic",
+    "aggregation": "arithmetic_mean_of_all_18_family_seed_metrics_no_cross_fold_score_ensemble",
+    "cost_policy": "quality_only_at_this_stage_observed_cost_evaluation_only_no_score_division",
+    "metrics": [
+      "hit_at_10",
+      "best_cycle_regret_at_10",
+      "charged_runtime_to_first_hit_capped_at_10",
+      "hit_found",
+      "attempt_count"
+    ],
+    "no_hit_cost": "sum_observed_cost_of_all_10_attempts",
+    "stopping": "stop_at_first_hit_or_10",
+    "success_claim": "report_hit_and_cost_together_no_speedup_claim_for_no_hit"
+  },
+  "execution": {
+    "local_synthetic_tests_allowed": true,
+    "remote_access_allowed": false,
+    "training_allowed": false,
+    "blind_allowed": false,
+    "lsf_tessent_allowed": false,
+    "requires": "independent_design_code_leakage_review_and_separate_training_release",
+    "runner_cli": "always_refuses_formal_execution",
+    "synthetic_fixture_attestation": "GENERATED_SYNTHETIC_NO_EXTERNAL_DATA"
+  },
+  "parent_contract": "contracts/runtime_ranking_v3.json",
+  "gates": {
+    "physical_fold_package_review_pass": false,
+    "real_torch_execution_tests_pass": false,
+    "real_xgboost_execution_tests_pass": false,
+    "independent_review_pass": false,
+    "training_release": false
+  }
+}

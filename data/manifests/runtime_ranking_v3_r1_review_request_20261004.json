@@ -1,0 +1,78 @@
+{
+  "schema_version": "runtime-ranking-v3-r1-review-request",
+  "status": "IMPLEMENTED_SYNTHETIC_PASS_ML_EXECUTION_AND_INDEPENDENT_REVIEW_PENDING",
+  "parent_commit": "eebf000",
+  "files": [
+    {
+      "path": "contracts/runtime_ranking_v3_r1.json",
+      "sha256": "a2132c530bea23a47aa551187fa72b062bfd9b1cd279bb2d5a2a688cbe74196e"
+    },
+    {
+      "path": "src/models/run_runtime_ranking_v3.py",
+      "sha256": "bb13f20e66a237f4df7a93ccc2fbaaf27df42929d889f22ee5c575241ddaf731"
+    },
+    {
+      "path": "src/models/neural_ranking_v3.py",
+      "sha256": "1d3edf6c9d4605c438c1d683274ff3bc85cf0d87d1b57c53d79649aafcff69c3"
+    },
+    {
+      "path": "src/models/xgboost_ranking_v3.py",
+      "sha256": "93790f5d7b60a521641fd110aa5cb4a64c8f645c323c733c798c99cceacc0fcb"
+    },
+    {
+      "path": "src/models/ranking_v3_freeze_io.py",
+      "sha256": "4f904a6e4e553f39e4d9cecf4d41bad50f1fe826f60ffda4d5a3f5a9a9dcd58d"
+    },
+    {
+      "path": "tests/test_runtime_ranking_v3_runner.py",
+      "sha256": "f3fd2486088f901bec28105b2d494729407a9e9c800be5180f16219927a1796a"
+    },
+    {
+      "path": "tests/test_ranking_v3_freeze_io.py",
+      "sha256": "d67b9890e7e6622201ba15da49ca4e7bce4df15eae411707f1ac3441411ee757"
+    },
+    {
+      "path": "docs/runtime_ranking_v3_r1_progress.md",
+      "sha256": "19a4cc04d20531706b99c0df4fb4c3c37c57e7a1cd5586e23472c8866a856556"
+    }
+  ],
+  "focused_suite": {
+    "testsRun": 24,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "full_regression": {
+    "testsRun": 617,
+    "skipped": 17,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "note": "Suite discovered before the new freeze I/O tests and numpy-free fake adapter adjustment; focused suite rerun afterwards."
+  },
+  "formal_cli_probe": {
+    "exit_code": 1,
+    "message": "FORMAL_EXECUTION_CLOSED",
+    "expected_refusal": true
+  },
+  "ml_tests": "NOT_VERIFIED_TORCH_AND_XGBOOST_ABSENT",
+  "training_execution": false,
+  "remote_access": false,
+  "blind_access": false,
+  "original_evidence_modified": false,
+  "independent_review_pass": false,
+  "pending": [
+    "dependency-enabled synthetic neural fit/gradient/repeatability",
+    "dependency-enabled xgboost 2.1.2 compatibility/repeatability",
+    "reviewed physical fold packages and source anchors",
+    "complete transaction/artifact persistence",
+    "independent code/leakage review",
+    "separate formal training release"
+  ],
+  "limitations": [
+    "Callbacks are control-flow boundaries not an OS sandbox",
+    "Mock callbacks test sequencing not learned model quality",
+    "XGBoost library pairing differs from neural family-macro sampled-pair loss",
+    "Metrics macro-average all 18 runs; no raw-score ensemble across folds"
+  ]
+}
