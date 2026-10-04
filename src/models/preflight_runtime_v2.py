@@ -31,6 +31,17 @@ def parse_lock(path: Path) -> dict:
     return versions
 
 
+def validate_installed_dependencies(requested: dict) -> dict:
+    """Compare the full freeze using distribution versions, as pip freeze does."""
+    installed = {}
+    for name, expected_version in requested.items():
+        actual = importlib.metadata.version(name)
+        installed[name] = actual
+        if actual != expected_version:
+            raise TrainingV2Error("DEPENDENCY_VERSION:%s:%s!=%s" % (name, actual, expected_version))
+    return installed
+
+
 def run(args) -> dict:
     reject_protected_paths((args.contract, args.package, args.stage_seal,
                             args.outcome_split, args.dependency_lock, args.workspace, args.output))
@@ -54,12 +65,7 @@ def run(args) -> dict:
     if not resolved.startswith("/ssd/cjc/gnn_model_runtime_v2_"):
         raise TrainingV2Error("WORKSPACE_ROOT")
     requested = parse_lock(args.dependency_lock)
-    installed = {}
-    for name, expected_version in requested.items():
-        actual = importlib.metadata.version(name)
-        installed[name] = actual
-        if actual != expected_version:
-            raise TrainingV2Error("DEPENDENCY_VERSION:%s:%s!=%s" % (name, actual, expected_version))
+    installed = validate_installed_dependencies(requested)
     import numpy as np
     from xgboost import XGBClassifier
     smoke_x = np.asarray([[0.0], [1.0], [2.0], [3.0]])

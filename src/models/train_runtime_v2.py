@@ -17,7 +17,7 @@ from src.models.runtime_training_v2 import (
     seed_everything, sha256_file, standardizer, validate_contract, validate_package,
     validate_outcome_split, write_tsv,
 )
-from src.models.preflight_runtime_v2 import parse_lock
+from src.models.preflight_runtime_v2 import parse_lock, validate_installed_dependencies
 
 
 def _imports():
@@ -194,9 +194,7 @@ def train(args) -> dict:
     if workspace not in output_resolved.parents or output_resolved.parent.name != "runs":
         raise TrainingV2Error("OUTPUT_OUTSIDE_PREFLIGHT_WORKSPACE")
     requested = parse_lock(args.dependency_lock)
-    versions = {"numpy": np.__version__, "torch": torch.__version__, "xgboost": xgb.__version__}
-    if any(requested[name] != versions[name] for name in versions):
-        raise TrainingV2Error("ACTIVE_DEPENDENCY_DRIFT")
+    validate_installed_dependencies(requested)
     if args.seed not in contract["determinism"]["seeds"]:
         raise TrainingV2Error("UNREGISTERED_SEED")
     if args.output.exists():

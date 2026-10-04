@@ -1,0 +1,16 @@
+{
+  "schema_version": "runtime-v2-training-prestart-failure",
+  "status": "FAILED_BEFORE_TRAINING",
+  "source_commit": "98efbd4f8c6122f530ea184fa6cc1c289d795a7b",
+  "workspace": "/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119",
+  "seed": 20260824,
+  "log": "evidence/seed_20260824.log",
+  "log_sha256": "1a15a2d03f1aac8b35f12605ce5f110b25bc461d0006de843b1c2a79394b25c4",
+  "failure_code": "ACTIVE_DEPENDENCY_DRIFT",
+  "cause": "Trainer compared torch.__version__ 2.5.1+cu124 with distribution lock 2.5.1; preflight used exact importlib.metadata distribution versions.",
+  "output_created": false,
+  "training_started": false,
+  "repair": "Share exact full-lock distribution version validation between preflight and trainer; retain the original log and use a successor source checkout and new run log.",
+  "blind_accessed": false,
+  "lsf_or_tessent_executed": false
+}

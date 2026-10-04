@@ -1,0 +1,21 @@
+{
+  "schema_version": "runtime-training-v2-independent-focused-repair-review",
+  "status": "PASS_TRAINER_CODE_GATE",
+  "focused_review_status": "PASS_FOCUSED_REPAIR_REVIEW",
+  "base_code_review": "data/manifests/runtime_training_v2_independent_review_20261002.json",
+  "contract_sha256": "e936f7264fae75d766d0b18dcc3be5ffcba4c54a49aebdbcb46bf1e8cf636614",
+  "implementation_sha256": {
+    "src/models/runtime_training_v2.py": "83a67c0a95190bc60bcb9e0af929e803dcf4cd78f88a027927540a92abbd10c5",
+    "src/models/train_runtime_v2.py": "908e0d14ba73dac21e47dbff73d7061b3d06c89964ed6513f7c901d306e8acf4",
+    "src/models/preflight_runtime_v2.py": "446e16b20082db2d940d0ffe3cb8ec1ff14d78a81d802d5fd6a96c67d90e7028",
+    "src/models/aggregate_runtime_v2.py": "ba9ff3b64bafb9ccf756d8c8c27765dcfeb9aadef4567949ee13a626c085982f"
+  },
+  "reviewer": "independent_read_only_agentfleet_reviewer",
+  "finding": "Exact full-freeze distribution version validation is shared by preflight and trainer and still precedes output creation; no suffix stripping or relaxed version match.",
+  "reviewer_focused_tests": "6 passed",
+  "primary_focused_tests": "19 run, 2 missing-local-ML-dependency skips",
+  "primary_full_regression": "590 run, 15 skips, failures=0, errors=0, exit_code=0",
+  "tests_sha256": "6d420ed820f439425a67e727af6b0edf510dbf852c735e140910e09d38944ffa",
+  "blind_access_allowed": false,
+  "lsf_or_tessent_allowed": false
+}

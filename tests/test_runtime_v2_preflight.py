@@ -2,13 +2,28 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
-from src.models.preflight_runtime_v2 import parse_lock
+from src.models.preflight_runtime_v2 import parse_lock, validate_installed_dependencies
 from src.models.runtime_training_v2 import TrainingV2Error
 
 
 class RuntimeV2PreflightTest(unittest.TestCase):
+    def test_distribution_versions_define_exact_lock_match(self):
+        with patch("src.models.preflight_runtime_v2.importlib.metadata.version", return_value="2.5.1"):
+            self.assertEqual({"torch": "2.5.1"}, validate_installed_dependencies({"torch": "2.5.1"}))
+
+    def test_distribution_version_drift_is_rejected(self):
+        with patch("src.models.preflight_runtime_v2.importlib.metadata.version", return_value="2.5.2"):
+            with self.assertRaisesRegex(TrainingV2Error, "DEPENDENCY_VERSION:torch"):
+                validate_installed_dependencies({"torch": "2.5.1"})
+
+    def test_transitive_dependency_drift_is_rejected(self):
+        with patch("src.models.preflight_runtime_v2.importlib.metadata.version", side_effect=lambda name: {"torch": "2.5.1", "filelock": "wrong"}[name]):
+            with self.assertRaisesRegex(TrainingV2Error, "DEPENDENCY_VERSION:filelock"):
+                validate_installed_dependencies({"torch": "2.5.1", "filelock": "4.0.9"})
+
     def test_bootstrap_canonicalizes_before_any_read_or_write(self):
         script = (Path(__file__).resolve().parents[1] / "scripts/bootstrap_runtime_v2_b.sh").read_text(encoding="utf-8")
         first_realpath = script.index("fresh_root=$(realpath")
