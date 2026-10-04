@@ -1,0 +1,15 @@
+{
+  "scope": "GENERATED_SYNTHETIC_NO_EXTERNAL_DATA",
+  "status": "PASS",
+  "testsRun": 3,
+  "skipped": 0,
+  "failures": 0,
+  "errors": 0,
+  "parent_receipt_sha256": "43aca787fd8302e164a2b7a56e5620859054acc416efc54e0fd2b7277b954400",
+  "extension_sha256": "f9e37d36a325e629c4df5bb0063feaefc7c25f4b0b669a6b919e29d68fa6c39f",
+  "grid": "6 held families x 3 seeds x 3 real models = 54 generated-data fits, plus repeatability tests",
+  "log_sha256": "413cba617470bb716d89281aef9727570ec66121076216f9cf960e952c54b9ae",
+  "real_circuit_rows_read": false,
+  "blind_accessed": false,
+  "formal_training": false
+}

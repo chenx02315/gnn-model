@@ -1,0 +1,32 @@
+{
+  "status": "PENDING_INDEPENDENT_READONLY_REVIEW",
+  "source_base_commit": "589b34003feec24ad862fec7f5db6fc4fa8327ee",
+  "execution_root": "/ssd/cjc/gnn_model_ranking_v3_synthetic_589b340_20261004_r1",
+  "integrity_receipt": "data/manifests/ranking_v3_synthetic_integrity_20261004.json",
+  "parent_receipt": "data/manifests/ranking_v3_synthetic_parent_20261004.json",
+  "grid_receipt": "data/manifests/ranking_v3_synthetic_grid_20261004.json",
+  "review_targets": [
+    "src/data/ranking_v3_fold_package.py",
+    "src/models/ranking_v3_freeze_io.py",
+    "src/models/runtime_ranking_v3.py",
+    "src/models/run_runtime_ranking_v3.py",
+    "src/models/neural_ranking_v3.py",
+    "src/models/xgboost_ranking_v3.py",
+    "scripts/verify_ranking_v3_synthetic.py",
+    "scripts/audit_ranking_v3_synthetic_evidence.py",
+    "tests/test_ranking_v3_real_synthetic.py"
+  ],
+  "questions": [
+    "Does each fitting path exclude held-family labels and fit preprocessing only on fitting families?",
+    "Does label access follow an exact fold-bound persisted ranking freeze, and are in-memory versus disk tests distinguished?",
+    "Are neural family weighting and XGBoost query weighting disclosed without claiming identical sampled pairs or objectives?",
+    "Do toy-data repeatability and grid execution claims stay distinct from real-circuit recommendation gains?",
+    "Are shared read-only dependencies and original versus extension source identities accurately described?"
+  ],
+  "review_scope": "LOCAL_CODE_AND_SMALL_SYNTHETIC_RECEIPTS_ONLY",
+  "remote_access_authorized_by_this_request": false,
+  "real_data_release": false,
+  "blind_release": false,
+  "formal_training_release": false,
+  "push_gate": "independent review pending; local commit only"
+}
