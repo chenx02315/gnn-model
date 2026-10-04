@@ -1,0 +1,12 @@
+{
+  "status": "PASS_PERSISTED_FREEZE_COLLECTION_AND_ATTRIBUTION_REVIEW",
+  "reviewer": "ranking_isolation_review",
+  "r1_sha256": "6f3336eb3acbbf87609ceff6e26141258956e0606f861f0673721ac2d1d91660",
+  "r2_sha256": "01468f838e4ef923b72028f8a59c2a5430d8e2b2faf13745fe87dc43806bcad8",
+  "records_unchanged": 148,
+  "persisted_freeze_sha_entries": 72,
+  "tests_passed": 8,
+  "new_labels_or_checkpoints_collected": false,
+  "historical_r1_preserved": true,
+  "scope": "TRAIN_ONLY_DESCRIPTIVE_NO_NEW_TRAINING"
+}

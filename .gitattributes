@@ -62,3 +62,14 @@ tests/test_ranking_v3_real_experiment.py text eol=lf
 data/manifests/ranking_v3_*_20261004.json -text
 scripts/seal_ranking_v3_entrypoint_r5.py text eol=lf
 scripts/create_ranking_v3_training_release.py text eol=lf
+data/manifests/ranking_v3_*_20261005.json -text
+scripts/collect_ranking_v3_results.py text eol=lf
+scripts/analyze_ranking_v3_frozen_results.py text eol=lf
+scripts/query_ranking_v3_report.py text eol=lf
+tests/test_ranking_v3_result_collection.py text eol=lf
+tests/test_ranking_v3_result_attribution.py text eol=lf
+docs/ranking_v3_report_query.sql text eol=lf
+scripts/ranking_v4_near_optimal_pairs.py text eol=lf
+tests/test_ranking_v4_near_optimal_pairs.py text eol=lf
+contracts/runtime_ranking_v4_quality_pilot.json text eol=lf
+data/manifests/ranking_v4_*_20261005.json -text

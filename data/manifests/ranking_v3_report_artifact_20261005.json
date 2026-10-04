@@ -1,0 +1,208 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "title": "ATPG Ranking: TRAIN-Only v3 Results",
+    "surface": "report",
+    "sources": [
+      {
+        "id": "result",
+        "label": "ranking_v3_train_results_20261005.json",
+        "query": {
+          "description": "72 frozen TRAIN-family LOFO evaluations, independently replayed; summary SHA-256 feb8c4b795bab044649538dee115a8668051f0cbd0424ca4644360014bc39357",
+          "tables_used": [
+            "frozen_evaluations (loaded from ranking_v3_train_results_20261005.json via scripts/query_ranking_v3_report.py)"
+          ],
+          "filters": [
+            "TRAIN only",
+            "six held families",
+            "three fixed seeds",
+            "epsilon=0.01",
+            "K=10"
+          ],
+          "metric_definitions": {
+            "hit_rate": "hit_at_10 sum / 18 family-seed runs per method",
+            "charged_runtime_s": "macro mean of observed policy-charged ATPG attempt wall time until first hit or ten attempts; not worker training time"
+          },
+          "sql": "SELECT model AS method, SUM(hit) AS hits, COUNT(*) AS runs, SUM(hit)*1.0/COUNT(*) AS hit_rate, AVG(charged_runtime_s) AS charged_runtime_s, AVG(regret) AS regret FROM frozen_evaluations GROUP BY model ORDER BY hit_rate DESC, method;",
+          "language": "sql",
+          "engine": "SQLite in-memory"
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# ATPG Ranking: TRAIN-Only v3 Results"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## 技术摘要\n\n72/72 个评估完成，独立证据审计通过。XGBoost 在 TRAIN 六折中的近优命中率高于固定启发式，两个神经模型尚未显示优势。**累计 ATPG 耗时优化尚未证明，不能把这次结果写成最终泛化或加速结论。**",
+        "sourceId": "result"
+      },
+      {
+        "id": "definition",
+        "type": "markdown",
+        "body": "## 什么叫命中，什么叫更快\n\n固定 H64/M16/F4，候选均天然达到 D95。每次留出一个 TRAIN 家族，其余五家族用于拟合。若前十个推荐中出现 cycles 不超过该家族最小值 1.01 倍的动作，记为命中。耗时是按排序逐个尝试，到首次命中或第十次为止的累计真实 ATPG wall time；不是模型训练耗时，也不是 ATE cycles。四方法各有六家族 × 三 seed，共 18 条结果。",
+        "sourceId": "result"
+      },
+      {
+        "id": "finding",
+        "type": "markdown",
+        "body": "## 命中率改善不等于耗时改善\n\nXGBoost 命中 12/18，启发式 6/18，CandidateMLP 和 GraphSAGE 各 3/18。相应平均累计耗时为 897.4、911.8、881.9、915.2 秒。MLP 耗时更低却少命中，不能称为加速。下图只比较命中比例，不把质量和耗时合成一个分数。",
+        "sourceId": "result"
+      },
+      {
+        "id": "hit_chart",
+        "type": "chart",
+        "chartId": "hit"
+      },
+      {
+        "id": "family",
+        "type": "markdown",
+        "body": "## 去掉必然命中的家族，神经模型暴露排序失败\n\ns35932 只有十个动作，前十全部覆盖，所以所有方法都必然命中。剔除该家族后，XGBoost 命中 9/15，启发式 3/15，两个神经模型均为 0/15。XGBoost 在 aes_core、spi 增加命中，s13207、s15850 仍全部未命中。它在非穷举家族的平均累计耗时约 942.6 秒，启发式约 940.3 秒，不能宣称普遍节省耗时。",
+        "sourceId": "result"
+      },
+      {
+        "id": "pair",
+        "type": "markdown",
+        "body": "## 共同命中时，成本结论并不支持普遍加速\n\nXGBoost 与启发式共同命中的六条 family-seed 记录中，XGBoost 平均多花约 65.2 秒。s35932 有节省，但 s38417 每个 seed 多花约 227.9 秒。因此既要提高命中，也要解释命中动作的 ATPG 成本；不能只汇报总体平均值。",
+        "sourceId": "result"
+      },
+      {
+        "id": "method",
+        "type": "markdown",
+        "body": "## 冻结排序后读标签，保持开发与盲测边界\n\n固定六折、三 seed、四方法，一共 54 次模型拟合与 18 次启发式评估。训练 worker 不接收留出结果标签；排序持久化并校验后才由 evaluator 读取留出 TRAIN 标签。独立审计已重算全部 72 条 replay 和四份汇总。没有读取 VALIDATION 或 BLIND，没有新增 LSF/Tessent，没有重试。",
+        "sourceId": "result"
+      },
+      {
+        "id": "limits",
+        "type": "markdown",
+        "body": "## 这些是开发证据，不是论文最终泛化结论\n\n仅六个 TRAIN 家族；不同家族候选规模差异大。固定启发式和 XGBoost 在每个家族三个 seed 下排序一致，不能把重复排序当作独立样本。最佳前十 cycles regret 是离线查看前十全体的指标，不等于按首次命中停止时已观测的最优值。当前请求文件在独立审计中核验，但 worker 回执尚未持久化请求文件 SHA，后续版本需补强执行时出处。"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## 已完成归因，下一步检查特征表达\n\n冻结的描述性分析已经执行：前十重叠、三个 seed 的排序稳定性、共同命中成本和剔除十候选穷举家族的敏感性均已输出。没有改阈值、重排、训练或筛选 seed。两个神经模型在非穷举家族均未命中，首先需要定位近优动作是否被现有候选特征清楚区分。后续成本感知方案应保留 D95/近优质量约束，不能简单用评分除以耗时。现有授权内的诊断与代码测试连续推进；新增训练前先冻结设计并独立复核。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 仍需回答的问题\n\n神经模型是没有把近优候选排进前十，还是现有特征难以区分模式组合？XGBoost 命中动作为什么在 s38417 更昂贵？在安全和近优质量不降的前提下，是否能更早命中且少花真实 ATPG 时间？这些问题尚未被本次结果解答。"
+      }
+    ],
+    "charts": [
+      {
+        "id": "hit",
+        "title": "四方法前十近优命中率",
+        "description": "六 TRAIN 家族 × 三 seed；s35932 十候选穷举贡献将在正文单独剔除",
+        "dataset": "headline",
+        "type": "bar",
+        "sourceId": "result",
+        "encodings": {
+          "x": {
+            "field": "method"
+          },
+          "y": {
+            "field": "hit_rate"
+          }
+        },
+        "options": {
+          "orientation": "vertical"
+        },
+        "source": {
+          "id": "result",
+          "label": "ranking_v3_train_results_20261005.json",
+          "query": {
+            "description": "72 frozen TRAIN-family LOFO evaluations, independently replayed; summary SHA-256 feb8c4b795bab044649538dee115a8668051f0cbd0424ca4644360014bc39357",
+            "tables_used": [
+              "frozen_evaluations (loaded from ranking_v3_train_results_20261005.json via scripts/query_ranking_v3_report.py)"
+            ],
+            "filters": [
+              "TRAIN only",
+              "six held families",
+              "three fixed seeds",
+              "epsilon=0.01",
+              "K=10"
+            ],
+            "metric_definitions": {
+              "hit_rate": "hit_at_10 sum / 18 family-seed runs per method",
+              "charged_runtime_s": "macro mean of observed policy-charged ATPG attempt wall time until first hit or ten attempts; not worker training time"
+            },
+            "sql": "SELECT model AS method, SUM(hit) AS hits, COUNT(*) AS runs, SUM(hit)*1.0/COUNT(*) AS hit_rate, AVG(charged_runtime_s) AS charged_runtime_s, AVG(regret) AS regret FROM frozen_evaluations GROUP BY model ORDER BY hit_rate DESC, method;",
+            "language": "sql",
+            "engine": "SQLite in-memory"
+          }
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "method": "xgboost",
+          "hits": 12,
+          "runs": 18,
+          "hit_rate": 0.6666666666666666,
+          "charged_runtime_s": 897.4441666666667,
+          "regret": 0.0287105691506776
+        },
+        {
+          "method": "fixed_heuristic",
+          "hits": 6,
+          "runs": 18,
+          "hit_rate": 0.3333333333333333,
+          "charged_runtime_s": 911.7866666666666,
+          "regret": 0.074003946601032
+        },
+        {
+          "method": "candidate_mlp",
+          "hits": 3,
+          "runs": 18,
+          "hit_rate": 0.16666666666666666,
+          "charged_runtime_s": 881.8619444444445,
+          "regret": 0.15046069588546676
+        },
+        {
+          "method": "graphsage",
+          "hits": 3,
+          "runs": 18,
+          "hit_rate": 0.16666666666666666,
+          "charged_runtime_s": 915.1847222222223,
+          "regret": 0.1244771918763276
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "result",
+      "label": "ranking_v3_train_results_20261005.json",
+      "query": {
+        "description": "72 frozen TRAIN-family LOFO evaluations, independently replayed; summary SHA-256 feb8c4b795bab044649538dee115a8668051f0cbd0424ca4644360014bc39357",
+        "tables_used": [
+          "frozen_evaluations (loaded from ranking_v3_train_results_20261005.json via scripts/query_ranking_v3_report.py)"
+        ],
+        "filters": [
+          "TRAIN only",
+          "six held families",
+          "three fixed seeds",
+          "epsilon=0.01",
+          "K=10"
+        ],
+        "metric_definitions": {
+          "hit_rate": "hit_at_10 sum / 18 family-seed runs per method",
+          "charged_runtime_s": "macro mean of observed policy-charged ATPG attempt wall time until first hit or ten attempts; not worker training time"
+        },
+        "sql": "SELECT model AS method, SUM(hit) AS hits, COUNT(*) AS runs, SUM(hit)*1.0/COUNT(*) AS hit_rate, AVG(charged_runtime_s) AS charged_runtime_s, AVG(regret) AS regret FROM frozen_evaluations GROUP BY model ORDER BY hit_rate DESC, method;",
+        "language": "sql",
+        "engine": "SQLite in-memory"
+      }
+    }
+  ]
+}

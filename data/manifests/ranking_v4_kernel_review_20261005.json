@@ -1,0 +1,18 @@
+{
+  "schema_version": "ranking-v4-local-kernel-review-v1",
+  "status": "PASS_LOCAL_KERNEL_ONLY",
+  "date": "2026-10-05",
+  "reviewer": "ranking_isolation_review",
+  "files": ["scripts/ranking_v4_near_optimal_pairs.py", "tests/test_ranking_v4_near_optimal_pairs.py", "contracts/runtime_ranking_v4_quality_pilot.json", "docs/runtime_ranking_v4_quality_pilot.md"],
+  "focused_command": "python -m unittest tests.test_ranking_v4_near_optimal_pairs",
+  "tests_run": 4,
+  "skipped": 0,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "parent_full_regression": {"tests_run": 657, "skipped": 22, "failures": 0, "errors": 0, "exit_code": 0, "seconds": 58.965},
+  "review_checks": ["exact integer epsilon", "strict fitting row allowlist", "heldout family rejection", "deterministic SHA cap selection", "equal family macro weighting", "higher score good loss direction"],
+  "focused_fixes": ["contract input field names aligned", "score direction explicitly declared and tested", "over-cap permutation test added"],
+  "scope_limit": "Pure synthetic recipe/loss kernel; no model fit, real data, subprocess pipeline, remote execution or real release",
+  "new_training_allowed": false
+}

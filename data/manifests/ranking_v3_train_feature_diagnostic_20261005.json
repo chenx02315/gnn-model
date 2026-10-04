@@ -1,0 +1,21 @@
+{
+  "status": "PASS_READ_ONLY_DESCRIPTIVE_FEATURE_AUDIT",
+  "reviewer": "ranking_evidence_review",
+  "scope": "EXISTING_SIX_TRAIN_FOLDS_ONLY",
+  "method": "Verified existing XGBoost persisted freeze before RealFoldReader.heldout; count cycles <= 1.01 * family oracle post hoc. No raw labels, UID or checkpoint export.",
+  "families": {
+    "iscas89_s13207": {"actions":295,"near_optimal":2,"unique_feature_vectors":295,"collision_groups":0,"conflicting_cycles_groups":0,"HF":43,"HMF":252,"h_distinct":73,"m_distinct":42},
+    "iscas89_s15850": {"actions":276,"near_optimal":2,"unique_feature_vectors":276,"collision_groups":0,"conflicting_cycles_groups":0,"HF":56,"HMF":220,"h_distinct":79,"m_distinct":32},
+    "iscas89_s35932": {"actions":10,"near_optimal":1,"unique_feature_vectors":10,"collision_groups":0,"conflicting_cycles_groups":0,"HF":6,"HMF":4,"h_distinct":8,"m_distinct":3},
+    "iscas89_s38417": {"actions":39,"near_optimal":2,"unique_feature_vectors":39,"collision_groups":0,"conflicting_cycles_groups":0,"HF":18,"HMF":21,"h_distinct":26,"m_distinct":9},
+    "iwls_aes_core": {"actions":350,"near_optimal":6,"unique_feature_vectors":350,"collision_groups":0,"conflicting_cycles_groups":0,"HF":54,"HMF":296,"h_distinct":98,"m_distinct":80},
+    "iwls_spi": {"actions":736,"near_optimal":1,"unique_feature_vectors":736,"collision_groups":0,"conflicting_cycles_groups":0,"HF":61,"HMF":675,"h_distinct":86,"m_distinct":214}
+  },
+  "total_actions":1706,
+  "total_near_optimal":14,
+  "constant_within_family":["log1p_common_fault_count","graph_key"],
+  "redundant_varying_transforms":[["log1p_h_limit","h_limit_fraction_of_circuit_max"],["log1p_m_limit","m_limit_fraction_of_circuit_max"]],
+  "feature_outcome_field_name_overlap":false,
+  "interpretation":"Exact action aliasing is not the cause. Varying candidate information is mainly scheme and H/M ordinal settings; graph/common-fault context may still support cross-family conditioning. Sparsity does not by itself prove an architecture failure or justify blind tuning.",
+  "new_training_or_atpg_executed":false
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS_TRAIN_ONLY_RESULT_AUDIT",
+  "reviewers": ["ranking_evidence_review", "ranking_isolation_review"],
+  "remote_root": "/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1",
+  "exit_code": 0,
+  "retries": 0,
+  "evaluations": 72,
+  "models_per_seed": 4,
+  "seeds": [20260824, 20260825, 20260826],
+  "families": 6,
+  "source_archive_sha256": "780d244ecc09218943b0d61bbe789626eda59bc6c96ddf71b61ec1f70d56b3b1",
+  "release_sha256": "ad6b7721ae543cb0eb37765394d249922a6a114d49ecbb78d46b006d9a285205",
+  "package_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "summary_sha256": "feb8c4b795bab044649538dee115a8668051f0cbd0424ca4644360014bc39357",
+  "collector_sha256": "6f3336eb3acbbf87609ceff6e26141258956e0606f861f0673721ac2d1d91660",
+  "request_bundle_sha256": "614bc6af7f9f7b873fd7bbab4caad8b3cbccedb8e3d1e2adc7640120b9235148",
+  "worker_bundle_sha256": "7986825fa83b0885cebde6d96f512cabeefdcc66acea11bdcbd1047f4f2b31de",
+  "evaluation_bundle_sha256": "cacb84aa637c54695f64123bce5236957f9b10023c3c1ccb10ed2ea4d2bc3337",
+  "checks": ["26 source archive entries byte-identical to executed code", "12 release-reviewed source hashes", "exact unique 72 family-seed-method grid", "retained request schemas exclude held outcomes", "worker/request/freeze/fold identity", "all 72 source-shard replays exact under sealed Python 3.11", "four full aggregates exact under sealed Python 3.11"],
+  "limitations": ["TRAIN LOFO development only, not VALIDATION or BLIND", "s35932 top-10 is exhaustive; assess separately", "seeds are not independent family replications", "request-file SHA is not persisted in worker receipt; retained requests were independently verified post hoc"],
+  "scientific_goal_status": "ATPG_RUNTIME_REDUCTION_NOT_YET_DEMONSTRATED"
+}

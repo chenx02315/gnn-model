@@ -64,3 +64,23 @@ r5已完成19个不同测试，零跳过、失败、错误；直接worker54次�
 新B目录已启动一次性监督进程 PID `2050273`，回执见 `ranking_v3_train_launch_20261004.json`。预期六家族 × 三固定seed × 四方法，共72份评估（54次模型拟合，18次启发式）。最新现场检查为进程存活、12/72完成；这不是最终结果，不据此宣称命中率或ATPG耗时改善。
 
 用户授权已覆盖复核通过后的自动衔接：运行监控 -> 完整回执/摘要核验 -> 独立结果审计 -> 中文结果汇总 -> 版本同步。不逐步等待“继续”。仍不打开BLIND/VALIDATION标签，不新增LSF/Tessent或自动重试；checkpoint保留B端，Git只收代码、合同、小型指标和摘要。
+
+## 2026-10-05：72/72 完成，结果独立审计与归因已通过
+
+监督进程结束，exit=0、retries=0；四方法各18份评估全部完成。独立证据复核核对26源码条目、12审核源码hash、请求/worker/fold身份、72磁盘冻结排序与标签replay以及四汇总，全部一致。summary SHA `feb8c4b795bab044649538dee115a8668051f0cbd0424ca4644360014bc39357`。
+
+本地r1回传只收148个小型结果/审核记录、不收checkpoint，SHA `6f3336eb3acbbf87609ceff6e26141258956e0606f861f0673721ac2d1d91660`。复核要求进一步把每个持久化freeze文件连接到回传包；保留r1，新增schema2回传包，72个freeze文件只返回SHA/bytes，SHA `01468f838e4ef923b72028f8a59c2a5430d8e2b2faf13745fe87dc43806bcad8`，独立复核PASS。r1/r2的148个parsed record完全一致；不改变训练或结果。
+
+已按描述性计划执行逐家族命中、top10重叠、seed排序稳定性、共同命中成本和非穷举敏感性，不筛选seed、不重排、不修改epsilon/K。计划明确记录headline已经观察，不冒充实验预注册。collector本地重算允许1e-12纯浮点求和差异：Python3.13补偿求和与B封存Python3.11约1e-13差异，身份/UID/hash/grid仍精确一致。
+
+实质结果：XGBoost命中12/18，启发式6/18，MLP/GraphSAGE各3/18。剔除只有10候选的s35932，分别9/15、3/15、0/15、0/15。XGBoost非穷举平均累计cost约942.6s，启发式约940.3s；共同命中的非穷举s38417每seed多约227.885s。因此 **ATPG_RUNTIME_REDUCTION_NOT_YET_DEMONSTRATED**，不能写“GNN成功加速”。固定启发式与XGBoost每家族三seed排序相同，不把重复seed当独立家族。
+
+本地完整回归先完成648 tests，新增collector测试后再次完整回归653 tests、22 skips、0 failures/errors，exit0；新增collector持久化freeze拒绝测试与归因测试合计8/8 PASS。Windows/缺ML等skip不替代B真实执行审计。报告采用指标诊断+技术报告技能，保留逐家族与成本反例，而非只报宏平均；报告图表数据由实际本地SQLite汇总生成，原始数据/查询均保留。
+
+已自动进入下一节点：只读检查现有TRAIN候选七维特征是否存在同一家族内不同动作特征碰撞，核对近优正例数量与家族内常量。先定位信息表达和成本失配，再冻结下一版方案；当前不启动新训练、不访问VALIDATION/BLIND、不新增电路或ATPG。
+
+特征诊断已完成并独立核验：1706个动作、14个1%近优正例，家族内7维向量1706个全部唯一，无动作特征碰撞。图/common-fault值家族内恒定，H/M两个变换并非独立信息；不能据此声称GNN无用或已找到失效根因。
+
+自动进入v4本地设计：仅改变CandidateMLP近优正负排序对，固定旧epsilon/K/seed/特征与架构参数，家族等权、SHA确定性工程cap。v3-r2合同为历史证据，不覆盖；另建v4合同与纯函数合成测试。该模块没有训练runner或实际执行权限，后续集成/合成闭环/新release不冒充已完成。
+
+v4本地kernel独立复核PASS：4项纯合成测试通过，包括准确epsilon、非法输入拒绝、超cap置换确定性、家族等权及评分方向。最新全量回归657 tests、22 skips、0 failures/errors、exit0（58.965s）。只封存本地实现，不宣称v4实际训练、泄漏端到端门禁或耗时改善。

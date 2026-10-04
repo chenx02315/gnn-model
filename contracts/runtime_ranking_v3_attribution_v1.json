@@ -1,0 +1,12 @@
+{
+  "status": "FROZEN_ARTIFACT_DESCRIPTIVE_ANALYSIS_PLAN",
+  "date": "2026-10-05",
+  "scope": "TRAIN_ONLY_REAL_SIX_FOLD_V3",
+  "input_sha256": "6f3336eb3acbbf87609ceff6e26141258956e0606f861f0673721ac2d1d91660",
+  "already_observed": "The four headline macro summaries and independent reviewers' per-family interpretation were observed before this descriptive plan. This is not a prospective preregistration of the experiment.",
+  "cuts": ["per-family three-seed hit/regret/charged-runtime", "top-10 overlap against same-seed fixed heuristic", "full frozen-order uniqueness across seeds", "shared-hit-only matched runtime differences", "non-exhaustive sensitivity excluding families with at most ten actions"],
+  "first_hit_rank": "attempt_count only when hit_at_10 equals one; otherwise null, not eleven or an imputed rank",
+  "forbidden": ["new training", "threshold change", "candidate reranking", "seed selection", "BLIND", "VALIDATION labels", "new LSF or Tessent", "claiming causal or independent generalization evidence"],
+  "next_question": "Is current failure mostly inability to select near-optimal actions, or high measured ATPG cost among successfully selected actions?",
+  "checkpoint_storage": "B only; collect metrics and hashes, not checkpoint binaries"
+}
