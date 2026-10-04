@@ -1,0 +1,33 @@
+{
+  "schema_version": "ranking-v3-fold-isolation-receipt",
+  "status": "SYNTHETIC_ISOLATION_PASS_REAL_ML_ENVIRONMENT_PERMISSION_PENDING",
+  "files": [
+    {
+      "path": "src/data/ranking_v3_fold_package.py",
+      "sha256": "ad6d21e073481159dcfae6612bcfde49e4056cc2c631bb43e0ec70d8d6345e1e"
+    },
+    {
+      "path": "tests/test_ranking_v3_fold_package.py",
+      "sha256": "de282c5a8af55312c8db7a8f65e66b84a48dcb67de87d328e2eb647fede14820"
+    },
+    {
+      "path": "docs/runtime_ranking_v3_execution_ledger.md",
+      "sha256": "e664943d96f6e333e75b0d7fa27761e93a2731f447a147b4e915da4be5cb8670"
+    }
+  ],
+  "tests": {
+    "testsRun": 28,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "disk_pipeline_receipts": 18,
+  "mock_predictions": true,
+  "training_executed": false,
+  "real_fold_labels_exported": false,
+  "remote_accessed": false,
+  "blind_accessed": false,
+  "independent_review_pass": false,
+  "blocking_permission": "Approve fresh B /ssd/cjc environment for synthetic-only locked-version ML tests; no real data/LSF/Tessent/formal training.",
+  "scope": "GENERATED_SYNTHETIC_NO_EXTERNAL_DATA"
+}
