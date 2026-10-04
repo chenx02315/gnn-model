@@ -1,0 +1,1138 @@
+{
+  "scope": "FROZEN_TRAIN_VALIDATION_DIAGNOSTIC_ONLY",
+  "epsilon": 0.01,
+  "top_k": 10,
+  "input_sha256": {
+    "train_outcomes.tsv": "df3c9f370305027e895199049e4d282d6b2e76de3284abadd63e273dead21318",
+    "validation_outcomes.tsv": "79d89734db89d478c8a5d81aad023a934253318d95e8f3f9db994d87ab3ff1c3",
+    "ensemble_ranking.tsv": "66a0eac19a6cba0ced2fec7834f40f8e9d6bd4144eb1dedf4381efff15d0df29",
+    "xgboost_ranking.tsv": "7e936e206b807e74c4926575c3b5f5a018d973438f55f91d2b81ef987c0c7762"
+  },
+  "prevalence": [
+    {
+      "role": "TRAIN",
+      "circuit": "aes_core",
+      "actions": 350,
+      "positives": 6,
+      "positive_rate": 0.017142857142857144,
+      "random_top10_hit_probability": 0.16071025449522114,
+      "within_2pct": 18,
+      "within_5pct": 66,
+      "oracle_cycles": 8019
+    },
+    {
+      "role": "TRAIN",
+      "circuit": "s13207",
+      "actions": 295,
+      "positives": 2,
+      "positive_rate": 0.006779661016949152,
+      "random_top10_hit_probability": 0.06675890695261155,
+      "within_2pct": 6,
+      "within_5pct": 37,
+      "oracle_cycles": 3220
+    },
+    {
+      "role": "TRAIN",
+      "circuit": "s15850",
+      "actions": 276,
+      "positives": 2,
+      "positive_rate": 0.007246376811594203,
+      "random_top10_hit_probability": 0.07127799736495388,
+      "within_2pct": 4,
+      "within_5pct": 22,
+      "oracle_cycles": 2694
+    },
+    {
+      "role": "TRAIN",
+      "circuit": "s35932",
+      "actions": 10,
+      "positives": 1,
+      "positive_rate": 0.1,
+      "random_top10_hit_probability": 1,
+      "within_2pct": 2,
+      "within_5pct": 2,
+      "oracle_cycles": 2087
+    },
+    {
+      "role": "TRAIN",
+      "circuit": "s38417",
+      "actions": 39,
+      "positives": 2,
+      "positive_rate": 0.05128205128205128,
+      "random_top10_hit_probability": 0.4520917678812416,
+      "within_2pct": 2,
+      "within_5pct": 6,
+      "oracle_cycles": 5439
+    },
+    {
+      "role": "TRAIN",
+      "circuit": "spi",
+      "actions": 736,
+      "positives": 1,
+      "positive_rate": 0.001358695652173913,
+      "random_top10_hit_probability": 0.013586956521739135,
+      "within_2pct": 7,
+      "within_5pct": 139,
+      "oracle_cycles": 13319
+    },
+    {
+      "role": "VALIDATION",
+      "circuit": "s5378",
+      "actions": 367,
+      "positives": 1,
+      "positive_rate": 0.0027247956403269754,
+      "random_top10_hit_probability": 0.027247956403269713,
+      "within_2pct": 6,
+      "within_5pct": 34,
+      "oracle_cycles": 1905
+    },
+    {
+      "role": "VALIDATION",
+      "circuit": "tv80",
+      "actions": 448,
+      "positives": 2,
+      "positive_rate": 0.004464285714285714,
+      "random_top10_hit_probability": 0.04419343240651963,
+      "within_2pct": 14,
+      "within_5pct": 78,
+      "oracle_cycles": 7107
+    }
+  ],
+  "models": [
+    {
+      "model": "GraphSAGE",
+      "role": "TRAIN",
+      "circuit": "aes_core",
+      "auc_probability": 0.875968992248062,
+      "cycles_spearman": 0.6241456472103495,
+      "runtime_spearman": 0.5441748005949303,
+      "cycles_mape": 0.4204521317923123,
+      "runtime_mape": 0.023569801857586503,
+      "positive_probability_mean": 0.8295430342356666,
+      "negative_probability_mean": 0.49501901976186047,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 53,
+          "positive_ranks": [
+            53,
+            65,
+            305,
+            306,
+            307,
+            308
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1070.195,
+          "top10_best_cycle_regret": 0.013717421124828544
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 24,
+          "positive_ranks": [
+            24,
+            39,
+            257,
+            258,
+            259,
+            260
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1059.46,
+          "top10_best_cycle_regret": 0.013093901982790923
+        },
+        "cost_aware": {
+          "first_hit_rank": 9,
+          "positive_ranks": [
+            9,
+            10,
+            11,
+            12,
+            107,
+            125
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 967.185,
+          "top10_best_cycle_regret": 0.005736376106746377
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 9,
+          "positive_ranks": [
+            9,
+            10,
+            11,
+            12,
+            107,
+            128
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 967.185,
+          "top10_best_cycle_regret": 0.005736376106746377
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6,
+            7,
+            16,
+            17,
+            95,
+            129
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 963.655,
+          "top10_best_cycle_regret": 0.005736376106746377
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "TRAIN",
+      "circuit": "s13207",
+      "auc_probability": 0.8720136518771331,
+      "cycles_spearman": 0.30078657896511135,
+      "runtime_spearman": 0.7667702037637583,
+      "cycles_mape": 0.22654474189923793,
+      "runtime_mape": 0.06699768208494548,
+      "positive_probability_mean": 0.5156088968120001,
+      "negative_probability_mean": 0.3308469244979174,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 176,
+          "positive_ranks": [
+            176,
+            273
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 752.13,
+          "top10_best_cycle_regret": 0.12173913043478257
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 11,
+          "positive_ranks": [
+            11,
+            197
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1033.81,
+          "top10_best_cycle_regret": 0.06583850931677016
+        },
+        "cost_aware": {
+          "first_hit_rank": 21,
+          "positive_ranks": [
+            21,
+            65
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 621.675,
+          "top10_best_cycle_regret": 0.07608695652173902
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 21,
+          "positive_ranks": [
+            21,
+            57
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 621.675,
+          "top10_best_cycle_regret": 0.07608695652173902
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 19,
+          "positive_ranks": [
+            19,
+            108
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 621.675,
+          "top10_best_cycle_regret": 0.07608695652173902
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "TRAIN",
+      "circuit": "s15850",
+      "auc_probability": 0.8558394160583942,
+      "cycles_spearman": 0.8231619691604379,
+      "runtime_spearman": 0.5681076790677746,
+      "cycles_mape": 0.29106266895245125,
+      "runtime_mape": 0.030896400223721237,
+      "positive_probability_mean": 0.509941940506,
+      "negative_probability_mean": 0.40895795296886495,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 139,
+          "positive_ranks": [
+            139,
+            161
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 978.2,
+          "top10_best_cycle_regret": 0.19302152932442462
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 3,
+          "positive_ranks": [
+            3,
+            35
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1041.26,
+          "top10_best_cycle_regret": 0.009279881217520325
+        },
+        "cost_aware": {
+          "first_hit_rank": 42,
+          "positive_ranks": [
+            42,
+            67
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 759.4200000000001,
+          "top10_best_cycle_regret": 0.3652561247216035
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 33,
+          "positive_ranks": [
+            33,
+            49
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 759.4200000000001,
+          "top10_best_cycle_regret": 0.3652561247216035
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 41,
+          "positive_ranks": [
+            41,
+            42
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 759.4200000000001,
+          "top10_best_cycle_regret": 0.3652561247216035
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "TRAIN",
+      "circuit": "s35932",
+      "auc_probability": 0.4444444444444444,
+      "cycles_spearman": -0.8181818181818182,
+      "runtime_spearman": 0.8303030303030303,
+      "cycles_mape": 0.3975028385106326,
+      "runtime_mape": 0.09102713765673767,
+      "positive_probability_mean": 0.910315195719,
+      "negative_probability_mean": 0.9019195062144445,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 7,
+          "positive_ranks": [
+            7
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "cost_aware": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 3,
+          "positive_ranks": [
+            3
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "TRAIN",
+      "circuit": "s38417",
+      "auc_probability": 0.5405405405405406,
+      "cycles_spearman": 0.06255693928192707,
+      "runtime_spearman": 0.642914979757085,
+      "cycles_mape": 0.6314940427252497,
+      "runtime_mape": 0.4416043338913944,
+      "positive_probability_mean": 0.8776754538215,
+      "negative_probability_mean": 0.8793794805402703,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 8,
+          "positive_ranks": [
+            8,
+            12
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1077.515,
+          "top10_best_cycle_regret": 0.007354293068578821
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 19,
+          "positive_ranks": [
+            19,
+            20
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1476.405,
+          "top10_best_cycle_regret": 0.03217503217503226
+        },
+        "cost_aware": {
+          "first_hit_rank": 17,
+          "positive_ranks": [
+            17,
+            18
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1070.015,
+          "top10_best_cycle_regret": 0.061224489795918435
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 18,
+          "positive_ranks": [
+            18,
+            19
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1070.015,
+          "top10_best_cycle_regret": 0.061224489795918435
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 15,
+          "positive_ranks": [
+            15,
+            18
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 767.45,
+          "top10_best_cycle_regret": 0.03217503217503226
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "TRAIN",
+      "circuit": "spi",
+      "auc_probability": 0.9931972789115646,
+      "cycles_spearman": 0.5476468191953685,
+      "runtime_spearman": 0.1380509655464469,
+      "cycles_mape": 0.030876934112624793,
+      "runtime_mape": 0.04004176371334888,
+      "positive_probability_mean": 0.599166343609,
+      "negative_probability_mean": 0.04179543444766378,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 681,
+          "positive_ranks": [
+            681
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1000.69,
+          "top10_best_cycle_regret": 0.10819130565357749
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 866.29,
+          "top10_best_cycle_regret": 0
+        },
+        "cost_aware": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 866.29,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 866.29,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 5,
+          "positive_ranks": [
+            5
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 858.34,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "VALIDATION",
+      "circuit": "s5378",
+      "auc_probability": 0.73224043715847,
+      "cycles_spearman": 0.6620520689497826,
+      "runtime_spearman": 0.617936767951005,
+      "cycles_mape": 0.8223450456770847,
+      "runtime_mape": 0.09594720074357507,
+      "positive_probability_mean": 0.0784326506158,
+      "negative_probability_mean": 0.0885186243491937,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 223,
+          "positive_ranks": [
+            223
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 741.95,
+          "top10_best_cycle_regret": 0.31128608923884515
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 67,
+          "positive_ranks": [
+            67
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 790.5600000000001,
+          "top10_best_cycle_regret": 0.055118110236220375
+        },
+        "cost_aware": {
+          "first_hit_rank": 93,
+          "positive_ranks": [
+            93
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 544.695,
+          "top10_best_cycle_regret": 0.28136482939632557
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 99,
+          "positive_ranks": [
+            99
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 544.695,
+          "top10_best_cycle_regret": 0.28136482939632557
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 90,
+          "positive_ranks": [
+            90
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 544.695,
+          "top10_best_cycle_regret": 0.28136482939632557
+        }
+      }
+    },
+    {
+      "model": "GraphSAGE",
+      "role": "VALIDATION",
+      "circuit": "tv80",
+      "auc_probability": 0.3295964125560538,
+      "cycles_spearman": -0.46622956064399956,
+      "runtime_spearman": 0.6112014514743995,
+      "cycles_mape": 0.926507588658845,
+      "runtime_mape": 0.12623534915110116,
+      "positive_probability_mean": 0.07350732013585001,
+      "negative_probability_mean": 0.16843384565152736,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 232,
+          "positive_ranks": [
+            232,
+            233
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 789.57,
+          "top10_best_cycle_regret": 0.1364851554805122
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 325,
+          "positive_ranks": [
+            325,
+            334
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 922.275,
+          "top10_best_cycle_regret": 0.24131138314337974
+        },
+        "cost_aware": {
+          "first_hit_rank": 287,
+          "positive_ranks": [
+            287,
+            306
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 754.76,
+          "top10_best_cycle_regret": 0.1985366540030955
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 289,
+          "positive_ranks": [
+            289,
+            312
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 754.76,
+          "top10_best_cycle_regret": 0.1985366540030955
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 304,
+          "positive_ranks": [
+            304,
+            318
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 739.27,
+          "top10_best_cycle_regret": 0.1737723371324047
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "TRAIN",
+      "circuit": "aes_core",
+      "auc_probability": 1,
+      "cycles_spearman": 0.9636610330463081,
+      "runtime_spearman": 0.8611626731336245,
+      "cycles_mape": 0.027887448526203472,
+      "runtime_mape": 0.011323266638025683,
+      "positive_probability_mean": 0.9757233957448334,
+      "negative_probability_mean": 0.0562360366621501,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 53,
+          "positive_ranks": [
+            53,
+            65,
+            305,
+            306,
+            307,
+            308
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1070.195,
+          "top10_best_cycle_regret": 0.013717421124828544
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 35,
+          "positive_ranks": [
+            35,
+            36,
+            37,
+            38,
+            54,
+            59
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1062.245,
+          "top10_best_cycle_regret": 0.019204389574760006
+        },
+        "cost_aware": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "top10_hits": 6,
+          "top10_cost_s": 1025.24,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "top10_hits": 6,
+          "top10_cost_s": 1025.24,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "top10_hits": 6,
+          "top10_cost_s": 1025.24,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "TRAIN",
+      "circuit": "s13207",
+      "auc_probability": 1,
+      "cycles_spearman": 0.8446962950028918,
+      "runtime_spearman": 0.8798820128849135,
+      "cycles_mape": 0.028365033417729703,
+      "runtime_mape": 0.04089821964900243,
+      "positive_probability_mean": 0.912079870701,
+      "negative_probability_mean": 0.05557596374781393,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 176,
+          "positive_ranks": [
+            176,
+            273
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 752.13,
+          "top10_best_cycle_regret": 0.12173913043478257
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 21,
+          "positive_ranks": [
+            21,
+            134
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 831.0799999999999,
+          "top10_best_cycle_regret": 0.04068322981366457
+        },
+        "cost_aware": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 931.64,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 931.64,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 931.64,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "TRAIN",
+      "circuit": "s15850",
+      "auc_probability": 1,
+      "cycles_spearman": 0.9172567204200459,
+      "runtime_spearman": 0.6216828230796398,
+      "cycles_mape": 0.032880124166583556,
+      "runtime_mape": 0.015081241795043766,
+      "positive_probability_mean": 0.950763642788,
+      "negative_probability_mean": 0.060511662844868065,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 139,
+          "positive_ranks": [
+            139,
+            161
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 978.2,
+          "top10_best_cycle_regret": 0.19302152932442462
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 3,
+          "positive_ranks": [
+            3,
+            70
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1030.21,
+          "top10_best_cycle_regret": 0
+        },
+        "cost_aware": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1041.03,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1041.03,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1041.03,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "TRAIN",
+      "circuit": "s35932",
+      "auc_probability": 1,
+      "cycles_spearman": 0.7622092916488803,
+      "runtime_spearman": 0.960490759014502,
+      "cycles_mape": 0.11994033188261526,
+      "runtime_mape": 0.031832000312385964,
+      "positive_probability_mean": 0.958115100861,
+      "negative_probability_mean": 0.3207145631312667,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 7,
+          "positive_ranks": [
+            7
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "cost_aware": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1129.245,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "TRAIN",
+      "circuit": "s38417",
+      "auc_probability": 1,
+      "cycles_spearman": 0.8212365481445514,
+      "runtime_spearman": 0.936262904939184,
+      "cycles_mape": 0.03851654458563887,
+      "runtime_mape": 0.0671911238479014,
+      "positive_probability_mean": 0.9820586740970001,
+      "negative_probability_mean": 0.16369175563595406,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 8,
+          "positive_ranks": [
+            8,
+            12
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 1077.515,
+          "top10_best_cycle_regret": 0.007354293068578821
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 6,
+          "positive_ranks": [
+            6,
+            8
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1113.845,
+          "top10_best_cycle_regret": 0
+        },
+        "cost_aware": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1268.76,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1473.74,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1,
+            2
+          ],
+          "top10_hits": 2,
+          "top10_cost_s": 1172.28,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "TRAIN",
+      "circuit": "spi",
+      "auc_probability": 1,
+      "cycles_spearman": 0.92040991851088,
+      "runtime_spearman": 0.5320845102922576,
+      "cycles_mape": 0.009665891205915197,
+      "runtime_mape": 0.03459757147744537,
+      "positive_probability_mean": 0.954592466354,
+      "negative_probability_mean": 0.007887548792253141,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 681,
+          "positive_ranks": [
+            681
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 1000.69,
+          "top10_best_cycle_regret": 0.10819130565357749
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 4,
+          "positive_ranks": [
+            4
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 866.72,
+          "top10_best_cycle_regret": 0
+        },
+        "cost_aware": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 903.39,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 903.39,
+          "top10_best_cycle_regret": 0
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 1,
+          "positive_ranks": [
+            1
+          ],
+          "top10_hits": 1,
+          "top10_cost_s": 895.35,
+          "top10_best_cycle_regret": 0
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "VALIDATION",
+      "circuit": "s5378",
+      "auc_probability": 0.4562841530054645,
+      "cycles_spearman": 0.06573042553598082,
+      "runtime_spearman": 0.553640387480933,
+      "cycles_mape": 2.786723287749855,
+      "runtime_mape": 0.12452322396845261,
+      "positive_probability_mean": 0.00173492962494,
+      "negative_probability_mean": 0.007691322596038347,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 223,
+          "positive_ranks": [
+            223
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 741.95,
+          "top10_best_cycle_regret": 0.31128608923884515
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 235,
+          "positive_ranks": [
+            235
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 656.25,
+          "top10_best_cycle_regret": 0.12913385826771662
+        },
+        "cost_aware": {
+          "first_hit_rank": 227,
+          "positive_ranks": [
+            227
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 825.71,
+          "top10_best_cycle_regret": 0.05879265091863517
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 175,
+          "positive_ranks": [
+            175
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 915.62,
+          "top10_best_cycle_regret": 0.05879265091863517
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 190,
+          "positive_ranks": [
+            190
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 633.31,
+          "top10_best_cycle_regret": 0.13123359580052485
+        }
+      }
+    },
+    {
+      "model": "XGBoost",
+      "role": "VALIDATION",
+      "circuit": "tv80",
+      "auc_probability": 0.38565022421524664,
+      "cycles_spearman": 0.16645910767178823,
+      "runtime_spearman": 0.5821164916509223,
+      "cycles_mape": 0.18556974497448633,
+      "runtime_mape": 0.10483349822588964,
+      "positive_probability_mean": 0.00227349530905,
+      "negative_probability_mean": 0.01332741680152385,
+      "ranking": {
+        "fixed_heuristic": {
+          "first_hit_rank": 232,
+          "positive_ranks": [
+            232,
+            233
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 789.57,
+          "top10_best_cycle_regret": 0.1364851554805122
+        },
+        "predicted_cycles": {
+          "first_hit_rank": 176,
+          "positive_ranks": [
+            176,
+            177
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 839.49,
+          "top10_best_cycle_regret": 0.04193049106514701
+        },
+        "cost_aware": {
+          "first_hit_rank": 268,
+          "positive_ranks": [
+            268,
+            269
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 768.93,
+          "top10_best_cycle_regret": 0.0740115379203603
+        },
+        "diagnostic_probability_only": {
+          "first_hit_rank": 281,
+          "positive_ranks": [
+            281,
+            282
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 768.93,
+          "top10_best_cycle_regret": 0.0740115379203603
+        },
+        "diagnostic_observed_cost_denominator": {
+          "first_hit_rank": 283,
+          "positive_ranks": [
+            283,
+            287
+          ],
+          "top10_hits": 0,
+          "top10_cost_s": 768.93,
+          "top10_best_cycle_regret": 0.0740115379203603
+        }
+      }
+    }
+  ],
+  "changes_to_models_or_formal_protocol": false
+}

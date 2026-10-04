@@ -1,0 +1,86 @@
+{
+  "schema_version": "runtime-ranking-v3-implementation-review-request",
+  "status": "PENDING_INDEPENDENT_REVIEW_ML_EXECUTION_NOT_VERIFIED",
+  "files": [
+    {
+      "path": "contracts/runtime_ranking_v3.json",
+      "sha256": "9a279207526f2eef7884fd334ef76a643073ad8a60eb3b214391b91af2a1991b"
+    },
+    {
+      "path": "src/models/runtime_ranking_v3.py",
+      "sha256": "df8d6f02b3268681e1d8d692abd145c77a44fa27d11f49a9b17a232cb86d7ed4"
+    },
+    {
+      "path": "tests/test_runtime_ranking_v3.py",
+      "sha256": "e1e0bdeb3989121543d5cb00347e12ac06f794aa7a2bb973bbdc4562306c3abe"
+    },
+    {
+      "path": "docs/runtime_ranking_v3_plan.md",
+      "sha256": "96dd1b0e9bb0ac846cd532fce584e8d9c75244156c41f68cc0e70d5d2fb46af4"
+    },
+    {
+      "path": "data/manifests/runtime_training_v2_results_20261004.json",
+      "sha256": "c36e2b1dff1f96d180d11c34216cb252c2a1da5b1a24bd98b9307774bca7557a"
+    },
+    {
+      "path": "data/manifests/runtime_v2_diagnostic_20261004.json",
+      "sha256": "358d0660af7022287e466eb9dde62a911748d8026a6561d52537db11a088cf33"
+    }
+  ],
+  "local_tests": {
+    "new_suite": {
+      "testsRun": 13,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "focused_regression_before_contract_test": {
+      "testsRun": 30,
+      "skipped": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    "skip_reason": "PyTorch absent; forward/gradient/determinism are not PASS"
+  },
+  "scope": "DESIGN_AND_SYNTHETIC_ONLY",
+  "full_regression": {
+    "testsRun": 607,
+    "skipped": 16,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "note": "Full suite discovery preceded the final added contract-closure test; the final 13-test v3 focused suite was rerun successfully with one declared PyTorch skip. Skips are not ML gate PASS."
+  },
+  "implemented": [
+    "six_fold_plan",
+    "fold_fitting_only_targets_and_normalization",
+    "bounded_same_circuit_pair_sampler",
+    "family_macro_pairwise_loss",
+    "candidate_and_graph_quality_model_constructors",
+    "freeze_bound_replay"
+  ],
+  "pending": [
+    "independent_review",
+    "torch_forward_gradient_and_same_seed_tests",
+    "physical_fold_outcome_split",
+    "full_train_runner",
+    "XGBoost_ranker_baseline",
+    "three_seed_fold_aggregation",
+    "separate_training_release"
+  ],
+  "training_executed": false,
+  "remote_accessed": false,
+  "blind_accessed": false,
+  "lsf_tessent_submitted": false,
+  "review_checks": [
+    "Confirm no oracle/runtime/outcome input features",
+    "Confirm five fitting families only per fold",
+    "Confirm heldout labels loaded after freeze by future runner",
+    "Confirm equal-family objective and deterministic bounded pairs",
+    "Verify early-stop cost vs offline best-of-ten distinction",
+    "Verify unchanged epsilon=0.01 and K=10",
+    "Verify original v2 evidence hashes preserved",
+    "Review XGBoost baseline fairness before execution"
+  ],
+  "authority": "This request is not a review PASS or training release."
+}
