@@ -1,0 +1,33 @@
+{
+  "schema_version": "runtime-training-v2-independent-results-audit",
+  "status": "PASS_FORMAL_RESULTS_AUDIT",
+  "reviewer": "independent_read_only_agentfleet_reviewer",
+  "source_commit": "218457790f08b6c4351b58aa12fefbfbd32ea449",
+  "workspace": "/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119",
+  "trainer_code_review_sha256": "84282136f2dc98d02ede809ad577b0839c7e021a82a48ca53be5568decaaea9a",
+  "checks": {
+    "seed_artifact_hashes_verified": 33,
+    "all_three_seed_receipt_anchors_match": true,
+    "trainer_review_git_blob_and_deployed_file_match": true,
+    "reviewed_implementation_hashes_match": true,
+    "three_seed_arithmetic_mean_verified": true,
+    "ensemble_freeze_and_replay_hashes_verified": true,
+    "validation_replay_independently_recomputed": true,
+    "exact_validation_family_and_action_set": true,
+    "ranking_frozen_before_outcome_access": true,
+    "seed_selection_used": false,
+    "metrics_and_chinese_report_consistent": true
+  },
+  "review_history": [
+    "Initial review could not locate trainer code receipt in dataset inputs; results remained pending.",
+    "Follow-up read the existing immutable receipt from source commit; its exact SHA matched all three seeds and all four implementations. No seed receipt or model was modified."
+  ],
+  "scientific_conclusion": "Execution and provenance gates pass. All methods have zero epsilon hits under the frozen top-10 budget on both validation families. This audit does not establish faster attainment of near-optimal actions.",
+  "boundaries": {
+    "blind_accessed": false,
+    "pilot_accessed": false,
+    "training_or_data_modified_by_reviewer": false,
+    "lsf_or_tessent_executed": false,
+    "protected_root_accessed": false
+  }
+}

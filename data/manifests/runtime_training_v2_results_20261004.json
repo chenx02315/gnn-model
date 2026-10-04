@@ -1,0 +1,53 @@
+{
+  "schema_version": "runtime-training-v2-formal-results",
+  "status": "PASS_FORMAL_RESULTS_AUDIT_ZERO_VALIDATION_HITS",
+  "independent_audit": "data/manifests/runtime_training_v2_results_review_20261004.json",
+  "source_commit": "218457790f08b6c4351b58aa12fefbfbd32ea449",
+  "workspace": "/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119",
+  "seeds": [20260824, 20260825, 20260826],
+  "seed_selection_used": false,
+  "ensemble": "arithmetic_mean_predictions_all_three_seeds",
+  "train_actions": 1706,
+  "validation_actions": 815,
+  "train_families": 6,
+  "validation_families": 2,
+  "validation_circuits": ["s5378", "tv80"],
+  "epsilon": 0.01,
+  "top_k": 10,
+  "family_macro_mean_charged_runtime_s": {
+    "fixed_heuristic": 765.76,
+    "graphsage_predicted_cycles": 856.4175,
+    "graphsage_cost_aware": 649.7275,
+    "xgboost_predicted_cycles": 747.87,
+    "xgboost_cost_aware": 797.3200000000002
+  },
+  "family_macro_hit_rate": {
+    "fixed_heuristic": 0.0,
+    "graphsage_predicted_cycles": 0.0,
+    "graphsage_cost_aware": 0.0,
+    "xgboost_predicted_cycles": 0.0,
+    "xgboost_cost_aware": 0.0
+  },
+  "interpretation": "All methods exhausted the frozen top-10 budget without an epsilon hit on both validation families. Report charged search-attempt cost and zero-hit rate together. Lower no-hit cost is not evidence of faster attainment of a near-optimal action.",
+  "sha256": {
+    "contract": "e936f7264fae75d766d0b18dcc3be5ffcba4c54a49aebdbcb46bf1e8cf636614",
+    "dependency_lock": "a9427b7cbf01048a317009dcf0f625ace51cc739b4e7e2e626a17166ed14c96f",
+    "preflight": "37a1d4f225211a0c5625cede2cf4c41ac0bca80093359256f8b5b92a30f4fd87",
+    "seed_20260824_receipt": "b58739526bb53f66532f958e258012c29718e31d30a839ffae0770f70134864c",
+    "seed_20260825_receipt": "1ae0477320656a9250aa5eba05d2b1d80701a792c21c0968b1f80e97bc025e66",
+    "seed_20260826_receipt": "2917f7e314d1c6f73dd4ef236e8bc75caffb89a06bade5f9251d8c29b0cf69dc",
+    "graphsage_ensemble_receipt": "8492adf4d9746a0f126d7fa9e55512fe782fbc035820fb0c24c71a901a374921",
+    "graphsage_ranking_freeze": "494a999e4bf47a05efe73f4339e861700af23b3a814418adbc880df315b80477",
+    "graphsage_validation_replay": "d77dbac24505c2623bdca2ed4fea255f532252ca049dcbe0b44ecfa890367647",
+    "xgboost_ensemble_receipt": "bdd58cbe0330be14ef0368b0a14087fdfc9ad801445f31f5d9bc662f2e8f5882",
+    "xgboost_ranking_freeze": "357a8dd4066d0a7f6469335b71130a8ed3ed76480e05fbc2e3afc8105b7a01de",
+    "xgboost_validation_replay": "31f4ecaf9c365533f3be16658a75eb26628d6203019af0fa07dc8950831221f1"
+  },
+  "boundaries": {
+    "blind_rows_read": false,
+    "pilot_rows_read": false,
+    "validation_used_for_training_or_seed_selection": false,
+    "lsf_or_tessent_submitted": false,
+    "checkpoints_in_git": false
+  }
+}
