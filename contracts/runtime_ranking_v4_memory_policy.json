@@ -1,0 +1,15 @@
+{
+  "schema_version": "ranking-v4-low-memory-execution-policy-1",
+  "maximum_concurrent_training_workers": 1,
+  "threads_per_library": 1,
+  "combined_parent_and_worker_group_sampled_rss_limit_bytes": 1073741824,
+  "worker_hard_address_space_limit_bytes": 8589934592,
+  "minimum_remaining_memory_bytes": 4294967296,
+  "minimum_remaining_effective_memory_fraction": 0.1,
+  "prelaunch_extra_headroom_bytes": 1073741824,
+  "poll_seconds": 0.25,
+  "worker_timeout_seconds": 1800,
+  "failure_action": "Stop own process group, preserve logs and resource receipt, no automatic retry",
+  "limitation": "RSS sampling may miss brief peaks; address-space limit is a hard limit but not a hard resident-memory cap. No guarantee about other users' allocations.",
+  "prohibited": ["parallel training", "large checkpoint export", "automatic retry after resource failure", "system-wide cache purge", "changing shared machine memory or swap configuration"]
+}

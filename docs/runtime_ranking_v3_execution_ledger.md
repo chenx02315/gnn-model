@@ -96,3 +96,25 @@ v4本地kernel独立复核PASS：4项纯合成测试通过，包括准确epsilon
 本地完整回归661 tests、22 skips、0 failures/errors、exit0；本地8项kernel/worker测试中神经调用使用fake adapter，不冒充本地ML执行。Linux实际24次拟合是另一个证据层。结果独立回读正封存；真实v4 runner/execution release尚未建立，不启动真实拟合，不打开VALIDATION/BLIND、A或LSF/Tessent。
 
 独立结果回读现已PASS：5个overlay/39个base code SHA、24组request raw/canonical连接、固定argv与exit0、24组持久化freeze再评估、6组重复checkpoint/排序全部核对一致。Linux同环境8项focused测试0skip/0fail/0error。原始execution receipt的pending标记不覆盖，由新增SHA-bound independent review回执消除本阶段审核挂起；不是实时训练release。
+
+## 2026-10-05：低内存真实 v4 执行 r2
+
+用户授权连续推进并控制内存。实现真实TRAIN-only worker/driver，复用已封存1706动作包，只运行18次CandidateMLP，不重跑旧对照；raw/canonical request SHA、fold source SHA和精确6×3 grid均绑定。标准化、oracle/排序对仅来自拟合家族，持久化freeze验证后才读取该fold留出标签。
+
+资源保护：单worker串行、各库1线程、0.25秒采样父+worker进程组RSS，超过1GiB停止；child RLIMIT_AS硬上限8GiB/core0，宿主/cgroup余量至少max(4GiB,10%有效总内存)，启动再留1GiB余量；超时1800s、停止本进程组、保留日志、不自动重试。采样不能保证瞬时RSS零超调，也不能控制其他用户分配；没有清缓存或改共享主机swap/cgroup配置。
+
+独立复核先发现dead-leader仍留子进程的漏洞，已修复为检查整个进程组并确认无存活成员，补Linux实际压力/超时/遗留子进程/AS和线程证据。生成数据真实ML smoke峰值combined RSS557162496 bytes（约531MiB），成功，不能代替真实数据峰值或性能结论。
+
+r1启动时输出路径门禁与launcher的`ROOT/experiment`不兼容，0fit失败，原目录与exit/log完整保留。一次聚焦修复只接受新B root的experiment子目录，补launcher兼容测试；另建r2，不在r1重试或覆盖。r2 Linux13/13 tests0skip/0fail/0error；本地全回归674 tests/25skip/0fail/0error。独立release精确绑定13代码hash、review、smoke及launcher均PASS。
+
+当前r2新B目录`/ssd/cjc/gnn_model_ranking_v4_train_687c96d_20261005_r2`已单次启动，supervisor PID2449282；release SHA`70c458c9d4f70f87ab2fc12a220b46e325154480326051ae93fc7abc66127f31`。预期18份评估、0重试。继续监控内存/进度 -> 完整结果独立审核 -> 与封存v3基线对照 -> 版本同步，不等待逐步“继续”。此启动记录不是完成或加速证据。
+
+### r2 安全停止：最新权威状态
+
+r2 最终 exit=1，15/18 份评估完成，0重试；第16项 `iwls_spi_20260824_candidate_mlp` 触发 `MEMORY_RSS_UNREADABLE`，并非记录到的内存超限。已完成任务 combined RSS 采样峰值592502784 bytes（约565MiB）；停止项峰值569974784 bytes，worker exit=0，但安全回执仍是STOPPED_NO_RETRY，清理后live_group_members=0，不把worker exit0冒充完整driver成功。
+
+exit原始SHA `992e10b329a59657918ca617fb5b05533ff38ba4f4c6dcd87f7e56e21fe29bed`；失败memory原始SHA `ce05463fae23dc180a8a1df032c4acac7554d57fe7761ad440b119e1cd0fd2a5`；driver traceback SHA `b7ac830715bdb832a5d9cc95779f4d3d995c224ab48a6af153189b280e342c47`。原B目录及部分结果保留，不覆盖、不续跑、不选择性报告15项效果。
+
+独立代码复核识别退出竞态：group枚举时活跃，读取status时已zombie，VmRSS消失。最小本地修复仅在二次stat证明Z/X或进程已消失时计0；仍存活但RSS不可读、坏stat或权限错误继续fail-closed。新增竞态单测，focused14tests通过，Windows3项Linux执行skip不视为Linux门禁通过。当前不部署修复，不进行第三次真实运行；需新Linux资源门禁与独立release复核后再决定新的执行方案。
+
+修复独立只读复核 `PASS_RSS_RACE_FIX_CODE_GATE`；本地完整 `unittest discover -s tests` 回归 exit0。执行release记录为历史已执行绑定，不适用于当前已修改guard源码；当前合同已撤销新的执行放行。

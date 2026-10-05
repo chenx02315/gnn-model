@@ -1,0 +1,14 @@
+{
+  "status": "PASS_R2_EXECUTION_RELEASE_READY",
+  "reviewer": "ranking_isolation_review",
+  "release_sha256": "70c458c9d4f70f87ab2fc12a220b46e325154480326051ae93fc7abc66127f31",
+  "review_sha256": "43dc7ca3dae83cf25d4a9a165c1b87a701155325f83979aeca32207c82fd47ad",
+  "launcher_sha256": "c3f3909d544545ef1c4e30183cbc90f5ac0f933d4f10363f194fb0b6d81b0ddc",
+  "reviewed_sources_checked": 13,
+  "linux_gate": {"tests_run": 13, "skipped": 0, "failures": 0, "errors": 0},
+  "local_full_regression": {"tests_run": 674, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0},
+  "scope": "One fixed TRAIN-only six-fold three-seed CandidateMLP experiment; no A, BLIND, VALIDATION or LSF/Tessent",
+  "resource_policy": "serial one worker, one thread, sampled combined RSS 1GiB stop, hard RLIMIT_AS8GiB, no retry",
+  "prior_failure": "r1 startup path gate failed before any fit; immutable failure evidence retained; r2 focused fix reviewed",
+  "completion_claim": false
+}
