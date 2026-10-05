@@ -1,0 +1,36 @@
+{
+  "schema_version": "ranking-v4-synthetic-ml-independent-review-1",
+  "status": "PASS_SYNTHETIC_EXIT_BOUNDARY_ML",
+  "reviewer": "/root/ranking_evidence_review",
+  "local_sealing_review": {"reviewer":"/root/ranking_isolation_review","status":"PASS_SYNTHETIC_ML_SEALING","scope":"local JSON, source binding, hashes and permission boundaries only; no remote rerun"},
+  "root": "/ssd/cjc/gnn_model_ranking_v4_exit_boundary_ml_fe67d2d_20261005_r1",
+  "code_preparation_sha256": "29ce6eb80cc8595f5c93411478e4ec3c01ac0200c7586bb0f036570b7372fa7e",
+  "linux_log_sha256": "3897ade430f130bb21e51d4ad8693db06264322faee1ede0b9bd9a7d5b73d612",
+  "smoke_receipt_sha256": "16d8b76b07c01b115e6a4843d266e2411d88dd1a9dee4f7a4185e956706b2958",
+  "verified": {
+    "source_hash_matches": 43,
+    "python_cache_files": 0,
+    "linux_tests": 19,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "generated_actions": 18,
+    "fitting_uids": 15,
+    "held_uids": 3,
+    "held_labels_supplied": false,
+    "request_raw_and_canonical_binding": true,
+    "persisted_freeze_model_hash_and_replay": true,
+    "dependency_lock_checked_by_worker": true,
+    "worker_exit_code": 0,
+    "peak_sampled_combined_rss_bytes": 530558976,
+    "worker_retries": 0,
+    "live_members_pgrp_589053": 0
+  },
+  "limitations": [
+    "The smoke did not report activation of rss_exit_boundary; no proof that the transient race is eliminated.",
+    "Sampled RSS is not an instantaneous hard resident-memory cap.",
+    "Artificial fixture runtime is not ATPG wall time or effectiveness evidence."
+  ],
+  "real_training_release": false,
+  "fourth_real_run_authorized_by_this_review": false
+}

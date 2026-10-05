@@ -1,0 +1,17 @@
+{
+  "schema_version": "ranking-v4-observed-linux-focused-gate-1",
+  "status": "PASS",
+  "evidence_kind": "OBSERVED_SSH_TEST_EXIT_AND_INDEPENDENT_RAW_LOG_READBACK",
+  "cwd": "/ssd/cjc/gnn_model_ranking_v4_exit_boundary_ml_fe67d2d_20261005_r1/code",
+  "python": "/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1/venv/bin/python",
+  "argv": ["-B", "-m", "unittest", "tests.test_ranking_v4_memory_guard", "tests.test_ranking_v4_real_execution", "-v"],
+  "environment": {"PYTHONPATH": "unset", "PYTHONDONTWRITEBYTECODE": "1", "kernel": "6.1.0-47-amd64", "python": "3.11.2", "gnu_sort": "9.1"},
+  "testsRun": 19,
+  "skipped": 0,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "gate_pass": true,
+  "raw_log_sha256": "3897ade430f130bb21e51d4ad8693db06264322faee1ede0b9bd9a7d5b73d612",
+  "real_training_executed": false
+}

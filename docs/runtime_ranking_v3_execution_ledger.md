@@ -162,3 +162,13 @@ exit SHA `5939d5745ec05414620dcbefa460b18c7a65c5219c43f6aa19ba4bca4742d2f2`，dr
 本地完整回归711 tests、25skip、0fail/error、exit0（80.575s），raw log SHA `a63e96f4f689b98da7e08b61d9e18fda5414e577008868ead00034eeec023497`。历史r3仍9/18失败，原roots/receipts不改，不能以此unit PASS宣称真实ML竞态彻底消失或ATPG加速。新的真实运行仍未授权；下一验证层应是新源码绑定的合成ML集成证据，而不是沿用旧release直接重训。
 
 Linux门禁独立封存PASS_EXIT_BOUNDARY_UNIT_GATE_AUDIT：实际raw receipt/log、导入来源、原始5244-byte两项归档及deployed源码逐字节一致。合成ML集成验证和新的真实release尚未完成；门禁封存不自动撤销用户“不再自动重试”的限制。
+
+## 2026-10-05：退出边界合成 ML 集成独立封存
+
+用户批准上述下一验证层，本次只执行生成 fixture，不是第四次真实 TRAIN。新根 `/ssd/cjc/gnn_model_ranking_v4_exit_boundary_ml_fe67d2d_20261005_r1`，11996-byte、7-entry tar.gz，SHA `fc072f82e2f14ab07f5a6afb1834c0ad76c494fb27e57c6e7ee4a601c3848ab6`。43份代码哈希绑定、文件0444/目录0555，复核前后无pyc；没有修改旧根、安装依赖或访问真实数据。
+
+Linux focused 实际19tests、0skip/fail/error、exit0，raw log SHA `3897ade430f130bb21e51d4ad8693db06264322faee1ede0b9bd9a7d5b73d612`。随后仅一次 CandidateMLP 合成拟合：18人工动作、15拟合UID、3留出UID，固定seed20260824，留出标签未供应worker；raw/canonical request、依赖锁、持久化freeze/model哈希与回放均独立回读一致。smoke receipt SHA `16d8b76b07c01b115e6a4843d266e2411d88dd1a9dee4f7a4185e956706b2958`。
+
+单worker、线程1、零重试，采样combined RSS峰值530558976 bytes（约506MiB），仍采用1GiB RSS采样停止阈值与8GiB地址空间硬上限；exit0、进程组589053无存活成员。独立结论PASS_SYNTHETIC_EXIT_BOUNDARY_ML。此smoke未报告退出边界分支触发，不能证明瞬态竞态完全消失；人工耗时也不是ATPG wall time或加速证据。
+
+本地完整回归716tests、25skip、0fail/error、exit0（81.770s），raw log SHA `80486df416eff331df4ac38d070e59e08aea1a1e151120647c4b696c217aeab3`。历史r3仍9/18失败且保留，不拼接、不用于效果分析。本阶段封存不授权第四次真实训练；新真实运行必须另有明确授权、新源码绑定release和独立启动前复核。VALIDATION/BLIND、A、LSF/Tessent仍关闭。
