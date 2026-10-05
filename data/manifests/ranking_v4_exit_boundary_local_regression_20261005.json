@@ -1,0 +1,11 @@
+{
+  "status": "PASS_LOCAL_CODE_REGRESSION",
+  "testsRun": 711,
+  "skipped": 25,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "seconds": 80.575,
+  "raw_log_sha256": "a63e96f4f689b98da7e08b61d9e18fda5414e577008868ead00034eeec023497",
+  "real_training_release": false
+}

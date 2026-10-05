@@ -1,0 +1,23 @@
+{
+  "schema_version": "ranking-v4-exit-boundary-fix-1",
+  "status": "PASS_EXIT_BOUNDARY_UNIT_GATE_INDEPENDENTLY_SEALED",
+  "guard_sha256": "3dcaf6fd545aa1c5358146567cf55a8ac6593aa14af42f31ec965f8f62c79896",
+  "linux_receipt_sha256": "570ea61dbdd9d45c25693a908f2b517fe35bedeb869a3f754f6f620dd34982be",
+  "linux_raw_log_sha256": "1cdde150ae6c62a1ba4d09e356d7aa2d98cd934b02cfeab586ce99159cb59abe",
+  "linux_tests": {"testsRun":12,"skipped":0,"failures":0,"errors":0,"exit_code":0},
+  "prior_failure": "ranking_v4_r3_failure_audit_20261005.json",
+  "scope": "Resource observation only; no model, optimizer, feature, dataset or grid changes",
+  "acceptance": "Only a typed missing-VmRSS worker-group error followed by waitpid-backed leader exit0 and no live group members may finish successfully",
+  "fail_closed": ["still-running leader", "remaining descendant", "nonzero leader exit", "malformed proc stat", "permission error", "parent RSS failure", "unrelated runtime error"],
+  "diagnostic_fields": ["unreadable_pid", "observed_stat_state", "leader_exit_code", "live_group_member_count", "up_to_16_live_group_pids", "pids_truncated"],
+  "no_fabricated_zero_sample": true,
+  "limits_unchanged": {"rss_sampled_cap_bytes": 1073741824, "child_address_space_cap_bytes": 8589934592, "max_workers": 1, "automatic_retries": 0},
+  "local_focused": {"testsRun": 12, "passed": 9, "skipped_linux_only": 3, "failures": 0},
+  "linux_unit_gate_root": "/ssd/cjc/gnn_model_ranking_v4_exit_boundary_gate_30664e2_20261005_r1",
+  "linux_gate_reads_experiment_data": false,
+  "linux_gate_model_fits": 0,
+  "real_training_release": false,
+  "fourth_real_run_authorized": false,
+  "partial_r3_results_allowed_for_effectiveness": false,
+  "old_roots_or_receipts_changed": false
+}

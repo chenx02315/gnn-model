@@ -1,0 +1,21 @@
+{
+  "status": "PASS_EXIT_BOUNDARY_UNIT_GATE_AUDIT",
+  "reviewer": "ranking_isolation_review",
+  "archive_bytes": 5244,
+  "archive_entries": 2,
+  "archive_sha256": "b34f5a8fddddd4f61a46daf2b4bccaeff9925444eb1a381a581e4d586fcdaf91",
+  "receipt_sha256": "570ea61dbdd9d45c25693a908f2b517fe35bedeb869a3f754f6f620dd34982be",
+  "raw_log_sha256": "1cdde150ae6c62a1ba4d09e356d7aa2d98cd934b02cfeab586ce99159cb59abe",
+  "guard_sha256": "3dcaf6fd545aa1c5358146567cf55a8ac6593aa14af42f31ec965f8f62c79896",
+  "test_sha256": "cebcda5a14bb7bcb6816fc3bcbea71094b2dfa92d62b935219752efeab1bbd2a",
+  "archive_and_deployed_files_exact_match": true,
+  "import_origin_verified": true,
+  "testsRun": 12,
+  "skipped": 0,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "scope": "RESOURCE_UNIT_ONLY; exit-boundary ordering tests are controlled mocks, Linux resource child tests execute actual small processes",
+  "real_training_release": false,
+  "fourth_run_allowed": false
+}

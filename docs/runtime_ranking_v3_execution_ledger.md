@@ -152,3 +152,13 @@ exit SHA `5939d5745ec05414620dcbefa460b18c7a65c5219c43f6aa19ba4bca4742d2f2`，dr
 有界收集器和未来比较器本地实现已完成；比较器拒绝重复/额外/缺失grid、NaN/inf/非法metric，仅对共同命中计算条件成本差。因真实r3不完整，未使用它收集或比较9项部分效果。最终本地完整回归702 tests、25skip、0fail/error、exit0，日志SHA `5da5a60e29ecace04f630093cacc3f457c6264742b8458211379d41c546cd0d9`；这只是代码回归，不是训练完成证明。
 
 独立最终review补发现双v3 manifest一致性检查遗漏GraphSAGE；已改为全部72单元比较，新增GraphSAGE单独变异拒绝用例，4项focused PASS，独立PASS_COMPARATOR_FAILURE_SEALING。补丁后再次完整回归702 tests、25skip、exit0（63.216s），raw log SHA `3f054b95b8b237e9fd67c68620c83fe08d73b9a0270020eac5d2b31a75aead34`，封存回执绑定最终版本。
+
+## 2026-10-05：退出边界修复与 unit-only Linux 验证
+
+“继续”后只推进资源观察修复，不进行第4次真实训练。新增专用异常，仅在worker组内VmRSS缺失且stat格式合法时允许进入退出边界核对；waitpid-backed poll确认为exit0且整个组无存活成员才完成。仍存活、遗留子进程、非零退出、父进程RSS错误、权限或格式异常均安全停止。未增加RSS/AS上限，没有采样重试或worker重试，不伪造零样本、不抹去既有峰值。小型诊断保存PID、stat状态、退出码、group数量和至多16个PID。
+
+独立本地复核PASS；focused12 total、9pass、3Linux-only skip。新的两文件tar.gz仅5244 bytes，SHA `b34f5a8fddddd4f61a46daf2b4bccaeff9925444eb1a381a581e4d586fcdaf91`，新unit根 `/ssd/cjc/gnn_model_ranking_v4_exit_boundary_gate_30664e2_20261005_r1`；python3 -I实际12tests、0skip/fail/error、exit0。receipt SHA `570ea61dbdd9d45c25693a908f2b517fe35bedeb869a3f754f6f620dd34982be`，raw log SHA `1cdde150ae6c62a1ba4d09e356d7aa2d98cd934b02cfeab586ce99159cb59abe`。退出竞态单测使用受控模拟，Linux另实际执行轻量子进程压力停止、进程组清理、地址空间与线程限制；没有真实PyTorch拟合、数据读取、LSF/Tessent或训练release。
+
+本地完整回归711 tests、25skip、0fail/error、exit0（80.575s），raw log SHA `a63e96f4f689b98da7e08b61d9e18fda5414e577008868ead00034eeec023497`。历史r3仍9/18失败，原roots/receipts不改，不能以此unit PASS宣称真实ML竞态彻底消失或ATPG加速。新的真实运行仍未授权；下一验证层应是新源码绑定的合成ML集成证据，而不是沿用旧release直接重训。
+
+Linux门禁独立封存PASS_EXIT_BOUNDARY_UNIT_GATE_AUDIT：实际raw receipt/log、导入来源、原始5244-byte两项归档及deployed源码逐字节一致。合成ML集成验证和新的真实release尚未完成；门禁封存不自动撤销用户“不再自动重试”的限制。

@@ -17,6 +17,14 @@ POLL_S = .25
 THREAD_KEYS = ('OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'NUMEXPR_NUM_THREADS')
 
 
+class RSSExitBoundaryUnreadable(RuntimeError):
+    """Missing VmRSS with a valid nonterminal stat; not proof of zero memory."""
+    def __init__(self, pid, state):
+        super().__init__('MEMORY_RSS_UNREADABLE')
+        self.pid = pid
+        self.state = state
+
+
 def policy():
     return dict(max_concurrent_workers=1, combined_rss_cap_bytes=RSS_CAP,
                 child_address_space_cap_bytes=ADDRESS_CAP, reserve_min_bytes=RESERVE_MIN,
@@ -72,13 +80,16 @@ def rss(pid):
     try:
         stat = Path('/proc', str(pid), 'stat').read_text()
         fields = stat[stat.rfind(')') + 2:].split()
-        if stat.rfind(')') < 0 or len(fields) < 3:
+        if (stat.rfind(')') < 0 or len(fields) < 3 or
+                not fields[1].isdigit() or not fields[2].isdigit()):
             raise RuntimeError('MEMORY_RSS_UNREADABLE')
         if fields[0] in ('Z', 'X'):
             return 0
+        if fields[0] not in ('R', 'S', 'D', 'T', 't', 'W', 'I', 'P'):
+            raise RuntimeError('MEMORY_RSS_UNREADABLE')
     except FileNotFoundError:
         return 0
-    raise RuntimeError('MEMORY_RSS_UNREADABLE')
+    raise RSSExitBoundaryUnreadable(pid, fields[0])
 
 
 def group_members(group):
@@ -153,7 +164,24 @@ def run_bounded(argv, log_path, env):
                     if group_members(process.pid):
                         raise RuntimeError('MEMORY_DESCENDANT_LEFTOVER')
                     break
-                used = group_rss(process.pid)
+                try:
+                    used = group_rss(process.pid)
+                except RSSExitBoundaryUnreadable as error:
+                    # poll() is waitpid-backed. A successful leader exit alone
+                    # is insufficient: every descendant must also be gone.
+                    code = process.poll()
+                    live = group_members(process.pid)
+                    result['rss_exit_boundary'] = dict(
+                        unreadable_pid=error.pid, observed_stat_state=error.state,
+                        leader_exit_code=code, live_group_member_count=len(live),
+                        live_group_pids=live[:16], pids_truncated=len(live) > 16)
+                    if code == 0 and not live:
+                        result['exit_code'] = 0
+                        result['rss_exit_boundary_resolution'] = 'EXIT_ZERO_NO_LIVE_GROUP'
+                        # No zero RSS sample is fabricated; peaks and sample
+                        # count retain only successfully observed samples.
+                        break
+                    raise
                 combined = used + rss(os.getpid())
                 result['sample_count'] += 1
                 result['peak_group_rss_bytes'] = max(result['peak_group_rss_bytes'], used)

@@ -103,3 +103,6 @@ tests/test_ranking_v4_r3_launcher.py text eol=lf
 tests/test_ranking_v4_r3_snapshot.py text eol=lf
 scripts/compare_ranking_v4_r3_results.py text eol=lf
 tests/test_ranking_v4_r3_comparison.py text eol=lf
+scripts/verify_ranking_v4_exit_boundary_linux.py text eol=lf
+tests/test_ranking_v4_exit_boundary_linux_launcher.py text eol=lf
+contracts/runtime_ranking_v4_exit_boundary_fix.json text eol=lf
