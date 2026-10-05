@@ -88,3 +88,5 @@ scripts/launch_ranking_v4_low_memory_experiment.py text eol=lf
 scripts/monitor_ranking_v4_low_memory_experiment.py text eol=lf
 tests/test_ranking_v4_real_execution.py text eol=lf
 tests/test_ranking_v4_memory_guard.py text eol=lf
+scripts/verify_ranking_v4_rss_fix_linux.py text eol=lf
+tests/test_ranking_v4_rss_fix_linux_launcher.py text eol=lf

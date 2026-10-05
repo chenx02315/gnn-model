@@ -1,0 +1,27 @@
+{
+  "schema_version": "ranking-v4-r3-recovery-plan-1",
+  "status": "PLAN_ONLY_LINUX_UNIT_GATE_PASSED_INTEGRATED_RELEASE_PENDING",
+  "purpose": "Recover the resource-monitor exit race without selecting or merging partial model results",
+  "linux_unit_gate_sha256": "49460c9f357b1fdc26ff03c0dbebf75044463e5e4109f917ceaa3a7393338a65",
+  "failed_roots_preserved": [
+    "/ssd/cjc/gnn_model_ranking_v4_train_687c96d_20261005_r1",
+    "/ssd/cjc/gnn_model_ranking_v4_train_687c96d_20261005_r2"
+  ],
+  "new_root_required": true,
+  "resume_r2_allowed": false,
+  "merge_partial_evaluations_allowed": false,
+  "select_fastest_or_best_success_allowed": false,
+  "proposed_grid": {"families": 6, "seeds": [20260824, 20260825, 20260826], "fits": 18, "model": "candidate_mlp", "role": "TRAIN"},
+  "changes_allowed": "Resource-monitor terminal-process race fix only; model, features, optimizer, epochs, seeds and objective unchanged",
+  "resources": {"concurrent_workers": 1, "threads": 1, "sampled_combined_rss_cap_bytes": 1073741824, "child_address_space_cap_bytes": 8589934592, "retries": 0},
+  "dependencies_before_any_real_launch": [
+    "Fresh code-only deployment and exact source SHA binding",
+    "Full focused Linux tests and generated-fixture actual ML smoke with repaired guard",
+    "Independent integrated code, resource and fixed-grid release review",
+    "Explicit resolution of third-real-run escalation after r1 and r2 failures"
+  ],
+  "real_training_release": false,
+  "blind_validation_allowed": false,
+  "lsf_tessent_allowed": false,
+  "interpretation": "Linux unit PASS is not a real-training execution release and partial r2 evaluations are not a complete effectiveness result"
+}

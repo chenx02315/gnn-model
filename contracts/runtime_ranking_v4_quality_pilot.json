@@ -1,6 +1,6 @@
 {
   "schema_version": "ranking-v4-quality-pilot-design-1",
-  "status": "STOPPED_R2_MEMORY_RSS_UNREADABLE_LOCAL_FIX_PENDING_LINUX_GATE",
+  "status": "STOPPED_R2_LINUX_RSS_FIX_UNIT_GATE_PASSED_INTEGRATED_RELEASE_PENDING",
   "purpose": "Test whether prioritizing within-family near-optimal versus non-near-optimal pairs improves held-family top-10 quality ranking",
   "hypothesis_not_established_cause": "Continuous regret pairs may dilute scarce near-optimal distinctions",
   "fixed_modes": ["H64", "M16", "F4"],

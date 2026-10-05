@@ -28,4 +28,6 @@ v4 只将 CandidateMLP 的拟合排序对改为“同家族近优动作优先于
 
 ## 当前权限边界
 
-本地实现、测试、复核和版本同步继续自动执行。新损失不继承旧 v3 的实际训练 release；当前尚未启动 v4 真实拟合。新的训练集成、合成闭环及单一 execution release 必须在实际执行前完成。A、LSF/Tessent、新电路和 BLIND/VALIDATION 保持关闭。
+本地实现、测试、复核和版本同步继续自动执行。新损失不继承旧 v3 的实际训练 release。v4 已通过集成审核并尝试执行：r1 在0-fit阶段因路径门禁不兼容拒绝；r2 完成15/18份评估后因 `MEMORY_RSS_UNREADABLE` 监控竞态安全停止。原根、失败回执和部分结果保留，不在r2重试、不把15+3拼为完整实验。
+
+修复后的Linux RSS unit gate已通过（7 tests、0skip、0fail、0error、exit0），但这是资源单元门禁，当前第三次真实运行仍未release。r3计划保持原18项grid和内存上限，要求新集成Linux+生成数据ML smoke、源码SHA绑定、独立release审核，以及两次失败后的升级决策；详见 `contracts/runtime_ranking_v4_r3_recovery_plan.json`。A、LSF/Tessent、新电路和 BLIND/VALIDATION 保持关闭。

@@ -1,0 +1,18 @@
+{
+  "status": "PASS_LINUX_RSS_FIX_UNIT_GATE_INDEPENDENTLY_SEALED",
+  "reviewer": "/root/ranking_evidence_review",
+  "deployment_reviewer": "/root/ranking_isolation_review",
+  "scope": "RESOURCE_UNIT_GATE_ONLY_NO_REAL_TRAINING_RELEASE",
+  "root": "/ssd/cjc/gnn_model_ranking_v4_guard_gate_dfbd25c_20261005_r1",
+  "receipt_sha256": "49460c9f357b1fdc26ff03c0dbebf75044463e5e4109f917ceaa3a7393338a65",
+  "log_sha256": "5c8d3b76fca802e19b8aa036408a7d4351077deca63128bcbea64c1cdd9ba100",
+  "archive_sha256": "1c35b67a813843daa91fdc46c73696364d56d6fcfba1d60727e580e9a42b4fd7",
+  "launcher_sha256": "90e02335e92fa14eaa769f0ec692ad01ea90e50be4dfa319c3edf4ab2c33196d",
+  "linux_tests": {"testsRun": 7, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0, "gate_pass": true},
+  "local_full_regression": {"testsRun": 679, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0, "seconds": 70.213, "log_sha256": "f3f12656c227cea165e54b28918b2b31021ac39b620e0c3390653c9a9984542e"},
+  "local_raw_receipt_copy_rechecked_by_parent": true,
+  "plan_scope_review": "PASS_PLAN_ONLY_R3_FIXED_GRID_AND_RESOURCE_BOUNDARIES",
+  "real_training_release": false,
+  "blind_validation_allowed": false,
+  "lsf_tessent_allowed": false
+}

@@ -118,3 +118,13 @@ exit原始SHA `992e10b329a59657918ca617fb5b05533ff38ba4f4c6dcd87f7e56e21fe29bed`
 独立代码复核识别退出竞态：group枚举时活跃，读取status时已zombie，VmRSS消失。最小本地修复仅在二次stat证明Z/X或进程已消失时计0；仍存活但RSS不可读、坏stat或权限错误继续fail-closed。新增竞态单测，focused14tests通过，Windows3项Linux执行skip不视为Linux门禁通过。当前不部署修复，不进行第三次真实运行；需新Linux资源门禁与独立release复核后再决定新的执行方案。
 
 修复独立只读复核 `PASS_RSS_RACE_FIX_CODE_GATE`；本地完整 `unittest discover -s tests` 回归 exit0。执行release记录为历史已执行绑定，不适用于当前已修改guard源码；当前合同已撤销新的执行放行。
+
+## 2026-10-05：RSS 修复 Linux unit-only 门禁
+
+继续请求后完成新隔离门禁。独立部署审核先指出import来源/失败回执缺口，已补生成空package markers、固定ROOT模块来源断言，以及仅为本次新目录create-once写失败receipt；已有目录不修改。只传2个源文件、4015-byte tar.gz，SHA `1c35b67a813843daa91fdc46c73696364d56d6fcfba1d60727e580e9a42b4fd7`，严格条目与字节门禁。
+
+在 `/ssd/cjc/gnn_model_ranking_v4_guard_gate_dfbd25c_20261005_r1` 用隔离 `python3 -I` 实际执行7 tests、0skip、0fail、0error、exit0、gate_pass=true；覆盖退出race、内存停止、超时、遗留子进程、硬AS限制与线程环境。环境Linux6.1.0-47-amd64、Python3.11.2、GNU sort9.1。原始receipt SHA `49460c9f357b1fdc26ff03c0dbebf75044463e5e4109f917ceaa3a7393338a65`，小型log SHA `5c8d3b76fca802e19b8aa036408a7d4351077deca63128bcbea64c1cdd9ba100`，imported guard路径精确为该门禁ROOT。没有模型拟合、数据读取或真实release。
+
+新增r3恢复计划为PLAN_ONLY：保留r1/r2，不续r2、不拼15项加3项、不挑最好/最快success。若通过后续集成合成ML、资源与独立release审核，并解决两次失败后的第三次运行升级边界，拟在新根重跑固定18项；当前没有注册或启动第三次真实训练，资源上限未提高。
+
+Linux raw log/receipt/archive/deployed source/import origin/资源门禁与目录无数据均经独立只读回读PASS；parent复核本地原始receipt SHA一致。本地full regression679 tests、25skip、0fail/0error、exit0（70.213s），log SHA `f3f12656c227cea165e54b28918b2b31021ac39b620e0c3390653c9a9984542e`。r3计划scope复核PASS，修正quality-pilot旧“尚未启动”叙述为r1/r2事实。此阶段仅Linux unit门禁封存，没有新的训练release。
