@@ -1,0 +1,14 @@
+{
+  "status": "PASS_R4_EXECUTION_RELEASE_READY",
+  "reviewer": "/root/ranking_isolation_review",
+  "execution_root": "/ssd/cjc/gnn_model_ranking_v4_train_af05de0_20261005_r4",
+  "code_root": "/ssd/cjc/gnn_model_ranking_v4_exit_boundary_ml_fe67d2d_20261005_r1/code",
+  "release_sha256": "ad5dd0e57459ee74ba018aebe72bc8e6f9f95dcc63cf8ce44941f167813e96cb",
+  "independent_review_sha256": "928bc23624949e381e96022c715c697baa6cd9d87339a87b1ec7e7b5bb70fc9b",
+  "launcher_sha256": "a41bacfc99d0aa2cf00b6deb8e87294fc78dfe8e194ed1c2794ed2174ff0489f",
+  "checked_source_files": 13,
+  "readonly_snapshot_files": 43,
+  "launch_absent_at_review": true,
+  "scope": "TRAIN candidate_mlp six families three fixed seeds; 18 fits; one worker; unchanged caps; zero retry",
+  "claim_boundary": "Fresh prelaunch binding review, not completed execution or effectiveness evidence"
+}

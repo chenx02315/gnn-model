@@ -1,0 +1,33 @@
+{
+  "status": "PASS_R4_COMPLETE_RESULT_AUDIT",
+  "reviewer": "/root/ranking_evidence_review",
+  "root": "/ssd/cjc/gnn_model_ranking_v4_train_af05de0_20261005_r4",
+  "exit_receipt_sha256": "fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26",
+  "release_sha256": "ad5dd0e57459ee74ba018aebe72bc8e6f9f95dcc63cf8ce44941f167813e96cb",
+  "summary_sha256": "8767092df21fafe3a48a13253563c0b86457b4d0c01f736888c763a54655d9d9",
+  "driver_exit_code": 0,
+  "retries": 0,
+  "unique_grid_cells": 18,
+  "worker_freeze_model_evaluation_memory_chains": 18,
+  "nonexhaustive_cells": 15,
+  "checked_readonly_code_files": 43,
+  "checked_execution_source_files": 13,
+  "code_cache_files": 0,
+  "requests_raw_canonical_and_fitting_uids_verified": true,
+  "held_labels_supplied": false,
+  "all_freezes_readback_and_train_held_replays_match": true,
+  "summary_recomputation_matches": true,
+  "all_memory_receipts_pass": true,
+  "all_process_groups_empty": true,
+  "peak_sampled_combined_rss_bytes": 605978624,
+  "aggregate_evidence_sha256": {
+    "requests": "b4c6307a02565b63d3a427f2b57107f4b3ebce29449127092756ed95977ffb3e",
+    "canonical_requests": "33a136328a04636ac4000a97fe112b4f8419426a5d4dc76ca8c897266c8140db",
+    "workers": "fa82fcf23c03d2875d37d1b2eefb717d2f6ca68eb9ca188d4c624c0902fcc2b6",
+    "freezes": "49e32eee8c6ab95a4546d0c79a1ca8e3489d9c3174200354fdfeb81f033f2752",
+    "models": "58db84f0f4b4ea445208def7963ea5a3c02317833f7a329b474a33f5ed53874b",
+    "memory": "15188592c6150c08893725c42e9e0a06904a5cfd5e64a0d8a56bdd89c9939371",
+    "evaluations": "eaedd0cd9febc2491f04658b55b01db51a728cb0c054da6c3efb6ce3ee4fc650"
+  },
+  "claim_boundary": "Execution integrity only; not ATPG speedup, model-quality, or blind-generalization evidence"
+}

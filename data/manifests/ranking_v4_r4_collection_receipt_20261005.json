@@ -1,0 +1,16 @@
+{
+  "status": "PASS_BOUNDED_COMPLETE_R4_COLLECTION",
+  "root": "/ssd/cjc/gnn_model_ranking_v4_train_af05de0_20261005_r4",
+  "collector_sha256": "0c9cfc5fc0485209c8408974b81ea3ae64985999d9ecfb86ff7c1e16b1b77321",
+  "independent_code_reviews": ["PASS_R4_RESULT_COLLECTION_CODE_GATE", "PASS_R4_BOUNDED_COLLECTION_WRAPPER"],
+  "output": "data/manifests/ranking_v4_r4_train_results_20261005.json",
+  "bytes": 58569,
+  "entry_count": 59,
+  "sha256": "55253ab1685b683dc93469407ac4422d57cc142f07e836497a943e02ad74e353",
+  "request_checkpoint_label_graph_exported": false,
+  "remote_checkpoints_retained": true,
+  "local_independent_export_review": "PASS_R4_SMALL_RESULT_SEALING",
+  "reviewer": "/root/ranking_evidence_review",
+  "result_audit_sha256": "a6002053d39a32c6ed71ba35722e2d166aeb4d638eb3c056ae071f8cfcedded7",
+  "performance_claim": false
+}

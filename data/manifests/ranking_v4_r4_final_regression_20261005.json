@@ -1,0 +1,11 @@
+{
+  "status": "PASS_R4_FINAL_SEALING_REGRESSION",
+  "testsRun": 739,
+  "skipped": 25,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "seconds": 89.237,
+  "raw_log_sha256": "f60069c600ff384cd65a1078bc1eba75c2f938b0772179a515e091e00786f612",
+  "includes_bounded_wrapper_tests": true
+}

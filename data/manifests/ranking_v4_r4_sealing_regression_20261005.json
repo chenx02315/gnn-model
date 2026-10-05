@@ -1,0 +1,12 @@
+{
+  "status": "PASS_R4_RESULT_COLLECTION_REGRESSION",
+  "testsRun": 736,
+  "skipped": 25,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "seconds": 87.038,
+  "raw_log_sha256": "e74a59fe9988b72f0e9670ca4300d2fe6a3ed50cc6b9dbb5d2ddd8c0684ffaa3",
+  "collector_sha256": "0c9cfc5fc0485209c8408974b81ea3ae64985999d9ecfb86ff7c1e16b1b77321",
+  "collection_focused_tests": 5
+}

@@ -172,3 +172,31 @@ Linux focused 实际19tests、0skip/fail/error、exit0，raw log SHA `3897ade430
 单worker、线程1、零重试，采样combined RSS峰值530558976 bytes（约506MiB），仍采用1GiB RSS采样停止阈值与8GiB地址空间硬上限；exit0、进程组589053无存活成员。独立结论PASS_SYNTHETIC_EXIT_BOUNDARY_ML。此smoke未报告退出边界分支触发，不能证明瞬态竞态完全消失；人工耗时也不是ATPG wall time或加速证据。
 
 本地完整回归716tests、25skip、0fail/error、exit0（81.770s），raw log SHA `80486df416eff331df4ac38d070e59e08aea1a1e151120647c4b696c217aeab3`。历史r3仍9/18失败且保留，不拼接、不用于效果分析。本阶段封存不授权第四次真实训练；新真实运行必须另有明确授权、新源码绑定release和独立启动前复核。VALIDATION/BLIND、A、LSF/Tessent仍关闭。
+
+## 2026-10-05：第四次完整 TRAIN 的明确授权与 fresh release
+
+用户明确批准第四次完整18项TRAIN：新放行门禁、独立复核通过后自动启动，保持1GiB sampled combined RSS、8GiB地址空间硬上限、单worker/线程1、零自动重试。新root `/ssd/cjc/gnn_model_ranking_v4_train_af05de0_20261005_r4`；使用已合成集成封存的只读43文件code snapshot，不续旧run、不拼部分结果。
+
+独立B只读预审PASS_R4_REAL_RELEASE_PRECONDITION：43源码/13执行anchors无漂移，1706 TRAIN动作及outcome、六份manifest的全部shards/graphs哈希一致，拟合/留出UID互斥，既有venv31项依赖锁一致，资源余量通过。TRAIN数据包仍SHA `964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868`。
+
+启动器独立审指出手工supervise可绕过Popen失败与重复调用的风险，已补父pending回执fsync后hard-link原子发布、5秒PID/exact-binding握手和一次性claim；receipt绑定launcher/package/output/code/release，失败与pending亦阻止重试。monitor限制10KiB并拒绝所有路径symlink。release prep校验fixed cwd/review/smoke/source/resource后才create-once新root。15项focused通过，独立PASS_R4_LAUNCH_AND_RELEASE_PREPARATION_CODE_GATE。
+
+发布命令曾发生shell引用SyntaxError、snapshot未包含旧release-creator的import错误；均在ROOT创建前失败、未启动任何TRAIN。新prep改为直接使用snapshot内real-worker的相同release schema校验，绑定本次明确授权；没有放宽门禁。fresh release已生成SHA `ad5dd0e57459ee74ba018aebe72bc8e6f9f95dcc63cf8ce44941f167813e96cb`，review SHA `928bc23624949e381e96022c715c697baa6cd9d87339a87b1ec7e7b5bb70fc9b`。旧失败根不修改。
+
+最终本地731tests、25skip、0fail/error、exit0（79.018s），raw SHA `b9642fa89bcd574a0e3b586c36477634505d4a1d6c4a0e56f2f87a10e90cfcfa`。等待独立fresh远端release/launcher绑定最终门禁；此记录尚非训练启动、完成或ATPG加速证明。
+
+随后独立PASS_R4_EXECUTION_RELEASE_READY，远端再次核对release/13anchors/43只读inventory、外置launcher/monitor、package/smoke、fresh无intent/claim/experiment与资源余量。按明确授权单次启动supervisor PID753397，启动receipt绑定release `ad5dd0...e96cb`、package、CODE、launcher及固定18项。零重试，继续监控到完整退出及独立结果审计；启动不证明效果。
+
+### r4 完整执行与独立结果审核通过
+
+实际18/18、driver exit0、零重试/零资源停止，采样combined RSS峰值605978624 bytes（约578MiB）；保持原阈值。独立PASS_R4_COMPLETE_RESULT_AUDIT：18份worker/model/freeze/evaluation/memory完整链，request raw/canonical SHA一致、拟合UID及cycles与fold一致、无留出标签供应，18份freeze readback及TRAIN-held replay与评估一致；所有18进程组无存活成员，43源码/13anchors无漂移、无pyc。
+
+exit原始SHA `fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26`，summary原始SHA `8767092df21fafe3a48a13253563c0b86457b4d0c01f736888c763a54655d9d9`。只证明此次完整执行与连接可信，不证明竞态永不复现、模型较优、ATPG加速或盲测泛化。旧r1/r2/r3失败证据不改，不使用部分结果。checkpoint保留B。
+
+收集器独立复核后只导出白名单标量汇总，单JSON≤200KiB、合计raw≤2MiB、投影≤300KiB且create-once；拒绝非完整grid、exit/release/worker/memory不一致与nested metadata，不导出requests/labels/graphs/checkpoints。封存阶段全回归736tests、25skip、0fail/error、exit0（87.038s），raw log SHA `e74a59fe9988b72f0e9670ca4300d2fe6a3ed50cc6b9dbb5d2ddd8c0684ffaa3`。本次只授权这唯一r4，不自动新增模型实验、解封VALIDATION/BLIND或启动LSF/Tessent。
+
+实际一次受限导出完成：58569 bytes、59条（5份顶层及18×evaluation/worker/memory），SHA `55253ab1685b683dc93469407ac4422d57cc142f07e836497a943e02ad74e353`。本地逐字节校验一致，checkpoint仍在B，JSON无candidate labels、模型权重或请求数据。完整结果可用于下一阶段固定基线效果比较，但本封存尚不提出加速结论。
+
+补外置收集wrapper的fixed cwd/hash/20KB有界读取与拒绝测试后，最终739tests、25skip、0fail/error、exit0（89.237s），raw SHA `f60069c600ff384cd65a1078bc1eba75c2f938b0772179a515e091e00786f612`。
+
+小型汇总最终独立PASS_R4_SMALL_RESULT_SEALING：59项结构与6×3网格、release/exit/summary原SHA、result-audit全部连接一致；无请求文件、模型字节、labels/outcomes、feature rows、graph payload、分数或freeze排序导出。此次完整18项TRAIN和证据封存完成。
