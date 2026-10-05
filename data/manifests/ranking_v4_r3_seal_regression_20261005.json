@@ -1,0 +1,11 @@
+{
+  "scope": "LOCAL_CODE_REGRESSION_NOT_REAL_EXPERIMENT_COMPLETION",
+  "testsRun": 702,
+  "skipped": 25,
+  "failures": 0,
+  "errors": 0,
+  "exit_code": 0,
+  "seconds": 63.216,
+  "raw_log_sha256": "3f054b95b8b237e9fd67c68620c83fe08d73b9a0270020eac5d2b31a75aead34",
+  "real_r3_status": "STOPPED_9_OF_18_NO_RETRY"
+}

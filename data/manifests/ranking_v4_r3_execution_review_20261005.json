@@ -1,0 +1,15 @@
+{
+  "status": "PASS_R3_EXECUTION_RELEASE_READY",
+  "reviewer": "ranking_isolation_review",
+  "execution_root": "/ssd/cjc/gnn_model_ranking_v4_train_dec61b0_20261005_r3",
+  "code_root": "/ssd/cjc/gnn_model_ranking_v4_integrated_dec61b0_20261005_r2/code",
+  "release_sha256": "6a6afccb5ff0ff4973049d227982f4ce000ae48379ccd1c04033c84079c0ad2c",
+  "independent_review_sha256": "947c1162d0da2a6ff016cf06d662d6f29d7d845c8aaea32806c5fc62c9ac50ec",
+  "launcher_sha256": "9ac28973f9d09efd37c6ed7d48d56b6dea1962185b47acf9f4ddba5ab14e6257",
+  "checked_source_files": 13,
+  "scope": "TRAIN candidate_mlp six families three fixed seeds; 18 fits",
+  "launch_absent_at_review": true,
+  "memory_caps_unchanged": true,
+  "automatic_retries": 0,
+  "claim_boundary": "Pre-launch binding gate, not completed execution or effectiveness evidence"
+}

@@ -128,3 +128,27 @@ exit原始SHA `992e10b329a59657918ca617fb5b05533ff38ba4f4c6dcd87f7e56e21fe29bed`
 新增r3恢复计划为PLAN_ONLY：保留r1/r2，不续r2、不拼15项加3项、不挑最好/最快success。若通过后续集成合成ML、资源与独立release审核，并解决两次失败后的第三次运行升级边界，拟在新根重跑固定18项；当前没有注册或启动第三次真实训练，资源上限未提高。
 
 Linux raw log/receipt/archive/deployed source/import origin/资源门禁与目录无数据均经独立只读回读PASS；parent复核本地原始receipt SHA一致。本地full regression679 tests、25skip、0fail/0error、exit0（70.213s），log SHA `f3f12656c227cea165e54b28918b2b31021ac39b620e0c3390653c9a9984542e`。r3计划scope复核PASS，修正quality-pilot旧“尚未启动”叙述为r1/r2事实。此阶段仅Linux unit门禁封存，没有新的训练release。
+
+## 2026-10-05：r3 集成门禁与新授权
+
+用户明确批准：全部门禁通过后自动完整重跑18项TRAIN，不提高内存上限、不再自动重试。不是恢复r2，也不拼接部分结果。
+
+代码集成r1的审核重放意外生成7份Python缓存，完整inventory门禁正确失败；43份源码SHA没有变化。原目录、缓存与失败receipt保留，未删除缓存或放宽门禁。另建只读r2代码快照，43份源码文件0444、目录0555，独立审核后仍无pyc。snapshot SHA `e79b38fe79eb4ca69ac6299775769bb9b6267c64c595fef287c7fa45c1e345f1`。
+
+该只读快照Linux实测14 tests、0skip/fail/error、exit0，actual-exit receipt SHA `84221c712987296fca64482c8dc5234fefed25e6ca67cf1224b88fb2e4deb648`。生成fixture单次ML smoke PASS，combined RSS574844928 bytes（约548MiB），receipt SHA `0b67c8526902377a8e5715c85cc6dfcae361ce53e1afefc9723de0376e68768c`。独立复核PASS_R3_RELEASE_PRECONDITION：代码、raw/canonical request、拟合UID、持久化freeze重放、模型hash与进程组清理均通过。不是实际效果证据。
+
+本地完整回归698 tests、25skip、0fail/error、exit0；日志SHA `f095b3e80591cf0efdbd43d14490c867ffb95b7352eb6897d9b91188782917c7`。在全新真实r3目录生成固定TRAIN18项release SHA `6a6afccb5ff0ff4973049d227982f4ce000ae48379ccd1c04033c84079c0ad2c`，绑定13源码与独立回执。最终launch绑定独立复核通过后自动启动，不等待下一次“继续”。VALIDATION/BLIND、A、LSF/Tessent仍封闭。
+
+最终独立绑定PASS_R3_EXECUTION_RELEASE_READY；随后单次启动supervisor PID3712850，真实root `/ssd/cjc/gnn_model_ranking_v4_train_dec61b0_20261005_r3`。固定18项、单worker、0retry，源代码使用上述只读r2快照。继续监控到完整结果与独立审核；启动本身不证明效果。
+
+### r3 再次安全停止，禁止继续自动重跑
+
+最新实际状态：9/18评估完成，driver exit1，0retry；第10项 `iscas89_s38417_20260824_candidate_mlp` 再次触发MEMORY_RSS_UNREADABLE。已完成项采样combined RSS峰值589377536 bytes（约562MiB），失败项574992384 bytes；worker exit0，但guard状态STOPPED_NO_RETRY，清理receipt live_group_members_after_cleanup=0。这不是记录到的超限，也不能因worker exit0忽略失败。
+
+exit SHA `5939d5745ec05414620dcbefa460b18c7a65c5219c43f6aa19ba4bca4742d2f2`，driver traceback SHA `499c7149bf6656bb0062423e837618b5791b78b3d9ff6281d345596883bb8a70`，失败memory SHA `475286662eb9cf08056656b39ff28c5ec474a61452e387bccc8e0cbb00cb1516`。原root和所有部分产物保留，撤销新的执行权限；遵循用户“不再自动重试”，不运行第4次训练、不提高内存上限。不把9项结果用于完整效果比较或报告。
+
+独立失败回读确认10个worker/freeze/model、9个evaluation、10份memory，以及当前失败进程组无存活成员。退出边界竞态是与证据一致的解释，缺少当时status/stat快照，不能断言瞬态内核状态。后续建议先本地补“VmRSS缺失后leader已退出且group无存活成员”的测试与诊断记录；持续存活且RSS不可读仍必须失败，不能一律算0。新的真实运行需单独决策，不自动申请或启动。
+
+有界收集器和未来比较器本地实现已完成；比较器拒绝重复/额外/缺失grid、NaN/inf/非法metric，仅对共同命中计算条件成本差。因真实r3不完整，未使用它收集或比较9项部分效果。最终本地完整回归702 tests、25skip、0fail/error、exit0，日志SHA `5da5a60e29ecace04f630093cacc3f457c6264742b8458211379d41c546cd0d9`；这只是代码回归，不是训练完成证明。
+
+独立最终review补发现双v3 manifest一致性检查遗漏GraphSAGE；已改为全部72单元比较，新增GraphSAGE单独变异拒绝用例，4项focused PASS，独立PASS_COMPARATOR_FAILURE_SEALING。补丁后再次完整回归702 tests、25skip、exit0（63.216s），raw log SHA `3f054b95b8b237e9fd67c68620c83fe08d73b9a0270020eac5d2b31a75aead34`，封存回执绑定最终版本。

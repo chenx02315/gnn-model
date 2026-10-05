@@ -1,0 +1,10 @@
+{
+  "status": "PASS_COMPARATOR_FAILURE_SEALING",
+  "reviewer": "ranking_isolation_review",
+  "checked": ["exact_v3_72_and_v4_18_grid", "duplicates_and_nonfinite_metrics_rejected", "all_72_v3_manifest_agreement_including_graphsage", "four_focused_tests_pass", "failure_contract_matches_raw_exit_memory_hashes"],
+  "real_experiment_success": false,
+  "completed_evaluations": 9,
+  "expected_evaluations": 18,
+  "real_retry_allowed": false,
+  "partial_performance_interpretation_allowed": false
+}

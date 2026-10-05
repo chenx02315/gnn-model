@@ -1,11 +1,21 @@
 {
   "schema_version": "ranking-v4-r3-recovery-plan-1",
-  "status": "PLAN_ONLY_LINUX_UNIT_GATE_PASSED_INTEGRATED_RELEASE_PENDING",
+  "status": "STOPPED_R3_NO_FURTHER_AUTOMATIC_RETRY",
+  "completed_evaluations": 9,
+  "driver_exit_code": 1,
+  "stop_reason": "MEMORY_RSS_UNREADABLE",
+  "driver_exit_sha256": "5939d5745ec05414620dcbefa460b18c7a65c5219c43f6aa19ba4bca4742d2f2",
+  "failed_memory_sha256": "475286662eb9cf08056656b39ff28c5ec474a61452e387bccc8e0cbb00cb1516",
+  "new_execution_allowed": false,
+  "execution_release_sha256": "6a6afccb5ff0ff4973049d227982f4ce000ae48379ccd1c04033c84079c0ad2c",
+  "execution_root": "/ssd/cjc/gnn_model_ranking_v4_train_dec61b0_20261005_r3",
+  "supervisor_pid": 3712850,
   "purpose": "Recover the resource-monitor exit race without selecting or merging partial model results",
   "linux_unit_gate_sha256": "49460c9f357b1fdc26ff03c0dbebf75044463e5e4109f917ceaa3a7393338a65",
   "failed_roots_preserved": [
     "/ssd/cjc/gnn_model_ranking_v4_train_687c96d_20261005_r1",
-    "/ssd/cjc/gnn_model_ranking_v4_train_687c96d_20261005_r2"
+    "/ssd/cjc/gnn_model_ranking_v4_train_687c96d_20261005_r2",
+    "/ssd/cjc/gnn_model_ranking_v4_train_dec61b0_20261005_r3"
   ],
   "new_root_required": true,
   "resume_r2_allowed": false,
@@ -13,12 +23,14 @@
   "select_fastest_or_best_success_allowed": false,
   "proposed_grid": {"families": 6, "seeds": [20260824, 20260825, 20260826], "fits": 18, "model": "candidate_mlp", "role": "TRAIN"},
   "changes_allowed": "Resource-monitor terminal-process race fix only; model, features, optimizer, epochs, seeds and objective unchanged",
+  "third_run_user_authorization": "2026-10-05 explicit answer: allow automatic full rerun after all gates pass; do not raise memory cap or automatically retry again",
+  "third_run_escalation_resolved": true,
   "resources": {"concurrent_workers": 1, "threads": 1, "sampled_combined_rss_cap_bytes": 1073741824, "child_address_space_cap_bytes": 8589934592, "retries": 0},
   "dependencies_before_any_real_launch": [
     "Fresh code-only deployment and exact source SHA binding",
     "Full focused Linux tests and generated-fixture actual ML smoke with repaired guard",
     "Independent integrated code, resource and fixed-grid release review",
-    "Explicit resolution of third-real-run escalation after r1 and r2 failures"
+    "Explicit third-run escalation resolved by user; retain no-further-retry stop condition"
   ],
   "real_training_release": false,
   "blind_validation_allowed": false,

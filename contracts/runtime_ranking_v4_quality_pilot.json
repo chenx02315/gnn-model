@@ -1,6 +1,6 @@
 {
   "schema_version": "ranking-v4-quality-pilot-design-1",
-  "status": "STOPPED_R2_LINUX_RSS_FIX_UNIT_GATE_PASSED_INTEGRATED_RELEASE_PENDING",
+  "status": "STOPPED_R3_NO_FURTHER_AUTOMATIC_RETRY",
   "purpose": "Test whether prioritizing within-family near-optimal versus non-near-optimal pairs improves held-family top-10 quality ranking",
   "hypothesis_not_established_cause": "Continuous regret pairs may dilute scarce near-optimal distinctions",
   "fixed_modes": ["H64", "M16", "F4"],
@@ -29,7 +29,7 @@
   "existing_source_sha256": "b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c",
   "existing_package_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
   "new_real_execution_release": false,
-  "execution_release_sha256": "70c458c9d4f70f87ab2fc12a220b46e325154480326051ae93fc7abc66127f31",
+  "execution_release_sha256": "6a6afccb5ff0ff4973049d227982f4ce000ae48379ccd1c04033c84079c0ad2c",
   "resource_policy": "contracts/runtime_ranking_v4_memory_policy.json",
   "lsf_tessent_allowed": false,
   "blind_validation_allowed": false,
