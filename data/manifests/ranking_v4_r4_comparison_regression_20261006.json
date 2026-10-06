@@ -1,0 +1,19 @@
+{
+  "status": "PASS_LOCAL_COMPARISON_REGRESSION",
+  "scope": "LOCAL_SYNTHETIC_TESTS_ONLY_NO_NEW_REAL_TRAINING",
+  "focused": {"testsRun": 10, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "full": {"testsRun": 745, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0, "elapsed_seconds": 85.820},
+  "raw_log_path": "runtime_training_staging_20260928/ranking_v4_r4_comparison_full_20261006.log",
+  "raw_log_sha256": "1ff2ca338650435d4500cd9bb88c07e153e19274ecf273692e091d66d4653096",
+  "claim_boundary": "Windows skipped Linux-only checks remain skips; this regression is not a Linux release, new fit, ATPG speedup or BLIND generalization gate",
+  "report": {
+    "canonical_artifact_sha256": "c2bea433235e9127ae44f4a1427e568f4a20b18ac2582e1a209a8ec9b426ad3d",
+    "rebuild_exact": true,
+    "native_validator_ok": true,
+    "native_render_tool_ok": true,
+    "visual_pixel_qa_performed": false,
+    "qa_limitation": "Native report tool accepted the validated payload; no independent screenshot or cross-device pixel QA was available",
+    "primary_rows": 4,
+    "row_preview": "All four aggregate rows are present in snapshot.datasets.primary; no truncation"
+  }
+}

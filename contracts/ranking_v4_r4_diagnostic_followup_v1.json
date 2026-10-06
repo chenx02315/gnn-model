@@ -1,0 +1,72 @@
+{
+  "schema_version": "ranking-v4-r4-diagnostic-followup-v1",
+  "status": "DESIGN_ONLY_NO_NEW_EXECUTION_RELEASE",
+  "question": "Why did near-optimal pair training fail to improve held-family top-10 quality?",
+  "timing": "Written after observing r4 fixed comparison; not experiment preregistration and not causal evidence",
+  "role": "TRAIN",
+  "fixed_epsilon": 0.01,
+  "fixed_top_k": 10,
+  "fixed_seeds": [20260824, 20260825, 20260826],
+  "primary_family_count": 5,
+  "excluded_exhaustive_family": "iscas89_s35932",
+  "reuse_completed_evidence": [
+    "data/manifests/ranking_v3_train_feature_diagnostic_20261005.json",
+    "data/manifests/ranking_v4_r4_fixed_comparison_20261006.json"
+  ],
+  "do_not_repeat": ["TRAIN positive prevalence", "exact feature collision counting", "r4 full fitting"],
+  "completed_local_static_checks": {
+    "r4_execution_source_anchor_count": 13,
+    "r4_execution_source_anchor_mismatches": 0,
+    "loss_direction": "softplus(score_negative-score_positive)",
+    "freeze_order": "descending scores",
+    "normalizer_scope": "fitting actions only",
+    "candidate_features": 7,
+    "r4_model": "candidate_mlp_not_graphsage",
+    "regression_target_consumed_by_neural_loss": false,
+    "cause_established": false
+  },
+  "remaining_observations": [
+    {
+      "id": "D1",
+      "question": "Does the fitted ranker separate near-optimal from other fitting actions?",
+      "needed": "Existing persisted model, fitting-only request and pair recipe; compute fitting margin distribution without new fitting",
+      "boundary": "Exact source/package/model binding, no held labels in inference, no reported training accuracy as generalization",
+      "availability": "Not in local scalar export; remote diagnostic scope must be verified before access"
+    },
+    {
+      "id": "D2",
+      "question": "Do held-family candidate features extrapolate outside fitted normalization ranges?",
+      "needed": "Existing fitting and held feature rows only, per-fold fitting normalizer",
+      "boundary": "No held outcome required; report per-feature ranges and standardized magnitude, no tuned cutoffs",
+      "availability": "Not in local scalar export"
+    },
+    {
+      "id": "D3",
+      "question": "Was optimization still changing near the final epoch?",
+      "needed": "Existing raw logs if they contain epoch loss or margin trajectory",
+      "boundary": "Current fit_neural does not persist epoch loss; unavailable trajectories remain missing. Do not refit to reconstruct them",
+      "availability": "No trajectory in sealed local scalar export; code inspection cannot recover a missing trajectory"
+    }
+  ],
+  "decision_paths": {
+    "fitting_separation_bad": "Propose one optimization or representation change only after evidence; new fitting requires a new release",
+    "fitting_separation_good_held_quality_bad": "Investigate transfer/features and family coverage before proposing added independent circuits",
+    "evidence_missing": "Record missing observations; do not infer convergence, impute metrics, or launch a fifth run"
+  },
+  "permissions": {
+    "local_read_and_synthetic_tests": true,
+    "new_real_training": false,
+    "new_remote_diagnostic_release": false,
+    "validation_or_blind_access": false,
+    "lsf_or_tessent": false,
+    "memory_limit_increase": false,
+    "automatic_retry": false
+  },
+  "metric_guardrails": [
+    "Miss cost is not speedup",
+    "Seeds are not independent families",
+    "Best top-10 regret is not stopped-prefix regret",
+    "No seed selection, epsilon relaxation, K increase or outcome-driven exclusions",
+    "No raw labels, feature rows or checkpoints in Git"
+  ]
+}

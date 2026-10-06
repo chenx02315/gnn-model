@@ -1,0 +1,32 @@
+{
+  "status": "PASS_R4_FIXED_LOCAL_COMPARISON_AND_DIAGNOSTIC_DESIGN",
+  "reviewer": "/root/ranking_evidence_review",
+  "base_commit": "b0fadc6ee19ffcdf40eb2545c6a88d1d4d02ad40",
+  "scope": "INDEPENDENT_READ_ONLY_LOCAL_RECOMPUTATION_NO_REMOTE_OR_NEW_FIT",
+  "grid": {"v4": 18, "v3": 72, "primary_family_seed_pairs": 15, "primary_independent_families": 5},
+  "v3_retained_metric_agreement": true,
+  "fixed_rebuild_exact": true,
+  "report_rebuild_exact": true,
+  "report_sql_matches_aggregates_absolute_tolerance": 1e-12,
+  "nonexhaustive_hits": {"v4_r4_candidate_mlp": 0, "v3_candidate_mlp": 0, "v3_xgboost": 9, "v3_fixed_heuristic": 3},
+  "nonexhaustive_common_hit_cost_pairs": 0,
+  "r4_local_execution_source_anchors_checked": 13,
+  "r4_local_execution_source_anchor_mismatches": 0,
+  "existing_diagnostic_reused": {"actions": 1706, "near_optimal": 14, "exact_feature_collision_groups": 0},
+  "reviewed_files_sha256": {
+    "scripts/compare_ranking_v4_r4_results.py": "f74fd0e096718841ba2edc08811c11e2624a32c0eb92add9ce94111a1370f0ad",
+    "tests/test_ranking_v4_r4_comparison.py": "091c82faccdeb8ff4dc6fd574e264419e220f3cef899d1cb0a16c8327203c40c",
+    "docs/ranking_v4_r4_fixed_comparison_20261006.md": "dc05b4120ec8076f525c53a41298db6ac45888c8cb89e4fda57cb07c552ecc82",
+    "contracts/ranking_v4_r4_diagnostic_followup_v1.json": "95e050ae68004608ed1ea8fc4ffd1ba080b24f7e144be84f31210eb4643a56be",
+    "data/manifests/ranking_v4_r4_fixed_comparison_20261006.json": "7c98563021441f7b82af678b10c12bc7dab7b9c881bad9f6fa50bb38a516ed1c",
+    "data/manifests/ranking_v4_r4_fixed_comparison_report_20261006.json": "c2bea433235e9127ae44f4a1427e568f4a20b18ac2582e1a209a8ec9b426ad3d"
+  },
+  "no_must_fix": true,
+  "claim_boundaries": [
+    "Descriptive TRAIN leave-one-family-out evidence only",
+    "Miss cost is not speedup; seeds are not independent families",
+    "Top-10 regret is not stopped-prefix regret",
+    "Static direction and normalizer checks do not establish convergence or the failure cause",
+    "No new training, remote diagnostic, VALIDATION, BLIND or scheduler execution release"
+  ]
+}

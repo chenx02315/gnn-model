@@ -1,0 +1,205 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "ATPG Ranking: r4 Fixed Comparison",
+    "generatedAt": "2026-10-06",
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# ATPG Ranking: r4 Fixed Comparison"
+      },
+      {
+        "id": "summary",
+        "type": "markdown",
+        "body": "## 技术结论：完整运行不等于推荐有效\n\nv3_xgboost 9/15; v3_fixed_heuristic 3/15; v3_candidate_mlp 0/15; v4_r4_candidate_mlp 0/15。v4 尚未证明能更快找到近优组合，不能进入加速或泛化结论。",
+        "sourceId": "comparison"
+      },
+      {
+        "id": "definitions",
+        "type": "markdown",
+        "body": "## 先看命中，再看耗时\n\n固定 H64/M16/F4，动作已满足 D95。近优指 cycles 不超过该家族候选最小 cycles 的 1.01 倍；最多尝试 10 个动作。耗时来自已记录的 ATPG 策略计费 wall time 回放，不是本次模型训练耗时。未命中时，即使累计耗时更小，也不能称为更快找到近优组合。",
+        "sourceId": "comparison"
+      },
+      {
+        "id": "hit-chart",
+        "type": "chart",
+        "chartId": "hits"
+      },
+      {
+        "id": "interpretation",
+        "type": "markdown",
+        "body": "## 排序质量仍然是当前瓶颈\n\n上图比较排除小型可穷举家族后的 15 项命中率。三个 seed 是同一家族的重复观测，不是三个独立电路。v4 没有非穷举命中，因此与任一基线都没有共同命中耗时配对，不能计算可信加速比。",
+        "sourceId": "comparison"
+      },
+      {
+        "id": "methods",
+        "type": "markdown",
+        "body": "## 比较方法与不确定性\n\n使用完整 r4 的 18 项结果，不拼接旧失败运行；逐 family/seed 配对固定 v3 基线，两个留存 v3 汇总必须一致。全 18 项另作描述性敏感性分析。这里是 TRAIN 内留一家族评估，未访问 VALIDATION/BLIND。不做显著性检验，不把少量家族重复 seed 当独立样本；不能据此推广到新电路。",
+        "sourceId": "comparison"
+      },
+      {
+        "id": "next",
+        "type": "markdown",
+        "body": "## 下一步：先定位失效，再决定是否补电路\n\n1. 封存本次负结果，停止无证据重复拟合。\n2. 本地检查已有特征、近优正负对构造、评分方向与归一化，区分数据不足与训练目标失配。\n3. 新模型或扩大预算前写单变量实验合同，并独立复核资源与泄漏门禁。\n4. 不凭本比较解封盲测，也不宣布 XGBoost 为最终模型。"
+      },
+      {
+        "id": "questions",
+        "type": "markdown",
+        "body": "## 尚未回答的问题\n\n正例是否在各 TRAIN 家族中有足够特征区分度？近优对损失是否实际学到了可迁移方向？如现有家族确实缺少覆盖，再补独立电路；目前证据既不证明必须补，也不证明无需补。"
+      }
+    ],
+    "charts": [
+      {
+        "id": "hits",
+        "title": "非穷举 TRAIN 近优命中率",
+        "subtitle": "5 个家族 × 3 个固定 seed；K=10，ε=1%",
+        "showDescription": true,
+        "type": "bar",
+        "intent": "comparison",
+        "question": "各固定方案在相同家族和 seed 下命中了多少次？",
+        "rationale": "Four same-denominator categories; bar chart compares rates without implying time trends.",
+        "dataset": "primary",
+        "sourceId": "comparison",
+        "source": {
+          "id": "comparison",
+          "label": "Sealed TRAIN comparison",
+          "path": "data/manifests/ranking_v4_r4_fixed_comparison_20261006.json",
+          "query": {
+            "engine": "SQLite (Python standard library)",
+            "language": "sql",
+            "sql": "SELECT model, SUM(seed_count) AS count, SUM(hits) AS hit_count,\nSUM(hits)*1.0/SUM(seed_count) AS hit_rate,\nSUM(mean_top10_regret*seed_count)/SUM(seed_count) AS mean_best_cycle_regret_at_10,\nSUM(mean_charged_runtime_s*seed_count)/SUM(seed_count) AS mean_charged_runtime_s\nFROM family_stats WHERE nonexhaustive=1\nGROUP BY model ORDER BY hit_rate DESC, model ASC",
+            "description": "Exact family-seed pairing; primary/legacy v3 metrics agree.",
+            "tables_used": [
+              "family_stats"
+            ],
+            "filters": [
+              "TRAIN only",
+              "Primary: exclude iscas89_s35932; 5 families x 3 seeds"
+            ],
+            "metric_definitions": [
+              "Hit = cycles <= 1.01 * within-family oracle within K=10.",
+              "Charged runtime sums recorded ATPG policy cost until hit or K.",
+              "Regret is minimum cycles/oracle - 1 across the full top-10."
+            ]
+          }
+        },
+        "encodings": {
+          "x": {
+            "field": "model",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "hit_rate",
+            "type": "quantitative",
+            "format": "percent"
+          }
+        },
+        "valueFormat": "percent",
+        "layout": "full"
+      }
+    ],
+    "sources": [
+      {
+        "id": "comparison",
+        "label": "Sealed TRAIN comparison",
+        "path": "data/manifests/ranking_v4_r4_fixed_comparison_20261006.json",
+        "query": {
+          "engine": "SQLite (Python standard library)",
+          "language": "sql",
+          "sql": "SELECT model, SUM(seed_count) AS count, SUM(hits) AS hit_count,\nSUM(hits)*1.0/SUM(seed_count) AS hit_rate,\nSUM(mean_top10_regret*seed_count)/SUM(seed_count) AS mean_best_cycle_regret_at_10,\nSUM(mean_charged_runtime_s*seed_count)/SUM(seed_count) AS mean_charged_runtime_s\nFROM family_stats WHERE nonexhaustive=1\nGROUP BY model ORDER BY hit_rate DESC, model ASC",
+          "description": "Exact family-seed pairing; primary/legacy v3 metrics agree.",
+          "tables_used": [
+            "family_stats"
+          ],
+          "filters": [
+            "TRAIN only",
+            "Primary: exclude iscas89_s35932; 5 families x 3 seeds"
+          ],
+          "metric_definitions": [
+            "Hit = cycles <= 1.01 * within-family oracle within K=10.",
+            "Charged runtime sums recorded ATPG policy cost until hit or K.",
+            "Regret is minimum cycles/oracle - 1 across the full top-10."
+          ]
+        }
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "status": "ready",
+    "datasets": {
+      "primary": [
+        {
+          "model": "v3_xgboost",
+          "count": 15,
+          "hit_count": 9,
+          "hit_rate": 0.6,
+          "mean_best_cycle_regret_at_10": 0.034452682980813124,
+          "mean_charged_runtime_s": 942.5849999999999
+        },
+        {
+          "model": "v3_fixed_heuristic",
+          "count": 15,
+          "hit_count": 3,
+          "hit_rate": 0.2,
+          "mean_best_cycle_regret_at_10": 0.08880473592123841,
+          "mean_charged_runtime_s": 940.2800000000001
+        },
+        {
+          "model": "v3_candidate_mlp",
+          "count": 15,
+          "hit_count": 0,
+          "hit_rate": 0,
+          "mean_best_cycle_regret_at_10": 0.18055283506256012,
+          "mean_charged_runtime_s": 904.3703333333334
+        },
+        {
+          "model": "v4_r4_candidate_mlp",
+          "count": 15,
+          "hit_count": 0,
+          "hit_rate": 0,
+          "mean_best_cycle_regret_at_10": 0.21896206241169894,
+          "mean_charged_runtime_s": 891.899
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "comparison",
+      "label": "Sealed TRAIN comparison",
+      "path": "data/manifests/ranking_v4_r4_fixed_comparison_20261006.json",
+      "query": {
+        "engine": "SQLite (Python standard library)",
+        "language": "sql",
+        "sql": "SELECT model, SUM(seed_count) AS count, SUM(hits) AS hit_count,\nSUM(hits)*1.0/SUM(seed_count) AS hit_rate,\nSUM(mean_top10_regret*seed_count)/SUM(seed_count) AS mean_best_cycle_regret_at_10,\nSUM(mean_charged_runtime_s*seed_count)/SUM(seed_count) AS mean_charged_runtime_s\nFROM family_stats WHERE nonexhaustive=1\nGROUP BY model ORDER BY hit_rate DESC, model ASC",
+        "description": "Exact family-seed pairing; primary/legacy v3 metrics agree.",
+        "tables_used": [
+          "family_stats"
+        ],
+        "filters": [
+          "TRAIN only",
+          "Primary: exclude iscas89_s35932; 5 families x 3 seeds"
+        ],
+        "metric_definitions": [
+          "Hit = cycles <= 1.01 * within-family oracle within K=10.",
+          "Charged runtime sums recorded ATPG policy cost until hit or K.",
+          "Regret is minimum cycles/oracle - 1 across the full top-10."
+        ]
+      }
+    }
+  ],
+  "package_info": {
+    "report_specification": "technical-report",
+    "structure_note": "Technical summary, definitions, results, methods/limitations, next steps, open questions.",
+    "chart_contract": "Comparison/bar; 4 categories; single blue root; no redundant color legend; zero baseline.",
+    "input_sha256": {
+      "v4": "55253ab1685b683dc93469407ac4422d57cc142f07e836497a943e02ad74e353",
+      "v3": "01468f838e4ef923b72028f8a59c2a5430d8e2b2faf13745fe87dc43806bcad8",
+      "v3_legacy": "6f3336eb3acbbf87609ceff6e26141258956e0606f861f0673721ac2d1d91660"
+    }
+  }
+}

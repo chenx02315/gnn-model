@@ -200,3 +200,13 @@ exit原始SHA `fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26`
 补外置收集wrapper的fixed cwd/hash/20KB有界读取与拒绝测试后，最终739tests、25skip、0fail/error、exit0（89.237s），raw SHA `f60069c600ff384cd65a1078bc1eba75c2f938b0772179a515e091e00786f612`。
 
 小型汇总最终独立PASS_R4_SMALL_RESULT_SEALING：59项结构与6×3网格、release/exit/summary原SHA、result-audit全部连接一致；无请求文件、模型字节、labels/outcomes、feature rows、graph payload、分数或freeze排序导出。此次完整18项TRAIN和证据封存完成。
+
+## 2026-10-06：r4 固定对照，负结果不包装为加速
+
+在本地对完整 r4 汇总与既有 v3 r2/legacy 汇总做精确 family/seed 对照。三份输入 SHA 固定；18 个 v4 单元、72 个 v3 单元完整，两个 v3 留存汇总的比较指标一致。不修改历史比较、不拼接旧失败运行、不新增拟合/远端作业或访问 BLIND。
+
+独立重算确认：非穷举 15 项 v4 CandidateMLP 命中0，v3 CandidateMLP命中0，XGBoost命中9，固定启发式命中3。v4 mean top-10 regret 21.90%，平均计费ATPG成本891.90秒；较低成本伴随未命中，不是加速。非穷举共同命中配对为0，因此配对成本差为null而非0。全18项v4仅s35932命中3次，和XGBoost共同命中的每次计费成本高97.58秒。seed不是独立家族，TRAIN内结果不证明BLIND泛化，也不选定最终模型。
+
+新比较 JSON SHA `7c98563021441f7b82af678b10c12bc7dab7b9c881bad9f6fa50bb38a516ed1c`。技术报告的图表从实际SQLite聚合产生，原生报告validate后render成功；小型报告JSON同步保留。报告生成器使用标准库，无新ML依赖和训练入口。独立审计确认重建与封存JSON一致、SQL与比较聚合在1e-12内一致。
+
+继续完成本地实现路径检查：损失softplus(negative-positive)与降序freeze一致、normalizer只拟合fitting rows，r4仍七特征CandidateMLP，不是GraphSAGE；13执行源码anchors与release全部一致。未发现上述符号/归一化接线错误，但不能据此断言优化收敛。复用既有1706动作/14正例/无精确碰撞审计，不重复完成节点。新增后续诊断设计，下一问题为拟合分离度与跨家族尺度外推；当前没有epoch loss轨迹，不能插补或用第五轮拟合重建。本次不提供新真实训练/BLIND/LSF放行。

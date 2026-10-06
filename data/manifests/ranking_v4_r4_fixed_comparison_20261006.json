@@ -1,0 +1,392 @@
+{
+  "comparisons": {
+    "candidate_mlp": {
+      "all_18": {
+        "common_hit_charged_runtime_deltas_v4_minus_baseline": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "common_hit_mean_charged_runtime_delta_v4_minus_baseline": 0.0,
+        "common_hit_paired_cost_count": 3,
+        "hit_count_delta_v4_minus_baseline": 0,
+        "miss_cost_is_not_speedup": true,
+        "v3_baseline": {
+          "count": 18,
+          "hit_count": 3,
+          "hit_rate": 0.16666666666666666,
+          "mean_attempt_count": 9.5,
+          "mean_best_cycle_regret_at_10": 0.15046069588546676,
+          "mean_charged_runtime_s": 881.8619444444445
+        },
+        "v4": {
+          "count": 18,
+          "hit_count": 3,
+          "hit_rate": 0.16666666666666666,
+          "mean_attempt_count": 9.5,
+          "mean_best_cycle_regret_at_10": 0.18246838534308246,
+          "mean_charged_runtime_s": 871.4691666666666
+        }
+      },
+      "nonexhaustive_15": {
+        "common_hit_charged_runtime_deltas_v4_minus_baseline": [],
+        "common_hit_mean_charged_runtime_delta_v4_minus_baseline": null,
+        "common_hit_paired_cost_count": 0,
+        "hit_count_delta_v4_minus_baseline": 0,
+        "miss_cost_is_not_speedup": true,
+        "v3_baseline": {
+          "count": 15,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_attempt_count": 10.0,
+          "mean_best_cycle_regret_at_10": 0.18055283506256012,
+          "mean_charged_runtime_s": 904.3703333333334
+        },
+        "v4": {
+          "count": 15,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_attempt_count": 10.0,
+          "mean_best_cycle_regret_at_10": 0.21896206241169894,
+          "mean_charged_runtime_s": 891.899
+        }
+      }
+    },
+    "fixed_heuristic": {
+      "all_18": {
+        "common_hit_charged_runtime_deltas_v4_minus_baseline": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "common_hit_mean_charged_runtime_delta_v4_minus_baseline": 0.0,
+        "common_hit_paired_cost_count": 3,
+        "hit_count_delta_v4_minus_baseline": -3,
+        "miss_cost_is_not_speedup": true,
+        "v3_baseline": {
+          "count": 18,
+          "hit_count": 6,
+          "hit_rate": 0.3333333333333333,
+          "mean_attempt_count": 9.166666666666666,
+          "mean_best_cycle_regret_at_10": 0.074003946601032,
+          "mean_charged_runtime_s": 911.7866666666666
+        },
+        "v4": {
+          "count": 18,
+          "hit_count": 3,
+          "hit_rate": 0.16666666666666666,
+          "mean_attempt_count": 9.5,
+          "mean_best_cycle_regret_at_10": 0.18246838534308246,
+          "mean_charged_runtime_s": 871.4691666666666
+        }
+      },
+      "nonexhaustive_15": {
+        "common_hit_charged_runtime_deltas_v4_minus_baseline": [],
+        "common_hit_mean_charged_runtime_delta_v4_minus_baseline": null,
+        "common_hit_paired_cost_count": 0,
+        "hit_count_delta_v4_minus_baseline": -3,
+        "miss_cost_is_not_speedup": true,
+        "v3_baseline": {
+          "count": 15,
+          "hit_count": 3,
+          "hit_rate": 0.2,
+          "mean_attempt_count": 9.6,
+          "mean_best_cycle_regret_at_10": 0.08880473592123841,
+          "mean_charged_runtime_s": 940.2800000000001
+        },
+        "v4": {
+          "count": 15,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_attempt_count": 10.0,
+          "mean_best_cycle_regret_at_10": 0.21896206241169894,
+          "mean_charged_runtime_s": 891.899
+        }
+      }
+    },
+    "xgboost": {
+      "all_18": {
+        "common_hit_charged_runtime_deltas_v4_minus_baseline": [
+          97.57999999999993,
+          97.57999999999993,
+          97.57999999999993
+        ],
+        "common_hit_mean_charged_runtime_delta_v4_minus_baseline": 97.57999999999993,
+        "common_hit_paired_cost_count": 3,
+        "hit_count_delta_v4_minus_baseline": -9,
+        "miss_cost_is_not_speedup": true,
+        "v3_baseline": {
+          "count": 18,
+          "hit_count": 12,
+          "hit_rate": 0.6666666666666666,
+          "mean_attempt_count": 8.833333333333334,
+          "mean_best_cycle_regret_at_10": 0.0287105691506776,
+          "mean_charged_runtime_s": 897.4441666666667
+        },
+        "v4": {
+          "count": 18,
+          "hit_count": 3,
+          "hit_rate": 0.16666666666666666,
+          "mean_attempt_count": 9.5,
+          "mean_best_cycle_regret_at_10": 0.18246838534308246,
+          "mean_charged_runtime_s": 871.4691666666666
+        }
+      },
+      "nonexhaustive_15": {
+        "common_hit_charged_runtime_deltas_v4_minus_baseline": [],
+        "common_hit_mean_charged_runtime_delta_v4_minus_baseline": null,
+        "common_hit_paired_cost_count": 0,
+        "hit_count_delta_v4_minus_baseline": -9,
+        "miss_cost_is_not_speedup": true,
+        "v3_baseline": {
+          "count": 15,
+          "hit_count": 9,
+          "hit_rate": 0.6,
+          "mean_attempt_count": 9.4,
+          "mean_best_cycle_regret_at_10": 0.034452682980813124,
+          "mean_charged_runtime_s": 942.5849999999999
+        },
+        "v4": {
+          "count": 15,
+          "hit_count": 0,
+          "hit_rate": 0.0,
+          "mean_attempt_count": 10.0,
+          "mean_best_cycle_regret_at_10": 0.21896206241169894,
+          "mean_charged_runtime_s": 891.899
+        }
+      }
+    }
+  },
+  "epsilon": 0.01,
+  "family_rows": [
+    {
+      "family": "iscas89_s13207",
+      "hits": 0,
+      "mean_charged_runtime_s": 660.5699999999999,
+      "mean_top10_regret": 0.1802277432712215,
+      "model": "v4_r4_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s13207",
+      "hits": 0,
+      "mean_charged_runtime_s": 731.3966666666666,
+      "mean_top10_regret": 0.0850931677018633,
+      "model": "v3_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s13207",
+      "hits": 0,
+      "mean_charged_runtime_s": 828.5999999999999,
+      "mean_top10_regret": 0.0854037267080745,
+      "model": "v3_xgboost",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s13207",
+      "hits": 0,
+      "mean_charged_runtime_s": 752.1300000000001,
+      "mean_top10_regret": 0.12173913043478257,
+      "model": "v3_fixed_heuristic",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s15850",
+      "hits": 0,
+      "mean_charged_runtime_s": 759.4200000000001,
+      "mean_top10_regret": 0.3652561247216035,
+      "model": "v4_r4_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s15850",
+      "hits": 0,
+      "mean_charged_runtime_s": 754.7933333333334,
+      "mean_top10_regret": 0.39260084137589707,
+      "model": "v3_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s15850",
+      "hits": 0,
+      "mean_charged_runtime_s": 927.6500000000001,
+      "mean_top10_regret": 0.0868596881959911,
+      "model": "v3_xgboost",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s15850",
+      "hits": 0,
+      "mean_charged_runtime_s": 978.2000000000002,
+      "mean_top10_regret": 0.19302152932442462,
+      "model": "v3_fixed_heuristic",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s35932",
+      "hits": 3,
+      "mean_charged_runtime_s": 769.32,
+      "mean_top10_regret": 0.0,
+      "model": "v4_r4_candidate_mlp",
+      "nonexhaustive": false,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s35932",
+      "hits": 3,
+      "mean_charged_runtime_s": 769.32,
+      "mean_top10_regret": 0.0,
+      "model": "v3_candidate_mlp",
+      "nonexhaustive": false,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s35932",
+      "hits": 3,
+      "mean_charged_runtime_s": 671.74,
+      "mean_top10_regret": 0.0,
+      "model": "v3_xgboost",
+      "nonexhaustive": false,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s35932",
+      "hits": 3,
+      "mean_charged_runtime_s": 769.32,
+      "mean_top10_regret": 0.0,
+      "model": "v3_fixed_heuristic",
+      "nonexhaustive": false,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s38417",
+      "hits": 0,
+      "mean_charged_runtime_s": 1070.015,
+      "mean_top10_regret": 0.061224489795918435,
+      "model": "v4_r4_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s38417",
+      "hits": 0,
+      "mean_charged_runtime_s": 1070.015,
+      "mean_top10_regret": 0.061224489795918435,
+      "model": "v3_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s38417",
+      "hits": 3,
+      "mean_charged_runtime_s": 1128.07,
+      "mean_top10_regret": 0.0,
+      "model": "v3_xgboost",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iscas89_s38417",
+      "hits": 3,
+      "mean_charged_runtime_s": 900.1850000000001,
+      "mean_top10_regret": 0.007354293068578821,
+      "model": "v3_fixed_heuristic",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_aes_core",
+      "hits": 0,
+      "mean_charged_runtime_s": 1005.4433333333333,
+      "mean_top10_regret": 0.34717545828656937,
+      "model": "v4_r4_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_aes_core",
+      "hits": 0,
+      "mean_charged_runtime_s": 1004.4233333333335,
+      "mean_top10_regret": 0.21365922600490497,
+      "model": "v3_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_aes_core",
+      "hits": 3,
+      "mean_charged_runtime_s": 968.875,
+      "mean_top10_regret": 0.0,
+      "model": "v3_xgboost",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_aes_core",
+      "hits": 0,
+      "mean_charged_runtime_s": 1070.195,
+      "mean_top10_regret": 0.013717421124828544,
+      "model": "v3_fixed_heuristic",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_spi",
+      "hits": 0,
+      "mean_charged_runtime_s": 964.0466666666666,
+      "mean_top10_regret": 0.14092649598318197,
+      "model": "v4_r4_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_spi",
+      "hits": 0,
+      "mean_charged_runtime_s": 961.2233333333334,
+      "mean_top10_regret": 0.15018645043421683,
+      "model": "v3_candidate_mlp",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_spi",
+      "hits": 3,
+      "mean_charged_runtime_s": 859.7299999999999,
+      "mean_top10_regret": 0.0,
+      "model": "v3_xgboost",
+      "nonexhaustive": true,
+      "seed_count": 3
+    },
+    {
+      "family": "iwls_spi",
+      "hits": 0,
+      "mean_charged_runtime_s": 1000.6899999999999,
+      "mean_top10_regret": 0.10819130565357749,
+      "model": "v3_fixed_heuristic",
+      "nonexhaustive": true,
+      "seed_count": 3
+    }
+  ],
+  "generalization_boundary": "TRAIN leave-one-family-out only; no VALIDATION or BLIND claim.",
+  "input_sha256": {
+    "v3": "01468f838e4ef923b72028f8a59c2a5430d8e2b2faf13745fe87dc43806bcad8",
+    "v3_legacy": "6f3336eb3acbbf87609ceff6e26141258956e0606f861f0673721ac2d1d91660",
+    "v4": "55253ab1685b683dc93469407ac4422d57cc142f07e836497a943e02ad74e353"
+  },
+  "nonexhaustive_excluded_family": "iscas89_s35932",
+  "paired_unit_note": "family-seed observations are paired; seeds are not independent families.",
+  "regret_semantics": "Best cycles among all top-10, not necessarily among attempts before stop.",
+  "runtime_semantics": "Frozen TRAIN replay of policy_charged_runtime_s until first hit or K; not model wall time or a new ATPG run.",
+  "schema_version": "ranking-v4-r4-v3-fixed-descriptive-comparison-v1",
+  "scope": "DESCRIPTIVE_ONLY_NO_MODEL_SELECTION_OR_SPEEDUP_CLAIM",
+  "top_k": 10
+}
