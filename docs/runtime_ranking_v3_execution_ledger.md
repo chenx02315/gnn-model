@@ -210,3 +210,17 @@ exit原始SHA `fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26`
 新比较 JSON SHA `7c98563021441f7b82af678b10c12bc7dab7b9c881bad9f6fa50bb38a516ed1c`。技术报告的图表从实际SQLite聚合产生，原生报告validate后render成功；小型报告JSON同步保留。报告生成器使用标准库，无新ML依赖和训练入口。独立审计确认重建与封存JSON一致、SQL与比较聚合在1e-12内一致。
 
 继续完成本地实现路径检查：损失softplus(negative-positive)与降序freeze一致、normalizer只拟合fitting rows，r4仍七特征CandidateMLP，不是GraphSAGE；13执行源码anchors与release全部一致。未发现上述符号/归一化接线错误，但不能据此断言优化收敛。复用既有1706动作/14正例/无精确碰撞审计，不重复完成节点。新增后续诊断设计，下一问题为拟合分离度与跨家族尺度外推；当前没有epoch loss轨迹，不能插补或用第五轮拟合重建。本次不提供新真实训练/BLIND/LSF放行。
+
+## 2026-10-06：仅推理的拟合/迁移诊断与历史模型身份补查
+
+按用户“不直接重跑训练”要求，单次读取现存 r4 路径的18份权重，仅推理；0 fit、0 optimizer、0 held outcome files、无远端写入/BLIND/VALIDATION/LSF。18份 held 输出与旧 freeze 精确一致，峰值RSS423108608 bytes（约404MiB），单worker/线程1、零重试、未提高限制。原始小型诊断97109 bytes，SHA `d4c10136f72d2bd58004b3aa2354c8aba9a793394d133dab0041b9221b1d63c3`。
+
+独立数值复核通过：非穷举拟合观察36/60、留出0/15；s13207拟合0/15、s15850为1/15，而s38417为14/15、aes_core/spi均15/15。重复折与seed不是独立家族。结果提示拟合内目标弱与迁移落差并存；无epoch轨迹，不证明收敛或因果。focused5项、完整750项（25skip、0fail/error、exit0），完整日志SHA `3c76f9ccc4dd4382b42321993ce10ca6c2cb57992e0b8cbb598e72fec695e8b0`。
+
+独立门禁 **BLOCKED_HISTORICAL_MODEL_IDENTITY**：旧worker/evaluation未保存历史权重SHA，当前SHA加held-output一致不能证明训练完成时原权重身份。额外只读检查原worker也未发现该锚点；不事后伪造、不重训补证据。汇总PASS仅指计算和既有receipt连接，不能覆盖此BLOCK。报告明确限于当前路径权重的描述性排查；本阶段不启动新训练或发布正式原r4因果结论。
+
+随后独立复核找回已提交的 `ranking_v4_r4_result_audit_20261005.json`（SHA `a6002053d39a32c6ed71ba35722e2d166aeb4d638eb3c056ae071f8cfcedded7`），其原始模型映射聚合承诺 `58db84f0f4b4ea445208def7963ea5a3c02317833f7a329b474a33f5ed53874b` 与本次18权重逐token重算一致。因此上段初审身份阻断由既有历史证据闭合；没有事后制造锚点或重跑推理。新增历史audit/release/exit/package/script pin与篡改拒绝测试。最终解释仍是拟合弱与迁移落差并存，不是因果或收敛证明。
+
+补身份门禁后的focused6项、完整751项（25skip、0fail/error、exit0，67.324秒），最终日志SHA `6391591cef4b33a369d99c7a0aab7e25322fa00352dd49d94304558435d3af68`；原始诊断与汇总精确重建一致，真实推理仍只运行一次。
+
+最终独立 **PASS_R4_READONLY_FIT_TRANSFER_DIAGNOSTIC**：历史身份门禁是summary前置强制检查，篡改拒绝有效，初审疑问已由既有历史证据解决，无remaining must-fix。封存仅诊断，不是新训练/BLIND放行或ATPG加速结论。

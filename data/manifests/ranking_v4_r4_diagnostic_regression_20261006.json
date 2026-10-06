@@ -1,0 +1,14 @@
+{
+  "status": "PASS_LOCAL_REGRESSION_NOT_NEW_TRAINING_RELEASE",
+  "base_commit": "658792d0cf0dcef8ea41dac877a9baa262ac5603",
+  "focused": {"tests_run": 6, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "full": {"tests_run": 751, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0, "elapsed_seconds": 67.324},
+  "full_raw_log": "runtime_training_staging_20260928/r4_fit_transfer_full_regression_20261006_r2.log",
+  "full_raw_log_sha256": "6391591cef4b33a369d99c7a0aab7e25322fa00352dd49d94304558435d3af68",
+  "initial_full_log_preserved_sha256": "3c76f9ccc4dd4382b42321993ce10ca6c2cb57992e0b8cbb598e72fec695e8b0",
+  "summary_rebuild_exact": true,
+  "diagnostic_remote_execution_count": 1,
+  "diagnostic_remote_exit_code": 0,
+  "new_training_runs": 0,
+  "caveat": "Windows skips are not Linux execution proof; the existing-model Linux inference has separate raw evidence. No new training or BLIND release."
+}
