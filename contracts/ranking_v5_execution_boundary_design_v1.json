@@ -1,0 +1,44 @@
+{
+  "status": "IMPLEMENTATION_PENDING_NO_PHYSICAL_EXECUTION_RELEASE",
+  "scope": "v5 pure release validation and injectable TRAIN LOFO freeze/replay order",
+  "baseline_commit": "6b8d9b8841d56437faf503cedbda91247d52fd63",
+  "synthetic_kernel_gate_manifest": "data/manifests/ranking_v5_kernel_b_gate_20261007.json",
+  "synthetic_kernel_gate_manifest_sha256": "dab412fdf477870f409cb681b854297fe1dbc4a707d3f86cf68d4db26c6960e2",
+  "synthetic_kernel_raw_sha256": "647e83f7381f9a4e3434cda4435426348a1a12975c5ea50ddae89f22c72199cf",
+  "data_source_sha256": "b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c",
+  "data_package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "frozen_protocol": {
+    "roles": ["TRAIN"],
+    "seeds": [20260824, 20260825, 20260826],
+    "model": "candidate_mlp", "features": 7, "epochs": 120,
+    "optimizer": "Adam", "learning_rate": 0.001, "weight_decay": 0.0001,
+    "epsilon": "101/100", "K": 10,
+    "worker_count": 1, "threads": 1, "automatic_retries": 0,
+    "address_space_cap_bytes": 8589934592,
+    "sampled_combined_rss_cap_bytes": 1073741824
+  },
+  "required_order": [
+    "validate v5-only release, exact request allowlist and fitting labels",
+    "caller verifies all source, gate receipt and immutable package identities",
+    "fit callback sees fitting features, recipe and seed only",
+    "model persistence acknowledges exact caller-provided model SHA",
+    "predict on held features without held outcomes",
+    "persist ranking freeze acknowledges exact canonical SHA",
+    "read back persisted freeze and recheck complete payload and SHA",
+    "optional TRAIN LOFO held-label loader after both persistence acknowledgements",
+    "replay only frozen scores without epoch/seed/hyperparameter selection"
+  ],
+  "caller_obligations_not_proven_by_pure_tests": [
+    "new explicit user approval and independently sealed source-binding receipts",
+    "physical exact-input loading, symlink/path/protected-root checks and bounded artifacts",
+    "create-once fresh isolated /ssd/cjc/gnn_model_ranking_v5_train_* output root",
+    "locked B environment preflight and actual runtime resource enforcement",
+    "actual trainer/CLI integration and its separately authorized synthetic integration gate"
+  ],
+  "physical_runner_implemented": false,
+  "new_real_training_authority": false,
+  "formal_18_fit_release": false,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "unresolved_environment_warning": "CUDA initialization Error 2 recurred during accepted CPU-only synthetic checks; not clean CUDA",
+  "claim_boundary": "Pure callbacks can test ordering, not filesystem persistence or training completion; old r4 release cannot authorize v5"
+}

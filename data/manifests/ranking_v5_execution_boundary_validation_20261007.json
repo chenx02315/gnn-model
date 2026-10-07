@@ -1,0 +1,42 @@
+{
+  "status": "PASS_LOGICAL_CALLBACK_BOUNDARY_ONLY_PHYSICAL_RUNNER_PENDING",
+  "base_commit": "6b8d9b8841d56437faf503cedbda91247d52fd63",
+  "sources": {
+    "src/models/ranking_v5_execution_boundary.py": "07779f8db8ad11485406832d8b75de32ea61c1e4b2b71d2ebb0ebdf569f92d5b",
+    "tests/test_ranking_v5_execution_boundary.py": "83eec725a66d715f45e5e2a00693257dd5bc4969d8ad5e986c67f4d56a1d58b2",
+    "contracts/ranking_v5_execution_boundary_design_v1.json": "c15661271dc25574271e3365067c69bf95008a552c004fb9770a67470721567e"
+  },
+  "parent_focused": {
+    "command": "python -m unittest tests.test_ranking_v5_execution_boundary tests.test_ranking_v5_training_kernel tests.test_ranking_v5_head_objective tests.test_v5_kernel_b_gate",
+    "testsRun": 23, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0
+  },
+  "independent_review": {
+    "reviewer": "/root/v5_boundary_review",
+    "verdict": "PASS_PURE_CALLBACK_BOUNDARY_ONLY",
+    "testsRun": 21,
+    "test_scope": "boundary, head and kernel; parent also includes two kernel-gate tests",
+    "reproductions_closed": [
+      "closure mutation cannot change captured request/release/source receipt identity",
+      "fit mutation cannot change retained normalizer, recipe SHA or fixed seed",
+      "drive/extra source path, float seed and wrong package SHA rejected"
+    ],
+    "remaining_must_fix": []
+  },
+  "full_regression": {
+    "command": "D:/Python/Python313/python.exe -m unittest discover -s tests",
+    "testsRun": 779, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0,
+    "wall_s": 87.581,
+    "raw_log": "../runtime_training_staging_20260928/v5_execution_boundary_full_20261007_r1.log",
+    "raw_log_sha256": "b3e0c0f3e35e24afaaa338c612f913feb03e292a14e073d4addbcd7709f1f817"
+  },
+  "new_actual_fits": 0,
+  "remote_access_this_node": false,
+  "real_or_blind_data_access": false,
+  "physical_runner_implemented": false,
+  "physical_model_and_freeze_persistence_verified": false,
+  "user_authorization_proven_by_this_module": false,
+  "source_file_identity_proven_by_this_module": false,
+  "formal_18_fit_release": false,
+  "next_node": "physical v5 worker/launcher and bounded artifact/resource integration; no old r4 release reuse",
+  "claim_boundary": "Mock persistence and verified callback order are not physical file I/O, real training, permission evidence or ATPG speedup"
+}

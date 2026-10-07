@@ -262,3 +262,11 @@ AgentFleet独立只读复核 objective/kernel/builder，修复执行前 wall-tim
 CUDA初始化Error2再次出现，raw stderr完整保留；独立复核为PASS_WITH_WARNING，不宣称cleanCUDA或真实电路学习收益。原日志SHA `647e83f7381f9a4e3434cda4435426348a1a12975c5ea50ddae89f22c72199cf`。program SHA为发送前逻辑源码，不冒充远端stdin字节捕获。外层argv/exit另在manifest记录工具回执来源。
 
 修订后完整773tests/25skip/0fail/error/exit0（69.635秒），log SHA `0b14520f289faba176705c38e3e33edcfecc097c47a41351ca53251dc253db36`。独立复核了实际raw log、11pins和封存文字，补齐全回归绑定后可本地提交。正式18fit仍未放行；下一节点为新真实release/freeze/receipt门禁实现，不复用r4放行。
+
+## 2026-10-07：v5放行/冻结逻辑边界与独立修订复核
+
+隔离实现callback-only boundary；严格v5 scope、package/gate/hash和12项源码清单，保持120轮/3seed/7列/Adam/K/ε/单worker/资源/零retry协议。模型持久化需expected SHA精确回执，freeze需canonical SHA确认并完整回读，之后才允许可选TRAIN LOFO held标签加载。请求不接受held标签，所有特征先做有限性检查。
+
+复核实际复现了额外盘符路径、浮点seed及回调可篡改验证后对象的绕过，均修复并复测。内部输入用快照/预hash，fit取得prepared/recipe副本，保留normalizer与receipt identity。独立PASS仅purecallback逻辑，未冒充CLI/physicalstorage/sourcefile/审批证明/真实trainer。父23focused通过；复核者21项（未包含额外gate2项）通过。完整779tests/25skip/0fail/error/exit0（87.581秒），raw SHA `b3e0c0f3e35e24afaaa338c612f913feb03e292a14e073d4addbcd7709f1f817`。
+
+本节点真实fit=0、远端访问=0，无BLIND/受保护目录访问。物理v5 worker/launcher、实际文件SHA回读和运行中combined-RSS限制尚未实现；正式18fit release仍false。
