@@ -1,0 +1,63 @@
+{
+  "status": "PASS_CPU_TORCH_CHECKS_WITH_CUDA_WARNING_INDEPENDENT_REVIEW_PENDING",
+  "raw_log": "runtime_training_staging_20260928/v5_head_b_gate_20261007_r1.log",
+  "raw_log_sha256": "96e49e67ae197316b84504a7a6292221565e952131c8b654e35e358be2773d05",
+  "ssh_exit_code": 0,
+  "remote_execution_count": 1,
+  "result": {
+    "active_boundary_gradient_match": true,
+    "address_space_cap_bytes": 8589934592,
+    "base_commit": "f393816b641c64bcd030ae2f5fa1345aa04e3f1d",
+    "claim_boundary": "Generated forward/gradient only, no real training release or speedup claim",
+    "cpu_time_cap_seconds": 120,
+    "cwd": "/ssd/cjc",
+    "dependency_count_verified": 31,
+    "device": "cpu",
+    "elapsed_seconds": 1.1489020400913432,
+    "forward_reference_match": true,
+    "generated_data_only": true,
+    "guaranteed_hit_zero_signal": true,
+    "interop_threads": 1,
+    "kernel": "6.1.0-47-amd64",
+    "new_fits": 0,
+    "observed_rss_stop_threshold_bytes": 1073741824,
+    "optimizer_steps": 0,
+    "peak_process_rss_bytes": 412598272,
+    "python_version": "3.11.2",
+    "real_data_or_checkpoint_access": false,
+    "remote_artifact_writes": false,
+    "retries": 0,
+    "source_sha256": {
+      "requirements/runtime_v2.lock.txt": "a9427b7cbf01048a317009dcf0f625ace51cc739b4e7e2e626a17166ed14c96f",
+      "scripts/verify_v5_head_torch_fixture.py": "6bbdab0887246dc0ebb452af79332a1eca72a59b2ab10d9f04d4e016097b6150",
+      "src/models/ranking_v5_head_objective.py": "aa1d71fa3c6c3a10ea81b133248d334669c48cce8e2a3babe1bb1567b5af7c85"
+    },
+    "status": "PASS_GENERATED_TORCH_HEAD_GATE",
+    "threads": 1,
+    "torch_version": "2.5.1+cu124",
+    "wall_timeout_seconds": 180
+  },
+  "warning": "CUDA initialization cudaGetDeviceCount returned Error 2: out of memory during autograd. CPU assertions completed. Cause not established; must not suppress or claim clean CUDA environment.",
+  "readonly_followup": {
+    "gpu_memory_used_mib": [
+      18,
+      18,
+      18,
+      18,
+      411,
+      18
+    ],
+    "gpu_total_mib": [
+      32607,
+      32607,
+      32607,
+      32607,
+      24564,
+      24564
+    ],
+    "host_available_memory_mib": 983553,
+    "interpretation": "Post-run snapshot does not show GPU or host capacity exhaustion; does not prove transient state or warning cause."
+  },
+  "formal_training_release": false,
+  "independent_agent_review_performed": false
+}

@@ -1,0 +1,9 @@
+{
+  "status": "READY_FOR_INDEPENDENT_READONLY_REVIEW_NOT_PASS",
+  "scope": "Local code and small generated CPU evidence; no A/B/BLIND access or new fits required",
+  "sources": ["src/models/ranking_v5_head_objective.py", "scripts/verify_v5_head_torch_fixture.py", "scripts/build_v5_head_b_gate.py", "tests/test_ranking_v5_head_objective.py", "tests/test_v5_head_b_gate.py"],
+  "evidence": ["data/manifests/ranking_v5_head_b_gate_20261007.json", "data/manifests/ranking_v5_head_b_gate_validation_20261007.json"],
+  "required_checks": ["Head first-hit versus tenth-negative semantics and stable UID ties", "Zero-signal exhaustive families retain macro denominator and are not evidence of learning", "No held labels or raw candidates/checkpoints in logs", "Actual forward/gradient source SHA and fixed dependency/limits binding", "CUDA initialization warning kept distinct from CPU functional assertions", "No optimizer, remote writes, retry or real-training release", "Single-variable future design does not claim cost awareness or graph use"],
+  "independent_review_pass": false,
+  "real_training_authorized": false
+}

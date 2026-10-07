@@ -1,0 +1,20 @@
+{
+  "status": "PASS_LOCAL_RECEIPT_AND_REGRESSION_WITH_ENVIRONMENT_CAVEAT",
+  "base_commit": "f393816b641c64bcd030ae2f5fa1345aa04e3f1d",
+  "b_receipt_sha256": "46e389da754070c376368890d1beb1234fc83e19e97ba500c90e0ec83bd46e06",
+  "bootstrap_builder_sha256": "e1c84c0a183fa9159a00423f2a25fac6da2bb064c566a803dacedcc5b6165122",
+  "raw_log_sha256": "96e49e67ae197316b84504a7a6292221565e952131c8b654e35e358be2773d05",
+  "raw_receipt_scope_numeric_and_resource_checks": true,
+  "focused": {"tests_run": 11, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "full": {"tests_run": 765, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0, "elapsed_seconds": 83.829},
+  "full_log": "runtime_training_staging_20260928/v5_head_b_gate_full_20261007.log",
+  "full_log_sha256": "1b8d2f7a1e710c1e2cf0a5504789e1973bafa4c7acd3bcffa414eef86331a805",
+  "actual_b_execution_count": 1,
+  "ssh_exit_code": 0,
+  "actual_cpu_torch_forward_gradient_pass": true,
+  "cuda_warning_suppressed": false,
+  "cuda_warning_cause_known": false,
+  "independent_agent_review_pass": false,
+  "new_training_release": false,
+  "claim_boundary": "Evidence of generated CPU differentiation only. Regression skips do not prove other Linux gates. Warning remains unresolved, and no formal model-quality or ATPG-speedup conclusion is made."
+}

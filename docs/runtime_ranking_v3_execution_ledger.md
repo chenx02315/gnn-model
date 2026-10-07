@@ -238,3 +238,13 @@ exit原始SHA `fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26`
 实现最大正例score与第10负例score间隔的macro softplus目标；不改ε/K或旧trainer，不加图/成本组件。旧反例在新目标中由错误偏好改为正确偏好；提供拟合INITIAL/EPOCH/FINAL日志，记录首正例rank、前排负例数、hit/regret、gap/tie、天然命中零信号，拒绝held标签、伪造recipe、非法score/overflow。天然命中家族仍保留macro分母并显式标记无目标信号，不能冒充拟合成功。
 
 focused9项、完整763项/25skip/0fail/error/exit0（98.792秒），log SHA `24e5e7a70bf8afbd6f4ea16f4c9a5061eb66c673ddec5031530f61e3495f6936`。本机torch不可用；有限差分只证明标量方向，不是自动求导证明。新增显式generated torch门禁脚本且语法检查通过，但尚未执行，不skip冒充PASS。没有训练/推理/远端访问或新独立复核。状态PASS_SCALAR_REFERENCE_ONLY_TORCH_GATE_PENDING，不放行真实训练、BLIND或Tessent。
+
+## 2026-10-07：B实际torch合成门禁与连续封存
+
+用户指出B既有Docker/PyTorch环境并授权继续对应实验。只读检查确认Docker20.10.24及已缓存NVIDIA PyTorch镜像；既有v3 venv已可导入torch2.5.1+cu124，无需启动容器或安装依赖。使用现有锁定Python3.11.2，31项distribution版本精确一致。源码经STDIN在内存加载，固定/ssd/cjc cwd与解释器、3个source/lock SHA，不部署远端文件、不读真实数据/图/checkpoint。
+
+单次实际合成门禁exit0，0fits/optimizer/retry，CPU float64前向/活动边界梯度/天然命中零梯度断言通过。RSS412598272 bytes，线程1/interop1，8GiB AS硬限制/1GiB RSS观察阈值未提高。raw log SHA `96e49e67ae197316b84504a7a6292221565e952131c8b654e35e358be2773d05`。
+
+同时保留CUDA初始化Error2 out of memory warning，不能报告无警告环境。后续只读容量快照未显示主机/GPU容量耗尽，不能据此断言原因或瞬态状态；没有屏蔽warning/重试/提高cap。真实CPU断言与环境caveat分开记录。未做新独立agent复核，审核请求READY不是PASS。
+
+自动继续完成11focused与765全回归（25skip、0fail/error、exit0），log SHA `1b8d2f7a1e710c1e2cf0a5504789e1973bafa4c7acd3bcffa414eef86331a805`。封存receipt SHA `46e389da754070c376368890d1beb1234fc83e19e97ba500c90e0ec83bd46e06`。另准备只改头部目标、7列/seed/120epochs/optimizer/资源不变的18项受控对照设计；仅设计，trainer尚未接入，不启动新真实训练/BLIND/LSF/Tessent。旧pending合同和证据不改。
