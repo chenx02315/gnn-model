@@ -1,0 +1,45 @@
+{
+  "schema": "ranking-v5-input-adapter-validation-v1",
+  "status": "PASS_IMPLEMENTATION_ONLY",
+  "actual_real_package_reads": 0,
+  "real_fits": 0,
+  "formal_18_fit_release": false,
+  "cli_implemented": false,
+  "code_sha256": {
+    "src/models/ranking_v5_real_request_loader.py": "621048aa8190ebed174fc35cc994f9d2a20957271bcefc6abf50ee22e11b0731",
+    "tests/test_ranking_v5_real_request_loader.py": "5ef14b12cb6e97e2067e042b5bb34a05b69a6ae8c890e3b403a7276ee11ddae4",
+    "src/models/ranking_v5_v3_fold_adapter.py": "97166c80a68173a45127cf6cf57cd403eadff29eda68810e1182ee3c0e8aa6fb",
+    "tests/test_ranking_v5_v3_fold_adapter.py": "eba289d58c05fb837a3561e88d006e8a259bbcf66118c7381c431a790432e6fe"
+  },
+  "independent_review": {
+    "reviewer": "/root/v5_physical_review",
+    "loader": "DESIGN_PASS",
+    "v3_adapter": "IMPLEMENTATION_PASS",
+    "docs_and_contract": "PASS_SCOPE_BOUNDARIES_ONLY"
+  },
+  "focused": {
+    "tests": 26,
+    "skipped": 3,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "full": {
+    "log": "runtime_training_staging_20260928/v5_input_adapter_full_20261007_r2.log",
+    "sha256": "13b78247d8a25d61b6c547e85a412c0fb79c60f7920413175364f49a794a504b",
+    "tests": 825,
+    "skipped": 30,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "seconds": 93.143
+  },
+  "limitations": [
+    "Positive test uses generated temporary v3 shards, not the actual B fold package.",
+    "Intermediate envelope is a new design, not evidence of existing sealed v5 requests.",
+    "Aggregate package receipt, source bindings, actual authority and prelaunch remain external caller obligations.",
+    "No same-user hostile-race OS sandbox claim.",
+    "Windows filesystem-capability skips are not Linux positive execution proof.",
+    "r1 regression retained but superseded by r2 after final test revisions."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "status": "IMPLEMENTATION_PARTIAL_INPUT_ADAPTER_ONLY",
+  "formal_18_fit_release": false,
+  "real_training_allowed": false,
+  "implemented": [
+    "intermediate request envelope bounded SHA/schema/roles validation",
+    "v3 fold adapter reads manifest, fitting features/outcomes and held features only",
+    "six TRAIN families and fitting-only cycle membership checked by v5 boundary",
+    "synthetic physical worker persistence and sampled memory gate"
+  ],
+  "not_implemented": [
+    "independent physical caller binding aggregate package receipt to per-fold manifest pins",
+    "new v5 user authority and independently sealed source-binding receipt validation",
+    "actual formal worker and create-once 18-fit sequential launcher",
+    "freeze-readback-gated real TRAIN LOFO held-label replay",
+    "fresh formal environment provenance and prelaunch"
+  ],
+  "frozen_comparison": {
+    "changed_variable": "head first-hit top-10 objective only",
+    "model": "candidate_mlp",
+    "features": 7,
+    "epochs": 120,
+    "seeds": [20260824, 20260825, 20260826],
+    "fold_count": 6,
+    "planned_fits": 18,
+    "optimizer": {"name": "Adam", "lr": 0.001, "weight_decay": 0.0001},
+    "K": 10,
+    "epsilon": "101/100",
+    "workers": 1,
+    "threads": 1,
+    "address_space_cap_bytes": 8589934592,
+    "sampled_combined_rss_cap_bytes": 1073741824,
+    "automatic_retries": 0
+  },
+  "permissions_not_granted_by_this_contract": ["new formal 18-fit training", "BLIND", "VALIDATION", "PILOT", "LSF", "Tessent"],
+  "scientific_readout": [
+    "fitting ranking first, especially s13207/s15850",
+    "TRAIN LOFO held ranking after physical freeze readback",
+    "runtime measured only from existing genuine attempt labels in frozen replay",
+    "no held-based epoch/seed/hyperparameter selection",
+    "do not equate synthetic loss decrease with real fitting or ATPG wall-time reduction"
+  ],
+  "environment_caveat": "v3 interpreter uses runtime-v2 shared site-packages through locked_shared.pth; no completely isolated dependency provenance claim",
+  "claim_boundary": "Design and locally tested input adaptation, not actual real package ingestion, authority, or training completion"
+}

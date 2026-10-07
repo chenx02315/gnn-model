@@ -278,3 +278,9 @@ CUDA初始化Error2再次出现，raw stderr完整保留；独立复核为PASS_W
 实际1synthetic fit、120steps、122logs、realfit0；model/freeze/request/source/recipe回读通过；3.172274s、10samples、combined峰值539160576B。完整805tests/27skip/0failure/error/exit0，98.357s；full raw SHA5a0f96047226957a0d5c90b97766a347029f7f3d87e2832290e423d831556a0a。独立实际证据PASS_WITH_WARNING：CUDA Error2仍保留，torch经locked_shared.pth来自runtime-v2共享site-packages，不声称完全隔离依赖或GPU健康；没有重跑。
 
 详细封存 data/manifests/ranking_v5_physical_gate_20261007.json 与 docs/ranking_v5_physical_gate_20261007.md。本节点不读取真实TRAIN/BLIND标签，不启动新18fit。继续实现真实caller输入适配和身份验证，但正式审批和新鲜prelaunch仍必须单独满足。
+
+## 2026-10-07：自动衔接 v5 输入适配实现
+
+合成物理封存后继续新增中间请求loader与v3 fold adapter。只在临时人工分片测试输入转换，不读取真实B package。protectedroot先词法拒绝且所有文件系统mock零触达；有界普通文件/父目录symlink/FIFO负例；adapter的heldout_outcomes open/stat/lstat/is_symlink/resolve计数全零；重算SHA后的manifest release roles漂移拒绝。
+
+AgentFleet独立结论loader DESIGN_PASS、adapter IMPLEMENTATION_PASS，无CLI/授权/真实拟合。最终26focused/3skip；完整r2 825tests/30skip/0failure/error/exit0，93.143s，SHA13b78247d8a25d61b6c547e85a412c0fb79c60f7920413175364f49a794a504b。r1测试修订期间启动，仅保留不作为最终结论。封存ranking_v5_input_adapter_validation_20261007.json；下一节点为aggregate package/source/release身份绑定及真实caller/冻结后LOFO回放，正式18fit仍false。
