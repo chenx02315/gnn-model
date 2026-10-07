@@ -1,0 +1,26 @@
+{
+  "status": "PASS_LOCAL_PREPARATION_LOGGING_AND_MOCK_LOOP_ONLY",
+  "baseline_head": "788c46185ed0654a000cdfae53732659ae8d4b48",
+  "sources": {
+    "src/models/ranking_v5_training_kernel.py": "e33819e259004d4bb67d8f40ede371274be7126ae1ba54fcff6870e4f0e59f44",
+    "tests/test_ranking_v5_training_kernel.py": "bfbbc8836f029dd671a31aaf11fd23497b9e25d901eab9e2939a4d61748fa96d",
+    "src/models/ranking_v5_head_objective.py": "aa1d71fa3c6c3a10ea81b133248d334669c48cce8e2a3babe1bb1567b5af7c85"
+  },
+  "focused": {"testsRun": 17, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "full_regression": {
+    "command": "D:/Python/Python313/python.exe -m unittest discover -s tests",
+    "testsRun": 771, "skipped": 25, "failures": 0, "errors": 0,
+    "wall_s": 84.990, "exit_code": 0,
+    "raw_log": "../runtime_training_staging_20260928/v5_kernel_full_20261007_r1.log",
+    "raw_log_sha256": "dac993ba8c784b02b286b2322f648b2718d7dfa6cdf78f57bbce8b389f27591f"
+  },
+  "verified": ["fit-only exact label join", "held feature invariance", "fixed 120 mocked optimizer steps", "122 ordered aggregate logs", "complete old pair diagnostic reference", "no raw UID or score vectors in fitting logs"],
+  "actual_pytorch_kernel_execution": false,
+  "actual_training_determinism_verified": false,
+  "independent_review_passed": false,
+  "real_training_release": false,
+  "new_real_fits": 0,
+  "remote_calls_this_node": 0,
+  "protected_data_access": false,
+  "next": "Independent read-only review, then separately source-bound synthetic PyTorch integration gate; old B objective PASS is not kernel PASS"
+}

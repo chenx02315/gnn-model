@@ -248,3 +248,9 @@ focused9项、完整763项/25skip/0fail/error/exit0（98.792秒），log SHA `24
 同时保留CUDA初始化Error2 out of memory warning，不能报告无警告环境。后续只读容量快照未显示主机/GPU容量耗尽，不能据此断言原因或瞬态状态；没有屏蔽warning/重试/提高cap。真实CPU断言与环境caveat分开记录。未做新独立agent复核，审核请求READY不是PASS。
 
 自动继续完成11focused与765全回归（25skip、0fail/error、exit0），log SHA `1b8d2f7a1e710c1e2cf0a5504789e1973bafa4c7acd3bcffa414eef86331a805`。封存receipt SHA `46e389da754070c376368890d1beb1234fc83e19e97ba500c90e0ec83bd46e06`。另准备只改头部目标、7列/seed/120epochs/optimizer/资源不变的18项受控对照设计；仅设计，trainer尚未接入，不启动新真实训练/BLIND/LSF/Tessent。旧pending合同和证据不改。
+
+## 2026-10-07：v5 synthetic训练接线与日志，连续本地实现
+
+新增隔离kernel，保留旧r4与已封存objective SHA。拟合侧归一化/7列MLP/Adam/seed/120轮不变，head loss作为唯一优化目标；旧完整pair loss仅日志诊断。专用synthetic scope、无CLI/真实release/held推理/远端写入。scope自身不证明合成来源，后续实际执行需外部来源门禁。
+
+本地17focused通过；完整771tests、25skip、0fail/error、exit0（84.990秒），raw log SHA `dac993ba8c784b02b286b2322f648b2718d7dfa6cdf78f57bbce8b389f27591f`。mock验证120优化步及122条拟合汇总日志；held标签拒绝、held特征不影响fit、日志无动作UID/分数向量。不是实际tensor优化循环或训练确定性验证，没有独立复核回执。新增真实fit=0、远端调用=0；下一节点仍为独立复核与单独的新synthetic integration gate。未放行18fit/BLIND/LSF/Tessent，未增加资源或重试。
