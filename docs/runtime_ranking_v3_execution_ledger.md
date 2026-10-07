@@ -232,3 +232,9 @@ exit原始SHA `fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26`
 实际r4 real worker未传graph，只有7列CandidateMLP尺度/方案特征；共同故障数、绝对与相对H/M可间接体现电路尺度，但未供应拓扑。pair loss没有ATPG runtime成本，runtime仅在freeze replay累计。图是否有效和目标改动是否收益均未知。后续设计分离目标、上下文、成本对照，不原样重跑、不批量加电路。
 
 本地3focused通过、全回归754项/25skip/0fail/error/exit0；日志SHA `9f97f8feb9905463e9f0dad71c997a9affadd0670db0090c8758a8b3dcb1745d`，汇总SHA `b83e957dd6abd3947497db68727c383cecf24fcd8c64284f40f6d4376843ad13`，精确重建。没有新独立agent review，不冒充正式门禁。训练、BLIND、新ATPG测量均未解封。
+
+## 2026-10-07：隔离v5头部目标与fitting日志实现，torch门禁待执行
+
+实现最大正例score与第10负例score间隔的macro softplus目标；不改ε/K或旧trainer，不加图/成本组件。旧反例在新目标中由错误偏好改为正确偏好；提供拟合INITIAL/EPOCH/FINAL日志，记录首正例rank、前排负例数、hit/regret、gap/tie、天然命中零信号，拒绝held标签、伪造recipe、非法score/overflow。天然命中家族仍保留macro分母并显式标记无目标信号，不能冒充拟合成功。
+
+focused9项、完整763项/25skip/0fail/error/exit0（98.792秒），log SHA `24e5e7a70bf8afbd6f4ea16f4c9a5061eb66c673ddec5031530f61e3495f6936`。本机torch不可用；有限差分只证明标量方向，不是自动求导证明。新增显式generated torch门禁脚本且语法检查通过，但尚未执行，不skip冒充PASS。没有训练/推理/远端访问或新独立复核。状态PASS_SCALAR_REFERENCE_ONLY_TORCH_GATE_PENDING，不放行真实训练、BLIND或Tessent。

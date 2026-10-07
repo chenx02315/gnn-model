@@ -1,0 +1,18 @@
+{
+  "status": "PASS_SCALAR_REFERENCE_ONLY_TORCH_GATE_PENDING",
+  "base_commit": "0112b6c3cf252b1af7041d92638c5d404303edb8",
+  "objective_source_sha256": "aa1d71fa3c6c3a10ea81b133248d334669c48cce8e2a3babe1bb1567b5af7c85",
+  "tests_sha256": "2e1e1770bc9af21d4c04b49ddfce636e25fcf6a9e963928816b845de7d7d9ae3",
+  "focused": {"tests_run": 9, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "full": {"tests_run": 763, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0, "elapsed_seconds": 98.792},
+  "full_log": "runtime_training_staging_20260928/v5_head_full_20261007.log",
+  "full_log_sha256": "24e5e7a70bf8afbd6f4ea16f4c9a5061eb66c673ddec5031530f61e3495f6936",
+  "torch_available_in_local_python": false,
+  "torch_fixture_executed": false,
+  "torch_gradient_verified": false,
+  "independent_agent_review_performed": false,
+  "existing_real_trainer_modified": false,
+  "new_training_runs": 0,
+  "remote_access": false,
+  "claim_boundary": "Synthetic scalar target/diagnostic logic and syntax only; not actual torch differentiation, integration, real convergence, transfer improvement or ATPG speedup. No training release."
+}

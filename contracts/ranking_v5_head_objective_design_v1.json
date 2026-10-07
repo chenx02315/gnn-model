@@ -1,0 +1,23 @@
+{
+  "status": "DESIGN_REFERENCE_TESTED_TORCH_EXECUTION_PENDING_NO_TRAINING_RELEASE",
+  "scope": "Local isolated objective and fitting-log implementation; no real trainer integration",
+  "epsilon": "100*cycles<=101*family_oracle_cycles",
+  "K": 10,
+  "first_hit_semantics": "At least one epsilon-near-optimal action in first 10",
+  "objective": "macro-family mean softplus(kth_highest_negative_score - maximum_positive_score)",
+  "negative_count_less_than_K": "Guaranteed hit; zero differentiable signal, keep macro denominator and mark explicitly",
+  "ties": "Exact logs use score descending then UID ascending; strict positive gap is a sufficient hit certificate, zero gap is not",
+  "positive_selection": "Maximum positive score: optimizes ANY positive, not all positives; active positive can switch",
+  "score_scale": "No tuned margin or temperature; retain unit softplus, no guarantee of calibration",
+  "logging": ["epoch", "phase", "recipe_sha256", "macro_head_loss", "first_positive_rank", "negatives_before_first_positive", "hit_at_10", "top10_cycle_regret", "head_gap", "tie_at_boundary", "guaranteed_hit_by_size", "objective_signal_families"],
+  "source": "src/models/ranking_v5_head_objective.py",
+  "tests": "tests/test_ranking_v5_head_objective.py",
+  "torch_gradient_execution_verified": false,
+  "scalar_finite_difference_verified": true,
+  "new_training_authorized": false,
+  "real_data_or_remote_access": false,
+  "blind_validation_or_tessent_release": false,
+  "memory_limit_increase": false,
+  "remaining_gates": ["Actual torch forward/backward versus reference on generated fixtures in an authorized isolated runtime", "Independent code review", "Fresh explicit real-training release if a controlled comparison is requested"],
+  "claim_boundary": "Head objective reflects first-hit rank boundary; synthetic tests do not prove real optimization convergence, transfer improvement, or ATPG cost reduction."
+}
