@@ -1,0 +1,94 @@
+{
+  "schema": "ranking-v5-single-fit-composition-validation-v1",
+  "status": "PASS_IMPLEMENTATION_ONLY",
+  "baseline_commit": "c73576d",
+  "new_real_fits": 0,
+  "remote_calls": 0,
+  "actual_production_package_reads": 0,
+  "formal_18_fit_release": false,
+  "physical_single_fit_worker_implemented": false,
+  "physical_storage_helper_implemented": true,
+  "cli_implemented": false,
+  "serialization_scratch_bounds": {
+    "max_depth": 64, "max_nodes": 4096, "max_container_items": 1024,
+    "max_string_chars": 2048, "max_integer_bits": 1024,
+    "preflight_before_encoding_or_digest": true,
+    "cumulative_encoded_bytes_limited": true,
+    "runtime_process_memory_watchdog_verified": false
+  },
+  "sources": {
+    "src/models/ranking_v5_held_replay_reader.py": "9109eb41f63541ac34806f256a188e80972ebbf3d7eba3049c28e19fa0af9dad",
+    "src/models/ranking_v5_single_fit_composition.py": "c308851ef162337678a89c64a5e5f1d6d7878c1928888089883d06a598577ea1",
+    "tests/test_ranking_v5_held_replay_reader.py": "fbc57954c6dab3b49b044ca253aa81afffe48f94f72b953140d3d4de96a2b838",
+    "tests/test_ranking_v5_single_fit_composition.py": "abcc0c9777219bd3ccbe9af7b9520aee27dcffd5cbdb7b5099927ae7ab8cce3e",
+    "src/models/ranking_v5_real_artifact_store.py": "b1f5a0afe9359d96598684fac9e899bf4e4b9385d21d795c0b4260bb8781bffc",
+    "tests/test_ranking_v5_real_artifact_store.py": "1ebfc51a7bd86bc88865e0b8c0f4e6e0f123101fc4c406d1c99e7a4a77909b63"
+  },
+  "positive_fixture": {
+    "scope": "TEMPORARY_GENERATED_V3_SHARDS_AND_MOCKED_CALLBACKS_ONLY",
+    "composition_cases": 7,
+    "held_reader_cases": 5,
+    "store_cases": 9,
+    "store_capability_skips": 2,
+    "generated_fold_actual_held_shard_read": true,
+    "generated_model_bytes_and_freeze_actual_store_readback": true,
+    "real_torch_fit": false,
+    "genuine_authorization_evidence": false,
+    "authority_promoted_by_tests": false
+  },
+  "full_regression": {
+    "log": "runtime_training_staging_20260928/v5_composition_full_20261007_r4.log",
+    "sha256": "ab9360dafdff7f989b096781172841424cbad4209c7fffad8bf36386532da65f",
+    "tests": 864, "skipped": 32, "failures": 0, "errors": 0,
+    "exit_code": 0, "seconds": 140.740,
+    "scope": "Final frozen source and tests; Windows regression, not Linux or formal training gate"
+  },
+  "incomplete_regression": {
+    "log": "runtime_training_staging_20260928/v5_composition_full_20261007_r2.log",
+    "sha256": "bae4904a4df8397f3cb7c1d6933465c3554632178699143a2dee79f0ca9ddb1f",
+    "status": "INCOMPLETE_NO_FINAL_TEST_SUMMARY_OR_EXIT_RECEIPT",
+    "counted_as_pass": false,
+    "observation": "Continuation found no live python process and no final unittest summary; termination cause unknown"
+  },
+  "pre_final_fix_regression": {
+    "log": "runtime_training_staging_20260928/v5_composition_full_20261007_r3.log",
+    "sha256": "7b237d0109d613e75ed179b20b93ec5b9c6bccca3a19e2ec395dce784a622ff0",
+    "tests": 864, "skipped": 32, "failures": 0, "errors": 0, "exit_code": 0,
+    "seconds": 112.532,
+    "not_final_reason": "Started before final deep-JSON decoder exception regression fix"
+  },
+  "independent_review": {
+    "reviewer": "/root/composition_final_review",
+    "status": "PASS_IMPLEMENTATION_ONLY",
+    "seal_review": "PASS_IMPLEMENTATION_ONLY",
+    "final_source_pins_and_raw_log_independently_verified": true,
+    "focused_tests": 21,
+    "focused_skipped": 2,
+    "focused_failures": 0,
+    "focused_errors": 0,
+    "focused_seconds": 0.630,
+    "scope": "composition, held reader and storage helper; implementation-only",
+    "resolved_findings": [
+      "Protected root asserts all filesystem operations are zero",
+      "JSON object bounds precede serialization/digest and encoding uses a cumulative byte cap",
+      "Duplicate JSON keys rejected and tested",
+      "Sub-cap deeply nested corrupt freeze decoder recursion becomes fail-closed ValueError"
+    ]
+  },
+  "interim_regression": {
+    "log": "runtime_training_staging_20260928/v5_composition_full_20261007_r1.log",
+    "sha256": "d90ea94e03cf96b9f69ef6393caf234b9f92de3c30d9a01a1bcb47cd292511b3",
+    "tests": 854, "skipped": 30, "failures": 0, "errors": 0, "exit_code": 0,
+    "seconds": 144.146,
+    "not_final_reason": "Test discovery preceded final protected-root zero-IO test addition"
+  },
+  "limitations": [
+    "Composition is callback-only; the separate storage helper is not a physical worker or process isolation.",
+    "Storage file fsync plus readback does not guarantee power-loss directory-entry durability.",
+    "Windows symlink and FIFO capability tests skipped; Linux behavior not proved by this run.",
+    "Approval byte integrity is not consent authentication; externally authentic anchors still required.",
+    "Physical caller must independently seal all caller source files and environment prelaunch.",
+    "Safe path validation followed by open is not a same-user adversarial race sandbox.",
+    "No new production training result or ATPG runtime gain was measured."
+  ]
+}

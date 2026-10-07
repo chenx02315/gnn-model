@@ -296,3 +296,11 @@ AgentFleet独立结论loader DESIGN_PASS、adapter IMPLEMENTATION_PASS，无CLI/
 新增load_bound_fold_request，执行前root/family/intseed零IO校验，ordinary bounded receipt单buffer SHA解析取得fold pin，manifest/shards由v3 adapter精确回读，1706rowcount匹配。不含CLI/approval/fit/writer/held outcome读取。正例实际I/O仅临时1706人工动作/6fold exporter数据，testpatchallowlist与人工packageSHA，不读取生产B package。
 
 最终全回归843tests/30skip/0failure/error/exit0，144.459s，SHA41efdd62a2b2edf1e1be193c991eb1f7d2060ed528cf5b572e588a820e0ab3e1；包含修订后5项reader集成测试。输入拒绝含protected零五种pathop、badfamily/floatseed allowlistedroot零读取、receipt/manifest/shard/countdrift和heldout_outcomes五种pathop零触达。边界保留same-userTOCTOU非sandbox、正式caller/worker/冻结后LOFO/prelaunch/新18fit授权均待完成。
+
+## 2026-10-07：接通单折 callback、冻结后 TRAIN LOFO 与有界存储辅助层
+
+继续 AgentFleet 实现/独立复核，不读取生产 package、不做真实拟合。composition 将审批字节完整性、bound fitting-only request、既有 boundary 和新 held reader 连接；只有模型 ACK、freeze ACK、完整 SHA 读回通过后，才加载 pinned TRAIN held outcomes。临时人工分片集成测试实际写入非 Torch fixture model bytes、freeze 并读回，再实际读取临时 held shard。不是正式单次 worker、真实授权或模型训练收益。
+
+存储 helper 独占创建新目录/四产物，普通文件有界 raw readback，caps 不提高。独立复核发现并修复 protected root 全路径零触达测试缺口、JSON cap 检查前无界序列化和深度损坏 JSON 的未转换 RecursionError。对象图预检查、累计限额编码、重复键/深对象拒绝均有回归。最终独立 IMPLEMENTATION_ONLY PASS；21 focused、2 Windows 能力 skip。无 Linux symlink/FIFO 实际正向结论，无目录项断电持久性或同用户竞态沙箱保证。
+
+最终完整回归与源码 SHA 以 ranking_v5_single_fit_composition_validation_20261007.json 为准；r1 早于最后负例，r2 无最终 summary/exit 回执，r3 早于深 JSON 修复，均不充当最终版本 PASS。新设计 v3 保留 formal_18_fit_release=false。下一节点仍是把 tensor loop、资源 guard 和存储接成真实单次 worker，再做串行 launcher、完整源码/环境 fresh prelaunch 与新的 v5 正式放行。单 worker、threads1、AS8GiB、sampled combined RSS1GiB、retry0 不变。

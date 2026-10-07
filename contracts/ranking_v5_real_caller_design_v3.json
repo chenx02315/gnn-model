@@ -1,0 +1,27 @@
+{
+  "status": "PARTIAL_CALLBACK_COMPOSITION_AND_FREEZE_GATED_REPLAY_IMPLEMENTED",
+  "supersedes_design": "ranking_v5_real_caller_design_v2.json",
+  "formal_18_fit_release": false,
+  "real_training_allowed": false,
+  "new_user_approval_exists": false,
+  "completed_code_only": [
+    "pinned aggregate-to-fold fitting-only input reader",
+    "externally anchored approval byte integrity, not consent authentication",
+    "single-fold callback composition preserving model ACK and exact freeze readback ordering",
+    "bounded TRAIN LOFO held outcomes reader after complete frozen ranking validation",
+    "create-once bounded artifact storage helper, not yet connected to real tensor worker"
+  ],
+  "next_required": [
+    "physical real single-fit worker connecting bounded storage to fixed tensor loop and resource guard",
+    "independently sealed complete caller source binding and fresh environment prelaunch",
+    "one-worker 18-fit launcher with unchanged AS/RSS limits and zero retry",
+    "new explicit formal v5 18-fit authority before any production data access or training"
+  ],
+  "worker_limits_unchanged": {
+    "workers": 1, "threads": 1, "as_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824, "retries": 0
+  },
+  "permission_expansion": false,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "claim_boundary": "Local generated-shard and mocked-callback validation only; no new physical fit, production input access or training benefit"
+}
