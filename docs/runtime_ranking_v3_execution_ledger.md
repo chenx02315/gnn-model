@@ -254,3 +254,11 @@ focused9项、完整763项/25skip/0fail/error/exit0（98.792秒），log SHA `24
 新增隔离kernel，保留旧r4与已封存objective SHA。拟合侧归一化/7列MLP/Adam/seed/120轮不变，head loss作为唯一优化目标；旧完整pair loss仅日志诊断。专用synthetic scope、无CLI/真实release/held推理/远端写入。scope自身不证明合成来源，后续实际执行需外部来源门禁。
 
 本地17focused通过；完整771tests、25skip、0fail/error、exit0（84.990秒），raw log SHA `dac993ba8c784b02b286b2322f648b2718d7dfa6cdf78f57bbce8b389f27591f`。mock验证120优化步及122条拟合汇总日志；held标签拒绝、held特征不影响fit、日志无动作UID/分数向量。不是实际tensor优化循环或训练确定性验证，没有独立复核回执。新增真实fit=0、远端调用=0；下一节点仍为独立复核与单独的新synthetic integration gate。未放行18fit/BLIND/LSF/Tessent，未增加资源或重试。
+
+## 2026-10-07：v5实际synthetic kernel执行与独立封存
+
+AgentFleet独立只读复核 objective/kernel/builder，修复执行前 wall-time/CUDA fence遗漏后允许单次CPU synthetic门禁。11份源码/lock均绑定；72人工动作、60fit动作，两次预计划同seed各120steps，122条拟合日志/fit和权重完全一致。远端exit0，2.39478秒，峰值RSS522153984bytes（498MiB），AS8GiB/CPU120s/外层timeout180s，单线程，0retry，真实fit=0，远端artifact写入=0。
+
+CUDA初始化Error2再次出现，raw stderr完整保留；独立复核为PASS_WITH_WARNING，不宣称cleanCUDA或真实电路学习收益。原日志SHA `647e83f7381f9a4e3434cda4435426348a1a12975c5ea50ddae89f22c72199cf`。program SHA为发送前逻辑源码，不冒充远端stdin字节捕获。外层argv/exit另在manifest记录工具回执来源。
+
+修订后完整773tests/25skip/0fail/error/exit0（69.635秒），log SHA `0b14520f289faba176705c38e3e33edcfecc097c47a41351ca53251dc253db36`。独立复核了实际raw log、11pins和封存文字，补齐全回归绑定后可本地提交。正式18fit仍未放行；下一节点为新真实release/freeze/receipt门禁实现，不复用r4放行。
