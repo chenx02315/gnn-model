@@ -1,0 +1,47 @@
+{
+  "schema": "ranking-v5-bound-input-reader-validation-v1",
+  "status": "PASS_IMPLEMENTATION_ONLY",
+  "baseline_commit": "e082f24",
+  "real_fits": 0,
+  "remote_calls": 0,
+  "actual_production_package_reads": 0,
+  "actual_production_fold_reads": 0,
+  "formal_18_fit_release": false,
+  "entrypoint": "load_bound_fold_request",
+  "cli_implemented": false,
+  "sources": {
+    "src/models/ranking_v5_bound_input_reader.py": "75882772f4689af0abf243c5635cb8e9712d6a032e4ccc9c930af72820ee68bb",
+    "tests/test_ranking_v5_bound_input_reader.py": "a5276262b700ec25716000119dda1d3f706d6b9b1b839179a01c6cbdc60426fc"
+  },
+  "positive_fixture": {
+    "scope": "TEMPORARY_GENERATED_V3_SHARDS_ONLY",
+    "action_count": 1706,
+    "fold_count": 6,
+    "patched_production_root_allowlist": true,
+    "patched_production_package_sha": true,
+    "held_label_path_operations": 0
+  },
+  "full_regression": {
+    "log": "runtime_training_staging_20260928/v5_bound_input_full_20261007_r1.log",
+    "sha256": "41efdd62a2b2edf1e1be193c991eb1f7d2060ed528cf5b572e588a820e0ab3e1",
+    "tests": 843,
+    "skipped": 30,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "seconds": 144.459
+  },
+  "independent_review": {
+    "reviewer": "/root/v5_physical_review",
+    "static_pipeline": "PASS",
+    "scope_documentation": "PASS",
+    "final_regression_evidence": "PASS_FULL_R1"
+  },
+  "limitations": [
+    "Only temporary generated shards were actually read, not production B package.",
+    "Path validation/open is not a same-user hostile-race OS sandbox.",
+    "No CLI, authorization, writer, fit or held-outcomes reader.",
+    "Caller must independently bind real approvals, source hashes and fresh prelaunch before production input access.",
+    "Formal worker, freeze-gated TRAIN LOFO replay and 18-fit launcher remain unimplemented."
+  ]
+}

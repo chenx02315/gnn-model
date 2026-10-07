@@ -290,3 +290,9 @@ AgentFleet独立结论loader DESIGN_PASS、adapter IMPLEMENTATION_PASS，无CLI/
 新增package bytes校验和外部anchored审批/review完整性校验；独立IMPLEMENTATION_PASS。以同一bounded raw buffer验证真实总receipt SHA，再decode提取6fold pins。实际本地TRAIN aggregate副本SHA964703dc...43868匹配，但不读取远端package/fold/held标签。object+claimedSHA helper只作结构验证，caller不可使用。
 
 审批schema为新设计，anchors真实性仍由外部可信caller负责；非循环review subject绑定release，返回consent=false/training_authorized=false，不生成正式授权。13focused通过；完整838tests/30skip/0failure/error/exit0，92.298s；SHA306f55e975e9b92d19dc1ba2bdcade868ddac32fd68842cb22951ff0b1926fdd。封存ranking_v5_identity_binding_validation_20261007.json。继续有界physical input reader实现/临时分片测试，未启动新18fit/BLIND/LSF/Tessent。
+
+## 2026-10-07：继续接通 aggregate→fold 的有界文件读取
+
+新增load_bound_fold_request，执行前root/family/intseed零IO校验，ordinary bounded receipt单buffer SHA解析取得fold pin，manifest/shards由v3 adapter精确回读，1706rowcount匹配。不含CLI/approval/fit/writer/held outcome读取。正例实际I/O仅临时1706人工动作/6fold exporter数据，testpatchallowlist与人工packageSHA，不读取生产B package。
+
+最终全回归843tests/30skip/0failure/error/exit0，144.459s，SHA41efdd62a2b2edf1e1be193c991eb1f7d2060ed528cf5b572e588a820e0ab3e1；包含修订后5项reader集成测试。输入拒绝含protected零五种pathop、badfamily/floatseed allowlistedroot零读取、receipt/manifest/shard/countdrift和heldout_outcomes五种pathop零触达。边界保留same-userTOCTOU非sandbox、正式caller/worker/冻结后LOFO/prelaunch/新18fit授权均待完成。
