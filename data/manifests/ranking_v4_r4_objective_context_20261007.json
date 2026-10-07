@@ -1,0 +1,143 @@
+{
+  "as_of": "2026-10-07",
+  "conclusions": [
+    "No positive-negative pair truncation in any existing family.",
+    "Pair-mean surrogate can improve while top-10 first-hit worsens; not causal proof for r4.",
+    "r4 has no graph context and no runtime cost objective; scalar scale proxies still carry circuit information.",
+    "Additional context sufficiency, convergence, and causal failure mechanism remain untested."
+  ],
+  "counterexample": {
+    "hit": {
+      "first_positive_rank": 1,
+      "hit_at_10": 1,
+      "pair_softplus": 0.31326168751822286
+    },
+    "miss": {
+      "first_positive_rank": 11,
+      "hit_at_10": 0,
+      "pair_softplus": 0.06985682706008141
+    },
+    "role": "SYNTHETIC_COUNTEREXAMPLE_NOT_TRAINING"
+  },
+  "families": [
+    {
+      "actions": 295,
+      "all_pairs": 586,
+      "all_pairs_covered": true,
+      "family": "iscas89_s13207",
+      "family_weight_per_fitting_fold": 0.2,
+      "first_positive_rank_max": 74,
+      "first_positive_rank_min": 21,
+      "fit_hits": 0,
+      "fit_observations": 15,
+      "positive_fraction": 0.006779661016949152,
+      "positives": 2,
+      "selected_pairs": 586
+    },
+    {
+      "actions": 276,
+      "all_pairs": 548,
+      "all_pairs_covered": true,
+      "family": "iscas89_s15850",
+      "family_weight_per_fitting_fold": 0.2,
+      "first_positive_rank_max": 70,
+      "first_positive_rank_min": 2,
+      "fit_hits": 1,
+      "fit_observations": 15,
+      "positive_fraction": 0.007246376811594203,
+      "positives": 2,
+      "selected_pairs": 548
+    },
+    {
+      "actions": 10,
+      "all_pairs": 9,
+      "all_pairs_covered": true,
+      "family": "iscas89_s35932",
+      "family_weight_per_fitting_fold": 0.2,
+      "first_positive_rank_max": 3,
+      "first_positive_rank_min": 1,
+      "fit_hits": 15,
+      "fit_observations": 15,
+      "positive_fraction": 0.1,
+      "positives": 1,
+      "selected_pairs": 9
+    },
+    {
+      "actions": 39,
+      "all_pairs": 74,
+      "all_pairs_covered": true,
+      "family": "iscas89_s38417",
+      "family_weight_per_fitting_fold": 0.2,
+      "first_positive_rank_max": 13,
+      "first_positive_rank_min": 2,
+      "fit_hits": 14,
+      "fit_observations": 15,
+      "positive_fraction": 0.05128205128205128,
+      "positives": 2,
+      "selected_pairs": 74
+    },
+    {
+      "actions": 350,
+      "all_pairs": 2064,
+      "all_pairs_covered": true,
+      "family": "iwls_aes_core",
+      "family_weight_per_fitting_fold": 0.2,
+      "first_positive_rank_max": 10,
+      "first_positive_rank_min": 1,
+      "fit_hits": 15,
+      "fit_observations": 15,
+      "positive_fraction": 0.017142857142857144,
+      "positives": 6,
+      "selected_pairs": 2064
+    },
+    {
+      "actions": 736,
+      "all_pairs": 735,
+      "all_pairs_covered": true,
+      "family": "iwls_spi",
+      "family_weight_per_fitting_fold": 0.2,
+      "first_positive_rank_max": 6,
+      "first_positive_rank_min": 6,
+      "fit_hits": 15,
+      "fit_observations": 15,
+      "positive_fraction": 0.001358695652173913,
+      "positives": 1,
+      "selected_pairs": 735
+    }
+  ],
+  "inputs_sha256": {
+    "data/manifests/ranking_v3_train_feature_diagnostic_20261005.json": "4d875e54703d6ff3101357fe8325eb61238d7695823c8c10ef3c28fb82bef317",
+    "data/manifests/ranking_v4_r4_fit_transfer_diagnostic_20261006.json": "0f5a5de2a5680e9a5ae14f416e18d54838236a727c4667769e1845aea5874f50"
+  },
+  "new_training_runs": 0,
+  "next_boundary": "No new training, tuning, BLIND or circuit measurement release.",
+  "remote_access": false,
+  "source_checks": {
+    "features": [
+      "scheme_hf",
+      "scheme_hmf",
+      "log1p_h_limit",
+      "log1p_m_limit",
+      "h_limit_fraction_of_circuit_max",
+      "m_limit_fraction_of_circuit_max",
+      "log1p_common_fault_count"
+    ],
+    "graph_signal_sufficiency": "UNTESTED_NOT_IN_R4_INPUT",
+    "historical_source_sha256": {
+      "scripts/ranking_v4_near_optimal_pairs.py": "8a4304f4befaaaf31b79dfbc7a21201e9be4b5c704a268efc184286ae92fca6e",
+      "src/models/neural_ranking_v3.py": "1d3edf6c9d4605c438c1d683274ff3bc85cf0d87d1b57c53d79649aafcff69c3",
+      "src/models/ranking_v4_real_worker.py": "c8c42bedd444ac6ef4fc92fe857b72ba00cf9dfffd551c4e2ffd9312483aa33e",
+      "src/models/ranking_v4_training_worker.py": "808f7156c3e8a907ada332d3db7c0c16dba9c5dfcdba25b1c3b553e637a1daea",
+      "src/models/runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c"
+    },
+    "objective_arguments": [
+      "scores",
+      "index",
+      "pairs",
+      "torch"
+    ],
+    "real_fit_call_has_graph_arguments": false,
+    "runtime_cost_in_objective": false
+  },
+  "status": "PASS_LOCAL_OBJECTIVE_CONTEXT_AUDIT_WITH_CAVEATS"
+}

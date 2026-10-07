@@ -224,3 +224,11 @@ exit原始SHA `fd2454fa90c611b1e2ce91d0d5448c86ee2930a2d697dd46b6422a9e82851b26`
 补身份门禁后的focused6项、完整751项（25skip、0fail/error、exit0，67.324秒），最终日志SHA `6391591cef4b33a369d99c7a0aab7e25322fa00352dd49d94304558435d3af68`；原始诊断与汇总精确重建一致，真实推理仍只运行一次。
 
 最终独立 **PASS_R4_READONLY_FIT_TRANSFER_DIAGNOSTIC**：历史身份门禁是summary前置强制检查，篡改拒绝有效，初审疑问已由既有历史证据解决，无remaining must-fix。封存仅诊断，不是新训练/BLIND放行或ATPG加速结论。
+
+## 2026-10-07：排序目标与电路信息覆盖检查，仅本地
+
+未重训/推理、未访问A/B/BLIND/VALIDATION/新图。校验旧diagnostic/summary SHA、模型历史映射及5份原执行源码anchors。六家族全部正负配对数均小于4096（s13207为586、s15850为548），没有cap漏掉正例，每拟合家族20%宏权重。合成分数反例独立公式确认：pair softplus从0.313262降到0.069857时，首个正例可由第1掉至第11；这是目标不保证top10的证明，不是实际失效的因果证明。
+
+实际r4 real worker未传graph，只有7列CandidateMLP尺度/方案特征；共同故障数、绝对与相对H/M可间接体现电路尺度，但未供应拓扑。pair loss没有ATPG runtime成本，runtime仅在freeze replay累计。图是否有效和目标改动是否收益均未知。后续设计分离目标、上下文、成本对照，不原样重跑、不批量加电路。
+
+本地3focused通过、全回归754项/25skip/0fail/error/exit0；日志SHA `9f97f8feb9905463e9f0dad71c997a9affadd0670db0090c8758a8b3dcb1745d`，汇总SHA `b83e957dd6abd3947497db68727c383cecf24fcd8c64284f40f6d4376843ad13`，精确重建。没有新独立agent review，不冒充正式门禁。训练、BLIND、新ATPG测量均未解封。

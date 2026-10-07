@@ -1,0 +1,17 @@
+{
+  "status": "PASS_LOCAL_VALIDATION_WITH_CAVEATS_NO_TRAINING_RELEASE",
+  "base_commit": "6146b64cea02cc38533c6bbcc58c45bc84f40655",
+  "summary_sha256": "b83e957dd6abd3947497db68727c383cecf24fcd8c64284f40f6d4376843ad13",
+  "exact_summary_rebuild": true,
+  "historical_source_anchors_verified": 5,
+  "historical_model_mapping_verified": true,
+  "independent_arithmetic_spotcheck": "Direct log1p/exp formula matches reference kernel; not an independent agent review",
+  "focused": {"tests_run": 3, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "full": {"tests_run": 754, "skipped": 25, "failures": 0, "errors": 0, "exit_code": 0, "elapsed_seconds": 108.392},
+  "full_log": "runtime_training_staging_20260928/r4_objective_context_full_20261007.log",
+  "full_log_sha256": "9f97f8feb9905463e9f0dad71c997a9affadd0670db0090c8758a8b3dcb1745d",
+  "independent_agent_review_performed_this_turn": false,
+  "new_training_or_inference": false,
+  "remote_access": false,
+  "claim_boundary": "Objective/input design properties and descriptive old TRAIN observations only. Graph sufficiency, convergence, causal benefit and ATPG speedup untested. Windows skips do not prove Linux gates."
+}
