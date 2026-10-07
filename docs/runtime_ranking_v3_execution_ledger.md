@@ -284,3 +284,9 @@ CUDA初始化Error2再次出现，raw stderr完整保留；独立复核为PASS_W
 合成物理封存后继续新增中间请求loader与v3 fold adapter。只在临时人工分片测试输入转换，不读取真实B package。protectedroot先词法拒绝且所有文件系统mock零触达；有界普通文件/父目录symlink/FIFO负例；adapter的heldout_outcomes open/stat/lstat/is_symlink/resolve计数全零；重算SHA后的manifest release roles漂移拒绝。
 
 AgentFleet独立结论loader DESIGN_PASS、adapter IMPLEMENTATION_PASS，无CLI/授权/真实拟合。最终26focused/3skip；完整r2 825tests/30skip/0failure/error/exit0，93.143s，SHA13b78247d8a25d61b6c547e85a412c0fb79c60f7920413175364f49a794a504b。r1测试修订期间启动，仅保留不作为最终结论。封存ranking_v5_input_adapter_validation_20261007.json；下一节点为aggregate package/source/release身份绑定及真实caller/冻结后LOFO回放，正式18fit仍false。
+
+## 2026-10-07：连续实现 v5 aggregate 与审批字节绑定
+
+新增package bytes校验和外部anchored审批/review完整性校验；独立IMPLEMENTATION_PASS。以同一bounded raw buffer验证真实总receipt SHA，再decode提取6fold pins。实际本地TRAIN aggregate副本SHA964703dc...43868匹配，但不读取远端package/fold/held标签。object+claimedSHA helper只作结构验证，caller不可使用。
+
+审批schema为新设计，anchors真实性仍由外部可信caller负责；非循环review subject绑定release，返回consent=false/training_authorized=false，不生成正式授权。13focused通过；完整838tests/30skip/0failure/error/exit0，92.298s；SHA306f55e975e9b92d19dc1ba2bdcade868ddac32fd68842cb22951ff0b1926fdd。封存ranking_v5_identity_binding_validation_20261007.json。继续有界physical input reader实现/临时分片测试，未启动新18fit/BLIND/LSF/Tessent。

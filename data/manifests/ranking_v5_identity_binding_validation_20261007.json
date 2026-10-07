@@ -1,0 +1,51 @@
+{
+  "schema": "ranking-v5-identity-binding-validation-v1",
+  "status": "PASS_IMPLEMENTATION_INTEGRITY_ONLY",
+  "baseline_commit": "b4fd823",
+  "formal_training_authorized": false,
+  "real_fits": 0,
+  "remote_calls": 0,
+  "actual_fold_shards_read": 0,
+  "local_train_aggregate_copy": {
+    "path": "data/manifests/ranking_v3_train_export_20261004.json",
+    "raw_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+    "actual_byte_binding_checked": true,
+    "fold_pin_count": 6
+  },
+  "sources": {
+    "src/models/ranking_v5_package_binding.py": "ff7e87863a08af180bff4702c439b90d9974f262db51b970bcb55af788b85819",
+    "tests/test_ranking_v5_package_binding.py": "3eb753f41980c38bf1040e172f0d79f7d55b642afd304ac1f1fd6aee39cac0f9",
+    "src/models/ranking_v5_approval_binding.py": "159b302f44b48b18fceade0223cb3439c7650b9387f8bef6d14b6057a7f0c2a4",
+    "tests/test_ranking_v5_approval_binding.py": "5873d419f9ff350b6fd8e5e43de50c29ab1e2a75b8f96e10c6d029f4f9e41560"
+  },
+  "independent_review": {
+    "reviewer": "/root/v5_physical_review",
+    "package_bytes": "IMPLEMENTATION_PASS",
+    "approval_integrity": "IMPLEMENTATION_PASS",
+    "authorization_granted": false
+  },
+  "focused": {
+    "tests": 13,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "full_regression": {
+    "log": "runtime_training_staging_20260928/v5_identity_binding_full_20261007_r1.log",
+    "sha256": "306f55e975e9b92d19dc1ba2bdcade868ddac32fd68842cb22951ff0b1926fdd",
+    "tests": 838,
+    "skipped": 30,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 92.298,
+    "exit_code": 0
+  },
+  "limitations": [
+    "Package structural helper is not a caller entry: only bind_v3_package_bytes can bind actual raw data.",
+    "Local aggregate copy check does not verify actual B fold files.",
+    "New approval schemas are design; no authentic new v5 user approval exists.",
+    "Caller must obtain trusted approval/review/physical-gate anchors independently, not from same JSON inputs.",
+    "No CLI, execution, source-file verification or environment prelaunch proven by these pure checks."
+  ]
+}

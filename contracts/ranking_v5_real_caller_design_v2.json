@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL_CALLER_INPUT_AND_IDENTITY_PRIMITIVES_IMPLEMENTED",
+  "supersedes_design": "ranking_v5_real_caller_design_v1.json",
+  "formal_18_fit_release": false,
+  "real_training_allowed": false,
+  "package_caller_entry": "bind_v3_package_bytes",
+  "object_plus_claimed_sha_entry_allowed": false,
+  "approval_entry": "validate_approval_integrity",
+  "approval_authenticity_proven_by_function": false,
+  "new_user_approval_exists": false,
+  "verified_local_aggregate_copy": true,
+  "remote_package_read_performed": false,
+  "actual_fold_shards_read": 0,
+  "completed_code_only": [
+    "fitting-only request loader and v3 fold adapter",
+    "actual raw aggregate bytes SHA and six manifest pin extraction",
+    "externally anchored approval/review byte integrity and noncircular subject"
+  ],
+  "next_required": [
+    "physical caller composes pinned aggregate, six manifests and fitting-only adapter",
+    "formal worker persists model and ranking, verifies readback before TRAIN LOFO outcomes",
+    "one-worker 18-fit launcher with create-once outputs and no automatic retry",
+    "fresh independently reviewed code and environment prelaunch",
+    "new explicit formal v5 18-fit authority, not old r4"
+  ],
+  "worker_limits_unchanged": {"workers": 1, "threads": 1, "as_bytes": 8589934592, "sampled_combined_rss_bytes": 1073741824, "retries": 0},
+  "permission_expansion": false,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "claim_boundary": "Local metadata identity and code implementation only; no actual package ingestion or trained model results"
+}
