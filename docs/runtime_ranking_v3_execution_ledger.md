@@ -270,3 +270,11 @@ CUDA初始化Error2再次出现，raw stderr完整保留；独立复核为PASS_W
 复核实际复现了额外盘符路径、浮点seed及回调可篡改验证后对象的绕过，均修复并复测。内部输入用快照/预hash，fit取得prepared/recipe副本，保留normalizer与receipt identity。独立PASS仅purecallback逻辑，未冒充CLI/physicalstorage/sourcefile/审批证明/真实trainer。父23focused通过；复核者21项（未包含额外gate2项）通过。完整779tests/25skip/0fail/error/exit0（87.581秒），raw SHA `b3e0c0f3e35e24afaaa338c612f913feb03e292a14e073d4addbcd7709f1f817`。
 
 本节点真实fit=0、远端访问=0，无BLIND/受保护目录访问。物理v5 worker/launcher、实际文件SHA回读和运行中combined-RSS限制尚未实现；正式18fit release仍false。
+
+## 2026-10-07：v5 单次实际合成物理门禁与独立复核
+
+完成新 synthetic-only worker、launcher 和小包有界部署器；独立复核修复远端目录名/普通文件/FIFO/精确条目拒绝测试后放行一次。新 B 根 /ssd/cjc/gnn_model_ranking_v5_worker_gate_20261007_r1，17条目33,582B，archive SHA bc6528344b04718807bf3a61f47f180766b0dff3f6d1dda1602cf102a6c2d3f5。保持1worker/threads1/AS8GiB/sampled combined RSS1GiB/retry0。
+
+实际1synthetic fit、120steps、122logs、realfit0；model/freeze/request/source/recipe回读通过；3.172274s、10samples、combined峰值539160576B。完整805tests/27skip/0failure/error/exit0，98.357s；full raw SHA5a0f96047226957a0d5c90b97766a347029f7f3d87e2832290e423d831556a0a。独立实际证据PASS_WITH_WARNING：CUDA Error2仍保留，torch经locked_shared.pth来自runtime-v2共享site-packages，不声称完全隔离依赖或GPU健康；没有重跑。
+
+详细封存 data/manifests/ranking_v5_physical_gate_20261007.json 与 docs/ranking_v5_physical_gate_20261007.md。本节点不读取真实TRAIN/BLIND标签，不启动新18fit。继续实现真实caller输入适配和身份验证，但正式审批和新鲜prelaunch仍必须单独满足。

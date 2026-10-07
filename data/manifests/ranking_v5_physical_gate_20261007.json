@@ -1,0 +1,142 @@
+{
+  "schema": "ranking-v5-synthetic-physical-gate-v1",
+  "status": "PASS_WITH_WARNING_SYNTHETIC_PHYSICAL_GATE_ONLY",
+  "baseline_commit": "f50126942c9ee89884ee1153f52438ace804540e",
+  "scope": "SYNTHETIC_PHYSICAL_WORKER_ONLY",
+  "formal_18_fit_release": false,
+  "real_fits": 0,
+  "independent_review": {
+    "reviewer": "/root/v5_physical_review",
+    "pre_execution": "PASS_ONE_SYNTHETIC_RUN_ONLY",
+    "actual_evidence": "PASS_WITH_WARNING",
+    "formal_training_authorized": false
+  },
+  "environment_provenance": {
+    "interpreter_prefix": "fixed ranking-v3 venv",
+    "torch_origin": "/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119/venv/lib/python3.11/site-packages/torch/__init__.py",
+    "mechanism": "v3 site-packages/locked_shared.pth appends runtime-v2 shared site-packages",
+    "fully_isolated_dependency_provenance_proven": false,
+    "external_site_packages_sha_sealed": false,
+    "environment_log": "v5_physical_environment_20261007_r1.log",
+    "environment_log_sha256": "8abbc3425e454137f622c753e1a7ce5b6a3db2b6ddf35a304175b79f5bfc19a6",
+    "pth_content_log": "v5_physical_environment_pth_20261007_r1.log",
+    "pth_content_log_sha256": "814c7322f26c1ea21d9e5327f0440e898501f652b593a72405d2f38e738edc39"
+  },
+  "remote_root": "/ssd/cjc/gnn_model_ranking_v5_worker_gate_20261007_r1",
+  "archive": {
+    "bytes": 33582,
+    "entries": 17,
+    "sha256": "bc6528344b04718807bf3a61f47f180766b0dff3f6d1dda1602cf102a6c2d3f5",
+    "manifest_sha256": "ff86bec81716d224be6c480197ee375e19b35080c64bc6368182f043786efa32"
+  },
+  "deployment_program_sha256": "db56aedecd83948202ea5d3f261ced245623c77d3e3a69e532c2eb9db24d2f42",
+  "deployment_helper_sha256": "cd08ed33a1bbafd837e824c95095ef893431e57f9d99153ffb24719fafabc376",
+  "logs": {
+    "directory": "runtime_training_staging_20260928",
+    "deploy": {
+      "name": "v5_physical_deploy_20261007_r1.log",
+      "sha256": "5e7ec54790f63aab9c6bcb61423eba6820fb3bd955bbb34673c50f40b09b1760",
+      "exit_code": 0
+    },
+    "launch": {
+      "name": "v5_physical_launch_20261007_r1.log",
+      "sha256": "7469e61a4375060c3b12563cc2323a4bbbd9f11221c8ee593bb13ccd7c6764f3",
+      "exit_code": 0
+    },
+    "worker": {
+      "name": "v5_physical_worker_20261007_r1.log",
+      "sha256": "5102efaa7c28fae7145d7829a9688a87b43fd9e7160ddfe64134c9562914f01a"
+    },
+    "full_regression": {
+      "name": "v5_physical_full_20261007_r1.log",
+      "sha256": "5a0f96047226957a0d5c90b97766a347029f7f3d87e2832290e423d831556a0a",
+      "tests": 805,
+      "skipped": 27,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0,
+      "seconds": 98.357
+    }
+  },
+  "launch_receipt": {
+    "argv": [
+      "/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1/venv/bin/python",
+      "-B",
+      "-m",
+      "src.models.ranking_v5_physical_worker",
+      "--synthetic-gate",
+      "--output",
+      "/ssd/cjc/gnn_model_ranking_v5_worker_gate_20261007_r1/worker_output"
+    ],
+    "artifacts": {
+      "actual_synthetic_fits": 1,
+      "final_macro_head_loss": 0.006131895161398099,
+      "fitting_log_sha256": "95a4a962dc7c3b41789878d46e5e2fc98bee095a828e5c3cb4961252c4c68596",
+      "freeze_canonical_sha256": "9cdd9b50f8da911e7ed6357327e35c797a1e7ccc693d09b8774d6df78569eb67",
+      "freeze_file_sha256": "064da6fc3b8f9e7bff77ca34ad1d45c13c5c9299217cfaaca9bafe5b7bb08987",
+      "initial_macro_head_loss": 0.7048950882299766,
+      "logs": 122,
+      "model_sha256": "3717cdbfe2f849642f8d72bd8d52f374607f2cc6a5caa77e4b10697ee423028d",
+      "optimizer_steps": 120,
+      "worker_receipt_file_sha256": "4492f7fe6a9a89e7904b106bee1f6eebafc750ebc5b3cf1f149b59304e686a98"
+    },
+    "claim_boundary": "Physical generated-fixture and sampled memory only; no real fitting/transfer/speedup claim",
+    "cuda_warning_observed": true,
+    "formal_training_release": false,
+    "memory": {
+      "effective_total_bytes": 1081799520256,
+      "elapsed_seconds": 3.1722739610122517,
+      "exit_code": 0,
+      "initial_available_bytes": 1027248635904,
+      "memory_policy": {
+        "child_address_space_cap_bytes": 8589934592,
+        "combined_rss_cap_bytes": 1073741824,
+        "limitation": "RSS is sampled; brief overshoot can occur. RLIMIT_AS caps address space, not RSS.",
+        "max_concurrent_workers": 1,
+        "poll_seconds": 0.25,
+        "reserve_fraction": 0.1,
+        "reserve_min_bytes": 4294967296,
+        "retries": 0,
+        "timeout_seconds": 1800
+      },
+      "peak_combined_rss_bytes": 539160576,
+      "peak_group_rss_bytes": 519774208,
+      "process_group": 1734679,
+      "reserve_bytes": 108179952026,
+      "sample_count": 10,
+      "status": "PASS_BOUNDED_WORKER"
+    },
+    "packet_manifest_sha256": "ff86bec81716d224be6c480197ee375e19b35080c64bc6368182f043786efa32",
+    "real_fits": 0,
+    "retries": 0,
+    "source_sha256": {
+      "requirements/runtime_v2.lock.txt": "a9427b7cbf01048a317009dcf0f625ace51cc739b4e7e2e626a17166ed14c96f",
+      "scripts/launch_v5_physical_gate.py": "63f66e1c1a28ae4ac1a93c25bd8cd6b96f78e4c647ef8d84a7db7fea41894d10",
+      "scripts/ranking_v4_near_optimal_pairs.py": "8a4304f4befaaaf31b79dfbc7a21201e9be4b5c704a268efc184286ae92fca6e",
+      "src/data/ranking_v3_real_fold_package.py": "cb44a4e8f4fa0f9e2a1e88be31f948d013e96585c84c1ece603aa894d924a3cd",
+      "src/models/neural_ranking_v3.py": "1d3edf6c9d4605c438c1d683274ff3bc85cf0d87d1b57c53d79649aafcff69c3",
+      "src/models/preflight_runtime_v2.py": "446e16b20082db2d940d0ffe3cb8ec1ff14d78a81d802d5fd6a96c67d90e7028",
+      "src/models/ranking_v3_freeze_io.py": "4f904a6e4e553f39e4d9cecf4d41bad50f1fe826f60ffda4d5a3f5a9a9dcd58d",
+      "src/models/ranking_v4_memory_guard.py": "3dcaf6fd545aa1c5358146567cf55a8ac6593aa14af42f31ec965f8f62c79896",
+      "src/models/ranking_v4_training_worker.py": "808f7156c3e8a907ada332d3db7c0c16dba9c5dfcdba25b1c3b553e637a1daea",
+      "src/models/ranking_v5_execution_boundary.py": "07779f8db8ad11485406832d8b75de32ea61c1e4b2b71d2ebb0ebdf569f92d5b",
+      "src/models/ranking_v5_head_objective.py": "aa1d71fa3c6c3a10ea81b133248d334669c48cce8e2a3babe1bb1567b5af7c85",
+      "src/models/ranking_v5_physical_worker.py": "1baca02f39b8757bab606bcf15cd61676f9345dfed9c4b6ec2b8ddb976c6a8aa",
+      "src/models/ranking_v5_training_kernel.py": "e33819e259004d4bb67d8f40ede371274be7126ae1ba54fcff6870e4f0e59f44",
+      "src/models/run_runtime_ranking_v3.py": "bb13f20e66a237f4df7a93ccc2fbaaf27df42929d889f22ee5c575241ddaf731",
+      "src/models/runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c",
+      "src/models/runtime_training_v2.py": "83a67c0a95190bc60bcb9e0af929e803dcf4cd78f88a027927540a92abbd10c5"
+    },
+    "status": "PASS_SYNTHETIC_PHYSICAL_WORKER_GATE",
+    "worker_log_sha256": "5102efaa7c28fae7145d7829a9688a87b43fd9e7160ddfe64134c9562914f01a"
+  },
+  "limitations": [
+    "Torch comes from runtime-v2 shared site-packages via locked_shared.pth; external package immutability and fully isolated v3 dependencies are not proven.",
+    "Generated fixture only, not real fitting, cross-circuit transfer or ATPG speedup.",
+    "CUDA initialization Error 2 warning retained; CPU assertions pass, not clean CUDA.",
+    "250ms sampled combined RSS limit is not a cgroup hard cap; RLIMIT_AS is address space.",
+    "Same-user hostile races outside non-sandbox threat model.",
+    "Only synthetic CLI implemented. Real-data caller/release/prelaunch not yet implemented or authorized.",
+    "Model/checkpoint kept on B; Git stores only code and small hashes/metrics."
+  ]
+}
