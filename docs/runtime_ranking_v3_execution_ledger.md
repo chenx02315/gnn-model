@@ -328,3 +328,19 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 最终r3：932tests/32能力skip/0failure/error/exit0，149.156s，SHA0418b29f33152e86ef31a6ee7a6ebcb83ee7c0561692b5e73bc7b621f2966095；r1/r2非最终。实际包55702压缩字节/235520tar字节/31项，经独立SHA核验部署到全新B import_gate_20261008_r1，一次真实Linux调用exit0，加载21sealed模块，采样1次，combinedRSS38662144/group17690624字节。三项小型原始回执独立读回并审核PASS_LINUX_SYNTHETIC_SOURCE_IMPORT_EVIDENCE_SEAL_ONLY。见ranking_v5_import_fence_validation_20261008.json。
 
 31项依赖metadata匹配lock，但来源为既有共享runtime-v2site-packages，不宣称独立runtime已通过。当前MLfit/生产package读取为0，formal release=false，BLIND/VALIDATION/PILOT/LSF/Tessent封闭。继续受控依赖来源验证和ML入口实现；保持AS8GiB/RSS1GiB/singleworker/zero retry，不把合成门禁当训练结果。独立审计曾本地文件名枚举遇到无关目录access-denied、未读内容，后改明确文件路径；保留这一诊断限制。
+
+## 2026-10-08：继续推进新鲜metadata、产物读回及受控入口，遇额度阻塞
+
+新鲜B端metadata实际只读一次、exit0、31锁定版本/5搜索路径/2顶层origin匹配，独立复核metadata-only PASS。observations原sys.path保护缺口已一次聚焦修复；artifact readback原不合理计数和负cost/regret验收已修复，独立IMPLEMENTATION_ONLY PASS。后续受控runtime imports与单次TRAIN CLI已写入worktree；两名实现代理返回usage limit，工具提示16:55后可重试，未将代码自报提升为正式release。
+
+主代理当前54项定向测试通过、1能力skip、exit0（7.013s），只是本地未封存阶段证据；没有新真实fit，没有部署未复核训练入口，没有matrix/release/新鲜ML prelaunch PASS。详见ranking_v5_resume_after_quota_20261008.md；恢复后从真实状态继续，不重复bef70ee的已封存Linux gate。仍保持用户18项条件授权及既有资源上限/零自动重试。
+
+## 2026-10-08：主代理继续完成受控runtime入口静态复核
+
+两名builder额度结束后，主工具和独立reviewer仍可运行。context输入subpackage路径前置拒绝、cached module file/loader一致性两处缺口一次聚焦修复；独立context+CLI31项PASS_IMPLEMENTATION_ONLY。修复后完整r1=988tests/33能力skip/0failure/error/exit0，164.851s，SHA64d667972255fac66ebac8e5294e45aaf1afc9ef81a213ecce69189f3d33f7df。正式fit仍0。
+
+继续实现单次CPU runtime gate及独立4-entry有界packet，12项本地测试PASS；受限CPU导入不是模型训练/生产package读取，未提高任何资源上限。新增门禁独立review与实际Linux兼容性验证pending，不使用旧回归冒充新增脚本已完整封存。
+
+后续独立16项及exactpacket审计通过、完整r1=1004tests/33skip/exit0后，实际部署/运行一次runtime_gate_r1。导入ML前cache拒绝系统sitecustomize；guardSTOPPED_NO_RETRY、0livegroup、combined42024960，所有小型raw SHA保留。只读发现该155字节hook是stdlib到/etc的symlink，不放宽围栏或改系统。唯一聚焦修复采用-I -S -B和既定5条sys.path；18focusedPASS、完整r2=1006tests/33skip/0failure/error/exit0，170.884s，SHA7c94986be019b9f09d3d1039a72d18604694bcc748ebdcbb010aa0c44397b412。新r2代码/packet独立review pending，实际fit仍0；旧r1不可覆盖，第二真实失败停止不第三重试。
+
+独立r2代码/包PASS后实际运行一次，仍在显式ML导入前拒绝typing.io缺ModuleSpec；stdlib-only只读诊断确认typing.io/re是_DeprecatedType且精确匹配typing父属性。guardSTOPPED_NO_RETRY/exit1/1sample/0livegroup/combined41189376，不是内存超限。新manifest保留原始wrapper及逐raw SHA，两次失败后停止第三远端尝试、不写正式release、不训练、不推送未满足门禁版本。当前fit=0，typing兼容修复不能广泛豁免任意spec缺失对象。

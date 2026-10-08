@@ -1,0 +1,47 @@
+{
+  "status": "PASS_LOCAL_IMPLEMENTATION_BLOCKED_REAL_RUNTIME",
+  "reviewer": "/root/parent_binding_review",
+  "review_scope": "Runtime observations, controlled imports, single-fit CLI, artifact readback, CPU gate and exact small-packet deployment static review plus two real negative evidence audits",
+  "sources": {
+    "src/models/ranking_v5_locked_runtime_observations.py": "0524a7b8cce7d017c3fe9fe38dcc86b29a440ed7b373c1c2361ebbb7738459c8",
+    "src/models/ranking_v5_locked_runtime_imports.py": "a04d5426c7470895bb03fc60a615f6a0d4bc1632a317af96fa0131c46d32f4e9",
+    "src/models/ranking_v5_train_artifact_readback.py": "3f38c50afc13db7a0edc3258aa9074a34d54dd5938034c73d89bdb1cc379d920",
+    "scripts/run_v5_train_single_fit.py": "062a6b1474b40ca09ae6c4a7d1fb178847c6a4035821ea9bc0ad8556817f6460",
+    "scripts/run_v5_controlled_runtime_gate.py": "0a4bb0389cce25c2ac50f3adcc721ac2b2545acbf2d15df3c41d5ac8bca5c462",
+    "scripts/v5_runtime_gate_packet.py": "9a56982bc6c12ba481a145d82faf056f8320f3338bca6f3b1845435a6854d696"
+  },
+  "core_26_manifest_unchanged_sha256": "5394779faac5c77800a0a9d8ed52bf9f24ba2dd701f499a49754e51e7ddceae7",
+  "full_regression": {
+    "tests": 1006,
+    "skipped": 33,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "seconds": 170.884,
+    "log": "../runtime_training_staging_20260928/v5_controlled_runtime_full_20261008_r2.log",
+    "sha256": "7c94986be019b9f09d3d1039a72d18604694bcc748ebdcbb010aa0c44397b412"
+  },
+  "actual_runtime_gate_pass": false,
+  "actual_runtime_gate_invocations": 2,
+  "actual_fits": 0,
+  "failure_manifests": [
+    "ranking_v5_controlled_runtime_failure_20261008_r1.json",
+    "ranking_v5_controlled_runtime_failure_20261008_r2.json"
+  ],
+  "current_blocker": "V5_CONTROLLED_IMPORT_PRELOADED_SPEC:typing.io",
+  "failure_audit": "PASS_R2_FAILURE_EVIDENCE_AUDIT_ONLY",
+  "remote_retry_boundary": "STOP_AFTER_INITIAL_AND_ONE_FOCUSED_REPAIR",
+  "third_automatic_remote_attempt_allowed": false,
+  "matrix_launcher_implemented": false,
+  "formal_training_release": false,
+  "user_conditional_18_fit_authorization_still_exists": true,
+  "worker_limits_unchanged": {
+    "worker_count": 1,
+    "threads": 1,
+    "address_space_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824,
+    "automatic_retries": 0
+  },
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "claim_boundary": "988/1004 tests and prior source-only gate do not supersede these final bytes or prove ML/fit compatibility. Current local regression passes but real import gate fails; no release or scientific performance conclusion. Sampled RSS is not a hard cgroup cap."
+}
