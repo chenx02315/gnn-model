@@ -320,3 +320,11 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 独立复核发现正采样但合计 RSS 峰值 0 可以错误 PASS；一次聚焦修复要求 combined>=1，保留 group=0/combined>0 的退出竞态。37 focused/0 skip 通过；完整 r1 早于修复，保留为非最终记录。最终 r2 901 tests/32 skip/0 failure/error/exit0，152.555s，SHA84706b8f9775c4a18988d8cd69778358ddf104977c75859fd756875ec28a4bc2；详细封存见 ranking_v5_parent_binding_validation_20261008.json。
 
 真实拟合、实际 Linux 子进程、生产包读取、远端调用均为 0；正式 module CLI 继续 CLOSED/exit1。v5 设计保留 formal_18_fit_release=false 和 parent launcher=false：下一节点为 trusted bootstrap/import fence、fresh installed lock preflight、物理 CLI/父 run_bounded 接通和实际产物读回验收，之后仍需新的 v5 放行与串行调度。单 worker、线程1、AS8GiB、采样 combined RSS1GiB、retry0 不变；不推送、不动历史证据、不运行 BLIND/LSF/Tessent。
+
+## 2026-10-08：真实 Linux 源码导入门禁与固定18项条件授权
+
+用户在本线程明确授权全部实现、独立复核和新鲜环境门禁通过后自动执行18项TRAIN（6family×3seed），无需逐项询问；授权原文追踪和raw SHA另存。不是立即放行。AgentFleet实现冻结25Python源码围栏、实际隔离定义导入、31条目小包有界运输与Linux父资源launcher；原core26不变。独立发现并修复worker origin缺失验收及部署回执类型/计数错误PASS。
+
+最终r3：932tests/32能力skip/0failure/error/exit0，149.156s，SHA0418b29f33152e86ef31a6ee7a6ebcb83ee7c0561692b5e73bc7b621f2966095；r1/r2非最终。实际包55702压缩字节/235520tar字节/31项，经独立SHA核验部署到全新B import_gate_20261008_r1，一次真实Linux调用exit0，加载21sealed模块，采样1次，combinedRSS38662144/group17690624字节。三项小型原始回执独立读回并审核PASS_LINUX_SYNTHETIC_SOURCE_IMPORT_EVIDENCE_SEAL_ONLY。见ranking_v5_import_fence_validation_20261008.json。
+
+31项依赖metadata匹配lock，但来源为既有共享runtime-v2site-packages，不宣称独立runtime已通过。当前MLfit/生产package读取为0，formal release=false，BLIND/VALIDATION/PILOT/LSF/Tessent封闭。继续受控依赖来源验证和ML入口实现；保持AS8GiB/RSS1GiB/singleworker/zero retry，不把合成门禁当训练结果。独立审计曾本地文件名枚举遇到无关目录access-denied、未读内容，后改明确文件路径；保留这一诊断限制。

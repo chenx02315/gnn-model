@@ -1,0 +1,57 @@
+{
+  "status": "PASS_LINUX_SYNTHETIC_SOURCE_IMPORT_EVIDENCE_SEAL_ONLY",
+  "independent_auditor": "/root/parent_binding_review",
+  "independent_review": "Actual artifact hashes, independent memory and worker readback, sealed origins and final regression verified; no blocker in synthetic scope",
+  "review_diagnostic_caveat": "Reviewer initial local filename enumeration encountered access-denied in unrelated staging subdirectories; no contents read; then used exact fetched paths. Zero production reads does not mean zero diagnostic filesystem attempts.",
+  "scope": "SOURCE_IMPORT_AND_PARENT_RESOURCE_GATE_ONLY",
+  "formal_training_release": false,
+  "actual_torch_fits": 0,
+  "production_package_reads": 0,
+  "blind_validation_pilot_lsf_tessent_access": false,
+  "conditional_authorization_id": "USER_ASYNC_V5_18_TRAIN_20261008",
+  "authorization_sha256": "fc79123d92d80bbb0044e6568a9a72b9c7e0b2242534949a2f4592e5977ac1b1",
+  "core_manifest_sha256": "5394779faac5c77800a0a9d8ed52bf9f24ba2dd701f499a49754e51e7ddceae7",
+  "implementation_sha256": {
+    "scripts/build_v5_import_gate_packet.py": "f7077c53f8d2fc4b89ed4a0c801134ddc6ff495025a8c9e631f842e6812432a4",
+    "scripts/deploy_v5_import_gate_packet.py": "7a37f5eae20d89878aa085f0deaec3950057e58968ca2160860c2b8175468fe1",
+    "scripts/launch_v5_frozen_import_linux_gate.py": "d806e1fece5d5e06d05a358bedfd7c572db20b8a93ca875a7e1a1389a3d83b9f",
+    "scripts/probe_v5_locked_runtime.py": "bbf886d50c7aa8cbb9d9294ca145b451dcbb984b15fc3d5ada61f68ef967cda7",
+    "scripts/verify_v5_frozen_import_gate.py": "4987e368932c41ad72289495fa78f149a61b26c108d591eea83cc4199dab6b62",
+    "src/models/ranking_v5_frozen_import_fence.py": "c8ba5ae9bc8f900a620b7eaf03e37e11f303d9fc8b08ccbc8c423682b0afafed"
+  },
+  "test_sha256": {
+    "tests/test_probe_v5_locked_runtime.py": "b8a07f2451dc7928b24f694f47122b21a2421349e440eb467b0072f8769a62b6",
+    "tests/test_ranking_v5_frozen_import_fence.py": "a2927210d1b4416c9031dae85304643e7f946cdfde6574eff7a780eb23d5d8a0",
+    "tests/test_v5_frozen_import_linux_gate.py": "bc545ccde0485e8d56e8a780b4086acb1492801c9e01c9e439f0e024b422a403",
+    "tests/test_v5_import_gate_packet_transport.py": "fab962b344df792c8c939097a3d4473d9340869df21a4478691bd8d3bc37335b",
+    "tests/test_verify_v5_frozen_import_gate.py": "0b1697b0233d057b7fdb8f070d4dbc8770cc6992b0770c10adf1c0afa93896c0"
+  },
+  "local_regression": {
+    "final_run": "v5_import_fence_full_20261008_r3.log",
+    "sha256": "0418b29f33152e86ef31a6ee7a6ebcb83ee7c0561692b5e73bc7b621f2966095",
+    "testsRun": 932, "skipped": 32, "failures": 0, "errors": 0,
+    "exit_code": 0, "seconds": 149.156,
+    "nonfinal_runs": ["r1", "r2"],
+    "independent_focused_tests": 31
+  },
+  "packet": {
+    "archive_sha256": "d7eba34f7aa3955065dab447138ce26b18e6ade46739e5d12785805299a3d4ff",
+    "archive_bytes": 55702, "tar_bytes": 235520, "entries": 31,
+    "independent_predeploy_review": "PASS_PREDEPLOY_SYNTHETIC_SOURCE_PACKET_ONLY"
+  },
+  "linux": {
+    "root": "/ssd/cjc/gnn_model_ranking_v5_import_gate_20261008_r1",
+    "python": "3.11.2", "kernel": "6.1.0-47-amd64",
+    "status": "PASS_LINUX_BOUNDED_FROZEN_SOURCE_IMPORT_GATE_ONLY",
+    "exit_code": 0, "actual_linux_resource_proof": true,
+    "loaded_python_modules": 21, "sample_count": 1,
+    "peak_combined_rss_bytes": 38662144, "peak_group_rss_bytes": 17690624,
+    "worker_count": 1, "automatic_retries": 0,
+    "raw_artifacts": {
+      "v5_import_linux_launch_20261008_r1.json": "ac347199478f244b8577b4e011f6dbfabca0db73e9da8b3113b11a96fd486790",
+      "v5_import_linux_memory_20261008_r1.json": "e61311603cf1c33b17f1a45aebcd637a614637f93e437d914dc5c543cd447c6f",
+      "v5_import_linux_worker_20261008_r1.log": "e75f93d33a87ef2fe627bf64937b8224d2d0e5e76adb21f914abb49b368ccaf9"
+    }
+  },
+  "claim_boundary": "Real Linux source import and sampled resource proof only; no ML runtime import, model fitting, production data or formal release. User conditional authorization is separate."
+}

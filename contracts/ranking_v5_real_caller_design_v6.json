@@ -1,0 +1,25 @@
+{
+  "status": "PASS_SYNTHETIC_LINUX_IMPORT_GATE_CONTROLLED_ML_ENTRY_PENDING",
+  "supersedes_design": "ranking_v5_real_caller_design_v5.json",
+  "formal_18_fit_release": false,
+  "real_training_allowed": false,
+  "new_user_approval_exists": true,
+  "conditional_authorization_id": "USER_ASYNC_V5_18_TRAIN_20261008",
+  "conditional_authorization_sha256": "fc79123d92d80bbb0044e6568a9a72b9c7e0b2242534949a2f4592e5977ac1b1",
+  "physical_training_cli_implemented": false,
+  "parent_rss_guard_training_launcher_implemented": false,
+  "synthetic_source_import_linux_launcher_implemented": true,
+  "ml_imports_permitted_by_current_fence": false,
+  "next_required": [
+    "lock and attest the shared dependency runtime/import roots before ML import",
+    "connect separately reviewed controlled ML/training CLI and model/log/freeze/receipt readback",
+    "fresh physical prelaunch and source/package/authorization/independent-review binding",
+    "automatically execute the authorized serial 6-family x 3-seed matrix with create-once outputs and zero automatic retry"
+  ],
+  "worker_limits_unchanged": {
+    "workers": 1, "threads": 1, "as_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824, "retries": 0
+  },
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "claim_boundary": "A genuine conditional user authorization now exists; neither local import tests nor runtime metadata alone release formal training"
+}

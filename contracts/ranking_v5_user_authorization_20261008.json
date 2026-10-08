@@ -1,0 +1,11 @@
+{
+  "schema": "v5-explicit-authorization-evidence-v1",
+  "authorization_id": "USER_ASYNC_V5_18_TRAIN_20261008",
+  "scope": "V5_HEAD_TOP10_TRAIN_ONLY_18_FITS",
+  "roles": ["TRAIN"],
+  "planned_fits": 18,
+  "seeds": [20260824, 20260825, 20260826],
+  "source_sha256": "b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c",
+  "package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "retry_count": 0
+}
