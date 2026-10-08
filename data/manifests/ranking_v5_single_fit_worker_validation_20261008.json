@@ -1,0 +1,54 @@
+{
+  "schema": "ranking-v5-single-fit-worker-validation-v1",
+  "status": "PASS_SINGLE_FIT_ADAPTER_IMPLEMENTATION_ONLY",
+  "baseline_commit": "fe48be1",
+  "sources": {
+    "src/models/ranking_v5_single_fit_worker.py": "d3ab3580cfe008d702c5a7e7543945ffd3a9c533086361ee78b41735bab4d2ec",
+    "tests/test_ranking_v5_single_fit_worker.py": "6deef125420c0534693e2eab3f0d73a544f5f1e49e64a71ef37c00fc93ca4f3a",
+    "src/models/ranking_v5_worker_resource_context.py": "483f8c6058a790c7e1922b4f63a1f3188f7a42d268acb1abb998722b4fe9c05d",
+    "tests/test_ranking_v5_worker_resource_context.py": "a90409b71a20b3538a8d4bcee5392a41e73c3c98aaf29b5c63a422fed4491941"
+  },
+  "actual_torch_fits": 0,
+  "new_real_fits": 0,
+  "genuine_authorization_evidence": 0,
+  "production_package_reads": 0,
+  "remote_calls": 0,
+  "formal_18_fit_release": false,
+  "formal_cli_implemented": false,
+  "guarded_parent_launcher_implemented": false,
+  "proof_scope": {
+    "kind": "LOCAL_MOCKED_CALLBACK_AND_TEMPORARY_ARTIFACT_IMPLEMENTATION_ONLY",
+    "fixed_loop_optimizer_steps_with_mocked_tensors": 120,
+    "fitting_log_records": 122,
+    "bound_loader_call_count": 1,
+    "resource_context_values_in_positive_tests": "MOCKED_NOT_ACTUAL_LINUX",
+    "real_cpu_or_cuda_training_proven": false
+  },
+  "limits_unchanged": {
+    "workers": 1, "threads": 1, "as_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824, "automatic_retries": 0
+  },
+  "independent_review": {
+    "reviewer": "/root/composition_final_review",
+    "status": "PASS_IMPLEMENTATION_ONLY",
+    "focused_tests": 21, "skipped": 0, "failures": 0, "errors": 0,
+    "seconds": 1.071,
+    "formal_module_cli_exit_code": 1,
+    "formal_module_cli_result": "V5_SINGLE_FIT_CLI_CLOSED",
+    "final_full_regression_seal_review": "PASS_IMPLEMENTATION_ONLY"
+  },
+  "full_regression": {
+    "log": "runtime_training_staging_20260928/v5_single_fit_worker_full_20261008_r1.log",
+    "sha256": "5e11d548f35b4b72665a9b1bd53af3ddf60b5d3046ec5e198a0d817bd47f29c2",
+    "tests": 885, "skipped": 32, "failures": 0, "errors": 0,
+    "exit_code": 0, "seconds": 158.723,
+    "scope": "Windows full regression, not real Torch/Linux or formal execution proof"
+  },
+  "limitations": [
+    "Child preconditions are not final parent RSS watchdog evidence.",
+    "Injected runtime modules do not prove imports were fenced or lock preflight ran.",
+    "Approval byte integrity is not authentic consent; full runtime source verification remains required.",
+    "No Linux positive execution, production package access or new ATPG improvement claim.",
+    "Existing storage same-user TOCTOU and directory-entry power-loss durability limitations remain."
+  ]
+}

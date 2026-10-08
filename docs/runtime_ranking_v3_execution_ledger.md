@@ -304,3 +304,11 @@ AgentFleet独立结论loader DESIGN_PASS、adapter IMPLEMENTATION_PASS，无CLI/
 存储 helper 独占创建新目录/四产物，普通文件有界 raw readback，caps 不提高。独立复核发现并修复 protected root 全路径零触达测试缺口、JSON cap 检查前无界序列化和深度损坏 JSON 的未转换 RecursionError。对象图预检查、累计限额编码、重复键/深对象拒绝均有回归。最终独立 IMPLEMENTATION_ONLY PASS；21 focused、2 Windows 能力 skip。无 Linux symlink/FIFO 实际正向结论，无目录项断电持久性或同用户竞态沙箱保证。
 
 最终完整回归与源码 SHA 以 ranking_v5_single_fit_composition_validation_20261007.json 为准；r1 早于最后负例，r2 无最终 summary/exit 回执，r3 早于深 JSON 修复，均不充当最终版本 PASS。新设计 v3 保留 formal_18_fit_release=false。下一节点仍是把 tensor loop、资源 guard 和存储接成真实单次 worker，再做串行 launcher、完整源码/环境 fresh prelaunch 与新的 v5 正式放行。单 worker、threads1、AS8GiB、sampled combined RSS1GiB、retry0 不变。
+
+## 2026-10-08：单次固定拟合 adapter 与子进程前置检查
+
+AgentFleet 接通 once-only bound 输入读取、固定 physical.fit_prepared、122 条请求/recipe 绑定日志、有界模型序列化、已有 create-once 存储及冻结后 held replay。复用旧循环，不修改历史封存模块。两次子进程前置检查均在对应读取/输出之前；线程 set/get 要求 1。新增资源 helper 检查固定 Linux 解释器、AS8GiB/core0、线程/CUDA/site 环境与原 guard 策略，但不能自证父 RSS watchdog。
+
+独立 IMPLEMENTATION_ONLY PASS：21 focused、0 skip，另核验正式 module CLI CLOSED/exit1。固定 120 步仅通过模拟 tensor/model/optimizer/loss/seed 执行，实际 Torch/生产读取/新真实拟合/远端调用均为 0，人工审批不能算 genuine consent。模型 buffer 拒绝初始数据/状态恢复并拦截 write/writelines/seek/truncate 超限；失败不覆盖、不自动重试。
+
+本节点最终回归与四项源码 SHA 以 ranking_v5_single_fit_worker_validation_20261008.json 为准。新设计 v4 继续保持 formal_18_fit_release=false；没有受控父 launcher、真正 import fence/full source/lock preflight/final memory receipt 或实际 Linux 正向证明。下一节点为受控物理入口和串行调度，不据代码 PASS 自动启动训练或访问 BLIND/LSF/Tessent；资源上限保持不变。

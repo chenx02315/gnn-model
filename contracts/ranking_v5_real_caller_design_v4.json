@@ -1,0 +1,21 @@
+{
+  "status": "PASS_SINGLE_FIT_ADAPTER_IMPLEMENTATION_ONLY",
+  "supersedes_design": "ranking_v5_real_caller_design_v3.json",
+  "formal_18_fit_release": false,
+  "real_training_allowed": false,
+  "new_user_approval_exists": false,
+  "physical_training_cli_implemented": false,
+  "parent_rss_guard_launcher_implemented": false,
+  "next_required": [
+    "complete physical launcher with locked runtime imports, full caller source pins and final guard receipt validation",
+    "fresh environment prelaunch and explicit new v5 formal 18-fit authority",
+    "serial 18-fit scheduling with create-once outputs and zero automatic retry"
+  ],
+  "worker_limits_unchanged": {
+    "workers": 1, "threads": 1, "as_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824, "retries": 0
+  },
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "permission_expansion": false,
+  "claim_boundary": "Code and mocked runtime validation only; child prerequisite observations are not parent RSS enforcement or authentic consent"
+}
