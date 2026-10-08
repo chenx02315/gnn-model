@@ -312,3 +312,11 @@ AgentFleet 接通 once-only bound 输入读取、固定 physical.fit_prepared、
 独立 IMPLEMENTATION_ONLY PASS：21 focused、0 skip，另核验正式 module CLI CLOSED/exit1。固定 120 步仅通过模拟 tensor/model/optimizer/loss/seed 执行，实际 Torch/生产读取/新真实拟合/远端调用均为 0，人工审批不能算 genuine consent。模型 buffer 拒绝初始数据/状态恢复并拦截 write/writelines/seek/truncate 超限；失败不覆盖、不自动重试。
 
 本节点最终回归与四项源码 SHA 以 ranking_v5_single_fit_worker_validation_20261008.json 为准。新设计 v4 继续保持 formal_18_fit_release=false；没有受控父 launcher、真正 import fence/full source/lock preflight/final memory receipt 或实际 Linux 正向证明。下一节点为受控物理入口和串行调度，不据代码 PASS 自动启动训练或访问 BLIND/LSF/Tessent；资源上限保持不变。
+
+## 2026-10-08：父 guard 回执验收与 26 项调用链源码字节封存
+
+AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 文件 raw bytes/manifest SHA 与严格版本锁；最终 parent guard 返回值/独立读回 payload 精确一致、正采样、成功退出、RSS/AS/线程/reserve/timeout/零重试约束。实际静态显式本地 Python 依赖 25 项加 lock，170740 字节/31 版本，只封存本地 raw worktree 字节，不冒充 B 部署或 import-origin fence。
+
+独立复核发现正采样但合计 RSS 峰值 0 可以错误 PASS；一次聚焦修复要求 combined>=1，保留 group=0/combined>0 的退出竞态。37 focused/0 skip 通过；完整 r1 早于修复，保留为非最终记录。最终 r2 901 tests/32 skip/0 failure/error/exit0，152.555s，SHA84706b8f9775c4a18988d8cd69778358ddf104977c75859fd756875ec28a4bc2；详细封存见 ranking_v5_parent_binding_validation_20261008.json。
+
+真实拟合、实际 Linux 子进程、生产包读取、远端调用均为 0；正式 module CLI 继续 CLOSED/exit1。v5 设计保留 formal_18_fit_release=false 和 parent launcher=false：下一节点为 trusted bootstrap/import fence、fresh installed lock preflight、物理 CLI/父 run_bounded 接通和实际产物读回验收，之后仍需新的 v5 放行与串行调度。单 worker、线程1、AS8GiB、采样 combined RSS1GiB、retry0 不变；不推送、不动历史证据、不运行 BLIND/LSF/Tessent。

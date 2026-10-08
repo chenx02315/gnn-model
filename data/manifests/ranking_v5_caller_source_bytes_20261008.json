@@ -1,0 +1,32 @@
+{
+  "schema": "v5-caller-source-bytes-v1",
+  "formal_training_release": false,
+  "sources": {
+    "requirements/runtime_v2.lock.txt": "a9427b7cbf01048a317009dcf0f625ace51cc739b4e7e2e626a17166ed14c96f",
+    "scripts/ranking_v4_near_optimal_pairs.py": "8a4304f4befaaaf31b79dfbc7a21201e9be4b5c704a268efc184286ae92fca6e",
+    "src/data/ranking_v3_real_fold_package.py": "cb44a4e8f4fa0f9e2a1e88be31f948d013e96585c84c1ece603aa894d924a3cd",
+    "src/models/neural_ranking_v3.py": "1d3edf6c9d4605c438c1d683274ff3bc85cf0d87d1b57c53d79649aafcff69c3",
+    "src/models/preflight_runtime_v2.py": "446e16b20082db2d940d0ffe3cb8ec1ff14d78a81d802d5fd6a96c67d90e7028",
+    "src/models/ranking_v3_freeze_io.py": "4f904a6e4e553f39e4d9cecf4d41bad50f1fe826f60ffda4d5a3f5a9a9dcd58d",
+    "src/models/ranking_v4_memory_guard.py": "3dcaf6fd545aa1c5358146567cf55a8ac6593aa14af42f31ec965f8f62c79896",
+    "src/models/ranking_v4_training_worker.py": "808f7156c3e8a907ada332d3db7c0c16dba9c5dfcdba25b1c3b553e637a1daea",
+    "src/models/ranking_v5_approval_binding.py": "159b302f44b48b18fceade0223cb3439c7650b9387f8bef6d14b6057a7f0c2a4",
+    "src/models/ranking_v5_bound_input_reader.py": "75882772f4689af0abf243c5635cb8e9712d6a032e4ccc9c930af72820ee68bb",
+    "src/models/ranking_v5_caller_source_binding.py": "77c205cc03f7fe509bdc8d3fa87ebbbb1b5b249492883124ecf7ebd6427c72dd",
+    "src/models/ranking_v5_execution_boundary.py": "07779f8db8ad11485406832d8b75de32ea61c1e4b2b71d2ebb0ebdf569f92d5b",
+    "src/models/ranking_v5_head_objective.py": "aa1d71fa3c6c3a10ea81b133248d334669c48cce8e2a3babe1bb1567b5af7c85",
+    "src/models/ranking_v5_held_replay_reader.py": "9109eb41f63541ac34806f256a188e80972ebbf3d7eba3049c28e19fa0af9dad",
+    "src/models/ranking_v5_package_binding.py": "ff7e87863a08af180bff4702c439b90d9974f262db51b970bcb55af788b85819",
+    "src/models/ranking_v5_parent_guard_receipt.py": "091ec79e720d6eda1f165098b6265f03c5694033c3d155ee8f792f9213470b25",
+    "src/models/ranking_v5_physical_worker.py": "1baca02f39b8757bab606bcf15cd61676f9345dfed9c4b6ec2b8ddb976c6a8aa",
+    "src/models/ranking_v5_real_artifact_store.py": "b1f5a0afe9359d96598684fac9e899bf4e4b9385d21d795c0b4260bb8781bffc",
+    "src/models/ranking_v5_real_request_loader.py": "621048aa8190ebed174fc35cc994f9d2a20957271bcefc6abf50ee22e11b0731",
+    "src/models/ranking_v5_single_fit_worker.py": "d3ab3580cfe008d702c5a7e7543945ffd3a9c533086361ee78b41735bab4d2ec",
+    "src/models/ranking_v5_training_kernel.py": "e33819e259004d4bb67d8f40ede371274be7126ae1ba54fcff6870e4f0e59f44",
+    "src/models/ranking_v5_v3_fold_adapter.py": "97166c80a68173a45127cf6cf57cd403eadff29eda68810e1182ee3c0e8aa6fb",
+    "src/models/ranking_v5_worker_resource_context.py": "483f8c6058a790c7e1922b4f63a1f3188f7a42d268acb1abb998722b4fe9c05d",
+    "src/models/run_runtime_ranking_v3.py": "bb13f20e66a237f4df7a93ccc2fbaaf27df42929d889f22ee5c575241ddaf731",
+    "src/models/runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c",
+    "src/models/runtime_training_v2.py": "83a67c0a95190bc60bcb9e0af929e803dcf4cd78f88a027927540a92abbd10c5"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "ranking-v5-parent-binding-validation-v1",
+  "status": "PASS_PARENT_BINDING_IMPLEMENTATION_ONLY",
+  "baseline_commit": "145e2bf",
+  "log_path_base": "workspace_root_parent_of_repository",
+  "local_caller_source_manifest": {
+    "path": "data/manifests/ranking_v5_caller_source_bytes_20261008.json",
+    "sha256": "5394779faac5c77800a0a9d8ed52bf9f24ba2dd701f499a49754e51e7ddceae7",
+    "source_count": 26,
+    "total_source_bytes": 170740,
+    "status": "PASS_CALLER_SUPPLIED_BYTES_INTEGRITY_ONLY",
+    "scope": "Current local raw worktree bytes; not deployed B origins or consent; checkout line-ending conversion requires new byte sealing"
+  },
+  "sources": {
+    "src/models/ranking_v5_caller_source_binding.py": "77c205cc03f7fe509bdc8d3fa87ebbbb1b5b249492883124ecf7ebd6427c72dd",
+    "src/models/ranking_v5_parent_guard_receipt.py": "091ec79e720d6eda1f165098b6265f03c5694033c3d155ee8f792f9213470b25",
+    "tests/test_ranking_v5_caller_source_binding.py": "0110cb6099aeb61d585bfbe127e66beafa2f35ff55eac328efd91db961782a0c",
+    "tests/test_ranking_v5_parent_guard_receipt.py": "ffd63781493605f5f58768b7bc334aa3c004adf8addbda9cda37efed60e6b891"
+  },
+  "new_real_fits": 0,
+  "actual_linux_children_launched": 0,
+  "genuine_authorization_evidence": 0,
+  "production_package_reads": 0,
+  "remote_calls": 0,
+  "formal_18_fit_release": false,
+  "formal_module_cli_exit_code": 1,
+  "formal_module_cli_result": "V5_SINGLE_FIT_CLI_CLOSED",
+  "guarded_parent_launcher_implemented": false,
+  "proof_scope": {
+    "kind": "LOCAL_SUPPLIED_SOURCE_BYTES_AND_MOCKED_MEMORY_RECEIPT_VALIDATION_ONLY",
+    "caller_binding_items": 26,
+    "static_explicit_local_python_dependencies": 25,
+    "local_lock_versions": 31,
+    "actual_runtime_import_fence_proven": false,
+    "actual_installed_dependencies_proven": false,
+    "parent_monitor_provenance_proven": false
+  },
+  "limits_unchanged": {
+    "workers": 1, "threads": 1, "as_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824, "automatic_retries": 0
+  },
+  "independent_review": {
+    "reviewer": "/root/parent_binding_review",
+    "status": "PASS_IMPLEMENTATION_ONLY",
+    "focused_tests": 37, "skipped": 0, "failures": 0, "errors": 0,
+    "seconds": 1.097,
+    "fixed_finding": "Reject combined RSS peak zero with positive sample count for normal and exit-boundary receipts",
+    "final_full_regression_seal_review": "PASS_PARENT_BINDING_IMPLEMENTATION_ONLY"
+  },
+  "full_regression": {
+    "log": "runtime_training_staging_20260928/v5_parent_binding_full_20261008_r2.log",
+    "sha256": "84706b8f9775c4a18988d8cd69778358ddf104977c75859fd756875ec28a4bc2",
+    "tests": 901, "skipped": 32, "failures": 0, "errors": 0,
+    "exit_code": 0, "seconds": 152.555,
+    "scope": "Windows regression only, not actual Linux/Torch training or sampled RSS provenance"
+  },
+  "nonfinal_logs": [
+    {
+      "log": "runtime_training_staging_20260928/v5_parent_binding_full_20261008_r1.log",
+      "sha256": "1f61950bf16098c22d66d3a2689329569830247beecde4d21e17269104dd37be",
+      "tests": 901, "skipped": 32, "failures": 0, "errors": 0,
+      "exit_code": 0, "seconds": 146.488,
+      "reason": "Started before zero combined RSS rejection fix; not final version proof"
+    }
+  ],
+  "limitations": [
+    "Supplied source-byte manifest anchor does not authenticate a user or prove deployed file origins.",
+    "Static explicit import set is not a runtime namespace or ML import fence.",
+    "Receipt consistency does not prove independent reread or genuine parent sampling occurred.",
+    "No actual Linux positive execution, production reads, formal training or ATPG improvement claim."
+  ]
+}
