@@ -1,0 +1,44 @@
+{
+  "status": "PASS_SERIAL_PARENT_AND_PACKET_REVIEW_DEPLOYMENT_PENDING",
+  "supersedes_design": "ranking_v5_real_caller_design_v6.json",
+  "formal_18_fit_release": false,
+  "real_training_allowed_by_this_design": false,
+  "conditional_authorization_id": "USER_ASYNC_V5_18_TRAIN_20261008",
+  "conditional_authorization_sha256": "fc79123d92d80bbb0044e6568a9a72b9c7e0b2242534949a2f4592e5977ac1b1",
+  "actual_cpu_import_tensor_gate_passed": true,
+  "actual_cpu_gate_manifest": "data/manifests/ranking_v5_controlled_runtime_pass_20261010_r3.json",
+  "actual_fits_at_design_creation": 0,
+  "parent_program": "scripts/run_v5_train_serial_parent.py",
+  "parent_source_review_and_final_regression_required": true,
+  "source_and_release_packet_independent_review_required": true,
+  "matrix": {
+    "families": ["iwls_aes_core", "iscas89_s13207", "iscas89_s15850", "iscas89_s35932", "iscas89_s38417", "iwls_spi"],
+    "seeds": [20260824, 20260825, 20260826],
+    "order": "family-major-then-seed-major",
+    "roles": ["TRAIN"],
+    "fits": 18
+  },
+  "controls": [
+    "Authenticate exact core, supplemental source, approval, CPU evidence and 18 prelaunch byte pins before package reads",
+    "Build 18 independent request, recipe and UID contexts from fitting-only package shards before first worker",
+    "Hold a nonblocking cross-parent advisory lock for the whole matrix",
+    "Create a permanent per-source-root started marker; never retry that matrix root",
+    "Launch fixed interpreter with -I -S -B and five fixed search paths through the unchanged resource guard",
+    "After each guard exits, independently reread its receipt and bounded last stdout line plus four artifacts",
+    "Stop at first failure; do not launch remaining fits"
+  ],
+  "worker_limits_unchanged": {
+    "workers": 1,
+    "threads": 1,
+    "as_bytes": 8589934592,
+    "sampled_combined_rss_bytes": 1073741824,
+    "timeout_seconds_per_worker": 1800,
+    "reserve_min_bytes": 4294967296,
+    "reserve_fraction": 0.1,
+    "automatic_retries": 0
+  },
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "numerical_model_predictions_independently_verified": false,
+  "numerical_held_metrics_independently_verified": false,
+  "claim_boundary": "Design and synthetic integration are not actual training. The user conditional authorization remains valid; only independently sealed release/packet and fresh prelaunch may activate it. Sampled RSS and advisory locking are not a hostile-user sandbox or hard cgroup cap."
+}

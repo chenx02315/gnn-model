@@ -1,0 +1,53 @@
+{
+  "schema": "ranking-v5-serial-packet-validation-v1",
+  "status": "PASS_ACTUAL_PACKET_ONLY_DEPLOYMENT_PENDING",
+  "conditional_authorization_id": "USER_ASYNC_V5_18_TRAIN_20261008",
+  "authorization_sha256": "fc79123d92d80bbb0044e6568a9a72b9c7e0b2242534949a2f4592e5977ac1b1",
+  "scope": "TRAIN_ONLY_6_FAMILIES_3_SEEDS_18_FITS",
+  "independent_reviews": {
+    "parent_and_serial_matrix": "PASS_IMPLEMENTATION_ONLY",
+    "artifact_collector": "PASS_IMPLEMENTATION_ONLY",
+    "independent_fit_context": "PASS_PURE_CONTEXT_BINDING_ONLY",
+    "transport": "PASS_ONLY_TRANSPORT",
+    "release_binding": "PASS_V5_RELEASE_BINDING_REVIEW",
+    "actual_packet": "PASS_ACTUAL_PACKET_ONLY"
+  },
+  "full_regression": {
+    "tests_run": 1075,
+    "windows_capability_skips": 33,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "elapsed_seconds": 196.516,
+    "log_basename": "v5_serial_parent_full_20261010_r1.log",
+    "log_sha256": "33d11ce297be1b4413a2c6017258d9bf899f2209e3f20dbd174cd267d46a14c4"
+  },
+  "packet": {
+    "archive_basename": "v5_serial_train_packet_20261010_r1.tar.gz",
+    "archive_sha256": "2ffece75b77c97d194a46675f59c37db10cf42b3fcb13798f31847100ce78768",
+    "launch_packet_sha256": "530598505b61c64e47203d90a6834eb09465c832e23b10ddba4737d51198028c",
+    "external_trust_sha256": "7975e4c96d68bfafa841f469d8fb6e7018340cdabfcd7aee7c111d9f39350b1a",
+    "archive_bytes": 93065,
+    "tar_bytes": 409600,
+    "entries": 64,
+    "sources": 36,
+    "evidence": 8,
+    "prelaunch_envelopes": 18,
+    "manifests": 2,
+    "destination": "/ssd/cjc/gnn_model_ranking_v5_train_20261010_r1"
+  },
+  "parent_sha256": "56cd28a0549c2dd6e149c2b3b372a29e3b248a831672ab3492f08e1fe7abb050",
+  "transport_sha256": "63fdb75a0ea37206fdd49223c0332ee77c1b2ba2255beb479ace7b48e180b6c4",
+  "review_receipt_sha256": "d6d5015716c2387c49d210acefb5a58f790a2cf4cdeca633f177accbdbf8f79a",
+  "core_manifest_sha256_unchanged": "5394779faac5c77800a0a9d8ed52bf9f24ba2dd701f499a49754e51e7ddceae7",
+  "actual_fits_at_packet_audit": 0,
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "automatic_retries": 0,
+  "fresh_prelaunch_required": true,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "numerical_model_predictions_independently_verified": false,
+  "numerical_held_metrics_independently_verified": false
+}

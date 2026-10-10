@@ -1,0 +1,9 @@
+{
+  "schema": "v5-independent-release-binding-review-v1",
+  "status": "PASS_V5_RELEASE_BINDING_REVIEW",
+  "scope": "V5_HEAD_TOP10_TRAIN_ONLY_18_FITS",
+  "authorization_sha256": "fc79123d92d80bbb0044e6568a9a72b9c7e0b2242534949a2f4592e5977ac1b1",
+  "release_sha256": "4edb7bea27c4779e55a785769fb23bc765647bb10d8181ae4301197a2259be80",
+  "source_binding_sha256": "1ae6822d20c903009f46eb729aebce658cb0dbad7afad2602a5e1d99b165b8eb",
+  "physical_gate_sha256": "946e31510a93d22629635dcf5a3601d4e2ec706a73e42266e5aac6d25e828bc2"
+}
