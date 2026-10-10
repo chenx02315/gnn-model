@@ -1,0 +1,23 @@
+{
+  "schema": "v5-scoped-user-consent-provenance-v1",
+  "authorization_id": "USER_V5_OPTIMIZER_GATE_THEN_18_TRAIN_20261010",
+  "offered_scope": "运行一次合成优化器验证；通过独立复核后，自动在新目录执行一次固定18项TRAIN。保持单worker、原内存上限、零自动重试。",
+  "actual_user_reply": "授权",
+  "provenance": "Latest direct user message in this chat after assistant's c0f185a execution summary and explicit offered scope; not inferred from a heartbeat or synthetic approval.",
+  "optimizer_smoke_max_invocations": 1,
+  "optimizer_smoke_epochs": 120,
+  "optimizer_smoke_formal_package_reads": 0,
+  "replacement_matrix_max_invocations": 1,
+  "replacement_matrix_only_after_smoke_and_independent_review_pass": true,
+  "planned_fits": 18,
+  "train_authorization_evidence": "contracts/ranking_v5_user_authorization_20261010_r2.json",
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "timeout_seconds": 1800,
+  "automatic_retries": 0,
+  "first_failure_stops_remaining": true,
+  "old_failed_root_immutable": true,
+  "blind_validation_pilot_lsf_tessent_allowed": false
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "ranking-v5-real-caller-design-v9",
+  "status": "ACTUAL_OPTIMIZER_STOPPED_DYNAMIC_TORCH_IMPORT_TRAIN_CLOSED",
+  "supersedes_design": "ranking_v5_real_caller_design_v8.json",
+  "authorization": "ranking_v5_optimizer_then_train_authorization_20261010.json",
+  "preexecution_manifest": "data/manifests/ranking_v5_optimizer_preexecution_20261010_r1.json",
+  "actual_failure_manifest": "data/manifests/ranking_v5_optimizer_failure_20261010_r1.json",
+  "optimizer_invocations_remaining": 0,
+  "formal_train_release": false,
+  "replacement_train_actual_invocations": 0,
+  "new_actual_runtime_execution_allowed": false,
+  "next_design_only": "Explicit SSD-local temporary storage plus tightly bound torch-generated template admission; do not broadly allow temporary paths or disable import checks. Review and synthetic regression first. A new actual smoke requires new invocation authorization; TRAIN still conditional on actual smoke and independent evidence review.",
+  "dependency_lock_and_numerical_source_unchanged": true,
+  "old_failed_roots_immutable": true,
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "automatic_retries": 0,
+  "blind_validation_pilot_lsf_tessent_allowed": false
+}

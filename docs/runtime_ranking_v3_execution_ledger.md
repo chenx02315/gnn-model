@@ -366,3 +366,9 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 继续只读检查5个固定依赖/stdlib文件：setuptools66.1.1默认local重定向机制与错误吻合，但没有现场traceback，只是高可信静态解释。最窄本地修复选择child固定净环境SETUPTOOLS_USE_DISTUTILS=stdlib，不改围栏/依赖锁/数值源码/内存上限。独立77 focused/3能力skip/0failure/error/exit0，15.160s，PASS_LOCAL_REPAIR_ONLY；原36 source中仅parent变化，其余35不变。新v8设计不生成替代矩阵权限；最终全回归封存另见distutils修复合同。
 
 修复最终r3完整回归1077tests/33Windows能力skip/0failure/error/exit0，211.722s，SHA2bff8eda9037c1aa3220d171c2c9235fc075fc88e4e9ba1ed16896d6d595f4bb。r1本地discovery未启动测试、r2在新增拒绝测试前启动，均保留且不当最终。新parent6851627d只增加固定stdlib环境，未重新部署/运行fit；下一实际步骤的合成优化器smoke和条件固定18 TRAIN被明确标为proposed，不把旧零重试授权变成自动新矩阵。
+
+## 2026-10-10：新授权的单次合成优化器真实失败，条件 TRAIN 未启动
+
+用户明确授权一次受控 CPU 合成优化器验证，通过后自动执行一次新固定18 TRAIN；scope 与 exact9 TRAIN 授权分开固定 raw SHA。AgentFleet 完成120-step/122-log smoke、授权级和 child 级一次性保护、共享 worker 锁，以及69条目 TRAIN 运输和真实成功证据前置绑定。独立发现并修复 request/recipe 及 family 日志字段/派生指标绑定缺口。85主定向测试及独立20 optimizer/47 TRAIN绑定测试通过；完整1102tests/33平台能力skip/0failure/error/exit0，147.677s，日志SHA4993e16d4d606c2743f115cc694e67b9c541d1ed9bd5c5aef3d4ea24d298ed62。core26、31依赖锁、数值模型和内存上限不变。
+
+五文件67012bytes部署到全新B optimizer_gate_20261010_r1，经完整读回及独立执行前封存后运行唯一一次。child在Adam构造时经_dynamo进入PyTorch分布式动态模板导入；临时目录追加sys.path被固定五路径门禁拒绝，V5_RUNTIME_SEARCH_PATHS。parent MEMORY_WORKER_FAILED/exit1，8samples/combined496074752/group474714112/cleanup存活0；没有optimizer.step完成，没有正式18TRAIN调用，自动重试0。失败raw与两个固定安装源码均保留SHA；下一版本先限定SSD临时存储及模板准入设计，不开放任意临时路径。此次单次额度已消耗，不能自动再跑smoke。详见ranking_v5_optimizer_gate_20261010.md、v9设计及optimizer_failure manifest；不把环境阻塞当模型排序结论。

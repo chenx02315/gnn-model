@@ -102,6 +102,13 @@ class SyntheticBootstrapTests(unittest.TestCase):
             'review.json': encode(dict(fixture_not_review=True)),
             'physical_gate.json': encode(dict(fixture_not_physical_gate=True)),
             'synthetic_linux_gate.json': encode(dict(fixture_not_linux_gate=True))}
+        self.evidence.update({name: encode(dict(synthetic_gate_not_proof=True))
+            for name in cli.EVIDENCE if name not in self.evidence})
+        self.enterContext(patch.object(cli, 'SCOPE_AUTHORIZATION_SHA256',
+            cli._sha(self.evidence['scope_authorization.json'])))
+        self.gate_source = {name: (Path(cli.__file__).parents[1]/name).read_bytes() for name in cli.GATE_SOURCES}
+        self.optimizer = self.enterContext(patch.object(cli, 'validate_optimizer_evidence',
+            side_effect=lambda *a: self.events.append('optimizer')))
         self.enterContext(patch.object(cli, 'CORE_MANIFEST_SHA256', cli._sha(self.manifest_raw)))
         self.enterContext(patch.object(cli, 'AUTHORIZATION_SHA256', cli._sha(self.auth_raw)))
         self.enterContext(patch.object(cli, 'LOCK_SHA256', cli._sha(self.source['requirements/runtime_v2.lock.txt'])))
@@ -113,9 +120,10 @@ class SyntheticBootstrapTests(unittest.TestCase):
             roles=['TRAIN'], parent_resource_guard_required=True,
             core_manifest_sha256=cli.CORE_MANIFEST_SHA256,
             helper_sha256={name: cli._sha(raw) for name, raw in self.helper_raw.items()},
+            gate_source_sha256=cli.optimizer_source_pins(),
             authorization_id=cli.AUTHORIZATION_ID,
             **{field: cli._sha(self.evidence[name]) for name, field in cli.EVIDENCE.items()})
-        for name, raw in {**self.source, **self.helper_raw, **self.evidence,
+        for name, raw in {**self.source, **self.helper_raw, **self.gate_source, **self.evidence,
                           cli.MANIFEST_NAME: self.manifest_raw}.items():
             path = self.root/name; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
         self.result = dict(status='PASS_SINGLE_FIT_CALLBACK_ADAPTER_ONLY',
@@ -139,6 +147,7 @@ class SyntheticBootstrapTests(unittest.TestCase):
         self.helper = self.enterContext(patch.object(cli, '_helper', side_effect=[object(), object(), self.runtime]))
         modules = {'src.models.ranking_v5_caller_source_binding': self.binder,
             'src.models.ranking_v5_approval_binding': self.approval,
+            'src.models.ranking_v5_parent_guard_receipt': object(),
             'src.models.ranking_v5_worker_resource_context': self.resource,
             'src.models.ranking_v5_single_fit_worker': self.worker, 'torch': self.torch, 'numpy': self.numpy}
         def import_module(name):
@@ -155,7 +164,7 @@ class SyntheticBootstrapTests(unittest.TestCase):
     def test_synthetic_positive_exact_order_no_output_created(self):
         self.assertIs(self.execute(), self.result)
         for before, after in (('fresh_metadata_and_context', 'binder'), ('binder', 'approval'),
-                              ('approval', 'resource'), ('resource', 'import:torch'),
+                              ('approval', 'optimizer'), ('optimizer', 'resource'), ('resource', 'import:torch'),
                               ('import:numpy', 'fit'), ('fit', 'context_exit')):
             self.assertLess(self.events.index(before), self.events.index(after))
         self.assertEqual(self.worker.execute_single_fit.call_count, 1)
@@ -204,6 +213,13 @@ class SyntheticBootstrapTests(unittest.TestCase):
         self.resource.check_current_process.assert_not_called()
         self.worker.execute_single_fit.assert_not_called()
         self.assertNotIn('import:torch', self.events); self.assertNotIn('import:numpy', self.events)
+
+    def test_optimizer_failure_before_resource_ml_worker(self):
+        self.optimizer.side_effect = ValueError('optimizer-closed')
+        with self.assertRaisesRegex(ValueError, 'optimizer-closed'): self.execute()
+        self.resource.check_current_process.assert_not_called()
+        self.worker.execute_single_fit.assert_not_called()
+        self.assertNotIn('import:torch', self.events)
 
     def test_context_or_binder_failure_before_approval_ml_worker(self):
         self.binder.validate_source_bytes.side_effect = ValueError('binder-closed')

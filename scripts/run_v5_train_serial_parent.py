@@ -39,6 +39,7 @@ MANIFEST = 'launch_packet.json'
 JSON_CAP = 20000
 SOURCE_CAP = 65536
 GLOBAL_LOCK = '/ssd/cjc/gnn_model_ranking_v5_serial_parent.lock'
+TRAIN_ONCE_PREFIX = '/ssd/cjc/gnn_model_ranking_v5_train.authorization_'
 CPU_PINS = {
     OBS: '0524a7b8cce7d017c3fe9fe38dcc86b29a440ed7b373c1c2361ebbb7738459c8',
     CONTEXT: 'b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da',
@@ -235,10 +236,11 @@ def load_packet(root, manifest_sha):
     require(packet['schema'] == 'v5-train-serial-launch-packet-v1' and packet['source_root'] == root
             and packet['package_root'] == cli.PACKAGE_ROOT
             and packet['core_manifest_sha256'] == cli.CORE_MANIFEST_SHA256, 'PACKET_SCOPE')
-    required = cli.CORE_FILES | {CLI, PROGRAM, CPU_PROGRAM, *cli.HELPERS, *EXTRA}
+    required = cli.CORE_FILES | {CLI, PROGRAM, *cli.GATE_SOURCES, *cli.HELPERS, *EXTRA}
     pins = packet['source_sha256']
     require(type(pins) is dict and set(pins) == required and all(pin(p) for p in pins.values()), 'SOURCE_SET')
     require(all(pins[name] == value for name, value in CPU_PINS.items()), 'CPU_SOURCE_BINDING')
+    require(all(pins[name] == value for name, value in cli.optimizer_source_pins().items()), 'OPTIMIZER_SOURCE_BINDING')
     require(pins[FENCE] == FENCE_SHA, 'FROZEN_FENCE_BINDING')
     source = {name: read(Path(root)/name, SOURCE_CAP) for name in sorted(required)}
     require(sum(map(len, source.values())) <= 1024**2
@@ -263,6 +265,7 @@ def load_packet(root, manifest_sha):
             item = cli._envelope(cli._read(root, name, JSON_CAP), envelopes[name], root,
                 root+'_'+family+'_'+str(seed), cli.PACKAGE_ROOT, family, seed)
             require(item['helper_sha256'] == {p: pins[p] for p in cli.HELPERS}
+                    and item['gate_source_sha256'] == cli.optimizer_source_pins()
                     and all(item[field] == evidence_pins[name] for name, field in cli.EVIDENCE.items()), 'ENVELOPE_PACKET')
     return cli, packet, source, evidence, core_raw
 
@@ -297,11 +300,17 @@ def run(root, manifest_sha):
         guard_receipt.validate_parent_guard_receipt(cpu_launch['parent_guard_receipt'], cpu_memory)
         require(cpu_launch['child_receipt_sha256'] == CPU_EVIDENCE['cpu_gate.child.json']
                 and cpu.typed_equal(cpu_launch['child_receipt'], cpu_child), 'CPU_RECEIPT')
+        cli.validate_optimizer_evidence(source, evidence, guard_receipt)
         with supplemental_aliases({p: source[p] for p in EXTRA}, cli) as (_, binding, matrix, collector):
             tasks = matrix.build_train_matrix(root)
             for task in tasks:
                 for path in (task.output, task.output+'.stdout.log', task.output+'.stdout.log.memory.json'):
                     absent(path)
+            write_once(TRAIN_ONCE_PREFIX+cli.AUTHORIZATION_SHA256+'.once.json',
+                dict(schema='v5-train-one-use-authorization-v1', source_root=root,
+                    authorization_sha256=cli.AUTHORIZATION_SHA256,
+                    scope_authorization_sha256=cli.SCOPE_AUTHORIZATION_SHA256,
+                    packet_sha256=manifest_sha, planned_fits=18, automatic_retries=0))
             write_once(Path(root)/'matrix.started.json', dict(schema='v5-serial-started-v1',
                 packet_sha256=manifest_sha, planned_fits=18, roles=['TRAIN'], automatic_retries=0))
             contexts = {}

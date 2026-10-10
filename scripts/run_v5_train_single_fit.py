@@ -25,8 +25,13 @@ PACKAGE_ROOT = '/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1/train_fo
 ROOT_PATTERN = r'/ssd/cjc/gnn_model_ranking_v5_train_[0-9]{8}_r[1-9][0-9]*'
 PROTECTED_ROOT = '/ssd/cjc/multimode_ate_gnn_v1'
 CORE_MANIFEST_SHA256 = '5394779faac5c77800a0a9d8ed52bf9f24ba2dd701f499a49754e51e7ddceae7'
-AUTHORIZATION_SHA256 = 'fc79123d92d80bbb0044e6568a9a72b9c7e0b2242534949a2f4592e5977ac1b1'
-AUTHORIZATION_ID = 'USER_ASYNC_V5_18_TRAIN_20261008'
+AUTHORIZATION_SHA256 = '0235f1f342521b569f16a4a329580177aa0b65628dd64890edc64a8197d98c92'
+AUTHORIZATION_ID = 'USER_V5_OPTIMIZER_GATE_THEN_18_TRAIN_20261010'
+SCOPE_AUTHORIZATION_SHA256 = 'ce5ccf8f630991863bed31ac2a38aad521aa7b23d493b04cb80a5a64079124e2'
+OPTIMIZER_PROGRAM = 'scripts/run_v5_controlled_optimizer_gate.py'
+CPU_PROGRAM = 'scripts/run_v5_controlled_runtime_gate.py'
+OPTIMIZER_SOURCE_SHA256 = '597e0c48eb7930e200dbccd3f7e36f0404500fac72aa379dc886fb6b7c9b1d08'
+GATE_SOURCES = (OPTIMIZER_PROGRAM, CPU_PROGRAM)
 SYNTHETIC_LINUX_GATE_SHA256 = 'ac347199478f244b8577b4e011f6dbfabca0db73e9da8b3113b11a96fd486790'
 LOCK_SHA256 = 'a9427b7cbf01048a317009dcf0f625ace51cc739b4e7e2e626a17166ed14c96f'
 FAMILIES = frozenset(('iwls_aes_core', 'iscas89_s13207', 'iscas89_s15850',
@@ -60,11 +65,17 @@ MANIFEST_NAME = 'data/manifests/ranking_v5_caller_source_bytes_20261008.json'
 EVIDENCE = {'authorization.json': 'authorization_sha256',
             'release.json': 'release_file_sha256', 'review.json': 'review_sha256',
             'physical_gate.json': 'physical_gate_sha256',
-            'synthetic_linux_gate.json': 'synthetic_linux_gate_sha256'}
+            'synthetic_linux_gate.json': 'synthetic_linux_gate_sha256',
+            'scope_authorization.json': 'scope_authorization_sha256',
+            'controlled_optimizer.child.json': 'optimizer_child_sha256',
+            'controlled_optimizer.log.memory.json': 'optimizer_memory_sha256',
+            'controlled_optimizer.launch.json': 'optimizer_launch_sha256'}
 ENVELOPE_FIELDS = frozenset(('schema', 'source_root', 'output', 'package_root', 'family', 'seed',
     'roles', 'parent_resource_guard_required', 'core_manifest_sha256', 'helper_sha256',
     'authorization_sha256', 'authorization_id', 'release_file_sha256', 'review_sha256',
-    'physical_gate_sha256', 'synthetic_linux_gate_sha256'))
+    'physical_gate_sha256', 'synthetic_linux_gate_sha256', 'gate_source_sha256',
+    'scope_authorization_sha256', 'optimizer_child_sha256', 'optimizer_memory_sha256',
+    'optimizer_launch_sha256'))
 JSON_CAP = 20*1024
 SOURCE_CAP = 64*1024
 TOTAL_SOURCE_CAP = 1024*1024
@@ -152,7 +163,7 @@ def _ordinary(info, directory=False):
 def _read(root, relative, cap):
     """Only internal fixed relative names are accepted, never envelope paths."""
     envelopes = {f'prelaunch_{family}_{seed}.json' for family in FAMILIES for seed in SEEDS}
-    allowed = CORE_FILES | set(HELPERS) | set(EVIDENCE) | {MANIFEST_NAME} | envelopes
+    allowed = CORE_FILES | set(HELPERS) | set(GATE_SOURCES) | set(EVIDENCE) | {MANIFEST_NAME} | envelopes
     _require(relative in allowed, 'UNKNOWN_FILE')
     try:
         path = Path(root) / relative
@@ -189,11 +200,47 @@ def _envelope(raw, trusted_sha256, source_root, output, package_root, family, se
     _require(value['core_manifest_sha256'] == CORE_MANIFEST_SHA256
              and value['authorization_sha256'] == AUTHORIZATION_SHA256
              and value['authorization_id'] == AUTHORIZATION_ID
+             and value['scope_authorization_sha256'] == SCOPE_AUTHORIZATION_SHA256
              and value['synthetic_linux_gate_sha256'] == SYNTHETIC_LINUX_GATE_SHA256, 'FIXED_SEALS')
     _require(type(value['helper_sha256']) is dict and set(value['helper_sha256']) == set(HELPERS)
              and all(_pin(pin) for pin in value['helper_sha256'].values())
              and all(_pin(value[key]) for key in EVIDENCE.values()), 'ENVELOPE_PINS')
+    _require(type(value['gate_source_sha256']) is dict
+             and value['gate_source_sha256'] == optimizer_source_pins(), 'OPTIMIZER_SOURCE_PINS')
     return value
+
+
+def optimizer_source_pins():
+    return {OPTIMIZER_PROGRAM: OPTIMIZER_SOURCE_SHA256,
+            CPU_PROGRAM: '0a4bb0389cce25c2ac50f3adcc721ac2b2545acbf2d15df3c41d5ac8bca5c462'}
+
+
+def validate_optimizer_evidence(source, evidence, receipt):
+    """Pure authenticated prerequisite; never opens a formal package."""
+    _require(_sha(evidence['authorization.json']) == AUTHORIZATION_SHA256
+             and _json(evidence['authorization.json']).get('authorization_id') == AUTHORIZATION_ID
+             and _sha(evidence['scope_authorization.json']) == SCOPE_AUTHORIZATION_SHA256,
+             'OPTIMIZER_AUTHORIZATION')
+    pins = optimizer_source_pins()
+    _require(all(name in source and _sha(source[name]) == value
+                 for name, value in pins.items()), 'OPTIMIZER_SOURCE_BYTES')
+    _require(_sha(source[HELPERS[1]]) == '0524a7b8cce7d017c3fe9fe38dcc86b29a440ed7b373c1c2361ebbb7738459c8'
+             and _sha(source[HELPERS[2]]) == 'b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da',
+             'OPTIMIZER_RUNTIME_BINDING')
+    optimizer = _helper(source[OPTIMIZER_PROGRAM], '_v5_optimizer_prerequisite')
+    transport = _helper(source[CPU_PROGRAM], '_v5_optimizer_transport')
+    child = _json(evidence['controlled_optimizer.child.json'])
+    memory = _json(evidence['controlled_optimizer.log.memory.json'])
+    final = _json(evidence['controlled_optimizer.launch.json'])
+    gate_pins = {**pins,
+        HELPERS[1]: _sha(source[HELPERS[1]]), HELPERS[2]: _sha(source[HELPERS[2]]),
+        'auth/user_authorization.raw.txt': SCOPE_AUTHORIZATION_SHA256}
+    optimizer.validate_final(final, gate_pins, transport, receipt)
+    _require(type(memory.get('peak_group_rss_bytes')) is int
+             and memory['peak_group_rss_bytes'] > 0, 'OPTIMIZER_ZERO_CHILD_RSS')
+    _require(final['child_receipt_sha256'] == _sha(evidence['controlled_optimizer.child.json'])
+             and transport.typed_equal(final['child_receipt'], child)
+             and transport.typed_equal(final['parent_guard_receipt'], memory), 'OPTIMIZER_RECEIPT_BINDING')
 
 
 def _helper(raw, name):
@@ -238,6 +285,12 @@ def execute_prelaunch(envelope_raw, *, trusted_envelope_sha256, source_root,
         _require(_sha(raw) == envelope[field], 'EVIDENCE_SHA:' + name)
         evidence[name] = raw
         _json(raw)
+    gate_source = {**helper_raw}
+    for name, value in optimizer_source_pins().items():
+        raw = _read(source_root, name, SOURCE_CAP)
+        total += len(raw)
+        _require(total <= TOTAL_SOURCE_CAP and _sha(raw) == value, 'OPTIMIZER_SOURCE_BYTES')
+        gate_source[name] = raw
     auth = _json(evidence['authorization.json'])
     _require(auth.get('authorization_id') == AUTHORIZATION_ID, 'AUTHORIZATION_ID')
     release = _json(evidence['release.json'])
@@ -258,6 +311,8 @@ def execute_prelaunch(envelope_raw, *, trusted_envelope_sha256, source_root,
             evidence['review.json'], trusted_authorization_sha256=AUTHORIZATION_SHA256,
             trusted_review_sha256=envelope['review_sha256'],
             trusted_physical_gate_sha256=envelope['physical_gate_sha256'])
+        validate_optimizer_evidence(gate_source, evidence,
+            _import('src.models.ranking_v5_parent_guard_receipt'))
         resource = _import('src.models.ranking_v5_worker_resource_context')
         resource.check_current_process()
         worker = _import('src.models.ranking_v5_single_fit_worker')

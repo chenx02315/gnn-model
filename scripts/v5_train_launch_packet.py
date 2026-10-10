@@ -25,7 +25,7 @@ CORE_MANIFEST = 'data/manifests/ranking_v5_caller_source_bytes_20261008.json'
 CORE_SHA = '5394779faac5c77800a0a9d8ed52bf9f24ba2dd701f499a49754e51e7ddceae7'
 ROOT_PATTERN = r'/ssd/cjc/gnn_model_ranking_v5_train_[0-9]{8}_r[1-9][0-9]*'
 ARCHIVE_CAP, TAR_CAP, SOURCE_CAP, JSON_CAP = 256*1024, 1024*1024, 65536, 20000
-ENTRY_COUNT = 64
+ENTRY_COUNT = 69
 
 
 def require(ok, code):
@@ -138,6 +138,8 @@ def approval_integrity(cli, parent, sources, evidence, trusted_evidence):
             trusted_authorization_sha256=trusted_evidence['authorization.json'],
             trusted_review_sha256=trusted_evidence['review.json'],
             trusted_physical_gate_sha256=trusted_evidence['physical_gate.json'])
+        cli.validate_optimizer_evidence(sources, evidence,
+            importlib.import_module('src.models.ranking_v5_parent_guard_receipt'))
 
 
 def validate(packet, archive_sha256, packet_sha256, root, *,
@@ -146,7 +148,7 @@ def validate(packet, archive_sha256, packet_sha256, root, *,
     require(type(root) is str and re.fullmatch(ROOT_PATTERN, root) is not None, 'ROOT')
     require(pin(packet_sha256) and type(trusted_source_sha256) is dict
             and type(trusted_evidence_sha256) is dict
-            and len(trusted_source_sha256) == 36 and len(trusted_evidence_sha256) == 8
+            and len(trusted_source_sha256) == 37 and len(trusted_evidence_sha256) == 12
             and all(pin(p) for p in (*trusted_source_sha256.values(), *trusted_evidence_sha256.values())),
             'EXTERNAL_ANCHORS')
     trusted_source_sha256 = dict(trusted_source_sha256)
@@ -166,9 +168,9 @@ def validate(packet, archive_sha256, packet_sha256, root, *,
                 for p, value in trusted_evidence_sha256.items()), 'RAW_PINS')
     cli = external(payloads[CLI], '_v5_transport_cli')
     parent = external(payloads[PARENT], '_v5_transport_parent')
-    required = cli.CORE_FILES | {CLI, PARENT, parent.CPU_PROGRAM, *cli.HELPERS, *parent.EXTRA}
+    required = cli.CORE_FILES | {CLI, PARENT, *cli.GATE_SOURCES, *cli.HELPERS, *parent.EXTRA}
     envelopes = {f'prelaunch_{f}_{s}.json' for f in cli.FAMILIES for s in cli.SEEDS}
-    require(len(required) == 36 and len(envelopes) == 18 and set(trusted_source_sha256) == required
+    require(len(required) == 37 and len(envelopes) == 18 and set(trusted_source_sha256) == required
         and set(trusted_evidence_sha256) == set(cli.EVIDENCE) | set(parent.CPU_EVIDENCE)
         and type(manifest['prelaunch_sha256']) is dict
         and all(pin(p) for p in manifest['prelaunch_sha256'].values())
@@ -182,6 +184,9 @@ def validate(packet, archive_sha256, packet_sha256, root, *,
         and core['schema'] == 'v5-caller-source-bytes-v1' and core['formal_training_release'] is False
         and core['sources'] == {p: trusted_source_sha256[p] for p in cli.CORE_FILES}, 'CORE_BINDING')
     require(all(trusted_source_sha256[p] == value for p, value in parent.CPU_PINS.items())
+        and all(trusted_source_sha256[p] == value for p, value in cli.optimizer_source_pins().items())
+        and trusted_evidence_sha256['authorization.json'] == cli.AUTHORIZATION_SHA256
+        and trusted_evidence_sha256['scope_authorization.json'] == cli.SCOPE_AUTHORIZATION_SHA256
         and trusted_source_sha256[parent.FENCE] == parent.FENCE_SHA
         and all(trusted_evidence_sha256[p] == value for p, value in parent.CPU_EVIDENCE.items()), 'FIXED_CPU_FENCE')
     for family in sorted(cli.FAMILIES):
@@ -217,7 +222,7 @@ def build(output, root, evidence_root, *, trusted_source_sha256, trusted_evidenc
     repo = Path(__file__).resolve().parents[1]
     # Only fixed names, not caller names or directory discovery, reach source I/O.
     require(type(trusted_source_sha256) is dict and type(trusted_evidence_sha256) is dict
-        and len(trusted_source_sha256) == 36 and len(trusted_evidence_sha256) == 8
+        and len(trusted_source_sha256) == 37 and len(trusted_evidence_sha256) == 12
         and all(pin(p) for p in (*trusted_source_sha256.values(), *trusted_evidence_sha256.values()))
         and pin(trusted_source_sha256.get(CLI)) and pin(trusted_source_sha256.get(PARENT)), 'TRUST_SET')
     trusted_source_sha256 = dict(trusted_source_sha256)
@@ -227,7 +232,7 @@ def build(output, root, evidence_root, *, trusted_source_sha256, trusted_evidenc
             and sha(parent_raw) == trusted_source_sha256[PARENT], 'BOOTSTRAP_SHA')
     cli = external(cli_raw, '_v5_build_cli')
     parent = external(parent_raw, '_v5_build_parent')
-    names = cli.CORE_FILES | {CLI, PARENT, parent.CPU_PROGRAM, *cli.HELPERS, *parent.EXTRA}
+    names = cli.CORE_FILES | {CLI, PARENT, *cli.GATE_SOURCES, *cli.HELPERS, *parent.EXTRA}
     require(set(trusted_source_sha256) == names
         and set(trusted_evidence_sha256) == set(cli.EVIDENCE) | set(parent.CPU_EVIDENCE), 'TRUST_SET')
     sources = {p: read(repo/p, SOURCE_CAP) for p in sorted(names)}
@@ -241,6 +246,7 @@ def build(output, root, evidence_root, *, trusted_source_sha256, trusted_evidenc
                 output=root+f'_{family}_{seed}', package_root=cli.PACKAGE_ROOT, family=family, seed=seed,
                 roles=['TRAIN'], parent_resource_guard_required=True, core_manifest_sha256=CORE_SHA,
                 helper_sha256={p: trusted_source_sha256[p] for p in cli.HELPERS},
+                gate_source_sha256=cli.optimizer_source_pins(),
                 authorization_id=cli.AUTHORIZATION_ID,
                 **{field: trusted_evidence_sha256[p] for p, field in cli.EVIDENCE.items()}))
             payloads[name], envelope_pins[name] = raw, sha(raw)

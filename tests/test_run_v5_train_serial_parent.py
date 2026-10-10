@@ -21,6 +21,7 @@ from unittest.mock import patch
 
 from tests import test_ranking_v5_single_fit_worker as worker_tests
 from tests import test_ranking_v5_serial_matrix as matrix_tests
+from tests import test_v5_controlled_optimizer_gate as optimizer_tests
 from src.models import ranking_v5_independent_fit_context as binding
 from src.models import ranking_v5_serial_matrix as matrix
 from src.models import ranking_v5_train_artifact_readback as reader
@@ -43,7 +44,7 @@ class SerialParentTests(unittest.TestCase):
         self.root = Path(self.temp.name)/'gnn_model_ranking_v5_train_20261010_r1'; self.root.mkdir()
         cli_raw = (REPO/parent.CLI).read_bytes()
         self.cli = parent.external('_synthetic_cli', cli_raw)
-        required = self.cli.CORE_FILES | {parent.CLI, parent.PROGRAM, parent.CPU_PROGRAM,
+        required = self.cli.CORE_FILES | {parent.CLI, parent.PROGRAM, *self.cli.GATE_SOURCES,
                                         *self.cli.HELPERS, *parent.EXTRA}
         self.source = {name: (REPO/name).read_bytes() for name in required}
         self.core_raw = encode(dict(schema='v5-caller-source-bytes-v1', formal_training_release=False,
@@ -52,14 +53,37 @@ class SerialParentTests(unittest.TestCase):
         self.base_request = loaded['request']
         expected = {name: parent.sha(self.source[name]) for name in self.cli.RELEASE_SOURCE_FILES}
         release = deepcopy(args[3]); release['source_binding'] = expected
+        auth_raw = (REPO/'contracts/ranking_v5_user_authorization_20261010_r2.json').read_bytes()
+        release['user_authorization_id'] = self.cli.AUTHORIZATION_ID
+        release['user_authorization_sha256'] = parent.sha(auth_raw)
         physical_raw = encode(dict(synthetic_physical_gate_not_proof=True))
         physical_pin = parent.sha(physical_raw)
         review = json.loads(args[6]); review.update(release_sha256=binding.approval.review_subject(release),
+            authorization_sha256=parent.sha(auth_raw),
             source_binding_sha256=binding.digest(expected), physical_gate_sha256=physical_pin)
         review_raw = encode(review); release['independent_review_receipt_sha256'] = parent.sha(review_raw)
-        self.evidence = {'authorization.json': args[5], 'release.json': encode(release),
+        self.evidence = {'authorization.json': auth_raw, 'release.json': encode(release),
             'review.json': review_raw, 'physical_gate.json': physical_raw,
             'synthetic_linux_gate.json': encode(dict(synthetic_linux_not_proof=True))}
+        scope_raw = (REPO/'contracts/ranking_v5_optimizer_then_train_authorization_20261010.json').read_bytes()
+        self.evidence['scope_authorization.json'] = scope_raw
+        gate_pins = {**self.cli.optimizer_source_pins(),
+            self.cli.HELPERS[1]: parent.sha(self.source[self.cli.HELPERS[1]]),
+            self.cli.HELPERS[2]: parent.sha(self.source[self.cli.HELPERS[2]]),
+            'auth/user_authorization.raw.txt': parent.sha(scope_raw)}
+        optimizer_child = optimizer_tests.OptimizerGateTests().worker()
+        optimizer_child.update(supplemental_sha256=gate_pins, authorization_raw_sha256=parent.sha(scope_raw))
+        optimizer_raw = json.dumps(optimizer_child, sort_keys=True, allow_nan=False).encode()
+        optimizer_memory = matrix_tests.parent_receipt()
+        optimizer_final = dict(status=optimizer_tests.gate.FINAL_STATUS,
+            root=optimizer_tests.OptimizerGateTests.root, supplemental_sha256=gate_pins,
+            core_manifest_sha256=optimizer_tests.gate.CORE_SHA,
+            child_receipt_sha256=parent.sha(optimizer_raw), child_receipt=optimizer_child,
+            parent_guard_receipt=optimizer_memory, actual_linux_resource_proof=True,
+            formal_training_release=False, automatic_retries=0, worker_count=1)
+        self.evidence.update({'controlled_optimizer.child.json': optimizer_raw,
+            'controlled_optimizer.log.memory.json': encode(optimizer_memory),
+            'controlled_optimizer.launch.json': encode(optimizer_final)})
         receipt = matrix_tests.parent_receipt()
         child = dict(synthetic_cpu_receipt_not_proof=True)
         self.evidence.update({'cpu_gate.child.json': encode(child),
@@ -67,7 +91,7 @@ class SerialParentTests(unittest.TestCase):
             'cpu_gate.launch.json': encode(dict(parent_guard_receipt=receipt,
                 child_receipt_sha256=parent.sha(encode(child)), child_receipt=child))})
         overrides = dict(CORE_MANIFEST_SHA256=parent.sha(self.core_raw),
-            AUTHORIZATION_SHA256=parent.sha(args[5]),
+            AUTHORIZATION_SHA256=parent.sha(auth_raw),
             SYNTHETIC_LINUX_GATE_SHA256=parent.sha(self.evidence['synthetic_linux_gate.json']))
         cli_raw += b'\n'+b'\n'.join((key+' = '+repr(value)).encode() for key, value in overrides.items())+b'\n'
         self.source[parent.CLI] = cli_raw
@@ -77,6 +101,7 @@ class SerialParentTests(unittest.TestCase):
         self.enterContext(patch.object(parent, 'CPU_PINS', cpu_pins))
         self.enterContext(patch.object(parent, 'CPU_EVIDENCE', cpu_evidence))
         self.enterContext(patch.object(parent, 'ROOT_PATTERN', re.escape(self.root.as_posix())))
+        self.enterContext(patch.object(parent, 'TRAIN_ONCE_PREFIX', str(self.root.parent/'train_auth_')))
         self.envelopes = {}
         source_pins = {name: parent.sha(raw) for name, raw in self.source.items()}
         for family in sorted(self.cli.FAMILIES):
@@ -87,6 +112,7 @@ class SerialParentTests(unittest.TestCase):
                     family=family, seed=seed, roles=['TRAIN'], parent_resource_guard_required=True,
                     core_manifest_sha256=self.cli.CORE_MANIFEST_SHA256,
                     helper_sha256={p: source_pins[p] for p in self.cli.HELPERS},
+                    gate_source_sha256=self.cli.optimizer_source_pins(),
                     authorization_id=self.cli.AUTHORIZATION_ID,
                     **{field: parent.sha(self.evidence[p]) for p, field in self.cli.EVIDENCE.items()})
                 self.envelopes[name] = encode(envelope)
@@ -262,6 +288,40 @@ class SerialParentTests(unittest.TestCase):
         self.assertEqual(self.synthetic_events, [])
         self.assertFalse((self.root/'matrix.started.json').exists())
         self.assertFalse((self.root/'matrix.final.json').exists())
+
+    def test_optimizer_failed_steps_formal_reads_and_raw_receipts_zero_package_io(self):
+        original = dict(self.evidence)
+        for name, field, value in (
+                ('controlled_optimizer.launch.json', 'optimizer_steps', 119),
+                ('controlled_optimizer.launch.json', 'production_package_reads', 1),
+                ('controlled_optimizer.launch.json', 'threads', 2),
+                ('controlled_optimizer.child.json', 'optimizer_steps', 119),
+                ('controlled_optimizer.log.memory.json', 'peak_group_rss_bytes', 101)):
+            self.evidence = dict(original)
+            payload = self.cli._json(self.evidence[name])
+            (payload['child_receipt'] if name.endswith('launch.json') else payload)[field] = value
+            self.evidence[name] = encode(payload)
+            with self.subTest(name=name, field=field), self.assertRaises(ValueError):
+                self.run_synthetic()
+            self.assertEqual(self.synthetic_package_calls, [])
+            self.assertEqual(self.synthetic_events, [])
+            self.assertFalse((self.root/'matrix.started.json').exists())
+        self.evidence = original
+
+    def test_raw_authorization_and_scope_drift_zero_package_io(self):
+        for name in ('authorization.json', 'scope_authorization.json'):
+            raw = self.evidence[name]
+            self.evidence[name] = raw+b' '
+            with self.subTest(name=name), self.assertRaises(ValueError): self.run_synthetic()
+            self.evidence[name] = raw
+            self.assertEqual(self.synthetic_package_calls, [])
+
+    def test_authorization_once_marker_preexisting_blocks_fresh_root(self):
+        marker = Path(parent.TRAIN_ONCE_PREFIX+self.cli.AUTHORIZATION_SHA256+'.once.json')
+        marker.write_bytes(b'{}')
+        with self.assertRaisesRegex(ValueError, 'OUTPUT_EXISTS'): self.run_synthetic()
+        self.assertEqual(self.synthetic_package_calls, [])
+        self.assertEqual(self.synthetic_events, [])
 
     def test_global_lock_conflict_zero_fit_no_package_or_marker(self):
         with self.assertRaisesRegex(BlockingIOError, 'SYNTHETIC_GLOBAL_LOCK_CONFLICT'):

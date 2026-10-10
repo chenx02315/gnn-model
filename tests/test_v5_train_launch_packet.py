@@ -1,5 +1,6 @@
 """Synthetic temp sources/evidence only; no remote deployment or formal data."""
 from copy import deepcopy
+from contextlib import nullcontext
 import gzip
 import io
 from pathlib import Path
@@ -7,6 +8,7 @@ import re
 import subprocess
 import sys
 import tarfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -44,6 +46,7 @@ class LaunchPacketTests(unittest.TestCase):
                         prelaunch_sha256=envelope_pins)
         self.payloads[transport.MANIFEST] = encode(manifest)
         self.enterContext(patch.object(transport, 'CORE_SHA', fixture.cli.CORE_MANIFEST_SHA256))
+        self.real_approval = transport.approval_integrity
         self.approval = self.enterContext(patch.object(transport, 'approval_integrity'))
         self.packet_pin = transport.sha(self.payloads[transport.MANIFEST])
         self.packet = transport.archive(self.payloads)
@@ -54,11 +57,11 @@ class LaunchPacketTests(unittest.TestCase):
             root or self.root, trusted_source_sha256=source or self.source_pins,
             trusted_evidence_sha256=evidence or self.evidence_pins)
 
-    def test_exact_64_entries_36_sources_8_evidence_18_envelopes(self):
+    def test_exact_69_entries_37_sources_12_evidence_18_envelopes(self):
         payloads, manifest, tar_bytes = self.check()
         self.assertEqual(payloads, self.payloads)
         self.assertEqual((len(manifest['source_sha256']), len(manifest['evidence_sha256']),
-                          len(manifest['prelaunch_sha256']), len(payloads)), (36, 8, 18, 64))
+                          len(manifest['prelaunch_sha256']), len(payloads)), (37, 12, 18, 69))
         self.assertLessEqual(tar_bytes, transport.TAR_CAP)
         self.approval.assert_called_once()
 
@@ -69,6 +72,44 @@ class LaunchPacketTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.check(**{kind: pins})
         self.approval.assert_not_called()
+
+    def test_real_optimizer_prerequisite_rejects_resealed_invalid_steps_before_receive_io(self):
+        payloads = dict(self.payloads)
+        child = transport.decode(payloads['controlled_optimizer.child.json'])
+        child['optimizer_steps'] = 119
+        # Re-pin all dependent raw receipts and envelope/manifest hashes; semantic
+        # gate must still reject despite coherent external byte maps.
+        import json
+        raw = json.dumps(child, sort_keys=True, allow_nan=False).encode()
+        payloads['controlled_optimizer.child.json'] = raw
+        final = transport.decode(payloads['controlled_optimizer.launch.json'])
+        final.update(child_receipt=child, child_receipt_sha256=transport.sha(raw))
+        payloads['controlled_optimizer.launch.json'] = encode(final)
+        evidence = {name: transport.sha(payloads[name]) for name in self.evidence_pins}
+        manifest = transport.decode(payloads[transport.MANIFEST])
+        manifest['evidence_sha256'] = evidence
+        for name in manifest['prelaunch_sha256']:
+            envelope = transport.decode(payloads[name])
+            envelope.update(optimizer_child_sha256=evidence['controlled_optimizer.child.json'],
+                optimizer_launch_sha256=evidence['controlled_optimizer.launch.json'])
+            payloads[name] = encode(envelope)
+            manifest['prelaunch_sha256'][name] = transport.sha(payloads[name])
+        payloads[transport.MANIFEST] = encode(manifest)
+        raw = transport.archive(payloads)
+        real_external = transport.external
+        def external(raw, name):
+            # This process deliberately contains test-loaded local modules;
+            # the separate isolated positive test exercises the real fence.
+            if name == '_v5_transport_fence':
+                return SimpleNamespace(sealed_imports=lambda *args: nullcontext())
+            return real_external(raw, name)
+        with patch.object(transport, 'approval_integrity', self.real_approval), \
+                patch.object(transport, 'external', side_effect=external), \
+                patch.object(transport.Path, 'lstat') as lstat, \
+                patch.object(transport.Path, 'mkdir') as mkdir, self.assertRaisesRegex(ValueError, 'CHILD_BINDING'):
+            transport.receive(raw, transport.sha(raw), transport.sha(payloads[transport.MANIFEST]), self.root,
+                trusted_source_sha256=self.source_pins, trusted_evidence_sha256=evidence)
+        lstat.assert_not_called(); mkdir.assert_not_called()
 
     def test_byte_drift_missing_unknown_entries_rejected(self):
         for mutation in ('drift', 'missing', 'unknown'):
@@ -182,7 +223,7 @@ class LaunchPacketTests(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 transport.build(output, self.root, evidence_root,
                     trusted_source_sha256=self.source_pins, trusted_evidence_sha256=self.evidence_pins)
-        self.assertEqual((result['entries'], result['actual_fits']), (64, 0))
+        self.assertEqual((result['entries'], result['actual_fits']), (69, 0))
         self.assertEqual(transport.sha(output.read_bytes()), result['archive_sha256'])
         self.assertEqual({p.relative_to(evidence_root).as_posix() for p, cap in reads
                           if p.is_relative_to(evidence_root)}, set(self.evidence_pins))
@@ -204,7 +245,7 @@ class LaunchPacketTests(unittest.TestCase):
             args = (packet, transport.sha(packet), transport.sha(payloads[transport.MANIFEST]), root)
             result = transport.receive(*args, **kwargs)
             with self.assertRaises(FileExistsError): transport.receive(*args, **kwargs)
-        self.assertEqual((result['entries'], result['actual_fits']), (64, 0))
+        self.assertEqual((result['entries'], result['actual_fits']), (69, 0))
         for name, raw in payloads.items():
             self.assertEqual((Path(root)/name).read_bytes(), raw)
 
