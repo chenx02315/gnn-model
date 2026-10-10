@@ -81,6 +81,105 @@ class ControlledImportTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('SYNTHETIC_CONTROLLED_IMPORT_OK', result.stdout)
 
+    def test_optional_negative_probe_no_unknown_import_fallthrough_and_cleanup(self):
+        self.child("""
+            original=importlib.util.find_spec
+            class LaterFinder:
+                def find_spec(self,*args): raise AssertionError('unknown lookup fell through')
+            later=LaterFinder();sys.meta_path.append(later)
+            try:
+                with context():
+                    assert importlib.util.find_spec('optree') is None
+                    for name in ('optree','optree.sub','optreex'):
+                        try: importlib.import_module(name)
+                        except ModuleNotFoundError as error: assert 'UNKNOWN_ROOT' in str(error)
+                        else: raise AssertionError(name)
+                    try: importlib.util.find_spec('optreex')
+                    except ModuleNotFoundError as error: assert 'UNKNOWN_ROOT' in str(error)
+                    else: raise AssertionError('similar probe')
+                    assert importlib.util.find_spec('sys').origin == 'built-in'
+                    try:
+                        with context(): raise AssertionError('nested entry')
+                    except ValueError as error: assert 'PROBE_CONTEXT' in str(error)
+                    raise RuntimeError('synthetic cleanup')
+            except RuntimeError as error: assert str(error)=='synthetic cleanup'
+            finally: sys.meta_path.remove(later)
+            assert importlib.util.find_spec is original and runtime._CONTEXT_ACTIVE is False
+            unchanged()
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
+    def test_optional_probe_present_cache_path_drift_and_argument_delegation(self):
+        self.child("""
+            with patch.object(machinery.PathFinder,'find_spec',return_value=spec_for('optree')):
+                refusal('OPTIONAL_PRESENT')
+            original=importlib.util.find_spec
+            with context():
+                for name in ('optree','optree.sub'):
+                    marker=types.ModuleType(name);sys.modules[name]=marker
+                    try:
+                        try: importlib.util.find_spec('optree')
+                        except ValueError as error: assert 'OPTIONAL_CACHE' in str(error)
+                        else: raise AssertionError('cached optional')
+                    finally: del sys.modules[name]
+                with patch.object(sys,'path',list(sys.path)+['/tmp']):
+                    try: importlib.util.find_spec('optree')
+                    except ValueError as error: assert 'SEARCH_PATHS' in str(error)
+                    else: raise AssertionError('path drift')
+                with patch.object(machinery.PathFinder,'find_spec',return_value=spec_for('optree')):
+                    try: importlib.util.find_spec('optree')
+                    except ValueError as error: assert 'OPTIONAL_PRESENT' in str(error)
+                    else: raise AssertionError('present optional')
+                calls=[]
+                def delegated(name,package=None): calls.append((name,package));return 'delegated'
+                with patch.object(runtime,'_ORIGINAL_FIND_SPEC',delegated):
+                    for args in (('other',None),('optree','pkg'),('.optree','pkg'),('optree.sub',None)):
+                        assert importlib.util.find_spec(*args)=='delegated'
+                    assert calls==[('other',None),('optree','pkg'),('.optree','pkg'),('optree.sub',None)]
+            assert importlib.util.find_spec is original
+            unchanged()
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
+    def test_optional_entry_cache_and_probe_identity_refuse_and_all_paths_checked(self):
+        self.child("""
+            for name in ('optree','optree.sub'):
+                sys.modules[name]=types.ModuleType(name)
+                try:
+                    with patch.object(machinery.PathFinder,'find_spec',side_effect=AssertionError('no filesystem query')):
+                        refusal('PRELOADED_UNKNOWN')
+                finally: del sys.modules[name]
+            original=importlib.util.find_spec
+            with patch.object(importlib.util,'find_spec',lambda *args:None):
+                refusal('PROBE_CONTEXT')
+            seen=[]
+            def absent(name,path=None):
+                seen.append((name,path));return None
+            with patch.object(machinery.PathFinder,'find_spec',absent):
+                with context():
+                    assert importlib.util.find_spec('optree') is None
+            assert seen==[('optree',list(observations.SEARCH_PATHS))]*2
+            assert importlib.util.find_spec is original
+            unchanged()
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
+    def test_optional_installation_failure_restores_probe_and_context_state(self):
+        self.child("""
+            original=importlib.util.find_spec
+            class FailingMeta(list):
+                def insert(self,*args): raise MemoryError('synthetic install failure')
+            failed=FailingMeta(sys.meta_path)
+            with patch.object(sys,'meta_path',failed):
+                try:
+                    with context(): raise AssertionError('unexpected entry')
+                except MemoryError as error: assert str(error)=='synthetic install failure'
+                assert list(failed)==before_meta
+                assert importlib.util.find_spec is original and runtime._CONTEXT_ACTIVE is False
+            unchanged()
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
     def test_frozen_source_disk_poison_ignored_fresh_query_and_cleanup(self):
         self.child("""
             sources['src/models/runtime_ranking_v3.py'] = b'VALUE = "frozen"\\n'

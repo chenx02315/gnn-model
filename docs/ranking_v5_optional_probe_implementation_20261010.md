@@ -1,0 +1,11 @@
+# 可选模块不存在探测：本地候选实现
+
+承接torchgen门禁后已确认的optree可选探测失败，继续完成本地实现，不停在设计节点。没有启动第二次远端作业，没有安装optree，没有放行训练。
+
+实现只在受控context内包装`importlib.util.find_spec`：准确普通字符串`optree`且package=None时，新鲜验证固定5条路径和缓存，PathFinder没有optree spec才返回None。直接import optree、optree子模块及相似根仍由原finder拒绝，不触达后续finder。其他名称/参数委托原函数，正常/异常退出恢复原函数；嵌套或原函数被预先更换则拒绝。不会对未知root普遍返回None。
+
+47项最终focused通过（5.282s、exit0），包含不存在探测、直接import无fallthrough、相似根、缓存污染、路径漂移、出现spec、原函数参数委托、嵌套拒绝、异常恢复及安装失败恢复。独立review发现安装阶段insert异常在try之外导致wrapper状态泄漏；一次聚焦修复把所有安装写操作置于try/finally内部，MemoryError注入负例通过。新增entry缓存测试首轮误期待UNKNOWN_ROOT，实际正确拒绝PRELOADED_UNKNOWN；只纠正测试期待。
+
+最终独立55tests/exit0/6.450s，PASS_OPTIONAL_PROBE_IMPLEMENTATION_ONLY，源码SHA `b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da`。修复后源码冻结，最终完整新版本回归`v5_optional_probe_full_20261010_r1.log`为1012tests、33skip、0failure/error、exit0、118.314s，SHA256 `8e93747fbb7b4422c6729e1d4b73faf5778092f6ce82d661c64fdc7db6aad699`；此前1008tests只证明已部署torchgen版，不混作当前新候选证据。
+
+本地范围不等于远端准入。新context每次重新检查absence；旧源码摘录/诊断不是可复用absence授权。该协议并非hostile-code sandbox、全局物理不存在证明或完整依赖内容封印。远端单次额度已用完；复核/回归完成后只封存本地候选，不自造新远端授权，不重试失败目录。

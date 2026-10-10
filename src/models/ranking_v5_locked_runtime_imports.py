@@ -20,6 +20,8 @@ from types import MappingProxyType, ModuleType
 SITE_ROOT = '/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119/venv/lib/python3.11/site-packages'
 STDLIB_ROOT = '/usr/lib/python3.11'
 MAX_CACHED_MODULES = 2048
+_ORIGINAL_FIND_SPEC = importlib.util.find_spec
+_CONTEXT_ACTIVE = False
 ROOT_DISTRIBUTIONS = MappingProxyType({
     'jinja2': ('jinja2',), 'markupsafe': ('markupsafe',),
     'cloudpickle': ('cloudpickle',), 'filelock': ('filelock',),
@@ -70,6 +72,23 @@ def _ordinary(value, *, directory=False):
 
 def _owned(name):
     return name in ('src', 'scripts') or name.startswith(('src.', 'scripts.'))
+
+
+def _optional_optree_absent(observation_helper):
+    """Negative capability under fixed paths only; never admit an optree import."""
+    observation_helper._search_paths(sys.path)
+    if any(type(name) is str and (name == 'optree' or name.startswith('optree.'))
+           for name in sys.modules):
+        raise ValueError('V5_CONTROLLED_IMPORT_OPTIONAL_CACHE')
+    if machinery.PathFinder.find_spec('optree', list(observation_helper.SEARCH_PATHS)) is not None:
+        raise ValueError('V5_CONTROLLED_IMPORT_OPTIONAL_PRESENT')
+
+
+def _optional_probe(fullname, package=None, *, observation_helper):
+    if type(fullname) is str and fullname == 'optree' and package is None:
+        _optional_optree_absent(observation_helper)
+        return None
+    return _ORIGINAL_FIND_SPEC(fullname, package)
 
 
 class _RuntimeFinder(importlib.abc.MetaPathFinder):
@@ -271,6 +290,9 @@ def controlled_imports(source_bytes, pins, *, frozen_helper, observation_helper,
     created here. Exit preserves unrelated/runtime imports and removes owned
     local modules plus this finder. Reentry after ML import requires a new process.
     """
+    global _CONTEXT_ACTIVE
+    if _CONTEXT_ACTIVE or importlib.util.find_spec is not _ORIGINAL_FIND_SPEC:
+        raise ValueError('V5_CONTROLLED_IMPORT_PROBE_CONTEXT')
     externals = set()
     for helper in (frozen_helper, observation_helper):
         if (type(helper) is not ModuleType or type(helper.__name__) is not str
@@ -287,6 +309,7 @@ def controlled_imports(source_bytes, pins, *, frozen_helper, observation_helper,
                                 observation_helper.os.getcwd())
     observation_helper._search_paths(sys.path)
     _check_cached_modules(finder)
+    _optional_optree_absent(observation_helper)
     observed = observation_helper.observe_runtime(lock_raw)
     requested = observation_helper.parse_lock_bytes(lock_raw)
     if (type(observed) is not dict or observed.get('status') != 'PASS_FIXED_RUNTIME_METADATA_ONLY'
@@ -307,10 +330,17 @@ def controlled_imports(source_bytes, pins, *, frozen_helper, observation_helper,
         dependency_contents_sealed=False, native_libraries_verified=False,
         actual_training_proven=False, actual_linux_resource_proof=False,
         formal_training_release=False, authentic_user_consent_proven=False))
-    sys.meta_path.insert(0, finder)
+    def optional_probe(fullname, package=None):
+        return _optional_probe(fullname, package, observation_helper=observation_helper)
+
     try:
+        _CONTEXT_ACTIVE = True
+        importlib.util.find_spec = optional_probe
+        sys.meta_path.insert(0, finder)
         yield receipt
     finally:
+        importlib.util.find_spec = _ORIGINAL_FIND_SPEC
+        _CONTEXT_ACTIVE = False
         sys.meta_path[:] = [item for item in sys.meta_path if item is not finder]
         for name in tuple(sys.modules):
             if type(name) is str and _owned(name):

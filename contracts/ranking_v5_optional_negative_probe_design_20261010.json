@@ -1,6 +1,6 @@
 {
   "schema": "v5-optional-negative-probe-design-v1",
-  "status": "DESIGN_ONLY_NOT_IMPLEMENTED_OR_RELEASED",
+  "status": "PASS_LOCAL_IMPLEMENTATION_AND_REGRESSION_ONLY",
   "motivation": "Pinned Torch _pytree probes optree via importlib.util.find_spec; strict unknown-root exception prevents ordinary optional absence behavior",
   "required_distribution_roots": {"torch": "torch", "torchgen": "torch"},
   "optional_negative_probes": [{"fullname": "optree", "package": null, "return_when_freshly_absent": null}],
@@ -27,9 +27,18 @@
     "Nested or concurrent context refuses"
   ],
   "independent_design_review": "PASS_DESIGN_DIRECTION_WITH_REQUIRED_TESTS",
-  "implementation_review": "NOT_RUN",
+  "implementation_review": "PASS_OPTIONAL_PROBE_IMPLEMENTATION_ONLY",
+  "independent_full_seal_review": "PASS_LOCAL_REGRESSION_SEAL_ONLY",
+  "source_sha256": "b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da",
+  "independent_focused_tests": {"tests": 55, "seconds": 6.450, "exit_code": 0},
+  "full_regression": {
+    "tests": 1012, "skipped": 33, "failures": 0, "errors": 0,
+    "seconds": 118.314, "exit_code": 0,
+    "log": "../runtime_training_staging_20260928/v5_optional_probe_full_20261010_r1.log",
+    "sha256": "8e93747fbb7b4422c6729e1d4b73faf5778092f6ce82d661c64fdc7db6aad699"
+  },
   "actual_runtime_gate": "NOT_RUN",
   "automatic_remote_retries": 0,
   "formal_training_release": false,
-  "claim_boundary": "Finite design only. Absence under controlled paths is not global physical absence or dependency-content sealing. A new remote execution scope is required after implementation, full tests and independent review."
+  "claim_boundary": "Local candidate only, not deployed or run remotely. Absence under controlled paths is not global physical absence or dependency-content sealing. A new remote execution scope is required after full tests and independent review."
 }
