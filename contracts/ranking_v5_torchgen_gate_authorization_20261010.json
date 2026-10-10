@@ -1,0 +1,13 @@
+{
+  "schema": "v5-narrow-diagnostic-gate-continuation-v1",
+  "user_reply": "那你就可以开始对应的实验了，不要我说一下你动一下，我很反感这样",
+  "preceding_scope": "Verify locked torchgen ownership, precise repair and contamination tests, then one new bounded remote gate",
+  "target_root": "/ssd/cjc/gnn_model_ranking_v5_runtime_gate_20261010_r2",
+  "authorized_new_remote_gate_invocations": 1,
+  "automatic_retries": 0,
+  "required_before_remote_run": ["ownership evidence", "focused and full regression", "independent repair and exact packet review"],
+  "limits": {"workers": 1, "threads": 1, "address_space_bytes": 8589934592, "sampled_combined_rss_bytes": 1073741824},
+  "formal_training_release": false,
+  "production_data_reads_authorized_by_this_record": false,
+  "note": "Prior conditional 18-fit TRAIN authorization remains subject to complete implementation and fresh release/prelaunch review. No BLIND, LSF or Tessent authorization."
+}

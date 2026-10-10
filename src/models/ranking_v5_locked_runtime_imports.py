@@ -29,6 +29,7 @@ ROOT_DISTRIBUTIONS = MappingProxyType({
     'setuptools': ('setuptools',), '_distutils_hack': ('setuptools',),
     'pkg_resources': ('setuptools',), 'sympy': ('sympy',),
     'threadpoolctl': ('threadpoolctl',), 'torch': ('torch',),
+    'torchgen': ('torch',),  # Installed by the same pinned Torch distribution.
     'triton': ('triton',), 'typing_extensions': ('typing-extensions',),
     'xgboost': ('xgboost',),
     'nvidia': ('nvidia-cublas-cu12', 'nvidia-cuda-cupti-cu12', 'nvidia-cuda-nvrtc-cu12',

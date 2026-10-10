@@ -1,0 +1,35 @@
+{
+  "schema": "v5-optional-negative-probe-design-v1",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED_OR_RELEASED",
+  "motivation": "Pinned Torch _pytree probes optree via importlib.util.find_spec; strict unknown-root exception prevents ordinary optional absence behavior",
+  "required_distribution_roots": {"torch": "torch", "torchgen": "torch"},
+  "optional_negative_probes": [{"fullname": "optree", "package": null, "return_when_freshly_absent": null}],
+  "no_new_distribution_or_path": true,
+  "direct_unknown_imports_must_still_raise": true,
+  "unknown_finder_fallthrough_allowed": false,
+  "entry_prerequisites": [
+    "Single dedicated process, no concurrent or nested wrapping",
+    "Exact fixed search paths, unchanged original util.find_spec identity",
+    "No cached optree or optree submodule",
+    "Fresh absence check across all fixed search paths; present spec refuses rather than imports",
+    "No generic missing-module or optional-prefix exception"
+  ],
+  "implementation_boundary": "Exact util.find_spec wrapper, not finder None fallthrough. Nonmatching name/arguments delegate original behavior. Restore original on normal and exceptional exit.",
+  "required_tests": [
+    "Exact fresh absent optree probe returns None",
+    "Direct import optree rejects with no later finder touched",
+    "Submodule, similar root and relative name receive no exception",
+    "Cached optree or submodule refuses before entry",
+    "Present spec in any fixed path refuses before ML",
+    "Search path drift refuses",
+    "Non-optree behavior and arguments unchanged",
+    "Normal and exception cleanup restores exact original function",
+    "Nested or concurrent context refuses"
+  ],
+  "independent_design_review": "PASS_DESIGN_DIRECTION_WITH_REQUIRED_TESTS",
+  "implementation_review": "NOT_RUN",
+  "actual_runtime_gate": "NOT_RUN",
+  "automatic_remote_retries": 0,
+  "formal_training_release": false,
+  "claim_boundary": "Finite design only. Absence under controlled paths is not global physical absence or dependency-content sealing. A new remote execution scope is required after implementation, full tests and independent review."
+}

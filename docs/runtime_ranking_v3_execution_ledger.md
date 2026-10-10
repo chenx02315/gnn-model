@@ -347,4 +347,6 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 
 ## 2026-10-10：获准一次窄范围typing修复后CPU门禁
 
+后续连续推进见同日torchgen记录：来源RECORD/hash核实、精确root映射、43focused及独立51项、1008full/33skip/exit0、精确4条目包审核全部完成后，获准新r2实际门禁1次。torchgen问题越过，但Torch可选optree的find_spec探测因UNKNOWN_ROOT异常失败，combined368873472/sample3/cleanup0/retry0/fit0。独立raw审计PASS_FAILURE_EVIDENCE_AUDIT_ONLY。没有继续增加白名单或重试；进一步只读诊断和独立评判确认可选absence协议差异，形成有限设计合同，未实现/部署/运行，不把设计当新门禁PASS。详见ranking_v5_torchgen_repair_20261010.md及新r2失败manifest。
+
 仅Python3.11.2的typing.io/re精确父属性兼容，一次聚焦修补独立review指出的typing.py绑定和普通字符串列表检查；50focused和最终1007tests/33skip/exit0通过。最终context4cb4b533、packet60c77f70经独立复核后部署全新runtime_gate_20261010_r1。实际仅运行1次，进入显式Torch导入后拒绝UNKNOWN_ROOT:torchgen，CPU门禁FAIL；4次采样combined381419520，cleanup0，retry0，fit0。授权单次额度消耗完，不自动再运行、不训练。新失败manifest独立raw审计PASS_FAILURE_EVIDENCE_AUDIT_ONLY，历史目录与受保护目录未修改。

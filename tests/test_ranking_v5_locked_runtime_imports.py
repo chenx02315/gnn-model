@@ -186,6 +186,32 @@ class ControlledImportTests(unittest.TestCase):
             print('SYNTHETIC_CONTROLLED_IMPORT_OK')
         """)
 
+    def test_torchgen_exact_distribution_and_origin_no_generic_root_admission(self):
+        self.child("""
+            assert runtime.ROOT_DISTRIBUTIONS['torchgen'] == ('torch',)
+            with context():
+                finder=sys.meta_path[0]
+                with patch.object(machinery.PathFinder,'find_spec',return_value=spec_for('torchgen')):
+                    assert finder.find_spec('torchgen').origin == runtime.SITE_ROOT+'/torchgen/__init__.py'
+                for origin in ('/tmp/torchgen/__init__.py',
+                               '/ssd/cjc/multimode_ate_gnn_v1/torchgen/__init__.py',
+                               runtime.SITE_ROOT+'/torch/__init__.py',
+                               runtime.SITE_ROOT+'/torchgen/../__init__.py'):
+                    before=len(checked_paths)
+                    with patch.object(machinery.PathFinder,'find_spec',return_value=spec_for('torchgen',origin)):
+                        try: finder.find_spec('torchgen')
+                        except ValueError as error: assert 'DEPENDENCY_ORIGIN' in str(error)
+                        else: raise AssertionError(origin)
+                    assert len(checked_paths)==before
+                with patch.object(machinery.PathFinder,'find_spec',side_effect=AssertionError('no lookup')):
+                    for name in ('torchgenx','torch_other','packaging'):
+                        try: finder.find_spec(name)
+                        except ModuleNotFoundError as error: assert 'UNKNOWN_ROOT' in str(error)
+                        else: raise AssertionError(name)
+            unchanged()
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
     def test_dependency_origin_and_namespace_escapes_reject_before_filesystem_inspection(self):
         self.child("""
             with context():
