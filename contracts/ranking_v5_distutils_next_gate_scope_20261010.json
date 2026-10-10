@@ -1,0 +1,39 @@
+{
+  "schema": "v5-distutils-next-gate-proposed-scope-v1",
+  "status": "PROPOSED_SCOPE_NOT_AUTHORIZATION",
+  "reason": "The original matrix stopped on its first actual child. Zero automatic retry remains binding; a new root does not create permission to repeat that matrix.",
+  "prerequisites": [
+    "Final local focused/full regression and independent repair seal",
+    "New source and external trust pins; old failed packet never reused",
+    "Explicit new bounded execution authorization",
+    "Fresh installed metadata, exact source origins and memory reserve checks"
+  ],
+  "proposed_first_operation": {
+    "kind": "ONE_CONTROLLED_CPU_SYNTHETIC_OPTIMIZER_TRAINING_SMOKE",
+    "purpose": "Exercise the actual controlled import chain, Adam creation, fixed 120 training steps and bounded serialization; an import-only tiny tensor gate does not cover this path.",
+    "formal_package_or_held_out_outcomes_read": false,
+    "new_directory_only": true,
+    "maximum_invocations": 1,
+    "automatic_retries": 0
+  },
+  "proposed_conditional_followup": {
+    "kind": "ONE_COMPLETE_FIXED_18_TRAIN_MATRIX",
+    "only_after": "Actual synthetic optimizer smoke PASS, independent evidence review and freshly rebound release/packet/prelaunch PASS",
+    "families": 6,
+    "seeds": [20260824, 20260825, 20260826],
+    "fits": 18,
+    "maximum_matrix_invocations": 1,
+    "first_failure_stops_remaining": true,
+    "automatic_retries": 0
+  },
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "timeout_seconds": 1800,
+  "no_dependency_install_or_version_change": true,
+  "no_gpu_claim": true,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "checkpoint_stays_on_b": true,
+  "new_authority_created": false
+}

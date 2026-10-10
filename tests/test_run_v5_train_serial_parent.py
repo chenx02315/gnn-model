@@ -169,6 +169,7 @@ class SerialParentTests(unittest.TestCase):
             self.assertEqual(len(contexts), 18)
             self.assertEqual(argv[:5], [parent.INTERPRETER, '-I', '-S', '-B', '-c'])
             self.assertEqual(env['CUDA_VISIBLE_DEVICES'], '')
+            self.assertEqual(env['SETUPTOOLS_USE_DISTUTILS'], 'stdlib')
             family = argv[argv.index('--family')+1]; seed = int(argv[argv.index('--seed')+1])
             events.append(('execute', family, seed)); index = len(executions); executions.append((family, seed))
             if index == fail_index: raise RuntimeError('SYNTHETIC_WORKER_FAILURE')
@@ -207,6 +208,21 @@ class SerialParentTests(unittest.TestCase):
         self.assertEqual(self.synthetic_events, expected)
         self.assertIs(result['numerical_model_predictions_verified'], False)
         self.assertIs(result['numerical_held_metrics_verified'], False)
+
+    def test_child_environment_is_fixed_fresh_and_not_inherited(self):
+        with patch.dict(parent.os.environ, {'SETUPTOOLS_USE_DISTUTILS': 'local',
+                 'PYTHONPATH': '/untrusted', 'VIRTUAL_ENV': '/untrusted', 'OMP_NUM_THREADS': '99'}):
+            first = parent.child_environment()
+            first['SETUPTOOLS_USE_DISTUTILS'] = 'local'
+            second = parent.child_environment()
+        self.assertEqual(second, dict(PATH='/usr/bin:/bin', LANG='C.UTF-8', LC_ALL='C.UTF-8',
+            OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', NUMEXPR_NUM_THREADS='1',
+            CUDA_VISIBLE_DEVICES='', PYTHONNOUSERSITE='1', PYTHONDONTWRITEBYTECODE='1',
+            SETUPTOOLS_USE_DISTUTILS='stdlib'))
+        self.assertNotIn('PYTHONPATH', second)
+        self.assertNotIn('VIRTUAL_ENV', second)
+        self.assertEqual(parent.CPU_PINS[parent.CONTEXT],
+            'b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da')
 
     def test_first_worker_failure_stops_without_retry_and_started_marker_blocks_second_run(self):
         result = self.run_synthetic(fail_index=0)

@@ -123,6 +123,20 @@ def runtime():
             and 'usercustomize' not in sys.modules, 'BOOTSTRAP_STATE')
 
 
+def child_environment():
+    """New local repair candidate: retain strict stdlib distutils admission.
+
+    Setuptools 66.1.1 defaults to its own distutils redirect. Select its
+    documented-in-installed-source stdlib branch instead of admitting another
+    filesystem root or custom alias loader. No inherited environment is used.
+    This candidate does not authorize a new remote invocation.
+    """
+    return dict(PATH='/usr/bin:/bin', LANG='C.UTF-8', LC_ALL='C.UTF-8',
+        OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', NUMEXPR_NUM_THREADS='1',
+        CUDA_VISIBLE_DEVICES='', PYTHONNOUSERSITE='1', PYTHONDONTWRITEBYTECODE='1',
+        SETUPTOOLS_USE_DISTUTILS='stdlib')
+
+
 @contextmanager
 def supplemental_aliases(sources, cli_module):
     """Inside core fence only; fixed explicit aliases, no disk discovery."""
@@ -259,9 +273,7 @@ def run(root, manifest_sha):
     fence = external('_v5_serial_fence', source[FENCE])
     python = {p: source[p] for p in cli.CORE_FILES if p.endswith('.py')}
     python_pins = {p: packet['source_sha256'][p] for p in python}
-    env = dict(PATH='/usr/bin:/bin', LANG='C.UTF-8', LC_ALL='C.UTF-8',
-        OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', NUMEXPR_NUM_THREADS='1',
-        CUDA_VISIBLE_DEVICES='', PYTHONNOUSERSITE='1', PYTHONDONTWRITEBYTECODE='1')
+    env = child_environment()
     with global_worker_lock(), fence.sealed_imports(python, python_pins):
         from src.models import ranking_v5_caller_source_binding as binder
         from src.models import ranking_v5_approval_binding as approval

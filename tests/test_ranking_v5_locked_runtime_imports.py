@@ -81,6 +81,34 @@ class ControlledImportTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('SYNTHETIC_CONTROLLED_IMPORT_OK', result.stdout)
 
+    def test_distutils_stdlib_remains_exact_and_site_redirect_is_not_admitted(self):
+        self.child("""
+            with context():
+                finder=sys.meta_path[0]
+                finder._stdlib=finder._stdlib | frozenset(('distutils',))
+                stdpath=runtime.STDLIB_ROOT+'/distutils'
+                origin=stdpath+'/core.py'
+                spec=machinery.ModuleSpec('distutils.core',machinery.SourceFileLoader('distutils.core',origin),origin=origin)
+                with patch.object(machinery.BuiltinImporter,'find_spec',return_value=None), \
+                     patch.object(machinery.FrozenImporter,'find_spec',return_value=None), \
+                     patch.object(machinery.PathFinder,'find_spec',return_value=spec) as lookup:
+                    admitted=finder.find_spec('distutils.core',[stdpath])
+                    assert admitted.origin==origin
+                    lookup.assert_called_once_with('distutils.core',[stdpath])
+                denied=[runtime.SITE_ROOT+'/setuptools/_distutils',runtime.SITE_ROOT+'/distutils','/tmp/distutils',stdpath+'/../distutils']
+                for path in denied:
+                    with patch.object(machinery.PathFinder,'find_spec',side_effect=AssertionError('denied lookup touched')):
+                        try: finder.find_spec('distutils.core',[path])
+                        except ValueError as error: assert 'INPUT_PACKAGE_PATH' in str(error)
+                        else: raise AssertionError(path)
+                poisoned=machinery.ModuleSpec('distutils.core',machinery.SourceFileLoader('distutils.core',runtime.SITE_ROOT+'/setuptools/_distutils/core.py'),origin=runtime.SITE_ROOT+'/setuptools/_distutils/core.py')
+                try: finder._runtime_spec('distutils.core',poisoned)
+                except ValueError as error: assert 'STDLIB_ORIGIN' in str(error)
+                else: raise AssertionError('site alias admitted')
+            unchanged()
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
     def test_optional_negative_probe_no_unknown_import_fallthrough_and_cleanup(self):
         self.child("""
             original=importlib.util.find_spec

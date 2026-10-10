@@ -1,0 +1,83 @@
+{
+  "schema": "v5-distutils-stdlib-repair-v1",
+  "status": "PASS_LOCAL_REPAIR_AND_FINAL_REGRESSION_ONLY",
+  "failure_manifest": "data/manifests/ranking_v5_serial_train_failure_20261010_r1.json",
+  "diagnosis": "High-confidence static mechanism, not an observed traceback: pinned setuptools defaults to local distutils, whose temporary shim redirects the parent path outside the admitted stdlib distutils subtree.",
+  "fixed_child_environment_addition": {"SETUPTOOLS_USE_DISTUTILS": "stdlib"},
+  "no_inherited_environment": true,
+  "no_import_finder_exception": true,
+  "no_additional_filesystem_root": true,
+  "no_dependency_or_model_recipe_change": true,
+  "unchanged_context_sha256": "b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da",
+  "new_parent_source_sha256": "6851627d4dc5f4015081ea391c728bebec19614a66c3d630068a10c56dac6a9b",
+  "parent_tests_sha256": "91e636fd2ee6841045c85a0e53cd7ec1746cc4c7e53d068b1497dcad02d5fb85",
+  "import_tests_sha256": "5ed1965a02cf918fa5137107b5153db50bf5e3fd4312e8be75decad989af3e10",
+  "independent_local_repair_review": "PASS_LOCAL_REPAIR_ONLY",
+  "independent_final_seal_review": "PASS_LOCAL_REPAIR_REGRESSION_SEAL_ONLY",
+  "independent_focused_regression": {
+    "tests_run": 77,
+    "skipped": 3,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "seconds": 15.160,
+    "skip_reason": "Windows cannot execute actual Linux hard-limit/RSS/process-group gates"
+  },
+  "nonfinal_regressions": [
+    {
+      "revision": "r1",
+      "status": "FAIL_LOCAL_DISCOVERY_HARNESS_NO_TESTS_STARTED",
+      "exit_code": 1,
+      "log_sha256": "65dcb7f86bf768cf96d34325b0ed02d7d11c3d638f3846eed6bbea6ebcbd45a1"
+    },
+    {
+      "revision": "r2",
+      "status": "PASS_BUT_EXTRA_REJECTION_TEST_ADDED_AFTER_START_NOT_FINAL",
+      "tests_run": 1076,
+      "skipped": 33,
+      "exit_code": 0,
+      "seconds": 226.365,
+      "log_sha256": "b1ba6f221d0034ab4d9734bd038731db6c0515f7613855b1e9ba843ba383363a"
+    }
+  ],
+  "final_regression": {
+    "revision": "r3",
+    "status": "PASS_LOCAL_REGRESSION_ONLY",
+    "tests_run": 1077,
+    "skipped": 33,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "seconds": 211.722,
+    "log_basename": "v5_distutils_local_full_20261010_r3.log",
+    "log_sha256": "2bff8eda9037c1aa3220d171c2c9235fc075fc88e4e9ba1ed16896d6d595f4bb"
+  },
+  "previous_deployed_parent_sha256": "56cd28a0549c2dd6e149c2b3b372a29e3b248a831672ab3492f08e1fe7abb050",
+  "readonly_evidence_wrapper_sha256": "1f2ffceb6eed532019a6cd2189cfc27e7347499fc0bd9f8ddab46b64563aca11",
+  "installed_source_observations": {
+    "setuptools_version": "66.1.1",
+    "_distutils_hack/__init__.py": "4d27a48545b57dd137ae35376fcf326d2064271084a487960686f8704b94de4a",
+    "setuptools/__init__.py": "57590f5483e47e066cf3a614a14bc0010f59bd34abe400f5307a67de6ad5ed6d",
+    "setuptools/_distutils/__init__.py": "b30a94ea39b6f4b6c7e2c9466b7513c5801a31408b3b33d8d6a4cc6b8b6fecf1",
+    "/usr/lib/python3.11/distutils/__init__.py": "50c33f1d73f224a50a07f64e29a5e71b86b105a2e61873e7f47dc28a6baa7680",
+    "/usr/lib/python3.11/distutils/core.py": "8db74e92938ad3dc62fb9eaf861c2f9f77d87612dbe4324ef2adcad5f9d0cf44"
+  },
+  "record_check_boundary": "Read-only sampler checked three exact SHA/size RECORD entries; independent reviewer recomputed source bytes and hashes, not the full RECORD table.",
+  "required_tests": [
+    "Fixed child env selects stdlib despite inherited local setting",
+    "Child environment returns fresh dictionaries and no inherited PYTHONPATH or VIRTUAL_ENV",
+    "Strict stdlib distutils.core path remains accepted",
+    "Site alias, untrusted and traversal parents rejected before PathFinder",
+    "Site distutils origin rejected",
+    "Original first-failure, source, approval and resource tests remain passing"
+  ],
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "automatic_retries": 0,
+  "same_root_retry_allowed": false,
+  "new_remote_execution_authorized_by_this_contract": false,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "claim_boundary": "Local code/tests do not prove actual optimizer import or successful training. Original failed B root stays immutable; any new execution requires independently rebound release/packet, fresh gate and explicit new scope, not an automatic retry."
+}

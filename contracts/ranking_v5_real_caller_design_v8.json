@@ -1,0 +1,23 @@
+{
+  "schema": "ranking-v5-real-caller-design-v8",
+  "status": "DISTUTILS_LOCAL_REPAIR_CANDIDATE_NOT_REMOTE_RELEASE",
+  "supersedes_design": "ranking_v5_real_caller_design_v7.json",
+  "historical_execution_manifest": "data/manifests/ranking_v5_serial_train_failure_20261010_r1.json",
+  "repair_contract": "ranking_v5_distutils_stdlib_repair_20261010.json",
+  "proposed_scope_contract": "ranking_v5_distutils_next_gate_scope_20261010.json",
+  "new_parent_source_sha256": "6851627d4dc5f4015081ea391c728bebec19614a66c3d630068a10c56dac6a9b",
+  "fixed_child_env": {"SETUPTOOLS_USE_DISTUTILS": "stdlib"},
+  "old_deployed_source_root_preserved": "/ssd/cjc/gnn_model_ranking_v5_train_20261010_r1",
+  "old_packet_must_not_launch_new_source": true,
+  "formal_18_fit_release": false,
+  "new_actual_runtime_execution_allowed": false,
+  "same_root_retry_allowed": false,
+  "automatic_retries": 0,
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "dependency_lock_and_numerical_source_unchanged": true,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "claim_boundary": "One original matrix invocation stopped. Local repair can proceed autonomously but does not regenerate consent or authorize a replacement matrix. A synthetic optimizer gate must exercise the previously uncovered path before any explicitly approved replacement TRAIN matrix."
+}
