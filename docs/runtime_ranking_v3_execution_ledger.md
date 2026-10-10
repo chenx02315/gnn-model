@@ -347,6 +347,8 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 
 ## 2026-10-10：获准一次窄范围typing修复后CPU门禁
 
+后续用户再次明确授权，原b1bddbda修复源码/1012full精确包审计通过后，唯一新r3门禁exit0：CPU Torch/NumPy导入和小张量成功，sample6/combined414273536，AS/RSS/worker不变，retry0/fit0/package0/releasefalse。日志CUDA初始化warning原样保留，无GPU可用结论。原始回执独立审计PASS_ACTUAL_CPU_GATE_EVIDENCE_ONLY，新pass_manifest和runtime_pass文档记录准确边界；立即衔接本地18项串行父控制器有界实现，不把阶段进度当终点或正式训练结果。
+
 后续连续推进见同日torchgen记录：来源RECORD/hash核实、精确root映射、43focused及独立51项、1008full/33skip/exit0、精确4条目包审核全部完成后，获准新r2实际门禁1次。torchgen问题越过，但Torch可选optree的find_spec探测因UNKNOWN_ROOT异常失败，combined368873472/sample3/cleanup0/retry0/fit0。独立raw审计PASS_FAILURE_EVIDENCE_AUDIT_ONLY。没有继续增加白名单或重试；进一步只读诊断和独立评判确认可选absence协议差异，形成有限设计合同，未实现/部署/运行，不把设计当新门禁PASS。详见ranking_v5_torchgen_repair_20261010.md及新r2失败manifest。
 
 继续完成可选absence协议本地实现，而非停在设计：仅精确optree+packageNone的新鲜5路径absence返回None；直接未知import仍抛错，其他参数委托，嵌套拒绝和正常/异常恢复。独立review发现安装异常泄漏，聚焦修复后55独立testsPASS，主47focusedPASS；最终冻结源码b1bddbda、full1012tests/33skip/118.314s/exit0，日志SHA8e93747fbb7b4422c6729e1d4b73faf5778092f6ce82d661c64fdc7db6aad699。仅本地实现封存，不部署/不新gate、不改内存、不TRAIN；远端单次额度已用完，后续真实门禁须新的执行范围。没有把可选protocol本地PASS当Torch真实导入PASS。

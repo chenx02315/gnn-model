@@ -1,0 +1,13 @@
+{
+  "schema": "v5-narrow-diagnostic-gate-continuation-v1",
+  "user_reply": "授权",
+  "preceding_scope": "New single remote CPU gate after precise optional absence repair; automatically continue already authorized dependent nodes",
+  "target_root": "/ssd/cjc/gnn_model_ranking_v5_runtime_gate_20261010_r3",
+  "authorized_new_remote_gate_invocations": 1,
+  "automatic_retries": 0,
+  "required_before_remote_run": ["exact source matches independently sealed local regression", "independent exact packet review", "SHA bounded deployment"],
+  "limits": {"workers": 1, "threads": 1, "address_space_bytes": 8589934592, "sampled_combined_rss_bytes": 1073741824},
+  "formal_training_release": false,
+  "production_data_reads_authorized_by_this_record": false,
+  "note": "Prior conditional 18-fit TRAIN authorization still requires complete matrix implementation and fresh independent release/prelaunch review. No BLIND, LSF or Tessent authorization. Historical failed roots remain immutable."
+}
