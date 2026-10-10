@@ -1,0 +1,17 @@
+{
+  "schema": "v5-narrow-diagnostic-gate-continuation-v1",
+  "client_date": "2026-10-10",
+  "user_replies": ["ok", "继续吧"],
+  "preceding_question_scope": "精确修复typing.io/re，复核通过后再运行一次门禁；内存上限不变，不直接重跑训练",
+  "authorized_local_work": "Exact Python 3.11.2 typing.io/re compatibility repair, regression and independent review",
+  "authorized_new_remote_gate_invocations": 1,
+  "target_root": "/ssd/cjc/gnn_model_ranking_v5_runtime_gate_20261010_r1",
+  "required_before_remote_run": ["focused regression", "full regression", "independent implementation review", "exact packet SHA and bounded extraction review"],
+  "automatic_retries": 0,
+  "actual_training_authorized_by_this_record": false,
+  "production_data_reads_authorized_by_this_record": false,
+  "blind_lsf_tessent_authorized": false,
+  "limits": {"workers": 1, "threads": 1, "address_space_bytes": 8589934592, "sampled_combined_rss_bytes": 1073741824},
+  "historical_failure_directories_must_remain_unchanged": true,
+  "note": "This records the conversational continuation scope, not cryptographic proof of user identity or an 18-fit release"
+}

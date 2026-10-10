@@ -169,7 +169,44 @@ class _RuntimeFinder(importlib.abc.MetaPathFinder):
         return self._runtime_spec(fullname, spec)
 
 
+def _validate_typing_namespace(fullname, namespace, finder):
+    """Only Python 3.11.2's two cached deprecated class namespaces.
+
+    Validate the ordinary typing parent first. No arbitrary spec-less object,
+    generic typing subtree, cache removal, or new filesystem root is admitted.
+    Like the rest of this protocol, this is not a hostile same-user sandbox.
+    """
+    parent = sys.modules.get('typing')
+    if tuple(sys.version_info[:3]) != (3, 11, 2) or type(parent) is not ModuleType:
+        raise ValueError('V5_CONTROLLED_IMPORT_TYPING_PARENT:' + fullname)
+    spec = getattr(parent, '__spec__', None)
+    if (spec is None or spec.name != 'typing' or spec.origin != STDLIB_ROOT + '/typing.py'
+            or type(spec.loader) is not machinery.SourceFileLoader
+            or spec.submodule_search_locations is not None):
+        raise ValueError('V5_CONTROLLED_IMPORT_TYPING_PARENT:' + fullname)
+    _validate_existing_module('typing', parent, finder)
+    suffix = fullname.split('.')[1]
+    meta = parent.__dict__.get('_DeprecatedType')
+    exports = ('IO', 'TextIO', 'BinaryIO') if suffix == 'io' else ('Pattern', 'Match')
+    declared = namespace.__dict__.get('__all__') if type(namespace) is meta else None
+    if (type(meta) is not type or meta.__module__ != 'typing' or meta.__name__ != '_DeprecatedType'
+            or namespace is not parent.__dict__.get(suffix) or type(namespace) is not meta
+            or namespace.__module__ != 'typing' or namespace.__name__ != fullname
+            or getattr(namespace, '__spec__', None) is not None
+            or getattr(namespace, '__file__', None) is not None
+            or getattr(namespace, '__loader__', None) is not None
+            or getattr(namespace, '__path__', None) is not None
+            or type(declared) is not list or any(type(name) is not str for name in declared)
+            or declared != list(exports)
+            or any(name not in parent.__dict__ or namespace.__dict__.get(name) is not parent.__dict__[name]
+                   for name in exports)):
+        raise ValueError('V5_CONTROLLED_IMPORT_TYPING_NAMESPACE:' + fullname)
+
+
 def _validate_existing_module(fullname, module, finder):
+    if fullname in ('typing.io', 'typing.re'):
+        _validate_typing_namespace(fullname, module, finder)
+        return
     root = fullname.partition('.')[0]
     if root not in finder._stdlib and root not in ROOT_DISTRIBUTIONS:
         raise ValueError('V5_CONTROLLED_IMPORT_PRELOADED_UNKNOWN:' + fullname)

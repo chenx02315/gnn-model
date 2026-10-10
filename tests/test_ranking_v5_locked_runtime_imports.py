@@ -318,6 +318,70 @@ class ControlledImportTests(unittest.TestCase):
             print('SYNTHETIC_CONTROLLED_IMPORT_OK')
         """)
 
+    def test_exact_typing_pseudo_namespaces_and_poison_rejection(self):
+        self.child("""
+            runtime._validate_existing_module=real_validate  # exercise recursive parent checks, not mocked baseline
+            finder=runtime._RuntimeFinder({},frozen,observations,frozenset())
+            parent=types.ModuleType('typing')
+            parent.__spec__=machinery.ModuleSpec('typing',machinery.SourceFileLoader('typing',runtime.STDLIB_ROOT+'/typing.py'),origin=runtime.STDLIB_ROOT+'/typing.py')
+            parent.__loader__=parent.__spec__.loader; parent.__file__=parent.__spec__.origin
+            meta=type('_DeprecatedType',(type,),{'__module__':'typing'})
+            parent._DeprecatedType=meta
+            parent.IO=object();parent.TextIO=object();parent.BinaryIO=object();parent.Pattern=object();parent.Match=object()
+            old=sys.modules['typing'];sys.modules['typing']=parent
+            try:
+                for suffix,exports in [('io',['IO','TextIO','BinaryIO']),('re',['Pattern','Match'])]:
+                    attrs={'__module__':'typing','__all__':exports,**{n:parent.__dict__[n] for n in exports}}
+                    namespace=meta('typing.'+suffix,(),attrs);setattr(parent,suffix,namespace)
+                    real_validate('typing.'+suffix,namespace,finder)
+                    forged=meta('typing.'+suffix,(),attrs)
+                    try:real_validate('typing.'+suffix,forged,finder)
+                    except ValueError as error:assert 'TYPING_NAMESPACE' in str(error)
+                    else:raise AssertionError('substituted namespace accepted')
+                    setattr(namespace,exports[0],object())
+                    try:real_validate('typing.'+suffix,namespace,finder)
+                    except ValueError as error:assert 'TYPING_NAMESPACE' in str(error)
+                    else:raise AssertionError('poisoned export accepted')
+                    setattr(namespace,exports[0],parent.__dict__[exports[0]])
+                    namespace.__file__='/ssd/cjc/multimode_ate_gnn_v1/x'
+                    try:real_validate('typing.'+suffix,namespace,finder)
+                    except ValueError as error:assert 'TYPING_NAMESPACE' in str(error)
+                    else:raise AssertionError('pseudo namespace file accepted')
+                    del namespace.__file__
+                    class EqualitySpoof:
+                        def __eq__(self,other):return True
+                        def __ne__(self,other):return False
+                    class ListSubclass(list):pass
+                    for poisoned_all in (EqualitySpoof(),ListSubclass(exports),tuple(exports),[EqualitySpoof()]*len(exports)):
+                        namespace.__all__=poisoned_all
+                        try:real_validate('typing.'+suffix,namespace,finder)
+                        except ValueError as error:assert 'TYPING_NAMESPACE' in str(error)
+                        else:raise AssertionError('untyped exports accepted')
+                    namespace.__all__=exports
+                    good_spec=parent.__spec__
+                    for bad_spec in (machinery.ModuleSpec('typing',machinery.SourceFileLoader('typing',runtime.STDLIB_ROOT+'/fractions.py'),origin=runtime.STDLIB_ROOT+'/fractions.py'),
+                                     machinery.ModuleSpec('typing',machinery.BuiltinImporter,origin='built-in'),
+                                     machinery.ModuleSpec('typing',machinery.FrozenImporter,origin='frozen'),
+                                     machinery.ModuleSpec('typing',good_spec.loader,origin=good_spec.origin,is_package=True)):
+                        parent.__spec__=bad_spec;parent.__loader__=bad_spec.loader;parent.__file__=bad_spec.origin
+                        with patch.object(runtime,'_ordinary') as stats:
+                            try:real_validate('typing.'+suffix,namespace,finder)
+                            except ValueError as error:assert 'TYPING_PARENT' in str(error)
+                            else:raise AssertionError('wrong exact parent accepted')
+                            stats.assert_not_called()
+                    parent.__spec__=good_spec;parent.__loader__=good_spec.loader;parent.__file__=good_spec.origin
+                parent.__file__='/tmp/typing.py'
+                try:real_validate('typing.io',parent.io,finder)
+                except ValueError as error:assert 'PRELOADED_FILE' in str(error)
+                else:raise AssertionError('poisoned parent accepted')
+                arbitrary=types.ModuleType('typing.other')
+                try:real_validate('typing.other',arbitrary,finder)
+                except ValueError as error:assert 'PRELOADED_SPEC' in str(error)
+                else:raise AssertionError('arbitrary spec-less object accepted')
+            finally:sys.modules['typing']=old
+            print('SYNTHETIC_CONTROLLED_IMPORT_OK')
+        """)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -344,3 +344,7 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 后续独立16项及exactpacket审计通过、完整r1=1004tests/33skip/exit0后，实际部署/运行一次runtime_gate_r1。导入ML前cache拒绝系统sitecustomize；guardSTOPPED_NO_RETRY、0livegroup、combined42024960，所有小型raw SHA保留。只读发现该155字节hook是stdlib到/etc的symlink，不放宽围栏或改系统。唯一聚焦修复采用-I -S -B和既定5条sys.path；18focusedPASS、完整r2=1006tests/33skip/0failure/error/exit0，170.884s，SHA7c94986be019b9f09d3d1039a72d18604694bcc748ebdcbb010aa0c44397b412。新r2代码/packet独立review pending，实际fit仍0；旧r1不可覆盖，第二真实失败停止不第三重试。
 
 独立r2代码/包PASS后实际运行一次，仍在显式ML导入前拒绝typing.io缺ModuleSpec；stdlib-only只读诊断确认typing.io/re是_DeprecatedType且精确匹配typing父属性。guardSTOPPED_NO_RETRY/exit1/1sample/0livegroup/combined41189376，不是内存超限。新manifest保留原始wrapper及逐raw SHA，两次失败后停止第三远端尝试、不写正式release、不训练、不推送未满足门禁版本。当前fit=0，typing兼容修复不能广泛豁免任意spec缺失对象。
+
+## 2026-10-10：获准一次窄范围typing修复后CPU门禁
+
+仅Python3.11.2的typing.io/re精确父属性兼容，一次聚焦修补独立review指出的typing.py绑定和普通字符串列表检查；50focused和最终1007tests/33skip/exit0通过。最终context4cb4b533、packet60c77f70经独立复核后部署全新runtime_gate_20261010_r1。实际仅运行1次，进入显式Torch导入后拒绝UNKNOWN_ROOT:torchgen，CPU门禁FAIL；4次采样combined381419520，cleanup0，retry0，fit0。授权单次额度消耗完，不自动再运行、不训练。新失败manifest独立raw审计PASS_FAILURE_EVIDENCE_AUDIT_ONLY，历史目录与受保护目录未修改。
