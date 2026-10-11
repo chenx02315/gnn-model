@@ -1,0 +1,27 @@
+{
+  "schema": "v5-train-v2-implementation-seal-v1",
+  "status": "PASS_IMPLEMENTATION_ONLY",
+  "contract": "contracts/ranking_v5_train_v2_integration_20261011_r1.json",
+  "source_sha256": {
+    "scripts/run_v5_train_single_fit_v2.py": "5c1561bfb4dc738946a42c4e8f434677a0a45c8e7c88486b6b158fbf2a2b2b9f",
+    "scripts/run_v5_train_serial_parent_v2.py": "3c3e28cb68e6dde65b4570d2f60dd5d1b6e29a4dee3619ebe5d82f94362c5b91",
+    "scripts/v5_train_launch_packet_v2.py": "8d0d6b8da088e8c33cefa5a0c90b23ad20eb2b26591cd1bbaf1520eac0c026d0",
+    "src/models/ranking_v5_train_jit_admission_v2.py": "08742df8defea89953371c622d1e1e1657bbd2bce2216aca367aff40510b78ad",
+    "tests/test_v5_train_single_fit_v2.py": "3e2b272a9a1943e5bb47e20980f0219a8aaecc8d6b3b95decff715d670ddbbec",
+    "tests/test_v5_train_serial_parent_v2.py": "133f59bf64514ad909bd658a4bff430d64ab59c332afe88d4668222b5377a999",
+    "tests/test_v5_train_launch_packet_v2.py": "600ec106b5116dbae8bf58b9fc82839bfc6a34bcf15b958d37dae3c0fb6b0a79",
+    "tests/test_ranking_v5_train_jit_admission_v2.py": "812122a899fd5fe57c60610c4f3b3fd5990a344676fd0e981c30a9c373899a7e"
+  },
+  "final_full_regression": {"testsRun": 1223, "skipped": 39, "failures": 0, "errors": 0, "exit_code": 0, "log_sha256": "9dd190a6e5a6e30deb9e22de477c029946b990520cbf70833a615d9e07edc673", "summary_sha256": "6f8590a62fcdfe2c44f40b906c62ddef910202955c1861e6f6f870f00b86df49"},
+  "linux_jit_unit_receipt_sha256": "c7e4fa8252575c843ba532d145d2b8ef49763bb6e2112e10c045f3dcf11a4c40",
+  "linux_single_posix_method_receipt_sha256": "5ab6bb803a7c7ee42d4ac43e745660a299bcd6250080b8270dc407b46f0095a8",
+  "prospective_preparer_sha256": "702e61243d5cbe1e51aef41636ba9c20b6be4dff4f19e25283c078621e01e570",
+  "prospective_request_sha256": "e79b6b5e47c6527ffa07a9b220446cd6bc96e57a7d7bb85c0dbbe12ac80c1147",
+  "independent_review": {"helper_and_entry": "train_v2_parent_packet_builder", "parent_and_packet": "jit_admission_design", "preparer": "train_v2_parent_packet_builder", "status": "PASS_IMPLEMENTATION_ONLY"},
+  "formal_training_fits": 0,
+  "new_training_deployment_performed": false,
+  "formal_training_release": false,
+  "smoke_invocations_additional_to_sealed_success": 0,
+  "automatic_retries": 0,
+  "claims": "Linux helper and one pinned POSIX method only; full Windows regression skips are not Linux full-integration proof. Prospective subject is not release. Frozen core26 and memory limits unchanged."
+}

@@ -383,3 +383,9 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 ## 2026-10-11：固定15名单获准修复，真实单次 optimizer 成功
 
 早先单名称批准未消费，随后用户批准覆盖经安装源码 SHA 核验的固定15缺席名称；两批准合计仅一次验证。新 helper/入口/八文件运输保留旧26核心，直接 import 仍拒绝、缓存和存在 spec 均 fail-closed。独立执行前复核、1170 full/36平台skip/零失败错误/exit0及真实Linux31/skip0全部通过后，fresh optimizer_gate_20261011_r1仅启动一次，exit0/120step/122record，JIT/probe证明通过，15探测各一次。combined533086208/11samples，AS8GiB/RSS1GiB、单worker、retry0保持；checkpoint留B，正式fit/package/held读取0。实际回执独立审计与下一版18TRAIN入口衔接继续推进；本节点不是模型效果结论。详见 fixed_probe 两manifest及中文记录。
+
+## 2026-10-11：TRAIN v2 接入通过，实际放行与启动仍分离
+
+新 helper/entry/parent/packet 完成；独立交叉复核发现并聚焦修复非规范 protected 路径问题。最终 r2 full=1223/39skip/0failure/error/exit0，日志 SHA9dd190a6e5a6e30deb9e22de477c029946b990520cbf70833a615d9e07edc673；修复前 r1 不代替最终回归。真实 Linux helper26/skip0 与原始 POSIX 单方法1/skip0均通过，二者不读正式package、不运行ML或optimizer；单方法证明不升格为全TRAIN集成证明。
+
+精确41source/13evidence/18envelope/74entry的新prospective请求生成，仅待审 subject，不是release。准备器首次直接脚本调用在写入前因repo import path缺失退出；显式绑定repo路径后生成成功，未修改被冻结runtime。extra reviewer槽不可用时以不同文件所有者交叉只读复核，不作者自签。旧once缺席快照不是放行；正式fit0、新TRAIN部署false、smoke追加次数0、内存及重试上限不变。详见 train_v2 integration 合同、implementation manifest 和中文记录。
