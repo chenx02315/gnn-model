@@ -1,0 +1,533 @@
+"""Sealed Linux TRAIN parent; never run without externally reviewed packet pins.
+
+No ML is imported in this parent. The core fence stays unchanged. Supplemental
+modules are compiled from independently pinned bytes and explicitly registered
+only while that core fence owns the empty local namespaces. Real consent and
+packet/release provenance must be independently verified outside this program.
+Sampled RSS is not a hard cgroup limit or a hostile same-user sandbox.
+"""
+import argparse
+from contextlib import contextmanager
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import re
+import stat
+import sys
+from types import ModuleType
+
+
+PROGRAM = 'scripts/run_v5_train_serial_parent_v3.py'
+CLI = 'scripts/run_v5_train_single_fit_v3.py'
+CPU_PROGRAM = 'scripts/run_v5_controlled_runtime_gate.py'
+FENCE = 'src/models/ranking_v5_frozen_import_fence.py'
+FENCE_SHA = 'c8ba5ae9bc8f900a620b7eaf03e37e11f303d9fc8b08ccbc8c423682b0afafed'
+OBS = 'src/models/ranking_v5_locked_runtime_observations.py'
+CONTEXT = 'src/models/ranking_v5_locked_runtime_imports.py'
+MATRIX = 'src/models/ranking_v5_serial_matrix.py'
+FREEZE_LOADER = 'src/models/ranking_v5_freeze_supplement_v2.py'
+FREEZE_SOURCES = (
+    'src/models/ranking_v5_freeze_codec_v2.py',
+    'src/models/ranking_v5_real_artifact_store_v2.py',
+    'src/models/ranking_v5_single_fit_worker_v2.py',
+    'src/models/ranking_v5_train_artifact_readback_v2.py',
+    'src/models/ranking_v5_independent_fit_context_v2.py',
+    'src/models/ranking_v5_parent_artifact_candidate_v2.py',
+)
+EXTRA = (MATRIX, FREEZE_LOADER, *FREEZE_SOURCES)
+INTERPRETER = '/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1/venv/bin/python'
+SEARCH_PATHS = ('/usr/lib/python311.zip', '/usr/lib/python3.11', '/usr/lib/python3.11/lib-dynload',
+    '/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1/venv/lib/python3.11/site-packages',
+    '/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119/venv/lib/python3.11/site-packages')
+ROOT = '/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2'
+ROOT_PATTERN = re.escape(ROOT)
+MANIFEST = 'launch_packet.json'
+JSON_CAP = 20000
+SOURCE_CAP = 65536
+GLOBAL_LOCK = '/ssd/cjc/gnn_model_ranking_v5_serial_parent.lock'
+TRAIN_ONCE_PREFIX = '/ssd/cjc/gnn_model_ranking_v5_train.authorization_'
+CPU_PINS = {
+    OBS: '0524a7b8cce7d017c3fe9fe38dcc86b29a440ed7b373c1c2361ebbb7738459c8',
+    CONTEXT: 'b1bddbda1ef6ea2323a1b3face282fbb21cd1a01db64d68dff8deaa28308b1da',
+    CPU_PROGRAM: '0a4bb0389cce25c2ac50f3adcc721ac2b2545acbf2d15df3c41d5ac8bca5c462'}
+CPU_EVIDENCE = {
+    'cpu_gate.child.json': '2044da0ef9c13741b390f6daaf945793701e37d767b0490d7f908449aeb7a87b',
+    'cpu_gate.memory.json': '3cfe6dde7b0eb3c5f7bbc1396cb9c56c73449db6bacd4b86090950c724463c66',
+    'cpu_gate.launch.json': '60a766bf23876ff589fb34c3ce657994c1ee68daa199912b502f75c61b80181b'}
+
+
+def require(ok, code):
+    if not ok:
+        raise ValueError('V5_SERIAL_PARENT_' + code)
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def pin(value):
+    return type(value) is str and re.fullmatch('[0-9a-f]{64}', value) is not None
+
+
+def ordinary(info, directory=False):
+    require(not stat.S_ISLNK(info.st_mode)
+            and not getattr(info, 'st_file_attributes', 0) & 0x400, 'LINK')
+    require(stat.S_ISDIR(info.st_mode) if directory else stat.S_ISREG(info.st_mode), 'ORDINARY')
+
+
+def path_gate(path):
+    raw = str(path)
+    text = raw.replace('\\', '/').casefold()
+    # Lexical only: never resolve/stat a caller path to decide whether it is
+    # protected. Noncanonical and relative trust paths are refused before I/O.
+    windows_absolute = os.name == 'nt' and re.match(r'^[a-z]:/', text) is not None
+    require((text.startswith('/') or windows_absolute) and '//' not in text
+            and all(part not in ('', '.', '..') for part in text.split('/')[1:])
+            and ('\\' not in raw or windows_absolute), 'PATH_CANONICAL')
+    protected = '/ssd/cjc/multimode_ate_gnn_v1'
+    require(not (text == protected or text.startswith(protected+'/')), 'PROTECTED_ROOT')
+    path = Path(path)
+    for ancestor in path.parents:
+        ordinary(ancestor.lstat(), True)
+    return path
+
+
+def read(path, cap):
+    path = path_gate(path)
+    before = path.lstat(); ordinary(before)
+    require(0 < before.st_size <= cap, 'FILE_BOUND')
+    fd = os.open(path, os.O_RDONLY | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NOFOLLOW', 0))
+    with os.fdopen(fd, 'rb') as stream:
+        opened = os.fstat(stream.fileno()); ordinary(opened)
+        require((opened.st_dev, opened.st_ino, opened.st_size, opened.st_mtime_ns) ==
+                (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns), 'FILE_IDENTITY')
+        raw = stream.read(cap+1)
+        after = os.fstat(stream.fileno())
+    final = path.lstat(); ordinary(final)
+    require(0 < len(raw) == before.st_size <= cap and all(
+        (item.st_dev, item.st_ino, item.st_size, item.st_mtime_ns) ==
+        (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns)
+        for item in (after, final)), 'FILE_CHANGED')
+    return raw
+
+
+def external(name, raw):
+    module = ModuleType(name)
+    module.__file__ = 'sealed-parent://' + name
+    exec(compile(raw, module.__file__, 'exec'), module.__dict__)
+    return module
+
+
+def bootstrap(root, program, program_sha):
+    require(type(root) is str and re.fullmatch(ROOT_PATTERN, root) is not None, 'ROOT')
+    require(program in (PROGRAM, CLI) and pin(program_sha), 'BOOTSTRAP')
+    return ('import sys;assert sys.flags.no_site==1 and sys.flags.isolated==1;'
+        + 'sys.path[:]=' + repr(list(SEARCH_PATHS)) + ';'
+        + 'import os,hashlib,stat;from pathlib import Path;'
+        + 'p=Path(' + repr(root+'/'+program) + ');'
+        + 'assert all(stat.S_ISDIR(q.lstat().st_mode) for q in p.parents);'
+        + 's=p.lstat();assert stat.S_ISREG(s.st_mode) and 0<s.st_size<=65536;'
+        + 'f=p.open("rb");raw=f.read(65537);f.close();'
+        + 'assert len(raw)==s.st_size and hashlib.sha256(raw).hexdigest()==' + repr(program_sha) + ';'
+        + 'os.chdir("/ssd/cjc");exec(compile(raw,str(p),"exec"))')
+
+
+def runtime():
+    require(sys.platform == 'linux' and sys.executable == INTERPRETER
+            and tuple(sys.version_info[:3]) == (3, 11, 2) and os.getcwd() == '/ssd/cjc', 'RUNTIME')
+    require(sys.flags.no_site == 1 and sys.flags.isolated == 1
+            and sys.path == list(SEARCH_PATHS) and 'sitecustomize' not in sys.modules
+            and 'usercustomize' not in sys.modules, 'BOOTSTRAP_STATE')
+
+
+def child_environment(jit_root):
+    """New local repair candidate: retain strict stdlib distutils admission.
+
+    Setuptools 66.1.1 defaults to its own distutils redirect. Select its
+    documented-in-installed-source stdlib branch instead of admitting another
+    filesystem root or custom alias loader. No inherited environment is used.
+    This candidate does not authorize a new remote invocation.
+    """
+    require(type(jit_root) is str and jit_root in jit_roots(ROOT), 'JIT_ROOT')
+    return dict(TMPDIR=jit_root, PATH='/usr/bin:/bin', LANG='C.UTF-8', LC_ALL='C.UTF-8',
+        OMP_NUM_THREADS='1', MKL_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', NUMEXPR_NUM_THREADS='1',
+        CUDA_VISIBLE_DEVICES='', PYTHONNOUSERSITE='1', PYTHONDONTWRITEBYTECODE='1',
+        SETUPTOOLS_USE_DISTUTILS='stdlib')
+
+
+def jit_roots(root, families=None, seeds=None):
+    """Exact finite task paths, checked lexically before any filesystem access."""
+    require(root == ROOT, 'ROOT')
+    if families is None:
+        families = ('iwls_aes_core', 'iscas89_s13207', 'iscas89_s15850',
+                    'iscas89_s35932', 'iscas89_s38417', 'iwls_spi')
+    if seeds is None:
+        seeds = (20260824, 20260825, 20260826)
+    require(set(families) == {'iwls_aes_core', 'iscas89_s13207', 'iscas89_s15850',
+        'iscas89_s35932', 'iscas89_s38417', 'iwls_spi'}
+        and tuple(seeds) == (20260824, 20260825, 20260826), 'JIT_MATRIX')
+    return tuple(root+'/jit_tmp/'+family+'_'+str(seed)
+                 for family in sorted(families) for seed in seeds)
+
+
+def prepare_jit_roots(root, families, seeds):
+    paths = jit_roots(root, families, seeds)
+    base = Path(root)/'jit_tmp'
+    absent(base)
+    base.mkdir(mode=0o700)
+    require(stat.S_IMODE(base.lstat().st_mode) == 0o700, 'JIT_MODE')
+    for value in paths:
+        path = path_gate(value)
+        path.mkdir(mode=0o700)  # exclusive; worker artifacts are never precreated
+        info = path.lstat(); ordinary(info, True)
+        require(stat.S_IMODE(info.st_mode) == 0o700, 'JIT_MODE')
+    return paths
+
+
+@contextmanager
+def supplemental_aliases(sources, cli_module, trusted_source_sha256):
+    """Authenticate exact new bytes; retain old matrix and core identities."""
+    require(type(sources) is dict and type(trusted_source_sha256) is dict
+            and set(sources) == set(trusted_source_sha256) == set(EXTRA), 'EXTRA_SET')
+    sources, trusted_source_sha256 = dict(sources), dict(trusted_source_sha256)
+    require(all(type(raw) is bytes and 0 < len(raw) <= SOURCE_CAP
+                and pin(trusted_source_sha256[path])
+                and sha(raw) == trusted_source_sha256[path] for path, raw in sources.items())
+            and sum(map(len, sources.values())) <= 256*1024, 'EXTRA_SOURCE_BYTES')
+    package = importlib.import_module('src.models')
+    scripts = importlib.import_module('scripts')
+    require(package.__path__ == [] and package.__spec__.origin == 'sealed://namespace/src.models',
+            'CORE_FENCE_REQUIRED')
+    require(scripts.__path__ == [] and scripts.__spec__.origin == 'sealed://namespace/scripts'
+            and type(cli_module) is ModuleType, 'CORE_FENCE_REQUIRED')
+    # This stable CLI alias is the existing explicitly authenticated prerequisite.
+    # No old worker, store, reader or context module name is replaced.
+    cli_name = 'scripts.run_v5_train_single_fit'
+    require(cli_name not in sys.modules and not hasattr(scripts, 'run_v5_train_single_fit'), 'PRELOADED_CLI')
+    matrix_name = MATRIX[:-3].replace('/', '.')
+    matrix_short = matrix_name.rsplit('.', 1)[1]
+    require(matrix_name not in sys.modules and not hasattr(package, matrix_short), 'PRELOADED_EXTRA')
+    loader = external('_v5_serial_freeze_loader', sources[FREEZE_LOADER])
+    freeze_raw = {path: sources[path] for path in FREEZE_SOURCES}
+    freeze_pins = {path: trusted_source_sha256[path] for path in FREEZE_SOURCES}
+    require(tuple(loader.FILES) == FREEZE_SOURCES, 'FREEZE_SOURCE_SET')
+    loader.validate_sources(freeze_raw, freeze_pins)
+    matrix = None
+    try:
+        sys.modules[cli_name] = cli_module
+        setattr(scripts, 'run_v5_train_single_fit', cli_module)
+        matrix = ModuleType(matrix_name)
+        matrix.__file__ = 'sealed-parent://' + MATRIX
+        matrix.__package__ = 'src.models'
+        sys.modules[matrix_name] = matrix
+        setattr(package, matrix_short, matrix)
+        exec(compile(sources[MATRIX], matrix.__file__, 'exec'), matrix.__dict__)
+        with loader.authenticated_supplements(freeze_raw, freeze_pins) as loaded:
+            yield (loaded[FREEZE_SOURCES[3]], loaded[FREEZE_SOURCES[4]],
+                   matrix, loaded[FREEZE_SOURCES[5]])
+    finally:
+        if sys.modules.get(cli_name) is cli_module:
+            del sys.modules[cli_name]
+        if getattr(scripts, 'run_v5_train_single_fit', None) is cli_module:
+            delattr(scripts, 'run_v5_train_single_fit')
+        if matrix is not None and sys.modules.get(matrix_name) is matrix:
+            del sys.modules[matrix_name]
+        if matrix is not None and getattr(package, matrix_short, None) is matrix:
+            delattr(package, matrix_short)
+
+
+@contextmanager
+def global_worker_lock():
+    """Nonblocking advisory cross-parent coordination; no hostile-user claim."""
+    import fcntl
+    path = path_gate(GLOBAL_LOCK)
+    fd = os.open(path, os.O_RDWR | os.O_CREAT | getattr(os, 'O_NOFOLLOW', 0), 0o600)
+    try:
+        info = os.fstat(fd); ordinary(info)
+        require(info.st_size == 0, 'LOCK_CONTENT')
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        current = path.lstat(); ordinary(current)
+        require((info.st_dev, info.st_ino) == (current.st_dev, current.st_ino), 'LOCK_CHANGED')
+        yield
+    finally:
+        os.close(fd)
+
+
+def absent(path):
+    path = path_gate(path)
+    require(not os.path.lexists(path), 'OUTPUT_EXISTS')
+
+
+def write_once(path, payload):
+    raw = json.dumps(payload, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()+b'\n'
+    require(0 < len(raw) <= JSON_CAP, 'SUMMARY_BOUND')
+    absent(path)
+    descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL
+                         | getattr(os, 'O_NOFOLLOW', 0) | getattr(os, 'O_BINARY', 0), 0o600)
+    with os.fdopen(descriptor, 'wb') as stream:
+        stream.write(raw); stream.flush(); os.fsync(stream.fileno())
+    require(read(path, JSON_CAP) == raw, 'SUMMARY_READBACK')
+
+
+def load_packet(root, manifest_sha, *, trusted_source_sha256=None, trusted_evidence_sha256=None):
+    """Authenticate all source and evidence bytes before package/outcome I/O."""
+    require(type(root) is str and re.fullmatch(ROOT_PATTERN, root) is not None and pin(manifest_sha), 'ROOT_PIN')
+    require(type(trusted_source_sha256) is dict and type(trusted_evidence_sha256) is dict
+            and pin(trusted_source_sha256.get(CLI)) and pin(trusted_source_sha256.get(PROGRAM))
+            and all(pin(p) for p in (*trusted_source_sha256.values(), *trusted_evidence_sha256.values())),
+            'EXTERNAL_ANCHORS')
+    trusted_source_sha256, trusted_evidence_sha256 = dict(trusted_source_sha256), dict(trusted_evidence_sha256)
+    raw = read(Path(root)/MANIFEST, JSON_CAP)
+    require(sha(raw) == manifest_sha, 'PACKET_SHA')
+    # Authenticate the CLI from the separately pinned packet before using parser.
+    def unique(pairs):
+        value = {}
+        for key, item in pairs:
+            require(key not in value, 'DUPLICATE')
+            value[key] = item
+        return value
+    try:
+        initial = json.loads(raw, object_pairs_hook=unique)
+    except (ValueError, RecursionError) as error:
+        raise ValueError('V5_SERIAL_PARENT_PACKET_JSON') from error
+    require(type(initial) is dict and type(initial.get('source_sha256')) is dict
+            and pin(initial['source_sha256'].get(CLI)), 'CLI_PIN')
+    require(initial['source_sha256'] == trusted_source_sha256
+            and initial.get('evidence_sha256') == trusted_evidence_sha256, 'EXTERNAL_ANCHORS')
+    cli_raw = read(Path(root)/CLI, SOURCE_CAP)
+    require(sha(cli_raw) == initial['source_sha256'][CLI], 'CLI_SHA')
+    cli = external('_v5_serial_train_cli', cli_raw)
+    packet = cli._json(raw)
+    require(set(packet) == {'schema', 'source_root', 'package_root', 'core_manifest_sha256',
+        'source_sha256', 'evidence_sha256', 'prelaunch_sha256'}, 'PACKET_FIELDS')
+    require(packet['schema'] == 'v5-train-serial-launch-packet-v3' and packet['source_root'] == root
+            and packet['package_root'] == cli.PACKAGE_ROOT
+            and packet['core_manifest_sha256'] == cli.CORE_MANIFEST_SHA256, 'PACKET_SCOPE')
+    required = cli.CORE_FILES | {CLI, PROGRAM, *cli.GATE_SOURCES, *cli.HELPERS, *EXTRA}
+    pins = packet['source_sha256']
+    require(type(pins) is dict and set(pins) == required and all(pin(p) for p in pins.values()), 'SOURCE_SET')
+    require(all(pins[name] == value for name, value in CPU_PINS.items()), 'CPU_SOURCE_BINDING')
+    require(all(pins[name] == value for name, value in cli.optimizer_source_pins().items()), 'OPTIMIZER_SOURCE_BINDING')
+    require(pins[FENCE] == FENCE_SHA, 'FROZEN_FENCE_BINDING')
+    source = {name: read(Path(root)/name, SOURCE_CAP) for name in sorted(required)}
+    require(sum(map(len, source.values())) <= 1024**2
+            and all(sha(source[name]) == pins[name] for name in required), 'SOURCE_BYTES')
+    core_raw = cli._read(root, cli.MANIFEST_NAME, JSON_CAP)
+    require(sha(core_raw) == cli.CORE_MANIFEST_SHA256, 'CORE_MANIFEST')
+    core = cli._json(core_raw)
+    require(type(core.get('sources')) is dict and set(core['sources']) == cli.CORE_FILES
+            and all(pins[name] == value for name, value in core['sources'].items()), 'CORE_PINS')
+    evidence_pins = packet['evidence_sha256']
+    require(type(evidence_pins) is dict and set(evidence_pins) == set(cli.EVIDENCE) | set(CPU_EVIDENCE)
+            and all(pin(p) for p in evidence_pins.values())
+            and all(evidence_pins[name] == p for name, p in CPU_EVIDENCE.items()), 'EVIDENCE_PINS')
+    evidence = {name: read(Path(root)/name, JSON_CAP) for name in sorted(evidence_pins)}
+    require(all(sha(evidence[name]) == p for name, p in evidence_pins.items()), 'EVIDENCE_BYTES')
+    source_digest, evidence_digest = validate_run_binding(cli, pins, evidence_pins, evidence, root)
+    envelopes = packet['prelaunch_sha256']
+    names = {f'prelaunch_{f}_{s}.json' for f in cli.FAMILIES for s in cli.SEEDS}
+    require(type(envelopes) is dict and set(envelopes) == names and all(pin(p) for p in envelopes.values()), 'ENVELOPE_SET')
+    for family in sorted(cli.FAMILIES):
+        for seed in cli.SEEDS:
+            name = f'prelaunch_{family}_{seed}.json'
+            item = cli._envelope(cli._read(root, name, JSON_CAP), envelopes[name], root,
+                root+'_'+family+'_'+str(seed), cli.PACKAGE_ROOT, family, seed,
+                trusted_supplement_sha256={p: pins[p] for p in cli.HELPERS},
+                trusted_evidence_sha256={p: evidence_pins[p] for p in cli.EVIDENCE},
+                trusted_freeze_supplement_sha256={p: pins[p] for p in FREEZE_SOURCES})
+            require(item['source_binding_sha256'] == source_digest
+                    and item['legacy_evidence_binding_sha256'] == evidence_digest
+                    and item['helper_sha256'] == {p: pins[p] for p in cli.HELPERS}
+                    and item['gate_source_sha256'] == cli.optimizer_source_pins()
+                    and all(item[field] == evidence_pins[name] for name, field in cli.EVIDENCE.items()), 'ENVELOPE_PACKET')
+    return cli, packet, source, evidence, core_raw
+
+
+def mapping_digest(value):
+    """Legacy canonical JSON digest; map integrity is not self-issued authority."""
+    require(type(value) is dict and all(type(k) is str and pin(v) for k, v in value.items()),
+            'BINDING_MAP')
+    raw = json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()
+    require(0 < len(raw) <= JSON_CAP, 'BINDING_MAP_BOUND')
+    return sha(raw)
+
+
+def validate_run_binding(cli, source_pins, evidence_pins, evidence, root):
+    """Bind mandatory external review to entire exact source/evidence maps."""
+    require(root == ROOT and type(source_pins) is dict and type(evidence_pins) is dict
+            and type(evidence) is dict and set(evidence) == set(evidence_pins)
+            and all(pin(v) for v in evidence_pins.values())
+            and all(type(raw) is bytes and 0 < len(raw) <= JSON_CAP
+                    and sha(raw) == evidence_pins[name] for name, raw in evidence.items()),
+            'RUN_EVIDENCE_ANCHORS')
+    require('run_authorization.json' in evidence and 'run_binding_review.json' in evidence,
+            'RUN_EVIDENCE_REQUIRED')
+    cli.validate_run_authorization(evidence['run_authorization.json'],
+        trusted_run_authorization_sha256=evidence_pins['run_authorization.json'], source_root=root)
+    source_digest = mapping_digest(source_pins)
+    evidence_digest = mapping_digest({p: h for p, h in evidence_pins.items()
+                                     if p != 'run_binding_review.json'})
+    cli.validate_run_binding_review(evidence['run_binding_review.json'],
+        trusted_review_sha256=evidence_pins['run_binding_review.json'], source_root=root,
+        source_binding_sha256=source_digest, legacy_evidence_binding_sha256=evidence_digest)
+    expected = dict(schema='v5-fresh-train-run-binding-review-v1',
+        status='PASS_V5_FRESH_RUN_BINDING_REVIEW', scope='V5_FREEZE_V2_TRAIN_ONLY_18_FITS',
+        source_root=root, run_authorization_sha256=evidence_pins['run_authorization.json'],
+        core_manifest_sha256=cli.CORE_MANIFEST_SHA256, source_binding_sha256=source_digest,
+        legacy_evidence_binding_sha256=evidence_digest)
+    review = cli._json(evidence['run_binding_review.json'])
+    require(type(review) is dict and set(review) == set(expected)
+            and all(type(review[k]) is type(v) and review[k] == v for k, v in expected.items()),
+            'RUN_BINDING_REVIEW')
+    return source_digest, evidence_digest
+
+
+def child_command(root, task, packet, cli):
+    require(root == ROOT and task.output == root+'_'+task.family+'_'+str(task.seed)
+            and root+'/jit_tmp/'+task.family+'_'+str(task.seed) in jit_roots(root), 'TASK')
+    name = f'prelaunch_{task.family}_{task.seed}.json'
+    return [INTERPRETER, '-I', '-S', '-B', '-c',
+        bootstrap(root, CLI, packet['source_sha256'][CLI]), '--source-root', root,
+        '--output', task.output, '--package-root', cli.PACKAGE_ROOT, '--family', task.family,
+        '--seed', str(task.seed), '--envelope-sha256', packet['prelaunch_sha256'][name],
+        '--trusted-supplement-sha256-json', json.dumps(
+            {p: packet['source_sha256'][p] for p in cli.HELPERS}, sort_keys=True),
+        '--trusted-freeze-supplement-sha256-json', json.dumps(
+            {p: packet['source_sha256'][p] for p in FREEZE_SOURCES}, sort_keys=True),
+        '--trusted-evidence-sha256-json', json.dumps(
+            {p: packet['evidence_sha256'][p] for p in cli.EVIDENCE}, sort_keys=True)]
+
+
+def run(root, manifest_sha, *, trusted_source_sha256=None, trusted_evidence_sha256=None):
+    runtime()
+    cli, packet, source, evidence, core_raw = load_packet(root, manifest_sha,
+        trusted_source_sha256=trusted_source_sha256, trusted_evidence_sha256=trusted_evidence_sha256)
+    # Fresh check on B is required; previous absent observations are not authority.
+    absent(TRAIN_ONCE_PREFIX+cli.RUN_AUTHORIZATION_SHA256+'.once.json')
+    fence = external('_v5_serial_fence', source[FENCE])
+    python = {p: source[p] for p in cli.CORE_FILES if p.endswith('.py')}
+    python_pins = {p: packet['source_sha256'][p] for p in python}
+    with global_worker_lock(), fence.sealed_imports(python, python_pins):
+        from src.models import ranking_v5_caller_source_binding as binder
+        from src.models import ranking_v5_approval_binding as approval
+        from src.models import ranking_v5_bound_input_reader as inputs
+        from src.models import ranking_v5_parent_guard_receipt as guard_receipt
+        from src.models import ranking_v4_memory_guard as guard
+        binder.validate_source_bytes(core_raw, {p: source[p] for p in cli.CORE_FILES},
+                                     trusted_manifest_sha256=cli.CORE_MANIFEST_SHA256)
+        release = cli._json(evidence['release.json'])
+        expected = {p: packet['source_sha256'][p] for p in cli.RELEASE_SOURCE_FILES}
+        anchors = dict(trusted_authorization_sha256=cli.AUTHORIZATION_SHA256,
+            trusted_review_sha256=packet['evidence_sha256']['review.json'],
+            trusted_physical_gate_sha256=packet['evidence_sha256']['physical_gate.json'])
+        approval.validate_approval_integrity(release, expected, evidence['authorization.json'],
+                                            evidence['review.json'], **anchors)
+        cpu = external('_v5_serial_cpu_evidence', source[CPU_PROGRAM])
+        cpu_child = cli._json(evidence['cpu_gate.child.json'])
+        cpu.validate_child(cpu_child, CPU_PINS)
+        cpu_launch = cli._json(evidence['cpu_gate.launch.json'])
+        cpu_memory = cli._json(evidence['cpu_gate.memory.json'])
+        guard_receipt.validate_parent_guard_receipt(cpu_launch['parent_guard_receipt'], cpu_memory)
+        require(cpu_launch['child_receipt_sha256'] == CPU_EVIDENCE['cpu_gate.child.json']
+                and cpu.typed_equal(cpu_launch['child_receipt'], cpu_child), 'CPU_RECEIPT')
+        cli.validate_optimizer_evidence(source, evidence, guard_receipt)
+        with supplemental_aliases({p: source[p] for p in EXTRA}, cli,
+                {p: packet['source_sha256'][p] for p in EXTRA}) as (_, binding, matrix, collector):
+            tasks = matrix.build_train_matrix(root)
+            # Repeat point-in-time observations inside the global lock. Old once
+            # is never inspected or changed; only this independently bound quota.
+            absent(TRAIN_ONCE_PREFIX+cli.RUN_AUTHORIZATION_SHA256+'.once.json')
+            for path in (Path(root)/'jit_tmp', Path(root)/'matrix.started.json',
+                         Path(root)/'matrix.final.json'):
+                absent(path)
+            for task in tasks:
+                for path in (task.output, task.output+'.stdout.log', task.output+'.stdout.log.memory.json',
+                             cli.admission_sidecar_path(root, task.family, task.seed)):
+                    absent(path)
+            write_once(TRAIN_ONCE_PREFIX+cli.RUN_AUTHORIZATION_SHA256+'.once.json',
+                dict(schema='v5-fresh-train-one-use-authorization-v1', source_root=root,
+                    run_authorization_sha256=cli.RUN_AUTHORIZATION_SHA256,
+                    run_authorization_id=cli.RUN_AUTHORIZATION_ID,
+                    source_binding_sha256=mapping_digest(packet['source_sha256']),
+                    packet_sha256=manifest_sha, planned_fits=18, automatic_retries=0))
+            write_once(Path(root)/'matrix.started.json', dict(schema='v5-serial-started-v1',
+                packet_sha256=manifest_sha, planned_fits=18, roles=['TRAIN'], automatic_retries=0))
+            contexts = {}
+            try:
+                for task in tasks:
+                    loaded = inputs.load_bound_fold_request(cli.PACKAGE_ROOT, task.family, task.seed)
+                    contexts[(task.family, task.seed)] = binding.build_independent_fit_context(
+                        loaded['request'], release, expected, loaded['input_identity'],
+                        evidence['authorization.json'], evidence['review.json'],
+                        family=task.family, seed=task.seed, **anchors)
+                    del loaded
+            except BaseException as error:
+                write_once(Path(root)/'matrix.final.json', dict(schema='v5-serial-parent-result-v1',
+                    packet_sha256=manifest_sha, status='STOPPED_PREFLIGHT_NO_RETRY',
+                    completed_count=0, preflight_context_count=len(contexts),
+                    failure_kind=type(error).__name__[:64], automatic_retries=0,
+                    actual_parent_guard_used=False, actual_fits_started=0))
+                raise
+            prepare_jit_roots(root, cli.FAMILIES, cli.SEEDS)
+            guards, checks = {}, []
+            def execute(task):
+                for path in (task.output, task.output+'.stdout.log', task.output+'.stdout.log.memory.json',
+                             cli.admission_sidecar_path(root, task.family, task.seed)):
+                    absent(path)
+                args = child_command(root, task, packet, cli)
+                guards[(task.family, task.seed)] = guard.run_bounded(args, task.output+'.stdout.log',
+                    child_environment(root+'/jit_tmp/'+task.family+'_'+str(task.seed)))
+                return task
+            def review(task):
+                returned = guards[(task.family, task.seed)]
+                reread = cli._json(read(task.output+'.stdout.log.memory.json', JSON_CAP))
+                guard_receipt.validate_parent_guard_receipt(returned, reread)
+                admission = cli.validate_fit_admission_receipt(
+                    read(cli.admission_sidecar_path(root, task.family, task.seed), JSON_CAP),
+                    source_root=root, output=task.output, family=task.family, seed=task.seed,
+                    trusted_supplement_sha256={p: packet['source_sha256'][p] for p in cli.HELPERS},
+                    trusted_freeze_supplement_sha256={p: packet['source_sha256'][p] for p in FREEZE_SOURCES},
+                    source_binding_sha256=mapping_digest(packet['source_sha256']),
+                    legacy_evidence_binding_sha256=mapping_digest({
+                        p: h for p, h in packet['evidence_sha256'].items()
+                        if p != 'run_binding_review.json'}),
+                    run_binding_review_sha256=packet['evidence_sha256']['run_binding_review.json'])
+                result = collector.collect_parent_artifact_candidate(root, task.output,
+                    task.output+'.stdout.log', context=contexts[(task.family, task.seed)],
+                    guard_returned_receipt=returned, guard_reread_receipt=reread)
+                checks.append(dict(family=task.family, seed=task.seed,
+                    admission_status=admission['status'], inside_save_hook_verified=False,
+                    artifact_check=result['artifact_check'], peak_combined_rss_bytes=reread['peak_combined_rss_bytes'],
+                    elapsed_seconds=reread['elapsed_seconds']))
+                return matrix.ReviewedTask(task, returned, reread, result['artifact_check'], True)
+            state = matrix.SerialTrainMatrix(root, tasks).run(execute_once=execute, review_independently=review)
+            final = dict(schema='v5-serial-parent-result-v1', packet_sha256=manifest_sha,
+                status='PASS_ACTUAL_SERIAL_TRAIN_ARTIFACT_BINDING' if len(state.completed) == 18 else 'STOPPED_NO_RETRY',
+                completed_count=len(state.completed), failed_index=state.failed_index,
+                failure_kind=state.failure_kind, remaining_count=len(state.remaining), checks=checks,
+                automatic_retries=0, workers=1, actual_parent_guard_used=True,
+                numerical_model_predictions_verified=False, numerical_held_metrics_verified=False,
+                blind_validation_pilot_lsf_tessent_allowed=False)
+            write_once(Path(root)/'matrix.final.json', final)
+            return final
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--source-root', required=True)
+    parser.add_argument('--packet-sha256', required=True)
+    parser.add_argument('--trust-file', required=True, help='independent sealed v3 source/evidence SHA maps')
+    args = parser.parse_args(argv)
+    require(args.source_root == ROOT and pin(args.packet_sha256), 'ROOT_PIN')
+    trust = json.loads(read(args.trust_file, JSON_CAP))
+    require(type(trust) is dict and set(trust) == {'source_sha256', 'evidence_sha256'}, 'TRUST_FIELDS')
+    result = run(args.source_root, args.packet_sha256,
+        trusted_source_sha256=trust['source_sha256'], trusted_evidence_sha256=trust['evidence_sha256'])
+    print(json.dumps(result, sort_keys=True, separators=(',', ':'), allow_nan=False))
+    return 0 if result['status'] == 'PASS_ACTUAL_SERIAL_TRAIN_ARTIFACT_BINDING' else 2
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

@@ -1,0 +1,53 @@
+{
+  "schema": "v5-train-v3-implementation-and-synthetic-evidence-audit-v1",
+  "status": "PASS_IMPLEMENTATION_FULL_REGRESSION_AND_LINUX_SYNTHETIC_ONLY",
+  "source_root": "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2",
+  "run_authorization_sha256": "78d34a96962c4e0cc87d3ccfb47beae5f699418a9ed34d717d0b19081e1c8d9c",
+  "implementation_reviewers": ["/root/fx2trt_repair_builder", "/root/jit_admission_design"],
+  "repair_reviewer": "/root/jit_admission_design",
+  "source_sha256": {
+    "scripts/run_v5_train_single_fit_v3.py": "1b22f4f58b645e180ed2f9c5afdffa39a04fe12fa2d93e35b697fdf947d3544a",
+    "scripts/run_v5_train_serial_parent_v3.py": "9c354487a957bc32520b4565786db3458b744f3e73b43c2632d8983ca46860b5",
+    "scripts/v5_train_launch_packet_v3.py": "4a08416bf584809c1e1896346e7fc6dcee1ff7e7ed9e7db0300097eefafad9a4",
+    "src/models/ranking_v5_train_jit_admission_v3.py": "c1104f613a92c6315fe09495d4995c7755827294cf69e92564ce8d51785de30d",
+    "src/models/ranking_v5_frozen_import_fence.py": "c8ba5ae9bc8f900a620b7eaf03e37e11f303d9fc8b08ccbc8c423682b0afafed"
+  },
+  "focused_local": {"tests_run": 76, "skipped": 4, "errors": 0, "failures": 0, "exit_code": 0, "platform": "Windows", "linux_proof": false},
+  "preparer_mock_tests": {"tests_run": 8, "skipped": 0, "errors": 0, "failures": 0, "actual_release_issued": false},
+  "linux": {
+    "scope": "PINNED_V3_SYNTHETIC_NON_ML_ONLY",
+    "root": "/ssd/cjc/gnn_model_ranking_v5_train_v3_unit_20261011_r1",
+    "driver_sha256": "a4f08f5c6ac163a0c652869955e03ebf9562e5f81522284a208feb198f9e63fc",
+    "plan_sha256": "2d5967101739f4cdc265c34cc1afc07d0cb56489ba3d5059a1ed7d987c65f642",
+    "receipt": "../runtime_training_staging_20260928/v5_train_v3_linux_unit_result_20261012_r2.json",
+    "receipt_sha256": "ee7eba8880823fbf0d7b1f4076e2a1c7d24a283b8c375be92ca7aae65149f74e",
+    "stdout_sha256": "2446be750a886a9bc9b5ad98246fdce598bf6b24215fe10aae7fe528f9dfbb78",
+    "raw_log_sha256": "d7e105b153adc565d4c77b62abd745b0637ace386d04adbb4ec5dfb32c45cf00",
+    "independent_evidence_reviewer": "/root/jit_admission_design",
+    "tests_run": 76, "skipped": 0, "errors": 0, "failures": 0, "exit_code": 0,
+    "gate_pass": true, "source_files": 57,
+    "training_invocations": 0, "optimizer_invocations": 0, "formal_package_reads": 0,
+    "python": "3.11.2", "kernel": "6.1.0-47-amd64", "gnu_sort": "9.1"
+  },
+  "full_regression_r1": {
+    "status": "FAIL_LOCAL_REGRESSION_PRESERVED",
+    "tests_run": 1403, "skipped": 44, "errors": 1, "failures": 0, "exit_code": 1,
+    "cause": "Synthetic parent fixture saw preloaded heavy modules from full-suite discovery; production fence retained",
+    "receipt_sha256": "79e8a14217ca81d94122beb3f106991c1970dc9a9a104a4e4334229b834d3a9d",
+    "log_sha256": "f556254ebdcdcc1093a7989b76f7c6f2c055c6a995225170352f257d8b94d507"
+  },
+  "full_regression_r2": {
+    "status": "PASS_LOCAL_FULL_REGRESSION_ONLY",
+    "receipt": "../runtime_training_staging_20260928/v5_train_v3_full_regression_20261012_r2.json",
+    "receipt_sha256": "8936a135c7a517f6d91b67da9f2f23a5e7f4f443f2833474a79072a7677bd53f",
+    "log_sha256": "c418009ba2cb0a796512c3a09b3beccd6d5b0c97bf22e7db02148fc132d2a183",
+    "tests_run": 1406, "skipped": 44, "errors": 0, "failures": 0, "exit_code": 0,
+    "source_unchanged": true, "snapshot_files": 59,
+    "independent_evidence_reviewer": "/root/jit_admission_design",
+    "linux_proof": false
+  },
+  "formal_training_runs": 0,
+  "training_authorization_consumed": false,
+  "deployment_performed": false,
+  "formal_training_release": false
+}
