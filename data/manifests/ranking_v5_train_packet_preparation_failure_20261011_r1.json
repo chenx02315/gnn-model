@@ -1,0 +1,18 @@
+{
+  "schema": "v5-local-packet-preparation-failure-v1",
+  "status": "FAIL_CLOSED_LOCAL_PREPARATION_ONLY",
+  "preparer_sha256": "702e61243d5cbe1e51aef41636ba9c20b6be4dff4f19e25283c078621e01e570",
+  "prospective_request_sha256": "e79b6b5e47c6527ffa07a9b220446cd6bc96e57a7d7bb85c0dbbe12ac80c1147",
+  "independent_review_sha256": "a0b360f184b73efb62da2159afa82947f1a9d18ecf3810ec28eb896d5ad63e0b",
+  "reviewed_trust_sha256": "2ffd0f17b2301c1631231d5bad6b330c8513f1196dfdf50951fc59beb6011c5f",
+  "failure": "V5_FENCE_PRELOADED_LOCAL",
+  "observed_boundary": "packet.build -> validate -> approval_integrity -> fence.sealed_imports",
+  "cause": "Preparation's raw guard execution imports src.models.ranking_v4_memory_guard before the packet's sealed core context.",
+  "preserved_staging_outputs": ["v5_serial_train_evidence_20261011_r1", "v5_serial_train_external_trust_20261011_r1.json"],
+  "archive_present_after_failure": false,
+  "new_training_deployment_performed": false,
+  "formal_training_fits": 0,
+  "new_smoke_invocations": 0,
+  "repair_boundary": "At most one focused repair in new preparer/output version, followed by independent review and complete pure-local rebuild; frozen runtime8/core26 unchanged.",
+  "claim_boundary": "Implementation seal and review/trust checks are not actual packet PASS; no launch release is asserted."
+}
