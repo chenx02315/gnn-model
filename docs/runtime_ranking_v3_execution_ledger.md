@@ -389,3 +389,9 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 新 helper/entry/parent/packet 完成；独立交叉复核发现并聚焦修复非规范 protected 路径问题。最终 r2 full=1223/39skip/0failure/error/exit0，日志 SHA9dd190a6e5a6e30deb9e22de477c029946b990520cbf70833a615d9e07edc673；修复前 r1 不代替最终回归。真实 Linux helper26/skip0 与原始 POSIX 单方法1/skip0均通过，二者不读正式package、不运行ML或optimizer；单方法证明不升格为全TRAIN集成证明。
 
 精确41source/13evidence/18envelope/74entry的新prospective请求生成，仅待审 subject，不是release。准备器首次直接脚本调用在写入前因repo import path缺失退出；显式绑定repo路径后生成成功，未修改被冻结runtime。extra reviewer槽不可用时以不同文件所有者交叉只读复核，不作者自签。旧once缺席快照不是放行；正式fit0、新TRAIN部署false、smoke追加次数0、内存及重试上限不变。详见 train_v2 integration 合同、implementation manifest 和中文记录。
+
+## 2026-10-11：TRAIN v2 实际启动，首任务冻结记录超限后停止
+
+准备器新r2聚焦修复、74项部署及读回通过后，新鲜环境快照与独立prelaunch审查通过；既有固定18 TRAIN权限实际消费一次。首任务iwls_aes_core/20260824 exit2，stdout最终V5_REAL_STORE_FREEZE_BOUND，父进程STOPPED_NO_RETRY；0项验收、17项未启动、retry0。14次采样combined541577216字节低于RSS1GiB，AS8GiB/单worker保持，cleanup活成员0。原始启动SHA fb42ba82a0afe207fc34796eee68827f72185ab3ff3f7ee7fd1b75efbad6257a、固定57目标收集SHA f1897a07f0e489f696e7df0675ef3edf0b404ad17f9e7c36bbdb99398c35e1e6经独立核验；once已消费，不重跑。
+
+独立静态诊断确认store的payload/envelope与readback均限20KiB；完整排序体积是可能来源，但实际payload长度未保存。模型/日志保存位于freeze之前，收集器不读模型，因此不能把0项验收写为0实际拟合。失败发生在已审计代码路径held outcomes callback之前；没有模型质量结论。下一新版本须同步冻结保存与读回边界、补规模测试、重新绑定并复核；实际新TRAIN仍须新明确权限。详见actual_failure manifest及中文记录；旧core与历史证据保留。
