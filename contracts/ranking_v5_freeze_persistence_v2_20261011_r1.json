@@ -1,0 +1,51 @@
+{
+  "schema": "ranking-v5-freeze-persistence-repair-contract-v2",
+  "status": "LOCAL_IMPLEMENTATION_AUTHORIZED_EXECUTION_CLOSED",
+  "authorization_scope": "New-version local freeze persistence, readback and acceptance repair, synthetic candidate-scale tests and independent review only.",
+  "historical_core26_immutable": true,
+  "full_scores_and_order_required": true,
+  "payload_schema_and_canonical_sha_unchanged": true,
+  "freeze_only_limits": {
+    "file_bytes": 16777216,
+    "held_candidates": 1706,
+    "uid_characters": 2048,
+    "graph_nodes": 5150,
+    "graph_depth": 4,
+    "pre_fit_upper_bound_formula": "2 * sum(canonical_JSON_quoted_held_UID_bytes) + 68 * held_candidate_count + 1024",
+    "pre_fit_reject_if_upper_bound_exceeds_file_bytes": true,
+    "all_max_length_uid_combinations_guaranteed_supported": false
+  },
+  "generic_receipt_and_log_graph_bounds_unchanged": true,
+  "generic_receipt_bytes": 20480,
+  "model_bytes": 1048576,
+  "log_total_bytes": 3145728,
+  "log_records": 122,
+  "source_file_bytes": 65536,
+  "supplement_source_total_bytes": 262144,
+  "preflight_reads_held_outcomes": false,
+  "prefit_capacity_failure_creates_output_or_runs_fit": false,
+  "decoder_must_bound_structure_before_json_loads": true,
+  "old_module_alias_replacement_allowed": false,
+  "resource_limits": {
+    "workers": 1,
+    "threads": 1,
+    "rss_bytes": 1073741824,
+    "address_space_bytes": 8589934592,
+    "automatic_retries": 0
+  },
+  "old_train_authorization_consumed": true,
+  "new_formal_training_authorized": false,
+  "remote_deployment_authorized": false,
+  "blind_validation_pilot_lsf_tessent_allowed": false,
+  "next_actual_run_requires_new_external_authorization_and_packet_binding": true,
+  "acceptance_scope": "Byte integrity and independently supplied input binding; no numerical model prediction or held metric verification claim.",
+  "required_checks": [
+    "Full 1025 and 1706 synthetic candidates persist and read back with exact legacy canonical SHA.",
+    "Legacy store and reader remain unchanged and still reject their old oversize boundary.",
+    "Freeze-specific byte/count/string/node/depth/canonical/hash corruption fail closed.",
+    "Capacity refusal precedes fitting, output creation and held outcome callbacks.",
+    "Generic receipt and log bounds remain unchanged.",
+    "Supplement bytes all authenticate before first compile; new names only; success and failure cleanup.",
+    "Complete local focused/full regression and independent cross-owner review before sealing."
+  ]
+}

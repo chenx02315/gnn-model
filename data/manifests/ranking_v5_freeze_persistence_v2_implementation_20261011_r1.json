@@ -1,0 +1,118 @@
+{
+  "schema": "ranking-v5-freeze-persistence-local-implementation-v2",
+  "status": "PASS_LOCAL_IMPLEMENTATION_ONLY_PRODUCTION_EXECUTION_PENDING",
+  "base_commit": "46f9b1f65b98afc18014072960d6ab17a8628a56",
+  "contract": "contracts/ranking_v5_freeze_persistence_v2_20261011_r1.json",
+  "source_sha256": {
+    "contracts/ranking_v5_freeze_persistence_v2_20261011_r1.json": "0c0b744ebe9be8f72a37c4b1ac8446b611d30e3a843bb4abe2136e7dfd19b823",
+    "src/models/ranking_v5_freeze_codec_v2.py": "aa51f59d6556eee816479a25321f0a8a76264641954c1b0e71169910c935535a",
+    "src/models/ranking_v5_freeze_supplement_v2.py": "1ca99c1977d31542cd7d47dde28ee0e9bc7ef4bf2e44ff17b919960f8176b9c7",
+    "src/models/ranking_v5_independent_fit_context_v2.py": "4b235d759a5fb12d4dc604c192c38a67032d82464cf623037522413d85afd8d7",
+    "src/models/ranking_v5_parent_artifact_candidate_v2.py": "66a84d00f98d423877c7f08fc9f8c8a33319f0eae2e82edbdcdcc9753baa6be5",
+    "src/models/ranking_v5_real_artifact_store_v2.py": "225c0ca1566497446ae967a4f3c2e531da897078dcf76499037c67572d2925fa",
+    "src/models/ranking_v5_single_fit_worker_v2.py": "ffc6e3493a24246668718524fe365cd10a78b3ac7590f926984ea579483ca544",
+    "src/models/ranking_v5_train_artifact_readback_v2.py": "a67388fd1b6716eb559f0f236c1069e119f0e753ef38749b335d63039db77b2a",
+    "tests/test_ranking_v5_freeze_codec_v2.py": "adabad1b060d41c5648e59199094a4c5cadbec836b19ad47b29067fa1b0af97c",
+    "tests/test_ranking_v5_freeze_supplement_v2.py": "a228c8412f804e26b0c384e609af31e1370bafbfa48e2b02f5ae8bc2a95461e3",
+    "tests/test_ranking_v5_independent_fit_context_v2.py": "16ecb1a2092090f6939136045ffb00d7a8221243c5ed5c8787b6cf2c267702c5",
+    "tests/test_ranking_v5_parent_artifact_candidate_v2.py": "415921f4ae687419d3eba2206e63dda468afb85b5f433627f993c044b6a54232",
+    "tests/test_ranking_v5_real_artifact_store_v2.py": "53236ad935f257ee87f700fa17116c0974f42a029fd1957a4d0a8eeb6cdd59b3",
+    "tests/test_ranking_v5_single_fit_worker_v2.py": "6bd4c2c7c8071ef9ad9469487659ed33ba435dc92e887be5701c2fa001a715fc",
+    "tests/test_ranking_v5_train_artifact_readback_v2.py": "22ddb9958201bb08ca5523a56de2fb73ababbec47c863300b491c17f74811d4f"
+  },
+  "final_full_regression": {
+    "status": "PASS_LOCAL_FULL_REGRESSION_ONLY",
+    "staging_directory": "../runtime_training_staging_20260928",
+    "log": "v5_freeze_v2_full_regression_20261011_r2.log",
+    "log_sha256": "f5417ed9882ef4619e17399a975fb8381d22011ee473a9c21e0abb7cbb13a7e0",
+    "log_bytes": 278698,
+    "summary": "v5_freeze_v2_full_regression_20261011_r2.json",
+    "summary_sha256": "bb5c3c29942db654760ff1ea2fe9fb1428a39e4b3ef6603e599235f5f67ac26c",
+    "driver": "run_v5_freeze_v2_regression_20261011_r2.py",
+    "driver_sha256": "52bba347dddd33d739c5e57ca01b6f196bb2b18f4786167a24eefb4200b76f39",
+    "tests_run": 1330,
+    "skipped": 40,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "elapsed_seconds": 250.90853519999655,
+    "source_unchanged": true,
+    "windows_capability_skips_are_not_linux_positive_gate": true
+  },
+  "preserved_first_regression": {
+    "log": "v5_freeze_v2_full_regression_20261011_r1.log",
+    "log_sha256": "51788a97b71a66777935e1fad718dbf26246bdba2becef3cc51ed52622514c0f",
+    "summary": "v5_freeze_v2_full_regression_20261011_r1.json",
+    "summary_sha256": "1837abb801b2ffe6c2f3da5de7e8f8f3d546fa7d07eb65c9249cd9363a334b04",
+    "raw_tests_run": 1329,
+    "raw_errors": 2,
+    "raw_skipped": 40,
+    "exit_code": 1,
+    "cause": "Full discovery preloaded the six new modules; two loader test fixtures incorrectly assumed a fresh namespace. Runtime PRELOADED refusal was correct.",
+    "focused_repair": "Test-only namespace isolation restores preloaded module and package identities; added discovery-preload restoration regression. Runtime sources unchanged.",
+    "summary_parser_caveat": "The preserved r1 summary incorrectly reports skipped=0 and errors=null on failure. Raw unittest log is authoritative for these counters; r2 parser handles failure counters."
+  },
+  "synthetic_capacity": {
+    "status": "PASS_LOCAL_SYNTHETIC_CAPACITY_ONLY",
+    "receipt": "v5_freeze_v2_capacity_20261011_r1.json",
+    "receipt_sha256": "d39490157802ca1ac9406b95998a0f92aca79dc0fd2a1a196bfdff3919cc5370",
+    "driver": "measure_v5_freeze_v2_capacity_20261011_r1.py",
+    "driver_sha256": "2144be2f8ea61ed6b587b01f0ec95f050a5ca55533cd40aa4880956e6584d55b",
+    "candidate_count": 1706,
+    "encoded_bytes": 16412060,
+    "preflight_upper_bound_bytes": 16518516,
+    "freeze_max_bytes": 16777216,
+    "peak_windows_working_set_bytes": 97886208,
+    "roundtrip_exact": true,
+    "hard_memory_limit_enforced": false,
+    "linux_training_memory_proven": false,
+    "package_total_rows_not_per_family_claim": true
+  },
+  "source_bootstrap": {
+    "status": "PASS_LOCAL_SOURCE_BOOTSTRAP_ONLY",
+    "receipt": "v5_freeze_v2_supplement_bootstrap_20261011_r1.json",
+    "receipt_sha256": "c62c8eb62ad1fcc4a43cfe97b911c0670420e49420e78e283ed66551bb0ff0f9",
+    "driver": "verify_v5_freeze_supplements_20261011_r1.py",
+    "driver_sha256": "ac487f75238dda40b9e69b73031ebb33d6be3c8c0136cf370a29a8fb8d2f3c7e",
+    "immutable_core_python_sources": 25,
+    "new_supplement_sources": 6,
+    "old_store_identity_preserved": true,
+    "real_linux_runtime_proven": false,
+    "production_cli_parent_packet_binding_proven": false
+  },
+  "independent_cross_owner_reviews": [
+    {
+      "reviewer": "fx2trt_repair_builder",
+      "scope": "New reader, context and collector; 43 tests with one Windows capability skip; exact frozen source hashes.",
+      "status": "PASS_IMPLEMENTATION_ONLY"
+    },
+    {
+      "reviewer": "train_v2_parent_packet_builder",
+      "scope": "New codec, store and worker; 57 tests with zero skips; exact frozen source hashes. Capacity/bootstrap raw receipts and drivers independently verified.",
+      "status": "PASS_LOCAL_IMPLEMENTATION_AND_CAPACITY_BOOTSTRAP_ONLY"
+    },
+    {
+      "reviewer": "jit_admission_design",
+      "scope": "Main-owned supplement loader and contract; seven loader tests including actual discovery preloads and identity restoration; genuine runtime PRELOADED refusal remains closed.",
+      "status": "PASS_LOCAL_IMPLEMENTATION_ONLY"
+    }
+  ],
+  "acceptance_boundaries": {
+    "historical_core26_changed": false,
+    "historical_failure_evidence_preserved": true,
+    "full_scores_and_order_preserved": true,
+    "generic_log_receipt_model_limits_unchanged": true,
+    "train_resources_unchanged": true,
+    "numerical_model_or_loss_changed": false,
+    "new_formal_training_calls": 0,
+    "remote_calls": 0,
+    "additional_actual_optimizer_calls": 0,
+    "new_deployment": false,
+    "formal_training_release": false,
+    "old_train_authorization_consumed": true,
+    "prior_zero_accepted_implies_zero_actual_fitting": false,
+    "numerical_predictions_or_held_metrics_independently_verified": false,
+    "blind_validation_pilot_lsf_tessent_unsealed": false,
+    "next_actual_run_requires_new_external_authorization_and_packet_binding": true
+  }
+}

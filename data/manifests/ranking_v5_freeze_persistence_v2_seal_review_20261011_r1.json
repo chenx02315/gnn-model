@@ -1,0 +1,33 @@
+{
+  "schema": "ranking-v5-freeze-persistence-local-seal-review-v2",
+  "status": "PASS_FINAL_LOCAL_SEAL_EVIDENCE_ONLY",
+  "reviewer": "train_v2_parent_packet_builder",
+  "review_mode": "Independent read-only cross-owner evidence audit; no edits, regression reruns, remote or ML calls.",
+  "reviewed_artifacts_sha256": {
+    "data/manifests/ranking_v5_freeze_persistence_v2_implementation_20261011_r1.json": "56723c6da1f757a779956081ced07c5640080459e3ef2189e52b6e81937d447a",
+    "docs/ranking_v5_freeze_persistence_v2_20261011.md": "276098a16a701fa7478cd44680c9f70f9cebc2c41e1cdae6ac60d3762391e5a3",
+    "docs/runtime_ranking_v3_execution_ledger.md": "4b183cb354e2f955756156b3e1ba255591901c21ec94b379fff3403b5c975a08"
+  },
+  "verified": {
+    "final_r2_raw_log_and_summary_hashes": true,
+    "final_tests_run": 1330,
+    "final_skipped_platform_or_dependency_capability": 40,
+    "final_failures": 0,
+    "final_errors": 0,
+    "final_exit_code": 0,
+    "unittest_elapsed_seconds": 249.528,
+    "wrapper_elapsed_seconds": 250.90853519999655,
+    "all_15_source_test_contract_pins": true,
+    "r1_to_r2_only_loader_test_fixture_changed": true,
+    "prior_failure_log_and_summary_preserved": true,
+    "r1_raw_counter_authority_caveat_recorded": true,
+    "capacity_and_bootstrap_receipt_and_driver_pins": true,
+    "capacity_encoding_in_memory_not_large_file_persistence": true,
+    "zero_accepted_not_zero_actual_fitting": true,
+    "old_authorization_consumed_and_new_execution_closed": true
+  },
+  "audit_adapter_note": "Initial UTF-8-only reviewer parsing of mixed Windows log bytes refused; raw-byte hashes and ASCII unittest counters were then verified with replacement decoding only for other text. This was not an actual regression failure or rerun.",
+  "formal_training_release": false,
+  "production_cli_parent_packet_binding_proven": false,
+  "linux_training_memory_proven": false
+}

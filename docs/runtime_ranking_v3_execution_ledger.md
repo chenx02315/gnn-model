@@ -395,3 +395,11 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 准备器新r2聚焦修复、74项部署及读回通过后，新鲜环境快照与独立prelaunch审查通过；既有固定18 TRAIN权限实际消费一次。首任务iwls_aes_core/20260824 exit2，stdout最终V5_REAL_STORE_FREEZE_BOUND，父进程STOPPED_NO_RETRY；0项验收、17项未启动、retry0。14次采样combined541577216字节低于RSS1GiB，AS8GiB/单worker保持，cleanup活成员0。原始启动SHA fb42ba82a0afe207fc34796eee68827f72185ab3ff3f7ee7fd1b75efbad6257a、固定57目标收集SHA f1897a07f0e489f696e7df0675ef3edf0b404ad17f9e7c36bbdb99398c35e1e6经独立核验；once已消费，不重跑。
 
 独立静态诊断确认store的payload/envelope与readback均限20KiB；完整排序体积是可能来源，但实际payload长度未保存。模型/日志保存位于freeze之前，收集器不读模型，因此不能把0项验收写为0实际拟合。失败发生在已审计代码路径held outcomes callback之前；没有模型质量结论。下一新版本须同步冻结保存与读回边界、补规模测试、重新绑定并复核；实际新TRAIN仍须新明确权限。详见actual_failure manifest及中文记录；旧core与历史证据保留。
+
+## 2026-10-11：冻结持久化 v2 本地修复与完整回归封存
+
+用户批准新版本保存、读回与验收修复及合成规模测试，未授权再启动真实TRAIN。新增七份版本化源码，保持完整scores/order与旧规范JSON/SHA；freeze专用16MiB/1706候选/5150节点，在fit与输出创建前只看UID元数据做容量拒绝，解码先做结构门禁。通用20KiB回执、模型/日志、旧core26和RSS1GiB/AS8GiB/单worker/零重试均不变。
+
+AgentFleet交叉独立复核及1025/1706合成保存/读回/连接通过；1706近上限样本16412060bytes完整一致，Windows峰值97886208bytes，不当Linux硬内存证明。原25源码fence下六新模块认证装载通过，旧store身份保留，不当新生产CLI/parent/packet绑定证明。首次full1329有2测试夹具错误/40skip；运行时正确拒绝discovery预加载，只修复测试隔离并补身份恢复测试，首轮原始证据保留且summary失败计数不足已注明。
+
+最终r2 full1330/40平台与依赖能力skip/0failure/error/exit0，250.909s，日志SHA f5417ed9882ef4619e17399a975fb8381d22011ee473a9c21e0abb7cbb13a7e0，15项源码/测试/合同哈希前后一致。此次无远端、部署、真实ML/optimizer调用；旧一次性TRAIN已消费，下一实际执行仍须新外层版本与明确权限。不把本地修复PASS写成训练完成、独立数值预测验证或模型提升。详见freeze_persistence_v2合同、implementation manifest与中文记录。
