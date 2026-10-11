@@ -1,0 +1,22 @@
+{
+  "schema": "v5-scoped-user-consent-provenance-v1",
+  "authorization_id": "USER_V5_JIT_REPAIR_SINGLE_SMOKE_20261010_R2",
+  "actual_user_reply": "授权",
+  "offered_scope": "修复受限动态模块准入；下一次真实验证需要新的单次授权。",
+  "provenance": "Direct latest user reply after 4ff66e6 stopped optimizer evidence summary; not a heartbeat or inferred retry permission.",
+  "new_optimizer_smoke_max_invocations": 1,
+  "optimizer_smoke_epochs": 120,
+  "optimizer_smoke_formal_package_reads": 0,
+  "preexecution_independent_review_required": true,
+  "new_scope_supersedes_consumed_optimizer_invocation_only": true,
+  "existing_train_condition_remains_actual_smoke_and_independent_audit": true,
+  "no_unconditional_train_release": true,
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "timeout_seconds": 1800,
+  "automatic_retries": 0,
+  "old_failed_roots_immutable": true,
+  "blind_validation_pilot_lsf_tessent_allowed": false
+}

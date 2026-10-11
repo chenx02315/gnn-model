@@ -372,3 +372,10 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 用户明确授权一次受控 CPU 合成优化器验证，通过后自动执行一次新固定18 TRAIN；scope 与 exact9 TRAIN 授权分开固定 raw SHA。AgentFleet 完成120-step/122-log smoke、授权级和 child 级一次性保护、共享 worker 锁，以及69条目 TRAIN 运输和真实成功证据前置绑定。独立发现并修复 request/recipe 及 family 日志字段/派生指标绑定缺口。85主定向测试及独立20 optimizer/47 TRAIN绑定测试通过；完整1102tests/33平台能力skip/0failure/error/exit0，147.677s，日志SHA4993e16d4d606c2743f115cc694e67b9c541d1ed9bd5c5aef3d4ea24d298ed62。core26、31依赖锁、数值模型和内存上限不变。
 
 五文件67012bytes部署到全新B optimizer_gate_20261010_r1，经完整读回及独立执行前封存后运行唯一一次。child在Adam构造时经_dynamo进入PyTorch分布式动态模板导入；临时目录追加sys.path被固定五路径门禁拒绝，V5_RUNTIME_SEARCH_PATHS。parent MEMORY_WORKER_FAILED/exit1，8samples/combined496074752/group474714112/cleanup存活0；没有optimizer.step完成，没有正式18TRAIN调用，自动重试0。失败raw与两个固定安装源码均保留SHA；下一版本先限定SSD临时存储及模板准入设计，不开放任意临时路径。此次单次额度已消耗，不能自动再跑smoke。详见ranking_v5_optimizer_gate_20261010.md、v9设计及optimizer_failure manifest；不把环境阻塞当模型排序结论。
+
+
+## 2026-10-11：r2 动态模板修复封存，单次真实验证仍失败
+
+用户新授权原始 SHA6e75f30d固定；只新增受限JIT helper、固定2355字节快照、新optimizer wrapper和七文件receiver，旧core26、依赖锁、数值kernel、旧context/OBS/optimizer不改。两路独立实现与review通过；44 focused及最终1146 full/35平台skip/0failure/error/exit0，日志SHA87f2376f28d34dfff6c02e021e8a7ca4d2ec4ad3a0d320203a76dc458cba81dd。B普通Python19项合成/文件系统测试真实通过，skip0；7条目85427bytes新root部署与逐字节readback通过。
+
+唯一一次新root optimizer_gate_20261010_r2调用exit1：Adam构造→_dynamo.trace_rules.add→find_spec可选缺席探测fx2trt_oss被UNKNOWN_ROOT拒绝。没有旧SEARCH_PATHS失败，但无成功JIT/120step回执；0step、模型/拟合/child/final缺失、0正式TRAIN矩阵调用、0重试。memory9samples/combined506441728/group485167104/cleanup0，AS8GiB/RSS1GiB未增加，无采样超限。独立原始证据审计PASS_FAILURE_EVIDENCE_AUDIT_ONLY；全局once文件未被此次8项collector独立重读。固定安装trace_rules文件只读摘录确认缺席find_spec语义，下一步合同仅设计proposed，不新smoke、不TRAIN。独立执行前审查一次本地递归文件名枚举误触protected目录AccessDenied，未内容读取；后续均精确指定路径，不声称全轮零访问。

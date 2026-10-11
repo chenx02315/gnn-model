@@ -1,0 +1,24 @@
+{
+  "schema": "v5-optional-probe-repair-proposal-v1",
+  "status": "DESIGN_ONLY_NO_EXECUTION_RELEASE",
+  "failure_manifest": "data/manifests/ranking_v5_jit_optimizer_failure_20261010_r2.json",
+  "goal": "Restore verified absent-module find_spec semantics without permitting unknown imports or changing numerical/dependency/resource settings.",
+  "proposed_probe": "fx2trt_oss",
+  "required_checks": [
+    "Exact top-level name and package=None, no submodules",
+    "Authenticated installed trace_rules source and probe call semantics",
+    "Fresh ordinary lookup through the five fixed dependency paths only; generated temp path excluded",
+    "No cached module, no discovered spec; installed or injected module must fail closed",
+    "Unknown direct imports still rejected, other probes retain current policy",
+    "Context restoration, exception and nested-entry regression tests",
+    "Independent implementation review plus Linux no-ML and full regression gates before any new smoke"
+  ],
+  "generic_unknown_module_absence_allowed": false,
+  "dependency_installs_allowed": false,
+  "dependency_or_numerical_changes_allowed": false,
+  "new_real_smoke_authorized": false,
+  "train_release": false,
+  "lsf_tessent_blind_validation_allowed": false,
+  "memory_caps_change_allowed": false,
+  "automatic_retries": 0
+}

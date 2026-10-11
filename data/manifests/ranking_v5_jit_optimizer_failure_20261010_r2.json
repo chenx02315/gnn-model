@@ -1,0 +1,44 @@
+{
+  "schema": "v5-single-use-jit-optimizer-failure-v1",
+  "status": "STOPPED_NO_RETRY",
+  "failure_independent_review": "PASS_FAILURE_EVIDENCE_AUDIT_ONLY",
+  "reviewer": "jit_smoke_preexecution_review",
+  "root": "/ssd/cjc/gnn_model_ranking_v5_optimizer_gate_20261010_r2",
+  "optimizer_invocations": 1,
+  "automatic_retries": 0,
+  "authorization_consumed": true,
+  "authorization_raw_sha256": "6e75f30d57d9459732752e17a1aeee820e46977f1de85ca57702f2091798651e",
+  "launch_exit_code": 1,
+  "launch_result_raw_sha256": "bd43e49dd9890e213726530bc141dbc5234ddfce9e23d411e04d2c8d64abc5a7",
+  "artifact_collection_raw_sha256": "01bb486e5de8ecf67d378ac8ec488b112e34ed6e6fd9955d812f04ebd47589f6",
+  "present_artifacts": {
+    "optimizer.started.json": {"bytes": 1201, "sha256": "5809eec64075303f6c171fa685e6a0a39b55c152a6ee775a4ce24f506967e626"},
+    "optimizer.child.started.json": {"bytes": 1201, "sha256": "5809eec64075303f6c171fa685e6a0a39b55c152a6ee775a4ce24f506967e626"},
+    "controlled_optimizer.log": {"bytes": 2980, "sha256": "06f64fe1393a3e6de75048d859ec776b2ce565cd8b2f3d90daada6e18f665ac8"},
+    "controlled_optimizer.log.memory.json": {"bytes": 737, "sha256": "d76313ef2b66c802a36d240d8faefa03d819c01547c843017e60d70ba32613df"}
+  },
+  "missing_artifacts": ["controlled_optimizer.child.json", "controlled_optimizer.launch.json", "synthetic_fitting.jsonl", "synthetic_model.pt"],
+  "terminal_error": "ModuleNotFoundError: V5_CONTROLLED_IMPORT_UNKNOWN_ROOT:fx2trt_oss",
+  "failure_stage": "Adam constructor -> torch._dynamo -> trace_rules.add -> importlib.util.find_spec",
+  "optimizer_steps_completed": 0,
+  "steps_count_basis": "Traceback at unchanged kernel line 72 before INITIAL record at line 84 and optimizer.step at line 89; no successful child/fitting artifact.",
+  "jit_template_success_receipt_present": false,
+  "formal_train_matrix_invocations": 0,
+  "production_package_reads": 0,
+  "formal_training_release": false,
+  "memory": {
+    "sample_count": 9, "peak_combined_rss_bytes": 506441728, "peak_group_rss_bytes": 485167104,
+    "live_group_members_after_cleanup": 0, "elapsed_seconds": 2.9410672979429364,
+    "address_space_cap_bytes": 8589934592, "sampled_combined_rss_cap_bytes": 1073741824,
+    "limitation": "Sampled RSS, not hard cgroup cap; no sampled cap exceedance observed."
+  },
+  "cuda_warning_retained_not_terminal_cause": true,
+  "installed_trace_rules": {
+    "bytes": 140951, "source_sha256": "ba438afd2b574d5d733532e7995ed04c29306f32b75df87657978288375bced5",
+    "read_only_excerpt_receipt_sha256": "38bf7a711062a772a670f21f246fcc8a8e0d8fee0f151695316f3667c4e810dc",
+    "lines": "3353-3361 and 3498-3500",
+    "finding": "Third-party skip-list uses absence-aware find_spec; if no module spec, returns without import."
+  },
+  "next_real_smoke_requires_new_single_invocation_authorization": true,
+  "result_is_not_model_quality_evidence": true
+}

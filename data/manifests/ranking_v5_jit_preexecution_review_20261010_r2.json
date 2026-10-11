@@ -1,0 +1,33 @@
+{
+  "schema": "v5-jit-preexecution-independent-review-v1",
+  "status": "PASS_PREEXECUTION_ONLY",
+  "helper_review": "jit_admission_design: PASS_IMPLEMENTATION_ONLY",
+  "wrapper_transport_staging_review": "jit_smoke_preexecution_review: PASS_PREEXECUTION_ONLY",
+  "helper_sha256": "d961ccd389c43ef2ae887e2072142259aa1b1e139133433a15863c9c157d3396",
+  "program_sha256": "490317891531e45ffc8d10ec38a73d21d5985083fce308967d01bc00d2fca61b",
+  "receiver_sha256": "bc106a81bf5edfd06184313e758d5b50752309ff17de61b54d497115743e60a0",
+  "staging_runner_sha256": "be2687d03f26e63f60087ec3a1af20a4364c325fb8b46c2e2ce02e77c90c27df",
+  "linux_unit_runner_sha256": "99f6338a0cf955349daf54d9c9b17ae6274ed0bcfeb4970844ae3ef83304463f",
+  "authorization_raw_sha256": "6e75f30d57d9459732752e17a1aeee820e46977f1de85ca57702f2091798651e",
+  "core_source_files_checked_unchanged": 26,
+  "old_optimizer_sha256": "597e0c48eb7930e200dbccd3f7e36f0404500fac72aa379dc886fb6b7c9b1d08",
+  "independent_local_wrapper_transport_tests": {"testsRun": 25, "skipped": 0, "failures": 0, "errors": 0},
+  "linux_actual_unit_gate": {
+    "raw_receipt_sha256": "7a10c8c65f172a08c7c0def3e529b1eeeeaee7ab35fe0ef4bffc84556821541b",
+    "testsRun": 19, "skipped": 0, "failures": 0, "errors": 0, "gate_pass": true, "exit_code": 0,
+    "optimizer_invocations": 0, "formal_package_reads": 0
+  },
+  "deployment_entries": 7,
+  "deployment_total_bytes": 85427,
+  "deployment_raw_sha256": "c976758d6699d7330031abffa95d5430b10817d9d64036f6008c1762ac4d1222",
+  "readback_raw_sha256": "6c0bf1bd42a5f169cd1825b686f6e2d21caff82952e59d85a132c081f56d90e0",
+  "full_regression_pass_required_before_optimizer_launch": true,
+  "full_regression": {
+    "testsRun": 1146, "skipped": 35, "failures": 0, "errors": 0, "exit_code": 0,
+    "seconds": 208.3908730999974,
+    "log_sha256": "87f2376f28d34dfff6c02e021e8a7ca4d2ec4ad3a0d320203a76dc458cba81dd",
+    "scope": "Windows regression; 33 existing platform skips plus 2 Linux helper skips separately passed on B"
+  },
+  "formal_training_release": false,
+  "review_boundary_deviation": "One local recursive filename enumeration touched protected staging directories and returned AccessDenied. No content read; exact paths only thereafter. Not zero access."
+}
