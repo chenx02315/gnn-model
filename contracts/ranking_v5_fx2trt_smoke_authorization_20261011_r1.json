@@ -1,0 +1,21 @@
+{
+  "schema": "v5-scoped-user-consent-provenance-v1",
+  "authorization_id": "USER_V5_FX2TRT_EXACT_PROBE_SINGLE_SMOKE_20261011_R1",
+  "actual_user_reply": "批准",
+  "offered_scope": "精确修复 fx2trt_oss 缺席探测协议，测试和独立复核通过后，再运行一次新合成验证；保持原内存上限、单 worker、零自动重试。",
+  "provenance": "Direct user approval following 2425f91 failed smoke seal, not automatic retry permission.",
+  "new_optimizer_smoke_max_invocations": 1,
+  "optimizer_smoke_epochs": 120,
+  "optimizer_smoke_formal_package_reads": 0,
+  "preexecution_independent_review_required": true,
+  "existing_train_condition_remains_actual_smoke_and_independent_audit": true,
+  "no_unconditional_train_release": true,
+  "workers": 1,
+  "threads": 1,
+  "address_space_cap_bytes": 8589934592,
+  "sampled_combined_rss_cap_bytes": 1073741824,
+  "timeout_seconds": 1800,
+  "automatic_retries": 0,
+  "old_failed_roots_immutable": true,
+  "blind_validation_pilot_lsf_tessent_allowed": false
+}

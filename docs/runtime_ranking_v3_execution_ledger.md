@@ -379,3 +379,7 @@ AgentFleet 有界实现、独立复核完成两个纯验收 helper：精确 26 �
 用户新授权原始 SHA6e75f30d固定；只新增受限JIT helper、固定2355字节快照、新optimizer wrapper和七文件receiver，旧core26、依赖锁、数值kernel、旧context/OBS/optimizer不改。两路独立实现与review通过；44 focused及最终1146 full/35平台skip/0failure/error/exit0，日志SHA87f2376f28d34dfff6c02e021e8a7ca4d2ec4ad3a0d320203a76dc458cba81dd。B普通Python19项合成/文件系统测试真实通过，skip0；7条目85427bytes新root部署与逐字节readback通过。
 
 唯一一次新root optimizer_gate_20261010_r2调用exit1：Adam构造→_dynamo.trace_rules.add→find_spec可选缺席探测fx2trt_oss被UNKNOWN_ROOT拒绝。没有旧SEARCH_PATHS失败，但无成功JIT/120step回执；0step、模型/拟合/child/final缺失、0正式TRAIN矩阵调用、0重试。memory9samples/combined506441728/group485167104/cleanup0，AS8GiB/RSS1GiB未增加，无采样超限。独立原始证据审计PASS_FAILURE_EVIDENCE_AUDIT_ONLY；全局once文件未被此次8项collector独立重读。固定安装trace_rules文件只读摘录确认缺席find_spec语义，下一步合同仅设计proposed，不新smoke、不TRAIN。独立执行前审查一次本地递归文件名枚举误触protected目录AccessDenied，未内容读取；后续均精确指定路径，不声称全轮零访问。
+
+## 2026-10-11：固定15名单获准修复，真实单次 optimizer 成功
+
+早先单名称批准未消费，随后用户批准覆盖经安装源码 SHA 核验的固定15缺席名称；两批准合计仅一次验证。新 helper/入口/八文件运输保留旧26核心，直接 import 仍拒绝、缓存和存在 spec 均 fail-closed。独立执行前复核、1170 full/36平台skip/零失败错误/exit0及真实Linux31/skip0全部通过后，fresh optimizer_gate_20261011_r1仅启动一次，exit0/120step/122record，JIT/probe证明通过，15探测各一次。combined533086208/11samples，AS8GiB/RSS1GiB、单worker、retry0保持；checkpoint留B，正式fit/package/held读取0。实际回执独立审计与下一版18TRAIN入口衔接继续推进；本节点不是模型效果结论。详见 fixed_probe 两manifest及中文记录。
