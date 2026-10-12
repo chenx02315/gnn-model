@@ -1,0 +1,77 @@
+{
+  "status": "PASS_ACTUAL_TRAIN_TARGET_COST_DIAGNOSTIC_WITH_INDEPENDENT_AGGREGATE_AUDIT",
+  "base_commit": "c9899b1f7b9829126027e6d543f19f830cf4f342",
+  "authorization_sha256": "d53e734e9404c9e0de91ccbf4554714d1b5066feefcc094496af0ddf61ee7bc1",
+  "package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "source_manifest_sha256": "f0c06502fda22a67b36edfd41deef75de2c0c4aca366acbcb64666c669c90a54",
+  "source_files": {
+    "src/models/ranking_v5_target_cost_diagnostic.py": "4bd339617bdb982bdd8b1412b96a0d37de15a77c4c8f00c1abf81cc2ea9a8897",
+    "tests/test_ranking_v5_target_cost_diagnostic.py": "527208031ebc8cbf4bf8a6f5c424a8be1859ef61ce82e25822f4c4a1afd54cba",
+    "scripts/run_v5_target_cost.py": "f1fa1212f166878c052a8b2511f2f9f5aa6c68d611ce1a298e11d1d7f3093fde",
+    "tests/test_run_v5_target_cost.py": "7acb1ecb8b1ea82db5c858eb08cdf097e0f367deb07d9d41b4b5484fdf67d5a0",
+    "src/models/ranking_v5_feature_support.py": "836040988ad6414608077455fa707f9dd5827b10e8ca932786defd499b770243",
+    "src/models/ranking_v4_memory_guard.py": "3dcaf6fd545aa1c5358146567cf55a8ac6593aa14af42f31ec965f8f62c79896"
+  },
+  "stage_sha256": "d49240d5c1d892d85829f9f17cb673f057975b26ad8135229fb35610ed0577ab",
+  "linux_gate": {
+    "testsRun": 16, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0,
+    "receipt_sha256": "e1e1d79a8f111288f396c6bb11e5c5547a85e7f09e8917ba763be09cdffd998d"
+  },
+  "local_full_regression": {
+    "testsRun": 1510, "skipped": 51, "exit_code": 0,
+    "receipt_sha256": "f3fe8c7d88ff124f99a7d4a9f1f28e0a23f6d11c067ead0765ea0afdff416eaf",
+    "log_sha256": "4426d17efe1b1754e454bfbf9675f30eb7a453140a8d18681855e6ae01973107",
+    "note": "Target diagnostic snapshot before subsequent synthetic-only v6 reference tests; Windows capability skips are not Linux PASS."
+  },
+  "actual": {
+    "exit_code": 0, "authenticated_file_count": 31, "unique_action_count": 1706,
+    "positive_count": 14, "hf_positive_count": 7, "hmf_positive_count": 7,
+    "family_pair_count": 15, "direction_comparable_family_pair_count": 3,
+    "unordered_key_pair_comparisons": 19, "concordant": 7, "discordant": 12,
+    "ambiguous_grid_key_count": 0,
+    "workers": 1, "automatic_retries": 0, "rss_sample_count": 1,
+    "peak_combined_rss_bytes": 42094592,
+    "rss_cap_bytes": 1073741824, "address_space_cap_bytes": 8589934592,
+    "output_root": "/ssd/cjc/gnn_model_ranking_v5_target_cost_20261012_r1",
+    "receipt_sha256": "eb114f05de91998778c2b97fd6f328d506847e0936dd225f9d5869f41ba55eb2",
+    "seven_raw_receipts_packet_sha256": "8cc4356473ae484e21e5237e2960176da899c5b7dca9f1d7f427f657854e2847",
+    "raw_packet_bytes": 61498,
+    "metrics_sha256": "e812e47488c36d25b27691de1e1d17b73f91cd96d8051a851e874a8ac9034f6a"
+  },
+  "cost_lineage": {
+    "meaning": "arithmetic mean of complete historical invocation costs, each summing all mapped wall-time attempts including mapped retry/failure costs",
+    "aggregation_contract_sha256": "80f484f1ef24bfd5e55c85f66d8c60d07257e87ef11d6952a266e6ce2175a7f0",
+    "training_package_contract_sha256": "47afd693156a2362ca3b7ef11e3f73112a64670fee104a5c3f56dcb26529f4c1",
+    "runtime_policy_v1_sha256": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586",
+    "runtime_policy_v2_sha256": "94e5e903f1debfafab35131bb9245a681db7df6616e1d869f651fdb5ceaadc35",
+    "raw_attempt_logs_reaudited": false,
+    "primary_online_prefix_cost_replay": false
+  },
+  "independent_review": {
+    "agent": "/root/target_cost_review", "role": "terra_reviewer",
+    "implementation": "PASS_IMPLEMENTATION_ONLY", "stage": "PASS_STAGING_ONLY",
+    "prelaunch": "PASS_PRELAUNCH", "actual": "PASS_ACTUAL_AGGREGATE_AUDIT",
+    "scope": "byte/SHA/receipt/aggregate consistency; not independent raw-label recomputation",
+    "procedural_exception": "Reviewer once attempted overbroad local staging filename/directory-metadata enumeration via rg --files; OS returned access denied for protected sibling directories. No contents, raw labels, graphs or models from those directories were read. Enumeration stopped; subsequent review used only exact allowed file paths. Remote diagnostic scope was not expanded. Zero unauthorized metadata attempts is not claimed."
+  },
+  "portable_report": {
+    "artifact_sha256": "e29c3fd5fac2ca37e6d3e9279c8b486e74113a760613df0ea7495d5a498f2c71",
+    "html_sha256": "77a5675f463209555625c32761cc7b390e59868bfc80775370ebbd19575f2bfd",
+    "html_bytes": 483779, "verification": "structural_only",
+    "browser_qa": "NOT_EXECUTED_NO_INSTALLED_CHROMIUM_HEADLESS_SHELL"
+  },
+  "synthetic_reference": {
+    "status": "DRAFT_DESIGN_NOT_TRAINER",
+    "independent_review": "PASS_REFERENCE_SYNTHETIC_ONLY",
+    "module_sha256": "e0704d11e87f2ec1a319e1b5f7b4917d77a6c6832b1cef0dcea9a42a0bb4895e",
+    "tests_sha256": "1e50d0e42b01fcb7016eb4b5246455a2044f9e4b9bc9aafc84cff2f3c45dbc66",
+    "design_sha256": "93685f3167e2c9d2db3cf9f59b70255f242f0df2873d36460c75e56ee4387e55",
+    "reference_tests": {"testsRun": 10, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+    "combined_focused_tests": {"testsRun": 26, "skipped": 1, "failures": 0, "errors": 0, "exit_code": 0},
+    "scope": "synthetic arithmetic only; no trainer, stochastic estimator, real-order replay, model predictions or online cost claim",
+    "numerical_repairs": "Added floatmax overflow, wide-range underflow and smallest-subnormal regressions; ordinary weighted fsum is primary, scaled fallback handles overflow or zero underflow with final finite-positive check. These are local reference repairs, not retries of the real diagnostic."
+  },
+  "restrictions": ["no training", "no tuning", "no model loads", "no BLIND/VALIDATION/PILOT", "no raw graphs", "no LSF/Tessent", "no protected root", "no online speedup claim"],
+  "statistical_limits": "14 positives descriptive only; 19 direction comparisons correlated and low coverage, not generalization or causal evidence; SUCCESS curated set cannot estimate candidate failure rates",
+  "next_node": "SYNTHETIC_FIRST_HIT_REFERENCE_AND_DRAFT_DESIGN_ONLY_NOT_TRAINER"
+}

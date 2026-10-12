@@ -1,0 +1,22 @@
+{
+  "schema": "v5-target-cost-readonly-authorization-v1",
+  "basis": "User replied 授权 to the explicit fixed TRAIN cycles/cost label read-only diagnostic proposal after c9899b1. This record is not self-proving consent.",
+  "plan": "docs/ranking_v5_next_target_diagnostic_plan_20261012.md",
+  "package_root": "/ssd/cjc/gnn_model_ranking_v3_train_0ca7dbf_20261004_r1/train_folds",
+  "package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "new_output_root": "/ssd/cjc/gnn_model_ranking_v5_target_cost_20261012_r1",
+  "roles": ["TRAIN"], "family_count": 6, "unique_action_count": 1706,
+  "reads": ["receipt.json", "six fold manifest.json", "fit_features.json", "heldout_features.json", "fit_outcomes.json", "heldout_outcomes.json"],
+  "outcome_fields": ["execution_status", "is_d95_feasible", "total_cycles", "policy_charged_runtime_s"],
+  "epsilon_integer_comparison": "100*cycles<=101*family_wide_oracle_cycles",
+  "k": 10, "workers": 1, "automatic_retries": 0,
+  "rss_cap_bytes": 1073741824, "address_space_cap_bytes": 8589934592,
+  "maximum_result_bytes": 65536,
+  "aggregate_output_only": true,
+  "independent_review_and_synthetic_gate_before_real_labels": true,
+  "primary_online_prefix_cost_replay_allowed": false,
+  "new_model_loads_allowed": false, "training_allowed": false, "tuning_allowed": false,
+  "blind_validation_pilot_allowed": false, "raw_graphs_allowed": false,
+  "lsf_tessent_allowed": false, "protected_root_access_allowed": false,
+  "old_training_and_once_mutation_allowed": false
+}

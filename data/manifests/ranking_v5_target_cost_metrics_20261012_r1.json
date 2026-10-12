@@ -1,0 +1,992 @@
+{
+  "action_count": 1706,
+  "authenticated_file_count": 31,
+  "correlation_scale": "within_family_only; oracle scaling preserves ranks",
+  "cost_meaning": "existing frozen policy charged runtime; not online wall time",
+  "cost_quantile": "linear_interpolation_(n-1)*p",
+  "epsilon": {
+    "denominator": 100,
+    "numerator": 101,
+    "oracle": "family_all_HF_HMF"
+  },
+  "families": {
+    "iscas89_s13207": {
+      "action_count": 295,
+      "by_scheme": {
+        "HF": {
+          "action_count": 43,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 42,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 42,
+              "max": 167.44,
+              "median": 81.8825,
+              "min": 51.77,
+              "p90": 94.099
+            },
+            "overall": {
+              "count": 43,
+              "max": 167.44,
+              "median": 81.685,
+              "min": 51.77,
+              "p90": 94.078
+            },
+            "positives": {
+              "count": 1,
+              "max": 71.26,
+              "median": 71.26,
+              "min": 71.26,
+              "p90": 71.26
+            }
+          },
+          "positive_count": 1,
+          "positive_rate": 0.023255813953488372,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 43,
+            "null_reason": null,
+            "rho": 0.058894593778314706
+          }
+        },
+        "HMF": {
+          "action_count": 252,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 251,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 251,
+              "max": 137.84,
+              "median": 93.72,
+              "min": 71.11,
+              "p90": 104.17
+            },
+            "overall": {
+              "count": 252,
+              "max": 137.84,
+              "median": 93.75,
+              "min": 71.11,
+              "p90": 104.169
+            },
+            "positives": {
+              "count": 1,
+              "max": 103.66,
+              "median": 103.66,
+              "min": 103.66,
+              "p90": 103.66
+            }
+          },
+          "positive_count": 1,
+          "positive_rate": 0.003968253968253968,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 252,
+            "null_reason": null,
+            "rho": 0.356259993329869
+          }
+        }
+      },
+      "comparable_grid": {
+        "ambiguous_action_count": 0,
+        "ambiguous_key_count": 0,
+        "key_count": 295,
+        "unique_key_count": 295
+      },
+      "family_wide_oracle_cycles": 3220,
+      "guaranteed_hit_within_k_without_replacement": false,
+      "negative_count": 293,
+      "negative_count_lt_k": false,
+      "policy_charged_runtime_s": {
+        "negatives": {
+          "count": 293,
+          "max": 167.44,
+          "median": 93.51,
+          "min": 51.77,
+          "p90": 104.152
+        },
+        "overall": {
+          "count": 295,
+          "max": 167.44,
+          "median": 93.51,
+          "min": 51.77,
+          "p90": 104.144
+        },
+        "positives": {
+          "count": 2,
+          "max": 103.66,
+          "median": 87.46000000000001,
+          "min": 71.26,
+          "p90": 100.42
+        }
+      },
+      "positive_count": 2,
+      "positive_rate": 0.006779661016949152,
+      "spearman_cycles_vs_policy_charged_runtime": {
+        "count": 295,
+        "null_reason": null,
+        "rho": 0.29902281919370866
+      }
+    },
+    "iscas89_s15850": {
+      "action_count": 276,
+      "by_scheme": {
+        "HF": {
+          "action_count": 56,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 56,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 56,
+              "max": 96.52,
+              "median": 93.9825,
+              "min": 63.31,
+              "p90": 95.21000000000001
+            },
+            "overall": {
+              "count": 56,
+              "max": 96.52,
+              "median": 93.9825,
+              "min": 63.31,
+              "p90": 95.21000000000001
+            },
+            "positives": {
+              "count": 0,
+              "max": null,
+              "median": null,
+              "min": null,
+              "p90": null
+            }
+          },
+          "positive_count": 0,
+          "positive_rate": 0.0,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 56,
+            "null_reason": null,
+            "rho": -0.20111082701805322
+          }
+        },
+        "HMF": {
+          "action_count": 220,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 218,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 218,
+              "max": 107.5,
+              "median": 103.74,
+              "min": 83.61,
+              "p90": 105.45
+            },
+            "overall": {
+              "count": 220,
+              "max": 107.5,
+              "median": 103.74,
+              "min": 83.61,
+              "p90": 105.45
+            },
+            "positives": {
+              "count": 2,
+              "max": 103.79,
+              "median": 103.07,
+              "min": 102.35,
+              "p90": 103.646
+            }
+          },
+          "positive_count": 2,
+          "positive_rate": 0.00909090909090909,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 220,
+            "null_reason": null,
+            "rho": 0.01151461395555109
+          }
+        }
+      },
+      "comparable_grid": {
+        "ambiguous_action_count": 0,
+        "ambiguous_key_count": 0,
+        "key_count": 276,
+        "unique_key_count": 276
+      },
+      "family_wide_oracle_cycles": 2694,
+      "guaranteed_hit_within_k_without_replacement": false,
+      "negative_count": 274,
+      "negative_count_lt_k": false,
+      "policy_charged_runtime_s": {
+        "negatives": {
+          "count": 274,
+          "max": 107.5,
+          "median": 103.35499999999999,
+          "min": 63.31,
+          "p90": 105.257
+        },
+        "overall": {
+          "count": 276,
+          "max": 107.5,
+          "median": 103.35499999999999,
+          "min": 63.31,
+          "p90": 105.255
+        },
+        "positives": {
+          "count": 2,
+          "max": 103.79,
+          "median": 103.07,
+          "min": 102.35,
+          "p90": 103.646
+        }
+      },
+      "positive_count": 2,
+      "positive_rate": 0.007246376811594203,
+      "spearman_cycles_vs_policy_charged_runtime": {
+        "count": 276,
+        "null_reason": null,
+        "rho": -0.26460201742252737
+      }
+    },
+    "iscas89_s35932": {
+      "action_count": 10,
+      "by_scheme": {
+        "HF": {
+          "action_count": 6,
+          "guaranteed_hit_within_k_without_replacement": true,
+          "negative_count": 5,
+          "negative_count_lt_k": true,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 5,
+              "max": 120.94,
+              "median": 118.355,
+              "min": 94.82,
+              "p90": 120.816
+            },
+            "overall": {
+              "count": 6,
+              "max": 120.94,
+              "median": 107.9675,
+              "min": 94.82,
+              "p90": 120.785
+            },
+            "positives": {
+              "count": 1,
+              "max": 96.18,
+              "median": 96.18,
+              "min": 96.18,
+              "p90": 96.18
+            }
+          },
+          "positive_count": 1,
+          "positive_rate": 0.16666666666666666,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 6,
+            "null_reason": null,
+            "rho": 0.7714285714285715
+          }
+        },
+        "HMF": {
+          "action_count": 4,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 4,
+          "negative_count_lt_k": true,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 4,
+              "max": 130.75,
+              "median": 120.5,
+              "min": 108.99,
+              "p90": 130.495
+            },
+            "overall": {
+              "count": 4,
+              "max": 130.75,
+              "median": 120.5,
+              "min": 108.99,
+              "p90": 130.495
+            },
+            "positives": {
+              "count": 0,
+              "max": null,
+              "median": null,
+              "min": null,
+              "p90": null
+            }
+          },
+          "positive_count": 0,
+          "positive_rate": 0.0,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 4,
+            "null_reason": null,
+            "rho": 0.8
+          }
+        }
+      },
+      "comparable_grid": {
+        "ambiguous_action_count": 0,
+        "ambiguous_key_count": 0,
+        "key_count": 10,
+        "unique_key_count": 10
+      },
+      "family_wide_oracle_cycles": 2087,
+      "guaranteed_hit_within_k_without_replacement": true,
+      "negative_count": 9,
+      "negative_count_lt_k": true,
+      "policy_charged_runtime_s": {
+        "negatives": {
+          "count": 9,
+          "max": 130.75,
+          "median": 118.355,
+          "min": 94.82,
+          "p90": 130.07
+        },
+        "overall": {
+          "count": 10,
+          "max": 130.75,
+          "median": 114.72749999999999,
+          "min": 94.82,
+          "p90": 129.985
+        },
+        "positives": {
+          "count": 1,
+          "max": 96.18,
+          "median": 96.18,
+          "min": 96.18,
+          "p90": 96.18
+        }
+      },
+      "positive_count": 1,
+      "positive_rate": 0.1,
+      "spearman_cycles_vs_policy_charged_runtime": {
+        "count": 10,
+        "null_reason": null,
+        "rho": 0.7575757575757576
+      }
+    },
+    "iscas89_s38417": {
+      "action_count": 39,
+      "by_scheme": {
+        "HF": {
+          "action_count": 18,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 18,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 18,
+              "max": 327.71,
+              "median": 120.7025,
+              "min": 23.81,
+              "p90": 219.44500000000002
+            },
+            "overall": {
+              "count": 18,
+              "max": 327.71,
+              "median": 120.7025,
+              "min": 23.81,
+              "p90": 219.44500000000002
+            },
+            "positives": {
+              "count": 0,
+              "max": null,
+              "median": null,
+              "min": null,
+              "p90": null
+            }
+          },
+          "positive_count": 0,
+          "positive_rate": 0.0,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 18,
+            "null_reason": null,
+            "rho": 0.9566563467492261
+          }
+        },
+        "HMF": {
+          "action_count": 21,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 19,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 19,
+              "max": 248.61,
+              "median": 129.86,
+              "min": 43.55,
+              "p90": 203.422
+            },
+            "overall": {
+              "count": 21,
+              "max": 248.61,
+              "median": 129.75,
+              "min": 43.55,
+              "p90": 202.78
+            },
+            "positives": {
+              "count": 2,
+              "max": 122.07,
+              "median": 120.345,
+              "min": 118.62,
+              "p90": 121.725
+            }
+          },
+          "positive_count": 2,
+          "positive_rate": 0.09523809523809523,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 21,
+            "null_reason": null,
+            "rho": 0.7571428571428571
+          }
+        }
+      },
+      "comparable_grid": {
+        "ambiguous_action_count": 0,
+        "ambiguous_key_count": 0,
+        "key_count": 39,
+        "unique_key_count": 39
+      },
+      "family_wide_oracle_cycles": 5439,
+      "guaranteed_hit_within_k_without_replacement": false,
+      "negative_count": 37,
+      "negative_count_lt_k": false,
+      "policy_charged_runtime_s": {
+        "negatives": {
+          "count": 37,
+          "max": 327.71,
+          "median": 129.75,
+          "min": 23.81,
+          "p90": 206.386
+        },
+        "overall": {
+          "count": 39,
+          "max": 327.71,
+          "median": 129.21,
+          "min": 23.81,
+          "p90": 206.18800000000002
+        },
+        "positives": {
+          "count": 2,
+          "max": 122.07,
+          "median": 120.345,
+          "min": 118.62,
+          "p90": 121.725
+        }
+      },
+      "positive_count": 2,
+      "positive_rate": 0.05128205128205128,
+      "spearman_cycles_vs_policy_charged_runtime": {
+        "count": 39,
+        "null_reason": null,
+        "rho": 0.684988362655017
+      }
+    },
+    "iwls_aes_core": {
+      "action_count": 350,
+      "by_scheme": {
+        "HF": {
+          "action_count": 54,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 50,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 50,
+              "max": 122.3,
+              "median": 96.72999999999999,
+              "min": 94.05,
+              "p90": 105.854
+            },
+            "overall": {
+              "count": 54,
+              "max": 122.3,
+              "median": 96.72999999999999,
+              "min": 94.05,
+              "p90": 105.59949999999999
+            },
+            "positives": {
+              "count": 4,
+              "max": 97.48,
+              "median": 96.96000000000001,
+              "min": 96.36,
+              "p90": 97.471
+            }
+          },
+          "positive_count": 4,
+          "positive_rate": 0.07407407407407407,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 54,
+            "null_reason": null,
+            "rho": 0.21201090171378043
+          }
+        },
+        "HMF": {
+          "action_count": 296,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 294,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 294,
+              "max": 134.14,
+              "median": 106.35499999999999,
+              "min": 95.36,
+              "p90": 108.42
+            },
+            "overall": {
+              "count": 296,
+              "max": 134.14,
+              "median": 106.35499999999999,
+              "min": 95.36,
+              "p90": 108.4
+            },
+            "positives": {
+              "count": 2,
+              "max": 107.31,
+              "median": 106.205,
+              "min": 105.1,
+              "p90": 107.089
+            }
+          },
+          "positive_count": 2,
+          "positive_rate": 0.006756756756756757,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 296,
+            "null_reason": null,
+            "rho": -0.1656338820017877
+          }
+        }
+      },
+      "comparable_grid": {
+        "ambiguous_action_count": 0,
+        "ambiguous_key_count": 0,
+        "key_count": 350,
+        "unique_key_count": 350
+      },
+      "family_wide_oracle_cycles": 8019,
+      "guaranteed_hit_within_k_without_replacement": false,
+      "negative_count": 344,
+      "negative_count_lt_k": false,
+      "policy_charged_runtime_s": {
+        "negatives": {
+          "count": 344,
+          "max": 134.14,
+          "median": 106.035,
+          "min": 94.05,
+          "p90": 108.331
+        },
+        "overall": {
+          "count": 350,
+          "max": 134.14,
+          "median": 106.025,
+          "min": 94.05,
+          "p90": 108.313
+        },
+        "positives": {
+          "count": 6,
+          "max": 107.31,
+          "median": 97.465,
+          "min": 96.36,
+          "p90": 106.205
+        }
+      },
+      "positive_count": 6,
+      "positive_rate": 0.017142857142857144,
+      "spearman_cycles_vs_policy_charged_runtime": {
+        "count": 350,
+        "null_reason": null,
+        "rho": -0.110738059910957
+      }
+    },
+    "iwls_spi": {
+      "action_count": 736,
+      "by_scheme": {
+        "HF": {
+          "action_count": 61,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 60,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 60,
+              "max": 95.03,
+              "median": 92.63,
+              "min": 83.36,
+              "p90": 93.99000000000001
+            },
+            "overall": {
+              "count": 61,
+              "max": 95.03,
+              "median": 92.57,
+              "min": 83.36,
+              "p90": 93.98
+            },
+            "positives": {
+              "count": 1,
+              "max": 84.89,
+              "median": 84.89,
+              "min": 84.89,
+              "p90": 84.89
+            }
+          },
+          "positive_count": 1,
+          "positive_rate": 0.01639344262295082,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 61,
+            "null_reason": null,
+            "rho": 0.4012401994189382
+          }
+        },
+        "HMF": {
+          "action_count": 675,
+          "guaranteed_hit_within_k_without_replacement": false,
+          "negative_count": 675,
+          "negative_count_lt_k": false,
+          "policy_charged_runtime_s": {
+            "negatives": {
+              "count": 675,
+              "max": 108.65,
+              "median": 99.11,
+              "min": 88.95,
+              "p90": 100.656
+            },
+            "overall": {
+              "count": 675,
+              "max": 108.65,
+              "median": 99.11,
+              "min": 88.95,
+              "p90": 100.656
+            },
+            "positives": {
+              "count": 0,
+              "max": null,
+              "median": null,
+              "min": null,
+              "p90": null
+            }
+          },
+          "positive_count": 0,
+          "positive_rate": 0.0,
+          "spearman_cycles_vs_policy_charged_runtime": {
+            "count": 675,
+            "null_reason": null,
+            "rho": -0.03783204000029814
+          }
+        }
+      },
+      "comparable_grid": {
+        "ambiguous_action_count": 0,
+        "ambiguous_key_count": 0,
+        "key_count": 736,
+        "unique_key_count": 736
+      },
+      "family_wide_oracle_cycles": 13319,
+      "guaranteed_hit_within_k_without_replacement": false,
+      "negative_count": 735,
+      "negative_count_lt_k": false,
+      "policy_charged_runtime_s": {
+        "negatives": {
+          "count": 735,
+          "max": 108.65,
+          "median": 98.78,
+          "min": 83.36,
+          "p90": 100.61
+        },
+        "overall": {
+          "count": 736,
+          "max": 108.65,
+          "median": 98.775,
+          "min": 83.36,
+          "p90": 100.61
+        },
+        "positives": {
+          "count": 1,
+          "max": 84.89,
+          "median": 84.89,
+          "min": 84.89,
+          "p90": 84.89
+        }
+      },
+      "positive_count": 1,
+      "positive_rate": 0.001358695652173913,
+      "spearman_cycles_vs_policy_charged_runtime": {
+        "count": 736,
+        "null_reason": null,
+        "rho": 0.04278883031971098
+      }
+    }
+  },
+  "fold_manifest_sha256": {
+    "iscas89_s13207": "1c58be845c69a84e81a27bb3c8dcfd6598b20d3aa6f2792902f86364d5f41684",
+    "iscas89_s15850": "5903f8c93a08a308418f56fee81b5273a328af7ddf94fdf09ea370c79c43a736",
+    "iscas89_s35932": "5946054298fc0023fe6650c09d63408d92d09844f4631ce5fd2558b9aff28812",
+    "iscas89_s38417": "4442deef4cab3c06057ccd16d2b9c6968708715b06cbed2a85a29e2dd58db54f",
+    "iwls_aes_core": "f2109f92e18c3b0c151121abaa593bc347eef178a1a8f62843a8c3150f74b4b8",
+    "iwls_spi": "e2e4aeb7bf50e33b198bef6bc1157eaafee61a74a5ff6ddfeb9b20532e0316ee"
+  },
+  "interpolation_or_nearest_join": false,
+  "k": 10,
+  "labels_read": true,
+  "online_replay_blocker": "prefix/session-dependent costs absent from outcome schema",
+  "pairwise_grid_directions": [
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s13207",
+      "first_unique_key_coverage": 0.003389830508474576,
+      "first_unmatched_unique_key_count": 294,
+      "second_family": "iscas89_s15850",
+      "second_unique_key_coverage": 0.0036231884057971015,
+      "second_unmatched_unique_key_count": 275,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s13207",
+      "first_unique_key_coverage": 0.003389830508474576,
+      "first_unmatched_unique_key_count": 294,
+      "second_family": "iscas89_s35932",
+      "second_unique_key_coverage": 0.1,
+      "second_unmatched_unique_key_count": 9,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s13207",
+      "first_unique_key_coverage": 0.003389830508474576,
+      "first_unmatched_unique_key_count": 294,
+      "second_family": "iscas89_s38417",
+      "second_unique_key_coverage": 0.02564102564102564,
+      "second_unmatched_unique_key_count": 38,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 6,
+      "directions": {
+        "concordant": 5,
+        "discordant": 10,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s13207",
+      "first_unique_key_coverage": 0.020338983050847456,
+      "first_unmatched_unique_key_count": 289,
+      "second_family": "iwls_aes_core",
+      "second_unique_key_coverage": 0.017142857142857144,
+      "second_unmatched_unique_key_count": 344,
+      "unordered_key_pair_count": 15
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s13207",
+      "first_unique_key_coverage": 0.003389830508474576,
+      "first_unmatched_unique_key_count": 294,
+      "second_family": "iwls_spi",
+      "second_unique_key_coverage": 0.001358695652173913,
+      "second_unmatched_unique_key_count": 735,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s15850",
+      "first_unique_key_coverage": 0.0036231884057971015,
+      "first_unmatched_unique_key_count": 275,
+      "second_family": "iscas89_s35932",
+      "second_unique_key_coverage": 0.1,
+      "second_unmatched_unique_key_count": 9,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s15850",
+      "first_unique_key_coverage": 0.0036231884057971015,
+      "first_unmatched_unique_key_count": 275,
+      "second_family": "iscas89_s38417",
+      "second_unique_key_coverage": 0.02564102564102564,
+      "second_unmatched_unique_key_count": 38,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s15850",
+      "first_unique_key_coverage": 0.0036231884057971015,
+      "first_unmatched_unique_key_count": 275,
+      "second_family": "iwls_aes_core",
+      "second_unique_key_coverage": 0.002857142857142857,
+      "second_unmatched_unique_key_count": 349,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s15850",
+      "first_unique_key_coverage": 0.0036231884057971015,
+      "first_unmatched_unique_key_count": 275,
+      "second_family": "iwls_spi",
+      "second_unique_key_coverage": 0.001358695652173913,
+      "second_unmatched_unique_key_count": 735,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 2,
+      "directions": {
+        "concordant": 0,
+        "discordant": 1,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s35932",
+      "first_unique_key_coverage": 0.2,
+      "first_unmatched_unique_key_count": 8,
+      "second_family": "iscas89_s38417",
+      "second_unique_key_coverage": 0.05128205128205128,
+      "second_unmatched_unique_key_count": 37,
+      "unordered_key_pair_count": 1
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s35932",
+      "first_unique_key_coverage": 0.1,
+      "first_unmatched_unique_key_count": 9,
+      "second_family": "iwls_aes_core",
+      "second_unique_key_coverage": 0.002857142857142857,
+      "second_unmatched_unique_key_count": 349,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 3,
+      "directions": {
+        "concordant": 2,
+        "discordant": 1,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s35932",
+      "first_unique_key_coverage": 0.3,
+      "first_unmatched_unique_key_count": 7,
+      "second_family": "iwls_spi",
+      "second_unique_key_coverage": 0.004076086956521739,
+      "second_unmatched_unique_key_count": 733,
+      "unordered_key_pair_count": 3
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s38417",
+      "first_unique_key_coverage": 0.02564102564102564,
+      "first_unmatched_unique_key_count": 38,
+      "second_family": "iwls_aes_core",
+      "second_unique_key_coverage": 0.002857142857142857,
+      "second_unmatched_unique_key_count": 349,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iscas89_s38417",
+      "first_unique_key_coverage": 0.02564102564102564,
+      "first_unmatched_unique_key_count": 38,
+      "second_family": "iwls_spi",
+      "second_unique_key_coverage": 0.001358695652173913,
+      "second_unmatched_unique_key_count": 735,
+      "unordered_key_pair_count": 0
+    },
+    {
+      "common_unique_key_count": 1,
+      "directions": {
+        "concordant": 0,
+        "discordant": 0,
+        "tie_both": 0,
+        "tie_first_only": 0,
+        "tie_second_only": 0
+      },
+      "first_family": "iwls_aes_core",
+      "first_unique_key_coverage": 0.002857142857142857,
+      "first_unmatched_unique_key_count": 349,
+      "second_family": "iwls_spi",
+      "second_unique_key_coverage": 0.001358695652173913,
+      "second_unmatched_unique_key_count": 735,
+      "unordered_key_pair_count": 0
+    }
+  ],
+  "primary_online_cost_replay": false,
+  "rank_ties": "average_ranks",
+  "receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "scope": "TRAIN_TARGET_COST_AGGREGATE_DIAGNOSTIC",
+  "source_sha256": "b89b455ace9d545c0afd54fe9fded98e4db4abd56f58fe09a0cce28b88215d9c",
+  "threshold_selection": false,
+  "total_unordered_key_pair_comparisons": 19
+}

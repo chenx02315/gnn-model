@@ -1,4 +1,6 @@
-# 下一节点：TRAIN 目标与费用关系诊断（尚未读取真实标签）
+# TRAIN 目标与费用关系诊断：原计划与执行更新
+
+2026-10-12执行更新：原计划保留；用户新增只读标签授权后，本节点已按固定TRAIN范围完成真实诊断及独立聚合回执审计。结果见 `docs/ranking_v5_target_cost_result_20261012.md`，授权记录见 `contracts/ranking_v5_target_cost_authorization_20261012_r1.json`。没有新训练、模型、其他角色或在线费用重放权限。
 
 ## 要回答的问题
 
@@ -8,7 +10,7 @@
 
 定义保持明确：近优oracle仍是家族内全部正式HF/HMF动作的共同最小cycles，不因分方案报告改成方案各自oracle；累计首次命中费用包含执行该首个命中动作本身以及此前策略应计的失败/重试成本。仅在既有费用策略与顺序关系核清后才允许费用重放。
 
-## 权限门
+## 权限门（以下为原始计划，新增授权及执行记录见顶部更新）
 
 当前feature-only授权不包含新标签读取。本文件是计划，不是授权或PASS证明。下一实际节点需要明确授权：只读既有固定六家族TRAIN包中的features、fit_outcomes、heldout_outcomes及其receipt/manifest，用于聚合诊断；不读BLIND/VALIDATION/PILOT、不读checkpoint或图原文、不训练、不调参、不提交LSF/Tessent、不扩充电路。
 
