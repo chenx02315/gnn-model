@@ -1,0 +1,65 @@
+{
+  "status": "PASS_ACTUAL_FEATURE_ONLY_WITH_INDEPENDENT_AGGREGATE_RECEIPT_AUDIT",
+  "scope": "FIXED_SIX_TRAIN_FEATURE_FOLDS_NO_LABELS_MODELS_OR_TRAINING",
+  "base_commit": "efd052ee3e65ecec2699966080dbcd03dd842598",
+  "authorization_sha256": "4564e12b1c38a4ecf86124836e0abac0863d692b7c985f0c10f0b798c2fde9b2",
+  "package_receipt_sha256": "964703dc441fea95c3b1b301dfd6dd01a2cf38f817d82597ff00450287e43868",
+  "source_manifest_sha256": "c4663127bf16a45a94d860a244652c7ffb604ba0578d203b29d1b1755d5a1f7a",
+  "source_files": {
+    "src/models/ranking_v5_feature_support.py": "836040988ad6414608077455fa707f9dd5827b10e8ca932786defd499b770243",
+    "scripts/run_v5_feature_support.py": "e87fea4a77c55701be17bb63200e18b26a5f5447f88caaff1a89551d39352fe2",
+    "tests/test_ranking_v5_feature_support.py": "09662a0d31eb74260b0be881b2e66750388fb1255732671755d874f779e3ebd5",
+    "tests/test_run_v5_feature_support.py": "a36a7820218100179cdb3fba8f2fd5b392144d56c7a4cbba756e75cce3316954",
+    "src/models/ranking_v4_memory_guard.py": "3dcaf6fd545aa1c5358146567cf55a8ac6593aa14af42f31ec965f8f62c79896",
+    "src/models/runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c"
+  },
+  "staging_script_sha256": "0347bfd1cdc3ea9c7ed1181b37bff6d27706e5e9266f5955cff840a1f02be38c",
+  "linux_synthetic": {
+    "testsRun": 21, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0, "gate_pass": true,
+    "receipt_sha256": "67850911f508e04a298d1bb2c988f544e556d89ff7dbdd943a662fd78269962d"
+  },
+  "local_full_regression": {
+    "testsRun": 1489, "skipped": 50, "exit_code": 0,
+    "receipt_sha256": "976d22a62764bd4fcd43de5167071dd72ffdcecea9456a118e24fa159cb9d3e8",
+    "log_sha256": "831f13baa8786c005df79fd61fb713ebc19f014568e72ee3d155ed6d9c58b861",
+    "note": "Feature-stage snapshot before five new objective tests; those five were separately focused-tested. Windows capability skips are not Linux execution PASS."
+  },
+  "actual": {
+    "exit_code": 0, "action_count": 1706, "folds": 6, "feature_file_reads": 12,
+    "manifest_reads": 6, "receipt_reads": 1, "automatic_retries": 0, "workers": 1,
+    "rss_sample_count": 2, "peak_combined_rss_bytes": 43974656,
+    "rss_cap_bytes": 1073741824, "address_space_cap_bytes": 8589934592,
+    "result_receipt_sha256": "03e678928924343622760939fe1252ab06bb787d199adb8a9511ee5813b074fd",
+    "seven_raw_receipts_packet_sha256": "fbf7bc887bbf8da83de9f0d6d97055c59c11d748a5ea4b774424da7d9b35909e",
+    "raw_packet_bytes": 153904,
+    "metrics_sha256": "075131c74f6376b1ec66be02f0d0e278f2206fff560e93048eab3b98e73cfda7",
+    "output_root": "/ssd/cjc/gnn_model_ranking_v5_feature_support_20261012_r1"
+  },
+  "independent_review": {
+    "agent": "/root/feature_support_review", "role": "terra_reviewer",
+    "implementation": "PASS_IMPLEMENTATION_ONLY", "staging": "PASS_STAGING_ONLY",
+    "prelaunch": "PASS_PRELAUNCH_FEATURE_ONLY", "actual": "PASS_ACTUAL_AGGREGATE_RECEIPT_AUDIT",
+    "scope": "Read-only code/synthetic and seven aggregate receipt consistency, not independent raw-feature metric recomputation."
+  },
+  "denied": ["labels", "models", "raw_graphs", "BLIND", "VALIDATION", "PILOT", "training", "optimizer", "LSF", "Tessent", "protected_root"],
+  "no_causal_claim": true,
+  "no_atpg_speedup_claim": true,
+  "portable_report": {
+    "artifact_sha256": "a5973a8d0338294df5633e6754095f33339fd7f5580d41a7a104711fcfc37628",
+    "html_sha256": "d39624c188eb87f3f23e55a7a8a52a9f8f63e67f117d1c1d6415dca7f4948d0e",
+    "html_bytes": 420482,
+    "validation": "passed",
+    "package": "passed",
+    "verification": "structural_only",
+    "browser_qa": "NOT_EXECUTED_NO_INSTALLED_CHROMIUM_HEADLESS_SHELL",
+    "note": "No browser downloaded. Report is aggregate-only; browser interaction/theme/viewport QA is not claimed."
+  },
+  "objective_contract_audit": {
+    "status": "PASS_SOURCE_AND_SYNTHETIC_ONLY_WITH_INDEPENDENT_REVIEW",
+    "testsRun": 5, "skipped": 0, "failures": 0, "errors": 0,
+    "test_sha256": "de5c372341f3aaf9e9c26b62787b43b65ce64a45d084d56df41c4c1522592d32",
+    "doc_sha256": "425357b6b91f1db9d18bf2b883a5a4518faecfd4eb2e34fe962686f4d8cfd04d",
+    "note": "Mathematical/synthetic counterexamples, not proof of real-family target reversal. No real labels or training."
+  },
+  "next_node": "TRAIN_TARGET_COST_DIAGNOSTIC_PENDING_NEW_REAL_LABEL_READ_AUTHORIZATION"
+}
