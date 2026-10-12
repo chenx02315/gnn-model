@@ -1,0 +1,614 @@
+{
+  "comparisons": 64,
+  "contract_sha256": "c383e4541d76ef7010bc3c9ab603ff7b28c2b07fac4dfc7e4ef832105ad78b72",
+  "errors_pass": true,
+  "max_absolute_error": 0.006385883641895407,
+  "max_radius": 0.06795420264546924,
+  "memory_metric": "Python traced allocations only, not total RSS",
+  "memory_pass": true,
+  "precision_pass": true,
+  "python_traced_peak_bytes": 75690,
+  "real_label_reads": 0,
+  "remote_calls": 0,
+  "results": [
+    {
+      "absolute_error": 0.003929057764354593,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0031432462114835413,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0011564565893352197,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.001156456589335192,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0009251652714267478,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.000925165271426831,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0009383351081045932,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0007506680864836079,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0002798496079726709,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.00027984960797264313,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0002238796864425796,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.00022387968644266287,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.006385883641895407,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.005108706913516392,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0017049707850671503,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.001704970785067178,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0013639766280070797,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0013639766280069965,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.005226215673145407,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.004180972538516403,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0014361801699854237,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0014361801699854515,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0011489441359748553,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.001148944135974772,
+      "case": "two_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.03397710132273462,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.002013200017343897,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0014041100976602272,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0013793992358408537,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0015512442346678201,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0022247665881754697,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0007058768823334262,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0004323992696012127,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.001330612023601123,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0006512254222063515,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.00024698733178586327,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 11
+    },
+    {
+      "absolute_error": 0.0010385577951561031,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0016537512304647395,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.000774393463096365,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0007933264330270209,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0010896051736406717,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0004781147224774858,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.00012802118954298816,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0009074210832255014,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0007845132613850392,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.000005113367711754441,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 29
+    },
+    {
+      "absolute_error": 0.0009164874826561031,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.001177677011714784,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0003590976665924228,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0008904955395653558,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0005323080060009172,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0007172852001626762,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0007679144017837631,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0005434845410799069,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0006106134114549078,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 0.0003861835507360002,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 47
+    },
+    {
+      "absolute_error": 9.601389061031362e-7,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.00011566529296475059,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost",
+      "precision_sufficient": true,
+      "radius": 0.01698855066136731,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.00008777321951514844,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.000054451238113581435,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.00015833652326908976,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0001250145418743298,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "risk_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0001522064622870069,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:a",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0002561680054431678,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:b",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0005205449238201154,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    },
+    {
+      "absolute_error": 0.0006245064669666983,
+      "case": "four_action",
+      "inside_bound": true,
+      "metric": "normalized_cost_gradient:hit2",
+      "precision_sufficient": true,
+      "radius": 0.06795420264546924,
+      "seed": 83
+    }
+  ],
+  "status": "PASS_SYNTHETIC_ESTIMATOR_ONLY",
+  "training_runs": 0,
+  "validation": {
+    "base_commit": "2e18f90e95d63e8d81816b4f60b5ae8a7fec3c79",
+    "exit_code": 0,
+    "execution_wall_seconds": 3.1136789,
+    "formal_gate_runs": 1,
+    "automatic_retries": 0,
+    "source_sha256": "095f41b496e5c691e371126a38798b299d16d722006a9a4f5a6c3510f20f7665",
+    "tests_sha256": "5ddffd518340fba4f12eb4c24435f2354430bf0e5dc691dea2a17eb6a05a2783",
+    "gate_script_sha256": "01dfb42d58a51214750f0209b11e64f82d592b7fa702cb7f0926fe8b9be43136",
+    "focused_tests": {
+      "testsRun": 41,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "independent_implementation_review": "PASS_SYNTHETIC_ONLY",
+    "result_artifact_format": "Normalized JSON of captured gate stdout; not a separate raw process log",
+    "full_regression_this_node": false,
+    "trainer_release": false
+  }
+}

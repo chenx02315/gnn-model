@@ -1,0 +1,20 @@
+{
+  "status": "SYNTHETIC_PRE_REGISTRATION_NOT_TRAIN_PERMISSION",
+  "seeds": [11, 29, 47, 83],
+  "pilot_samples": 256,
+  "main_samples": 16384,
+  "alpha_familywise": 0.01,
+  "comparison_count": 64,
+  "maximum_normalized_radius": 0.10,
+  "error_rule": "Two-sided Hoeffding union bound across all 64 comparisons; objective range [0,1], gradient range [-K,K]. Independent synthetic pilot baseline fixed before main. No seed selection or budget extension.",
+  "cases": [
+    {"id": "two_action", "scores": {"a": 0.3, "hit": -0.2}, "positives": ["hit"], "costs": {"a": 2.0, "hit": 10.0}, "k": 1},
+    {"id": "four_action", "scores": {"a": 0.3, "b": -0.7, "hit": 1.1, "hit2": -0.1}, "positives": ["hit", "hit2"], "costs": {"a": 1.0, "b": 10.0, "hit": 5.0, "hit2": 9.0}, "k": 2}
+  ],
+  "allocation_smoke": {"actions": 256, "k": 10, "pilot_samples": 64, "main_samples": 512, "seed": 11, "python_traced_peak_limit_bytes": 8388608},
+  "no_training": true,
+  "no_real_labels": true,
+  "no_remote": true,
+  "no_online_replay": true,
+  "limits_note": "The allocation smoke measures Python traced allocations, not total RSS or an enforced process memory cap. Sampling gate establishes consistency on fixed synthetic cases, not universal unbiasedness or formal training readiness."
+}
