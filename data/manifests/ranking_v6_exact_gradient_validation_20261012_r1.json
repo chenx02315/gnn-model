@@ -1,0 +1,30 @@
+{
+  "status": "PASS_SYNTHETIC_GRADIENT_ONLY_NOT_TRAIN_RELEASE",
+  "independent_review": {
+    "agent": "/root/target_cost_review",
+    "status": "PASS_SYNTHETIC_GRADIENT_ONLY",
+    "exact_and_reference_tests": {"testsRun": 19, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+    "combined_tests": {"testsRun": 35, "skipped": 1, "failures": 0, "errors": 0, "exit_code": 0},
+    "additional_checks": "two-action closed forms, all-positive analytic softmax derivative, 20 random finite-difference fixtures, no-I/O evaluation",
+    "numerical_limit": "finite floating-point summation within tested tolerances, not infinite precision"
+  },
+  "base_commit": "b2bc3e7ac750f5a8b7418997f45571269f37b236",
+  "source_sha256": "baf26683ee9a57a7eb92d39411da9a6ac6a15ab920471fcfaa8e1ecf0630b32f",
+  "tests_sha256": "0b74a19281d55804d901c6bd7e0bc0a3541ef3ad0d9cdf867babe4d208bd9d12",
+  "draft_gate_sha256": "53300bd0884926b96178bc0ae43a41776857f24f84b9fde07f26ae4da8b7c977",
+  "reference_sha256": "e0704d11e87f2ec1a319e1b5f7b4917d77a6c6832b1cef0dcea9a42a0bb4895e",
+  "exact_tests": {"testsRun": 9, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "combined_focused_tests": {"testsRun": 35, "skipped": 1, "failures": 0, "errors": 0, "exit_code": 0, "seconds": 1.543},
+  "scope": "Synthetic full-permutation Plackett-Luce expectation and separate score gradients, not a scalable trainer or training release",
+  "bounds": {"max_actions": 7, "max_permutations": 5040, "max_k": 10, "temperature": 1, "max_abs_score": 20, "max_positive_cost": 1000000000},
+  "checks": ["central finite differences for both objectives", "score shift invariance", "gradient sum zero", "single action", "all negative and all positive", "K truncation including hit action", "cheap miss risk/cost conflict", "invalid joins, bool, NaN and bounds rejection", "seven action extreme scores", "subnormal positive costs"],
+  "real_label_reads": 0,
+  "remote_calls": 0,
+  "model_loads": 0,
+  "training_runs": 0,
+  "online_cost_replay": false,
+  "full_regression_run_this_node": false,
+  "restrictions": ["no BLIND", "no optimizer or fitting", "no real-order replay", "no graph reads", "no LSF/Tessent", "no inheritance of old v5 training authority"],
+  "next_node": "PRE_REGISTER_AND_IMPLEMENT_SYNTHETIC_STREAMING_ESTIMATOR_THEN_ORACLE_ERROR_PRECISION_GATES",
+  "not_implemented": ["streaming estimator", "risk constraint optimizer", "macro training aggregation", "formal baselines", "training release", "unknown oracle online stopping rule"]
+}
