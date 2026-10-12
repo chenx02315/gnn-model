@@ -1,0 +1,576 @@
+{
+  "schema": "v5-train-v3-actual-result-v1",
+  "status": "PASS_ACTUAL_18_TRAIN_ARTIFACT_BINDING_WITH_INDEPENDENT_BOUNDED_READBACK",
+  "record_date": "2026-10-12",
+  "source_root": "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2",
+  "synchronized_implementation_commit_reported_by_main": "cdbd0cf",
+  "run_authorization_sha256": "78d34a96962c4e0cc87d3ccfb47beae5f699418a9ed34d717d0b19081e1c8d9c",
+  "run_authorization_id": "USER_V5_FREEZE_V2_FRESH_18_TRAIN_20261011",
+  "previous_authorization_is_integrity_only": true,
+  "old_once_preserved": true,
+  "new_authorization_quota_consumed_per_parent_launch": true,
+  "automatic_retries": 0,
+  "additional_train_retry_authorized": false,
+  "roles": [
+    "TRAIN"
+  ],
+  "families": [
+    "iwls_aes_core",
+    "iscas89_s13207",
+    "iscas89_s15850",
+    "iscas89_s35932",
+    "iscas89_s38417",
+    "iwls_spi"
+  ],
+  "seeds": [
+    20260824,
+    20260825,
+    20260826
+  ],
+  "planned_fits": 18,
+  "launch": {
+    "receipt_path": "../runtime_training_staging_20260928/v5_serial_launch_result_20261012_r3.json",
+    "raw_sha256": "b549685a8d3f2e7533f8b89f0febad109936a128f73fb7aef9abce5dc6b1ba1b",
+    "bytes": 17279,
+    "exit_code": 0,
+    "stderr_empty": true,
+    "parent_status": "PASS_ACTUAL_SERIAL_TRAIN_ARTIFACT_BINDING",
+    "parent_reported_completed_count": 18,
+    "parent_reported_remaining_count": 0,
+    "parent_reported_failed_index": null,
+    "actual_parent_guard_used": true,
+    "workers": 1,
+    "peak_combined_sampled_rss_bytes": 555429888,
+    "checks": [
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iwls_aes_core",
+          "file_sha256": {
+            "fitting.jsonl": "3e4ba21995a466771abcbd68589c5052b7af53de462d6674d361c13f862923da",
+            "freeze.json": "8ea2c92f93f19cf9ab8c326835242dbf527bc51802b39830c766f985f06c46a7",
+            "model.pt": "431afc27fae7ea20ed81dbd7ada96ebeb78d2d484af028acaa79acd3e5995627",
+            "worker_receipt.json": "a430e8b82490c3d8db8312818153449ca6dbfae6211c878165d79edf3cdca78c"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260824,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.03825793415308,
+        "family": "iwls_aes_core",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 542928896,
+        "seed": 20260824
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iwls_aes_core",
+          "file_sha256": {
+            "fitting.jsonl": "6cd01f0b1e593baa38218493da9d9e0c58593bb63b520c5cc5620c9e21ecb4d4",
+            "freeze.json": "94c97380065f4049e80af4a9f0a3653642b9fbef983f6e0b7bd5ea9cb5c040f1",
+            "model.pt": "5b1100688841d9a68224d2d94debf73ea329e0d8baf931ed78712f8f81bf138e",
+            "worker_receipt.json": "c6f3c796bcfd8f5c4ae8d63cb31dbe50b2c8978c43a0f015aacdfcf7b529606a"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260825,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.040181288961321,
+        "family": "iwls_aes_core",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 555429888,
+        "seed": 20260825
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iwls_aes_core",
+          "file_sha256": {
+            "fitting.jsonl": "a4e917273e74842ecfaa19d3c3b90fe5c685d8163be9b73911c354a248067d02",
+            "freeze.json": "797e3c5e875ee6abb4307da2c6c1c7cce832bd7a6d9175783a88295a912aca5b",
+            "model.pt": "6a8d82c2018e32ac109d4ae6b72e88cd30e1cd164429b1c0a649a4aed0bd20dc",
+            "worker_receipt.json": "9b029010675bcbf8d05e8951dd45db79fa2d192d63369c62b3ea0b0dcceb22c0"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260826,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.039767826907337,
+        "family": "iwls_aes_core",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 555012096,
+        "seed": 20260826
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s13207",
+          "file_sha256": {
+            "fitting.jsonl": "68d47826a4dac35923275b1aa640a14b2dc3a38b4f0a5fdcefee04f158d4eae9",
+            "freeze.json": "1c5453fb993675c0c09b5a56f626bd3c3441d4bef57df25b507cd16305dea406",
+            "model.pt": "00c7ba619ec17f3efaeeb93e4eb007f5c47127e51a3a1b284f27eae72df87f5f",
+            "worker_receipt.json": "b19723798b63c8a8af636b13defb3d0c2c9e661825f090a38991bf97a69dda86"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260824,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.044955501100048,
+        "family": "iscas89_s13207",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 546230272,
+        "seed": 20260824
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s13207",
+          "file_sha256": {
+            "fitting.jsonl": "69bf9080641b9172b0a580c95ed5ab09004f92bf6c058708fa1fd3744df8c5e7",
+            "freeze.json": "2ed69022c9e48d6e0be1fa75ca9c8b00b51583fa1d88ba26c44c0eb0f9e7f0c3",
+            "model.pt": "6ad7ed7583ad6ee31971784dda0106bc08d53e61590e8027f72eefb8f82ef16f",
+            "worker_receipt.json": "626938d4c1cc2108a608ed7aee8670d4e3187fc91a410ccce9d71753b80ab58b"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260825,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.038033697055653,
+        "family": "iscas89_s13207",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 546435072,
+        "seed": 20260825
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s13207",
+          "file_sha256": {
+            "fitting.jsonl": "9a619c81a7e5b43955fb21275be9c3c4d6c2ce5033f033282336088e18c7823a",
+            "freeze.json": "18e428cc27ed03cff584da45342409ad2cf388e0b2be058b423fa44ad22bfa2a",
+            "model.pt": "adf5783a66c50d451fc14ca336d61b17525a5209a97d4e4e1015b5959266888f",
+            "worker_receipt.json": "309a7f96761c8360d5be15415d9827c8288db0105e7330e27e02c551aa6e2375"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260826,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.048231651075184,
+        "family": "iscas89_s13207",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 546398208,
+        "seed": 20260826
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s15850",
+          "file_sha256": {
+            "fitting.jsonl": "ac58683d7bbdca5f5e1d130ace1d4f3f7a20b5c812f4f8f79acba0a45d526e8e",
+            "freeze.json": "528fc9c361b1ae8f7f259a3c26fafc178c7aa4c79b492005a03a6914db0a6ae9",
+            "model.pt": "dca24cab2b3367261118fb0f42b7635c3a8216905f0bb0adb343e1d371845377",
+            "worker_receipt.json": "c8dcef723f5aaab931f19f66cf13cdaa6d34695c9eb193ee3e8f15b4c680db89"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260824,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.044406626140699,
+        "family": "iscas89_s15850",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 546394112,
+        "seed": 20260824
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s15850",
+          "file_sha256": {
+            "fitting.jsonl": "54db0aeea4c725b0f2dc3552d075a05c217f5c42985a890c844ad59964838648",
+            "freeze.json": "33971639353bc0475d1ac64d776a9db9b5253c2f788d970eba60e83f7987938d",
+            "model.pt": "d9c1a5eaf177fe1a441f5b599f8642cec680a0af5a183499afea7c63e7484612",
+            "worker_receipt.json": "8dfc390594a70d085d227d3fca42d9b876c7471dd496c4e55a07fa49ffe8c92e"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260825,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.04676442919299,
+        "family": "iscas89_s15850",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 545849344,
+        "seed": 20260825
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s15850",
+          "file_sha256": {
+            "fitting.jsonl": "a50a7459220231dfea1248e980fb1248e193659816e4473ef68342cf94cfb56e",
+            "freeze.json": "0bd9e3dcf55157c968e832228671d1a2e8953797ea7d13433b502dae38cf28a0",
+            "model.pt": "b3c877fc2dabd65190484f53da1d2df1d4982262446275d8f3fc2560240cdce4",
+            "worker_receipt.json": "0dc45b31608dcf55ce10e8b7371c14b4ad4dbe5dd08b13ae15567db64e598ceb"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260826,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.046716876793653,
+        "family": "iscas89_s15850",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 546344960,
+        "seed": 20260826
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s35932",
+          "file_sha256": {
+            "fitting.jsonl": "d96fa55ecb604156c08a9bbad433d19aa0ae9104abb585126600de054145fda7",
+            "freeze.json": "d252201d5a239b0099552131b28b3d401ab2b7125737b11d9c63be20417a7541",
+            "model.pt": "17fef1d82b30d4b64e0e6592458bbe4162732132f2017c039ba5c90573e1aa87",
+            "worker_receipt.json": "c8c4eb3c3deffe6421a21417b8cc4ab493ab37b4ca2199893693b86dff9454a2"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260824,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.043079541064799,
+        "family": "iscas89_s35932",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 549306368,
+        "seed": 20260824
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s35932",
+          "file_sha256": {
+            "fitting.jsonl": "ec9187a550024aedc06caaeb2d92c8a5e1d829df5434b8edc63e4f9e2a9a5fdb",
+            "freeze.json": "892c77eed8834284933c431f7bbf90d958162d5448a77b64b5f9683381891444",
+            "model.pt": "382d22341dff11bb40676e3ec82f18082517d5f6d657abee5af875c8ad9a644e",
+            "worker_receipt.json": "bef1edd9cd13c017dd5074ba45092fd6abaee4236803c963c8e3dba61cbf4801"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260825,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.0406031887978315,
+        "family": "iscas89_s35932",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 549228544,
+        "seed": 20260825
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s35932",
+          "file_sha256": {
+            "fitting.jsonl": "06b068ecf026d3e938a799b4a3983c1bd38d28aa6bbe2d7c8441939a4510b41f",
+            "freeze.json": "afb9566267d35fee0ddbb0de8e9aeb3e9e53b0477d67abe03be220b145d9945b",
+            "model.pt": "95536ba5b731bd51b79d5d414f1a56da2915b2ed9c167c2f3a27936a70041024",
+            "worker_receipt.json": "719a8c5508a10bcb4ae4158c927a968f937f2bdaf9010345b29a811e4c4f75af"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260826,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.038607504917309,
+        "family": "iscas89_s35932",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 548667392,
+        "seed": 20260826
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s38417",
+          "file_sha256": {
+            "fitting.jsonl": "be4dbf0e901281c165ff9b479e8ea03b90ee02e50ef90cfe915e2712af72fe2d",
+            "freeze.json": "c7f8d96b1af75199a4bd72bbbdaf894d9ab1443f65b617b1012ae37feeb4f2de",
+            "model.pt": "398aa8d032041187f1aec8ed2dc198b69061955bdf7fdf0aa1d46d7a64d7153f",
+            "worker_receipt.json": "124e6b69946a6da8b7099c14f7da18f9da9b5049409de23e3bbb0446e1fd3eeb"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260824,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.039080593036488,
+        "family": "iscas89_s38417",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 546848768,
+        "seed": 20260824
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s38417",
+          "file_sha256": {
+            "fitting.jsonl": "4c713ddd165e34ecda2872ae18739953e7cb0e8a5f282f91042c1358774bb484",
+            "freeze.json": "927aa19f4dcbdce2758b3ff565d015dde2a185a3e9b94b297724be22a455e173",
+            "model.pt": "870f63b9b950e374a0c0a1b24da3369fb52a18ecce4de0529beda870818ada78",
+            "worker_receipt.json": "83a42310696953df8dec30e79209b62f63acef9e27ea7d9ba3391ea6bec6d927"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260825,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.044120342005044,
+        "family": "iscas89_s38417",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 545488896,
+        "seed": 20260825
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iscas89_s38417",
+          "file_sha256": {
+            "fitting.jsonl": "6f4c851b6962fa4e666422e80a7df2944083f151cd4780b256e71a2a3a7e55c3",
+            "freeze.json": "75e5aa335a9fdbc79f7c89d597d32a30d61a7419df6f7c41a950e5586ea6f5fc",
+            "model.pt": "041accc21eaadc07b24587c3cb4fcfd8da1fc77faf6eeb8e6450f9a13519de14",
+            "worker_receipt.json": "b60f984dd898860a65db7bdff12aaf78d54d9f740ed2a0d094a499066458f650"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260826,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 4.038350029150024,
+        "family": "iscas89_s38417",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 545861632,
+        "seed": 20260826
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iwls_spi",
+          "file_sha256": {
+            "fitting.jsonl": "6430dbd28c1b24bdf13fc6d8dc91c39ccbf0f4e199f254158d6dc5b4350880f1",
+            "freeze.json": "0ef0ff9e84e56fa29bc10f9a75f1bbaa49466f635442e5522762a3ae0a50188e",
+            "model.pt": "bf8531d6489926380bb02252f40d3eda01372f7df0bb102bee17aad77f067515",
+            "worker_receipt.json": "8d69d7fa51e46c44636c0f4c5a92f7073036543d21e3d87bea7cf0d402f6da0c"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260824,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 3.736803409876302,
+        "family": "iwls_spi",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 545497088,
+        "seed": 20260824
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iwls_spi",
+          "file_sha256": {
+            "fitting.jsonl": "9d33c48ff53e0445a26f347e300fbf5282a21e4e4879dbddef157a37d97db696",
+            "freeze.json": "8bfcd62d14505e10324cbe9d0eb79afa27b695df013709658b2661e6215c4602",
+            "model.pt": "8dbdf3fee5a3e41d8473e0e7fb274cb322a4e71f57e0d376c256aa96bdb6ac00",
+            "worker_receipt.json": "459e5ebbebe45a0fdcb6bc70f13cc8d112d554326e39729337380be5837baaac"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260825,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 3.737947158049792,
+        "family": "iwls_spi",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 544788480,
+        "seed": 20260825
+      },
+      {
+        "admission_status": "PASS_TRAIN_FIT_BOUNDARY_ADMISSION_ONLY",
+        "artifact_check": {
+          "family": "iwls_spi",
+          "file_sha256": {
+            "fitting.jsonl": "f263480f64e3fd3e6b3fce88c711080c0f2716a0f8a74af111f67826c0d8e339",
+            "freeze.json": "f42299a0afd642052066555b32506d23324d3b52e5650b5c9f525ddacd07a39e",
+            "model.pt": "f0875f1e8cdb783e3e2b66a92b7d81e7ee741b8506b0e5f130e196179cdeb348",
+            "worker_receipt.json": "04d6c91eb792479f4bbf2bc0bce1a857cec46ad2c622fdf3cfb2a0a889eecaa2"
+          },
+          "formal_training_authorized_by_this_function": false,
+          "log_record_count": 122,
+          "new_formal_18_fit_release": false,
+          "parent_sampled_rss_enforcement_proven": false,
+          "seed": 20260826,
+          "status": "PASS_TRAIN_ARTIFACT_READBACK_INTEGRITY_ONLY"
+        },
+        "elapsed_seconds": 3.738815094809979,
+        "family": "iwls_spi",
+        "inside_save_hook_verified": false,
+        "peak_combined_rss_bytes": 545443840,
+        "seed": 20260826
+      }
+    ]
+  },
+  "binding": {
+    "archive_sha256": "a7896ed64a9f394dafd970f08cdf3302122e612508f84344adbfb7a19e465617",
+    "packet_sha256": "30c515d532b065722a05ccf9fc1f49f20809db4107842d2ab130f6780e5961b4",
+    "trust_sha256": "6a6365e993caee509ef57384ad7abd1a3c1ec2c4368084bf1af39bd02e4dab0e",
+    "parent_sha256": "9c354487a957bc32520b4565786db3458b744f3e73b43c2632d8983ca46860b5",
+    "cli_sha256": "1b22f4f58b645e180ed2f9c5afdffa39a04fe12fa2d93e35b697fdf947d3544a",
+    "receiver_sha256": "4a08416bf584809c1e1896346e7fc6dcee1ff7e7ed9e7db0300097eefafad9a4",
+    "source_count": 45,
+    "evidence_count": 15,
+    "envelope_count": 18,
+    "archive_entries": 80,
+    "supplementary_trust_files": 1,
+    "source_binding_sha256": "e2dc28e30615b9efdbd0f774fb5095fa7be7ddb175306837c3c2e77db50fdaac",
+    "legacy_evidence_binding_sha256": "67982df0953584134f353821e2a064fbb72158f9256fdf68bfb4cfa4333f1d78"
+  },
+  "preexecution_receipts": {
+    "v5_serial_deploy_result_20261012_r3.json": {
+      "path": "../runtime_training_staging_20260928/v5_serial_deploy_result_20261012_r3.json",
+      "raw_sha256": "827d491de6a2e8e3a76bf119817d13c5bd78e7fd9e13e39e2e2e44375c5ddee1",
+      "bytes": 1443,
+      "status": "PASS_TRAIN_SOURCE_DEPLOYMENT_ONLY",
+      "exit_code": 0
+    },
+    "v5_serial_readback_result_20261012_r3.json": {
+      "path": "../runtime_training_staging_20260928/v5_serial_readback_result_20261012_r3.json",
+      "raw_sha256": "aa121865b037ac44a8bca0898322d56d8e933818ea058051157bdafe0cc50938",
+      "bytes": 1372,
+      "status": "PASS_DEPLOYED_EXACT_80_READBACK_ONLY",
+      "exit_code": 0
+    },
+    "v5_train_fresh_prelaunch_20261012_r2.json": {
+      "path": "../runtime_training_staging_20260928/v5_train_fresh_prelaunch_20261012_r2.json",
+      "raw_sha256": "96c237c004e224a668b13b0af9107e2f0c1778500a00537cbdb661da20e98d67",
+      "bytes": 16936,
+      "status": "PASS_FRESH_READ_ONLY_PRELAUNCH_ONLY",
+      "exit_code": 0
+    },
+    "v5_train_prelaunch_review_20261012_r2.json": {
+      "path": "../runtime_training_staging_20260928/v5_train_prelaunch_review_20261012_r2.json",
+      "raw_sha256": "4670a8f5ceef5346356f8199f895b9e623550beb5a5f9dd378957117f127dd2d",
+      "bytes": 1176,
+      "status": "PASS_V5_TRAIN_V3_PRELAUNCH_REVIEW",
+      "exit_code": null
+    }
+  },
+  "fresh_prelaunch": {
+    "fresh_utc": "2026-10-11T16:26:40Z",
+    "maximum_age_seconds": 600,
+    "once_absent_before_launch": true,
+    "absent_output_count": 75,
+    "available_bytes": 1037799014400,
+    "reserve_bytes": 108179952026,
+    "gate_driver_sha256": "5a3c9f2412eec3bd2b80eeadb512d677ef7a8ad9c3918462a48f94dce84aca16"
+  },
+  "resource_policy": {
+    "child_address_space_cap_bytes": 8589934592,
+    "combined_rss_cap_bytes": 1073741824,
+    "limitation": "RSS is sampled; brief overshoot can occur. RLIMIT_AS caps address space, not RSS.",
+    "max_concurrent_workers": 1,
+    "poll_seconds": 0.25,
+    "reserve_fraction": 0.1,
+    "reserve_min_bytes": 4294967296,
+    "retries": 0,
+    "timeout_seconds": 1800
+  },
+  "tests": {
+    "full_regression_r2": {
+      "tests_run": 1406,
+      "skipped": 44,
+      "errors": 0,
+      "failures": 0,
+      "exit_code": 0,
+      "raw_sha256": "8936a135c7a517f6d91b67da9f2f23a5e7f4f443f2833474a79072a7677bd53f",
+      "log_sha256": "c418009ba2cb0a796512c3a09b3beccd6d5b0c97bf22e7db02148fc132d2a183"
+    },
+    "linux_synthetic_r2": {
+      "tests_run": 76,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0,
+      "exit_code": 0,
+      "raw_sha256": "ee7eba8880823fbf0d7b1f4076e2a1c7d24a283b8c375be92ca7aae65149f74e",
+      "not_actual_ml_or_training": true
+    }
+  },
+  "independent_postlaunch_readback": {
+    "status": "PASS_ACTUAL_BOUNDED_MATRIX_COLLECTION_EVIDENCE_ONLY",
+    "receipt_path": "../runtime_training_staging_20260928/v5_train_matrix_raw_receipts_20261012_r3.json",
+    "raw_sha256": "a81a30341c0f0e6b90435b7b4417c39b6ed23db33dbb9fcf1aad7778e1d6534c",
+    "bytes": 239009,
+    "exact_entries": 110,
+    "raw_json_receipts": 56,
+    "artifact_sha256_matches": 72,
+    "strict_admission_validations": 18,
+    "strict_guard_receipt_validations": 18,
+    "collector_source_sha256": "1fa7b8546fae2a81e0dc0cf94ab321b30bef93ff4831f03b81a50a1f40931302",
+    "checkpoint_deserializations": 0,
+    "model_download_bytes": 0,
+    "remote_matrix_once_memory_sidecar_worker_receipts_not_yet_independently_audited": false,
+    "scope": "Exact-path read-only hash and receipt evidence; not numerical prediction or held-metric proof."
+  },
+  "boundaries": {
+    "numerical_model_predictions_verified": false,
+    "numerical_held_metrics_verified": false,
+    "checkpoint_loaded_for_verification": false,
+    "inside_save_hook_verified": false,
+    "atpg_speedup_claimed": false,
+    "blind_validation_pilot_lsf_tessent_allowed": false,
+    "extra_optimizer_smoke_performed_in_this_train_run": false,
+    "checkpoints_remain_on_B": true,
+    "checkpoint_download_performed_by_this_record": false,
+    "parent_artifact_readback_is_integrity_only": true,
+    "sampled_rss_is_not_hard_rss_cgroup_limit": true,
+    "historical_failure_and_implementation_receipts_preserved": true
+  }
+}
