@@ -1,5 +1,7 @@
 # TRAIN v3 接续点：固定18项完成，独立有界产物审计通过
 
+2026-10-12更新：随后获授权的18模型只读数值复算也已完成，分数/完整排序/原指标精确一致，39份回执独立审计通过。见 `docs/ranking_v5_existing_train_numerical_verification_20261012.md`；原训练额度不重置，新复算额度已消费。当前下一节点是七列输入的TRAIN-only信息支持检查，计划见 `docs/ranking_v5_feature_context_next_plan_20261012.md`，不新增模型加载、标签读取或训练。
+
 用户在修复封存后的下一步提案后回复“授权”，随后再次回复“授权，继续”。范围已记为全新 `/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2` 中、全部实现/测试/独立复核/新鲜门禁通过后的一次固定18项TRAIN。单worker/单线程、RSS1GiB、AS8GiB、1800秒每fit、零自动重试、首失败停止保持；其他角色与额外optimizer smoke不开。
 
 ## 最新实际执行状态（2026-10-12）
