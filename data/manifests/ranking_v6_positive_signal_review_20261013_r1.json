@@ -1,0 +1,17 @@
+{
+  "status": "FINAL_SEAL_PASS_FIXED_UNIFORM_POSITIVE_SIGNAL_ONLY",
+  "document_review": "DOC_SCOPE_PASS",
+  "reviewer": "/root/v6_conditional_review",
+  "source_sha256": "e3352c3c08baaf119c34a60bbcb250ff585b3fd5b5e07e2657548627b646058a",
+  "tests_sha256": "b9c2724682c350987764a61219e7a9f8b0cfea1d4a4314984c126b4869a34871",
+  "runner_sha256": "080597d23e162748a8b874ffee9f27c255b5c55cedc91211598673e630237a07",
+  "validation_sha256": "4e506533910e2f52922f12a7abdf3348931716fe843b793964b334f8308bb5cc",
+  "document_sha256": "75ba95d6648e078e8699deba7f179739388cf68cdc34a81cf57191ae3cc52436",
+  "focused_tests": {"testsRun": 94, "skipped": 11, "failures": 0, "errors": 0, "new_tests_executed": 9},
+  "diagnostic_repeated_by_reviewer": false,
+  "independently_checked": ["source_math", "test_definitions", "fixed_contracts", "once_marker", "four_seed_receipt", "arithmetic_errors", "source_pins", "document_scope"],
+  "training_release": false,
+  "nonuniform_precision_release": false,
+  "all_gradient_precision_release": false,
+  "hash_scope": "Exact reviewed bytes; Git newline conversion may change future worktree hashes."
+}

@@ -1,0 +1,87 @@
+{
+  "confidence_interval_claim": false,
+  "config": {
+    "absolute_positive_gradient_error_tolerance": 1e-12,
+    "actions": 736,
+    "adaptive_samples": false,
+    "automatic_retries": 0,
+    "confidence_interval_claim": false,
+    "fixture": "736_equal_scores_single_positive_unit_cost",
+    "formal_runs": 1,
+    "formal_training_release": false,
+    "k": 10,
+    "max_nominal_work": 942080,
+    "optimizer_calls": 0,
+    "positive_gradient_must_be_strictly_negative_each_seed": true,
+    "positive_uid": "17",
+    "real_label_reads": 0,
+    "remote_runs": 0,
+    "required_before_execution": [
+      "small_exact_oracle_tests_pass",
+      "independent_source_math_review_pass"
+    ],
+    "samples_per_seed": 32,
+    "seeds": [
+      11,
+      29,
+      47,
+      83
+    ],
+    "status": "FROZEN_SYNTHETIC_POSITIVE_COORDINATE_DIAGNOSTIC",
+    "torch_runs": 0,
+    "variance_statement": "At equal negative weights the positive gradient observation is analytically independent of the sampled negative order; this is not a numerical proof of negative-coordinate or nonuniform variance dominance."
+  },
+  "contract_sha256": "b57ac03296a709baf93382998f7f468693c1133a8471fe4f845f6087daec6dc7",
+  "negative_coordinate_precision_certified": false,
+  "nominal_work": 942080,
+  "nonuniform_variance_dominance_certified": false,
+  "per_seed": [
+    {
+      "absolute_error": 1.214306433183765e-17,
+      "exact_positive_gradient": -0.01348500686691087,
+      "gradient_map_sha256": "a7b29c1a1328026c820c42c3bb325385bd91f795f4944d8669f190c520be7337",
+      "nominal_work": 235520,
+      "positive_gradient": -0.013485006866910882,
+      "samples": 32,
+      "seed": 11,
+      "strictly_negative": true
+    },
+    {
+      "absolute_error": 1.214306433183765e-17,
+      "exact_positive_gradient": -0.01348500686691087,
+      "gradient_map_sha256": "6940aa13f0de881f49458ae86eef9f2f16151ab3184109cadef13d8780826548",
+      "nominal_work": 235520,
+      "positive_gradient": -0.013485006866910882,
+      "samples": 32,
+      "seed": 29,
+      "strictly_negative": true
+    },
+    {
+      "absolute_error": 1.214306433183765e-17,
+      "exact_positive_gradient": -0.01348500686691087,
+      "gradient_map_sha256": "3d341b314d6681edaa4d5123b882411f7ac09227c1fe95b02f6dcf383d4529f5",
+      "nominal_work": 235520,
+      "positive_gradient": -0.013485006866910882,
+      "samples": 32,
+      "seed": 47,
+      "strictly_negative": true
+    },
+    {
+      "absolute_error": 1.214306433183765e-17,
+      "exact_positive_gradient": -0.01348500686691087,
+      "gradient_map_sha256": "1e42deb7f462e07e62e45e4c615c653d86858a400ae2fb39ff765c4615441222",
+      "nominal_work": 235520,
+      "positive_gradient": -0.013485006866910882,
+      "samples": 32,
+      "seed": 83,
+      "strictly_negative": true
+    }
+  ],
+  "real_data_access": false,
+  "remote_runs": 0,
+  "source_sha256": "e3352c3c08baaf119c34a60bbcb250ff585b3fd5b5e07e2657548627b646058a",
+  "status": "PASS_FIXED_UNIFORM_POSITIVE_SIGNAL_ONLY",
+  "torch_runs": 0,
+  "training_release": false,
+  "uniform_positive_observation_order_independent_by_derivation": true
+}

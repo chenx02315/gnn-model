@@ -1,0 +1,21 @@
+{
+  "status": "FROZEN_SYNTHETIC_IMPLEMENTATION_GATE_NOT_TRAINING_RELEASE",
+  "scope": "exactly_one_positive_negative_only_PL_proposal",
+  "max_actions": 1024,
+  "max_k": 10,
+  "negative_count_at_least_k": true,
+  "small_exact_oracle_max_actions": 7,
+  "required_checks": ["risk_and_cost_match_original_PL_exact_expectations", "all_UID_gradient_maps_match_original_PL", "proposal_likelihood_gradient_included", "all_UID_central_finite_differences", "shift_invariance", "invalid_inputs_rejected_before_RNG", "bounded_work_and_storage", "independent_read_only_review"],
+  "absolute_oracle_tolerance": 1e-10,
+  "finite_difference_step": 1e-6,
+  "finite_difference_absolute_tolerance": 1e-7,
+  "large_experiment": "NOT_RELEASED_BY_THIS_CONTRACT",
+  "variance_reduction_claim": "Must be measured or analytically proved for a stated fixture; not presumed for every coordinate.",
+  "multi_positive_support": false,
+  "torch_runs": 0,
+  "optimizer_calls": 0,
+  "remote_runs": 0,
+  "real_label_reads": 0,
+  "formal_training_release": false,
+  "protected_history_changes": false
+}
