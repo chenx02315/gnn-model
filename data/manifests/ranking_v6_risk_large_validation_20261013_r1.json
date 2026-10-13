@@ -1,0 +1,81 @@
+{
+  "actions": 736,
+  "contract_sha256": "7a421bf1baba99adec527e7b9de848d43f79fe6786b6df81b54d5ad10c010ad7",
+  "derived_seed_sha256": {
+    "main": "8443b893c640ba7c373e4f4a06933a19c5d9a1ad2195cd39cd0a2c8317df4859",
+    "pilot": "1906981c467a3d018ce673eca2ef7603e41367d5de33a1f94e36db99f8449f5c"
+  },
+  "formal_training_release": false,
+  "k": 10,
+  "large_domain_statistical_precision_verified": false,
+  "main_samples": 1024,
+  "memory_measure": "Python traced allocations only, not process RSS or a hard cap",
+  "memory_pass": true,
+  "pilot_samples": 64,
+  "python_traced_peak_bytes": 224398,
+  "real_label_reads": 0,
+  "remote_calls": 0,
+  "risk_pass": true,
+  "seed": 11,
+  "selection": {
+    "confidence_bound_claim": false,
+    "current_metrics": {
+      "macro_normalized_cost": 1,
+      "macro_risk": 0.1
+    },
+    "decision": "ACCEPTABLE_SYNTHETIC_CANDIDATE",
+    "global_guarantee_claim": false,
+    "optimizer_implemented": false,
+    "selected_id": "safe_improvement",
+    "selected_metrics": {
+      "macro_normalized_cost": 0.8,
+      "macro_risk": 0.1
+    },
+    "selected_state": {
+      "family_a": {
+        "cost_scale": 10,
+        "raw_cost": 8,
+        "risk": 0.1
+      },
+      "family_b": {
+        "cost_scale": 20,
+        "raw_cost": 16,
+        "risk": 0.1
+      }
+    },
+    "status": "SYNTHETIC_RISK_CONSTRAINED_REFERENCE_NOT_OPTIMIZER",
+    "synthetic_only": true,
+    "update_applied": false
+  },
+  "status": "PASS_SYNTHETIC_RISK_AND_LARGE_RESOURCE_ONLY",
+  "training_runs": 0,
+  "work_bound": 8007680,
+  "work_pass": true,
+  "validation": {
+    "base_commit": "f8043fce2e13a1a7dacf7c18a8cda40a2d82a81c",
+    "exit_code": 0,
+    "formal_gate_runs": 1,
+    "automatic_retries": 0,
+    "source_sha256": {
+      "risk_macro": "28559a89ce7c5f2478c9cd99bd66bb770540ba10cb744c4183f114a099e557a7",
+      "risk_tests": "a98c1afb5e3e11ef284fb683014de895b01f6ae3227a6f7b5e361c0d8283d44f",
+      "large_estimator": "20c55726f9730a09876cdc628ad24033d81d5d4157484772ed7b6462cc484c82",
+      "large_tests": "041bae1127717b59268a8f556448e9bd16e897ee9568ecb8216f5dbd1029e75e",
+      "gate_script": "0eca8588b2cd8d505c0a75e6b0db1b29a66203d24d1cc5b6a6bb4fc9147508a0",
+      "old_estimator_unchanged": "095f41b496e5c691e371126a38798b299d16d722006a9a4f5a6c3510f20f7665"
+    },
+    "focused_tests": {
+      "testsRun": 54,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "independent_implementation_review": "PASS_REFERENCE_AND_LARGE_DOMAIN_IMPLEMENTATION_ONLY",
+    "artifact_kind": "Normalized captured gate stdout JSON, not a separate raw process log",
+    "full_regression_this_node": false,
+    "risk_caps_and_scales": "Synthetic fixture constants, not real-family thresholds",
+    "optimizer_implemented": false,
+    "confidence_bound_claim": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PRE_REGISTERED_SYNTHETIC_ONLY_NOT_TRAIN_RELEASE",
+  "old_streaming_sha256": "095f41b496e5c691e371126a38798b299d16d722006a9a4f5a6c3510f20f7665",
+  "large_smoke": {"n": 736, "k": 10, "pilot_samples": 64, "main_samples": 1024, "seed": 11, "case_id": "large_736_fixed", "positive_indices": [17, 91], "python_traced_peak_limit_bytes": 8388608},
+  "risk_fixture": {
+    "risk_caps": {"family_a": 0.1, "family_b": 0.1},
+    "current": {"family_a": {"risk": 0.1, "raw_cost": 10.0, "cost_scale": 10.0}, "family_b": {"risk": 0.1, "raw_cost": 20.0, "cost_scale": 20.0}},
+    "candidates": {
+      "cheap_all_miss": {"family_a": {"risk": 1.0, "raw_cost": 0.01, "cost_scale": 10.0}, "family_b": {"risk": 1.0, "raw_cost": 0.01, "cost_scale": 20.0}},
+      "macro_cancellation": {"family_a": {"risk": 0.15, "raw_cost": 1.0, "cost_scale": 10.0}, "family_b": {"risk": 0.05, "raw_cost": 2.0, "cost_scale": 20.0}},
+      "safe_improvement": {"family_a": {"risk": 0.1, "raw_cost": 8.0, "cost_scale": 10.0}, "family_b": {"risk": 0.1, "raw_cost": 16.0, "cost_scale": 20.0}}
+    },
+    "expected_selected_id": "safe_improvement"
+  },
+  "formal_gate_runs": 1,
+  "automatic_retries": 0,
+  "max_work": 20000000,
+  "memory_measure": "Python traced allocations only, not process RSS or a hard cap",
+  "scope": "Exact synthetic risk fixture plus one bounded large-domain allocation smoke. No empirical precision or formal training claim at n736. Risk caps and scales are fixture constants, not approved real-data thresholds."
+}
