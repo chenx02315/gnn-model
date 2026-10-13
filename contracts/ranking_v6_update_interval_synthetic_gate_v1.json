@@ -1,0 +1,14 @@
+{
+  "status": "PRE_REGISTERED_SYNTHETIC_UPDATE_REFERENCE_NOT_TRAIN_PERMISSION",
+  "fixture": {
+    "families": {"toy_family": {"features": {"a": {"w": -1.0}, "hit": {"w": 1.0}}, "positives": ["hit"], "costs": {"a": 10.0, "hit": 1.0}, "cost_scale": 10.0}},
+    "parameters": {"w": 0.0}, "k": 1, "steps": [0.01, 0.1, 0.5, 1.0],
+    "risk_caps": {"toy_family": 0.6}
+  },
+  "evaluation": {"seed": 11, "pilot_samples": 256, "main_samples": 16384, "case_id_prefix": "interval_eval_", "alpha_familywise": 0.01, "comparison_count": 10, "maximum_radius": 0.05},
+  "expected_selected_id": "step_3",
+  "proposal_source": "Exact small-space gradients before evaluation; fixed steps. Never tune proposals using evaluation samples.",
+  "interval_rule": "Two-sided Hoeffding union bound for current plus all four fixed proposals, risk and normalized cost each in [0,1]. Separate SHA case IDs give distinct main and pilot RNG streams. Require per-family risk UCB within predeclared cap and candidate macro normalized cost UCB strictly below current LCB.",
+  "formal_gate_runs": 1, "automatic_retries": 0,
+  "restrictions": ["no real labels", "no model loads", "no training", "no BLIND", "no remote", "no LSF/Tessent", "no online cost replay", "no large-domain statistical precision claim"]
+}

@@ -1,0 +1,503 @@
+{
+  "comparison_count": 10,
+  "contract_sha256": "c10b141733affcfabb9876c931b8feb637b2f5630590f577af35f226bbc4dab3",
+  "evaluations": {
+    "current": {
+      "toy_family": {
+        "derived_seed_sha256": {
+          "main": "3b89e0221842b47b412456ff2be4cbda15101a68b3450a8d0ca35d7b5b7fb1eb",
+          "pilot": "813ef9f37640f64db3b0631d682e6bcc5867c882277fa83bcb61872c52339984"
+        },
+        "means_and_radii": {
+          "cost_mean": 0.549615478515625,
+          "cost_radius": 0.015230270340003165,
+          "risk_mean": 0.49957275390625,
+          "risk_radius": 0.015230270340003165
+        },
+        "parameters": {
+          "w": 0
+        }
+      }
+    },
+    "step_0": {
+      "toy_family": {
+        "derived_seed_sha256": {
+          "main": "5adb3edf2b290159efd42bc04372fcb0944f851b9ba87eadb685cabd7f3bc27d",
+          "pilot": "f559bce76e06c1f803d7970c1af4337e92256de35cab364ae6583d8d03439acf"
+        },
+        "means_and_radii": {
+          "cost_mean": 0.546539306640625,
+          "cost_radius": 0.015230270340003165,
+          "risk_mean": 0.49615478515625,
+          "risk_radius": 0.015230270340003165
+        },
+        "parameters": {
+          "w": 0.0045000000000000005
+        }
+      }
+    },
+    "step_1": {
+      "toy_family": {
+        "derived_seed_sha256": {
+          "main": "d1506d5fbdb13df835745c31b7075d7d4cb8e7153215429a4b25b14975005bc5",
+          "pilot": "6a525a0f1ea0da440598b5b2ec321fb3219ef41cfb04987ee49275b346eba911"
+        },
+        "means_and_radii": {
+          "cost_mean": 0.535552978515625,
+          "cost_radius": 0.015230270340003165,
+          "risk_mean": 0.48394775390625,
+          "risk_radius": 0.015230270340003165
+        },
+        "parameters": {
+          "w": 0.045000000000000005
+        }
+      }
+    },
+    "step_2": {
+      "toy_family": {
+        "derived_seed_sha256": {
+          "main": "c89e06f01a3f7c6afa5f8d457a1a7071fc4a0ba16cf23694d8163c4c01c38f45",
+          "pilot": "c677451b510115b3f96f91e842b64858f385d9e8f563b44cc519bc6cc724dd4e"
+        },
+        "means_and_radii": {
+          "cost_mean": 0.449420166015625,
+          "cost_radius": 0.015230270340003165,
+          "risk_mean": 0.38824462890625,
+          "risk_radius": 0.015230270340003165
+        },
+        "parameters": {
+          "w": 0.225
+        }
+      }
+    },
+    "step_3": {
+      "toy_family": {
+        "derived_seed_sha256": {
+          "main": "077516cb225e09c77e0f4858151ff5409301c0f39131a9bc37583c563c082682",
+          "pilot": "b372165836e77b248f8724a123a83d23ce922fa17171e17f04105488bb18c2cd"
+        },
+        "means_and_radii": {
+          "cost_mean": 0.35675048828125,
+          "cost_radius": 0.015230270340003165,
+          "risk_mean": 0.2852783203125,
+          "risk_radius": 0.015230270340003165
+        },
+        "parameters": {
+          "w": 0.45
+        }
+      }
+    }
+  },
+  "exact_oracle_crosscheck": true,
+  "formal_training_release": false,
+  "interval_decision": {
+    "candidate_intervals": {
+      "step_0": {
+        "candidate_certified": false,
+        "families": {
+          "toy_family": {
+            "normalized_cost_lower": 0.5313090363006219,
+            "normalized_cost_upper": 0.5617695769806281,
+            "precision_sufficient": true,
+            "risk_cap": 0.6,
+            "risk_certified": true,
+            "risk_lower": 0.4809245148162468,
+            "risk_proven_infeasible": false,
+            "risk_upper": 0.5113850554962531
+          }
+        },
+        "macro_normalized_cost_lower": 0.5313090363006219,
+        "macro_normalized_cost_upper": 0.5617695769806281,
+        "precision_sufficient": true,
+        "risk_certified": true,
+        "risk_proven_infeasible": false,
+        "strict_cost_improvement_certified": false
+      },
+      "step_1": {
+        "candidate_certified": false,
+        "families": {
+          "toy_family": {
+            "normalized_cost_lower": 0.5203227081756219,
+            "normalized_cost_upper": 0.5507832488556281,
+            "precision_sufficient": true,
+            "risk_cap": 0.6,
+            "risk_certified": true,
+            "risk_lower": 0.4687174835662468,
+            "risk_proven_infeasible": false,
+            "risk_upper": 0.4991780242462532
+          }
+        },
+        "macro_normalized_cost_lower": 0.5203227081756219,
+        "macro_normalized_cost_upper": 0.5507832488556281,
+        "precision_sufficient": true,
+        "risk_certified": true,
+        "risk_proven_infeasible": false,
+        "strict_cost_improvement_certified": false
+      },
+      "step_2": {
+        "candidate_certified": true,
+        "families": {
+          "toy_family": {
+            "normalized_cost_lower": 0.43418989567562183,
+            "normalized_cost_upper": 0.4646504363556282,
+            "precision_sufficient": true,
+            "risk_cap": 0.6,
+            "risk_certified": true,
+            "risk_lower": 0.3730143585662468,
+            "risk_proven_infeasible": false,
+            "risk_upper": 0.4034748992462532
+          }
+        },
+        "macro_normalized_cost_lower": 0.43418989567562183,
+        "macro_normalized_cost_upper": 0.4646504363556282,
+        "precision_sufficient": true,
+        "risk_certified": true,
+        "risk_proven_infeasible": false,
+        "strict_cost_improvement_certified": true
+      },
+      "step_3": {
+        "candidate_certified": true,
+        "families": {
+          "toy_family": {
+            "normalized_cost_lower": 0.3415202179412468,
+            "normalized_cost_upper": 0.3719807586212532,
+            "precision_sufficient": true,
+            "risk_cap": 0.6,
+            "risk_certified": true,
+            "risk_lower": 0.2700480499724968,
+            "risk_proven_infeasible": false,
+            "risk_upper": 0.3005085906525032
+          }
+        },
+        "macro_normalized_cost_lower": 0.3415202179412468,
+        "macro_normalized_cost_upper": 0.3719807586212532,
+        "precision_sufficient": true,
+        "risk_certified": true,
+        "risk_proven_infeasible": false,
+        "strict_cost_improvement_certified": true
+      }
+    },
+    "confidence_bound_claim": false,
+    "current_intervals": {
+      "families": {
+        "toy_family": {
+          "normalized_cost_lower": 0.5343852081756219,
+          "normalized_cost_upper": 0.5648457488556281,
+          "precision_sufficient": true,
+          "risk_cap": 0.6,
+          "risk_certified": true,
+          "risk_lower": 0.4843424835662468,
+          "risk_proven_infeasible": false,
+          "risk_upper": 0.5148030242462531
+        }
+      },
+      "macro_normalized_cost_lower": 0.5343852081756219,
+      "macro_normalized_cost_upper": 0.5648457488556281,
+      "precision_sufficient": true,
+      "risk_certified": true,
+      "risk_proven_infeasible": false
+    },
+    "decision": "CERTIFIED_SYNTHETIC_UPDATE",
+    "family_count": 1,
+    "family_weight": 1,
+    "global_guarantee_claim": false,
+    "max_radius": 0.05,
+    "sampling_coverage_claim": false,
+    "selected_id": "step_3",
+    "status": "SYNTHETIC_INTERVAL_GATE_NOT_TRAIN_RELEASE",
+    "synthetic_only": true,
+    "training_release_authorized": false,
+    "update_applied": false
+  },
+  "proposals": {
+    "automatic_optimizer_implemented": false,
+    "candidate_selected": false,
+    "candidates": {
+      "step_0": {
+        "automatic_optimizer_implemented": false,
+        "family_metrics": {
+          "toy_family": {
+            "cost_gradient": {
+              "w": -4.499908876230172
+            },
+            "cost_scale": 10,
+            "raw_cost": 5.479750136686393,
+            "risk": 0.497750015187377,
+            "risk_gradient": {
+              "w": -0.4999898751366859
+            }
+          }
+        },
+        "macro_metrics": {
+          "confidence_bound_claim": false,
+          "family_count": 1,
+          "family_weight": 1,
+          "global_guarantee_claim": false,
+          "macro_normalized_cost": 0.5479750136686393,
+          "macro_normalized_cost_gradient": {
+            "w": -0.44999088762301725
+          },
+          "macro_risk": 0.497750015187377,
+          "macro_risk_gradient": {
+            "w": -0.4999898751366859
+          },
+          "optimizer_implemented": false,
+          "status": "SYNTHETIC_RISK_CONSTRAINED_REFERENCE_NOT_OPTIMIZER",
+          "synthetic_only": true
+        },
+        "parameters": {
+          "w": 0.0045000000000000005
+        },
+        "status": "SYNTHETIC_LINEAR_UPDATE_REFERENCE_NOT_TRAINER",
+        "synthetic_only": true,
+        "trainer_implemented": false,
+        "update_applied": false
+      },
+      "step_1": {
+        "automatic_optimizer_implemented": false,
+        "family_metrics": {
+          "toy_family": {
+            "cost_gradient": {
+              "w": -4.490899787773476
+            },
+            "cost_scale": 10,
+            "raw_cost": 5.297636576873798,
+            "risk": 0.47751517520819986,
+            "risk_gradient": {
+              "w": -0.4989888653081641
+            }
+          }
+        },
+        "macro_metrics": {
+          "confidence_bound_claim": false,
+          "family_count": 1,
+          "family_weight": 1,
+          "global_guarantee_claim": false,
+          "macro_normalized_cost": 0.5297636576873799,
+          "macro_normalized_cost_gradient": {
+            "w": -0.44908997877734763
+          },
+          "macro_risk": 0.47751517520819986,
+          "macro_risk_gradient": {
+            "w": -0.4989888653081641
+          },
+          "optimizer_implemented": false,
+          "status": "SYNTHETIC_RISK_CONSTRAINED_REFERENCE_NOT_OPTIMIZER",
+          "synthetic_only": true
+        },
+        "parameters": {
+          "w": 0.045000000000000005
+        },
+        "status": "SYNTHETIC_LINEAR_UPDATE_REFERENCE_NOT_TRAINER",
+        "synthetic_only": true,
+        "trainer_implemented": false,
+        "update_applied": false
+      },
+      "step_2": {
+        "automatic_optimizer_implemented": false,
+        "family_metrics": {
+          "toy_family": {
+            "cost_gradient": {
+              "w": -4.2796612784003285
+            },
+            "cost_scale": 10,
+            "raw_cost": 4.504246894457003,
+            "risk": 0.3893607660507781,
+            "risk_gradient": {
+              "w": -0.4755179198222587
+            }
+          }
+        },
+        "macro_metrics": {
+          "confidence_bound_claim": false,
+          "family_count": 1,
+          "family_weight": 1,
+          "global_guarantee_claim": false,
+          "macro_normalized_cost": 0.4504246894457003,
+          "macro_normalized_cost_gradient": {
+            "w": -0.42796612784003285
+          },
+          "macro_risk": 0.3893607660507781,
+          "macro_risk_gradient": {
+            "w": -0.4755179198222587
+          },
+          "optimizer_implemented": false,
+          "status": "SYNTHETIC_RISK_CONSTRAINED_REFERENCE_NOT_OPTIMIZER",
+          "synthetic_only": true
+        },
+        "parameters": {
+          "w": 0.225
+        },
+        "status": "SYNTHETIC_LINEAR_UPDATE_REFERENCE_NOT_TRAINER",
+        "synthetic_only": true,
+        "trainer_implemented": false,
+        "update_applied": false
+      },
+      "step_3": {
+        "automatic_optimizer_implemented": false,
+        "family_metrics": {
+          "toy_family": {
+            "cost_gradient": {
+              "w": -3.699005532160742
+            },
+            "cost_scale": 10,
+            "raw_cost": 3.6014544763749643,
+            "risk": 0.28905049737499605,
+            "risk_gradient": {
+              "w": -0.41100061468452687
+            }
+          }
+        },
+        "macro_metrics": {
+          "confidence_bound_claim": false,
+          "family_count": 1,
+          "family_weight": 1,
+          "global_guarantee_claim": false,
+          "macro_normalized_cost": 0.36014544763749645,
+          "macro_normalized_cost_gradient": {
+            "w": -0.3699005532160742
+          },
+          "macro_risk": 0.28905049737499605,
+          "macro_risk_gradient": {
+            "w": -0.41100061468452687
+          },
+          "optimizer_implemented": false,
+          "status": "SYNTHETIC_RISK_CONSTRAINED_REFERENCE_NOT_OPTIMIZER",
+          "synthetic_only": true
+        },
+        "parameters": {
+          "w": 0.45
+        },
+        "status": "SYNTHETIC_LINEAR_UPDATE_REFERENCE_NOT_TRAINER",
+        "synthetic_only": true,
+        "trainer_implemented": false,
+        "update_applied": false
+      }
+    },
+    "current": {
+      "automatic_optimizer_implemented": false,
+      "family_metrics": {
+        "toy_family": {
+          "cost_gradient": {
+            "w": -4.5
+          },
+          "cost_scale": 10,
+          "raw_cost": 5.5,
+          "risk": 0.5,
+          "risk_gradient": {
+            "w": -0.5
+          }
+        }
+      },
+      "macro_metrics": {
+        "confidence_bound_claim": false,
+        "family_count": 1,
+        "family_weight": 1,
+        "global_guarantee_claim": false,
+        "macro_normalized_cost": 0.55,
+        "macro_normalized_cost_gradient": {
+          "w": -0.45
+        },
+        "macro_risk": 0.5,
+        "macro_risk_gradient": {
+          "w": -0.5
+        },
+        "optimizer_implemented": false,
+        "status": "SYNTHETIC_RISK_CONSTRAINED_REFERENCE_NOT_OPTIMIZER",
+        "synthetic_only": true
+      },
+      "parameters": {
+        "w": 0
+      },
+      "status": "SYNTHETIC_LINEAR_UPDATE_REFERENCE_NOT_TRAINER",
+      "synthetic_only": true,
+      "trainer_implemented": false,
+      "update_applied": false
+    },
+    "risk_guarantee_claim": false,
+    "status": "SYNTHETIC_LINEAR_UPDATE_REFERENCE_NOT_TRAINER",
+    "steps": [
+      0.01,
+      0.1,
+      0.5,
+      1
+    ],
+    "steps_user_provided": true,
+    "synthetic_only": true,
+    "trainer_implemented": false,
+    "update_applied": false
+  },
+  "radius": 0.015230270340003165,
+  "real_label_reads": 0,
+  "remote_calls": 0,
+  "selected_id": "step_3",
+  "status": "PASS_SYNTHETIC_UPDATE_INTERVAL_ONLY",
+  "training_runs": 0,
+  "update_applied": false,
+  "validation": {
+    "base_commit": "8316ac4b68f6f1c1d40585f1a29d9dc400196feb",
+    "exit_code": 0,
+    "formal_gate_runs": 1,
+    "automatic_retries": 0,
+    "source_sha256": {
+      "linear": "3b422fbbc291d001e2b0dbe5e395a3980e0e18c2ebb5b417fd3a4ed891e02d2c",
+      "linear_tests": "be35150294ff944bee3dc891b24cfd40e373177822d99a8d1d4a78776c61ef27",
+      "interval_gate": "da0b075602063d169649c7f8626c696f9104ae6dfa5daac52f9480795e43f21f",
+      "interval_tests": "4c353d2b0bd204ca060e823e7291293654a9a464f7753c7722de34d16f57907c",
+      "script": "6912ffedb4da337ba5c6e1b27d18baa50880384c3e03b8967b8e8a84f64e51c6",
+      "unchanged_exact": "baf26683ee9a57a7eb92d39411da9a6ac6a15ab920471fcfaa8e1ecf0630b32f",
+      "unchanged_macro": "28559a89ce7c5f2478c9cd99bd66bb770540ba10cb744c4183f114a099e557a7",
+      "unchanged_sampler": "095f41b496e5c691e371126a38798b299d16d722006a9a4f5a6c3510f20f7665"
+    },
+    "focused_tests": {
+      "testsRun": 71,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    "independent_implementation_review": "PASS_SYNTHETIC_UPDATE_INTERVAL_IMPLEMENTATION_ONLY",
+    "prelaunch_failure_and_focused_repair": {
+      "failed_source_sha256": "3651ddf86422c759bcc93eece842c188e42cca6cb4443d4cb9e08ca11d546388",
+      "failure": "Exact all-negative miss moment 1.0000000000000002 rejected as RISK_MACRO_REFERENCE_RISK",
+      "fixture": {
+        "features": {
+          "0": {
+            "w": 1.917633233107046
+          },
+          "1": {
+            "w": -1.0796542224703654
+          },
+          "2": {
+            "w": 0.6944044719294027
+          }
+        },
+        "parameters": {
+          "w": 1
+        },
+        "positives": [],
+        "costs": {
+          "0": 1,
+          "1": 1,
+          "2": 1
+        },
+        "cost_scale": 3,
+        "k": 3
+      },
+      "repair": "Linear adapter divides moments and score gradients by validated probability mass; no old source edits or target changes",
+      "regression": "Given fixture and shared-parameter finite differences pass; independent 30 all-negative fixtures pass",
+      "formal_gate_ran_before_repair": false
+    },
+    "limits": [
+      "Only fixed synthetic toy and bounded reference code",
+      "Intervals rely on upstream bounded sampling assumptions; helper alone does not establish coverage",
+      "Decimal cost normalization roundoff remains fail-closed for future integration; registered integer-cost fixture avoids boundary",
+      "No actual parameter update applied",
+      "No scalable trainer or real model",
+      "No n736 statistical precision proof",
+      "No empirical ATPG speedup claim"
+    ],
+    "artifact_kind": "Normalized captured gate stdout JSON; not a separate raw process log",
+    "full_regression_this_node": false
+  }
+}
