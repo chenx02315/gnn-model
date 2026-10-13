@@ -1,0 +1,677 @@
+{
+  "adaptive_sampling": false,
+  "all_comparisons_inside_error_bound": true,
+  "all_comparisons_precision_sufficient": true,
+  "ci_method": "empirical_Bernstein_unbiased_s2_log4M_over_alpha",
+  "comparison_count": 5896,
+  "comparison_sha256": "c8d23c3d5a3217c8f95da48012778f49a23a0181d4ceb693833c0feb8e3b4274",
+  "config": {
+    "alpha": 0.01,
+    "case_id": "uniform-precision-v1-n736-k10",
+    "cost_normalization_B": 10,
+    "k": 10,
+    "main_samples": 2304,
+    "max_radius": 0.05,
+    "n": 736,
+    "pilot_samples": 64,
+    "positive_uid": "17",
+    "seeds": [
+      11,
+      29,
+      47,
+      83
+    ],
+    "temperature": 1,
+    "uniform_score": 0,
+    "unit_cost": 1
+  },
+  "contract_sha256": "32439239728d70112078a9af26a5dbf3a46b70bab4679347fa7a4fd6ff63478c",
+  "error_bound_violations": 0,
+  "fixed_sample_iid_conditional_on_independent_pilot": true,
+  "fixture": "uniform_single_positive_unit_cost",
+  "generalizes_to_nonuniform_or_real_data": false,
+  "gradient_q_bound": 0.013755158184319119,
+  "gradient_range_width": 2,
+  "log_term": 14.673493980977153,
+  "max_total_work": 80000000,
+  "max_work_per_seed": 20000000,
+  "oracle_summary": {
+    "expected_miss_probability": 0.9864130434782609,
+    "expected_normalized_cost": 0.9938858695652174,
+    "expected_truncated_static_cost": 9.938858695652174
+  },
+  "per_seed": [
+    {
+      "baseline_normalized_cost": 1,
+      "baseline_risk": 1,
+      "baselines_frozen_before_main": true,
+      "case_id": "uniform-precision-v1-n736-k10",
+      "comparison_count": 1474,
+      "comparison_sha256": "afd48661d809cd05a110169568c56b78d8147a2a5693f5782861a5e51397f274",
+      "derived_seed_sha256": {
+        "main": "3b5a202903cf5254a353b0654386f6916659a4515823ea7cc9981a07344f402a",
+        "pilot": "017c1b4a7912ba955530c94c121e5f7cce3d6a41b504a6f6eee5de5006f757c8"
+      },
+      "expected_truncated_static_cost_estimate": 9.914496527777782,
+      "groups": {
+        "miss_probability": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.003340126811593791,
+          "max_radius": 0.029428684873215018,
+          "precision_violations": 0
+        },
+        "miss_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0033278077503280865,
+          "max_radius": 0.04419727474299709,
+          "precision_violations": 0
+        },
+        "normalized_cost": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.002436216787439216,
+          "max_radius": 0.023482550386424828,
+          "precision_violations": 0
+        },
+        "normalized_cost_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0024306574471927144,
+          "max_radius": 0.03831717106055483,
+          "precision_violations": 0
+        }
+      },
+      "main_observation_count": 2304,
+      "scalar_and_named_positive_negative_rows": [
+        {
+          "absolute_error": 0.003340126811593791,
+          "estimate": 0.9830729166666671,
+          "exact": 0.9864130434782609,
+          "inside_error_bound": true,
+          "metric": "miss_probability",
+          "precision_sufficient": true,
+          "radius": 0.029428684873215018,
+          "range_width": 1,
+          "sample_variance": 0.01664778278332609,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.002436216787439216,
+          "estimate": 0.9914496527777782,
+          "exact": 0.9938858695652174,
+          "inside_error_bound": true,
+          "metric": "normalized_cost",
+          "precision_sufficient": true,
+          "radius": 0.023482550386424828,
+          "range_width": 1,
+          "sample_variance": 0.005827858514859842,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.00009592176797612266,
+          "estimate": 0.00011426871609436874,
+          "exact": 0.00001834694811824608,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.029849428381899728,
+          "range_width": 2,
+          "sample_variance": 0.0000010546791674736098,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.0033278077503280865,
+          "estimate": -0.016812814617238957,
+          "exact": -0.01348500686691087,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.04419727474299709,
+          "range_width": 2,
+          "sample_variance": 0.016424070947553288,
+          "uid": "17"
+        },
+        {
+          "absolute_error": 0.000027825441133792224,
+          "estimate": 0.00003610243071788965,
+          "exact": 0.000008276989584097429,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.029768812658135774,
+          "range_width": 2,
+          "sample_variance": 9.776758033319165e-8,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.0024306574471927144,
+          "estimate": -0.008514244791504325,
+          "exact": -0.00608358734431161,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.03831717106055483,
+          "range_width": 2,
+          "sample_variance": 0.005784457949979661,
+          "uid": "17"
+        }
+      ],
+      "seed": 11,
+      "worst_error_minus_radius": {
+        "absolute_error": 0.002436216787439216,
+        "estimate": 0.9914496527777782,
+        "exact": 0.9938858695652174,
+        "inside_error_bound": true,
+        "metric": "normalized_cost",
+        "precision_sufficient": true,
+        "radius": 0.023482550386424828,
+        "range_width": 1,
+        "sample_variance": 0.005827858514859842,
+        "uid": null
+      },
+      "worst_radius": {
+        "absolute_error": 0.0033278077503280865,
+        "estimate": -0.016812814617238957,
+        "exact": -0.01348500686691087,
+        "inside_error_bound": true,
+        "metric": "miss_score_gradient",
+        "precision_sufficient": true,
+        "radius": 0.04419727474299709,
+        "range_width": 2,
+        "sample_variance": 0.016424070947553288,
+        "uid": "17"
+      }
+    },
+    {
+      "baseline_normalized_cost": 0.9875,
+      "baseline_risk": 0.984375,
+      "baselines_frozen_before_main": true,
+      "case_id": "uniform-precision-v1-n736-k10",
+      "comparison_count": 1474,
+      "comparison_sha256": "557b2d38529edf3b48c661a63785e9c9d248165a1c353956e8afec4c98a68c28",
+      "derived_seed_sha256": {
+        "main": "d4758df5dc976b3399fd61d645a7077577edc27fa94e822a07d04c41aee83617",
+        "pilot": "3bda0dc39f35445d3086f82feb49676c1cafac0540a8ca3e8dc7e7287ed51c79"
+      },
+      "expected_truncated_static_cost_estimate": 9.909288194444425,
+      "groups": {
+        "miss_probability": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.005944293478261087,
+          "max_radius": 0.030488044716054364,
+          "precision_violations": 0
+        },
+        "miss_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.005810070782441747,
+          "max_radius": 0.04499516396935049,
+          "precision_violations": 0
+        },
+        "normalized_cost": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.002957050120774962,
+          "max_radius": 0.023141630655591265,
+          "precision_violations": 0
+        },
+        "normalized_cost_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.002863520877677118,
+          "max_radius": 0.037800347678464234,
+          "precision_violations": 0
+        }
+      },
+      "main_observation_count": 2304,
+      "scalar_and_named_positive_negative_rows": [
+        {
+          "absolute_error": 0.005944293478261087,
+          "estimate": 0.9804687499999998,
+          "exact": 0.9864130434782609,
+          "inside_error_bound": true,
+          "metric": "miss_probability",
+          "precision_sufficient": true,
+          "radius": 0.030488044716054364,
+          "range_width": 1,
+          "sample_variance": 0.019158095419018684,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.002957050120774962,
+          "estimate": 0.9909288194444424,
+          "exact": 0.9938858695652174,
+          "inside_error_bound": true,
+          "metric": "normalized_cost",
+          "precision_sufficient": true,
+          "radius": 0.023141630655591265,
+          "range_width": 1,
+          "sample_variance": 0.005375776086143679,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.00014473234057452454,
+          "estimate": 0.00016307928869277062,
+          "exact": 0.00001834694811824608,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.029980943281813246,
+          "range_width": 2,
+          "sample_variance": 0.00000480603388762893,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.005810070782441747,
+          "estimate": -0.019295077649352618,
+          "exact": -0.01348500686691087,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.04499516396935049,
+          "range_width": 2,
+          "sample_variance": 0.018286111436529313,
+          "uid": "17"
+        },
+        {
+          "absolute_error": 0.00005732089441908716,
+          "estimate": 0.0000655978840031846,
+          "exact": 0.000008276989584097429,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.02990941148185072,
+          "range_width": 2,
+          "sample_variance": 0.0000024287898220921335,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.002863520877677118,
+          "estimate": -0.008947108221988728,
+          "exact": -0.00608358734431161,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.037800347678464234,
+          "range_width": 2,
+          "sample_variance": 0.005108861089299015,
+          "uid": "17"
+        }
+      ],
+      "seed": 29,
+      "worst_error_minus_radius": {
+        "absolute_error": 0.002957050120774962,
+        "estimate": 0.9909288194444424,
+        "exact": 0.9938858695652174,
+        "inside_error_bound": true,
+        "metric": "normalized_cost",
+        "precision_sufficient": true,
+        "radius": 0.023141630655591265,
+        "range_width": 1,
+        "sample_variance": 0.005375776086143679,
+        "uid": null
+      },
+      "worst_radius": {
+        "absolute_error": 0.005810070782441747,
+        "estimate": -0.019295077649352618,
+        "exact": -0.01348500686691087,
+        "inside_error_bound": true,
+        "metric": "miss_score_gradient",
+        "precision_sufficient": true,
+        "radius": 0.04499516396935049,
+        "range_width": 2,
+        "sample_variance": 0.018286111436529313,
+        "uid": "17"
+      }
+    },
+    {
+      "baseline_normalized_cost": 1,
+      "baseline_risk": 1,
+      "baselines_frozen_before_main": true,
+      "case_id": "uniform-precision-v1-n736-k10",
+      "comparison_count": 1474,
+      "comparison_sha256": "9405319c4e24a5ceb728b6c57fe791a63114e9286d7e09fcaf3a2ce599ad067c",
+      "derived_seed_sha256": {
+        "main": "cff93fce3d024844911a54b9889fe894861e23d90ac43914acf0b2732d6808af",
+        "pilot": "503b645c867a429c3700704ea5836322c563fc9a6345f2f8488a9958894bd8f5"
+      },
+      "expected_truncated_static_cost_estimate": 9.947048611111097,
+      "groups": {
+        "miss_probability": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0014341787439616782,
+          "max_radius": 0.027235274255624147,
+          "precision_violations": 0
+        },
+        "miss_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0014257964014067447,
+          "max_radius": 0.04200690914453788,
+          "precision_violations": 0
+        },
+        "normalized_cost": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.000818991545892267,
+          "max_radius": 0.02137371211352159,
+          "precision_violations": 0
+        },
+        "normalized_cost_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0008149465110389711,
+          "max_radius": 0.03621679256778701,
+          "precision_violations": 0
+        }
+      },
+      "main_observation_count": 2304,
+      "scalar_and_named_positive_negative_rows": [
+        {
+          "absolute_error": 0.0014341787439616782,
+          "estimate": 0.9878472222222225,
+          "exact": 0.9864130434782609,
+          "inside_error_bound": true,
+          "metric": "miss_probability",
+          "precision_sufficient": true,
+          "radius": 0.027235274255624147,
+          "range_width": 1,
+          "sample_variance": 0.012010300574130382,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.000818991545892267,
+          "estimate": 0.9947048611111097,
+          "exact": 0.9938858695652174,
+          "inside_error_bound": true,
+          "metric": "normalized_cost",
+          "precision_sufficient": true,
+          "radius": 0.02137371211352159,
+          "range_width": 1,
+          "sample_variance": 0.0033240986997635927,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.00007522036415541001,
+          "estimate": 0.00009356731227365609,
+          "exact": 0.00001834694811824608,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.029841019243142516,
+          "range_width": 2,
+          "sample_variance": 9.071921511555917e-7,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.0014257964014067447,
+          "estimate": -0.012059210465504126,
+          "exact": -0.01348500686691087,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.04200690914453788,
+          "range_width": 2,
+          "sample_variance": 0.011826267077844841,
+          "uid": "17"
+        },
+        {
+          "absolute_error": 0.000018221066032154564,
+          "estimate": 0.000026498055616251994,
+          "exact": 0.000008276989584097429,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.029762601738634313,
+          "range_width": 2,
+          "sample_variance": 6.638149654132828e-8,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.0008149465110389711,
+          "estimate": -0.005268640833272639,
+          "exact": -0.00608358734431161,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.03621679256778701,
+          "range_width": 2,
+          "sample_variance": 0.003299947241386513,
+          "uid": "17"
+        }
+      ],
+      "seed": 47,
+      "worst_error_minus_radius": {
+        "absolute_error": 0.000818991545892267,
+        "estimate": 0.9947048611111097,
+        "exact": 0.9938858695652174,
+        "inside_error_bound": true,
+        "metric": "normalized_cost",
+        "precision_sufficient": true,
+        "radius": 0.02137371211352159,
+        "range_width": 1,
+        "sample_variance": 0.0033240986997635927,
+        "uid": null
+      },
+      "worst_radius": {
+        "absolute_error": 0.0014257964014067447,
+        "estimate": -0.012059210465504126,
+        "exact": -0.01348500686691087,
+        "inside_error_bound": true,
+        "metric": "miss_score_gradient",
+        "precision_sufficient": true,
+        "radius": 0.04200690914453788,
+        "range_width": 2,
+        "sample_variance": 0.011826267077844841,
+        "uid": "17"
+      }
+    },
+    {
+      "baseline_normalized_cost": 0.996875,
+      "baseline_risk": 0.96875,
+      "baselines_frozen_before_main": true,
+      "case_id": "uniform-precision-v1-n736-k10",
+      "comparison_count": 1474,
+      "comparison_sha256": "b32f9102be8e8a6df1ec0b1bbb9c30e8d551228953d1d04f1bc3c516195c622c",
+      "derived_seed_sha256": {
+        "main": "65575f8affd3f6421c4b26822001ee6e4ad587e8a376fe99d335c55e21c1f816",
+        "pilot": "c818f7ba329c89caaa9b95717cf956155b4c71e8d2d95e8c36b82315f3256a7c"
+      },
+      "expected_truncated_static_cost_estimate": 9.909722222222216,
+      "groups": {
+        "miss_probability": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.003340126811594901,
+          "max_radius": 0.029428684873215007,
+          "precision_violations": 0
+        },
+        "miss_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0032287322592760223,
+          "max_radius": 0.04374449881595304,
+          "precision_violations": 0
+        },
+        "normalized_cost": {
+          "comparison_count": 1,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0029136473429958176,
+          "max_radius": 0.023644927233246425,
+          "precision_violations": 0
+        },
+        "normalized_cost_score_gradient": {
+          "comparison_count": 736,
+          "error_bound_violations": 0,
+          "max_absolute_error": 0.0028941352796267254,
+          "max_radius": 0.03844136908970635,
+          "precision_violations": 0
+        }
+      },
+      "main_observation_count": 2304,
+      "scalar_and_named_positive_negative_rows": [
+        {
+          "absolute_error": 0.003340126811594901,
+          "estimate": 0.983072916666666,
+          "exact": 0.9864130434782609,
+          "inside_error_bound": true,
+          "metric": "miss_probability",
+          "precision_sufficient": true,
+          "radius": 0.029428684873215007,
+          "range_width": 1,
+          "sample_variance": 0.016647782783326074,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.0029136473429958176,
+          "estimate": 0.9909722222222216,
+          "exact": 0.9938858695652174,
+          "inside_error_bound": true,
+          "metric": "normalized_cost",
+          "precision_sufficient": true,
+          "radius": 0.023644927233246425,
+          "range_width": 1,
+          "sample_variance": 0.006049597143822074,
+          "uid": null
+        },
+        {
+          "absolute_error": 0.00008935132832911814,
+          "estimate": 0.00010769827644736422,
+          "exact": 0.00001834694811824608,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.030155884414452043,
+          "range_width": 2,
+          "sample_variance": 0.000014005087501509553,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.0032287322592760223,
+          "estimate": -0.016713739126186893,
+          "exact": -0.01348500686691087,
+          "inside_error_bound": true,
+          "metric": "miss_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.04374449881595304,
+          "range_width": 2,
+          "sample_variance": 0.015411881458102758,
+          "uid": "17"
+        },
+        {
+          "absolute_error": 0.00003121357118545485,
+          "estimate": 0.00003949056076955228,
+          "exact": 0.000008276989584097429,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.0297883944191519,
+          "range_width": 2,
+          "sample_variance": 2.3637368280260547e-7,
+          "uid": "0"
+        },
+        {
+          "absolute_error": 0.0028941352796267254,
+          "estimate": -0.008977722623938336,
+          "exact": -0.00608358734431161,
+          "inside_error_bound": true,
+          "metric": "normalized_cost_score_gradient",
+          "precision_sufficient": true,
+          "radius": 0.03844136908970635,
+          "range_width": 2,
+          "sample_variance": 0.005953061272426873,
+          "uid": "17"
+        }
+      ],
+      "seed": 83,
+      "worst_error_minus_radius": {
+        "absolute_error": 0.0029136473429958176,
+        "estimate": 0.9909722222222216,
+        "exact": 0.9938858695652174,
+        "inside_error_bound": true,
+        "metric": "normalized_cost",
+        "precision_sufficient": true,
+        "radius": 0.023644927233246425,
+        "range_width": 1,
+        "sample_variance": 0.006049597143822074,
+        "uid": null
+      },
+      "worst_radius": {
+        "absolute_error": 0.0032287322592760223,
+        "estimate": -0.016713739126186893,
+        "exact": -0.01348500686691087,
+        "inside_error_bound": true,
+        "metric": "miss_score_gradient",
+        "precision_sufficient": true,
+        "radius": 0.04374449881595304,
+        "range_width": 2,
+        "sample_variance": 0.015411881458102758,
+        "uid": "17"
+      }
+    }
+  ],
+  "precision_violations": 0,
+  "real_data_access": false,
+  "real_label_reads": 0,
+  "remote_calls": 0,
+  "status": "PASS",
+  "synthetic_only": true,
+  "total_work": 69713920,
+  "trainer_implemented": false,
+  "training_runs": 0,
+  "trajectories_retained": false,
+  "work_per_seed": 17428480,
+  "validation": {
+    "base_commit": "da0afb5b0f51c2a204f8568a55b2a6bcef5d914b",
+    "exit_code": 0,
+    "formal_runs": 1,
+    "automatic_retries": 0,
+    "source_sha256": "5ed965fe0a2ffa62587f4312aae6217460b8b2e09c1f764f935358a86b075c3a",
+    "tests_sha256": "85fe1ba7e8161418cf51925cff8fd10af3667b910dc85d78275a455fb3952619",
+    "script_sha256": "7fdc9e6e597b02d565d2cfbc91c563444f03ffe5a816f794ccf98e73bb74c56b",
+    "protocol_tests_sha256": "8d488653a609fc418b4b20f7dd91170534ab77fe93c061a5a36538a8dd1ed977",
+    "independent_prelaunch_review": "PASS_FIXED_UNIFORM_PRECISION_PRELAUNCH",
+    "protocol_repair": "Before execution, exact PASS status incorrectly mapped to exit1 via startswith PASS_. Fixed exact PASS mapping and added three protocol tests; no formal run occurred before repair.",
+    "audit_scope": "All components checked by source loop; compact receipt stores complete counts, hashes and selected/worst rows, not all 5896 rows. Independent raw all-row recomputation not claimed.",
+    "artifact_kind": "Normalized captured stdout JSON"
+  },
+  "postrun_signal_diagnostic": [
+    {
+      "seed": 11,
+      "positive_gradient_estimate": -0.016812814617238957,
+      "radius": 0.04419727474299709,
+      "lower": -0.061010089360236046,
+      "upper": 0.027384460125758132,
+      "contains_zero": true
+    },
+    {
+      "seed": 29,
+      "positive_gradient_estimate": -0.019295077649352618,
+      "radius": 0.04499516396935049,
+      "lower": -0.06429024161870311,
+      "upper": 0.025700086319997876,
+      "contains_zero": true
+    },
+    {
+      "seed": 47,
+      "positive_gradient_estimate": -0.012059210465504126,
+      "radius": 0.04200690914453788,
+      "lower": -0.054066119610042,
+      "upper": 0.02994769867903375,
+      "contains_zero": true
+    },
+    {
+      "seed": 83,
+      "positive_gradient_estimate": -0.016713739126186893,
+      "radius": 0.04374449881595304,
+      "lower": -0.060458237942139934,
+      "upper": 0.02703075968976615,
+      "contains_zero": true
+    }
+  ],
+  "postrun_signal_limit": "Absolute-radius gate PASS does not certify gradient sign or relative error: every positive-hit risk-gradient interval includes zero. This is a post-run diagnostic, not a changed acceptance rule or reason to add samples."
+}

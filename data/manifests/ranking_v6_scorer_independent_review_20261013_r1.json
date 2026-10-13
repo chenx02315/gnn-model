@@ -1,0 +1,16 @@
+{
+  "status": "PASS_ACTUAL_SYNTHETIC_VJP_SEALING_ONLY",
+  "reviewer": "/root/target_cost_review",
+  "validation_sha256": "66b679f8ee45d6cdb3cb20ba8e5d450b1d3be93c36d910bb3e80cf826362dd56",
+  "document_sha256": "b5b03f9f249b78fefa52aa9169206cf7a6e05e1261dc49f3b131ad6159366fbb",
+  "prelaunch_status": "PASS_ONE_SYNTHETIC_VJP_PRELAUNCH_ONLY",
+  "uniform_precision_review": "PASS_FIXED_UNIFORM_ABSOLUTE_PRECISION_RECEIPT_AUDIT",
+  "source_manifest_sha256": "6abd1aaebfaabc9a5ed58771c494148f5f16cde82018dd1923f38779e1854d54",
+  "verified": ["five_embedded_raw_bytes_and_sha256", "seven_source_pins", "once_marker", "linux_protocol_10_no_skips", "resource_limits", "four_nonzero_finite_difference_checks", "scope_limits"],
+  "not_independently_recomputed": ["unsealed_gradient_vectors", "unsealed_weight_vectors", "unpublished_full_precision_comparison_vectors"],
+  "remaining_blocker": "Uniform positive risk gradient confidence intervals include zero; direction reliability remains unresolved.",
+  "optimizer_release": false,
+  "formal_training_release": false,
+  "review_did_not_repeat_torch": true,
+  "sha_scope": "Exact reviewed file bytes. Git line-ending conversion can change worktree hashes; deployment pins refer to the retained bundle."
+}

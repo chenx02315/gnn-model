@@ -1,0 +1,13 @@
+{
+  "status": "PRE_REGISTERED_FIXED_UNIFORM_SYNTHETIC_PRECISION_ONLY",
+  "n": 736, "k": 10, "seeds": [11, 29, 47, 83],
+  "positive_count": 1, "positive_uid": "17", "all_scores": 0, "all_costs": 1,
+  "pilot_samples": 64, "main_samples": 2304,
+  "alpha": 0.01, "max_radius": 0.05,
+  "comparison_count": 5896,
+  "per_seed_work_limit": 20000000, "whole_work_limit": 80000000,
+  "formula": "sqrt(2*s2*log(4*M/alpha)/N)+7*range_width*log(4*M/alpha)/(3*(N-1)); s2 unbiased sample variance. Conditional on independent frozen pilot, fixed IID main draws.",
+  "primary_source": "https://arxiv.org/pdf/0907.3740",
+  "formal_runs": 1, "automatic_retries": 0,
+  "scope_limit": "Uniform scores, one positive and constant unit costs only. No inference for nonuniform learned scores, real costs or formal training. Preserve INCONCLUSIVE_PRECISION without sample extensions."
+}
