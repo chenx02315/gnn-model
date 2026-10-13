@@ -1,0 +1,22 @@
+{
+  "status": "PASS_SYNTHETIC_CONTROL_IMPLEMENTATION_ONLY",
+  "source_sha256": "a2ac0e08a80afee62ee1cf5de8d52f2fa8f6f161286d064203915e3a4bcd577d",
+  "tests_sha256": "0999e3372f072863db4be81d4b19b3c946dc4a03e554d895f6c8a17e42678286",
+  "independent_source_review": "SOURCE_MATH_PASS_CONTROL_IMPLEMENTATION_ONLY",
+  "reviewer": "/root/v6_conditional_review",
+  "focused_regression": {"testsRun": 103, "skipped": 11, "failures": 0, "errors": 0, "exit_code": 0},
+  "new_control_tests_executed": 9,
+  "exact_gradient_absolute_tolerance": 1e-10,
+  "finite_difference_step": 1e-6,
+  "finite_difference_absolute_tolerance": 1e-7,
+  "verified": ["fixed_baseline_expectation_all_UIDs", "proposal_derivative_retained", "independent_phase_pins", "baseline_frozen_before_main", "positive_coordinates_unchanged", "explicit_zero_cost_branch", "prior_range_math", "bounded_work_before_RNG"],
+  "large_sampling_runs": 0,
+  "confidence_interval_experiments": 0,
+  "variance_dominance_proved": false,
+  "remote_runs": 0,
+  "torch_runs": 0,
+  "optimizer_calls": 0,
+  "real_label_reads": 0,
+  "formal_training_release": false,
+  "hash_scope": "Exact reviewed bytes; Git newline conversion may change future worktree hashes."
+}

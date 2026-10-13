@@ -1,0 +1,14 @@
+{
+  "status": "FINAL_SEAL_PASS_SYNTHETIC_CONTROL_IMPLEMENTATION_ONLY",
+  "reviewer": "/root/v6_conditional_review",
+  "source_sha256": "a2ac0e08a80afee62ee1cf5de8d52f2fa8f6f161286d064203915e3a4bcd577d",
+  "tests_sha256": "0999e3372f072863db4be81d4b19b3c946dc4a03e554d895f6c8a17e42678286",
+  "document_sha256": "24c720f4c135255c256ca14b8648b07f65691e006be205417c8468248a55cba8",
+  "validation_sha256": "5c0777e74995700a93b30a79bf9de1d79b34e53058944d20811a5d77264e675d",
+  "independent_review": ["source_math", "test_definitions", "contract_scope", "prior_observation_ranges", "document_and_receipt_claims"],
+  "reviewer_numeric_reruns": 0,
+  "large_precision_release": false,
+  "formal_training_release": false,
+  "variance_reduction_claim": false,
+  "hash_scope": "Exact reviewed bytes; Git newline conversion may change future worktree hashes."
+}

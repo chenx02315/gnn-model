@@ -1,0 +1,23 @@
+{
+  "status": "FROZEN_SYNTHETIC_CONTROL_IMPLEMENTATION_ONLY",
+  "scope": "exactly_one_positive_analytic_stopping_independent_pilot_control",
+  "max_actions": 1024,
+  "max_k": 10,
+  "max_nominal_work": 20000000,
+  "formula": "direct_gradient_plus_(objective_minus_frozen_baseline)_proposal_log_gradient",
+  "pilot_main_rng_namespaces_distinct": true,
+  "risk_baseline_domain": [0, 1],
+  "normalized_cost_baseline_domain": [0, 1],
+  "zero_cost_universe": "explicit_zero_branch_no_division_by_zero",
+  "required_checks": ["all_UID_exact_oracle_unbiasedness_for_fixed_baselines", "independent_pilot_and_main_seed_derivation", "baselines_frozen_before_main", "positive_coordinate_unchanged", "prior_observation_range_derivation", "input_and_work_rejection_before_RNG", "determinism_and_shift_invariance", "independent_read_only_review"],
+  "small_exact_max_actions": 7,
+  "exact_absolute_tolerance": 1e-10,
+  "large_sampling_experiment_release": false,
+  "confidence_interval_release": false,
+  "variance_dominance_assumed": false,
+  "torch_runs": 0,
+  "remote_runs": 0,
+  "optimizer_calls": 0,
+  "real_label_reads": 0,
+  "formal_training_release": false
+}
