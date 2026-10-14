@@ -1,0 +1,21 @@
+{
+  "status": "PASS_SEALED_V2_PRECISION_WITH_INCONCLUSIVE_DIRECTION",
+  "reviewer": "/root/v6_result_bound_review",
+  "raw_result_bytes": 232177,
+  "raw_result_sha256": "bc36fd6404928dfe9bdd5b3834bc618f35f8b27af0df8369e126961c5a88955d",
+  "config_sha256": "3eef20ea5212c90d2d714a691e1e1660d16c58ee13a61fc96d1563eec629f223",
+  "comparison_sha256": "7369872a1535a8765c677c0bd36c54e0872f9dbe39e9a0291be8983819641929",
+  "checked_rows": 144,
+  "independently_recreated_prior_risk_bounds": 8,
+  "risk_directions_certified": 8,
+  "cost_directions_certified": 6,
+  "both_directions_certified": 6,
+  "numeric_violations": 0,
+  "precision_violations": 0,
+  "v1_raw_source_and_contract_unchanged": true,
+  "formal_sampling_replayed": false,
+  "not_recomputed": ["unretained_observation_vectors", "observation_hash_from_sampling_replay"],
+  "focused_regression": {"testsRun": 141, "skipped": 11, "failures": 0, "errors": 0, "exit_code": 0},
+  "formal_training_release": false,
+  "rounding_guard_is_formal_IEEE_proof": false
+}

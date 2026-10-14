@@ -1,0 +1,329 @@
+{
+  "scope": "SMALL_SYNTHETIC_V2_NEW_VARIANT_NOT_V1_RECLASSIFICATION",
+  "prelaunch_review": "PASS_ONE_NEW_V2_FIXED_SYNTHETIC_PRELAUNCH_ONLY",
+  "contract_sha256": "7b7a33423d29947c06e865a3801a24e368ed87aa3b80d84ed6b0203ec6580e61",
+  "source_sha256": "9c12f70a6d8421148079271d46867680f9b7108720328a95b24efa5aa4062752",
+  "runner_sha256": "97a2df079f42a14116843dc84f39f91be7c1e977cd8a4d4ea8cd44e2a1d6b2eb",
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "raw_result_path": "C:\\Users\\86155\\Desktop\\new lab\\runtime_training_staging_20260928\\v6_nonuniform_precision_v2_20261014_r1\\result.json",
+  "raw_result_sha256": "bc36fd6404928dfe9bdd5b3834bc618f35f8b27af0df8369e126961c5a88955d",
+  "raw_result_bytes": 232177,
+  "result": {
+    "status": "PASS_FIXED_SYNTHETIC_PRECISION_ONLY",
+    "direction_status": "INCONCLUSIVE_DIRECTION",
+    "config": {
+      "alpha": 0.01,
+      "comparison_count": 144,
+      "cost_range_source": "UNCHANGED_V1_CONSERVATIVE_PRIOR",
+      "direction_rule": "negative_pilot_gradient_L1_unit_zero_failclosed",
+      "exact_oracle_absolute_tolerance": 1e-10,
+      "freshnamespace": "nonuniform-precision-v2-",
+      "freshnamespace_type": "SHA_PIN_CASE_ID_PREFIX",
+      "k": 3,
+      "main_samples": 16384,
+      "max_radius": 0.02,
+      "max_total_work": 80000000,
+      "max_work": 20000000,
+      "method_version": 2,
+      "n": 6,
+      "nominal_total_work": 2368512,
+      "nominal_work_per_seed": 296064,
+      "observation_hash_encoding": "JSON_vector_ASCII_compact_newline_SHA256",
+      "pilot_gradient_baselines": [
+        0,
+        0
+      ],
+      "pilot_samples": 64,
+      "positive_uid": "5",
+      "risk_numerical_padding": 1e-12,
+      "risk_padding_is_formal_floating_point_proof": false,
+      "risk_range_source": "PRIOR_ANALYTIC_SCORES_K_FROZEN_BR_V2",
+      "seed_case_id_prefix": "nonuniform-precision-v2-",
+      "seed_derivation_namespace_changed": false,
+      "seed_namespace": "v6-synthetic-conditional-control-v1",
+      "seeds": [
+        11,
+        29,
+        47,
+        83
+      ],
+      "temperature": 1
+    },
+    "max_radius": 0.01764500789236144,
+    "max_error": 0.0010704199862710678,
+    "error_bound_violations": 0,
+    "precision_violations": 0,
+    "cases": [
+      {
+        "case_id": "mixed",
+        "seed": 11,
+        "certified": true,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.1766502086830975,
+            "exact": -0.17654930366992397,
+            "radius": 0.0011132487946126598,
+            "upper": -0.17553695988848483,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.034572376260400696,
+            "exact": -0.03470725330897002,
+            "radius": 0.014093348841409547,
+            "upper": -0.02047902741899115,
+            "certified": true
+          }
+        ]
+      },
+      {
+        "case_id": "mixed",
+        "seed": 29,
+        "certified": true,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.16650944459720707,
+            "exact": -0.16644227179769053,
+            "radius": 0.001064681950950862,
+            "upper": -0.1654447626462562,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.04126798366481201,
+            "exact": -0.04119740476556882,
+            "radius": 0.013820680720188841,
+            "upper": -0.02744730294462317,
+            "certified": true
+          }
+        ]
+      },
+      {
+        "case_id": "mixed",
+        "seed": 47,
+        "certified": true,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.17736121577582142,
+            "exact": -0.1772191363149758,
+            "radius": 0.0011391788861367653,
+            "upper": -0.17622203688968466,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.03333229845854167,
+            "exact": -0.03314735551498237,
+            "radius": 0.013691513479972356,
+            "upper": -0.019640784978569317,
+            "certified": true
+          }
+        ]
+      },
+      {
+        "case_id": "mixed",
+        "seed": 83,
+        "certified": true,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.14855545111980475,
+            "exact": -0.148648988860081,
+            "radius": 0.0011817215531681126,
+            "upper": -0.14737372956663664,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.025768949817700434,
+            "exact": -0.025798403538418887,
+            "radius": 0.01390741974921795,
+            "upper": -0.011861530068482484,
+            "certified": true
+          }
+        ]
+      },
+      {
+        "case_id": "rare",
+        "seed": 11,
+        "certified": true,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.0038485895394357807,
+            "exact": -0.0038525649215717635,
+            "radius": 0.0001370496224155876,
+            "upper": -0.003711539917020193,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.020878623096537034,
+            "exact": -0.02078741358610898,
+            "radius": 0.015596269299126605,
+            "upper": -0.005282353797410429,
+            "certified": true
+          }
+        ]
+      },
+      {
+        "case_id": "rare",
+        "seed": 29,
+        "certified": false,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.002684954097830811,
+            "exact": -0.002680891636970129,
+            "radius": 0.0001790772805323452,
+            "upper": -0.0025058768172984656,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.00943588067353715,
+            "exact": -0.009524958317788794,
+            "radius": 0.01507889387430492,
+            "upper": 0.005643013200767769,
+            "certified": false
+          }
+        ]
+      },
+      {
+        "case_id": "rare",
+        "seed": 47,
+        "certified": true,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.007551575262511605,
+            "exact": -0.007560988122752864,
+            "radius": 0.00015339602939278625,
+            "upper": -0.007398179233118819,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.016917618953085897,
+            "exact": -0.016565312479174737,
+            "radius": 0.015156140143154676,
+            "upper": -0.0017614788099312214,
+            "certified": true
+          }
+        ]
+      },
+      {
+        "case_id": "rare",
+        "seed": 83,
+        "certified": false,
+        "projections": [
+          {
+            "metric": "risk_projection",
+            "estimate": -0.003986337818388145,
+            "exact": -0.003976417257210456,
+            "radius": 0.00014560078708412933,
+            "upper": -0.0038407370313040157,
+            "certified": true
+          },
+          {
+            "metric": "normalized_cost_projection",
+            "estimate": -0.0074265978364403025,
+            "exact": -0.007497959959929393,
+            "radius": 0.014878551739372615,
+            "upper": 0.007451953902932313,
+            "certified": false
+          }
+        ]
+      }
+    ]
+  },
+  "range_and_observation_hashes": [
+    {
+      "case_id": "mixed",
+      "seed": 11,
+      "pilot_freeze_sha256": "7b9497f7e2aa78176d1415c1e5bc6d22e7968c2966057cbe7eaed07e3ad4b136",
+      "pilot_observation_sha256": "666bf0fdadd0e7c220fb9f828e276b6e64045ae777943ff8833b740f16c7595f",
+      "main_observation_sha256": "c49587ab8c168267c64e38c5dddef136ec5f9ca81d8d49dad204014e499cf9d1",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "mixed",
+      "seed": 29,
+      "pilot_freeze_sha256": "5e32b29820641e5808acc96145d7e4ee4ec42a0218bffb48148c8b3a86288bd1",
+      "pilot_observation_sha256": "06ea6291a020dc5f3b9b3b3f0bd9c77b605641973e1efb79d5d3c094a612f131",
+      "main_observation_sha256": "7fe0594dfb4e7d22d11945d9707cc9cfd20fa989fb9faf577327e4db57017f1d",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "mixed",
+      "seed": 47,
+      "pilot_freeze_sha256": "87ea79aac4b31cf1e63fa086ddf7423786ebb05571a4da2db47c47208bb13d63",
+      "pilot_observation_sha256": "dd1eddf2eeef8fc2aab6062e6fb6b2f9783d364108ffc73ec7edcc0a1e0a5d53",
+      "main_observation_sha256": "0cdb03dcd8a3fcae2684a087d8492e0fd485d19b6303286f3d73a2165319dac7",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "mixed",
+      "seed": 83,
+      "pilot_freeze_sha256": "5a5a63191ab18e7e2d45a34f8c4e9f5414ab3f5998a920d7194b6dcd99261fb5",
+      "pilot_observation_sha256": "148676e30f7b4e36463c32795a136ffc1400534f0237814f1e5749823d52b504",
+      "main_observation_sha256": "4840b44332621c1d2ec76ff75690efe0b71be6e4c28e1821222e9bcc87938c31",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "rare",
+      "seed": 11,
+      "pilot_freeze_sha256": "cfdfdf093b4d2630094a6832377795c0f508ce4b2f2384110b3d0fb5c2d2a3c1",
+      "pilot_observation_sha256": "afa9c51b3c8ca8b6de33a9f5fdb7a630982ddc0770def5ae0f3074553e5683d0",
+      "main_observation_sha256": "3b4f9de606703ad39ee90f69ec12beffc58e672d947c028254b66f2bbc92bee3",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "rare",
+      "seed": 29,
+      "pilot_freeze_sha256": "392da7d1242c738ba447209931122784f0f935d4ae09513f4321f45d7092c055",
+      "pilot_observation_sha256": "2d5a8bd83e22289c706806baa47cd5699acd0b6ff8a64ed8b635740227abea71",
+      "main_observation_sha256": "ab77783e3103c50732810354380f55dcccb68698f3b2a66fdc7ff32bf2eeac98",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "rare",
+      "seed": 47,
+      "pilot_freeze_sha256": "43b38be330577f1d6c75d040543c0b589c2d010926c099c7654f531433ba3abb",
+      "pilot_observation_sha256": "59520f2e1b6bdf5dc11ca4ad31d48e39f4d7cf90e008c9e0b5292646a05c69e8",
+      "main_observation_sha256": "342fa303fd12c968fca52696b2edc1532a404024c4449e599461b3c0164c1b8f",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    },
+    {
+      "case_id": "rare",
+      "seed": 83,
+      "pilot_freeze_sha256": "3f595ebf8fe5b788ac9c87eb0fff55281290fe3717fcef442a2220f89741da74",
+      "pilot_observation_sha256": "5fb914304eef601ce39df9bd7c83400fc389b4f79776c6053e329380c9cc8624",
+      "main_observation_sha256": "c26bbff99e562a7c540ca057af0ffdfff7b712234bdd865a3a369bd47077f431",
+      "pilot_count": 64,
+      "main_count": 16384,
+      "comparison_count": 18
+    }
+  ],
+  "v1_status_unchanged": true,
+  "formal_training_release": false,
+  "rounding_guard_is_formal_proof": false
+}
