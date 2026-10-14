@@ -1,0 +1,19 @@
+{
+  "status":"PASS_READ_ONLY_REVIEW_AFTER_CONSERVATIVE_NUMERIC_REPAIR",
+  "reviewer":"e16_review",
+  "source_sha256":"e080c42553c0e75d33dd79995420dbc0117d70c841a6aa9442af8dc07a521e76",
+  "tests_sha256":"de8fe0ae077b1dda6f85d4e1f96050df6e500c5e9677eeca17e5ebbb28fcc7ce",
+  "e16_overview_sha256":"2ecba08757fdaf1bd51f9d92b8445ddd3ad6c499ebdc471b29d08aaf4bf1fdc8",
+  "validation_manifest_sha256":"09e7c64ec6547e64d07126e465766eb3552480041e78c46f175967356a3042b7",
+  "independently_executed_tests":29,
+  "independently_executed_tests_skipped":0,
+  "independently_executed_tests_failures":0,
+  "independently_executed_tests_errors":0,
+  "parent_regression_tests":249,
+  "parent_regression_skipped":34,
+  "parent_regression_not_independently_repeated":true,
+  "source_and_document_review_complete":true,
+  "remaining_blockers":[],
+  "publication_confidence":"SHARE_WITH_SYNTHETIC_IMPLEMENTATION_CAVEATS",
+  "new_fit_or_real_runtime_claim_permitted":false
+}

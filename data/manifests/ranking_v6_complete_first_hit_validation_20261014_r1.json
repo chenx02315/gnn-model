@@ -1,0 +1,58 @@
+{
+  "status": "PASS_LOCAL_SYNTHETIC_OBJECTIVE_AND_INDEPENDENT_REVIEW",
+  "experiment_id": "E16",
+  "date_local": "2026-10-14",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "d087c5a8efff8fad40fc2e4f1d3954d57889a4a2",
+  "environment": {"python": "3.13.1", "platform": "Windows-11-10.0.26300-SP0", "torch_used": false},
+  "source_sha256": "e080c42553c0e75d33dd79995420dbc0117d70c841a6aa9442af8dc07a521e76",
+  "tests_sha256": "de8fe0ae077b1dda6f85d4e1f96050df6e500c5e9677eeca17e5ebbb28fcc7ce",
+  "objective": "sole positive cost plus sum negative static cost times PL pairwise precedence probability",
+  "normalization": "N * max(fixed input costs); no score derivative through denominator",
+  "domain": {"max_actions":1024,"min_actions":1,"score_abs_max":20,"cost_upper_bound":1000000000,"strictly_positive_costs":true,"normal_float_negative_gradients_and_nonzero_bounds_required":true},
+  "dedicated_tests": {"testsRun":11,"skipped":0,"failures":0,"errors":0,"exit_code":0},
+  "related_regression": {"testsRun":249,"skipped":34,"failures":0,"errors":0,"all_command_exit_codes":0,"skip_is_not_linux_or_torch_pass":true},
+  "raw_small_test_summaries": [
+    "Ran 11 tests in 0.064s; OK",
+    "Ran 188 tests in 10.694s; OK (skipped=1)",
+    "Ran 16 tests in 0.127s; OK",
+    "Ran 45 tests in 0.016s; OK (skipped=33)"
+  ],
+  "commands": [
+    "D:/Python/Python313/python.exe -B -m unittest tests.test_ranking_v6_complete_first_hit_reference -v",
+    "D:/Python/Python313/python.exe -B -m unittest discover -s tests -p test_ranking_v6*.py",
+    "D:/Python/Python313/python.exe -B -m unittest discover -s tests -p test_check_ranking_v6*.py",
+    "D:/Python/Python313/python.exe -B -m unittest tests.test_stage_v6_synthetic_fit_no_prior_container tests.test_run_v6_synthetic_fit_no_prior_container tests.test_stage_v6_synthetic_fit_container tests.test_run_v6_synthetic_fit_container tests.test_stage_v6_parameter_container_gate tests.test_run_v6_parameter_container_gate tests.test_diagnose_v6_e12_recorded_scores tests.test_diagnose_v6_first_hit_cost_alignment"
+  ],
+  "parent_independent_full_permutation_check": {"n_min":2,"n_max":7,"fixtures":6,"max_cost_error":3.552713678800501e-15,"max_score_gradient_error":2.6645352591003757e-15},
+  "review": {
+    "reviewer": "e16_review",
+    "access": "read_only",
+    "result": "PASS_AFTER_NUMERIC_DOMAIN_REPAIR",
+    "reviewer_tests": {"testsRun":29,"skipped":0,"failures":0,"errors":0},
+    "independent_method": "stopped-PL terminal-prefix recursion with log-probability derivatives; 100-digit Decimal boundary checks",
+    "fixtures":20,"score_coordinates":90,"terminal_hit_prefixes":2364,
+    "max_cost_error":1.7763568394002505e-15,
+    "max_raw_gradient_error":1.7763568394002505e-15,
+    "max_normalized_gradient_error":5.551115123125783e-17,
+    "tiny_cost_sweep_cases":9900,"tiny_cost_sweep_rejected":9900,"underflow_escapes":0,
+    "gate_before_arithmetic_cases":4,
+    "old_n_minus_one_forced_positive_gradient_identity_error":8.881784197001252e-16,
+    "proposal_derivative_omission_counterexample_error":0.7692996720911214
+  },
+  "preserved_failure_evidence": [
+    {"scores":{"a":0,"p":0},"costs":{"a":1.5e-323,"p":0.9},"issue":"initial normalized gradient 5e-324 outside zero bound; true normalized derivative rounds to zero"},
+    {"scores":{"a":0.5,"p":-0.5},"costs":{"a":1.5e-323,"p":0.6},"issue":"direct normalization repair still double-rounded true subnormal underflow; final normal-float-only domain rejects"}
+  ],
+  "method_change_disclosed": "analytic exact singleton score gradient, not prior stochastic conditional estimator",
+  "r_at_k_computed":false,"risk_guardrail_removed":false,
+  "new_model_forwards":0,"new_optimizer_steps":0,"new_sampling_calls":0,"remote_calls":0,
+  "real_runtime_inputs_read":false,"train_release":false,"actual_online_continuation_executed":false,
+  "limitations": [
+    "Synthetic static additive fees are not measured ATPG wall time or ATE cycles",
+    "Exactly one known positive; fixed PL scores, no reranking, retries, timeout, cache or prefix reuse",
+    "Gradient arithmetic is not model-parameter joint improvement or generalization evidence",
+    "B_N differs from prior B_K; joint risk-cost weights must be frozen explicitly before any future fit",
+    "Conservative domain rejects subnormal nonzero gradients and bounds even if some can be represented"
+  ]
+}
