@@ -1,0 +1,18 @@
+{
+  "status": "PASS_SYNTHETIC_PRIOR_COST_RANGES_ONLY",
+  "source_sha256": "39bd4cb6a5d40a130e9f0061ad39d4ffa34604d24a16f7af04f5925f84b64454",
+  "tests_sha256": "5404333a480aa3f9b23d3195c7f617ccbb6196eca1f64e08394f3e37c00628da",
+  "independent_reviewer": "/root/v6_result_bound_review",
+  "independent_deterministic_tests": {"testsRun": 7, "skipped": 0, "failures": 0, "errors": 0},
+  "builder_combined_tests": {"testsRun": 35, "failures": 0, "errors": 0},
+  "supported_costs": "zero_or_[1e-6,1e9]",
+  "all_zero_requires_zero_baseline": true,
+  "normalized_baseline_domain": [0, 1],
+  "padding": 1e-12,
+  "padding_is_formal_IEEE_proof": false,
+  "development_repair": "Reject positive subnormal and other positive costs below1e-6 before exp due to raw-cost underflow artifacts; no historical module edited.",
+  "empirical_outcomes_or_extrema_used": false,
+  "formal_sampling_executions": 0,
+  "confidence_interval_release": false,
+  "formal_training_release": false
+}
