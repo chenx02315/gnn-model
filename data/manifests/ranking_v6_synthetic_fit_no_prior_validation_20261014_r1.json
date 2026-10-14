@@ -1,0 +1,1371 @@
+{
+  "scope": "E14_NO_PRIOR_PAIRED_SYNTHETIC_FIT_ONLY",
+  "status": "COMPLETE_SYNTHETIC_FIT_DIAGNOSTIC_ONLY",
+  "scientific_status": "NO_JOINT_IMPROVEMENT",
+  "root": "/ssd/cjc/gnn_model_v6_synthetic_fit_no_prior_20261014_r1",
+  "local": "C:\\Users\\86155\\Desktop\\new lab\\runtime_training_staging_20260928\\v6_synthetic_fit_no_prior_container_20261014_r1",
+  "formal_container_runs": 1,
+  "automatic_retries": 0,
+  "config": {
+    "baseline_samples": 32,
+    "comparison_states": [
+      "initial_prior",
+      "final_prior",
+      "UNIFORM_PL",
+      "COST_PRIOR_PL",
+      "PRIOR_ONLY_PL",
+      "COST_PLUS_PRIOR_PL"
+    ],
+    "control_seed_namespace": "v6-synthetic-conditional-control-v1",
+    "cost_control": "-cost/max_cost; temperature 1; stochastic PL, not deterministic",
+    "experiment_id": "E14_NO_PRIOR_PAIRED_FIT",
+    "graph_consumed": false,
+    "initialization": "torch.manual_seed(seed); existing_factory CPU float64",
+    "joint_improvement_threshold": 1e-08,
+    "k": 3,
+    "learning_rate": 0.2,
+    "main_samples": 32,
+    "momentum": 0.0,
+    "n": 6,
+    "namespace": "v6-e12-synthetic-fit-v1",
+    "no_accept_rollback": true,
+    "no_checkpoint": true,
+    "no_early_stop": true,
+    "no_grid": true,
+    "nominal_sampling_work": 165888,
+    "optimizer": "SGD",
+    "paired_sampling_case_ids_preserved": true,
+    "parameter_count": 1345,
+    "prior": "none; all offsets zero; E14 paired with frozen E12",
+    "production_preprocessing": false,
+    "rare_guard_required": false,
+    "rare_initial_miss_min": 0.9,
+    "resources": {
+      "auto_retry": 0,
+      "cpu": 1,
+      "memory_bytes": 1073741824,
+      "workers": 1
+    },
+    "scalar_objective": "0.5*risk+0.5*cost/(K*max_cost)",
+    "seeds": [
+      11,
+      29,
+      47
+    ],
+    "source_sha256": {
+      "control": "a2ac0e08a80afee62ee1cf5de8d52f2fa8f6f161286d064203915e3a4bcd577d",
+      "diagnostic": "ab1e005e7d3832c8facf7a1986426840dc616ff39d1defc3aeec1df525655efb",
+      "factory": "74795d04344aa38b47a6aac099b75598e798b0cdd0859a6ad761ce1220c898e7",
+      "oracle": "baf26683ee9a57a7eb92d39411da9a6ac6a15ab920471fcfaa8e1ecf0630b32f",
+      "vjp": "24de1d49fd975421522e677d35fb007dedef0a5a09be17c221ad3507eb7237da"
+    },
+    "steps": 24,
+    "task_reduction": "mean_of_two_fit_task_raw_parameter_gradients",
+    "tasks": [
+      {
+        "case_id": "fit_cheap",
+        "costs": {
+          "0": 9.0,
+          "1": 4.0,
+          "2": 7.0,
+          "3": 2.0,
+          "4": 6.0,
+          "5": 0.5
+        },
+        "feature_names": [
+          "synthetic_signal",
+          "cost_fraction",
+          "permuted_row_fraction",
+          "reverse_row_fraction",
+          "alternating",
+          "mod_three",
+          "constant"
+        ],
+        "features": [
+          [
+            -0.8,
+            0.75,
+            0.0,
+            1.0,
+            0.25,
+            0.0,
+            1.0
+          ],
+          [
+            -0.4,
+            0.3333333333333333,
+            0.2,
+            0.8,
+            -0.25,
+            0.5,
+            1.0
+          ],
+          [
+            0.1,
+            0.5833333333333334,
+            0.4,
+            0.6,
+            0.25,
+            1.0,
+            1.0
+          ],
+          [
+            0.3,
+            0.16666666666666666,
+            0.6,
+            0.4,
+            -0.25,
+            0.0,
+            1.0
+          ],
+          [
+            0.6,
+            0.5,
+            0.8,
+            0.19999999999999996,
+            0.25,
+            0.5,
+            1.0
+          ],
+          [
+            1.0,
+            0.041666666666666664,
+            1.0,
+            0.0,
+            -0.25,
+            1.0,
+            1.0
+          ]
+        ],
+        "offsets": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "positive_uids": [
+          "5"
+        ],
+        "row_permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "split": "fit",
+        "uids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "case_id": "fit_expensive",
+        "costs": {
+          "0": 0.5,
+          "1": 2.0,
+          "2": 4.0,
+          "3": 6.0,
+          "4": 8.0,
+          "5": 10.0
+        },
+        "feature_names": [
+          "synthetic_signal",
+          "cost_fraction",
+          "permuted_row_fraction",
+          "reverse_row_fraction",
+          "alternating",
+          "mod_three",
+          "constant"
+        ],
+        "features": [
+          [
+            -0.7,
+            0.041666666666666664,
+            0.0,
+            1.0,
+            0.25,
+            0.0,
+            1.0
+          ],
+          [
+            -0.3,
+            0.16666666666666666,
+            0.2,
+            0.8,
+            -0.25,
+            0.5,
+            1.0
+          ],
+          [
+            0.0,
+            0.3333333333333333,
+            0.4,
+            0.6,
+            0.25,
+            1.0,
+            1.0
+          ],
+          [
+            0.2,
+            0.5,
+            0.6,
+            0.4,
+            -0.25,
+            0.0,
+            1.0
+          ],
+          [
+            0.55,
+            0.6666666666666666,
+            0.8,
+            0.19999999999999996,
+            0.25,
+            0.5,
+            1.0
+          ],
+          [
+            1.1,
+            0.8333333333333334,
+            1.0,
+            0.0,
+            -0.25,
+            1.0,
+            1.0
+          ]
+        ],
+        "offsets": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "positive_uids": [
+          "5"
+        ],
+        "row_permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "split": "fit",
+        "uids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "case_id": "unseen_cheap",
+        "costs": {
+          "0": 4.0,
+          "1": 8.0,
+          "2": 1.5,
+          "3": 6.0,
+          "4": 0.7,
+          "5": 3.0
+        },
+        "feature_names": [
+          "synthetic_signal",
+          "cost_fraction",
+          "permuted_row_fraction",
+          "reverse_row_fraction",
+          "alternating",
+          "mod_three",
+          "constant"
+        ],
+        "features": [
+          [
+            0.55,
+            0.3333333333333333,
+            0.6,
+            0.4,
+            -0.25,
+            0.0,
+            0.8
+          ],
+          [
+            -0.65,
+            0.6666666666666666,
+            0.0,
+            1.0,
+            0.25,
+            0.0,
+            0.8
+          ],
+          [
+            0.2,
+            0.125,
+            1.0,
+            0.0,
+            -0.25,
+            1.0,
+            0.8
+          ],
+          [
+            -0.2,
+            0.5,
+            0.2,
+            0.8,
+            -0.25,
+            0.5,
+            0.8
+          ],
+          [
+            1.05,
+            0.05833333333333333,
+            0.8,
+            0.19999999999999996,
+            0.25,
+            0.5,
+            0.8
+          ],
+          [
+            -0.85,
+            0.25,
+            0.4,
+            0.6,
+            0.25,
+            1.0,
+            0.8
+          ]
+        ],
+        "offsets": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "positive_uids": [
+          "4"
+        ],
+        "row_permutation": [
+          3,
+          0,
+          5,
+          1,
+          4,
+          2
+        ],
+        "split": "unseen",
+        "uids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "case_id": "unseen_expensive",
+        "costs": {
+          "0": 0.6,
+          "1": 5.0,
+          "2": 2.0,
+          "3": 8.0,
+          "4": 11.0,
+          "5": 3.0
+        },
+        "feature_names": [
+          "synthetic_signal",
+          "cost_fraction",
+          "permuted_row_fraction",
+          "reverse_row_fraction",
+          "alternating",
+          "mod_three",
+          "constant"
+        ],
+        "features": [
+          [
+            0.2,
+            0.049999999999999996,
+            0.4,
+            0.6,
+            0.25,
+            1.0,
+            0.8
+          ],
+          [
+            -0.75,
+            0.4166666666666667,
+            1.0,
+            0.0,
+            -0.25,
+            1.0,
+            0.8
+          ],
+          [
+            0.65,
+            0.16666666666666666,
+            0.0,
+            1.0,
+            0.25,
+            0.0,
+            0.8
+          ],
+          [
+            -0.15,
+            0.6666666666666666,
+            0.8,
+            0.19999999999999996,
+            0.25,
+            0.5,
+            0.8
+          ],
+          [
+            0.95,
+            0.9166666666666666,
+            0.2,
+            0.8,
+            -0.25,
+            0.5,
+            0.8
+          ],
+          [
+            0.1,
+            0.25,
+            0.6,
+            0.4,
+            -0.25,
+            0.0,
+            0.8
+          ]
+        ],
+        "offsets": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "positive_uids": [
+          "4"
+        ],
+        "row_permutation": [
+          2,
+          5,
+          0,
+          4,
+          1,
+          3
+        ],
+        "split": "unseen",
+        "uids": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ],
+    "weight_decay": 0.0
+  },
+  "config_sha256": "f39ccdfcc1cf3fb2861b5e344e8709dea73acab6e074c1983e9d99711a499477",
+  "source_sha256": {
+    "_contract.json": "ecffe68f3ee05e893adb7fd9ac8dfd7f3eebbf9be1a7f8f57e8cabf667663b18",
+    "_protocol_tests.py": "964b4dc332b3c338a6f412481cdf64e19ca35d89b4de2fcf05129b6de2135518",
+    "runner.py": "5860abbbc868488e9cdde3e85e4ba2d63ef579ba49f912bc2a09a8f1009ce3b6",
+    "src/models/ranking_v6_conditional_control_reference.py": "a2ac0e08a80afee62ee1cf5de8d52f2fa8f6f161286d064203915e3a4bcd577d",
+    "src/models/ranking_v6_conditional_survival_reference.py": "e3352c3c08baaf119c34a60bbcb250ff585b3fd5b5e07e2657548627b646058a",
+    "src/models/ranking_v6_first_hit_exact_gradient.py": "baf26683ee9a57a7eb92d39411da9a6ac6a15ab920471fcfaa8e1ecf0630b32f",
+    "src/models/ranking_v6_first_hit_reference.py": "e0704d11e87f2ec1a319e1b5f7b4917d77a6c6832b1cef0dcea9a42a0bb4895e",
+    "src/models/ranking_v6_scorer_vjp_bridge.py": "24de1d49fd975421522e677d35fb007dedef0a5a09be17c221ad3507eb7237da",
+    "src/models/ranking_v6_synthetic_fit_no_prior.py": "ab1e005e7d3832c8facf7a1986426840dc616ff39d1defc3aeec1df525655efb",
+    "src/models/runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c"
+  },
+  "source_manifest_sha256": "9cf352a587e9ff719156de4634fad7c2e960275f4d04c1c2e5a2e3c93ea2d3a4",
+  "counts": {
+    "synthetic_fitting_runs": 3,
+    "optimizer_steps": 72,
+    "optimizer_calls": 72,
+    "exact_oracle_calls": 72,
+    "formal_training_runs": 0
+  },
+  "fit_joint_count": 4,
+  "fit_joint_denominator": 6,
+  "unseen_joint_count": 3,
+  "unseen_joint_denominator": 6,
+  "top3_hit_initial": 10,
+  "top3_hit_final": 12,
+  "top3_denominator": 12,
+  "risk_decrease_count": 12,
+  "rare_guard_required": false,
+  "all_parameters_restored": true,
+  "final_weights_discarded": true,
+  "rng_restored": true,
+  "train_release": false,
+  "cgroup_limits": {
+    "cpu.max": "100000 100000",
+    "memory.max": "1073741824",
+    "memory.swap.max": "0",
+    "pids.max": "64"
+  },
+  "container_absence": {
+    "container_absent": true,
+    "inspect_exit": 1,
+    "stderr": "Error: No such container: gnn-v6-synthetic-fit-no-prior-20261014-r1\n"
+  },
+  "local_regression": {
+    "testsRun": 233,
+    "skipped": 34,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "linux_protocol": {
+    "testsRun": 11,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "evidence": {
+    "result.json": {
+      "bytes": 165324,
+      "sha256": "dc8d09347592c7cc7c84eeb28a38467f883bfe5faa31c788178c1deffe2c9e44"
+    },
+    "actual.log": {
+      "bytes": 164462,
+      "sha256": "99e10f8b962217228c84e1e6969989f9393183f9d3ebbd8fff3a023b2c7b7f77"
+    },
+    "actual.once.json": {
+      "bytes": 202,
+      "sha256": "8b9217a80e7670768fe0c93db618711ecedaf59455e4467b45bd7d8bed1bd7f2"
+    },
+    "protocol_result.json": {
+      "bytes": 1638,
+      "sha256": "42e697bd3266a6d11ac95833ef3f96f535e46f3ce77f93d7e2bec06cc86e7b4e"
+    },
+    "container_absence.json": {
+      "bytes": 128,
+      "sha256": "1fde960550cd1ee368e5bb3d3e52bd467220c4f0449efb84c60cdc1da617bc02"
+    },
+    "source_manifest.json": {
+      "bytes": 1078,
+      "sha256": "9cf352a587e9ff719156de4634fad7c2e960275f4d04c1c2e5a2e3c93ea2d3a4"
+    },
+    "payload.tar.gz": {
+      "bytes": 25889,
+      "sha256": "faa9dde9af034fbc7889976b88cb05774c924c923df569c9106aed6843e8601d"
+    }
+  },
+  "freeze_sha256_by_seed": {
+    "11": "6f7cd9571af3666bbf8ff25f95bba42044b38aa21f5c9f60268a1d6239defe58",
+    "29": "ce1059427b2711ca1a419846a2cfa786fe434c4ca3f3076e89b2cf0035d20d4d",
+    "47": "aec6d6560c262a0281c422a4b66427112f9e940983fc30c43391a13f75e8a786"
+  },
+  "per_seed_task": [
+    {
+      "seed": 11,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3137096838860207,
+          "objective": 0.3200097533577706,
+          "probability_mass": 1.0,
+          "raw_static_cost": 8.47016146492256,
+          "risk": 0.32630982282952053
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3137096838860207,
+          "objective": 0.3200097533577706,
+          "probability_mass": 1.0,
+          "raw_static_cost": 8.47016146492256,
+          "risk": 0.32630982282952053
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.424074074074074,
+          "objective": 0.46203703703703697,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.449999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.424074074074074,
+          "objective": 0.46203703703703697,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.449999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.15902482999205728,
+          "objective": 0.11390879988930455,
+          "probability_mass": 1.0,
+          "raw_static_cost": 4.2936704097855465,
+          "risk": 0.06879276978655184
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.41084871776191756,
+          "objective": 0.4444876389029216,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.092915379571775,
+          "risk": 0.4781265600439256
+        }
+      },
+      "normalized_cost_delta": -0.2518238877698603,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.40933379025737376,
+      "split": "fit",
+      "task_id": "fit_cheap"
+    },
+    {
+      "seed": 11,
+      "jointly_improved": false,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39462692529364374,
+          "objective": 0.53202005950471,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.838807758809311,
+          "risk": 0.6694131937157762
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39462692529364374,
+          "objective": 0.53202005950471,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.838807758809311,
+          "risk": 0.6694131937157762
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44,
+          "objective": 0.47,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.2,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44,
+          "objective": 0.47,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.2,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.4442004698863995,
+          "objective": 0.25718551871794926,
+          "probability_mass": 1.0,
+          "raw_static_cost": 13.326014096591985,
+          "risk": 0.07017056754949896
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.44295411236424886,
+          "objective": 0.46083726880650594,
+          "probability_mass": 1.0,
+          "raw_static_cost": 13.288623370927466,
+          "risk": 0.478720425248763
+        }
+      },
+      "normalized_cost_delta": 0.0012463575221506318,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.40854985769926405,
+      "split": "fit",
+      "task_id": "fit_expensive"
+    },
+    {
+      "seed": 11,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.29802365290242333,
+          "objective": 0.32659485760455087,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 7.15256766965816,
+          "risk": 0.35516606230667846
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.29802365290242333,
+          "objective": 0.32659485760455087,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 7.15256766965816,
+          "risk": 0.35516606230667846
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3895833333333332,
+          "objective": 0.4447916666666666,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 9.349999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3895833333333332,
+          "objective": 0.4447916666666666,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 9.349999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 2,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.22580646987231656,
+          "objective": 0.22279921573808525,
+          "probability_mass": 1.0,
+          "raw_static_cost": 5.4193552769355975,
+          "risk": 0.21979196160385395
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 3,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.38244113647766403,
+          "objective": 0.4356169136950715,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 9.178587275463936,
+          "risk": 0.4887926909124789
+        }
+      },
+      "normalized_cost_delta": -0.15663466660534747,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.26900072930862495,
+      "split": "unseen",
+      "task_id": "unseen_cheap"
+    },
+    {
+      "seed": 11,
+      "jointly_improved": false,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3452787885419931,
+          "objective": 0.5160682628760545,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.394200021885773,
+          "risk": 0.6868577372101158
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3452787885419931,
+          "objective": 0.5160682628760545,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.394200021885773,
+          "risk": 0.6868577372101158
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39212121212121204,
+          "objective": 0.446060606060606,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 12.939999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39212121212121204,
+          "objective": 0.446060606060606,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 12.939999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 3,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.41277545613698774,
+          "objective": 0.41670171000497536,
+          "probability_mass": 1.0,
+          "raw_static_cost": 13.621590052520595,
+          "risk": 0.4206279638729629
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 3,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3939271243715957,
+          "objective": 0.4461913341757781,
+          "probability_mass": 1.0,
+          "raw_static_cost": 12.999595104262658,
+          "risk": 0.4984555439799605
+        }
+      },
+      "normalized_cost_delta": 0.018848331765392023,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.07782758010699758,
+      "split": "unseen",
+      "task_id": "unseen_expensive"
+    },
+    {
+      "seed": 29,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3137096838860207,
+          "objective": 0.3200097533577706,
+          "probability_mass": 1.0,
+          "raw_static_cost": 8.47016146492256,
+          "risk": 0.32630982282952053
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3137096838860207,
+          "objective": 0.3200097533577706,
+          "probability_mass": 1.0,
+          "raw_static_cost": 8.47016146492256,
+          "risk": 0.32630982282952053
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.424074074074074,
+          "objective": 0.46203703703703697,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.449999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.424074074074074,
+          "objective": 0.46203703703703697,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.449999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.1388366298873635,
+          "objective": 0.09033645717455907,
+          "probability_mass": 1.0,
+          "raw_static_cost": 3.7485890069588144,
+          "risk": 0.04183628446175462
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 2,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.4156103757674611,
+          "objective": 0.4495013019815599,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.22148014572145,
+          "risk": 0.4833922281956587
+        }
+      },
+      "normalized_cost_delta": -0.2767737458800976,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.44155594373390405,
+      "split": "fit",
+      "task_id": "fit_cheap"
+    },
+    {
+      "seed": 29,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39462692529364374,
+          "objective": 0.53202005950471,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.838807758809311,
+          "risk": 0.6694131937157762
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39462692529364374,
+          "objective": 0.53202005950471,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.838807758809311,
+          "risk": 0.6694131937157762
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44,
+          "objective": 0.47,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.2,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44,
+          "objective": 0.47,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.2,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.4284616703357156,
+          "objective": 0.23200249471643405,
+          "probability_mass": 1.0,
+          "raw_static_cost": 12.853850110071468,
+          "risk": 0.03554331909715251
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.4481094889898018,
+          "objective": 0.45477089089578143,
+          "probability_mass": 1.0,
+          "raw_static_cost": 13.443284669694053,
+          "risk": 0.46143229280176107
+        }
+      },
+      "normalized_cost_delta": -0.019647818654086213,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.42588897370460854,
+      "split": "fit",
+      "task_id": "fit_expensive"
+    },
+    {
+      "seed": 29,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.29802365290242333,
+          "objective": 0.32659485760455087,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 7.15256766965816,
+          "risk": 0.35516606230667846
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.29802365290242333,
+          "objective": 0.32659485760455087,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 7.15256766965816,
+          "risk": 0.35516606230667846
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3895833333333332,
+          "objective": 0.4447916666666666,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 9.349999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3895833333333332,
+          "objective": 0.4447916666666666,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 9.349999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.17004650474417574,
+          "objective": 0.13777184762579733,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 4.081116113860218,
+          "risk": 0.10549719050741894
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.37835602121475365,
+          "objective": 0.42699025430003357,
+          "probability_mass": 1.0,
+          "raw_static_cost": 9.080544509154088,
+          "risk": 0.4756244873853135
+        }
+      },
+      "normalized_cost_delta": -0.2083095164705779,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.37012729687789453,
+      "split": "unseen",
+      "task_id": "unseen_cheap"
+    },
+    {
+      "seed": 29,
+      "jointly_improved": false,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3452787885419931,
+          "objective": 0.5160682628760545,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.394200021885773,
+          "risk": 0.6868577372101158
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3452787885419931,
+          "objective": 0.5160682628760545,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.394200021885773,
+          "risk": 0.6868577372101158
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39212121212121204,
+          "objective": 0.446060606060606,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 12.939999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39212121212121204,
+          "objective": 0.446060606060606,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 12.939999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3961123493924452,
+          "objective": 0.3204464766522698,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.071707529950693,
+          "risk": 0.24478060391209439
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3943250679786192,
+          "objective": 0.4395771898698845,
+          "probability_mass": 1.0,
+          "raw_static_cost": 13.012727243294433,
+          "risk": 0.4848293117611498
+        }
+      },
+      "normalized_cost_delta": 0.001787281413826003,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.2400487078490554,
+      "split": "unseen",
+      "task_id": "unseen_expensive"
+    },
+    {
+      "seed": 47,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3137096838860207,
+          "objective": 0.3200097533577706,
+          "probability_mass": 1.0,
+          "raw_static_cost": 8.47016146492256,
+          "risk": 0.32630982282952053
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3137096838860207,
+          "objective": 0.3200097533577706,
+          "probability_mass": 1.0,
+          "raw_static_cost": 8.47016146492256,
+          "risk": 0.32630982282952053
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.424074074074074,
+          "objective": 0.46203703703703697,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.449999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.424074074074074,
+          "objective": 0.46203703703703697,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 11.449999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3250909269149526,
+          "objective": 0.3215091778563467,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 8.77745502670372,
+          "risk": 0.3179274287977408
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 2,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.4212358116492139,
+          "objective": 0.4586662648809064,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.373366914528775,
+          "risk": 0.49609671811259887
+        }
+      },
+      "normalized_cost_delta": -0.0961448847342613,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.1781692893148581,
+      "split": "fit",
+      "task_id": "fit_cheap"
+    },
+    {
+      "seed": 47,
+      "jointly_improved": false,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39462692529364374,
+          "objective": 0.53202005950471,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.838807758809311,
+          "risk": 0.6694131937157762
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39462692529364374,
+          "objective": 0.53202005950471,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.838807758809311,
+          "risk": 0.6694131937157762
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44,
+          "objective": 0.47,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.2,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44,
+          "objective": 0.47,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.2,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.46561296319383483,
+          "objective": 0.39435398068555205,
+          "probability_mass": 1.0,
+          "raw_static_cost": 13.968388895815044,
+          "risk": 0.3230949981772692
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.44108292708029045,
+          "objective": 0.47167227141832535,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.232487812408714,
+          "risk": 0.5022616157563602
+        }
+      },
+      "normalized_cost_delta": 0.024530036113544373,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.17916661757909097,
+      "split": "fit",
+      "task_id": "fit_expensive"
+    },
+    {
+      "seed": 47,
+      "jointly_improved": true,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.29802365290242333,
+          "objective": 0.32659485760455087,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 7.15256766965816,
+          "risk": 0.35516606230667846
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.29802365290242333,
+          "objective": 0.32659485760455087,
+          "probability_mass": 1.0000000000000002,
+          "raw_static_cost": 7.15256766965816,
+          "risk": 0.35516606230667846
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3895833333333332,
+          "objective": 0.4447916666666666,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 9.349999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3895833333333332,
+          "objective": 0.4447916666666666,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 9.349999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.3104237364092676,
+          "objective": 0.33781793631220025,
+          "probability_mass": 1.0,
+          "raw_static_cost": 7.4501696738224235,
+          "risk": 0.3652121362151328
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 3,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.38761865293647685,
+          "objective": 0.4430958351162453,
+          "probability_mass": 1.0,
+          "raw_static_cost": 9.302847670475444,
+          "risk": 0.4985730172960137
+        }
+      },
+      "normalized_cost_delta": -0.07719491652720922,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.1333608810808809,
+      "split": "unseen",
+      "task_id": "unseen_cheap"
+    },
+    {
+      "seed": 47,
+      "jointly_improved": false,
+      "metrics": {
+        "COST_PLUS_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3452787885419931,
+          "objective": 0.5160682628760545,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.394200021885773,
+          "risk": 0.6868577372101158
+        },
+        "COST_PRIOR_PL": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3452787885419931,
+          "objective": 0.5160682628760545,
+          "probability_mass": 1.0,
+          "raw_static_cost": 11.394200021885773,
+          "risk": 0.6868577372101158
+        },
+        "PRIOR_ONLY_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39212121212121204,
+          "objective": 0.446060606060606,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 12.939999999999998,
+          "risk": 0.49999999999999994
+        },
+        "UNIFORM_PL": {
+          "deterministic_positive_position": 5,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.39212121212121204,
+          "objective": 0.446060606060606,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 12.939999999999998,
+          "risk": 0.49999999999999994
+        },
+        "final_prior": {
+          "deterministic_positive_position": 1,
+          "deterministic_top_k_hit": 1,
+          "normalized_cost": 0.39416682166394856,
+          "objective": 0.425210692581181,
+          "probability_mass": 0.9999999999999999,
+          "raw_static_cost": 13.007505114910302,
+          "risk": 0.4562545634984134
+        },
+        "initial_prior": {
+          "deterministic_positive_position": 6,
+          "deterministic_top_k_hit": 0,
+          "normalized_cost": 0.3910438383328638,
+          "objective": 0.4507170993927983,
+          "probability_mass": 1.0,
+          "raw_static_cost": 12.904446664984507,
+          "risk": 0.5103903604527328
+        }
+      },
+      "normalized_cost_delta": 0.003122983331084739,
+      "rare_initial_guard_pass": false,
+      "risk_delta": -0.05413579695431936,
+      "split": "unseen",
+      "task_id": "unseen_expensive"
+    }
+  ],
+  "paired_e12_result_sha256": "ab7f85e46d3edddab669f77fd876cd1b4a66f3ef905b7588ea0296a391adadfd",
+  "paired_initial_weight_hashes_equal": true,
+  "paired_all_144_control_seed_pairs_equal": true,
+  "postrun_review": "PASS_INDEPENDENT_PAIRED_RECORDED_OBJECTIVES_ONLY",
+  "limitations": [
+    "Actual no-prior fit is not E13 recorded-score counterfactual",
+    "Common RNG streams do not imply identical trajectories under different scores",
+    "Two controls duplicate because all offsets zero",
+    "No rare-start qualification or real circuit generalization/ATPG acceleration",
+    "No independent model/optimizer replay"
+  ]
+}
