@@ -1,0 +1,926 @@
+{
+  "counters": {
+    "new_model_forwards": 0,
+    "new_optimizer_steps": 0,
+    "new_sampling_calls": 0,
+    "real_label_reads": 0,
+    "remote_calls": 0
+  },
+  "deterministic_top3_hit_counts": {
+    "prior_final": {
+      "all": 0,
+      "fit": 0,
+      "unseen": 0
+    },
+    "prior_initial": {
+      "all": 0,
+      "fit": 0,
+      "unseen": 0
+    },
+    "reconstructed_no_prior_final": {
+      "all": 9,
+      "fit": 5,
+      "unseen": 4
+    },
+    "reconstructed_no_prior_initial": {
+      "all": 10,
+      "fit": 5,
+      "unseen": 5
+    }
+  },
+  "initial_gradient_states": 12,
+  "max_record_objective_error": 2.220446049250313e-16,
+  "per_seed_task": [
+    {
+      "actual_normalized_cost_delta": -0.005971732367562987,
+      "actual_relative_score_step": 0.14042898881721208,
+      "actual_risk_delta": -0.003685270916960026,
+      "centered_score_delta_l2": 0.10876131978707783,
+      "clairvoyant_positive_first_normalized_cost": 0.018518518518518517,
+      "common_score_shift": -0.05113117141309274,
+      "cost_gradient_norm": 0.07846023154838834,
+      "cost_linearization_residual": -3.96821327264419e-05,
+      "cost_score_gradient": {
+        "0": 0.0513199011415292,
+        "1": -0.02001066101951651,
+        "2": 0.022753814763388287,
+        "3": -0.048215549790225534,
+        "4": 0.00852782248017657,
+        "5": -0.01437532757535204
+      },
+      "final_top3_margin": -2.8375312215508752,
+      "initial_top3_margin": -2.928036218803667,
+      "linearized_normalized_cost_delta": -0.0059320502348365455,
+      "linearized_risk_delta": -0.0035362160112633267,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.5969156836512798,
+        "positive_rank": 6,
+        "risk": 0.9556155444901577,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.6028874160188428,
+        "positive_rank": 6,
+        "risk": 0.9593008154071178,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.3948437052582585,
+        "positive_rank": 1,
+        "risk": 0.45022147320065364,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.41084871776191756,
+        "positive_rank": 1,
+        "risk": 0.4781265600439256,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.13507755952967276,
+        0.10594969843353708
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.02820817830471946,
+        0.08247452423633783
+      ],
+      "risk_descent_predicted_cost_dot": -0.0006762212040520752,
+      "risk_gradient_norm": 0.043349872195761946,
+      "risk_linearization_residual": -0.00014905490569669952,
+      "risk_score_gradient": {
+        "0": 0.007871687654060459,
+        "1": 0.007918863657027257,
+        "2": 0.007852914612791594,
+        "3": 0.007977809397337632,
+        "4": 0.00795144678163974,
+        "5": -0.03957272210285674
+      },
+      "score_gradient_cosine": 0.19881602099042556,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 11,
+      "split": "fit",
+      "task_id": "fit_cheap"
+    },
+    {
+      "actual_normalized_cost_delta": 0.002463136547893152,
+      "actual_relative_score_step": 0.08864455587505496,
+      "actual_risk_delta": -0.002664209409314111,
+      "centered_score_delta_l2": 0.0701004483824733,
+      "clairvoyant_positive_first_normalized_cost": 0.3333333333333333,
+      "common_score_shift": -0.050217477018666294,
+      "cost_gradient_norm": 0.07726316125582824,
+      "cost_linearization_residual": 3.2317675919724294e-06,
+      "cost_score_gradient": {
+        "0": -0.04684708161145267,
+        "1": -0.027526766860043933,
+        "2": -0.0018830591212034837,
+        "3": 0.02372673753410207,
+        "4": 0.04940607430275132,
+        "5": 0.003124095755846722
+      },
+      "final_top3_margin": -2.8690184330600097,
+      "initial_top3_margin": -2.9323010610216325,
+      "linearized_normalized_cost_delta": 0.0024599047803011797,
+      "linearized_risk_delta": -0.002583880828637441,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.4190245915751825,
+        "positive_rank": 6,
+        "risk": 0.9567122432775859,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.41656145502728936,
+        "positive_rank": 6,
+        "risk": 0.9593764526869,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.4449937695124807,
+        "positive_rank": 1,
+        "risk": 0.4582924183540411,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.44295411236424886,
+        "positive_rank": 1,
+        "risk": 0.478720425248763,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.10133657821712011,
+        0.08619593040695239
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.026503862643881007,
+        0.08183355721688201
+      ],
+      "risk_descent_predicted_cost_dot": 0.00014355637622866384,
+      "risk_gradient_norm": 0.043271621095571755,
+      "risk_linearization_residual": -8.032858067667011e-05,
+      "risk_score_gradient": {
+        "0": 0.007865251083039038,
+        "1": 0.00790699629256607,
+        "2": 0.007838555075569971,
+        "3": 0.007958122580288123,
+        "4": 0.007932380157484046,
+        "5": -0.03950130518894721
+      },
+      "score_gradient_cosine": -0.042938497924350665,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 11,
+      "split": "fit",
+      "task_id": "fit_expensive"
+    },
+    {
+      "actual_normalized_cost_delta": -0.005893073721107922,
+      "actual_relative_score_step": 0.09116595970138235,
+      "actual_risk_delta": -0.001573946194301734,
+      "centered_score_delta_l2": 0.0913660810647175,
+      "clairvoyant_positive_first_normalized_cost": 0.029166666666666664,
+      "common_score_shift": -0.04688875651649607,
+      "cost_gradient_norm": 0.08280726773978346,
+      "cost_linearization_residual": 8.692264314545325e-06,
+      "cost_score_gradient": {
+        "0": -0.005585288067163457,
+        "1": 0.05858266491912397,
+        "2": -0.045529273875835094,
+        "3": 0.02644074534905533,
+        "4": -0.012107428852907286,
+        "5": -0.021801419472273407
+      },
+      "final_top3_margin": -2.9040105457095677,
+      "initial_top3_margin": -2.957275194620426,
+      "linearized_normalized_cost_delta": -0.005901765985422467,
+      "linearized_risk_delta": -0.001548678003374538,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.5405139239128322,
+        "positive_rank": 6,
+        "risk": 0.9590621456886166,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.5464069976339401,
+        "positive_rank": 6,
+        "risk": 0.9606360918829183,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.3735696742283154,
+        "positive_rank": 3,
+        "risk": 0.4763092907746539,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.38244113647766403,
+        "positive_rank": 3,
+        "risk": 0.48879269091247896,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.12355434116182379,
+        0.06277453275873221
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.029342143374084362,
+        0.06386413610846978
+      ],
+      "risk_descent_predicted_cost_dot": -0.0005519354042739475,
+      "risk_gradient_norm": 0.041967129087257714,
+      "risk_linearization_residual": -2.5268190927196094e-05,
+      "risk_score_gradient": {
+        "0": 0.0077239948318449814,
+        "1": 0.0076098443336973815,
+        "2": 0.007723693068445949,
+        "3": 0.007661743412400317,
+        "4": -0.03831040471701133,
+        "5": 0.007591129070622821
+      },
+      "score_gradient_cosine": 0.1588219548395642,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 11,
+      "split": "unseen",
+      "task_id": "unseen_cheap"
+    },
+    {
+      "actual_normalized_cost_delta": 2.919467582135349e-05,
+      "actual_relative_score_step": 0.018934216529757655,
+      "actual_risk_delta": 6.045332754711641e-05,
+      "centered_score_delta_l2": 0.02464426413089578,
+      "clairvoyant_positive_first_normalized_cost": 0.3333333333333333,
+      "common_score_shift": -0.04628702347554841,
+      "cost_gradient_norm": 0.06747778398677946,
+      "cost_linearization_residual": 1.1732893013345538e-07,
+      "cost_score_gradient": {
+        "0": -0.03740366233854336,
+        "1": 0.014020898696975051,
+        "2": -0.021028765881363154,
+        "3": 0.0490735787355421,
+        "4": 0.0046094112345779125,
+        "5": -0.009271460447188582
+      },
+      "final_top3_margin": -2.992026670036432,
+      "initial_top3_margin": -2.9990975573343985,
+      "linearized_normalized_cost_delta": 2.9077346891220033e-05,
+      "linearized_risk_delta": 6.0134003592565824e-05,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.34523894938904565,
+        "positive_rank": 6,
+        "risk": 0.9618766670141273,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.3452097547132243,
+        "positive_rank": 6,
+        "risk": 0.9618162136865802,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.3939169895431855,
+        "positive_rank": 3,
+        "risk": 0.49896519653657617,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.3939271243715957,
+        "positive_rank": 3,
+        "risk": 0.4984555439799605,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.07254755733361082,
+        0.021082213806968415
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.018454625652594127,
+        0.04974100361295646
+      ],
+      "risk_descent_predicted_cost_dot": 0.00020234403699149518,
+      "risk_gradient_norm": 0.040742800927187565,
+      "risk_linearization_residual": 3.193239545505849e-07,
+      "risk_score_gradient": {
+        "0": 0.007390152368388362,
+        "1": 0.00747682503116838,
+        "2": 0.007393292496509657,
+        "3": 0.007448763704320943,
+        "4": -0.03719282883827645,
+        "5": 0.007483795237889023
+      },
+      "score_gradient_cosine": -0.07360015294474641,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 11,
+      "split": "unseen",
+      "task_id": "unseen_expensive"
+    },
+    {
+      "actual_normalized_cost_delta": -0.0056542959020542405,
+      "actual_relative_score_step": 0.14520611136484204,
+      "actual_risk_delta": -0.0038150132710343954,
+      "centered_score_delta_l2": 0.10594748584077908,
+      "clairvoyant_positive_first_normalized_cost": 0.018518518518518517,
+      "common_score_shift": 0.023879897030240294,
+      "cost_gradient_norm": 0.07858746424457219,
+      "cost_linearization_residual": -4.780425776940676e-05,
+      "cost_score_gradient": {
+        "0": 0.051341979013737556,
+        "1": -0.020109178002872798,
+        "2": 0.022790977544367902,
+        "3": -0.048387894259154234,
+        "4": 0.008559955795589385,
+        "5": -0.014195840091667794
+      },
+      "final_top3_margin": -2.846925712984245,
+      "initial_top3_margin": -2.943326983537597,
+      "linearized_normalized_cost_delta": -0.005606491644284834,
+      "linearized_risk_delta": -0.00365221047229685,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.6006360174582875,
+        "positive_rank": 6,
+        "risk": 0.9561482998247387,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.6062903133603418,
+        "positive_rank": 6,
+        "risk": 0.9599633130957731,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.3992364924170403,
+        "positive_rank": 1,
+        "risk": 0.4541340294940545,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.4156103757674612,
+        "positive_rank": 2,
+        "risk": 0.4833922281956587,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.06627461798850705,
+        0.16945149375356605
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.04619137082891957,
+        0.08622661151645758
+      ],
+      "risk_descent_predicted_cost_dot": -0.0006615542851784852,
+      "risk_gradient_norm": 0.042664148712082926,
+      "risk_linearization_residual": -0.00016280279873754537,
+      "risk_score_gradient": {
+        "0": 0.007741279245203851,
+        "1": 0.007695890353506762,
+        "2": 0.007797768927486201,
+        "3": 0.007835779177746922,
+        "4": 0.007875921204374293,
+        "5": -0.03894663890831802
+      },
+      "score_gradient_cosine": 0.197310013667276,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 29,
+      "split": "fit",
+      "task_id": "fit_cheap"
+    },
+    {
+      "actual_normalized_cost_delta": 0.0009667910714041272,
+      "actual_relative_score_step": 0.08847394457713117,
+      "actual_risk_delta": -0.0027187238364473343,
+      "centered_score_delta_l2": 0.06633645693738104,
+      "clairvoyant_positive_first_normalized_cost": 0.3333333333333333,
+      "common_score_shift": 0.02302513850735527,
+      "cost_gradient_norm": 0.07699619653137622,
+      "cost_linearization_residual": 4.488322051401147e-06,
+      "cost_score_gradient": {
+        "0": -0.04675403844223561,
+        "1": -0.02749675189141834,
+        "2": -0.001779898438221261,
+        "3": 0.023799456809403326,
+        "4": 0.0490586958314897,
+        "5": 0.0031725361309821397
+      },
+      "final_top3_margin": -2.7993683741776696,
+      "initial_top3_margin": -2.8630633501933307,
+      "linearized_normalized_cost_delta": 0.0009623027493527261,
+      "linearized_risk_delta": -0.0026396718000550163,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.4242161230973664,
+        "positive_rank": 6,
+        "risk": 0.9544101136831318,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.42324933202596227,
+        "positive_rank": 6,
+        "risk": 0.9571288375195791,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.4488477055396449,
+        "positive_rank": 1,
+        "risk": 0.44152689852850024,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.4481094889898018,
+        "positive_rank": 1,
+        "risk": 0.46143229280176107,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.06264843096534349,
+        0.20965011815163992
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.05110428830511951,
+        0.13375379071263227
+      ],
+      "risk_descent_predicted_cost_dot": 0.00014436833046284307,
+      "risk_gradient_norm": 0.045593246098006676,
+      "risk_linearization_residual": -7.905203639231801e-05,
+      "risk_score_gradient": {
+        "0": 0.008231429161881899,
+        "1": 0.008229109477608944,
+        "2": 0.008324161577912834,
+        "3": 0.008405668653312583,
+        "4": 0.008430024819913371,
+        "5": -0.04162039369062972
+      },
+      "score_gradient_cosine": -0.04112464367706956,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 29,
+      "split": "fit",
+      "task_id": "fit_expensive"
+    },
+    {
+      "actual_normalized_cost_delta": -0.004915636194333772,
+      "actual_relative_score_step": 0.09078356217683949,
+      "actual_risk_delta": -0.0017109303247706542,
+      "centered_score_delta_l2": 0.07858597238900855,
+      "clairvoyant_positive_first_normalized_cost": 0.029166666666666664,
+      "common_score_shift": 0.01862794947379989,
+      "cost_gradient_norm": 0.08295726885614156,
+      "cost_linearization_residual": -2.2567730515298673e-06,
+      "cost_score_gradient": {
+        "0": -0.00539250601395016,
+        "1": 0.058673876382719044,
+        "2": -0.045585132731210856,
+        "3": 0.026555936198360906,
+        "4": -0.012632881745226997,
+        "5": -0.021619292090691897
+      },
+      "final_top3_margin": -2.8510347896448525,
+      "initial_top3_margin": -2.9002766805246716,
+      "linearized_normalized_cost_delta": -0.0049133794212822424,
+      "linearized_risk_delta": -0.0016807585938182184,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.542442973848467,
+        "positive_rank": 6,
+        "risk": 0.9572707058535456,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.5473586100428007,
+        "positive_rank": 6,
+        "risk": 0.9589816361783162,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.36996288731602883,
+        "positive_rank": 1,
+        "risk": 0.4625050517588406,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.37835602121475365,
+        "positive_rank": 1,
+        "risk": 0.47562448738531343,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.06364802477380732,
+        0.12685885687836063
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.03366619505440596,
+        0.07300913651005558
+      ],
+      "risk_descent_predicted_cost_dot": -0.0006012995960431431,
+      "risk_gradient_norm": 0.04367995634755568,
+      "risk_linearization_residual": -3.0171730952435792e-05,
+      "risk_score_gradient": {
+        "0": 0.00805318381172283,
+        "1": 0.007948502009652001,
+        "2": 0.007994485063409678,
+        "3": 0.007936259496752099,
+        "4": -0.03987405984013834,
+        "5": 0.00794162945860177
+      },
+      "score_gradient_cosine": 0.16594121696733952,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 29,
+      "split": "unseen",
+      "task_id": "unseen_cheap"
+    },
+    {
+      "actual_normalized_cost_delta": -0.002225091836599302,
+      "actual_relative_score_step": 0.05729212624046265,
+      "actual_risk_delta": -0.0010547591275158474,
+      "centered_score_delta_l2": 0.044184046606924335,
+      "clairvoyant_positive_first_normalized_cost": 0.3333333333333333,
+      "common_score_shift": 0.01884984666587078,
+      "cost_gradient_norm": 0.06733261017397883,
+      "cost_linearization_residual": 9.668826044121129e-07,
+      "cost_score_gradient": {
+        "0": -0.037370077023352044,
+        "1": 0.014013509300543606,
+        "2": -0.021016390090422395,
+        "3": 0.0488771232235514,
+        "4": 0.004818055664366688,
+        "5": -0.009322221074687281
+      },
+      "final_top3_margin": -2.9260946031358306,
+      "initial_top3_margin": -2.9468061078671712,
+      "linearized_normalized_cost_delta": -0.0022260587192037143,
+      "linearized_risk_delta": -0.0010422758860433065,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.3422929867452437,
+        "positive_rank": 6,
+        "risk": 0.9590907092245405,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.344518078581843,
+        "positive_rank": 6,
+        "risk": 0.9601454683520564,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.39320124315289945,
+        "positive_rank": 1,
+        "risk": 0.4764681356278185,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.39432506797861916,
+        "positive_rank": 1,
+        "risk": 0.48482931176114974,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.019714638830042153,
+        0.09442212639940673
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.03265323862880212,
+        0.05319742290874396
+      ],
+      "risk_descent_predicted_cost_dot": 0.00022267648222352938,
+      "risk_gradient_norm": 0.04247550795563031,
+      "risk_linearization_residual": -1.2483241472540946e-05,
+      "risk_score_gradient": {
+        "0": 0.007745614432186036,
+        "1": 0.00769767279688029,
+        "2": 0.007752041715361629,
+        "3": 0.007798674348697749,
+        "4": -0.038774592525431834,
+        "5": 0.007780589232306066
+      },
+      "score_gradient_cosine": -0.07785926869837334,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 29,
+      "split": "unseen",
+      "task_id": "unseen_expensive"
+    },
+    {
+      "actual_normalized_cost_delta": -0.001530350170434125,
+      "actual_relative_score_step": 0.0356780836940801,
+      "actual_risk_delta": -0.0008306180666588503,
+      "centered_score_delta_l2": 0.029700983244648902,
+      "clairvoyant_positive_first_normalized_cost": 0.018518518518518517,
+      "common_score_shift": -0.02386812817969952,
+      "cost_gradient_norm": 0.07853761656753028,
+      "cost_linearization_residual": -2.3714725620523503e-06,
+      "cost_score_gradient": {
+        "0": 0.051265754485892184,
+        "1": -0.02013572243728296,
+        "2": 0.022693587304882655,
+        "3": -0.04860178525908176,
+        "4": 0.008429148718910852,
+        "5": -0.013650982813321035
+      },
+      "final_top3_margin": -2.973296040136888,
+      "initial_top3_margin": -2.992745069201929,
+      "linearized_normalized_cost_delta": -0.0015279786978720726,
+      "linearized_risk_delta": -0.0008223734997372448,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.6052779219753545,
+        "positive_rank": 6,
+        "risk": 0.9607013732408821,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.6068082721457886,
+        "positive_rank": 6,
+        "risk": 0.961531991307541,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.41727786665342415,
+        "positive_rank": 1,
+        "risk": 0.4893070152118431,
+        "top_k_hit": 1
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.4212358116492139,
+        "positive_rank": 2,
+        "risk": 0.49609671811259887,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.2573715827129577,
+        -0.18701084910773735
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.2161267804811523,
+        -0.18139092915769395
+      ],
+      "risk_descent_predicted_cost_dot": -0.0006115803783987366,
+      "risk_gradient_norm": 0.041037853193105156,
+      "risk_linearization_residual": -8.244566921605497e-06,
+      "risk_score_gradient": {
+        "0": 0.007460133701001988,
+        "1": 0.007486294441146261,
+        "2": 0.007500642324148826,
+        "3": 0.0075100496225157685,
+        "4": 0.007505125071553124,
+        "5": -0.037462245160366066
+      },
+      "score_gradient_cosine": 0.189754110503401,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 47,
+      "split": "fit",
+      "task_id": "fit_cheap"
+    },
+    {
+      "actual_normalized_cost_delta": -0.0016763515426596598,
+      "actual_relative_score_step": 0.016418045588317914,
+      "actual_risk_delta": 2.857455965843414e-05,
+      "centered_score_delta_l2": 0.025209279880972525,
+      "clairvoyant_positive_first_normalized_cost": 0.3333333333333333,
+      "common_score_shift": -0.023697022810179876,
+      "cost_gradient_norm": 0.07739509407301699,
+      "cost_linearization_residual": -2.2475847620876364e-07,
+      "cost_score_gradient": {
+        "0": -0.046883224795483146,
+        "1": -0.027559488250837243,
+        "2": -0.0018512935843971099,
+        "3": 0.023830958318893057,
+        "4": 0.04952219659449209,
+        "5": 0.0029408517173323137
+      },
+      "final_top3_margin": -3.0090269867985855,
+      "initial_top3_margin": -3.013548411403613,
+      "linearized_normalized_cost_delta": -0.001676126784183451,
+      "linearized_risk_delta": 2.8158785692781977e-05,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.412921199902218,
+        "positive_rank": 6,
+        "risk": 0.9623022770925844,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.41459755144487764,
+        "positive_rank": 6,
+        "risk": 0.962273702532926,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.4398046293782228,
+        "positive_rank": 4,
+        "risk": 0.5025013110839093,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.44108292708029045,
+        "positive_rank": 5,
+        "risk": 0.5022616157563601,
+        "top_k_hit": 0
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.23002775820983568,
+        -0.2017845481748793
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.21101808028684882,
+        -0.18225369056025195
+      ],
+      "risk_descent_predicted_cost_dot": 0.00012760069463566692,
+      "risk_gradient_norm": 0.04026759583351601,
+      "risk_linearization_residual": 4.1577396565216265e-07,
+      "risk_score_gradient": {
+        "0": 0.007323623592608505,
+        "1": 0.0073488609839060205,
+        "2": 0.007361580789593324,
+        "3": 0.007364360004079629,
+        "4": 0.007360679390908859,
+        "5": -0.0367591047610964
+      },
+      "score_gradient_cosine": -0.04094340008858537,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 47,
+      "split": "fit",
+      "task_id": "fit_expensive"
+    },
+    {
+      "actual_normalized_cost_delta": -0.002023585306764386,
+      "actual_relative_score_step": 0.020440095571239797,
+      "actual_risk_delta": 0.00018243576397580785,
+      "centered_score_delta_l2": 0.029976200602170548,
+      "clairvoyant_positive_first_normalized_cost": 0.029166666666666664,
+      "common_score_shift": -0.018454976473682768,
+      "cost_gradient_norm": 0.08287402672443027,
+      "cost_linearization_residual": 5.393597178869093e-07,
+      "cost_score_gradient": {
+        "0": -0.005678044425908992,
+        "1": 0.05857159114751487,
+        "2": -0.04576482444222339,
+        "3": 0.02642065195243563,
+        "4": -0.011775558893169414,
+        "5": -0.02177381533864872
+      },
+      "final_top3_margin": -3.00336652521982,
+      "initial_top3_margin": -2.9920224531876536,
+      "linearized_normalized_cost_delta": -0.002024124666482273,
+      "linearized_risk_delta": 0.00018223613013514795,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.546566862269317,
+        "positive_rank": 6,
+        "risk": 0.9620137034993584,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.5485904475760814,
+        "positive_rank": 6,
+        "risk": 0.9618312677353826,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.38664210434935325,
+        "positive_rank": 4,
+        "risk": 0.5000938933011876,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.38761865293647685,
+        "positive_rank": 3,
+        "risk": 0.4985730172960137,
+        "top_k_hit": 1
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.25361378689121017,
+        -0.18342691718464302
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.21640183025179183,
+        -0.18134071421716325
+      ],
+      "risk_descent_predicted_cost_dot": -0.0005227758893083137,
+      "risk_gradient_norm": 0.04072715775070266,
+      "risk_linearization_residual": 1.996338406599061e-07,
+      "risk_score_gradient": {
+        "0": 0.007452788801195896,
+        "1": 0.0074089476187252125,
+        "2": 0.007457633473763589,
+        "3": 0.007431976258007081,
+        "4": -0.03717862070245909,
+        "5": 0.007427274550767258
+      },
+      "score_gradient_cosine": 0.15488630013379429,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 47,
+      "split": "unseen",
+      "task_id": "unseen_cheap"
+    },
+    {
+      "actual_normalized_cost_delta": -0.0004889235224035948,
+      "actual_relative_score_step": 0.02303807455381368,
+      "actual_risk_delta": 0.00034401063901989826,
+      "centered_score_delta_l2": 0.025834498348454953,
+      "clairvoyant_positive_first_normalized_cost": 0.3333333333333333,
+      "common_score_shift": -0.019578687924495894,
+      "cost_gradient_norm": 0.06744556983958494,
+      "cost_linearization_residual": 2.255831332312287e-07,
+      "cost_score_gradient": {
+        "0": -0.03730950964213999,
+        "1": 0.014064947133766277,
+        "2": -0.021027592983116884,
+        "3": 0.04909382084332772,
+        "4": 0.004484655099823416,
+        "5": -0.009306320451660533
+      },
+      "final_top3_margin": -3.0405127442963322,
+      "initial_top3_margin": -3.0394161854591975,
+      "linearized_normalized_cost_delta": -0.000489149105536826,
+      "linearized_risk_delta": 0.00034518100926389647,
+      "no_prior_is_record_counterfactual_not_model_rerun": true,
+      "prior_final": {
+        "normalized_cost": 0.34202143418133096,
+        "positive_rank": 6,
+        "risk": 0.9635781522761048,
+        "top_k_hit": 0
+      },
+      "prior_initial": {
+        "normalized_cost": 0.34251035770373456,
+        "positive_rank": 6,
+        "risk": 0.9632341416370849,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_final": {
+        "normalized_cost": 0.3904554446062094,
+        "positive_rank": 6,
+        "risk": 0.5133436263737955,
+        "top_k_hit": 0
+      },
+      "reconstructed_no_prior_initial": {
+        "normalized_cost": 0.3910438383328638,
+        "positive_rank": 6,
+        "risk": 0.5103903604527327,
+        "top_k_hit": 0
+      },
+      "reconstructed_raw_final_score_range": [
+        -0.25421139563840667,
+        -0.18243632302635754
+      ],
+      "reconstructed_raw_initial_score_range": [
+        -0.22661280151300822,
+        -0.17588009348265007
+      ],
+      "risk_descent_predicted_cost_dot": 0.00019324911863691433,
+      "risk_gradient_norm": 0.03926895794753359,
+      "risk_linearization_residual": -1.170370243998211e-06,
+      "risk_score_gradient": {
+        "0": 0.007191613453575198,
+        "1": 0.007147656299882834,
+        "2": 0.0071437031412292604,
+        "3": 0.007177962724665069,
+        "4": -0.0358474669603854,
+        "5": 0.007186531341033077
+      },
+      "score_gradient_cosine": -0.07296502182304657,
+      "score_gradient_scope": "score_space_not_parameter_space",
+      "seed": 47,
+      "split": "unseen",
+      "task_id": "unseen_expensive"
+    }
+  ],
+  "prior_removal_is_counterfactual_not_causal_ablation": true,
+  "reported_step_summaries": [
+    {
+      "learning_rate": 0.2,
+      "max_reported_parameter_gradient_norm": 0.027910214836872633,
+      "min_reported_parameter_gradient_norm": 0.019114788620871886,
+      "parameter_path_length_from_sgd_norms": 0.11155423216325594,
+      "path_length_is_not_net_displacement_or_score_change": true,
+      "seed": 11,
+      "steps": 24,
+      "zero_reported_gradient_norm_count": 0
+    },
+    {
+      "learning_rate": 0.2,
+      "max_reported_parameter_gradient_norm": 0.03126308785355703,
+      "min_reported_parameter_gradient_norm": 0.017356660777688604,
+      "parameter_path_length_from_sgd_norms": 0.11917571936505296,
+      "path_length_is_not_net_displacement_or_score_change": true,
+      "seed": 29,
+      "steps": 24,
+      "zero_reported_gradient_norm_count": 0
+    },
+    {
+      "learning_rate": 0.2,
+      "max_reported_parameter_gradient_norm": 0.019871962774864423,
+      "min_reported_parameter_gradient_norm": 0.0132549445377994,
+      "parameter_path_length_from_sgd_norms": 0.0757644317798549,
+      "path_length_is_not_net_displacement_or_score_change": true,
+      "seed": 47,
+      "steps": 24,
+      "zero_reported_gradient_norm_count": 0
+    }
+  ],
+  "score_gradient_conflict_is_not_parameter_gradient_conflict": true,
+  "score_states_checked": 48,
+  "source_config_sha256": "f027dc3d272652d3e3c198ca80e6aa2ee28b07bb58ec6a4d0d932758240a7c0a",
+  "source_result_sha256": "ab7f85e46d3edddab669f77fd876cd1b4a66f3ef905b7588ea0296a391adadfd",
+  "status": "COMPLETE_READ_ONLY_E12_DIAGNOSTIC",
+  "train_release": false
+}

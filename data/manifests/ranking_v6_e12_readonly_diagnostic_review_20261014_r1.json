@@ -1,0 +1,38 @@
+{
+  "status": "PASS_READ_ONLY_DIAGNOSTIC_AND_CORRECTED_COUNT_REVIEW",
+  "confidence": "SHARE_WITH_CAVEATS_COUNTERFACTUAL_NOT_ABLATION",
+  "reviewer": "e13_diagnostic_review",
+  "access": "read_only",
+  "source_result_sha256": "ab7f85e46d3edddab669f77fd876cd1b4a66f3ef905b7588ea0296a391adadfd",
+  "script_sha256": "6b399e96373662400156d84afb95bf7abc097e29ed640bfb14ca8bbc6fb4e77c",
+  "tests_sha256": "a1c09b7b328fa399ff5b32c827691374c8a700deb5097273c13bc4f4de8fe130",
+  "diagnostic_sha256": "8ee66c2cda0cb599c65c1011134fa4486eb16de2896694cdd6b67fb5ed762851",
+  "unit_tests": {"testsRun":4,"skipped":0,"failures":0,"errors":0},
+  "independent_initial_score_gradient_states": 12,
+  "independent_gradient_coordinate_objective_checks": 144,
+  "max_gradient_formula_difference": 2.7755575615628914e-17,
+  "max_finite_difference_error": 1.2671e-11,
+  "max_record_objective_error": 2.220446049250313e-16,
+  "corrected_no_prior_top3_counts": {
+    "initial": {"all":10,"fit":5,"unseen":5},
+    "final": {"all":9,"fit":5,"unseen":4},
+    "denominators": {"all":12,"fit":6,"unseen":6}
+  },
+  "count_correction": "Reviewer initial manual count9_to8 omitted one row; raw ranks correct. Parent and reviewer recomputed PIN raw scores rank<=3; automatic aggregate and boundary test now10_to9.",
+  "step_trace_check": "All three24-step summaries, nonzero norm counts, path lengths, raw-score ranges and common-shift removal verified",
+  "parameter_space_gradient_replay": false,
+  "causal_ablation_performed": false,
+  "new_model_forwards": 0,
+  "new_optimizer_steps": 0,
+  "new_sampling_calls": 0,
+  "remote_calls": 0,
+  "train_release": false,
+  "proposal": "A new separately authorized actual fit differing ONLY by removal of the label-conditioned minus3 prior, same24-step E12 protocol otherwise; not executed",
+  "limitations": [
+    "Weak score-gradient conflict is not parameter-gradient conflict or a proven dominant cause",
+    "Endpoint linearization cannot locate per-step estimator or VJP failures",
+    "Reported parameter path length is not net parameter movement or score movement",
+    "Removing offsets from recorded scores is not no-prior retraining or model replay",
+    "No architecture-capacity, real-circuit transfer or actual ATPG acceleration proof"
+  ]
+}
