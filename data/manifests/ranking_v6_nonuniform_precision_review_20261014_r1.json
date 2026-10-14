@@ -1,0 +1,19 @@
+{
+  "status": "PASS_SEALED_V1_PRECISION_WITH_INCONCLUSIVE_DIRECTION",
+  "reviewer": "/root/v6_result_bound_review",
+  "raw_result_bytes": 171755,
+  "raw_result_sha256": "306797bd8a993894949544e4506b1f15bca64105f36f04a0bc0231b29035287f",
+  "checked_rows": 144,
+  "numerical_errors": 0,
+  "precision_violations": 0,
+  "both_direction_certified_case_seeds": 4,
+  "total_case_seeds": 8,
+  "max_radius": 0.017466365557775344,
+  "max_absolute_error": 0.0011274356774861882,
+  "independently_checked": ["all_rows_EB_arithmetic", "exact_truth_mapping", "signed_ranges_and_projection_freezes", "144_row_and_8_case_counts", "hashes_and_source_pins", "status_semantics", "range_vs_variance_decomposition"],
+  "not_recomputed": ["unretained_observation_vectors", "observation_hashes_from_sampling_replay"],
+  "formal_sampling_replayed": false,
+  "regression": {"testsRun": 118, "skipped": 11, "failures": 0, "errors": 0, "exit_code": 0},
+  "diagnosis": "Rare risk confidence radius dominated by conservative prior-range term, not evidence of fitting or transfer failure.",
+  "formal_training_release": false
+}
