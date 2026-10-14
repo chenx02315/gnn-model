@@ -24,4 +24,4 @@
 
 ## 本轮边界
 
-仅本地合成数值验证；不读取真实标签，不运行 optimizer、正式 TRAIN、BLIND、LSF/Tessent 或新的 B 容器。
+本地合成数值验证，以及明确授权的一次 B 端 E11 参数探针（已执行并恢复参数）。不读取真实标签，不运行 optimizer、正式 TRAIN、BLIND、LSF/Tessent；新增容器实验仍需具体授权。

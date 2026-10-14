@@ -1,0 +1,59 @@
+{
+  "status": "PASS_INDEPENDENT_STDLIB_AUDIT_FIXED_SYNTHETIC_PARAMETER_PROBE_ONLY",
+  "reviewer": "e11_parameter_review",
+  "write_access": "read_only",
+  "prelaunch": "PASS",
+  "focused_repair": "PASS_ONLY_TEST_MOCK_AND_R2_IDENTIFIERS_CHANGED_NUMERICAL_SOURCES_IDENTICAL",
+  "linux_gate": {
+    "testsRun": 11,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "torch_imported": false
+  },
+  "independent_audit": {
+    "source_sha_count": 14,
+    "archive_entries": 15,
+    "record_count": 8,
+    "independent_prefix_objective_checks": 16,
+    "max_objective_absolute_error": 1.1102230246251565e-16,
+    "all_freeze_hashes_match": true,
+    "all_seed_pins_match": true,
+    "all_directions_finite": true,
+    "max_selected_direction_l1_error": 0,
+    "all_initial_restored_hashes_match": true,
+    "all_joint_risk_cost_deltas_negative": true,
+    "container_absence": true
+  },
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "torch_replays": 0,
+  "reproducible_audit_script": "scripts/audit_v6_parameter_recorded_objectives.py",
+  "audit_script_sha256": "0ae38996c72d80cb790841abc431e50489bd4252453efe56ff784b595be680c8",
+  "parent_recorded_objective_recheck": "PASS_MAX_ERROR_1.1102230246251565e-16_NO_MODEL_OR_RESAMPLING",
+  "validation_confidence": "SHARE_WITH_CAVEATS_SYNTHETIC_ONLY",
+  "final_document_review": {
+    "independent_scope_review": "PASS_WITH_SMALL_CONFIG_FLOAT_TYPE_FIX_REQUIRED",
+    "parent_fix_verification": "PASS_CANONICAL_CONFIG_SHA_MATCHES_RAW_RESULT",
+    "independent_confirmation_after_fix": "NOT_COMPLETED_REVIEWER_USAGE_LIMIT",
+    "numerical_postrun_review": "PASS_COMPLETED_BEFORE_USAGE_LIMIT",
+    "parent_markdown_link_check": "24_LINKS_ZERO_MISSING"
+  },
+  "independent_pilot_resampling": 0,
+  "train_release": false,
+  "local_regression": {
+    "testsRun": 192,
+    "skipped": 12,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "raw_result_sha256": "7d09d523eb3276d5510ede18a4514828d70219e8d2943679215bc28845568044",
+  "raw_log_sha256": "0dad8f58a5d65814454bee1c9427cc7a4249f1969bac05ff0b1d99146dc0cc2b",
+  "source_manifest_sha256": "863c9dddf868256467d19a500124fa32efcb59b12da2f1c3cf7c67578939c984",
+  "limitations": [
+    "Independent objectives recomputed from recorded scores without Torch; parameter tensors/forward not separately reproduced",
+    "Synthetic 7-feature MLP does not consume graph structure",
+    "No fitting, real ATPG acceleration, D95 measurement or generalization conclusion"
+  ]
+}
