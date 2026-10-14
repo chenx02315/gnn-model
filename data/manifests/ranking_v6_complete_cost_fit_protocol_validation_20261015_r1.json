@@ -1,0 +1,27 @@
+{
+  "status":"PASS_LOCAL_PROTOCOL_CHECKS_INDEPENDENT_REVIEW_PENDING",
+  "experiment_id":"E18_DESIGN_ONLY",
+  "date_local":"2026-10-15",
+  "base_commit":"7fa556bf9089a653f05ec3ba455b095085431265",
+  "contract_sha256":"fb6dbfa65965266d943cfcb54a59a26979995f04c46b4aab412bbb9f1ea1df62",
+  "source_sha256":"72c91f7e0906c07cb7f29d6387a9d852313f8e998cbb18d4cece9d51a573a77d",
+  "tests_sha256":"1153f842588e47e021b51d40b7d324bac3e2ec47e1c106120c38e34ffdc97468",
+  "dedicated_tests":{"testsRun":6,"skipped":0,"failures":0,"errors":0,"exit_code":0},
+  "related_regression":{"testsRun":279,"skipped":45,"failures":0,"errors":0,"all_exit_codes":0},
+  "regression_summaries":["204 tests, 2 skipped, OK","16 tests, no skips, OK","59 tests, 43 skipped, OK"],
+  "commands":[
+    "python -B -m unittest tests.test_ranking_v6_complete_cost_fit_protocol",
+    "python -B -m unittest discover -s tests -p test_ranking_v6*.py",
+    "python -B -m unittest discover -s tests -p test_check_ranking_v6*.py"
+  ],
+  "normalization_identity":"C6/(6*max_cost) == 0.5*C6/(3*max_cost)",
+  "same_budget_definition":"24 updates per model, 3 paired seeds per arm; planned total 144 updates, not E14 total 72",
+  "independent_review_complete":false,
+  "fitting_executed":false,
+  "new_model_forwards":0,
+  "optimizer_calls":0,
+  "remote_calls":0,
+  "new_real_data_reads":0,
+  "train_release":false,
+  "limitations":["Design evidence only; no E18 numerical experiment result","Windows skips not Linux or Torch execution proof","Risk is an endpoint acceptance gate, not guaranteed by scalar loss","Independent review and future implementation/runtime permissions remain separate"]
+}
