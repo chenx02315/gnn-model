@@ -1,0 +1,21 @@
+{
+  "status": "PASS_SEALED_E10_FIXED_SCORE_SPACE_JOINT_UPDATES_ONLY",
+  "reviewer": "/root/e10_joint_reviewer",
+  "raw_result_bytes": 152971,
+  "raw_result_sha256": "eb45ddc8a6f739c508c2629fad4fc3484dee2d166c7e96fb0f2120a69d3ba94e",
+  "case_seeds_audited": 8,
+  "accepted_count": 8,
+  "rejected_count": 0,
+  "formal_exact_oracle_calls": 16,
+  "nominal_pilot_work": 9216,
+  "independently_checked": ["complete_pre_oracle_freeze_hashes", "independent_pilot_seed_pins", "all_15_candidate_predictions_feasibility_and_ranks", "single_selected_proposal_coordinates", "actual_joint_deltas_and_committed_state", "no_fallback", "source_contract_runner_and_once_pins"],
+  "independent_truth_audit": "Negative-prefix deterministic enumeration of60paths perbefore/after objective; not formal sampler replay or extra formal oracle calls.",
+  "max_independent_truth_error": 2.220446049250313e-16,
+  "formal_sampling_replayed": false,
+  "pilot_observation_hashes_regenerated": false,
+  "regression": {"testsRun": 182, "skipped": 11, "failures": 0, "errors": 0, "exit_code": 0},
+  "actual_model_parameter_update_proved": false,
+  "actual_ATPG_wall_time_improvement_proved": false,
+  "formal_training_release": false,
+  "formal_IEEE_proof_claim": false
+}
