@@ -1,0 +1,33 @@
+{
+  "status": "PASS_PINNED_SYNTHETIC_E17_ARTIFACTS_ONLY",
+  "reviewer": "e17_availability_and_review",
+  "pre_run_source_review": "PASS_AFTER_STATUS_AND_DESCRIPTION_FIXES_BEFORE_STAGING",
+  "actual_artifact_review": "PASS_NO_DISCREPANCY_NO_MODEL_RERUN",
+  "source_manifest_sha256": "9121f8714362a1d86da6cadce8f33e1b75cd867588ab496c628ae6d0f2a01531",
+  "raw_result_sha256": "02bb775dad8dc864401e6117abddc5385ef3a17784a5d25cf4f6d426fbf9f5e3",
+  "raw_log_sha256": "06f79e4901b646c9201e15de062b7c23cb518fb370874681ab172b3a458a5ca3",
+  "once_marker_sha256": "40f6d7794a7180ea6b4d246d5f65783fe2b6caca862809e0d8d10d8e67211a10",
+  "protocol_log_sha256": "b1a868379554be96fdf6a5dbc156bcf576e6c90664c54b97693f6a4ea5df1a91",
+  "validation_manifest_sha256": "a07b9e9182599032700ec8adf3edfa174d85ebe5d3f3b8e98becab3a227eff8b",
+  "overview_sha256": "d0a333ce76b2004298af4553e86553282a300a975e67c7742da94247e3f437a8",
+  "linux_protocol_tests": {"testsRun":10,"skipped":0,"failures":0,"errors":0},
+  "independent_stdlib_recomputation": {
+    "miss_at_3":0.50167020560236,
+    "normalized_complete_cost_6":0.22325931282097763,
+    "raw_complete_cost_6":13.395558769258658,
+    "normalization_B":60,
+    "max_risk_score_gradient_difference":6.94e-18,
+    "max_cost_score_gradient_difference":1.39e-17,
+    "active_score_coordinate_finite_differences_pass":true
+  },
+  "parameter_proof_scope": "Recorded actual real-model active coordinate FD evidence, not independently rerun; one coordinate per phase",
+  "all_bundle_entry_hashes_checked":true,
+  "raw_log_child_matches_result_child":true,
+  "once_zero_retry_and_cgroup_limits_checked":true,
+  "reviewer_torch_calls":0,
+  "reviewer_remote_calls":0,
+  "model_reruns":0,
+  "remaining_blockers":[],
+  "new_training_release":false,
+  "required_caveats":["Synthetic derivative-chain evidence only, not fitting or joint improvement","No real ATPG wall-time or cross-circuit generalization evidence","No switch-cost or decomposed-cost scenarios validated"]
+}

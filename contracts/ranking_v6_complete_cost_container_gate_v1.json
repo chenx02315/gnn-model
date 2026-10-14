@@ -1,0 +1,19 @@
+{
+  "status": "AUTHORIZED_ONE_E17_COMPLETE_COST_SYNTHETIC_VJP_AFTER_FRESH_PREFLIGHT_AND_REVIEW_NOT_TRAINING",
+  "authorization": "User explicitly approved the next E17 complete-cost synthetic parameter-gradient validation. After fresh environment gates and independent parent review, permit one bounded synthetic forward/backward validation only. No fitting, optimizer, checkpoint or real-label reads.",
+  "root": "/ssd/cjc/gnn_model_v6_complete_cost_synthetic_20261014_r1",
+  "image_id": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+  "shared_site": "/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119/venv/lib/python3.11/site-packages",
+  "python": "3.11.2", "torch": "2.5.1", "numpy": "2.1.3", "sympy": "1.13.1",
+  "memory_bytes": 1073741824, "swap_extra_bytes": 0, "address_space_bytes": 8589934592,
+  "workers": 1, "cpus": 1, "pids_limit": 64, "timeout_seconds": 120, "log_limit_bytes": 65536,
+  "network": "none", "root_filesystem": "read_only", "tmpfs_bytes": 67108864,
+  "formal_runs": 1, "automatic_retries": 0,
+  "scope": "SYNTHETIC_COMPLETE_COST_SCORER_VJP_ONLY",
+  "expected_child_status": "PASS_REAL_FACTORY_COMPLETE_COST_VJP_ONLY",
+  "expected_parent_status": "PASS_GUARDED_REAL_FACTORY_COMPLETE_COST_VJP_ONLY",
+  "source_count": 9, "bundle_entries": 10,
+  "factory_sha256": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c",
+  "scorer": "Existing seven-feature 7->32 ReLU->32 ReLU->1, 1345 parameters. CPU float64 synthetic parameter VJP for exact miss probability R@3 and normalized complete first-hit C6 with fixed scalar additive costs; unchanged architecture, no checkpoint. No switch-cost or decomposed-cost validation.",
+  "dependency_integrity_limit": "Read-only bind and fresh versions/origins are verified; metadata is not a full immutable hash of every installed dependency or native library. No formal training release follows from this gate."
+}

@@ -1,0 +1,178 @@
+{
+  "status": "PASS_ACTUAL_SYNTHETIC_COMPLETE_COST_PARAMETER_CHAIN",
+  "experiment_id": "E17",
+  "date_local": "2026-10-14",
+  "base_commit": "edd990e2a428064de3a37f8fdd07fd612ce8ecad",
+  "local_raw_directory": "../runtime_training_staging_20260928/v6_complete_cost_container_20261014_r1",
+  "remote_raw_directory": "/ssd/cjc/gnn_model_v6_complete_cost_synthetic_20261014_r1",
+  "source_manifest_sha256": "9121f8714362a1d86da6cadce8f33e1b75cd867588ab496c628ae6d0f2a01531",
+  "raw_result_sha256": "02bb775dad8dc864401e6117abddc5385ef3a17784a5d25cf4f6d426fbf9f5e3",
+  "raw_log_sha256": "06f79e4901b646c9201e15de062b7c23cb518fb370874681ab172b3a458a5ca3",
+  "raw_log_bytes": 3656,
+  "once_marker_sha256": "40f6d7794a7180ea6b4d246d5f65783fe2b6caca862809e0d8d10d8e67211a10",
+  "protocol_log_sha256": "b1a868379554be96fdf6a5dbc156bcf576e6c90664c54b97693f6a4ea5df1a91",
+  "linux_protocol": {
+    "testsRun": 10,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "torch_imported": false
+  },
+  "local_regression": {
+    "testsRun": 273,
+    "skipped": 45,
+    "failures": 0,
+    "errors": 0,
+    "all_exit_codes": 0,
+    "windows_skips_not_actual_torch_proof": true
+  },
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "exit_code": 0,
+  "child": {
+    "accepted_update": false,
+    "action_count": 6,
+    "address_space_limit": [
+      8589934592,
+      8589934592
+    ],
+    "capacity_claim": false,
+    "cgroup_limits": {
+      "cpu.max": "100000 100000",
+      "memory.max": "1073741824",
+      "memory.swap.max": "0",
+      "pids.max": "64"
+    },
+    "checkpoint_io": false,
+    "checkpoint_reads": 0,
+    "cost_objective": "normalized_complete_first_hit_C_6",
+    "cpu_threads_during_probe": 1,
+    "deterministic": true,
+    "dtype": "float64",
+    "existing_grad_unchanged": true,
+    "feature_count": 7,
+    "file_io": false,
+    "finite_difference_epsilon": 0.000001,
+    "finite_difference_tolerance": 0.00001,
+    "fitting_performed": false,
+    "fixture_sha256": "c74a6a70a9b248a864d33756bdf7315b0ec47acc00adf74cdeaf7d84e743dd1f",
+    "full_nonlinear_objectives_recomputed": true,
+    "generalization_claim": false,
+    "image_id": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+    "joint_improvement_claim": false,
+    "objectives": {
+      "cost": 0.22325931282097763,
+      "cost_normalization_B": 60,
+      "maps": {
+        "cost": {
+          "synthetic_0": 0.0020832687982477466,
+          "synthetic_1": 0.00416577154560193,
+          "synthetic_2": -0.0937143060529576,
+          "synthetic_3": 0.016664990452193867,
+          "synthetic_4": 0.029142776345655274,
+          "synthetic_5": 0.04165749891125877
+        },
+        "risk": {
+          "synthetic_0": 0.06137456494755261,
+          "synthetic_1": 0.06105360571744964,
+          "synthetic_2": -0.3080329628269801,
+          "synthetic_3": 0.0612197726215942,
+          "synthetic_4": 0.0623735036574166,
+          "synthetic_5": 0.062011515882967105
+        }
+      },
+      "probability_mass": 0.9999999999999999,
+      "risk": 0.50167020560236
+    },
+    "online_cost_claim": false,
+    "optimizer_calls": 0,
+    "optimizer_implemented": false,
+    "parameter_coordinate_proofs": {
+      "cost": {
+        "absolute_error": 5.331020347387749e-12,
+        "analytic_coordinate": 0.025415297236428817,
+        "coordinate": 1321,
+        "finite_difference": 0.025415297241759838,
+        "gradient_norm": 0.08214505709661765,
+        "gradient_sha256": "2239f975c0c7acab0d347107866e6b8bf5a8a6fc8cb1c2f3408b16e8686b8d8a"
+      },
+      "risk": {
+        "absolute_error": 4.050372537367508e-11,
+        "analytic_coordinate": 0.07409367368147736,
+        "coordinate": 1321,
+        "finite_difference": 0.07409367364097363,
+        "gradient_norm": 0.25839600565268056,
+        "gradient_sha256": "066cd918722f4240a80dd90c4d473ca36f24af39028dd9d90132b87459446c68"
+      }
+    },
+    "parameter_count": 1345,
+    "preexisting_grad_sentinel": 0.125,
+    "python": "3.11.2",
+    "raw_scores": {
+      "synthetic_0": 0.002411396174939344,
+      "synthetic_1": -0.015773315807856625,
+      "synthetic_2": 0.013542879599267303,
+      "synthetic_3": -0.006514997871294302,
+      "synthetic_4": 0.07079824724578243,
+      "synthetic_5": 0.043211611258478624
+    },
+    "real_label_reads": 0,
+    "remote_io": false,
+    "risk_objective": "exact_miss_probability_R_at_3",
+    "rng_preserved": true,
+    "scope": "SYNTHETIC_COMPLETE_COST_SCORER_VJP_ONLY",
+    "score_coordinate_proofs": {
+      "cost": {
+        "absolute_error": 1.5406440012633027e-11,
+        "analytic_coordinate": -0.0937143060529576,
+        "coordinate": 2,
+        "finite_difference": -0.09371430603755115,
+        "gradient_norm": 0.10801127420732258,
+        "uid": "synthetic_2"
+      },
+      "risk": {
+        "absolute_error": 2.3407387139684488e-11,
+        "analytic_coordinate": -0.3080329628269801,
+        "coordinate": 2,
+        "finite_difference": -0.30803296280357273,
+        "gradient_norm": 0.337435073461571,
+        "uid": "synthetic_2"
+      }
+    },
+    "score_offset_applied": false,
+    "score_sha256": "9aa82c0910f703bad29583976b1d34e0f87981c1c4e433e04d66dd61044aed48",
+    "seed": 11,
+    "separate_phase_vjps": true,
+    "source_bytes_sha256_owned_by_external_runner_manifest": true,
+    "source_manifest_sha256": "9121f8714362a1d86da6cadce8f33e1b75cd867588ab496c628ae6d0f2a01531",
+    "status": "PASS_REAL_FACTORY_COMPLETE_COST_VJP_ONLY",
+    "threads_preserved": true,
+    "torch": "2.5.1+cu124",
+    "training_runs": 0,
+    "weights_sha256": "8c4603a1e7e872c60854f85e8804e5644d39dfb2c1d2004802ca0dba9b4f792d",
+    "weights_unchanged": true
+  },
+  "container_absent_after_run": true,
+  "container_absence_evidence": "docker inspect exact unique name returned No such container",
+  "parent_raw_log_child_and_score_objectives_exactly_recomputed": true,
+  "implementation_review_fixes": [
+    "Aligned child/protocol exact PASS names before staging",
+    "Removed unsupported switch/decomposed cost descriptor from contract before staging"
+  ],
+  "limits": {
+    "memory_bytes": 1073741824,
+    "extra_swap_bytes": 0,
+    "cpus": 1,
+    "workers": 1,
+    "timeout_seconds": 120,
+    "network": "none"
+  },
+  "limitations": [
+    "One fixed six-candidate synthetic fixture, not circuits",
+    "Only one active score and parameter coordinate per risk/cost phase finite-differenced",
+    "No optimizer/fitting/TRAIN/BLIND/checkpoint/real-label reads or measured ATPG acceleration",
+    "Not a joint risk/cost improvement proof; B_N scale and future risk guardrails need explicit freeze",
+    "Read-only dependency bind/version/origin checks are not immutable full native dependency hashes"
+  ]
+}
