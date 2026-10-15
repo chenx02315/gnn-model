@@ -1,0 +1,91 @@
+{
+  "schema_version": "v6-real-bridge-design-v1",
+  "status": "DRAFT_IMPLEMENTATION_REVIEW_PENDING_NO_REAL_EXECUTION",
+  "experiment_id": "E23",
+  "base_commit": "86bb1931ec135892975af80ce565dcd901f1a904",
+  "purpose": "bridge synthetic complete-first-hit objective to future real TRAIN diagnostics without assuming singleton positives or online additive costs",
+  "execution": {
+    "synthetic_stdlib_tests_only": true,
+    "remote_allowed": false,
+    "real_outcome_reads_allowed": false,
+    "torch_allowed": false,
+    "optimizer_allowed": false,
+    "training_allowed": false,
+    "blind_allowed": false,
+    "lsf_tessent_allowed": false
+  },
+  "input_feature_policy": {
+    "schema": "existing runtime_ranking_v3.FEATURES exact seven-column projection",
+    "candidate_space": "complete per-circuit action space frozen before executions; production freeze lineage still needs verification",
+    "forbidden_features": [
+      "synthetic_signal",
+      "cost_fraction_from_actual_runtime",
+      "policy_charged_runtime_s",
+      "total_cycles",
+      "epsilon_hit",
+      "execution_status",
+      "family_id_as_model_input",
+      "circuit_id_as_model_input"
+    ],
+    "fitting_costs": "supervision only; exact UID join; never appended to X",
+    "heldout_outcomes": "unavailable until all required score/ranking freeze and readback gates pass"
+  },
+  "objectives": {
+    "historical_primary": "hit by K=10 or stop, report miss and charged historical cost together; no retrospective endpoint change",
+    "new_complete_cost": "auxiliary fixed-additive historical surrogate until endpoint protocol changed prospectively",
+    "positive_set": "all D95-safe actions satisfying exact epsilon cycles threshold; no singleton selection",
+    "d95_head": false,
+    "online_replay": false,
+    "prefix_reuse_equivalence": false
+  },
+  "known_gaps": [
+    {
+      "id": "MULTI_POSITIVE",
+      "state": "IMPLEMENTED_SYNTHETIC_TESTS_PASS_INDEPENDENT_CODE_REVIEW_PENDING"
+    },
+    {
+      "id": "FEATURE_ADAPTER",
+      "state": "NOT_IMPLEMENTED_SYNTHETIC_FIXTURE_FIRST"
+    },
+    {
+      "id": "STOPPING_ENDPOINT",
+      "state": "HISTORICAL_K10_RETAINED_COMPLETE_COST_AUXILIARY_ONLY"
+    },
+    {
+      "id": "COST_CONTEXT",
+      "state": "HISTORICAL_INVOCATION_MEAN_NOT_ONLINE_INCREMENTAL_PREFIX_COST"
+    },
+    {
+      "id": "FEATURE_SCHEMA_LINEAGE",
+      "state": "ACTION_SPACE_MAX_VS_CIRCUIT_MAX_RELATION_TO_BE_DOCUMENTED"
+    },
+    {
+      "id": "REAL_EXECUTION",
+      "state": "CLOSED_SEPARATE_FULL_STAGE_RELEASE_REQUIRED"
+    }
+  ],
+  "future_diagnostic_controls": {
+    "start_with": "candidate MLP to isolate objective change before changing graph or features",
+    "hold_fixed": [
+      "features",
+      "folds",
+      "all three preregistered seeds",
+      "initialization pairing",
+      "per-model update budget",
+      "normalizer",
+      "memory cap"
+    ],
+    "evaluation": "per-family fitting then heldout; report six total and five informative families without dropping denominator",
+    "new_fit_count": 0,
+    "update_budget": "not released or silently inherited from E22",
+    "memory_bytes": 1073741824,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "claim_limits": [
+    "No new real data audit",
+    "No new training or replay",
+    "Synthetic multi-positive math is not R@10 guarantee",
+    "No online ATPG speedup or transfer claim"
+  ]
+}

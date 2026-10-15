@@ -1,0 +1,99 @@
+{
+  "base_commit": "86bb1931ec135892975af80ce565dcd901f1a904",
+  "date_local": "2026-10-15",
+  "regression": {
+    "testsRun": 417,
+    "skipped": 89,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "name": "test_ranking_v6*",
+        "testsRun": 271,
+        "skipped": 2,
+        "seconds": 88.637
+      },
+      {
+        "name": "test_check_ranking_v6*",
+        "testsRun": 16,
+        "skipped": 0,
+        "seconds": 0.123
+      },
+      {
+        "name": "explicit_stage_run_diagnostics",
+        "testsRun": 130,
+        "skipped": 87,
+        "seconds": 0.423
+      }
+    ],
+    "counts_note": "Focused 26 tests overlap the 271 suite; independent cases are not added to unittest counts."
+  },
+  "new_remote_calls": 0,
+  "new_real_label_reads": 0,
+  "new_torch_runs": 0,
+  "new_optimizer_steps": 0,
+  "new_model_fits": 0,
+  "train_release": false,
+  "blind_release": false,
+  "lsf_tessent_release": false,
+  "experiment_id": "E23",
+  "status": "PASS_SYNTHETIC_CODE_REVIEW_AFTER_NUMERIC_REPAIR",
+  "supersedes_status_only": "data/manifests/ranking_v6_real_bridge_e23_20261015_r1.json",
+  "original_contract_remains_design_only": "contracts/ranking_v6_real_bridge_design_v1.json",
+  "source_sha256": {
+    "src/models/ranking_v6_multi_positive_complete_cost.py": "8e812f763be304902c47c81cedbffa446c298b8e443c8d4cd1988fea6871395c",
+    "tests/test_ranking_v6_multi_positive_complete_cost.py": "02f06f9fac7930686458fa6c66a03c9863b07b31121111b0e4bb7b13f6d00715"
+  },
+  "preserved_original": {
+    "local_directory": "../runtime_training_staging_20260928/v6_multi_positive_math_20261015_r1",
+    "source_sha256": "db875817f93ae620fdbec14d81028f59fe13cb69873d0f4b5412e7842ef5272c",
+    "test_sha256": "09f598040219c0c60d89f009fcbabf5b37c204e21a28b33bb3a69f3a416750c6",
+    "r1_manifest_and_sha_unchanged": true
+  },
+  "numeric_defect": {
+    "scores": {
+      "cheap": -20,
+      "expensive": 20
+    },
+    "costs": {
+      "cheap": 1,
+      "expensive": 1000000000
+    },
+    "all_actions_positive": true,
+    "old_expensive_gradient": 0,
+    "expected_expensive_gradient_approximately": 4.248354251043235e-9,
+    "cause": "cost minus already rounded positive mean cancels legitimate small derivative",
+    "repair": "center positive cost differences on highest-weight positive before summing, separately normalized cost differences; O(N)",
+    "focused_repairs": 1
+  },
+  "tests": {
+    "kernel": 11,
+    "paired_kernel_and_adapter": 26,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "independent_review": {
+    "agent": "e23_independent_review",
+    "status": "PASS_SYNTHETIC_CODE_REVIEW_AFTER_NUMERIC_REPAIR",
+    "exact_positive_set_cases": 120,
+    "permutations": 49489,
+    "gradient_coordinates": 621,
+    "max_raw_gradient_absolute_error": 7.11e-15,
+    "five_point_fd_cases": 33,
+    "max_fd_absolute_error": 2.19e-10,
+    "decimal_precision": 100,
+    "decimal_extreme_cases": 40,
+    "max_extreme_gradient_relative_error": 3.93e-16,
+    "torch_imported": false,
+    "remote_calls": 0,
+    "files_modified": 0
+  },
+  "limitations": [
+    "fixed additive costs only; not K10 cost or online prefix cost",
+    "synthetic declaration is not a provenance detector",
+    "analytic gradient does not guarantee universal relative precision near cancellation",
+    "real caller, model VJP, normalization and heldout freeze/replay remain separate work"
+  ],
+  "next_node": "E24 synthetic FIT adapter complete; next multi-positive R@10 signal, then caller/VJP and heldout freeze/replay without real execution release"
+}

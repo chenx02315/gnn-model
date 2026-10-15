@@ -1,0 +1,76 @@
+{
+  "schema_version": "ranking-v6-synthetic-bridge-adapter-v1",
+  "status": "PASS_SYNTHETIC_ADAPTER_IMPLEMENTATION_ONLY",
+  "experiment_id": "E24",
+  "scope": "synthetic_fit_fixture_only",
+  "entrypoint": "src.models.ranking_v6_synthetic_real_bridge_adapter.prepare_fit_fixture",
+  "synthetic_only_required": true,
+  "scope_is_caller_declaration_not_provenance_detector": true,
+  "feature_names": [
+    "scheme_hf",
+    "scheme_hmf",
+    "log1p_h_limit",
+    "log1p_m_limit",
+    "h_limit_fraction_of_circuit_max",
+    "m_limit_fraction_of_circuit_max",
+    "log1p_common_fault_count"
+  ],
+  "feature_metadata": [
+    "action_uid",
+    "family",
+    "circuit",
+    "role"
+  ],
+  "allowed_role": "FIT",
+  "other_roles_rejected_before_outcome_content": true,
+  "outcome_fields": [
+    "action_uid",
+    "total_cycles",
+    "policy_charged_runtime_s",
+    "is_d95_feasible",
+    "execution_status"
+  ],
+  "outcome_requirements": {
+    "unique_exact_uid_join": true,
+    "cycles": "builtin int, 1..10**15",
+    "runtime": "builtin finite number, 0<cost<=1e9",
+    "d95": "builtin int 1",
+    "status": "SUCCESS",
+    "invalid_rows": "reject, never filter"
+  },
+  "positive_set_rule": "all UIDs for circuit satisfying 100*cycles <= 101*minimum_cycles; integer arithmetic",
+  "resource_bounds": {
+    "max_rows": 4096,
+    "max_actions_per_circuit": 1024,
+    "workers": 1,
+    "model_fits": 0,
+    "optimizer_steps": 0
+  },
+  "claims": {
+    "fitting_input_and_target_separation_only": true,
+    "normalizer_implemented": false,
+    "scorer_implemented": false,
+    "freeze_replay_implemented": false,
+    "real_data_reader_implemented": false,
+    "atpg_speedup": false
+  },
+  "execution": {
+    "real_data_access_allowed": false,
+    "remote_allowed": false,
+    "torch_allowed": false,
+    "optimizer_allowed": false,
+    "training_allowed": false,
+    "blind_allowed": false,
+    "lsf_tessent_allowed": false
+  },
+  "required_tests": [
+    "multi-positive singleton all-positive sets",
+    "exact integer epsilon boundary including large cycles",
+    "runtime cost changes preserve X",
+    "reject extra feature/outcome fields",
+    "heldout rejection before outcome access",
+    "exact UID/schema/type/cap checks",
+    "input immutability and order independence",
+    "prepared synthetic task versus independent PL enumeration"
+  ]
+}

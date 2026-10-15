@@ -1,0 +1,97 @@
+{
+  "status": "LOCAL_TESTS_PASS_INDEPENDENT_CODE_REVIEW_BLOCKED_BY_QUOTA",
+  "experiment_id": "E23",
+  "date_local": "2026-10-15",
+  "base_commit": "86bb1931ec135892975af80ce565dcd901f1a904",
+  "scope": "local source/contracts/existing aggregate summaries plus synthetic stdlib kernel; no new real data",
+  "source_sha256": {
+    "src/models/ranking_v6_multi_positive_complete_cost.py": "db875817f93ae620fdbec14d81028f59fe13cb69873d0f4b5412e7842ef5272c",
+    "tests/test_ranking_v6_multi_positive_complete_cost.py": "09f598040219c0c60d89f009fcbabf5b37c204e21a28b33bb3a69f3a416750c6",
+    "contracts/ranking_v6_real_bridge_design_v1.json": "8e4ca7a06211af73421e0cfede34ccfe1b7871c4e8c2923ee71a73f766acaef3"
+  },
+  "kernel": {
+    "scope": "synthetic_multi_positive_fixed_additive_costs_only",
+    "supports": "one through all positives, exact fixed-additive PL until-any-positive cost and score derivatives",
+    "limitations": [
+      "not R@10",
+      "not online incremental/prefix costs",
+      "positive derivatives may have either sign",
+      "conservative representability guards are not all-cancellation accuracy guarantees",
+      "synthetic_only is a caller declaration, not provenance detection"
+    ],
+    "training_estimator": false,
+    "trainer_integration": false
+  },
+  "tests": {
+    "focused": {
+      "testsRun": 27,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0,
+      "seconds": 0.073
+    },
+    "v6_regression": {
+      "testsRun": 255,
+      "skipped": 2,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0,
+      "seconds": 56.613
+    },
+    "existing_feature_and_target_diagnostic": {
+      "testsRun": 26,
+      "skipped": 1,
+      "failures": 0,
+      "errors": 0,
+      "exit_code": 0,
+      "seconds": 1.248
+    },
+    "counts_overlap": "27 focused tests are included in 255 v6 regression; do not sum them",
+    "design_locks_and_no_torch_import": true
+  },
+  "audit": {
+    "existing_aggregate_only": true,
+    "train_actions": 1706,
+    "train_positives": 14,
+    "multi_positive_families": 4,
+    "total_train_families": 6,
+    "source_evidence": [
+      "data/manifests/ranking_v5_target_cost_metrics_20261012_r1.json",
+      "data/manifests/ranking_v5_target_cost_validation_20261012_r1.json",
+      "data/manifests/ranking_v5_feature_support_validation_20261012_r1.json"
+    ],
+    "new_raw_labels_or_attempt_logs_reaudited": false,
+    "source_cost_lineage": "historical complete invocation arithmetic mean; not online prefix incremental cost",
+    "feature_schema_gap": "generic action_space_max versus actual v3 circuit_max naming/provenance must be reconciled",
+    "forbidden_real_features": [
+      "synthetic_signal",
+      "cost_fraction_from_actual_runtime",
+      "policy_charged_runtime_s",
+      "total_cycles",
+      "epsilon_hit"
+    ]
+  },
+  "independent_review": {
+    "agent": "e23_independent_review",
+    "initial_source_audit_and_formula_derivation_returned": true,
+    "actual_new_code_review_completed": false,
+    "status": "INCOMPLETE_AGENT_USAGE_LIMIT",
+    "quota_message_claim": "agent reported usage limit; no reset time independently verified",
+    "production_release": false
+  },
+  "publication": {
+    "local_only": true,
+    "committed": false,
+    "pushed": false
+  },
+  "new_remote_calls": 0,
+  "new_torch_runs": 0,
+  "new_optimizer_steps": 0,
+  "new_model_fits": 0,
+  "new_real_label_reads": 0,
+  "train_release": false,
+  "blind_release": false,
+  "lsf_tessent_release": false,
+  "next_action": "verify these SHA pins, complete independent kernel/code and document review, repair only if evidence requires then rerun relevant tests; no E22 rerun or new real fit"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS_PUBLICATION_CONSISTENCY_SYNTHETIC_ONLY",
+  "reviewer": "e23_independent_review",
+  "base_commit": "86bb1931ec135892975af80ce565dcd901f1a904",
+  "reviewed_manifests": {
+    "ranking_v6_real_bridge_e23_20261015_r2.json": "5d984876e74049d91711acfe64cbb1a946924b84c3226e339543b514cd3b21d2",
+    "ranking_v6_synthetic_bridge_e24_20261015_r1.json": "ee324953e957a1b1633d7085454461aa3574685bb1f70ce20963a272ae72d6ea"
+  },
+  "original_failure_evidence_preserved": true,
+  "regression_records_consistent": {
+    "testsRun": 417,
+    "skipped": 89,
+    "failures": 0,
+    "errors": 0
+  },
+  "next_order": [
+    "multi-positive R@10 signal",
+    "fitting-only caller and VJP",
+    "heldout freeze and replay"
+  ],
+  "real_execution_released": false,
+  "reviewer_remote_calls": 0,
+  "reviewer_torch_imports": 0
+}

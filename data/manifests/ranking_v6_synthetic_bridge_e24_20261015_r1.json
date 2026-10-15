@@ -1,0 +1,297 @@
+{
+  "base_commit": "86bb1931ec135892975af80ce565dcd901f1a904",
+  "date_local": "2026-10-15",
+  "regression": {
+    "testsRun": 417,
+    "skipped": 89,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "name": "test_ranking_v6*",
+        "testsRun": 271,
+        "skipped": 2,
+        "seconds": 88.637
+      },
+      {
+        "name": "test_check_ranking_v6*",
+        "testsRun": 16,
+        "skipped": 0,
+        "seconds": 0.123
+      },
+      {
+        "name": "explicit_stage_run_diagnostics",
+        "testsRun": 130,
+        "skipped": 87,
+        "seconds": 0.423
+      }
+    ],
+    "counts_note": "Focused 26 tests overlap the 271 suite; independent cases are not added to unittest counts."
+  },
+  "new_remote_calls": 0,
+  "new_real_label_reads": 0,
+  "new_torch_runs": 0,
+  "new_optimizer_steps": 0,
+  "new_model_fits": 0,
+  "train_release": false,
+  "blind_release": false,
+  "lsf_tessent_release": false,
+  "experiment_id": "E24",
+  "status": "PASS_SYNTHETIC_ADAPTER_IMPLEMENTATION_ONLY",
+  "scope": "generated fixtures, no model/optimizer/real loader",
+  "source_sha256": {
+    "src/models/ranking_v6_synthetic_real_bridge_adapter.py": "b41cd9fe22e40a2045a3225a0c0d4b0b322538bdb8e88db9eb35184d91c44ca2",
+    "tests/test_ranking_v6_synthetic_real_bridge_adapter.py": "5bf2c5ca6015c0e13e9d7adef70cf9b145064babb3fdecd2905990047338c112",
+    "contracts/ranking_v6_synthetic_bridge_adapter_v1.json": "b489f36605d6209d820d25e74ff8381c7dff6e9a7c1ccf7a3a1bbf3588550d4b"
+  },
+  "positive_threshold": "100*cycles <= 101*per-circuit minimum cycles, exact integers",
+  "input_projection": "exact v3 seven columns; costs and outcome values never appended to X",
+  "normalizer_implemented": false,
+  "scorer_implemented": false,
+  "real_reader_implemented": false,
+  "heldout_freeze_replay_implemented": false,
+  "limits": {
+    "max_rows": 4096,
+    "max_actions_per_circuit": 1024,
+    "workers": 1
+  },
+  "tests": {
+    "adapter": 15,
+    "kernel_and_adapter": 26,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "contract_fields_and_closed_execution_checked": true
+  },
+  "independent_review": {
+    "agent": "e23_independent_review",
+    "status": "PASS_SYNTHETIC_ADAPTER_IMPLEMENTATION_ONLY",
+    "nonuniform_pl_permutations": 126,
+    "max_cost_absolute_error": 1.78e-15,
+    "independent_rejection_checks": 21,
+    "role_rejected_before_outcome_access": true,
+    "cost_change_preserves_features": true,
+    "input_immutable": true,
+    "row_order_deterministic": true,
+    "torch_imported": false,
+    "remote_calls": 0
+  },
+  "generated_examples": {
+    "cases": [
+      {
+        "case": "multi",
+        "metrics": {
+          "complete_first_hit_cost": 3.833333333333333,
+          "cost_normalization_B": 16,
+          "cost_score_gradient": {
+            "task.0000": -1.0277777777777777,
+            "task.0001": -0.5277777777777777,
+            "task.0002": 0.6666666666666666,
+            "task.0003": 0.8888888888888888
+          },
+          "exact_score_gradient": true,
+          "memory_complexity": "O(n)",
+          "model_fitting_implemented": false,
+          "n": 4,
+          "negative_precedence_terms": 2,
+          "normalization_depends_on_scores": false,
+          "normalization_derivative_taken": false,
+          "normalized_complete_first_hit_cost": 0.23958333333333331,
+          "normalized_cost_bounds": [
+            0.0625,
+            0.625
+          ],
+          "normalized_cost_score_gradient": {
+            "task.0000": -0.0642361111111111,
+            "task.0001": -0.032986111111111105,
+            "task.0002": 0.041666666666666664,
+            "task.0003": 0.05555555555555555
+          },
+          "online_cost_replay": false,
+          "positive_cost_is_unavoidable_constant": false,
+          "positive_count": 2,
+          "positive_uids": [
+            "task.0000",
+            "task.0001"
+          ],
+          "r_at_k_computed": false,
+          "raw_cost_bounds": [
+            1,
+            10
+          ],
+          "scope": "synthetic_multi_positive_fixed_additive_costs_only",
+          "status": "DRAFT_SYNTHETIC_MULTI_POSITIVE_COMPLETE_COST_NOT_TRAINER",
+          "stochastic_estimator_implemented": false,
+          "synthetic_only": true,
+          "time_complexity": "O(n)",
+          "training_estimator_implemented": false,
+          "work_bound": 4
+        },
+        "task": {
+          "action_uids": [
+            "task.0000",
+            "task.0001",
+            "task.0002",
+            "task.0003"
+          ],
+          "circuit": "task",
+          "costs": {
+            "task.0000": 1,
+            "task.0001": 2,
+            "task.0002": 3,
+            "task.0003": 4
+          },
+          "family": "family.task",
+          "features": [
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ]
+          ],
+          "oracle_cycles": 100,
+          "positive_uids": [
+            "task.0000",
+            "task.0001"
+          ]
+        }
+      },
+      {
+        "case": "all_positive",
+        "metrics": {
+          "complete_first_hit_cost": 2,
+          "cost_normalization_B": 9,
+          "cost_score_gradient": {
+            "task.0000": -0.3333333333333333,
+            "task.0001": 0,
+            "task.0002": 0.3333333333333333
+          },
+          "exact_score_gradient": true,
+          "memory_complexity": "O(n)",
+          "model_fitting_implemented": false,
+          "n": 3,
+          "negative_precedence_terms": 0,
+          "normalization_depends_on_scores": false,
+          "normalization_derivative_taken": false,
+          "normalized_complete_first_hit_cost": 0.2222222222222222,
+          "normalized_cost_bounds": [
+            0.1111111111111111,
+            0.6666666666666666
+          ],
+          "normalized_cost_score_gradient": {
+            "task.0000": -0.037037037037037035,
+            "task.0001": 0,
+            "task.0002": 0.037037037037037035
+          },
+          "online_cost_replay": false,
+          "positive_cost_is_unavoidable_constant": false,
+          "positive_count": 3,
+          "positive_uids": [
+            "task.0000",
+            "task.0001",
+            "task.0002"
+          ],
+          "r_at_k_computed": false,
+          "raw_cost_bounds": [
+            1,
+            6
+          ],
+          "scope": "synthetic_multi_positive_fixed_additive_costs_only",
+          "status": "DRAFT_SYNTHETIC_MULTI_POSITIVE_COMPLETE_COST_NOT_TRAINER",
+          "stochastic_estimator_implemented": false,
+          "synthetic_only": true,
+          "time_complexity": "O(n)",
+          "training_estimator_implemented": false,
+          "work_bound": 3
+        },
+        "task": {
+          "action_uids": [
+            "task.0000",
+            "task.0001",
+            "task.0002"
+          ],
+          "circuit": "task",
+          "costs": {
+            "task.0000": 1,
+            "task.0001": 2,
+            "task.0002": 3
+          },
+          "family": "family.task",
+          "features": [
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ],
+            [
+              1,
+              0,
+              2,
+              0,
+              0.5,
+              0,
+              3
+            ]
+          ],
+          "oracle_cycles": 100,
+          "positive_uids": [
+            "task.0000",
+            "task.0001",
+            "task.0002"
+          ]
+        }
+      }
+    ],
+    "scope": "generated_fixture_no_model_or_fit",
+    "torch_imported": false
+  },
+  "example_limitations": [
+    "Identical X is intentional to test separation, not a learnability claim",
+    "Synthetic runtime_s field values are generated, not observed ATPG timings"
+  ],
+  "next_node": "multi-positive R@10 signal first, then fitting-only objective/VJP caller and heldout freeze/replay design; actual real execution stays closed"
+}
