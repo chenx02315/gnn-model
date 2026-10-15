@@ -1,0 +1,15 @@
+{
+  "receipt": {
+    "errors": 0,
+    "failures": 0,
+    "protocol_source_sha256": "2a67a1cff66d92f409b35502310815c6a422b84cba7005f14cdafcc926dbe0f5",
+    "skipped": 0,
+    "source_manifest_sha256": "40e44efb453fa0effe0bae2a7384ddd5526c34b0bd1f211bb6dc803b9c298be3",
+    "status": "PASS_NO_TORCH_LINUX_PROTOCOL",
+    "testsRun": 16,
+    "torch_imported": false
+  },
+  "receipt_sha256": "ffd69d2afd966a7532280ed73d9d70850f4dbeb3e26a76cbbe3d5aaa55e2f351",
+  "actual_once_exists": false,
+  "observation_phase": "before_formal_container"
+}

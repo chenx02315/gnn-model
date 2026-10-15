@@ -137,3 +137,27 @@ scripts/diagnose_v6_nonuniform_risk.py -text
 tests/test_diagnose_v6_nonuniform_risk.py -text
 data/manifests/ranking_v6_risk_e27_* -text
 experiment_overview/entries/E27_nonuniform_risk.md -text
+
+# E28-E30 reviewed once-only sources and small evidence, byte stable.
+contracts/ranking_v6_multi_positive_joint_stage_v1.json -text
+contracts/ranking_v6_multi_joint_container_gate_v1.json -text
+contracts/ranking_v6_minimal_real_train_plan_v1.json -text
+src/models/ranking_v6_multi_positive_joint_caller.py -text
+src/models/ranking_v6_multi_positive_joint_probe.py -text
+src/models/ranking_v6_synthetic_joint_freeze.py -text
+scripts/verify_v6_joint_wiring_stage.py -text
+scripts/stage_v6_multi_joint_container_gate.py -text
+scripts/run_v6_multi_joint_container_gate.py -text
+tests/test_ranking_v6_multi_positive_joint_caller.py -text
+tests/test_ranking_v6_multi_positive_joint_probe.py -text
+tests/test_ranking_v6_synthetic_joint_freeze.py -text
+tests/test_ranking_v6_minimal_real_train_plan.py -text
+tests/test_verify_v6_joint_wiring_stage.py -text
+tests/test_stage_v6_multi_joint_container_gate.py -text
+tests/test_run_v6_multi_joint_container_gate.py -text
+data/manifests/ranking_v6_e28_* -text
+data/manifests/ranking_v6_e29_* -text
+data/manifests/ranking_v6_e30_* -text
+experiment_overview/entries/E28_joint_wiring.md -text
+experiment_overview/entries/E29_parameter_chain.md -text
+experiment_overview/entries/E30_real_train_plan.md -text

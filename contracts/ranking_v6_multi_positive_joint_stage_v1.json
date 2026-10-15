@@ -1,0 +1,29 @@
+{
+  "experiments": ["E28", "E29", "E30"],
+  "base_commit": "9eecd62b56d84781f33f957e534f3c8816a4c67f",
+  "authorization": "User approved completing the three proposed stages as one workflow: synthetic caller, one isolated parameter validation without fitting, and a real TRAIN protocol only. Not formal training execution.",
+  "stage_1": "generated FIT caller joins all epsilon-positive UIDs, separates seven input features from cycles and charged costs; synthetic held freeze/readback must precede outcome loader invocation",
+  "stage_2": "one existing-factory CPU float64 parameter probe; frozen MC-vector linear surrogate VJP proof and independent exact-small nonlinear objective VJP proof; no optimizer or accepted update",
+  "stage_3": "freeze a prospective minimal real TRAIN comparison and explicit unresolved release gates; no real label reader or optimizer execution",
+  "fixture": {
+    "actions": 6, "uids": ["u000", "u001", "u002", "u003", "u004", "u005"],
+    "cycles": [100, 101, 130, 150, 175, 200],
+    "charged_costs": [0.5, 1.0, 2.0, 4.0, 7.0, 10.0],
+    "epsilon_rule": "100*cycles <= 101*minimum_cycles; all positives retained",
+    "feature_policy": "generated valid seven-column FIT features already within abs<=2; no clipping, standardization or real normalizer fitting",
+    "k": 3, "seed": 11, "pilot_samples": 32, "main_samples": 480,
+    "risk_weight": 0.5, "normalized_cost_weight": 1.0,
+    "weight_interpretation": "fresh explicit wiring-probe weights, not released training hyperparameters",
+    "cost_normalization": "B=N*max(charged_cost), fixed across score and parameter perturbations"
+  },
+  "finite_difference": {"epsilon": 0.000001, "absolute_tolerance": 1e-8, "relative_tolerance": 1e-5, "active_coordinate_min_absolute_derivative": 1e-7, "coordinate_selection": "largest absolute active derivative per risk/cost/joint chain, frozen rule; no search for passing coordinate", "direction": "fixed alternating-sign unit vector over all 1345 flattened parameters", "relu_mask_must_match": true},
+  "mc_estimator_invocations_in_formal_probe": 1,
+  "mc_nominal_work": 9216,
+  "exact_reference_limit": 7,
+  "scope_limits": {"new_models_for_probe": 1, "optimizer_calls": 0, "accepted_updates": 0, "checkpoint_reads": 0, "real_label_reads": 0, "blind_access": false, "lsf_tessent_calls": 0, "formal_training_runs": 0},
+  "memory_bytes": 1073741824, "workers": 1, "cpus": 1,
+  "formal_container_runs": 1, "automatic_retries": 0,
+  "failure_policy": "preserve new root and once evidence; no automatic rerun, seed/epsilon/coordinate/budget changes after scientific failure",
+  "independent_review_required": true,
+  "real_training_release": false
+}

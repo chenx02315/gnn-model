@@ -1,0 +1,71 @@
+{
+  "experiment_id": "E28",
+  "status": "PASS_GENERATED_JOINT_WIRING_AND_MEMORY_FREEZE_ONLY",
+  "raw_directory": "../runtime_training_staging_20260928/v6_joint_wiring_20261015_r1",
+  "raw_artifacts": {
+    "result.json": {
+      "bytes": 18184,
+      "sha256": "8b20559e3ffed818a941aa218a96ccd3c7439d21604360df93c9efa5027d5663"
+    },
+    "once.json": {
+      "bytes": 1867,
+      "sha256": "1f7faf775885bcb2da8047dac16ff6b1159ea9e482bec96d1fb95c75838b7cef"
+    }
+  },
+  "contract_sha256": "ffdf312f1fcb34dfc4843cd5c6ec330b68e6cf18659e264e550c03159adc4b70",
+  "source_sha256": {
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\contracts\\ranking_v6_multi_positive_joint_stage_v1.json": "ffdf312f1fcb34dfc4843cd5c6ec330b68e6cf18659e264e550c03159adc4b70",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\scripts\\verify_v6_joint_wiring_stage.py": "ff06950f7195e833fe81b1e9e7d5b43215a6a9916303d2662f01688dd1b83513",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_multi_positive_complete_cost.py": "8e812f763be304902c47c81cedbffa446c298b8e443c8d4cd1988fea6871395c",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_multi_positive_conditional_risk.py": "8e63dad655c894e028d766500e0402bdd1a12369eb9c8ddb7531489e4091436e",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_multi_positive_joint_caller.py": "111b7b5fe94dba953a575509adb799671e1944e9d12516a27511141e0d005279",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_multi_positive_risk_control.py": "dc05070f23c5fa5403babf75fa34b1ebb7321cedc5975b4f6debaf38644df0c0",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_scorer_vjp_bridge.py": "24de1d49fd975421522e677d35fb007dedef0a5a09be17c221ad3507eb7237da",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_synthetic_joint_freeze.py": "7d12476b1ffb08fb17b32614f5930625f5bd3a7da96a446b753298abfa2469e0",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\ranking_v6_synthetic_real_bridge_adapter.py": "b41cd9fe22e40a2045a3225a0c0d4b0b322538bdb8e88db9eb35184d91c44ca2",
+    "C:\\Users\\86155\\Desktop\\new lab\\gnn-model\\src\\models\\runtime_ranking_v3.py": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c"
+  },
+  "case_names": [
+    "two_positive",
+    "singleton",
+    "all_positive"
+  ],
+  "expected_positive_counts": [
+    2,
+    1,
+    6
+  ],
+  "score_fd_checks": 18,
+  "max_score_finite_difference_error": 1.456323950321803e-11,
+  "held_proof": {
+    "actual_training": false,
+    "fit_performed": false,
+    "freeze_sha256": "7a2c779488f558ddeb803af7329b7481ca08f951260aa5f90161def5b5919db4",
+    "freeze_verified_before_loader_access": true,
+    "generalization_claim": false,
+    "held_outcome_release": true,
+    "loader_calls": 1,
+    "normalizer_fitted": false,
+    "online_cost_replay": false,
+    "outcome_count": 6,
+    "outcome_sha256": "60932c23902725fc3ec6129c3b3fbf175754a17b25800180c194d87190674f20",
+    "readback_sha256": "7a2c779488f558ddeb803af7329b7481ca08f951260aa5f90161def5b5919db4",
+    "real_data_access": false,
+    "real_heldout_release": false,
+    "scope": "generated_bounded_fixture_only",
+    "synthetic_declaration_is_provenance_detector": false,
+    "synthetic_only": true
+  },
+  "corrupt_readback_loader_calls": 0,
+  "model_identity_is_synthetic_placeholder": true,
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "mc_estimator_calls": 0,
+  "torch_calls": 0,
+  "model_instances": 0,
+  "optimizer_calls": 0,
+  "real_label_reads": 0,
+  "training_runs": 0,
+  "remote_calls": 0,
+  "real_training_release": false
+}

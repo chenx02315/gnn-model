@@ -1,0 +1,218 @@
+{
+  "experiment_id": "E29",
+  "status": "PASS_GUARDED_MULTI_POSITIVE_JOINT_VJP_ONLY",
+  "scope": "SYNTHETIC_MULTI_POSITIVE_JOINT_VJP_ONLY",
+  "raw_directory": "../runtime_training_staging_20260928/v6_multi_positive_joint_container_20261015_r1",
+  "remote_root": "/ssd/cjc/gnn_model_v6_multi_positive_joint_20261015_r1",
+  "raw_artifacts": {
+    "result.json": {
+      "sha256": "2a717157fefa6d137235805e41c2879715282198b63bb66e48a18d9b828be0e6",
+      "bytes": 170140
+    },
+    "actual.log": {
+      "sha256": "134a62a3e7e9c488c69364e30d598c54402114a6e42c643113a8fa5005a39edd",
+      "bytes": 168959
+    },
+    "actual.once.json": {
+      "sha256": "88a675b5e743666073c4157771f948dd8f64f4b54143e36d8ea26e6baa4c9a1a",
+      "bytes": 202
+    },
+    "protocol.receipt.json": {
+      "sha256": "ffd69d2afd966a7532280ed73d9d70850f4dbeb3e26a76cbbe3d5aaa55e2f351",
+      "bytes": 313
+    }
+  },
+  "source_manifest_sha256": "40e44efb453fa0effe0bae2a7384ddd5526c34b0bd1f211bb6dc803b9c298be3",
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "exit_code": 0,
+  "protocol": {
+    "errors": 0,
+    "failures": 0,
+    "protocol_source_sha256": "2a67a1cff66d92f409b35502310815c6a422b84cba7005f14cdafcc926dbe0f5",
+    "skipped": 0,
+    "source_manifest_sha256": "40e44efb453fa0effe0bae2a7384ddd5526c34b0bd1f211bb6dc803b9c298be3",
+    "status": "PASS_NO_TORCH_LINUX_PROTOCOL",
+    "testsRun": 16,
+    "torch_imported": false
+  },
+  "proofs": {
+    "exact_nonlinear": {
+      "cost": {
+        "active_coordinate": {
+          "absolute_error": 3.589892272337636e-12,
+          "allowed_error": 2.298975196376907e-7,
+          "analytic": 0.021989751960179174,
+          "coordinate": 1323,
+          "finite_difference": 0.021989751963769066,
+          "gradient_norm": 0.08078214401226272,
+          "pass": true
+        },
+        "fixed_direction": {
+          "absolute_error": 9.222769761302796e-12,
+          "allowed_error": 1.0186626500999015e-8,
+          "analytic": 0.000018662650099901526,
+          "finite_difference": 0.000018662640877131764,
+          "pass": true
+        },
+        "gradient_sha256": "125609e997764bc719c572f1d2de6a563b90cc843678d8dbe03a03844d68d22a"
+      },
+      "joint": {
+        "active_coordinate": {
+          "absolute_error": 1.761786549980826e-11,
+          "allowed_error": 4.3932652266625133e-7,
+          "analytic": 0.04293265224900726,
+          "coordinate": 1323,
+          "finite_difference": 0.042932652266625126,
+          "gradient_norm": 0.17558959210746589,
+          "pass": true
+        },
+        "fixed_direction": {
+          "absolute_error": 9.829248634636578e-12,
+          "allowed_error": 1.4607209989664352e-8,
+          "analytic": 0.00046072099896643526,
+          "finite_difference": 0.0004607209891371866,
+          "pass": true
+        },
+        "gradient_sha256": "2b7c597e6b6787418dc192a5b6a4354c206e4ba4d7bf2734c9583bd34c41fa5b"
+      },
+      "risk": {
+        "active_coordinate": {
+          "absolute_error": 3.003708393123361e-13,
+          "allowed_error": 4.288580057795655e-7,
+          "analytic": 0.041885800577656174,
+          "coordinate": 1323,
+          "finite_difference": 0.041885800577956545,
+          "gradient_norm": 0.19057723474753446,
+          "pass": true
+        },
+        "fixed_direction": {
+          "absolute_error": 1.2129570351598895e-12,
+          "allowed_error": 1.884116697733067e-8,
+          "analytic": 0.0008841166977330667,
+          "finite_difference": 0.0008841166965201097,
+          "pass": true
+        },
+        "gradient_sha256": "5d98d233f66d70562c92002aa279b44609ea876cde552a9c2e45dfbb17987721"
+      }
+    },
+    "frozen_mc_surrogate": {
+      "cost": {
+        "active_coordinate": {
+          "absolute_error": 3.3728575488112256e-13,
+          "allowed_error": 2.2989751960516464e-7,
+          "analytic": 0.021989751960179174,
+          "coordinate": 1323,
+          "finite_difference": 0.02198975196051646,
+          "gradient_norm": 0.08078214401226272,
+          "pass": true
+        },
+        "fixed_direction": {
+          "absolute_error": 1.4024115290551479e-12,
+          "allowed_error": 1.018662651502313e-8,
+          "analytic": 0.000018662650099901526,
+          "finite_difference": 0.000018662651502313055,
+          "pass": true
+        },
+        "gradient_sha256": "125609e997764bc719c572f1d2de6a563b90cc843678d8dbe03a03844d68d22a"
+      },
+      "joint": {
+        "active_coordinate": {
+          "absolute_error": 2.2025437029782324e-13,
+          "allowed_error": 4.453040423997826e-7,
+          "analytic": 0.043530404239758,
+          "coordinate": 1323,
+          "finite_difference": 0.043530404239978254,
+          "gradient_norm": 0.17587603731858287,
+          "pass": true
+        },
+        "fixed_direction": {
+          "absolute_error": 2.3376867390630107e-12,
+          "allowed_error": 1.3826067570406044e-8,
+          "analytic": 0.0003826067547029177,
+          "finite_difference": 0.00038260675704060443,
+          "pass": true
+        },
+        "gradient_sha256": "2d79d78c042b737632703113656390eb8e405612f40b21410cc146e0489accaf"
+      },
+      "risk": {
+        "active_coordinate": {
+          "absolute_error": 1.9962503872150705e-13,
+          "allowed_error": 4.4081304559357276e-7,
+          "analytic": 0.043081304559157645,
+          "coordinate": 1323,
+          "finite_difference": 0.04308130455935727,
+          "gradient_norm": 0.19099394326147234,
+          "pass": true
+        },
+        "fixed_direction": {
+          "absolute_error": 2.737911676889415e-12,
+          "allowed_error": 1.7278882119439445e-8,
+          "analytic": 0.0007278882092060328,
+          "finite_difference": 0.0007278882119439445,
+          "pass": true
+        },
+        "gradient_sha256": "972eaad95cf05b02e7238e42ee3ed32e5259a42250724872c223c5a77ebca308"
+      }
+    }
+  },
+  "action_count": 6,
+  "positive_count": 2,
+  "parameter_count": 1345,
+  "mc_estimator_calls": 1,
+  "mc_nominal_work": 9216,
+  "mc_risk": 0.20608118899385844,
+  "exact_risk": 0.20624302082831955,
+  "normalized_complete_cost": 0.142374471315703,
+  "weights_sha256": "8c4603a1e7e872c60854f85e8804e5644d39dfb2c1d2004802ca0dba9b4f792d",
+  "fixture_sha256": "157d48b92847229c75c7a6cbf18c53329eb7791ec58223b23cdd9672b038d9e1",
+  "score_sha256": "dd4595d31cccaee0032442da52a2a18c15343b2e315f06324c454b5513b94334",
+  "cgroup_limits": {
+    "cpu.max": "100000 100000",
+    "memory.max": "1073741824",
+    "memory.swap.max": "0",
+    "pids.max": "64"
+  },
+  "address_space_limit": [
+    8589934592,
+    8589934592
+  ],
+  "image_id": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+  "python": "3.11.2",
+  "torch": "2.5.1+cu124",
+  "weights_unchanged": true,
+  "existing_grad_unchanged": true,
+  "rng_preserved": true,
+  "threads_preserved": true,
+  "relu_masks_unchanged": true,
+  "synthetic_held_freeze_proof": {
+    "actual_training": false,
+    "fit_performed": false,
+    "freeze_sha256": "3595c034a5bce0eb9c786dbf775a3d629155d1d3500b6fefc3ec7aa8ba096675",
+    "freeze_verified_before_loader_access": true,
+    "generalization_claim": false,
+    "held_outcome_release": true,
+    "loader_calls": 1,
+    "normalizer_fitted": false,
+    "online_cost_replay": false,
+    "outcome_count": 6,
+    "outcome_sha256": "60932c23902725fc3ec6129c3b3fbf175754a17b25800180c194d87190674f20",
+    "readback_sha256": "3595c034a5bce0eb9c786dbf775a3d629155d1d3500b6fefc3ec7aa8ba096675",
+    "real_data_access": false,
+    "real_heldout_release": false,
+    "scope": "generated_bounded_fixture_only",
+    "synthetic_declaration_is_provenance_detector": false,
+    "synthetic_only": true
+  },
+  "held_corrupt_readback_loader_calls": 0,
+  "mirror_held_not_independent_population": true,
+  "optimizer_calls": 0,
+  "training_runs": 0,
+  "checkpoint_reads": 0,
+  "real_label_reads": 0,
+  "real_training_release": false,
+  "container_absence_observed_by_parent": true,
+  "container_absence_evidence": "fresh exact-name docker inspect reported No such container after completion",
+  "dependency_integrity_limit": "Pinned image, read-only dependency bind, fresh versions/origins and source readback; not a full immutable digest of all shared-site dependencies or native libraries. Synthetic validation is not real TRAIN release.",
+  "peak_memory_measured": false
+}

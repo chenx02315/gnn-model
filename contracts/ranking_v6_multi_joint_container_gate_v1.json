@@ -1,0 +1,23 @@
+{
+  "status": "AUTHORIZED_ONE_E29_SYNTHETIC_MULTI_POSITIVE_JOINT_VJP_AFTER_REVIEW_AND_FRESH_GATES_NOT_TRAINING",
+  "authorization": "User approved all three proposed stages. This contract permits one new isolated synthetic forward/backward validation, no optimizer or fitting. Stage three remains protocol design only.",
+  "root": "/ssd/cjc/gnn_model_v6_multi_positive_joint_20261015_r1",
+  "image_id": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+  "shared_site": "/ssd/cjc/gnn_model_runtime_v2_98efbd4f_20261002T235119/venv/lib/python3.11/site-packages",
+  "python": "3.11.2", "torch": "2.5.1", "numpy": "2.1.3", "sympy": "1.13.1",
+  "memory_bytes": 1073741824, "swap_extra_bytes": 0, "address_space_bytes": 8589934592,
+  "workers": 1, "cpus": 1, "pids_limit": 64, "timeout_seconds": 120,
+  "log_limit_bytes": 524288, "network": "none", "root_filesystem": "read_only", "tmpfs_bytes": 67108864,
+  "formal_runs": 1, "automatic_retries": 0,
+  "scope": "SYNTHETIC_MULTI_POSITIVE_JOINT_VJP_ONLY",
+  "expected_child_status": "PASS_REAL_FACTORY_MULTI_POSITIVE_JOINT_VJP_ONLY",
+  "expected_parent_status": "PASS_GUARDED_MULTI_POSITIVE_JOINT_VJP_ONLY",
+  "source_count": 12, "bundle_entries": 13,
+  "factory_sha256": "d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c",
+  "scorer": "Unchanged existing seven-feature 7->32 ReLU->32 ReLU->1 MLP, 1345 parameters, CPU float64; one newly initialized synthetic probe model, no checkpoint.",
+  "fixture": {"actions": 6, "positive_count": 2, "k": 3, "seed": 11, "pilot_samples": 32, "main_samples": 480, "risk_weight": 0.5, "normalized_cost_weight": 1.0},
+  "finite_difference": {"epsilon": 0.000001, "absolute_tolerance": 1e-8, "relative_tolerance": 1e-5, "active_coordinate_min_absolute_derivative": 1e-7, "relu_mask_must_match": true},
+  "probe_limits": {"mc_estimator_calls": 1, "optimizer_calls": 0, "accepted_updates": 0, "real_label_reads": 0, "checkpoint_reads": 0, "training_runs": 0, "blind_access": false, "lsf_tessent_calls": 0},
+  "dependency_integrity_limit": "Pinned image, read-only dependency bind, fresh versions/origins and source readback; not a full immutable digest of all shared-site dependencies or native libraries. Synthetic validation is not real TRAIN release.",
+  "real_training_release": false
+}

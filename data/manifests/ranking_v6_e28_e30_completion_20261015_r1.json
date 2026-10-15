@@ -1,0 +1,23 @@
+{
+  "experiments": ["E28", "E29", "E30"],
+  "base_commit": "9eecd62b56d84781f33f957e534f3c8816a4c67f",
+  "status": "COMPLETE_APPROVED_WIRING_PARAMETER_PROOF_AND_TRAIN_PLAN_NOT_FORMAL_TRAINING",
+  "E28": "PASS_GENERATED_JOINT_WIRING_AND_MEMORY_FREEZE_ONLY",
+  "E29": "PASS_GUARDED_MULTI_POSITIVE_JOINT_VJP_ONLY",
+  "E30": "PASS_PLAN_WITH_UNRESOLVED_EXECUTION_GATES",
+  "final_local_regression": {"testsRun": 531, "executed": 426, "skipped": 105, "failures": 0, "errors": 0, "groups": [{"pattern": "test_ranking_v6*.py", "testsRun": 333, "skipped": 2}, {"pattern": "test_check_ranking_v6*.py", "testsRun": 16, "skipped": 0}, {"pattern": "explicit stage/run/diagnostic tests, no duplicate plan tests", "testsRun": 182, "skipped": 103}]},
+  "fresh_linux_protocol": {"testsRun": 16, "skipped": 0, "failures": 0, "errors": 0},
+  "local_wiring_once_runs": 1,
+  "container_once_runs": 1,
+  "mc_estimator_calls_in_formal_container": 1,
+  "optimizer_calls": 0,
+  "formal_train_fits": 0,
+  "accepted_model_updates": 0,
+  "real_label_reads": 0,
+  "checkpoint_reads": 0,
+  "automatic_retries": 0,
+  "real_training_release": false,
+  "unresolved_real_execution_gates": 8,
+  "resource_limit_bytes": 1073741824,
+  "next_scope": "production fold/normalizer/domain support, candidate/feature provenance, D95/action/attempt joins and failure accounting, real freeze I/O and controlled trainer; not repeated toy sampling or automatic real training"
+}
