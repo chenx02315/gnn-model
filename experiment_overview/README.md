@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E25多正例风险信号](entries/E25_multi_positive_risk.md)：一次固定合成诊断完成；正例有信号但负例方向仍有噪声，不是训练放行。
 - [E23接入审计与多正例数学核](entries/E23_real_bridge_readiness.md)：已补完独立复核和数值修复，保留首次中断/缺陷记录；不是训练放行。
 - [E24合成接口接线](entries/E24_synthetic_bridge_adapter.md)：费用/输入分离、完整多正例集合、错UID和非FIT拒绝通过；未接真实reader或模型。
 - [近期 v6 数值实验总览](2026-10-14_v6_validation.md)：每步目的、设置、结论、局限及证据链接。

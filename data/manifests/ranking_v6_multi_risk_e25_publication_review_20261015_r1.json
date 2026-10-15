@@ -1,0 +1,30 @@
+{
+  "experiment_id": "E25",
+  "status": "PASS_PUBLICATION_REVIEW_SYNTHETIC_ONLY",
+  "reviewer": "e25_risk_review",
+  "contract_sha256": "3dc1b75cdd4752639b02354b586991d312311d2fa9cd3a514ab86a523b4ec970",
+  "raw_result_sha256": "74bed9472b0f819f2ba9e40f24684b82adbed6df6f509f376dd78fdd2dcf6ccd",
+  "raw_once_sha256": "71dc21119c2a9f3798303f25fd33d0089365245a49940d810436e0b8ea9d17fc",
+  "checks": {
+    "source_math_extremes_review": true,
+    "artifact_all_coordinates_audited": true,
+    "summary_and_docs_consistent": true,
+    "regression_counts_consistent": {
+      "testsRun": 442,
+      "skipped": 89
+    },
+    "reviewer_regression_rerun_claim": false,
+    "formal_diagnostic_sampling_reruns": 0
+  },
+  "disclosures": [
+    "uniform path-constant positive signal only",
+    "negative/full-gradient precision uncertified",
+    "formal once already consumed despite frozen historical pending status",
+    "next independent-pilot diagnostic not executed",
+    "MC near-zero negative precision not guaranteed"
+  ],
+  "real_training_release": false,
+  "reviewer_torch_calls": 0,
+  "reviewer_remote_calls": 0,
+  "reviewer_file_modifications": 0
+}

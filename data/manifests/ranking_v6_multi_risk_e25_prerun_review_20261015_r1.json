@@ -1,0 +1,40 @@
+{
+  "experiment_id": "E25",
+  "status": "PASS_INDEPENDENT_PRERUN_SOURCE_MATH_REVIEW_SYNTHETIC_ONLY",
+  "reviewer": "e25_risk_review",
+  "base_commit": "98d0db6570eb883f0482ca4067fc5cd35884e896",
+  "contract_sha256": "3dc1b75cdd4752639b02354b586991d312311d2fa9cd3a514ab86a523b4ec970",
+  "source_sha256": {
+    "src/models/ranking_v6_multi_positive_conditional_risk.py": "8e63dad655c894e028d766500e0402bdd1a12369eb9c8ddb7531489e4091436e",
+    "tests/test_ranking_v6_multi_positive_conditional_risk.py": "a0c4dbe53779dd1c474f0df824073074b0ad9752d40706fb8de43c7360cc41b1",
+    "scripts/diagnose_v6_multi_positive_risk.py": "adf36c71c11af4ba4fcd50606371bc34b7b96e0e96de1bea88139033c1fd0aab",
+    "tests/test_diagnose_v6_multi_positive_risk.py": "01172764dbf91805832f2b7af7589ff17709784a1a0f147012be42ff9a7e20b6"
+  },
+  "local_focused_tests": {
+    "testsRun": 34,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.38
+  },
+  "independent_validation": {
+    "kernel_testsRun": 26,
+    "skipped": 0,
+    "max_nonuniform_gradient_absolute_error": 2.78e-17,
+    "decimal_precision": 100,
+    "extreme_symmetry_relative_error": 0,
+    "reviewer_torch_imports": 0,
+    "reviewer_remote_calls": 0,
+    "reviewer_formal_diagnostics": 0
+  },
+  "implementation_repairs_before_formal_run": [
+    "explicit opt-in defaults false",
+    "same UID domain as E23/E24",
+    "MC stable dS and proposal gradient with explicit other mass",
+    "small exact oracle uses Decimal80 to avoid cross-prefix cancellation; no change to MC sample budget"
+  ],
+  "permitted_next": "One frozen local synthetic diagnostic only, preserve all rows and gradients",
+  "formal_runs_available": 1,
+  "automatic_retries": 0,
+  "real_training_release": false
+}

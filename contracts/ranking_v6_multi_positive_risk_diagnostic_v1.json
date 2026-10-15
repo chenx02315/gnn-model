@@ -1,0 +1,41 @@
+{
+  "experiment_id": "E25",
+  "status": "FROZEN_SYNTHETIC_DESIGN_IMPLEMENTATION_REVIEW_PENDING",
+  "base_commit": "98d0db6570eb883f0482ca4067fc5cd35884e896",
+  "scope": "local_generated_multi_positive_risk_only_no_fitting",
+  "estimator": "negative-only PL conditional survival; dS + S*dlogq",
+  "conditional_risk": "S = product_t(A_t/(A_t+P)); integrate stopping at any positive",
+  "small_exact_cases": [
+    {"scores": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "positive_indices": [0, 1], "k": 3},
+    {"scores": [-0.7, 0.4, 1.2, -0.2, 0.8, -1.1], "positive_indices": [1, 4], "k": 3},
+    {"scores": [-0.7, 0.4, 1.2, -0.2, 0.8, -1.1], "positive_indices": [0, 3, 5], "k": 2},
+    {"scores": [0.0, 0.0, 0.0, 0.0], "positive_indices": [0, 1, 2, 3], "k": 3},
+    {"scores": [0.0, 0.0, 0.0, 0.0], "positive_indices": [0, 1, 2], "k": 3}
+  ],
+  "small_exact_tolerance": 1e-11,
+  "large_cases": {"actions": 736, "k": 10, "scores": "all zero", "positive_counts": [1, 6], "seeds": [11, 29, 47], "samples_per_seed": 512},
+  "large_analytic_reference": {
+    "risk": "product_t((N-M-t)/(N-t))",
+    "positive_gradient_each": "-risk * sum_t(1/(N-t))",
+    "negative_gradient_each": "risk * M/(N-M) * sum_t(1/(N-t))"
+  },
+  "large_risk_and_positive_gradient_absolute_tolerance": 1e-12,
+  "positive_direction_required_each_seed": "strictly negative unless structural guaranteed hit",
+  "negative_gradient_reporting": "all coordinates retained in raw result; report max/mean absolute error and wrong-sign count, no direction certification or precision PASS from positive coordinates alone",
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "adaptive_samples": false,
+  "max_nominal_large_work": 22609920,
+  "max_nominal_work_per_call": 20000000,
+  "resource_policy": "single local process; O(N+K) estimator working memory; no model or trajectory retention",
+  "required_before_diagnostic": ["unit tests pass", "independent source and math review pass"],
+  "confidence_interval_claim": false,
+  "universal_variance_reduction_claim": false,
+  "real_training_release": false,
+  "remote_allowed": false,
+  "torch_allowed": false,
+  "optimizer_allowed": false,
+  "real_label_reads_allowed": false,
+  "blind_allowed": false,
+  "lsf_tessent_allowed": false
+}

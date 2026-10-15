@@ -1,0 +1,336 @@
+{
+  "experiment_id": "E25",
+  "status": "PASS_CORRECTNESS_AND_POSITIVE_SIGNAL_ONLY",
+  "scientific_status": "NEGATIVE_COORDINATE_DIRECTION_AND_FULL_GRADIENT_PRECISION_UNCERTIFIED",
+  "base_commit": "98d0db6570eb883f0482ca4067fc5cd35884e896",
+  "date_local": "2026-10-15",
+  "scope": "local synthetic multi-positive R@10 risk diagnostic, not trainer",
+  "contract_sha256": "3dc1b75cdd4752639b02354b586991d312311d2fa9cd3a514ab86a523b4ec970",
+  "source_sha256": {
+    "src/models/ranking_v6_multi_positive_conditional_risk.py": "8e63dad655c894e028d766500e0402bdd1a12369eb9c8ddb7531489e4091436e",
+    "tests/test_ranking_v6_multi_positive_conditional_risk.py": "a0c4dbe53779dd1c474f0df824073074b0ad9752d40706fb8de43c7360cc41b1",
+    "scripts/diagnose_v6_multi_positive_risk.py": "adf36c71c11af4ba4fcd50606371bc34b7b96e0e96de1bea88139033c1fd0aab",
+    "tests/test_diagnose_v6_multi_positive_risk.py": "01172764dbf91805832f2b7af7589ff17709784a1a0f147012be42ff9a7e20b6"
+  },
+  "raw_directory": "../runtime_training_staging_20260928/v6_multi_positive_risk_20261015_r1",
+  "raw_artifacts": {
+    "result.json": {
+      "bytes": 260595,
+      "sha256": "74bed9472b0f819f2ba9e40f24684b82adbed6df6f509f376dd78fdd2dcf6ccd"
+    },
+    "once.json": {
+      "bytes": 1113,
+      "sha256": "71dc21119c2a9f3798303f25fd33d0089365245a49940d810436e0b8ea9d17fc"
+    }
+  },
+  "formal_runs": 1,
+  "automatic_retries": 0,
+  "adaptive_samples": false,
+  "small_exact_cases": [
+    {
+      "fixture": {
+        "k": 3,
+        "positive_indices": [
+          0,
+          1
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "risk_absolute_error": 2.7755575615628914e-17,
+      "gradient_max_absolute_error": 4.163336342344337e-17,
+      "structural_zero_required": false,
+      "structural_zero_pass": true,
+      "pass": true
+    },
+    {
+      "fixture": {
+        "k": 3,
+        "positive_indices": [
+          1,
+          4
+        ],
+        "scores": [
+          -0.7,
+          0.4,
+          1.2,
+          -0.2,
+          0.8,
+          -1.1
+        ]
+      },
+      "risk_absolute_error": 6.938893903907228e-18,
+      "gradient_max_absolute_error": 6.938893903907228e-18,
+      "structural_zero_required": false,
+      "structural_zero_pass": true,
+      "pass": true
+    },
+    {
+      "fixture": {
+        "k": 2,
+        "positive_indices": [
+          0,
+          3,
+          5
+        ],
+        "scores": [
+          -0.7,
+          0.4,
+          1.2,
+          -0.2,
+          0.8,
+          -1.1
+        ]
+      },
+      "risk_absolute_error": 0,
+      "gradient_max_absolute_error": 4.163336342344337e-17,
+      "structural_zero_required": false,
+      "structural_zero_pass": true,
+      "pass": true
+    },
+    {
+      "fixture": {
+        "k": 3,
+        "positive_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "risk_absolute_error": 0,
+      "gradient_max_absolute_error": 0,
+      "structural_zero_required": true,
+      "structural_zero_pass": true,
+      "pass": true
+    },
+    {
+      "fixture": {
+        "k": 3,
+        "positive_indices": [
+          0,
+          1,
+          2
+        ],
+        "scores": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "risk_absolute_error": 0,
+      "gradient_max_absolute_error": 0,
+      "structural_zero_required": true,
+      "structural_zero_pass": true,
+      "pass": true
+    }
+  ],
+  "large_case_summaries": [
+    {
+      "M": 1,
+      "seed": 11,
+      "reference": {
+        "negative_gradient_each": 0.00001834694811824608,
+        "positive_gradient_each": -0.013485006866910872,
+        "risk": 0.986413043478261
+      },
+      "summary": {
+        "full_gradient_precision_certified": false,
+        "negative_direction_certified": false,
+        "negative_max_absolute_error": 0.015561867990247825,
+        "negative_mean_absolute_error": 0.003807853706387767,
+        "negative_wrong_sign_count": 330,
+        "positive_max_absolute_error": 6.938893903907228e-17,
+        "positive_strictly_negative": true,
+        "risk_absolute_error": 7.105427357601002e-15,
+        "risk_and_positive_signal_pass": true
+      }
+    },
+    {
+      "M": 1,
+      "seed": 29,
+      "reference": {
+        "negative_gradient_each": 0.00001834694811824608,
+        "positive_gradient_each": -0.013485006866910872,
+        "risk": 0.986413043478261
+      },
+      "summary": {
+        "full_gradient_precision_certified": false,
+        "negative_direction_certified": false,
+        "negative_max_absolute_error": 0.013677381055840257,
+        "negative_mean_absolute_error": 0.0042183729918397845,
+        "negative_wrong_sign_count": 332,
+        "positive_max_absolute_error": 6.938893903907228e-17,
+        "positive_strictly_negative": true,
+        "risk_absolute_error": 7.105427357601002e-15,
+        "risk_and_positive_signal_pass": true
+      }
+    },
+    {
+      "M": 1,
+      "seed": 47,
+      "reference": {
+        "negative_gradient_each": 0.00001834694811824608,
+        "positive_gradient_each": -0.013485006866910872,
+        "risk": 0.986413043478261
+      },
+      "summary": {
+        "full_gradient_precision_certified": false,
+        "negative_direction_certified": false,
+        "negative_max_absolute_error": 0.017498933479055533,
+        "negative_mean_absolute_error": 0.004081014095482482,
+        "negative_wrong_sign_count": 338,
+        "positive_max_absolute_error": 6.938893903907228e-17,
+        "positive_strictly_negative": true,
+        "risk_absolute_error": 7.105427357601002e-15,
+        "risk_and_positive_signal_pass": true
+      }
+    },
+    {
+      "M": 6,
+      "seed": 11,
+      "reference": {
+        "negative_gradient_each": 0.00010347872355301541,
+        "positive_gradient_each": -0.012589911365616874,
+        "risk": 0.920937817076884
+      },
+      "summary": {
+        "full_gradient_precision_certified": false,
+        "negative_direction_certified": false,
+        "negative_max_absolute_error": 0.018133464386465185,
+        "negative_mean_absolute_error": 0.0035662164603457807,
+        "negative_wrong_sign_count": 317,
+        "positive_max_absolute_error": 4.683753385137379e-17,
+        "positive_strictly_negative": true,
+        "risk_absolute_error": 4.9960036108132044e-15,
+        "risk_and_positive_signal_pass": true
+      }
+    },
+    {
+      "M": 6,
+      "seed": 29,
+      "reference": {
+        "negative_gradient_each": 0.00010347872355301541,
+        "positive_gradient_each": -0.012589911365616874,
+        "risk": 0.920937817076884
+      },
+      "summary": {
+        "full_gradient_precision_certified": false,
+        "negative_direction_certified": false,
+        "negative_max_absolute_error": 0.012683166723438338,
+        "negative_mean_absolute_error": 0.003812419026688841,
+        "negative_wrong_sign_count": 321,
+        "positive_max_absolute_error": 4.683753385137379e-17,
+        "positive_strictly_negative": true,
+        "risk_absolute_error": 4.9960036108132044e-15,
+        "risk_and_positive_signal_pass": true
+      }
+    },
+    {
+      "M": 6,
+      "seed": 47,
+      "reference": {
+        "negative_gradient_each": 0.00010347872355301541,
+        "positive_gradient_each": -0.012589911365616874,
+        "risk": 0.920937817076884
+      },
+      "summary": {
+        "full_gradient_precision_certified": false,
+        "negative_direction_certified": false,
+        "negative_max_absolute_error": 0.0162781395106237,
+        "negative_mean_absolute_error": 0.0038677222229445596,
+        "negative_wrong_sign_count": 327,
+        "positive_max_absolute_error": 4.683753385137379e-17,
+        "positive_strictly_negative": true,
+        "risk_absolute_error": 4.9960036108132044e-15,
+        "risk_and_positive_signal_pass": true
+      }
+    }
+  ],
+  "total_sampling_paths": 3072,
+  "nominal_large_work": 22609920,
+  "nominal_work_each_large_call": 3768320,
+  "all_uid_gradients_retained_in_raw": true,
+  "peak_memory_measured": false,
+  "estimator_working_memory": "O(N+K), no trajectory retention; no extra hard-cap measurement",
+  "focused_tests": {
+    "testsRun": 34,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.38
+  },
+  "regression": {
+    "testsRun": 442,
+    "skipped": 89,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "testsRun": 288,
+        "skipped": 2,
+        "seconds": 56.462
+      },
+      {
+        "testsRun": 16,
+        "skipped": 0,
+        "seconds": 0.068
+      },
+      {
+        "testsRun": 138,
+        "skipped": 87,
+        "seconds": 0.467
+      }
+    ],
+    "counts_note": "Focused 34 overlaps these suites; not additional tests"
+  },
+  "independent_review": {
+    "reviewer": "e25_risk_review",
+    "pre_run": "PASS_INDEPENDENT_SOURCE_AND_MATH_REVIEW",
+    "artifact": "PASS_ARTIFACT_AUDIT_ONLY",
+    "small_risk_max_absolute_error": 2.78e-17,
+    "small_gradient_max_absolute_error": 4.16e-17,
+    "large_risk_max_absolute_error": 7.11e-15,
+    "positive_gradient_max_absolute_error": 6.94e-17,
+    "all_coordinate_error_and_sign_counts_independently_recomputed": true,
+    "source_pins_checked": 5,
+    "formal_sampling_reruns": 0,
+    "torch_imports": 0,
+    "remote_calls": 0
+  },
+  "precision_and_claim_limits": {
+    "small_exact_arithmetic": "Decimal80 streaming prefixes; tested against independent Decimal100 oracle",
+    "large_sampling_arithmetic": "float, fixed samples",
+    "uniform_positive_signal_is_path_constant": true,
+    "nonuniform_positive_zero_variance_claim": false,
+    "negative_direction_certified": false,
+    "full_gradient_precision_certified": false,
+    "confidence_interval_claim": false,
+    "universal_variance_reduction_claim": false,
+    "training_ready_claim": false,
+    "model_parameter_update_failure_claim": false,
+    "atpg_speedup_claim": false
+  },
+  "model_instances": 0,
+  "optimizer_instances": 0,
+  "training_runs": 0,
+  "real_label_reads": 0,
+  "remote_calls": 0,
+  "torch_calls": 0,
+  "blind_access": false,
+  "lsf_tessent_calls": 0,
+  "next_node": "pre-register and validate independent-pilot baseline at matched total work before caller/VJP; no new run or larger sampling under this consumed once"
+}
