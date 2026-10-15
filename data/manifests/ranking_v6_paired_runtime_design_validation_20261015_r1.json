@@ -1,0 +1,41 @@
+{
+  "status":"PASS_IMPLEMENTATION_ONLY_EXECUTION_LOCKED",
+  "experiment_id":"E20",
+  "date_local":"2026-10-15",
+  "base_commit":"b916546e045258e2476754beddc703a587ad33dd",
+  "source_sha256":{
+    "src/models/ranking_v6_complete_cost_paired_runtime.py":"4b43a145d2587db518194115d5bc143185a074ca6bc98f5a4c2c8ce1fce2c2b9",
+    "tests/test_ranking_v6_complete_cost_paired_runtime.py":"17562d9f74bf265e0df096c4ce9109d6011bbb8e884c98dc84d19a69fd1f5cc8",
+    "scripts/stage_v6_paired_cost_runtime_gate.py":"e3e51b6acaa12bbc73ebd56bf6b1c90013e6f6326d84c80e37603ee557372971",
+    "scripts/run_v6_paired_cost_runtime_gate.py":"55931d7071bc87c690829575387bb032e2fd20dae4948f4a206e509046bccb65",
+    "contracts/ranking_v6_paired_cost_runtime_gate_v1.json":"d9d3b4389213268eb94310daf0ca217a1eba91696539e1d2622e73161a5bd362",
+    "tests/test_stage_v6_paired_cost_runtime_gate.py":"61b5a66037c75a534d265c1301fce33be87a6521120218f567f2f698f9015973",
+    "tests/test_run_v6_paired_cost_runtime_gate.py":"b19f5e1cee2d858ead2bedf4fcf3bb70e97a8cb40eb11933362c39a657b38340"
+  },
+  "dedicated_runtime_tests":{"testsRun":7,"skipped":0,"failures":0,"errors":0},
+  "dedicated_stage_tests":{"testsRun":9,"skipped":0,"failures":0,"errors":0},
+  "linux_protocol":{"testsRun_on_linux":0,"windows_skipped":14,"gate_pass":false,"status":"LINUX_EXECUTION_PENDING_NOT_A_PASS"},
+  "related_regression":{"testsRun":319,"skipped":59,"failures":0,"errors":0,"all_exit_codes":0},
+  "regression_summaries":["221 tests in 14.622s; OK, skipped=2","16 tests in 0.077s; OK","82 tests in 0.140s; OK, skipped=57"],
+  "review":{
+    "reviewer":"e20_independent_review",
+    "status":"PASS_IMPLEMENTATION_ONLY",
+    "independent_tests":{"testsRun":32,"skipped":0,"failures":0,"errors":0},
+    "separate_linux_tests_skipped":14,
+    "additional_mock_probes":["future six sessions and 144 steps/RNG/restore wiring","first factory failure must not claim actual proof","full receipt accepted, status-only and eight mutations rejected"],
+    "all_source_hashes_verified":true,
+    "overview_before_result_append_sha256":"58a8d510c1ead25a524fe5532cf380e7705e7f9f019fd7ef4c6399032265ffd2",
+    "remaining_implementation_blockers":[]
+  },
+  "review_repairs":["source-level public execution locks added before effects","runtime envelope separates historical inner schema from execution provenance","full receipt required instead of status-only success","torch metadata2.5.1 and runtime build2.5.1+cu124 separately pinned","formal_runs rejects bool/float/string instead of accepting equality with1"],
+  "bundle_sources":15,"bundle_entries_including_manifest":16,
+  "archive_limit_bytes":131072,"unpacked_limit_bytes":262144,"single_file_limit_bytes":65536,
+  "planned_memory_bytes":1073741824,"planned_extra_swap_bytes":0,"planned_cpu":1,"planned_workers":1,
+  "planned_timeout_seconds":120,"planned_log_limit_bytes":524288,
+  "execution_authorized":false,"formal_runs":0,"planned_formal_runs":1,
+  "new_model_forwards":0,"real_optimizer_steps":0,"remote_calls":0,"docker_runs":0,
+  "actual_staging_performed":false,"actual_linux_protocol_pass":false,
+  "real_label_reads":0,"checkpoint_reads":0,"train_release":false,
+  "next_required_authority":"one full two-arm synthetic fit in a new directory,6models144steps, after source/Linux/resource and independent gates; keep1GiB single worker zero retry",
+  "limitations":["Mock and static design evidence only; future real paths remain unexecuted","No actual dependency/environment/memory-headroom refresh or cgroup measurement this stage","No fitting/ordering/generalization/ATPG acceleration conclusion"]
+}
