@@ -1,0 +1,18 @@
+{
+  "status":"PASS_INDEPENDENT_SOURCE_RELEASE_REVIEW_LINUX_GATE_PENDING",
+  "experiment_id":"E21",
+  "authorization_id":"E21_FULL_STAGE_20261015_ONE_RUN",
+  "user_scope":"One full stage: release/review, fresh namespace deploy, Linux/resource gates, one six-model 144-step fit, monitor, independent summary and version sync;1GiB/CPU1/worker1/extraSwap0/retry0",
+  "base_commit":"12776440da50f7dc6d749905f6ddb8a87b4adf28",
+  "reviewer":"e21_independent_review",
+  "reviewed_source_manifest_sha256":"0805f0e6fed674cfbab094f71c297ef797815df7e2446848ec6dcb12baa42024",
+  "source_count":15,"bundle_entries":16,
+  "independent_stdlib_tests":{"testsRun":35,"skipped":0,"failures":0,"errors":0},
+  "simulated_full_receipt_accepts_and_ten_tamper_cases_rejected":true,
+  "collector_ast_matches_frozen_e20":true,
+  "historical_e18_e19_e20_sources_preserved":true,
+  "remaining_source_blockers":[],
+  "fresh_linux_protocol_pass_still_required":true,
+  "actual_fit_executed_at_review":false,"reviewer_torch_calls":0,"reviewer_remote_calls":0,
+  "real_labels_blind_lsf_tessent_and_protected_roots_remain_closed":true
+}
