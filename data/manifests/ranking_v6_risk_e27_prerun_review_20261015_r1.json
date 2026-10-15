@@ -1,0 +1,36 @@
+{
+  "experiment_id": "E27",
+  "status": "PASS_INDEPENDENT_DESIGN_MATH_SOURCE_ONCE_REVIEW_ONLY",
+  "reviewer": "e27_review",
+  "base_commit": "2f1bc70d8ca622455421bd3b1dc0c6fb4e2bda19",
+  "contract_sha256": "0177018f287312a251597172055a7b76c136943cf619ce63a295428879d92eea",
+  "source_sha256": {
+    "src/models/ranking_v6_grouped_risk_reference.py": "c485486df676807a777798532a0183baf2611c430c9c67d0773730defeb4fcb5",
+    "tests/test_ranking_v6_grouped_risk_reference.py": "bf02078b491e74fde8051cb78792e01acb6365f0c5347d41cf597aa3321c8deb",
+    "scripts/diagnose_v6_nonuniform_risk.py": "ed01440f13596f559d8e39a78caa2d7abb3e795f6ca1b76a9357a0d49d85f704",
+    "tests/test_diagnose_v6_nonuniform_risk.py": "4bcbc2aa3c0be5c0ef3ca19b79a5cd2949c553d415b5c79369d720077fbe2989"
+  },
+  "parent_regression": {"testsRun": 477, "skipped": 89, "failures": 0, "errors": 0},
+  "independent_math": {
+    "small_cases": 3,
+    "full_pl_decimal_precision": 80,
+    "risk_max_decimal_difference": "5.14e-61",
+    "group_gradient_max_decimal_difference": "1.242e-60",
+    "finite_difference_step": "1e-12",
+    "finite_difference_max_decimal_error": "1.173e-26",
+    "shift_gradient_sum_max_residual": "4e-81",
+    "reference_tests_repeated_not_extra_coverage": 6,
+    "runner_tests_repeated_not_extra_coverage": 9
+  },
+  "uid_allocation": "positive p000.., negative_a a000.., negative_b b000..; zero-based three-digit decimal, no shuffle, kernel lexical order a/b/p",
+  "once_before_compute": true,
+  "production_output_absent_before_run": true,
+  "source_closure_files": 5,
+  "json_cap_bytes": 2097152,
+  "reviewer_large_reference_calls": 0,
+  "reviewer_estimator_calls": 0,
+  "formal_runs_available": 1,
+  "automatic_retries": 0,
+  "permitted_next": "one frozen local E27 diagnostic; readonly artifact audit and scoped publication",
+  "real_training_release": false
+}

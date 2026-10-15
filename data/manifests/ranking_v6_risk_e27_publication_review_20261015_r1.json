@@ -1,0 +1,20 @@
+{
+  "experiment_id": "E27",
+  "reviewer": "e27_review",
+  "status": "PASS_WITH_FIXED_THREE_SCORE_CLASS_CAVEATS",
+  "blocking_findings": 0,
+  "documents_reviewed": ["experiment_overview/entries/E27_nonuniform_risk.md", "experiment_overview/README.md", "experiment_overview/NEXT_TASKS.md", "experiment_overview/2026-10-14_v6_validation.md"],
+  "manifests_reviewed": ["prerun_review", "result", "artifact_review"],
+  "all_six_pair_summaries_equal_raw": true,
+  "all_three_small_rows_equal_raw": true,
+  "local_markdown_links_checked": 55,
+  "all_links_exist": true,
+  "raw_artifact_hashes_and_sizes_match": true,
+  "regression_accounting_verified": {"testsRun": 477, "skipped": 89, "executed": 388, "failures": 0, "errors": 0},
+  "risk_and_positive_errors_increased_rows": [0, 1, 3, 4],
+  "wording_clarification_applied": "four rows increase, not merely slightly increase; the single-positive neutral case is approximately 5.9 times the raw error despite small absolute error",
+  "byte_protection_scope": "E27 new files and E27 small manifest prefix only, no E26 or legacy evidence",
+  "sampling_reruns": 0,
+  "real_training_release": false,
+  "next_gate": "synthetic caller and parameter VJP plus held freeze/replay; no unchanged real TRAIN rerun"
+}

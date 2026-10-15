@@ -128,3 +128,12 @@ scripts/diagnose_v6_multi_risk_control.py -text
 tests/test_diagnose_v6_multi_risk_control.py -text
 data/manifests/ranking_v6_multi_risk_e26_* -text
 experiment_overview/entries/E26_independent_pilot_control.md -text
+
+# E27 byte-pinned local nonuniform synthetic evidence.
+contracts/ranking_v6_nonuniform_risk_diagnostic_v1.json -text
+src/models/ranking_v6_grouped_risk_reference.py -text
+tests/test_ranking_v6_grouped_risk_reference.py -text
+scripts/diagnose_v6_nonuniform_risk.py -text
+tests/test_diagnose_v6_nonuniform_risk.py -text
+data/manifests/ranking_v6_risk_e27_* -text
+experiment_overview/entries/E27_nonuniform_risk.md -text
