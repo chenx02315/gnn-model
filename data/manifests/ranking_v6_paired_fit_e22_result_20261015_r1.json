@@ -1,0 +1,891 @@
+{
+  "status": "PASS_ACTUAL_SYNTHETIC_PAIRED_FIT_AND_INDEPENDENT_AUDIT",
+  "experiment_id": "E22",
+  "authorization_id": "E22_RECOVERY_START_20261015_ONE_RUN",
+  "date_local": "2026-10-15",
+  "base_commit": "b4a432b606580435b8c42f7ed0bc4f9d4841aa40",
+  "remote_root": "/ssd/cjc/gnn_model_v6_paired_cost_runtime_20261015_r3",
+  "local_raw_directory": "../runtime_training_staging_20260928/v6_paired_cost_runtime_20261015_r3",
+  "source_manifest_sha256": "b401dc8409309e15623cd981872d2ef478d1c9d6d0f2b965745e53f018cdcca2",
+  "archive_sha256": "468adf42d2e9fb0e4ea6596c1c2b9bd46d49c76729a0d47f91576253c480da41",
+  "archive_bytes": 39368,
+  "bundle_entries": 16,
+  "unpacked_bytes": 149015,
+  "protocol_sha256": "5075785d758137c37bae3a5e352d3e9c9846cb87585ea48f94bc606a48da815c",
+  "raw_artifacts": {
+    "result.json": {
+      "bytes": 314528,
+      "sha256": "fb426894c85268c119c4a963fe70df7abb7b7bb0827a396778bd03c11813896c"
+    },
+    "actual.log": {
+      "bytes": 313564,
+      "sha256": "3fee14da0e7e2c5ed5d8770bf23d36d490361abfc3189842e978fde3824f3fd3"
+    },
+    "actual.once.json": {
+      "bytes": 202,
+      "sha256": "da21cc236631d2d62f6b9c8d68f9cfc278168d136f804dff30e5458d212f8ed6"
+    },
+    "protocol.log": {
+      "sha256": "2d798cef02784076e6200f1bdb864eeb6208b4e0d6b2c56e08619c6b39bab565"
+    }
+  },
+  "linux_protocol": {
+    "testsRun": 16,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "torch_imported": false
+  },
+  "actual_launches": 1,
+  "automatic_retries": 0,
+  "exit_code": 0,
+  "sessions_created": 6,
+  "real_optimizer_steps": 144,
+  "restored_sessions": 6,
+  "rng_restored": true,
+  "all_parameters_restored": true,
+  "final_weights_discarded": true,
+  "exact_container_absent_after_run": true,
+  "cgroup_limits": {
+    "memory_bytes": 1073741824,
+    "extra_swap_bytes": 0,
+    "cpu": "100000 100000",
+    "pids": 64
+  },
+  "workers": 1,
+  "peak_memory_measured": false,
+  "versions": {
+    "linux": "6.1.0-47-amd64",
+    "python": "3.11.2",
+    "torch": "2.5.1+cu124"
+  },
+  "review": {
+    "reviewer": "e22_independent_review",
+    "pre_run_status": "PASS_INDEPENDENT_SOURCE_RELEASE_REVIEW",
+    "source_testsRun": 23,
+    "source_skipped": 0,
+    "post_run_status": "PASS_ACTUAL_ARTIFACT_AND_INDEPENDENT_MATH_AUDIT",
+    "independent_permutations": 720,
+    "score_states": 96,
+    "metrics_checked": 576,
+    "max_absolute_error": 3.552713678800501e-15,
+    "reviewer_torch_calls": 0,
+    "reviewer_remote_calls": 0
+  },
+  "regression": {
+    "testsRun": 391,
+    "skipped": 89,
+    "failures": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "testsRun": 245,
+        "skipped": 2,
+        "seconds": 60.647
+      },
+      {
+        "testsRun": 16,
+        "skipped": 0,
+        "seconds": 0.072
+      },
+      {
+        "testsRun": 130,
+        "skipped": 87,
+        "seconds": 0.322
+      }
+    ]
+  },
+  "scientific_summary": {
+    "control_vs_initial": {
+      "fit": "6/6",
+      "unseen": "6/6"
+    },
+    "treatment_vs_initial": {
+      "fit": "6/6",
+      "unseen": "6/6"
+    },
+    "treatment_vs_control": {
+      "fit": "6/6",
+      "unseen": "6/6"
+    },
+    "control_vs_cost_prior": {
+      "fit": "5/6",
+      "unseen": "5/6",
+      "failed": [
+        "47/fit_cheap",
+        "47/unseen_cheap"
+      ]
+    },
+    "treatment_vs_cost_prior": {
+      "fit": "6/6",
+      "unseen": "6/6"
+    },
+    "treatment_C3_regression_vs_control": [
+      "11/unseen_expensive",
+      "47/fit_expensive",
+      "47/unseen_expensive"
+    ],
+    "cost_units": "fixed synthetic additive units, not seconds",
+    "supports_real_ATPG_speedup": false,
+    "supports_real_circuit_generalization": false
+  },
+  "rows": [
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 11,
+      "task": "fit_cheap",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.2578820499078936,
+        "raw_C3": 11.092915379571775,
+        "raw_C6": 13.925630695026253,
+        "risk": 0.4781265600439256,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.05276805272172742,
+        "raw_C3": 2.826092334319561,
+        "raw_C6": 2.8494748469732807,
+        "risk": 0.020104454204736416,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18429612667075337,
+        "raw_C3": 8.47016146492256,
+        "raw_C6": 9.951990840220683,
+        "risk": 0.32630982282952053,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 11,
+      "task": "fit_expensive",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.3326798890338201,
+        "raw_C3": 13.288623370927466,
+        "raw_C6": 19.960793342029206,
+        "risk": 0.478720425248763,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.20984791966663682,
+        "raw_C3": 12.402947983402372,
+        "raw_C6": 12.590875179998209,
+        "risk": 0.017822108738355415,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.37189882858907286,
+        "raw_C3": 11.838807758809311,
+        "raw_C6": 22.313929715344372,
+        "risk": 0.6694131937157762,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 11,
+      "task": "unseen_cheap",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.24349914650105112,
+        "raw_C3": 9.178587275463936,
+        "raw_C6": 11.687959032050454,
+        "risk": 0.4887926909124789,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.09754887572040033,
+        "raw_C3": 4.425011599362672,
+        "raw_C6": 4.682346034579216,
+        "risk": 0.13593039376631832,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.17967933922595677,
+        "raw_C3": 7.15256766965816,
+        "raw_C6": 8.624608282845925,
+        "risk": 0.35516606230667846,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 11,
+      "task": "unseen_expensive",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.3079337680388004,
+        "raw_C3": 12.999595104262658,
+        "raw_C6": 20.323628690560827,
+        "risk": 0.4984555439799605,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.28601585663971874,
+        "raw_C3": 13.86365239057867,
+        "raw_C6": 18.877046538221435,
+        "risk": 0.3677921344644985,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.34166576577912344,
+        "raw_C3": 11.394200021885773,
+        "raw_C6": 22.549940541422146,
+        "risk": 0.6868577372101158,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 29,
+      "task": "fit_cheap",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.26108122687279517,
+        "raw_C3": 11.22148014572145,
+        "raw_C6": 14.098386251130938,
+        "risk": 0.4833922281956587,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.04899730657335152,
+        "raw_C3": 2.632727130278235,
+        "raw_C6": 2.6458545549609824,
+        "risk": 0.012945931709997478,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18429612667075337,
+        "raw_C3": 8.47016146492256,
+        "raw_C6": 9.951990840220683,
+        "risk": 0.32630982282952053,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 29,
+      "task": "fit_expensive",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.3300536850354325,
+        "raw_C3": 13.443284669694053,
+        "raw_C6": 19.80322110212595,
+        "risk": 0.46143229280176107,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.2014278401786283,
+        "raw_C3": 11.995370027037843,
+        "raw_C6": 12.085670410717698,
+        "risk": 0.008688751174951347,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.37189882858907286,
+        "raw_C3": 11.838807758809311,
+        "raw_C6": 22.313929715344372,
+        "risk": 0.6694131937157762,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 29,
+      "task": "unseen_cheap",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.23902968609457906,
+        "raw_C3": 9.080544509154088,
+        "raw_C6": 11.473424932539794,
+        "risk": 0.4756244873853135,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.0681896896555553,
+        "raw_C3": 3.1975854727894126,
+        "raw_C6": 3.2731051034666545,
+        "risk": 0.05294870234354663,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.17967933922595677,
+        "raw_C3": 7.15256766965816,
+        "raw_C6": 8.624608282845925,
+        "risk": 0.35516606230667846,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 29,
+      "task": "unseen_expensive",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.30454701907477705,
+        "raw_C3": 13.012727243294433,
+        "raw_C6": 20.100103258935285,
+        "risk": 0.4848293117611498,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.23282079832495609,
+        "raw_C3": 13.066346115265628,
+        "raw_C6": 15.366172689447101,
+        "risk": 0.17897418678216723,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.34166576577912344,
+        "raw_C3": 11.394200021885773,
+        "raw_C6": 22.549940541422146,
+        "risk": 0.6868577372101158,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 47,
+      "task": "fit_cheap",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.26640632113969775,
+        "raw_C3": 11.373366914528775,
+        "raw_C6": 14.385941341543678,
+        "risk": 0.49609671811259887,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.11178655763669816,
+        "raw_C3": 5.734877783357856,
+        "raw_C6": 6.0364741123817005,
+        "risk": 0.12791973131972836,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18429612667075337,
+        "raw_C3": 8.47016146492256,
+        "raw_C6": 9.951990840220683,
+        "risk": 0.32630982282952053,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 47,
+      "task": "fit_expensive",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 5,
+        "normalized_C6": 0.33861354195818516,
+        "raw_C3": 13.232487812408714,
+        "raw_C6": 20.31681251749111,
+        "risk": 0.5022616157563602,
+        "top3_hit": false
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.2587488480023444,
+        "raw_C3": 14.033484564160204,
+        "raw_C6": 15.524930880140664,
+        "risk": 0.13038888220656086,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.37189882858907286,
+        "raw_C3": 11.838807758809311,
+        "raw_C6": 22.313929715344372,
+        "risk": 0.6694131937157762,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 47,
+      "task": "unseen_cheap",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.24781064062000244,
+        "raw_C3": 9.302847670475444,
+        "raw_C6": 11.894910749760117,
+        "risk": 0.4985730172960137,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.11825354015802943,
+        "raw_C3": 5.18112452490084,
+        "raw_C6": 5.676169927585413,
+        "risk": 0.1892634607334623,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.17967933922595677,
+        "raw_C3": 7.15256766965816,
+        "raw_C6": 8.624608282845925,
+        "risk": 0.35516606230667846,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_COMPLETE_TREATMENT",
+      "seed": 47,
+      "task": "unseen_expensive",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.30985579173475236,
+        "raw_C3": 12.904446664984507,
+        "raw_C6": 20.450482254493657,
+        "risk": 0.5103903604527328,
+        "top3_hit": false
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.2775813422996321,
+        "raw_C3": 13.142089917118094,
+        "raw_C6": 18.32036859177572,
+        "risk": 0.3707427061423795,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.34166576577912344,
+        "raw_C3": 11.394200021885773,
+        "raw_C6": 22.549940541422146,
+        "risk": 0.6868577372101158,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 11,
+      "task": "fit_cheap",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.2578820499078936,
+        "raw_C3": 11.092915379571775,
+        "raw_C6": 13.925630695026253,
+        "risk": 0.4781265600439256,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.0814655331240008,
+        "raw_C3": 4.273586257612578,
+        "raw_C6": 4.399138788696043,
+        "risk": 0.06796024601123013,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18429612667075337,
+        "raw_C3": 8.47016146492256,
+        "raw_C6": 9.951990840220683,
+        "risk": 0.32630982282952053,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 11,
+      "task": "fit_expensive",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.3326798890338201,
+        "raw_C3": 13.288623370927466,
+        "raw_C6": 19.960793342029206,
+        "risk": 0.478720425248763,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.23414764054406992,
+        "raw_C3": 13.304601230536338,
+        "raw_C6": 14.048858432644195,
+        "risk": 0.06730036041543604,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.37189882858907286,
+        "raw_C3": 11.838807758809311,
+        "raw_C6": 22.313929715344372,
+        "risk": 0.6694131937157762,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 11,
+      "task": "unseen_cheap",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.24349914650105112,
+        "raw_C3": 9.178587275463936,
+        "raw_C6": 11.687959032050454,
+        "risk": 0.4887926909124789,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.12343616657880181,
+        "raw_C3": 5.359938460373034,
+        "raw_C6": 5.924935995782487,
+        "risk": 0.21481927709186416,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.17967933922595677,
+        "raw_C3": 7.15256766965816,
+        "raw_C6": 8.624608282845925,
+        "risk": 0.35516606230667846,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 11,
+      "task": "unseen_expensive",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.3079337680388004,
+        "raw_C3": 12.999595104262658,
+        "raw_C6": 20.323628690560827,
+        "risk": 0.4984555439799605,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.295775637104679,
+        "raw_C3": 13.632829533663836,
+        "raw_C6": 19.521192048908816,
+        "risk": 0.420356594673229,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.34166576577912344,
+        "raw_C3": 11.394200021885773,
+        "raw_C6": 22.549940541422146,
+        "risk": 0.6868577372101158,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 29,
+      "task": "fit_cheap",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.26108122687279517,
+        "raw_C3": 11.22148014572145,
+        "raw_C6": 14.098386251130938,
+        "risk": 0.4833922281956587,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.07060698432483935,
+        "raw_C3": 3.7498037839748326,
+        "raw_C6": 3.812777153541325,
+        "risk": 0.04185451858618788,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18429612667075337,
+        "raw_C3": 8.47016146492256,
+        "raw_C6": 9.951990840220683,
+        "risk": 0.32630982282952053,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 29,
+      "task": "fit_expensive",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.3300536850354325,
+        "raw_C3": 13.443284669694053,
+        "raw_C6": 19.80322110212595,
+        "risk": 0.46143229280176107,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.22038987949646227,
+        "raw_C3": 12.845704021935179,
+        "raw_C6": 13.223392769787736,
+        "risk": 0.035087559816004345,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.37189882858907286,
+        "raw_C3": 11.838807758809311,
+        "raw_C6": 22.313929715344372,
+        "risk": 0.6694131937157762,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 29,
+      "task": "unseen_cheap",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.23902968609457906,
+        "raw_C3": 9.080544509154088,
+        "raw_C6": 11.473424932539794,
+        "risk": 0.4756244873853135,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.08908427529517166,
+        "raw_C3": 4.072035591681186,
+        "raw_C6": 4.2760452141682395,
+        "risk": 0.10486038634278938,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.17967933922595677,
+        "raw_C3": 7.15256766965816,
+        "raw_C6": 8.624608282845925,
+        "risk": 0.35516606230667846,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 29,
+      "task": "unseen_expensive",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.30454701907477705,
+        "raw_C3": 13.012727243294433,
+        "raw_C6": 20.100103258935285,
+        "risk": 0.4848293117611498,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.24710970125225307,
+        "raw_C3": 13.07211003703445,
+        "raw_C6": 16.3092402826487,
+        "risk": 0.24435743767521306,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.34166576577912344,
+        "raw_C3": 11.394200021885773,
+        "raw_C6": 22.549940541422146,
+        "risk": 0.6868577372101158,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 47,
+      "task": "fit_cheap",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 2,
+        "normalized_C6": 0.26640632113969775,
+        "raw_C3": 11.373366914528775,
+        "raw_C6": 14.385941341543678,
+        "risk": 0.49609671811259887,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18781306460425976,
+        "raw_C3": 8.760057310135158,
+        "raw_C6": 10.141905488630027,
+        "risk": 0.31654751785930174,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.18429612667075337,
+        "raw_C3": 8.47016146492256,
+        "raw_C6": 9.951990840220683,
+        "risk": 0.32630982282952053,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 47,
+      "task": "fit_expensive",
+      "split": "fit",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 5,
+        "normalized_C6": 0.33861354195818516,
+        "raw_C3": 13.232487812408714,
+        "raw_C6": 20.31681251749111,
+        "risk": 0.5022616157563602,
+        "top3_hit": false
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.3013699786674666,
+        "raw_C3": 13.975708714117642,
+        "raw_C6": 18.082198720047998,
+        "risk": 0.32165586261499635,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.37189882858907286,
+        "raw_C3": 11.838807758809311,
+        "raw_C6": 22.313929715344372,
+        "risk": 0.6694131937157762,
+        "top3_hit": false
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 47,
+      "task": "unseen_cheap",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 3,
+        "normalized_C6": 0.24781064062000244,
+        "raw_C3": 9.302847670475444,
+        "raw_C6": 11.894910749760117,
+        "risk": 0.4985730172960137,
+        "top3_hit": true
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.1865108874835106,
+        "raw_C3": 7.429316340358359,
+        "raw_C6": 8.952522599208509,
+        "risk": 0.3634805835649994,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.17967933922595677,
+        "raw_C3": 7.15256766965816,
+        "raw_C6": 8.624608282845925,
+        "risk": 0.35516606230667846,
+        "top3_hit": true
+      }
+    },
+    {
+      "arm": "EXACT_TRUNCATED_CONTROL",
+      "seed": 47,
+      "task": "unseen_expensive",
+      "split": "unseen",
+      "pass_vs_initial": true,
+      "initial": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.30985579173475236,
+        "raw_C3": 12.904446664984507,
+        "raw_C6": 20.450482254493657,
+        "risk": 0.5103903604527328,
+        "top3_hit": false
+      },
+      "final": {
+        "deterministic_positive_rank": 1,
+        "normalized_C6": 0.2968261588438507,
+        "raw_C3": 13.010793238954056,
+        "raw_C6": 19.59052648369415,
+        "risk": 0.4550444235088422,
+        "top3_hit": true
+      },
+      "cost_prior": {
+        "deterministic_positive_rank": 6,
+        "normalized_C6": 0.34166576577912344,
+        "raw_C3": 11.394200021885773,
+        "raw_C6": 22.549940541422146,
+        "risk": 0.6868577372101158,
+        "top3_hit": false
+      }
+    }
+  ],
+  "real_label_reads": 0,
+  "checkpoint_reads": 0,
+  "checkpoint_writes": 0,
+  "train_release": false,
+  "remaining_authorized_launches": 0,
+  "limitations": [
+    "toy seven-feature MLP, not GraphSAGE",
+    "same updates not same compute or wall time",
+    "single known positive per task",
+    "historical nested schema labels are not actual execution provenance",
+    "hard memory limit enforced, peak not measured"
+  ]
+}

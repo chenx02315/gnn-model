@@ -1,0 +1,31 @@
+{
+  "status": "PASS_INDEPENDENT_E22_SOURCE_ARTIFACT_MATH_AND_PUBLICATION_REVIEW",
+  "reviewer": "e22_independent_review",
+  "source_manifest_sha256": "b401dc8409309e15623cd981872d2ef478d1c9d6d0f2b965745e53f018cdcca2",
+  "raw_result_sha256": "fb426894c85268c119c4a963fe70df7abb7b7bb0827a396778bd03c11813896c",
+  "checks": {
+    "source_tests": 23,
+    "linux_protocol_tests": 16,
+    "raw_files_and_archive_pins": true,
+    "exact_logs_equal_child": true,
+    "real_steps": 144,
+    "fit_task_logs": 288,
+    "independent_permutations": 720,
+    "independent_score_states": 96,
+    "independent_metrics": 576,
+    "max_absolute_error": 3.552713678800501e-15,
+    "manifest_rows_equal_raw": 24,
+    "manifest_metrics_equal_raw": 432,
+    "history_preserved": true,
+    "negative_rows_reported": true
+  },
+  "publication_clarifications_applied": [
+    "cost-prior PL is stochastic, not deterministic cheapest-first",
+    "NEXT_TASKS first screen now shows E22 not stale E17"
+  ],
+  "reviewer_torch_calls": 0,
+  "reviewer_model_reruns": 0,
+  "reviewer_remote_calls": 0,
+  "reviewer_file_modifications": 0,
+  "production_release": false
+}
