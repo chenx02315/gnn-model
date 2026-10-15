@@ -1,0 +1,22 @@
+{
+  "status":"PASS_INDEPENDENT_DESIGN_REVIEW_NO_EXECUTION_RELEASE",
+  "reviewer":"e18_plan_independent_review",
+  "reviewed_commit":"3210d586104def86de2498f11d78bf3f0ee29158",
+  "contract_sha256":"fb6dbfa65965266d943cfcb54a59a26979995f04c46b4aab412bbb9f1ea1df62",
+  "source_sha256":"72c91f7e0906c07cb7f29d6387a9d852313f8e998cbb18d4cece9d51a573a77d",
+  "tests_sha256":"1153f842588e47e021b51d40b7d324bac3e2ec47e1c106120c38e34ffdc97468",
+  "plan_digest":"5075785d758137c37bae3a5e352d3e9c9846cb87585ea48f94bc606a48da815c",
+  "task_digest":"cc464dc98b1d6ebe5b9dea399e065281345628ff09c4808b7db06d68b62dd3f1",
+  "factory_full_file_sha256":"d64eb0fe17a00886d6464ae016805b1474e7324e95ad8e223aba44502709759c",
+  "factory_hash_is_not_function_inspect_text_hash":true,
+  "focused_tests":{"testsRun":6,"skipped":0,"failures":0,"errors":0},
+  "both_arms_exact_gradient":true,
+  "relative_raw_cost_coefficient_preserved":true,
+  "same_per_model_budget_not_same_total_or_wall_time":true,
+  "endpoint_risk_guard_not_per_update_guarantee":true,
+  "all_rows_retained_and_unseen_not_used_for_selection":true,
+  "remaining_design_blockers":[],
+  "original_pending_contract_preserved":true,
+  "permission":"Design accepted for authorized implementation only, not fitting or remote execution",
+  "torch_calls":0,"optimizer_calls":0,"remote_calls":0,"train_release":false
+}
