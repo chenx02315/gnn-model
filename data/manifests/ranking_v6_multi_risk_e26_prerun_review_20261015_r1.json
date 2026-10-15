@@ -1,0 +1,33 @@
+{
+  "experiment_id": "E26",
+  "status": "PASS_IMPLEMENTATION_AND_ONCE_RUNNER_ONLY",
+  "reviewer": "e26_control_review",
+  "base_commit": "4ac27a44b8e9cbd06af53dbfc083e6009df00f77",
+  "contract_sha256": "229807d5b84c0cf172fc9c342a37a528f10de7a84c1aeb3b28427b43bb269f37",
+  "source_sha256": {
+    "src/models/ranking_v6_multi_positive_risk_control.py": "dc05070f23c5fa5403babf75fa34b1ebb7321cedc5975b4f6debaf38644df0c0",
+    "tests/test_ranking_v6_multi_positive_risk_control.py": "3a423ec8c7b327c966cd8bd462f217c5cde478f3c937669924fcb03b5e5cc918",
+    "scripts/diagnose_v6_multi_risk_control.py": "b2355a2a0ff2984b39d36155950d80902b1960f2aa93010cfb3979750f00e611",
+    "tests/test_diagnose_v6_multi_risk_control.py": "7b3285b9358f53d9ea5d28f6f658413e33fd7d3fb56aeb68eb1addef493baba7"
+  },
+  "parent_regression": {"testsRun": 462, "skipped": 89, "failures": 0, "errors": 0},
+  "independent_checks": {
+    "control_testsRun": 12,
+    "runner_readonly_mock_testsRun": 5,
+    "decimal80_full_pl_cases": 4,
+    "fixed_baselines": [-10, -0.3, 0, 0.25, 0.9, 5],
+    "risk_max_absolute_error": 1.11e-16,
+    "gradient_max_absolute_error": 4.86e-16,
+    "expected_proposal_score_max_residual": 5.55e-17,
+    "finite_difference_max_absolute_error": 5.12e-12,
+    "once_before_compute": true,
+    "json_cap_bytes": 2097152,
+    "source_closure_files": 5,
+    "production_output_absent_before_run": true,
+    "formal_diagnostics_run_by_reviewer": 0
+  },
+  "permitted_next": "one frozen local synthetic E26 diagnostic, followed by readonly artifact audit and publication",
+  "automatic_retries": 0,
+  "real_training_release": false,
+  "limitations": ["not universal variance reduction", "not nonuniform large-case precision", "no confidence interval", "no model parameter chain or training", "PRNG stream separation is an independence model, not empirical certification"]
+}

@@ -119,3 +119,12 @@ scripts/collect_ranking_v4_r4_results.py text eol=lf
 tests/test_ranking_v4_r4_collection.py text eol=lf
 scripts/run_ranking_v4_r4_collection.py text eol=lf
 tests/test_ranking_v4_r4_collection_wrapper.py text eol=lf
+
+# E26 byte-pinned local synthetic evidence; preserve audited bytes on checkout.
+contracts/ranking_v6_multi_risk_control_diagnostic_v1.json -text
+src/models/ranking_v6_multi_positive_risk_control.py -text
+tests/test_ranking_v6_multi_positive_risk_control.py -text
+scripts/diagnose_v6_multi_risk_control.py -text
+tests/test_diagnose_v6_multi_risk_control.py -text
+data/manifests/ranking_v6_multi_risk_e26_* -text
+experiment_overview/entries/E26_independent_pilot_control.md -text

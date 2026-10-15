@@ -1,0 +1,16 @@
+{
+  "experiment_id": "E26",
+  "status": "PASS_WITH_FIXED_UNIFORM_SCOPE_CAVEATS",
+  "reviewer": "e26_control_review",
+  "blocking_findings": 0,
+  "documents_reviewed": ["experiment_overview/entries/E26_independent_pilot_control.md", "experiment_overview/README.md", "experiment_overview/NEXT_TASKS.md", "experiment_overview/2026-10-14_v6_validation.md"],
+  "manifests_reviewed": ["prerun_review", "artifact_review", "result"],
+  "all_six_summary_rows_equal_raw": true,
+  "all_relative_document_links_exist": true,
+  "result_and_once_hashes_verified": true,
+  "budget_and_test_skip_accounting_verified": true,
+  "nonblocking_wording_clarification_applied": "zero error is relative to the binary64 analytic reference, not absolute mathematical exactness",
+  "sampling_reruns": 0,
+  "real_training_release": false,
+  "next_gate": "bounded nonuniform score diagnostic design; then synthetic caller/VJP and held freeze/replay, not unchanged training rerun"
+}

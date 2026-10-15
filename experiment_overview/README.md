@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E26独立预采样基线](entries/E26_independent_pilot_control.md)：同每方法512条预算，6/6固定均匀配对改善；未认证大规模非均匀精度或训练就绪。
 - [E25多正例风险信号](entries/E25_multi_positive_risk.md)：一次固定合成诊断完成；正例有信号但负例方向仍有噪声，不是训练放行。
 - [E23接入审计与多正例数学核](entries/E23_real_bridge_readiness.md)：已补完独立复核和数值修复，保留首次中断/缺陷记录；不是训练放行。
 - [E24合成接口接线](entries/E24_synthetic_bridge_adapter.md)：费用/输入分离、完整多正例集合、错UID和非FIT拒绝通过；未接真实reader或模型。
