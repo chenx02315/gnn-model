@@ -1,0 +1,15 @@
+{
+  "experiment_id": "E34",
+  "operation": "Local s38417 focused metadata group diagnostic r1",
+  "source_sha256": "32f4e9fea0d2f853b0fd08647ededef4541908450cfad2e68175d3a2d1a6a325",
+  "status": "FAIL_CLOSED",
+  "code": "OPEN_IDENTITY_CHANGED",
+  "observed_command_exit_code": 1,
+  "stdout": {"code": "OPEN_IDENTITY_CHANGED", "status": "FAIL_CLOSED"},
+  "actual_table_content_read": false,
+  "reason": "Reader rejected lstat versus newly opened fstat identity before its first os.read call.",
+  "automatic_retries": 0,
+  "original_remote_PARTIAL_result_preserved": true,
+  "source_data_changed": false,
+  "next": "Metadata-only comparison of the fixed file's lstat/fstat attributes; no removal of identity checks, no blind rerun."
+}

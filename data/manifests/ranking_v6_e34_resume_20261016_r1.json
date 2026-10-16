@@ -1,0 +1,32 @@
+{
+  "experiment_id": "E34",
+  "date": "2026-10-16",
+  "status": "BLOCKED_INDEPENDENT_REVIEW_TOOL_QUOTA",
+  "base_commit": "894f3970afee3f3a529880e58a410394eee9b0fa",
+  "authorization": "Six TRAIN actual metadata/lineage read-only stage authorized; no new user approval required for remaining in-scope steps.",
+  "completed": ["Located six per-circuit remediated manifest and lineage files and expected hashes in existing small receipt", "A/B connection probes succeeded", "Fixed A output directory exists as a directory, final path component not symlink; ancestor security still requires reader", "Implemented fixed-roster no-follow metadata reader and bounded local SSH transport", "Local focused tests: 16 discovered, 15 executed passed, 1 POSIX-only skipped, zero failures/errors"],
+  "independent_review": {
+    "status": "INCOMPLETE_NOT_APPROVED",
+    "agent": "e27_review",
+    "initial_findings": ["Fixed-path pre-I/O whitelist missing", "Synchronous stdin delivery outside timeout", "exit0 alone insufficient to accept audit JSON", "Memory behavior must be bounded and not described as streaming"],
+    "response": "Local repairs and focused regression completed; final repair review not completed because reviewer and builder returned usage-limit errors.",
+    "do_not_treat_as_pass": true
+  },
+  "source_files": [
+    {"path": "scripts/audit_ranking_v6_train_metadata_e34.py", "sha256": "fc2ca9308075a5c1d8855ff8a60d07fb8902c29219794564cb96a788cdac7cf1"},
+    {"path": "scripts/run_ranking_v6_e34_readonly.py", "sha256": "fd6bd8c39ad51b84f9c64e9808b2206a1f1b79ca22c4904e226ab2a410d4a1c8"},
+    {"path": "tests/test_ranking_v6_train_metadata_e34.py", "sha256": "9abe5b8d941134e7df4a339981676e24030f6b7678e10e640c6f2aa0240485e6"},
+    {"path": "tests/test_ranking_v6_e34_transport.py", "sha256": "46f107017af9c7b489a0d6cbf5369e2d3b7a4e049fa7878a135d1ebab2de3f4a"},
+    {"path": "contracts/ranking_v6_train_metadata_audit_e34_v1.json", "sha256": "c6d8ffe0059a385f7e892a1e5fe94482104b45da72cb38e9d388b84cdcd31941"}
+  ],
+  "known_metadata_size_bytes_from_local_stat_only": 24540504,
+  "reader_limits": {"per_file_bytes": 8388608, "total_bytes": 33554432, "address_space_ceiling_bytes": 1073741824, "workers": 1, "automatic_retries": 0},
+  "actual_remote_table_rows_read": 0,
+  "candidate_quality_rows_read": 0,
+  "remote_task_files_written": 0,
+  "model_optimizer_training_calls": 0,
+  "lsf_tessent_submitted": 0,
+  "real_training_release": false,
+  "remaining": ["Final independent read-only review of reader, transport and tests", "After approval run pinned SSH audit once into a NEW v6_e34_train_metadata_* local receipt directory", "Review actual metadata summaries and distinguish internal consistency from provenance/inventory certification", "Retain mixed-role edges/exclusions unread; candidate connection gate remains closed", "Write final Chinese overview, focused/related regression, independent result review, then scoped commit and normal push"],
+  "publication": "No E34 commit or push before independent review completion; unrelated existing untracked files preserved."
+}

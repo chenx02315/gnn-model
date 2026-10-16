@@ -1,0 +1,25 @@
+{
+  "experiment_id": "E34",
+  "purpose": "Read-only verification of six TRAIN runtime attempt metadata and session lineage; not candidate quality evaluation or training release.",
+  "authorization": "User authorized continuous actual TRAIN metadata and lineage audit; A/B read-only, B data confined to /ssd/cjc, protected roots and BLIND excluded.",
+  "base_commit": "894f3970afee3f3a529880e58a410394eee9b0fa",
+  "circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "spi"],
+  "source_root": "/temp/jiangchuanc/runtime_attempt_remediation_v2_r1_bundle/outputs_v2",
+  "source_files": "Exactly one remediated attempt manifest and one lineage TSV per listed circuit; expected byte hashes pinned in audited reader.",
+  "expected_hash_receipt": {
+    "local_path": "runtime_training_staging_20260928/runtime_attempt_remediation_v2_r1_remote/outputs_v2/receipt_v2.json",
+    "sha256": "9e854eb298b23a53efe59a4e77bf2f049bf12f108bb90e4ecc927fddf3ee5910",
+    "limit": "Receipt declarations are expectations, not live source verification."
+  },
+  "transport": "Fixed SSH alias vnc.buptic.top; reviewed script via stdin to /usr/bin/python3 -I -S -B -; no remote task files or deployments.",
+  "exclusions": ["BLIND", "VALIDATION", "mixed-role mapping edges and exclusions", "candidate outcome/quality tables", "original driver logs", "checkpoints", "/ssd/cjc/multimode_ate_gnn_v1"],
+  "runtime_metadata_allowed": ["process exit/outcome class", "wall elapsed", "retry and session lineage", "timing semantics declarations", "environment cohort declarations", "source hashes as metadata"],
+  "proof_limit": "Byte authentication and internal consistency of supplied metadata only. No original-log reparse, inventory completeness, actual environment attestation, invocation/retry equivalence, exclusive timing, candidate join, or online speedup certification.",
+  "remote_task_writes_allowed": false,
+  "lsf_tessent_allowed": false,
+  "optimizer_allowed": false,
+  "training_release": false,
+  "automatic_retries": 0,
+  "resource_policy": "Serial audit, bounded per-file reads, bounded stdout/stderr, no bulk extraction; existing memory ceiling must not increase.",
+  "next_gate": "Independent script review before live content reads; independent result review and small Chinese overview afterward. Missing or conflicting evidence remains blocked, never imputed."
+}

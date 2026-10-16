@@ -1,0 +1,17 @@
+{
+  "experiment_id": "E34",
+  "probe": "Fixed two local s38417 paths, lstat and same-FD fstat only; no os.read",
+  "independent_scope_review": "e27_review PASS_METADATA_ONLY_PROBE",
+  "exit_code": 0,
+  "results": [
+    {"kind": "manifest", "path_api_stable": true, "fd_api_stable": true, "cross_api_differing_fields": ["st_ctime_ns"], "file_bytes_read": 0},
+    {"kind": "lineage", "path_api_stable": true, "fd_api_stable": true, "cross_api_differing_fields": ["st_ctime_ns"], "file_bytes_read": 0}
+  ],
+  "interpretation": "The two supplied local files were stable within each API during this probe. Cross-API ctime representation differed; this observation is specific to this Windows/Python run, not proof that any future mutation is harmless.",
+  "repair_boundary": "Windows cross-API comparison may omit only ctime; same-API before/after comparisons must retain full identity including ctime, all other cross-API fields and content SHA remain checked. POSIX unchanged.",
+  "source_files_modified": false,
+  "original_failed_diagnostic_observed_outer_exit_code": 1,
+  "original_failed_diagnostic_child_exit_code_observed": null,
+  "original_script_fail_closed_return_code_by_source": 2,
+  "training_release": false
+}

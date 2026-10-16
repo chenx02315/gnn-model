@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E34真实TRAIN计时审计](entries/E34_train_metadata_readonly_audit.md)：现场12文件SHA全部吻合，计时表/lineage各25,437行；s38417已定位7个group跨stage，3次失败的28.410秒保留，下一步核对调用归属，不放行训练。
 - [E33历史会话图与计费口径](entries/E33_source_semantics_and_session_graph.md)：源码核对发现旧共享/重复语义不能直接接 E31；新增生成图诊断，区分独立 session 总量和逐候选 proxy，不是实际来源或训练放行。
 - [E32本机文件冻结](entries/E32_local_file_freeze.md)：继续补普通文件读回及 callback 前置校验；只用临时生成文件，不是真实标签或训练放行。
 - [E31切分、计费与连接](entries/E31_materialized_fold_and_accounting.md)：已补纯内存拟合集接口、失败/timeout/重试全计账本及六家族伪造连接验证；不是实际日志恢复或训练放行。

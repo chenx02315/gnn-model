@@ -1,6 +1,10 @@
-# 下一节点账本（2026-10-15）
+# 下一节点账本（2026-10-16）
 
 ## 权威状态
+
+E34已恢复独立复核并实际执行一次A端六TRAIN元数据审计：12文件SHA全部吻合，计时表/lineage各25,437行、24,540,504字节；5电路内部一致性通过，s38417保留GROUP_METADATA_JOIN，3次失败共28.410秒未丢弃。现场审计及独立结果复核见[E34实际回执](../data/manifests/ranking_v6_e34_live_audit_20261016_r1.json)。首次本地读取在内容读取前被Windows跨API ctime差异拦下，原失败保留，聚焦修复保留同API完整identity/SHA/链接门。当前447相关测试442实际通过、5跳过。旧[恢复回执](../data/manifests/ranking_v6_e34_resume_20261016_r1.json)为额度中断时历史快照，不再代表当前状态。混角色连接表保持不读；训练、BLIND、LSF/Tessent不开放，不能把PARTIAL升级为全量PASS。
+
+E34本地r2聚焦诊断现已执行：7个raw group跨stage（各2行/2parent/2log SHA），组内mode/cohort一致；未见孤立lineage或parent/session缺口，原group/顺序/失败全部保留。见[E34阶段回执](../data/manifests/ranking_v6_e34_completion_20261016_r2.json)。下一节点已收敛为调用归属及纯TRAIN candidate/source/action连接，不再重复读这12表或同类合成实验；不能把rawgroup当一次invocation，更不能靠拆group放行。若需要读取混role元数据或生成远端TRAIN投影，应明确下一整阶段权限（仍不含质量标签/BLIND/训练/LSF/Tessent）。
 
 E33已完成历史reader/恢复/映射/聚合源码核对及生成session图诊断，见[E33](entries/E33_source_semantics_and_session_graph.md)：共享前缀、多source调用均值、1基group顺序及多session文件与E31单次无共享账本不等价。初审的stage混拼/footer顺序缺陷已保留反例并聚焦修复；22项新测试通过，相关617项零失败（106条件跳过）。保留全部输入/未映射session，区分唯一session总秒数、映射引用proxy与重复调用均值，不复制ID、不选最快；旧生产mapping入口会读测量/质量字段，本轮未运行。没有实际来源数据读取、模型、训练或远端操作。
 

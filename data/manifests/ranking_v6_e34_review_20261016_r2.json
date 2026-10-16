@@ -1,0 +1,31 @@
+{
+  "experiment_id": "E34",
+  "reviewer": "e27_review",
+  "status": "PASS_IMPLEMENTATION_SCOPE_AND_ACCURATE_PARTIAL_RESULTS",
+  "scientific_gate": "PARTIAL",
+  "pre_execution_reader_transport_review": "PASS after fixed path, deadline, resource, and strict JSON repairs; fixed six TRAIN/12 metadata files only",
+  "actual_remote_result_review": "PASS bindings/counts/hash/flags verified; not source/inventory/exclusive timing certification",
+  "local_r1_execution": "FAIL_CLOSED before os.read, preserved; no blind retry",
+  "metadata_probe_review": "PASS probe scope only; actual path/FD stability and cross-API ctime observation executed and reported by parent. Reviewer independently checked scope, repair source and synthetic counterexamples, not the actual probe execution.",
+  "local_r2_pre_execution_review": "PASS after one evidence-backed focused Windows identity repair with full same-API ctime checks and unchanged POSIX checks",
+  "local_r2_result_review": "PASS summary SHA, bound files, counts and sums; original E34 PARTIAL preserved",
+  "problem_group_rows": 14,
+  "problem_group_success_rows": 13,
+  "problem_group_failure_rows": 1,
+  "problem_group_declared_wall_s": "164.960",
+  "problem_group_failed_declared_wall_s": "10.580",
+  "source_pins": [
+    {"path": "scripts/audit_ranking_v6_train_metadata_e34.py", "sha256": "fc2ca9308075a5c1d8855ff8a60d07fb8902c29219794564cb96a788cdac7cf1"},
+    {"path": "scripts/run_ranking_v6_e34_readonly.py", "sha256": "b08f7de7ba692f568dc28a45ad5cebe491a3e4e0365763ddcb396af1ceb3f7aa"},
+    {"path": "scripts/diagnose_ranking_v6_e34_local_groups.py", "sha256": "7396b260b154fba0ea11ba66db166c5f3197c38795db5cfd791d65dadcbd6b8c"},
+    {"path": "tests/test_ranking_v6_train_metadata_e34.py", "sha256": "9abe5b8d941134e7df4a339981676e24030f6b7678e10e640c6f2aa0240485e6"},
+    {"path": "tests/test_ranking_v6_e34_transport.py", "sha256": "a8e048a84f1eb558db77292a234f81fde03b5f7d81f7646b69fbe2ae989e608b"},
+    {"path": "tests/test_ranking_v6_e34_local_groups.py", "sha256": "4137c55c13f2541ffbe1e0e767c7c00afa51adfa273a1a7ef316e111eab3c188"},
+    {"path": "contracts/ranking_v6_train_metadata_audit_e34_v1.json", "sha256": "c6d8ffe0059a385f7e892a1e5fe94482104b45da72cb38e9d388b84cdcd31941"}
+  ],
+  "reviewer_actual_table_reads": 0,
+  "reviewer_remote_calls": 0,
+  "reviewer_source_edits": 0,
+  "independent_test_reruns_added_to_parent_counts": false,
+  "training_or_candidate_quality_release": false
+}

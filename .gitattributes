@@ -188,3 +188,15 @@ tests/test_ranking_v6_session_graph.py -text
 tests/test_ranking_v6_session_graph_contract.py -text
 data/manifests/ranking_v6_e33_* -text
 experiment_overview/entries/E33_source_semantics_and_session_graph.md -text
+
+# E34 bounded TRAIN metadata audit and small receipts.
+scripts/audit_ranking_v6_train_metadata_e34.py -text
+scripts/run_ranking_v6_e34_readonly.py -text
+scripts/diagnose_ranking_v6_e34_local_groups.py -text
+tests/test_ranking_v6_train_metadata_e34.py -text
+tests/test_ranking_v6_e34_transport.py -text
+tests/test_ranking_v6_e34_local_groups.py -text
+contracts/ranking_v6_train_metadata_audit_e34_v1.json -text
+data/manifests/ranking_v6_e34_* -text
+data/manifests/ranking_v6_e34_group_summary_20261016_r2.json whitespace=cr-at-eol
+experiment_overview/entries/E34_train_metadata_readonly_audit.md -text
