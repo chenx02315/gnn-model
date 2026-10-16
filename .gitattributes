@@ -219,3 +219,11 @@ scripts/audit_ranking_v6_e36_roster.py -text
 tests/test_ranking_v6_e36_roster.py -text
 data/manifests/ranking_v6_e36_* -text
 experiment_overview/entries/E36_source_roster_generation_boundary.md -text
+
+# E37 fixed metadata-path probe, no source table contents.
+contracts/ranking_v6_metadata_access_e37_v1.json -text
+scripts/probe_ranking_v6_e37_source_paths.py -text
+scripts/run_ranking_v6_e37_readonly.py -text
+tests/test_ranking_v6_e37_source_paths.py -text
+data/manifests/ranking_v6_e37_* -text
+experiment_overview/entries/E37_metadata_access_and_source_paths.md -text

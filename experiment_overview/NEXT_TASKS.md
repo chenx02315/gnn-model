@@ -2,6 +2,12 @@
 
 ## 权威状态
 
+E37接续新增限定元数据权限：Windows目标属性/ACL及父ACL均被拒，无法安全备份原DACL，未修改ACL或接管目录。已自行从六份固定TRAIN计时manifest与既有bindings恢复来源，不要求用户记路径。独立门禁后A端仅执行一次固定32路径lstat，32/32普通单链接文件存在，六TRAIN八根，保留s35932/s38417两个coverage版本，见[E37](entries/E37_metadata_access_and_source_paths.md)。484相关测试479执行通过、5条件跳过；未打开测量内容、未读质量值或生成候选行。
+
+下一节点E38在既有配置元数据/SHA授权内准备32文件的白名单字段投影，保留coverage scope和原ID/逻辑行号。完整字节只用于SHA与结构扫描；不解码非白名单质量字段、不按PASS过滤。新代码/方言测试/独立读取门禁通过前不实际执行。不能直接缩成24文件或挑版本，也不能由stat PASS放行真实质量连接/训练。
+
+以下E36的访问阻塞和已通过接口结果保留；E37恢复的是来源路径，不是已完成候选全集连接。
+
 E36源码审计确认旧action由eligible/PASS历史记录构建，不能从edges反推出结果前完整候选全集。见[E36](entries/E36_source_roster_generation_boundary.md)及[无质量清单合同](../contracts/ranking_v6_source_roster_e36_v1.json)。本地formal_candidate_space_v2_r1目录列举一次即Access denied；未重试、改ACL或绕过，未读实际候选行。当前真实连接阻塞为缺少可读的六TRAIN无质量全行roster与24文件inventory；无需解封整个质量目录。实现/合成测试不能代替实际全集审计。
 
 E36接口已实现，新增9项测试；完整回归473项（468通过、5条件跳过）。首次独立复核因usage limit中断的[进度回执](../data/manifests/ranking_v6_e36_progress_20261016_r1.json)保留。现原复核代理已恢复，9项独立测试、动作分区及四alias回退检查通过，最终接口/科学范围复核PASS；源码未变，无需重复完整回归，见[恢复回执](../data/manifests/ranking_v6_e36_resume_20261016_r1.json)。这不是实际候选审计PASS。

@@ -1,0 +1,32 @@
+{
+  "experiment_id": "E37",
+  "base_commit": "317833650d0e798439424025dc45e4a8426025ce",
+  "authority": "User explicitly allowed six-TRAIN configuration metadata, original record order, file hashes and provenance receipts, including necessary read-only access adjustments restricted to designated metadata; no quality-directory unseal or training.",
+  "local_targets": ["runtime_training_staging_20260928/formal_candidate_space_v2_r1/source_provenance_v2.tsv", "runtime_training_staging_20260928/formal_candidate_space_v2_r1/receipt_v2.json"],
+  "acl_mutation_preconditions": ["Exact targets resolved and no link/reparse escape", "Existing complete DACL readable and safely backed up", "Minimal designated-metadata read delta independently reviewed", "Unrelated entries and quality-file permissions preserved; verifiable rollback"],
+  "local_observation": "Exact metadata Get-Item and Get-Acl denied; parent directory Get-Acl unauthorized. Target existence and original DACL cannot be confirmed. No mutation preconditions met.",
+  "forbidden_workarounds": ["Blind DACL replacement", "Taking ownership", "Recursive grants", "Granting access to the whole quality directory", "Privilege elevation without new explicit scope", "Opening copied quality artifacts to evade the denied path"],
+  "safe_source_discovery": "Read existing SSH Host/HostName/User/Port/ProxyJump configuration only, without keys or credentials; recover original evidence roots from six already authorized pinned TRAIN runtime-manifest metadata without following embedded paths.",
+  "source_alternative_gate": "An exact-path bounded read-only metadata projection must receive independent review before any new remote invocation. No remote file deployment/output, ACL change or old builder/mapper execution.",
+  "next_stat_gate": {
+    "host": "vnc.buptic.top",
+    "source": "scripts/probe_ranking_v6_e37_source_paths.py",
+    "transport": "scripts/run_ranking_v6_e37_readonly.py",
+    "scope": "Fixed 32 measurement paths under eight coverage roots for six TRAIN circuits; preserve both Phase2 coverage versions. lstat of files/ancestors only, no content open or hash.",
+    "execution_count_after_independent_gate": 1,
+    "remote_files_created": 0,
+    "automatic_retries": 0,
+    "maximum_address_space_bytes": 1073741824,
+    "maximum_cpu_seconds": 20,
+    "maximum_each_output_stream_bytes": 65536,
+    "local_timeout_seconds": 120,
+    "path_set_origin": "Six pinned runtime manifest relative prefixes plus prior remediation evidence_roots bindings; not authenticated formal builder inputs.",
+    "metadata_bindings_sha256": "3d1b8f6b2a9b1162dcf99c046dbed6573145d404ff5a3258eb1b0a46f3c7e187"
+  },
+  "proof_limits": ["Runtime-recorded evidence root is not automatically the formal builder input root", "Path/size/stat does not bind original measurement content", "Provided metadata inventory is not complete historical source or pre-outcome freeze certification"],
+  "quality_values_allowed": false,
+  "validation_or_blind_rows_allowed": false,
+  "remote_writes_allowed": false,
+  "training_release": false,
+  "lsf_tessent_allowed": false
+}
