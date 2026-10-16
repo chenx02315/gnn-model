@@ -1,0 +1,59 @@
+{
+  "experiment": "E33",
+  "local_date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "fe7a5e015302f97240b9fae6566715f092f97ca4",
+  "status": "PASS_FIXED_MATERIALIZED_SESSION_GRAPH_PROXY_IMPLEMENTATION_ONLY",
+  "source_semantics_inventory": "data/manifests/ranking_v6_e33_source_audit_20261016_r1.json",
+  "source_inventory_is_repository_code_not_actual_runtime_data": true,
+  "new_tests": {"testsRun": 22, "graph": 18, "contract_and_source_pins": 4, "skipped": 0, "failures": 0, "errors": 0},
+  "related_regression": {
+    "testsRun": 617, "executed": 511, "skipped": 106, "failures": 0, "errors": 0,
+    "groups": [
+      {"selection": "test_ranking_v6*.py", "testsRun": 419, "skipped": 3, "elapsed_s": 64.832},
+      {"selection": "test_check_ranking_v6*.py", "testsRun": 16, "skipped": 0, "elapsed_s": 0.071},
+      {"selection": "same 22 explicit stage/run/diagnostic modules as E31/E32", "testsRun": 182, "skipped": 103, "elapsed_s": 0.884}
+    ],
+    "new_tests_already_in_total": true,
+    "reviewer_repeats_not_added": true,
+    "conditional_skips_not_linux_pass": true
+  },
+  "runtime": {"python": "3.13.1", "diagnostic_decimal_local_precision": 50, "fresh_process_ambient_decimal_rounding": "ROUND_HALF_EVEN"},
+  "fabricated_diagnostics": {
+    "H3_F2_F2": {"mapped_unique_s": "7", "edge_incidence_proxy_s": "10"},
+    "H10_F2_F3": {"mapped_unique_s": "15", "edge_incidence_proxy_s": "25"},
+    "same_action_invocation_costs": ["12", "20"],
+    "same_action_mean_proxy_s": "16",
+    "unmapped_failure_4s_with_H3_F2_F2": {"all_supplied_s": "11", "mapped_unique_s": "7", "edge_incidence_proxy_s": "10"},
+    "shared_ids_not_copied": true,
+    "whole_action_SUCCESS_D95_not_inferred": true,
+    "unobserved_modes_not_inferred_as_executed_or_missing": true
+  },
+  "initial_review_defects": {
+    "original_source_sha256": "379e819f375e27c50a4baa9bc528088ffd85b9c12d0e686769579b507a2fe338",
+    "initial_focused_tests": {"testsRun": 20, "skipped": 0, "failures": 0, "errors": 0, "not_final_review_pass": true},
+    "independent_reproductions": ["mixed invocation stage returned PASS", "same-parent GNU session/retry reverse order returned PASS", "multiple parents shared GNU footer evidence returned PASS"],
+    "focused_repair": "fix source invocation_stage; bind GNU group to one parent/log SHA and matching index/order; preserve legitimate cross-stage and embedded multi-file paths; strict builtin field names",
+    "archive_path_base": "repository_root",
+    "original_bytes_archive": "../runtime_training_staging_20260928/v6_session_graph_20261016_r1/pre_review_source.json",
+    "archive_json_sha256": "904981015cb058501645064c17f7a46ff28eed69604717f4ff33b77b5d480649",
+    "original_byte_count": 16353,
+    "fixed_source_sha256": "4da26b675be9ebb1d6e739204555156fb42858e130e5e3efb60645c1ce33b456",
+    "formal_experiment_retry": false
+  },
+  "real_source_rows_read": 0,
+  "candidate_quality_labels_read": 0,
+  "model_sampling_optimizer_calls": 0,
+  "formal_train_fits": 0,
+  "remote_runs": 0,
+  "lsf_tessent_jobs": 0,
+  "old_once_markers_touched": false,
+  "e31_direct_compatible": false,
+  "fit_targets_emitted": false,
+  "original_source_lineage_authenticated": false,
+  "original_inventory_complete_verified": false,
+  "exclusive_elapsed_authenticated": false,
+  "online_or_physical_makespan_claim": false,
+  "real_training_release": false,
+  "next": "real TRAIN metadata/lineage/inventory read-only audit under its authorized scope; no automatic BLIND, TRAIN fitting or jobs"
+}

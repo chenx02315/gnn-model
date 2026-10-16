@@ -1,0 +1,105 @@
+{
+  "experiment": "E33",
+  "status": "PASS_SOURCE_SEMANTICS_INVENTORY_NOT_REAL_DATA_AUDIT",
+  "base_commit": "fe7a5e015302f97240b9fae6566715f092f97ca4",
+  "local_date": "2026-10-16",
+  "source_pins": [
+    {
+      "path": "src/data/runtime_schema.py",
+      "sha256": "a885e93a21968e9c31634b54c2295bfd315035f1d5cdf6a76a94f74ed37f1897"
+    },
+    {
+      "path": "src/data/recover_runtime_attempts.py",
+      "sha256": "5ba70908879a8eb53d11bc4901146db244e36e4fe704ab065411ce65ca95729f"
+    },
+    {
+      "path": "src/data/remediate_runtime_attempts_v2.py",
+      "sha256": "5db1dbb1792a04f9a5354ccc843475579be82d7374e0d465f95495068563394b"
+    },
+    {
+      "path": "src/data/audit_runtime_action_attempt_mapping_v1.py",
+      "sha256": "fb8e3a175309f74dede80a33162df8d512fcffeb219b633781287739ad12b75e"
+    },
+    {
+      "path": "src/data/aggregate_runtime_action_costs_v1.py",
+      "sha256": "3f147813782faae3010e60606a8a156c83df680dac3b7be67b0878243af9b08a"
+    },
+    {
+      "path": "src/data/build_runtime_training_package_v2.py",
+      "sha256": "5ff9fe4d14079f47dd979669ff72dd78c79b18ca7314185c2db6bf1f87747cc5"
+    },
+    {
+      "path": "scripts/repeat_phase4_nonblind_runtime_recovery.py",
+      "sha256": "dbdf62480007c27c7753fbed0c8a06283a9c3ae0541e75bb0041e3d3f39526c7"
+    },
+    {
+      "path": "contracts/runtime_action_attempt_mapping_v1.json",
+      "sha256": "44ead5e8e73149758b6c0bb99f3a9a3041c0297cf35ef68ca48792af7db0d166"
+    },
+    {
+      "path": "contracts/runtime_action_cost_aggregation_v1.json",
+      "sha256": "80f484f1ef24bfd5e55c85f66d8c60d07257e87ef11d6952a266e6ce2175a7f0"
+    },
+    {
+      "path": "contracts/runtime_attempt_remediation_v2.json",
+      "sha256": "c72e35c6bd8e8d72bf3821f40767a0b2fff23b1e2fd7e4354ef0c351cdc46c68"
+    },
+    {
+      "path": "contracts/runtime_attempt_session_audit_v1.json",
+      "sha256": "8aade8b904506288c279ac1fa3162413a2248d7b79fe5a76d343e3b44e2cd4ff"
+    },
+    {
+      "path": "src/replay/ranking_v6_attempt_charges.py",
+      "sha256": "0142fa94557c6bb4fbab69cb22648516ea36110cd24a0e7cd27b653f4213a236"
+    }
+  ],
+  "findings": [
+    {
+      "code": "STAGE_IS_NOT_MODE",
+      "source": "src/data/recover_runtime_attempts.py:67-69",
+      "finding": "stage from directory or phase; mode is separate H/M/F marker"
+    },
+    {
+      "code": "ONE_FILE_NOT_ONE_SESSION",
+      "source": "src/data/remediate_runtime_attempts_v2.py:159-199,255-274",
+      "finding": "split by exit footer; preserve nonterminal sessions with derived IDs and terminal parent ID"
+    },
+    {
+      "code": "RETRY_ORDER_ONE_BASED_NOT_INVOCATION",
+      "source": "src/data/remediate_runtime_attempts_v2.py:284-315",
+      "finding": "known chronology numbered from one; group run identity alone does not classify retry versus independent rerun"
+    },
+    {
+      "code": "SHARED_PREFIX_GRAPH",
+      "source": "src/data/audit_runtime_action_attempt_mapping_v1.py:223-246,270-315",
+      "finding": "source/attempt edge key preserves shared prefix across invocations and F search probes"
+    },
+    {
+      "code": "REPEAT_MEAN_NOT_SINGLE_INVOCATION",
+      "source": "src/data/aggregate_runtime_action_costs_v1.py:142-187",
+      "finding": "all mapped sessions summed per invocation; all invocation costs averaged per deployable action"
+    },
+    {
+      "code": "PACKAGED_SUCCESS_NOT_FAILED_ACTION_LEDGER",
+      "source": "src/data/build_runtime_training_package_v2.py:235-273",
+      "finding": "safe package eligibility and written SUCCESS/D95=1 do not certify all failed whole-action measurements"
+    },
+    {
+      "code": "ENVIRONMENT_STRING_NOT_ATTESTATION",
+      "source": "scripts/repeat_phase4_nonblind_runtime_recovery.py:110-116",
+      "finding": "explicit metadata can be environment_unverified; string equality is not environment authentication"
+    },
+    {
+      "code": "OLD_MAPPING_AUDITOR_NOT_LABEL_FREE_READER",
+      "source": "src/data/audit_runtime_action_attempt_mapping_v1.py:137,150-185",
+      "finding": "old mapper reads conflict/result_status/measurement values; do not run it as a candidate-quality-label-free projection"
+    }
+  ],
+  "e31_direct_adapter_implemented": false,
+  "real_source_rows_read": 0,
+  "candidate_quality_labels_read": 0,
+  "model_optimizer_remote_calls": 0,
+  "independent_source_scout": "e26_control_review",
+  "independent_design_review": "e27_review",
+  "scope_note": "Static repository source/contracts only; no claim source evidence is absent, complete, or authenticated."
+}

@@ -1,0 +1,70 @@
+{
+  "experiment": "E33",
+  "status": "MATERIALIZED_SESSION_GRAPH_PROXY_IMPLEMENTATION_ONLY",
+  "base_commit": "fe7a5e015302f97240b9fae6566715f092f97ca4",
+  "purpose": "preserve legacy action/source-invocation/process-session graph and distinguish diagnostic elapsed sums; not a raw source adapter or training data release",
+  "allowed_inputs": "preprojected, already materialized synthetic metadata views only in this validation; no file reader",
+  "default_reject": true,
+  "opt_in": "implementation_only is True",
+  "limits": {"actions": 6144, "sessions": 65536, "edges": 131072, "declared_source_invocations": 16384, "cumulative_input_string_chars": 16777216, "session_wall_s": 1000000000},
+  "character_budget_includes_fixed_field_names": true,
+  "max_individual_string_characters": 4096,
+  "view_fields": {
+    "action": ["action_uid", "circuit", "family", "role", "action_scheme", "source_candidate_uids"],
+    "session": ["attempt_id", "circuit", "family", "role", "stage", "mode", "retry_group_id", "retry_order", "retry_order_status", "environment_cohort", "attempt_outcome_class", "wall_s", "semantics_status", "semantics_contract", "elapsed_semantics", "elapsed_source", "source_artifact_sha256", "source_log_sha256", "parent_attempt_id", "session_index", "session_count", "order_evidence", "session_lineage_sha256", "timing_scope"],
+    "edge": ["action_uid", "source_candidate_uid", "circuit", "stage", "mode", "retry_group_id", "retry_order", "attempt_id", "mapping_rule", "action_scheme"]
+  },
+  "roles": ["TRAIN"],
+  "families": ["iwls_aes_core", "iscas89_s13207", "iscas89_s15850", "iscas89_s35932", "iscas89_s38417", "iwls_spi"],
+  "candidate_quality_labels_forbidden": ["cycles", "total_cycles", "D95", "epsilon_hit", "action_execution_status", "outcome_rank"],
+  "session_status_is_not_candidate_quality": "SUCCESS/FAILURE/TIMEOUT classify tool sessions only; never infer whole-action outcome",
+  "session_identity": {
+    "parent_attempt_id": "original parent/source-file identity, not an extra timed invocation",
+    "session_index_and_count": "explicit 1-based metadata, complete 1..N per parent; never one-file-one-attempt inference",
+    "session_lineage_sha256": "shape-checked supplied reference, not authenticated source content",
+    "order_evidence": ["STRUCTURAL_SINGLETON", "GNU_TIME_FOOTER_EMISSION_ORDER", "EMBEDDED_SIEMENS_START_ORDER"],
+    "gnu_footer_consistency": "one parent and one nonempty source_log_sha256; retry_order equals session_index",
+    "embedded_consistency": "multiple parents and multiple distinct nonempty source_log_sha256; artifact CSV hash may be shared; no inferred global chronology",
+    "retry_group": "preserve raw identity and 1-based known order; not an invocation ID or independent-rerun classifier",
+    "stage": "historical directory/experiment stage, retained separately from H/M/F mode",
+    "timing_scope": "EXCLUSIVE_PROCESS_SESSION_ELAPSED declaration required; inclusive parent or unknown timing rejected; declaration not verified"
+  },
+  "edges": {
+    "unique_key": ["source_candidate_uid", "attempt_id"],
+    "shared_attempt_across_invocations": "retain same ID and all references, never copy/relabel node",
+    "source_owner": "each source_candidate_uid belongs to exactly one supplied deployable action",
+    "metadata": "action/circuit/scheme/mode/retry group/order joins must match; cross-stage only explicit cross-stage mapping rule",
+    "invocation_stage": "one edge.stage per source_candidate_uid; explicit cross-stage permits session.stage to differ, not invocation stage to vary",
+    "retry_coverage": "a referenced retry group must contribute every supplied member to that source invocation",
+    "unmapped_sessions": "retain node, ID, status counts and elapsed; no silent dropping; missing source invocation edges reject",
+    "multiple_F_search_groups": "retain independently, never renumber as one stage retry sequence"
+  },
+  "wall": {
+    "input": "finite nonnegative ASCII decimal seconds with at most 9 fractional digits, no CPU/cycles/timeout fallback",
+    "all_supplied_session_elapsed_sum_s": "sum each supplied process session once, including unmapped nodes",
+    "mapped_unique_session_elapsed_sum_s": "sum each session with at least one mapping edge once",
+    "edge_incidence_proxy_sum_s": "sum session elapsed per source-invocation edge; shared prefix repeats only in this hypothetical proxy",
+    "source_invocation_proxy_cost_s": "sum all mapped session charges for that source invocation, failures and timeouts included",
+    "action_mean_invocation_proxy_cost_s": "arithmetic mean of every declared source invocation, not fastest/minimum; no fit-target output",
+    "arithmetic": "Decimal local precision 50; diagnostic strings, division may round at 50 significant digits",
+    "cohort": "one environment cohort within each invocation and circuit; reject mixed costs",
+    "positive_cost": "each mapped source invocation/action total strictly positive; individual session zero allowed",
+    "no_makespan_or_online_claim": true
+  },
+  "legacy_projection_not_yet_implemented_or_run": {
+    "actions": "select declared identity/role/family/scheme/source UID metadata without accessing candidate-quality values",
+    "sessions": "join remediation manifest to full parent/session/order lineage by original attempt ID; do not fabricate supplemental metadata",
+    "edges": "preserve audited mapping_rule and stage/mode/source identity; do not call the old mapping audit as a label-free reader because it reads measurements and quality flags",
+    "source_completeness": "requires original inventory and exclusions receipt; provided-set graph checks alone do not authenticate coverage"
+  },
+  "e31_direct_compatible": false,
+  "e31_records_emitted": false,
+  "fit_targets_emitted": false,
+  "source_authenticated": false,
+  "original_inventory_completeness_verified": false,
+  "invocation_semantics_verified": false,
+  "exclusive_timing_verified": false,
+  "real_data_access": false,
+  "real_training_release": false,
+  "model_optimizer_or_remote_calls": 0
+}

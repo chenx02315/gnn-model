@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E33历史会话图与计费口径](entries/E33_source_semantics_and_session_graph.md)：源码核对发现旧共享/重复语义不能直接接 E31；新增生成图诊断，区分独立 session 总量和逐候选 proxy，不是实际来源或训练放行。
 - [E32本机文件冻结](entries/E32_local_file_freeze.md)：继续补普通文件读回及 callback 前置校验；只用临时生成文件，不是真实标签或训练放行。
 - [E31切分、计费与连接](entries/E31_materialized_fold_and_accounting.md)：已补纯内存拟合集接口、失败/timeout/重试全计账本及六家族伪造连接验证；不是实际日志恢复或训练放行。
 - [E28目标接线](entries/E28_joint_wiring.md) → [E29实际参数核验](entries/E29_parameter_chain.md) → [E30真实TRAIN方案](entries/E30_real_train_plan.md)：一次授权的三阶段已完成；前两步验证通过，第三步仅方案封存，正式训练未启动。

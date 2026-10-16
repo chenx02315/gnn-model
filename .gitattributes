@@ -180,3 +180,11 @@ tests/test_ranking_v6_materialized_freeze_store.py -text
 tests/test_ranking_v6_materialized_freeze_integration.py -text
 data/manifests/ranking_v6_e32_* -text
 experiment_overview/entries/E32_local_file_freeze.md -text
+
+# E33 source semantics inventory and materialized session graph diagnostics.
+contracts/ranking_v6_session_graph_v1.json -text
+src/data/ranking_v6_session_graph.py -text
+tests/test_ranking_v6_session_graph.py -text
+tests/test_ranking_v6_session_graph_contract.py -text
+data/manifests/ranking_v6_e33_* -text
+experiment_overview/entries/E33_source_semantics_and_session_graph.md -text

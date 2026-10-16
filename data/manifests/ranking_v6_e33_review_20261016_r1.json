@@ -1,0 +1,36 @@
+{
+  "experiment": "E33",
+  "reviewer": "e27_review",
+  "status": "PASS_AFTER_INVOCATION_STAGE_AND_FOOTER_ORDER_REPAIR_IMPLEMENTATION_ONLY",
+  "local_date": "2026-10-16",
+  "reviewed_sha256": {
+    "src/data/ranking_v6_session_graph.py": "4da26b675be9ebb1d6e739204555156fb42858e130e5e3efb60645c1ce33b456",
+    "tests/test_ranking_v6_session_graph.py": "a9849e294a85232c6c214db77194235f07d273392ae7a5eb4b5bade5e0a8d1e6",
+    "tests/test_ranking_v6_session_graph_contract.py": "92f3f2c4c8938f39aadf9aca52e10bc0100f5874fcfc8f6c339073755b5c71fb",
+    "contracts/ranking_v6_session_graph_v1.json": "b367bd91d7f2998d3ac31c5ad5726ccfe7bbd11297ae1c3f63b120e0ce5ce583",
+    "data/manifests/ranking_v6_e33_source_audit_20261016_r1.json": "83dca754d51381c49642f0d73c392ad8935e2b68fbc9f33f601df3460b0ffad6",
+    "experiment_overview/entries/E33_source_semantics_and_session_graph.md": "c3edd804eed582b367b86162fc584bd59d369c864d315d3077b38e5cfb852ee4"
+  },
+  "independent_focused_tests": {"testsRun": 22, "skipped": 0, "failures": 0, "errors": 0, "not_added_to_parent_regression": true},
+  "original_counterexamples_actually_reproduced": {
+    "original_source_sha256": "379e819f375e27c50a4baa9bc528088ffd85b9c12d0e686769579b507a2fe338",
+    "same_source_H_stageA10_plus_F_stageB2": "incorrect PASS before repair",
+    "GNU_same_parent_indices1_2_orders2_1": "incorrect PASS before repair",
+    "GNU_group_two_parents_single_session_each": "incorrect PASS before repair",
+    "fixed_counterexamples_rejected": true,
+    "legitimate_cross_stage_prefix_plus_F_cost_s": "12",
+    "legitimate_embedded_two_logs_same_CSV_artifact_cost_s": "3"
+  },
+  "independent_arithmetic": {"coordinate_count": 7, "reference": "Fraction exact sums plus independent Decimal precision 50 mean", "all_matched": true, "representative_nonterminating_mean_prefix": "2.456790122333"},
+  "all_supplied_unmapped_and_shared_nodes_retained": true,
+  "no_ID_copy_or_retry_renumbering": true,
+  "source_quality_labels_and_whole_action_outcomes_not_used": true,
+  "source_parent_group_invocation_identities_not_conflated": true,
+  "original_source_archive_decoded_bytes": 16353,
+  "original_source_archive_sha_matches": true,
+  "stage_and_footer_claims_only_provided_set_consistency": true,
+  "real_lineage_inventory_timing_not_authenticated": true,
+  "e31_adapter_fit_and_real_release_remain_false": true,
+  "reviewer_edits": 0,
+  "reviewer_real_data_model_sampling_optimizer_or_remote_calls": 0
+}

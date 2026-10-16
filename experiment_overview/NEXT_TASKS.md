@@ -2,6 +2,10 @@
 
 ## 权威状态
 
+E33已完成历史reader/恢复/映射/聚合源码核对及生成session图诊断，见[E33](entries/E33_source_semantics_and_session_graph.md)：共享前缀、多source调用均值、1基group顺序及多session文件与E31单次无共享账本不等价。初审的stage混拼/footer顺序缺陷已保留反例并聚焦修复；22项新测试通过，相关617项零失败（106条件跳过）。保留全部输入/未映射session，区分唯一session总秒数、映射引用proxy与重复调用均值，不复制ID、不选最快；旧生产mapping入口会读测量/质量字段，本轮未运行。没有实际来源数据读取、模型、训练或远端操作。
+
+下一关是将真实TRAIN的remediated manifest与完整lineage、inventory/排除凭据按原ID核验，再核对invocation/terminal/计时语义。E33本身不是完成的raw adapter或实际来源审计；不重复E31/E32，也不据生成图放行真实读取、TRAIN、BLIND或LSF/Tessent。
+
 E32接续补本机临时fixture三文件独占写入、fsync/有界普通文件读回、绑定三哈希的完整成功ACK及callback屏障，详见[E32](entries/E32_local_file_freeze.md)。首次审核发现ACK未绑定版本，已保留反例并聚焦修复；修后21项新测试中20项执行通过、1项Windows symlink权限跳过。不是Linux门禁或真实生产freeze。E31与E32均不读取真实outcome、不运行模型/optimizer、不访问A/B，E30实际放行门未改。
 
 当前下一节点继续对照已有reader/schema做真实来源与调用/计时语义适配，随后生产输入域和受控trainer；文件实现PASS不能代替真实来源认证、旧checkpoint可用性或训练效果。已完成的E31/E32不重复；新增真实数据访问/训练阶段应一次性明确整阶段范围，不逐文件请求审批。
