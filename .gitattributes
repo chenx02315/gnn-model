@@ -200,3 +200,15 @@ contracts/ranking_v6_train_metadata_audit_e34_v1.json -text
 data/manifests/ranking_v6_e34_* -text
 data/manifests/ranking_v6_e34_group_summary_20261016_r2.json whitespace=cr-at-eol
 experiment_overview/entries/E34_train_metadata_readonly_audit.md -text
+
+# E35 metadata-only mapping and bounded summaries, byte-stable provenance.
+contracts/ranking_v6_mapping_metadata_audit_e35_v1.json -text
+scripts/audit_ranking_v6_e35_mapping_metadata.py -text
+scripts/check_ranking_v6_e35_failed_exclusions.py -text
+tests/test_ranking_v6_e35_mapping_metadata.py -text
+tests/test_ranking_v6_e35_failed_exclusions.py -text
+data/manifests/ranking_v6_e35_* -text
+data/manifests/ranking_v6_e35_mapping_summary_20261016_r1.json whitespace=cr-at-eol
+data/manifests/ranking_v6_e35_failed_exclusion_summary_20261016_r1.json whitespace=cr-at-eol
+experiment_overview/entries/E35_mapping_metadata_and_cost_scope.md -text
+experiment_overview/notebooks/E35_mapping_metadata_checks.ipynb -text

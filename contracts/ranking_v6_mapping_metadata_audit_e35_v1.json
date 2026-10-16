@@ -1,0 +1,37 @@
+{
+  "experiment_id": "E35",
+  "base_commit": "71d889bbcca62951170b974a8d2da0ee75cd222e",
+  "authorization": "User authorized read-only mixed TRAIN/VALIDATION mapping metadata, filtering six TRAIN circuits for invocation ownership, shared references and runtime-accounting audit. No quality labels, BLIND, remote writes or training.",
+  "question": "Which original sessions are actually referenced by each recorded source/action, especially the seven cross-stage raw groups found in E34? Do not assume raw group equals invocation or retry chain.",
+  "train_circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "spi"],
+  "metadata_only_filter_circuits": ["s5378", "tv80"],
+  "sources": {
+    "runtime_root": "runtime_training_staging_20260928/runtime_attempt_remediation_v2_r1_remote/outputs_v2",
+    "runtime_files": "Exact six per-circuit manifest/lineage pairs and hashes from E34. No original logs or paths contained in rows followed.",
+    "mapping_root": "runtime_training_staging_20260928/runtime_action_attempt_mapping_v1_r5",
+    "edges": {"file": "invocation_attempt_edges_v1.tsv", "sha256": "d5b25fdd934a18a352c286f572172ad8ba79fa064cf70dbe3f68e8e44e0fdfea", "known_bytes": 4481820},
+    "exclusions": {"file": "excluded_attempts_v1.tsv", "sha256": "67d5fb154026583435e920ea97f68896542d78bebdd2ca3786f517df3ffa203d", "known_bytes": 689037},
+    "mapping_receipt_sha256": "9a0e17e3000bf76fa1c00d8ebbeb3a7391e7115322eecbf3782239822669afec",
+    "binding_limit": "Pinned local cached snapshots. Runtime hashes bind to the version audited live in E34, not a new live A read. The mapping receipt does not state a remote output root or authenticate source completeness."
+  },
+  "schema_policy": "Exact metadata-only headers. h_patterns/m_patterns in edge schema are configuration inputs, not measured quality. Do not open ACTION_FIELDS tables containing outcome_conflict or measurement/cycles/D95 tables.",
+  "filter_policy": "Only the eight listed circuits permitted in mixed metadata. Reject BLIND or unknown circuits; skip VALIDATION rows before numeric, group, fee or ranking analysis. Do not read VALIDATION runtime manifests.",
+  "checks": [
+    "Pinned ordinary single-link local file, ancestor reparse rejection, stable per-API identity, SHA before parse, bounded bytes/rows/output",
+    "Original attempt/parent/group IDs retained; exact session lineage joins and per-source/action metadata consistency",
+    "Actual source-attempt edges and mapped/excluded/both/neither partition, without adding group members or dropping failed/time-out sessions",
+    "Shared references, observed action repetitions, cross-stage group member-to-source/action adjacency",
+    "Decimal accounting separates unique supplied session totals from edge-incidence and repeated-source arithmetic-mean historical proxies"
+  ],
+  "non_certifications": ["Recorded source UID is not authenticated invocation identity", "Observed edge action set is not a certified complete candidate universe", "Exclusion reason NON_ELIGIBLE_SOURCE_INVOCATION originates from prior eligibility decisions; the generating pipeline is not certified outcome-independent", "No candidate runtime target release, original-log timing reparse, environment attestation, complete inventory certification, exclusive wall time, online prefix reuse equivalence or speedup"],
+  "resources": {"max_file_bytes": 8388608, "max_total_bytes": 41943040, "max_rows": 200000, "max_summary_bytes": 65536, "workers": 1, "automatic_infrastructure_retries": 0, "windows_hard_cap_or_peak_claim_without_measurement": false},
+  "execution": "Local only, actual metadata reading after independent reader review. Preserve failures; at most one evidence-backed focused implementation repair with fresh review, never silently retry unchanged code or substitute files.",
+  "outputs": "Small Chinese E35 overview, bounded JSON summaries, code/tests, SHA manifest, independent review; raw tables remain in original staging.",
+  "publication": "Scoped local commit and normal existing origin/main push only after tests and independent review, never force push.",
+  "remote_writes": false,
+  "candidate_quality_reads": false,
+  "blind_reads": false,
+  "training_release": false,
+  "optimizer_calls": false,
+  "lsf_tessent_jobs": false
+}

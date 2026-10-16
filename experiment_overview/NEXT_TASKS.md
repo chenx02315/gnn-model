@@ -2,6 +2,12 @@
 
 ## 权威状态
 
+E35已按新增混合元数据只读授权完成主审计和失败聚焦诊断，见[E35总览](entries/E35_mapping_metadata_and_cost_scope.md)及[完成回执](../data/manifests/ranking_v6_e35_completion_20261016_r1.json)。25,437条TRAIN session完整分区为17,391已映射、8,046已排除，重叠/未解释0；7个跨stage group共14条均无当前source/action引用、全部OUT_OF_SCOPE_STAGE。3次失败28.410秒亦全有范围外阶段记录，未强塞进formal费用。已观察1780source/1706action、245共享session；引用proxy176806.570秒与mapped unique160758.330秒不可混为线上实际时间。464相关测试459执行通过、5条件跳过，独立复核通过。未读取质量表、BLIND、validation runtime，未访问或写A/B数据端、未训练。
+
+下一节点不再补拆7个rawgroup，也不重复E34/E35。应先明确论文采用历史独立尝试费用proxy还是线上增量耗时，再补完整候选/source roster、特征先验冻结及生产连接。当前只证提供快照的元数据/算术，不证完整候选全集、原始调用或线上计费。质量值读取及训练不在本次权限内；进入下一整阶段须保持held-out冻结屏障，不能按本次metadata授权直接读标签或启动36 fits。
+
+以下E34及更早段落保留历史依赖和权限状态；E35新增授权/结果以上述新记录为准。
+
 E34已恢复独立复核并实际执行一次A端六TRAIN元数据审计：12文件SHA全部吻合，计时表/lineage各25,437行、24,540,504字节；5电路内部一致性通过，s38417保留GROUP_METADATA_JOIN，3次失败共28.410秒未丢弃。现场审计及独立结果复核见[E34实际回执](../data/manifests/ranking_v6_e34_live_audit_20261016_r1.json)。首次本地读取在内容读取前被Windows跨API ctime差异拦下，原失败保留，聚焦修复保留同API完整identity/SHA/链接门。当前447相关测试442实际通过、5跳过。旧[恢复回执](../data/manifests/ranking_v6_e34_resume_20261016_r1.json)为额度中断时历史快照，不再代表当前状态。混角色连接表保持不读；训练、BLIND、LSF/Tessent不开放，不能把PARTIAL升级为全量PASS。
 
 E34本地r2聚焦诊断现已执行：7个raw group跨stage（各2行/2parent/2log SHA），组内mode/cohort一致；未见孤立lineage或parent/session缺口，原group/顺序/失败全部保留。见[E34阶段回执](../data/manifests/ranking_v6_e34_completion_20261016_r2.json)。下一节点已收敛为调用归属及纯TRAIN candidate/source/action连接，不再重复读这12表或同类合成实验；不能把rawgroup当一次invocation，更不能靠拆group放行。若需要读取混role元数据或生成远端TRAIN投影，应明确下一整阶段权限（仍不含质量标签/BLIND/训练/LSF/Tessent）。

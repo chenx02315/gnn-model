@@ -1,0 +1,41 @@
+{
+  "experiment_id": "E35",
+  "reviewer": "e27_review",
+  "review_scope": "Independent read-only implementation, synthetic checks and bounded actual-result summary review; no actual raw table reads or actual auditor reruns by reviewer.",
+  "mapping_implementation_gate": "PASS",
+  "mapping_actual_result_review": "PASS_SCOPE_LIMITED",
+  "focused_implementation_gate": "PASS",
+  "focused_actual_result_review": "PASS_SCOPE_LIMITED",
+  "final_publication_review": "PASS",
+  "final_publication_review_scope": "Chinese overview, README/ledger additions, completion/review receipts and both small summaries agree; independent sequential execution of four notebook cells matches stored outputs. No Jupyter kernel or nbformat-library validation.",
+  "mapping_source_sha256": "8650aa94266acd3ee8eacff4c362227d228f6ff7f555e43c9ebe813d192cfddd",
+  "mapping_test_sha256": "112f0dcecc691740fc1bf74af310858fc7662288c63e2584e1ffbad37e4b0b7d",
+  "focused_source_sha256": "41951eabcb5e6eb307c5018c504a7511250aee041a0620280b6001167b676baf",
+  "focused_test_sha256": "b4940c1f6932544a1b557aa7b5050430d5bf9674c118dc870eb2d3708f5a4f85",
+  "contract_sha256": "4d966f4d3897767c5f8c4ce445d52510e42c7b06549d04c89584122b59b036e3",
+  "mapping_summary_sha256": "f2c2592d38f7658a35cfbe91710cf10d87e56099af9ae3e6be05ac93391ca0a2",
+  "focused_summary_sha256": "98c816ebd8b3120df5888294b2f0778cbefac7064f73389b6efb6b015a995d0b",
+  "reviewer_raw_table_reads": 0,
+  "reviewer_actual_auditor_runs": 0,
+  "full_vectors_independently_recomputed_from_raw_tables": false,
+  "scope_limits": [
+    "PASS establishes bounded metadata accounting consistency, not complete candidate or invocation identity.",
+    "Seven cross-stage groups have no references in the supplied mapping snapshot; physical invocation ownership remains uncertified.",
+    "Three failed sessions have matching OUT_OF_SCOPE_STAGE records; exclusion legitimacy and full historical failure coverage are not certified.",
+    "Historical reference and repeated-source mean proxies do not establish incremental online ATPG wall time or speedup.",
+    "No quality, BLIND, remote execution, model, optimizer, training or LSF/Tessent permission is inferred."
+  ],
+  "parent_final_checks": {
+    "prior_stage_byte_pins_verified": 68,
+    "notebook_code_cells_sequentially_checked": 4,
+    "stored_notebook_outputs_match": true,
+    "jupyter_kernel_execution": false,
+    "nbformat_library_validation": false,
+    "full_regression_tests_run": 464,
+    "full_regression_executed": 459,
+    "full_regression_skipped": 5,
+    "full_regression_failures": 0,
+    "full_regression_errors": 0
+  },
+  "training_release": false
+}
