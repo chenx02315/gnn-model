@@ -1,0 +1,59 @@
+{
+  "experiment": "E32",
+  "local_date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "71e92f32bc0020ad3a3516e86cfa66db368848c1",
+  "status": "PASS_FIXED_LOCAL_FIXTURE_ORDINARY_FILE_IMPLEMENTATION_ONLY",
+  "new_tests": {"testsRun": 21, "executed": 20, "skipped": 1, "failures": 0, "errors": 0, "store": 18, "integration_and_contract": 3},
+  "related_regression": {
+    "testsRun": 595, "executed": 489, "skipped": 106, "failures": 0, "errors": 0,
+    "groups": [
+      {"selection": "test_ranking_v6*.py", "testsRun": 397, "skipped": 3, "elapsed_s": 58.336},
+      {"selection": "test_check_ranking_v6*.py", "testsRun": 16, "skipped": 0, "elapsed_s": 0.071},
+      {"selection": "same 22 explicit stage/run/diagnostic modules as E31", "testsRun": 182, "skipped": 103, "elapsed_s": 0.861}
+    ],
+    "new_tests_already_in_total": true,
+    "reviewer_repetitions_not_added": true
+  },
+  "platform_evidence": {
+    "ordinary_file_positive": "actual local Windows temporary files",
+    "hardlink_rejection": "actually exercised locally",
+    "symlink": "SKIPPED Windows privilege WinError 1314; not PASS",
+    "reparse": "synthetic stat metadata only, not actual junction test",
+    "posix_parent_case_sensitivity": "posixpath lexical simulation only, not Linux execution",
+    "new_linux_runs": 0
+  },
+  "E31_integration": {
+    "fit_only_normalizer_and_feature_sha_bound": true,
+    "opaque_model_is_generated_sentinel_not_checkpoint": true,
+    "fixed_scores_not_model_inference": true,
+    "valid_generated_callback_calls": 1,
+    "wrong_normalizer_callback_calls": 0,
+    "tampered_model_callback_calls": 0
+  },
+  "pre_publication_defect": {
+    "original_source_sha256": "c7ea1174589a0827f460b82f4e7eb50b75c4daf6ce7242825d53204c3515b255",
+    "original_focused_tests": {"testsRun": 19, "skipped": 1, "failures": 0, "errors": 0, "not_final_review_pass": true},
+    "independent_counterexample": "persist A; replace all three files by a different valid B; release expected B incorrectly invoked generated callback once",
+    "repair": "persist immutable hash tuple only after complete ACK; release binds expected tuple before disk or callable access",
+    "fixed_source_sha256": "9ad2f48b84e4e8d744e4a1bbf807611ca286de24f38235c2451e9d3ae84a4444",
+    "original_bytes_archive": "../runtime_training_staging_20260928/v6_file_freeze_20261016_r1/pre_fix_source.json",
+    "archive_path_base": "repository_root",
+    "archive_json_sha256": "38bea64fe6877d311003e2f0d4acfa8d97cc5be7ee09791d2361e7f657eae940",
+    "archive_original_byte_count": 14551,
+    "archive_encoding": "base64_original_bytes; decoded SHA independently matched original source",
+    "formal_experiment_retry": false
+  },
+  "new_stage_model_sampling_optimizer_calls": 0,
+  "real_outcome_reads": 0,
+  "remote_runs": 0,
+  "new_container_runs": 0,
+  "formal_train_fits": 0,
+  "old_experiment_once_touched": false,
+  "real_training_release": false,
+  "real_heldout_release": false,
+  "production_root_supported": false,
+  "physical_freeze_evidence_scope": "trusted configured local temp fixtures only; not production G06 release",
+  "E30_actual_release_gates_remaining": 8,
+  "next": "real reader source/invocation/timing adaptation and model-domain/trainer work, not repeated old synthetic sampling"
+}

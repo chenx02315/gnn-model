@@ -1,0 +1,59 @@
+{
+  "experiment": "E32",
+  "status": "IMPLEMENTATION_ONLY_LOCAL_FIXTURE_STORE",
+  "scope": "ordinary-file write/readback and generated callback ordering using local temporary fixtures only",
+  "predecessor": "E31",
+  "base_commit": "71e92f32bc0020ad3a3516e86cfa66db368848c1",
+  "default_reject": true,
+  "required_opt_in": "implementation_only is True",
+  "root": {
+    "location": "new direct child of trusted environment-configured local temporary parent",
+    "name_prefix": "gnn_v6_freeze_fixture_",
+    "exclusive_create": true,
+    "absolute_lexical_validation_before_filesystem_access": true,
+    "forbid": ["relative path", "dot or dotdot components", "ADS", "symlink", "reparse point", "/ssd", "/temp/jiangchuanc"],
+    "production_root_supported": false,
+    "temp_environment_is_trusted_configuration_not_provenance_proof": true
+  },
+  "files": {
+    "model.bin": {"max_bytes": 1048576, "nonempty_builtin_bytes": true, "opaque_not_deserialized": true},
+    "normalizer.json": {"max_bytes": 16384, "nonempty_builtin_bytes": true, "opaque_not_a_fit_only_scaler_authentication": true},
+    "freeze.json": {"max_bytes": 262144, "nonempty_builtin_bytes": true, "strict_typed_canonical_snapshot": true}
+  },
+  "snapshot": {
+    "families": ["iwls_aes_core", "iscas89_s13207", "iscas89_s15850", "iscas89_s35932", "iscas89_s38417", "iwls_spi"],
+    "seeds": [20260824, 20260825, 20260826],
+    "max_actions": 1024,
+    "max_abs_score": 20,
+    "canonical_uid_order": "sorted ASCII UID",
+    "canonical_ranking": "descending score then ascending UID",
+    "bindings": ["model bytes SHA-256", "normalizer bytes SHA-256", "feature snapshot SHA-256", "fitting UID SHA-256", "held family", "seed", "all held UID/scores and complete ranking"],
+    "forbidden_content": ["outcomes", "cycles", "runtime", "checkpoint deserialization"],
+    "strict_validation": "reject duplicate keys, unexpected fields, invalid types/nonfinite scores, altered UID order/ranking or noncanonical byte encoding"
+  },
+  "write": "validate all three inputs before writes; exclusive xb; flush and fsync; exact bounded ordinary-file readback; failures preserved, never overwrite or auto-retry",
+  "release_requires_same_instance_complete_persist_ack": true,
+  "release_expected_hash_tuple_must_equal_original_persist_ack_before_filesystem_access": true,
+  "cross_process_resume_supported": false,
+  "read": "exactly three fixed directory entries; reject file link/reparse/nonregular/hardlink; fstat identity and size; limit+1 byte cap; nofollow and nonblock when supported",
+  "callback_barrier": "revalidate typed expected snapshot and all bindings, read and compare all three files and SHA before inspecting callable or invoking generated fixture loader exactly once",
+  "callback_once_scope": "one callback per valid release invocation, not cross-call/process once-only execution authority",
+  "fixture_opt_in_is_not_a_data_provenance_detector": true,
+  "not_claimed": [
+    "hostile concurrent filesystem mutation protection or OS sandbox",
+    "portable directory-entry power-loss durability",
+    "actual model/normalizer authenticity or fit-only provenance",
+    "real source feature/UID lineage",
+    "permission to read any real held outcome",
+    "Linux execution evidence from Windows tests"
+  ],
+  "real_data_access": false,
+  "real_heldout_release": false,
+  "real_training_release": false,
+  "model_ready": false,
+  "trainer_implemented": false,
+  "optimizer_calls": 0,
+  "formal_train_fits": 0,
+  "remote_runs": 0,
+  "blind_lsf_tessent_access": false
+}

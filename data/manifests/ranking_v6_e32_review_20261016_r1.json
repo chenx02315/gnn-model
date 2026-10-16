@@ -1,0 +1,46 @@
+{
+  "experiment": "E32",
+  "reviewer": "e27_review",
+  "local_date": "2026-10-16",
+  "status": "PASS_AFTER_ACK_BINDING_REPAIR_IMPLEMENTATION_ONLY",
+  "reviewed_sha256": {
+    "src/models/ranking_v6_materialized_freeze_store.py": "9ad2f48b84e4e8d744e4a1bbf807611ca286de24f38235c2451e9d3ae84a4444",
+    "tests/test_ranking_v6_materialized_freeze_store.py": "6402b1e17b319084cd38252f59fde33665c781329f6f33186e70ccff1b24760d",
+    "tests/test_ranking_v6_materialized_freeze_integration.py": "f6436d214ef4c8b9afb2bf2bc30376c7d78c195c85eafbaf328fdebf0078c96f",
+    "contracts/ranking_v6_materialized_freeze_store_v1.json": "93a93aa76fe19b76cf2ecd036d55a56447b3c52ccda992e0f394ff6db82e7138",
+    "experiment_overview/entries/E32_local_file_freeze.md": "6d4692a0ced93cea4145037289058c26d1d88fe6ca32b80335d886041783fc60"
+  },
+  "independent_focused_tests": {"testsRun": 21, "executed": 20, "skipped": 1, "failures": 0, "errors": 0, "not_added_to_parent_total": true},
+  "original_defect_reproduced_before_repair": {
+    "source_sha256": "c7ea1174589a0827f460b82f4e7eb50b75c4daf6ce7242825d53204c3515b255",
+    "A_freeze_sha256": "3f0fb1846cd857607c92c1c3d254f0ec75c04c40deabc899309bea5bedf2f43b",
+    "B_freeze_sha256": "d00deb65229ba9c3d626a1493c744c4689ac62dbc965c45afca3b23420fbb58d",
+    "same_snapshot": false,
+    "unexpected_generated_loader_calls": 1
+  },
+  "independent_fixed_checks": {
+    "max_model_bytes_exact_binary_readback": 1048576,
+    "max_normalizer_bytes_exact_binary_readback": 16384,
+    "binary_includes_nul_crlf_ctrl_z": true,
+    "independent_canonical_json_matches": true,
+    "valid_fixture_loader_calls": 1,
+    "valid_B_replacement_disk_calls": 0,
+    "valid_B_replacement_callable_inspections": 0,
+    "valid_B_replacement_loader_calls": 0,
+    "persist_ack_hash_tuple_unchanged": true,
+    "typed_snapshot_and_all_bindings_before_loader": true,
+    "fixed_files_root_identity_and_caps_checked": true,
+    "original_source_archive_decoded_bytes": 14551,
+    "original_source_archive_sha_matches": true
+  },
+  "platform_caveats_checked": ["Windows symlink privilege skip", "reparse metadata synthetic only", "POSIX lexical simulation not Linux run"],
+  "parent_regression_arithmetic_checked": {"testsRun": 595, "executed": 489, "skipped": 106, "independently_reran_full_595": false},
+  "trusted_temp_not_hostile_race_or_OS_sandbox": true,
+  "opaque_model_normalizer_semantics_not_authenticated": true,
+  "callback_once_is_per_invocation_not_experiment_authority": true,
+  "real_training_release": false,
+  "real_data_access": false,
+  "reviewer_edits": 0,
+  "reviewer_model_sampling_optimizer_or_remote_calls": 0,
+  "prior_E31_pins_unchanged": true
+}

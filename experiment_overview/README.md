@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E32本机文件冻结](entries/E32_local_file_freeze.md)：继续补普通文件读回及 callback 前置校验；只用临时生成文件，不是真实标签或训练放行。
 - [E31切分、计费与连接](entries/E31_materialized_fold_and_accounting.md)：已补纯内存拟合集接口、失败/timeout/重试全计账本及六家族伪造连接验证；不是实际日志恢复或训练放行。
 - [E28目标接线](entries/E28_joint_wiring.md) → [E29实际参数核验](entries/E29_parameter_chain.md) → [E30真实TRAIN方案](entries/E30_real_train_plan.md)：一次授权的三阶段已完成；前两步验证通过，第三步仅方案封存，正式训练未启动。
 - [E27非均匀评分验证](entries/E27_nonuniform_risk.md)：6/6固定三档评分配对达到梯度判据；风险/正例误差4/6增大，未运行模型训练。

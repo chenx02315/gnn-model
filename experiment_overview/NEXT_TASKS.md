@@ -2,6 +2,10 @@
 
 ## 权威状态
 
+E32接续补本机临时fixture三文件独占写入、fsync/有界普通文件读回、绑定三哈希的完整成功ACK及callback屏障，详见[E32](entries/E32_local_file_freeze.md)。首次审核发现ACK未绑定版本，已保留反例并聚焦修复；修后21项新测试中20项执行通过、1项Windows symlink权限跳过。不是Linux门禁或真实生产freeze。E31与E32均不读取真实outcome、不运行模型/optimizer、不访问A/B，E30实际放行门未改。
+
+当前下一节点继续对照已有reader/schema做真实来源与调用/计时语义适配，随后生产输入域和受控trainer；文件实现PASS不能代替真实来源认证、旧checkpoint可用性或训练效果。已完成的E31/E32不重复；新增真实数据访问/训练阶段应一次性明确整阶段范围，不逐文件请求审批。
+
 E31已推进生产形状的纯内存接口：全六家族特征先验检查、五家族fit-only标准化、规范attempt全计账本、同电路环境及UID/scheme连接、固定K10回放。见[E31](entries/E31_materialized_fold_and_accounting.md)。最终测试和独立复核见该条目的完成/复核回执；本轮真实outcome/model/optimizer/远端/训练均0，E30八项实际放行门不变。
 
 当前下一节点是把现有真实reader的来源/独立调用/计时语义映射到新规范，并补真实freeze和模型输入域；不是重复E26/E27采样。最终FAILED/TIMEOUT进入FIT的学习策略仍不支持，遇到时明确拒绝整包，不删行；共享prefix收费仍不支持，不宣称在线加速。已授权实现、测试、复核和正常版本同步连续完成，不逐文件请求批准。
