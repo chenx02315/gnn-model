@@ -212,3 +212,10 @@ data/manifests/ranking_v6_e35_mapping_summary_20261016_r1.json whitespace=cr-at-
 data/manifests/ranking_v6_e35_failed_exclusion_summary_20261016_r1.json whitespace=cr-at-eol
 experiment_overview/entries/E35_mapping_metadata_and_cost_scope.md -text
 experiment_overview/notebooks/E35_mapping_metadata_checks.ipynb -text
+
+# E36 source semantics and metadata-only roster interface.
+contracts/ranking_v6_source_roster_e36_v1.json -text
+scripts/audit_ranking_v6_e36_roster.py -text
+tests/test_ranking_v6_e36_roster.py -text
+data/manifests/ranking_v6_e36_* -text
+experiment_overview/entries/E36_source_roster_generation_boundary.md -text

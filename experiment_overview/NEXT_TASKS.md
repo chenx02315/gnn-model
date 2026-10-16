@@ -2,6 +2,16 @@
 
 ## 权威状态
 
+E36源码审计确认旧action由eligible/PASS历史记录构建，不能从edges反推出结果前完整候选全集。见[E36](entries/E36_source_roster_generation_boundary.md)及[无质量清单合同](../contracts/ranking_v6_source_roster_e36_v1.json)。本地formal_candidate_space_v2_r1目录列举一次即Access denied；未重试、改ACL或绕过，未读实际候选行。当前真实连接阻塞为缺少可读的六TRAIN无质量全行roster与24文件inventory；无需解封整个质量目录。实现/合成测试不能代替实际全集审计。
+
+E36接口已实现，新增9项测试；完整回归473项（468通过、5条件跳过）。首次独立复核因usage limit中断的[进度回执](../data/manifests/ranking_v6_e36_progress_20261016_r1.json)保留。现原复核代理已恢复，9项独立测试、动作分区及四alias回退检查通过，最终接口/科学范围复核PASS；源码未变，无需重复完整回归，见[恢复回执](../data/manifests/ranking_v6_e36_resume_20261016_r1.json)。这不是实际候选审计PASS。
+
+来源定位不交给用户记忆：已确定旧builder的metadata-only产物为source_provenance_v2.tsv，匹配receipt_v2.json:sha256.source_provenance；需要其六TRAIN24行投影作为初始文件inventory，随后全source行投影。候选位置在此前受拒目录内，尚未确认文件存在/可读。仓库未找到三组真实输入根绑定，不猜路径、不绕过目录。实际连接继续阻塞，接口阶段可按已通过的门禁封存同步。
+
+实际连接下一步取得明确授权来源端的metadata-only导出，保留全部源行/原行号/文件SHA与candidate ID来源，先相对提供文件核覆盖，再核生成器与可信pre-outcome冻结依据。不可重跑旧mapper、由PASS表拼造全集、按费用/质量筛选或补造冻结时点；不启动质量连接、BLIND、训练或LSF/Tessent。
+
+以下E35及更早段落保留历史阶段结果；E36的源码结论不推翻E35提供快照内的算术对账。
+
 E35已按新增混合元数据只读授权完成主审计和失败聚焦诊断，见[E35总览](entries/E35_mapping_metadata_and_cost_scope.md)及[完成回执](../data/manifests/ranking_v6_e35_completion_20261016_r1.json)。25,437条TRAIN session完整分区为17,391已映射、8,046已排除，重叠/未解释0；7个跨stage group共14条均无当前source/action引用、全部OUT_OF_SCOPE_STAGE。3次失败28.410秒亦全有范围外阶段记录，未强塞进formal费用。已观察1780source/1706action、245共享session；引用proxy176806.570秒与mapped unique160758.330秒不可混为线上实际时间。464相关测试459执行通过、5条件跳过，独立复核通过。未读取质量表、BLIND、validation runtime，未访问或写A/B数据端、未训练。
 
 下一节点不再补拆7个rawgroup，也不重复E34/E35。应先明确论文采用历史独立尝试费用proxy还是线上增量耗时，再补完整候选/source roster、特征先验冻结及生产连接。当前只证提供快照的元数据/算术，不证完整候选全集、原始调用或线上计费。质量值读取及训练不在本次权限内；进入下一整阶段须保持held-out冻结屏障，不能按本次metadata授权直接读标签或启动36 fits。

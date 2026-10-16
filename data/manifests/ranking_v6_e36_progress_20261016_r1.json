@@ -1,0 +1,63 @@
+{
+  "experiment_id": "E36",
+  "base_commit": "5e5636633314169fa2f3d089ef4877aa470d2951",
+  "status": "IMPLEMENTED_REGRESSION_PASS_FINAL_REVIEW_PENDING_ACTUAL_EXPORT_BLOCKED",
+  "source_semantics_review": {
+    "agent": "e26_control_review",
+    "status": "COMPLETE_READ_ONLY",
+    "quality_or_staging_data_read": false,
+    "findings": ["eligible_regression derives from result_status PASS", "Actions and formal mapped invocations are selected from eligible historical rows", "Blank candidate fallback uses one-based data-row index in every alias, not only refine", "All-source exclusion indexes do not make selected edges a complete pre-outcome roster"]
+  },
+  "source_hashes": {
+    "src/data/build_candidate_space.py": "291fceaf5aab111e022cd4c5a7885c0bdee14f481701057f295d282462bc83df",
+    "src/data/build_formal_candidate_space_v2.py": "e8b3a49c0ff70fb69ef2e16e4c6794585f0d030862dbe80b52da429e080d8ed4",
+    "src/data/audit_runtime_action_attempt_mapping_v1.py": "fb8e3a175309f74dede80a33162df8d512fcffeb219b633781287739ad12b75e",
+    "scripts/audit_ranking_v6_e36_roster.py": "8753bb020324cb7d42860fa906d2466947f62db2403bb0b0e05500ee1b6b2249",
+    "tests/test_ranking_v6_e36_roster.py": "831138776d9feb3f487d245397f3e5950ebe936d1857a844c3282506f40f9e6d"
+  },
+  "implementation": {
+    "type": "PURE_MEMORY_PROVIDED_METADATA_VALIDATOR",
+    "new_focused_tests_reported_by_builder": 9,
+    "actual_roster_runs": 0,
+    "file_reader_or_exporter_implemented": false,
+    "provided_inventory_declarations": 24,
+    "unmapped_rows_preserved": true,
+    "origin_authentication_or_pre_outcome_certification": false
+  },
+  "parent_regression": {
+    "command": "D:\\Python\\Python313\\python.exe -B -m unittest discover -s tests -p test_ranking_v6*.py",
+    "tests_run": 473,
+    "executed": 468,
+    "skipped": 5,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 43.880,
+    "exit_code": 0,
+    "synthetic_transport_failure_stdout_is_test_fixture_not_actual_remote_call": true
+  },
+  "independent_final_review": {
+    "agent": "e27_review",
+    "status": "INTERRUPTED_USAGE_LIMIT_NOT_PASS",
+    "static_observation": "Reviewer read code/tests/contract and reported no I/O or scope blocker; warned that jointly filtered roster and inventory could still agree without independent source evidence.",
+    "planned_focused_tests_completed": false,
+    "failure": "Agent hit usage limit before final review completion",
+    "new_reviewer_spawned_to_bypass_limit": false,
+    "publication_gate_pass": false
+  },
+  "actual_access": {
+    "directory": "runtime_training_staging_20260928/formal_candidate_space_v2_r1",
+    "directory_list_attempts": 1,
+    "result": "ACCESS_DENIED",
+    "retries_or_acl_bypass": 0,
+    "actual_source_rows_read": 0,
+    "actual_roster_coverage_certified": false
+  },
+  "quality_blind_or_validation_rows_read": 0,
+  "remote_data_host_calls": 0,
+  "remote_experiment_writes": 0,
+  "lsf_tessent_jobs": 0,
+  "model_optimizer_or_training_calls": 0,
+  "committed_or_pushed": false,
+  "training_release": false,
+  "resume": ["Resume the existing independent final review from the saved implementation and test evidence; do not repeat source or E35 audits", "Only after review passes, finish byte pins and scoped normal commit/push", "Actual historical roster reconciliation needs an accessible authorized metadata-only export with all 24 original file inventories; do not bypass the denied directory"]
+}

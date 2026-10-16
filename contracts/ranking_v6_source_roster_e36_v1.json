@@ -1,0 +1,41 @@
+{
+  "experiment_id": "E36",
+  "base_commit": "5e5636633314169fa2f3d089ef4877aa470d2951",
+  "purpose": "Reconcile a complete provided historical measurement-row metadata roster against the observed TRAIN source/action mapping, without reading quality values or claiming a pre-outcome candidate universe.",
+  "train_circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "spi"],
+  "stage_aliases": ["hf_coarse", "hmf_coarse", "hf_refine", "hmf_refine"],
+  "roster_fields": ["circuit", "stage_alias", "scheme", "h_patterns", "m_patterns", "candidate_id", "candidate_id_origin", "source_candidate_uid", "action_uid", "source_file_sha256", "source_row"],
+  "inventory_fields": ["circuit", "stage_alias", "source_file_sha256", "data_row_count"],
+  "mapping_projection_fields": ["source_candidate_uid", "action_uid", "circuit"],
+  "export_requirements": [
+    "All rows from each of the 24 six-TRAIN historical measurement files, including non-PASS and unreferenced rows; no eligibility, status, quality, runtime or outcome-conflict values in export.",
+    "Source row is the original one-based TSV logical-record ordinal used by the historical CSV reader, header record 1; it is not a byte-line number for multiline quoted fields. Rows must cover 2 through data_row_count+1 exactly, with no source records silently dropped or renumbered.",
+    "candidate_id_origin must distinguish explicit original candidate values from one-based data-row fallback IDs. The historical implementation uses fallback for any blank candidate in all four aliases, although its contract highlights refine tables; do not infer origin from alias alone.",
+    "Inventory must enumerate all six circuits times four aliases, including explicit zero-row files; declared counts and SHA do not independently authenticate source completeness.",
+    "Preserve the original file SHA and each source identifier. Do not derive a supposedly complete roster from edges, PASS-only actions, or eligibility-filtered measurements.",
+    "Mapping projection is the distinct source/action/circuit tuple from the already authorized mapping metadata, not a per-session edge table and not a new mapper execution."
+  ],
+  "local_access_observation": {
+    "path": "runtime_training_staging_20260928/formal_candidate_space_v2_r1",
+    "operation": "directory listing only",
+    "result": "ACCESS_DENIED",
+    "retries": 0,
+    "acl_changes_or_bypass": false,
+    "source_rows_read": 0
+  },
+  "implementation_boundary": "Pure-memory schema/row coverage validator and synthetic tests. No file reader, exporter, A/B calls, original logs or quality joins.",
+  "pre_outcome_evidence_separate_from_roster": ["Generator source SHA and configuration/grid/seed", "Refine parent and generation decisions with input provenance", "Action-key and source-order rules", "Authenticated freeze acknowledgement predating outcome access; do not use mtime as proof", "Actual invocation/session identity and shared-prefix charging policy, not inferred from a source UID"],
+  "actual_roster_audit_status": "BLOCKED_METADATA_EXPORT_UNAVAILABLE",
+  "next_input": "Provide the metadata-only roster and 24-file inventory through an explicitly authorized source-side export, or an existing accessible metadata-only artifact with provenance. No need to unseal entire quality directories.",
+  "non_certifications": [
+    "Historical file-row completeness is not proof of all generated or attempted candidates.",
+    "PASS-only action construction is outcome-conditioned; dropping quality columns later does not erase this selection.",
+    "Pre-outcome freeze requires independent generator/grid/selection evidence and timing provenance; hashes made now do not establish past freeze time.",
+    "Shared-session historical cost proxies are not incremental online ATPG wall time."
+  ],
+  "quality_values_allowed": false,
+  "validation_or_blind_allowed": false,
+  "remote_writes_allowed": false,
+  "lsf_tessent_allowed": false,
+  "training_release": false
+}

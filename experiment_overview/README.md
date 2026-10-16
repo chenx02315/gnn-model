@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E36候选全集与生成边界](entries/E36_source_roster_generation_boundary.md)：源码确认旧动作按PASS筛选；补无质量清单合同与覆盖检查接口。实际清单目录访问被拒，尚未认证真实候选全集或执行前冻结，不放行训练。
 - [E35映射与费用口径](entries/E35_mapping_metadata_and_cost_scope.md)：25,437条session完整分区，7组跨stage记录均无当前候选引用；3次失败均有范围外阶段排除记录。明确唯一session秒数与历史引用费用代理不同，未放行训练。
 - [E34真实TRAIN计时审计](entries/E34_train_metadata_readonly_audit.md)：现场12文件SHA全部吻合，计时表/lineage各25,437行；s38417已定位7个group跨stage，3次失败的28.410秒保留，下一步核对调用归属，不放行训练。
 - [E33历史会话图与计费口径](entries/E33_source_semantics_and_session_graph.md)：源码核对发现旧共享/重复语义不能直接接 E31；新增生成图诊断，区分独立 session 总量和逐候选 proxy，不是实际来源或训练放行。
