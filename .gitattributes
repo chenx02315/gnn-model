@@ -226,4 +226,5 @@ scripts/probe_ranking_v6_e37_source_paths.py -text
 scripts/run_ranking_v6_e37_readonly.py -text
 tests/test_ranking_v6_e37_source_paths.py -text
 data/manifests/ranking_v6_e37_* -text
+data/manifests/ranking_v6_e37_transport_20261016_r1.json whitespace=cr-at-eol
 experiment_overview/entries/E37_metadata_access_and_source_paths.md -text
