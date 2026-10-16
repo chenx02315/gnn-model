@@ -2,6 +2,12 @@
 
 ## 权威状态
 
+E31已推进生产形状的纯内存接口：全六家族特征先验检查、五家族fit-only标准化、规范attempt全计账本、同电路环境及UID/scheme连接、固定K10回放。见[E31](entries/E31_materialized_fold_and_accounting.md)。最终测试和独立复核见该条目的完成/复核回执；本轮真实outcome/model/optimizer/远端/训练均0，E30八项实际放行门不变。
+
+当前下一节点是把现有真实reader的来源/独立调用/计时语义映射到新规范，并补真实freeze和模型输入域；不是重复E26/E27采样。最终FAILED/TIMEOUT进入FIT的学习策略仍不支持，遇到时明确拒绝整包，不删行；共享prefix收费仍不支持，不宣称在线加速。已授权实现、测试、复核和正常版本同步连续完成，不逐文件请求批准。
+
+以下E28—E30段落保留其封存状态，由E31实现证据补充，但不是实际生产数据核验已通过。
+
 E28/E29/E30一次授权的三阶段已完成：E28本地3案例/18评分FD通过；E29新鲜Linux16/16零跳过、唯一B端无拟合参数探针通过，独立手写反传核对8070坐标、12参数FD通过；E30真实TRAIN方案及独立科学复核完成，但八项生产执行门仍未解决，实际TRAIN/optimizer/真实outcome读取为0。见[E28](entries/E28_joint_wiring.md)、[E29](entries/E29_parameter_chain.md)、[E30](entries/E30_real_train_plan.md)。一次容器额度已消耗，不能复跑。
 
 当前下一节点：按E30先补生产fold caller与fit-only normalizer输入域支持、候选/特征执行前冻结lineage、D95/action/attempt唯一连接及失败耗时账本，然后补真实freeze I/O与受控trainer。数学接线阶段已收敛，不再重复E26/E27或追加同类toy采样；真实训练要在技术门禁齐全后一次性明确新整阶段执行范围，不能把本次“方案制定”当36新fits授权。

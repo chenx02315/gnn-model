@@ -1,0 +1,50 @@
+{
+  "experiment": "E31",
+  "run_id": "20261015_r1",
+  "completed_local_date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "base_commit": "0836dc94505b808a8b557a546b2962df58af6da1",
+  "status": "PASS_MATERIALIZED_IMPLEMENTATION_AND_INDEPENDENT_REVIEW_ONLY",
+  "new_tests": {"testsRun": 43, "skipped": 0, "failures": 0, "errors": 0, "fold": 12, "attempt_charges": 22, "accounted_join_and_contract": 9},
+  "related_regression": {
+    "testsRun": 574, "executed": 469, "skipped": 105, "failures": 0, "errors": 0,
+    "groups": [
+      {"selection": "test_ranking_v6*.py", "testsRun": 376, "skipped": 2, "elapsed_s": 61.923},
+      {"selection": "test_check_ranking_v6*.py", "testsRun": 16, "skipped": 0, "elapsed_s": 0.069},
+      {"selection": "same 22 explicit stage/run/diagnostic modules as E28-E30 completion", "testsRun": 182, "skipped": 103, "elapsed_s": 0.832}
+    ],
+    "new_tests_already_in_total": true,
+    "reviewer_repetitions_not_added": true,
+    "windows_skips_not_linux_pass": true
+  },
+  "fabricated_integration": {
+    "families": 6, "lofo_splits": 6, "actions_per_family": 2,
+    "fitting_tasks_per_split": 5,
+    "hf_failed3_timeout5_successH2_successF2_charged_s": 12,
+    "hmf_same_plus_successM2_charged_s": 14,
+    "feature_and_normalizer_unchanged_when_only_runtime_changes": true,
+    "terminal_failed_fit_rejected_not_filtered": true,
+    "held_outcome_container_not_supplied": true
+  },
+  "canonical_uid_metadata_scheme_cohort_join_implemented": true,
+  "source_hashes_shape_checked_only": true,
+  "single_invocation_serial_exclusive_elapsed_is_unverified_declaration": true,
+  "shared_prefix_allocation_supported": false,
+  "online_atpg_acceleration_claim": false,
+  "new_stage_model_calls": 0,
+  "new_stage_sampling_calls": 0,
+  "optimizer_calls": 0,
+  "formal_train_fits": 0,
+  "real_outcome_reads": 0,
+  "remote_experiment_runs": 0,
+  "checkpoint_reads": 0,
+  "lsf_tessent_jobs": 0,
+  "new_container_runs": 0,
+  "new_linux_gate_runs": 0,
+  "real_data_release": false,
+  "real_training_release": false,
+  "E30_actual_release_gates_remaining": 8,
+  "E30_frozen_plan_unchanged": true,
+  "review": "data/manifests/ranking_v6_e31_review_20261015_r1.json",
+  "next": "raw-reader provenance/invocation/timing adapter and physical freeze, then real feature/model domain and bounded trainer; no repeated E26/E27 diagnostic or automatic training"
+}

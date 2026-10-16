@@ -161,3 +161,14 @@ data/manifests/ranking_v6_e30_* -text
 experiment_overview/entries/E28_joint_wiring.md -text
 experiment_overview/entries/E29_parameter_chain.md -text
 experiment_overview/entries/E30_real_train_plan.md -text
+
+# E31 materialized interface sources and small evidence, byte stable.
+contracts/ranking_v6_materialized_accounting_v1.json -text
+src/models/ranking_v6_materialized_fold.py -text
+src/models/ranking_v6_accounted_fold.py -text
+src/replay/ranking_v6_attempt_charges.py -text
+tests/test_ranking_v6_materialized_fold.py -text
+tests/test_ranking_v6_accounted_fold.py -text
+tests/test_ranking_v6_attempt_charges.py -text
+data/manifests/ranking_v6_e31_* -text
+experiment_overview/entries/E31_materialized_fold_and_accounting.md -text
