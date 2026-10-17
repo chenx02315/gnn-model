@@ -1,0 +1,12 @@
+{
+  "experiment_id": "E46",
+  "authority": "Same approved B metadata recovery package; four child directory names observed by E45, not an unbounded search.",
+  "input_receipt_sha256": "e753dee368602bf24467b3acf7ac488ebe9fb3769610a4e3c28231c8271836b5",
+  "scope": "One-level name-only listing inside the four frozen paths in producer ROOTS, each opened component-by-component with O_DIRECTORY|O_NOFOLLOW. Only whitelist metadata directory names and exact package manifest/source provenance/receipt names lstat and export; no file contents or recursion.",
+  "producer": "scripts/probe_ranking_v6_e46_metadata_locations.py",
+  "transport": "scripts/run_ranking_v6_e46_metadata_locations.py",
+  "limits": {"entries_per_root": 2048, "roots": 4, "output_bytes_per_stream": 65536, "address_space_bytes": 1073741824, "cpu_s": 20, "timeout_s": 120, "workers": 1, "automatic_retries": 0},
+  "receipt_caveat": "A name receipt_v2.json alone is not candidate-source authority; any subsequent content projection requires exact path/schema/byte-SHA chain gate.",
+  "training_release": false,
+  "remote_writes": false
+}

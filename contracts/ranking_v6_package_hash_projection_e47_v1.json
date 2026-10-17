@@ -1,0 +1,15 @@
+{
+  "experiment_id": "E47",
+  "authority": "Same approved metadata recovery package; E46 observed exact manifest name at fixed PATH.",
+  "input_location_receipt_sha256": "5ff186aec432050cedc04230d2d13e2f072074d2b41083fa7233927072967010",
+  "producer": "scripts/project_ranking_v6_e47_package_hashes.py",
+  "transport": "scripts/run_ranking_v6_e47_package_hashes.py",
+  "scope": "Exactly one observed package manifest. Stable regular single-link descriptor, each directory component O_NOFOLLOW, bounded complete raw bytes for SHA versus E42 historical pin before projection. JSON scanner decodes field names and only schema_version plus three source_sha256 values; unselected values structurally scanned, not decoded/evaluated/exported. Does not follow any declared path or open candidate/outcome/quality/checkpoint tables.",
+  "fields": ["schema_version", "source_sha256.candidate_receipt", "source_sha256.candidate_space", "source_sha256.normalized_measurements"],
+  "expected_complete_file_sha256": "66c6776c033c87c2b41fa6cdeb05852e650eb1fe5173600fae2f0d2a8907eafc",
+  "limits": {"input_bytes": 131072, "output_bytes_per_stream": 65536, "address_space_bytes": 1073741824, "cpu_s": 20, "timeout_s": 120, "workers": 1, "automatic_retries": 0},
+  "execution": "Only one new receipt-directory call after focused/full regression and independent review; preserve failure, no automatic retry.",
+  "training_release": false,
+  "remote_writes": false,
+  "candidate_receipt_and_source_provenance_not_yet_recovered": true
+}

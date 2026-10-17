@@ -1,0 +1,18 @@
+{
+  "experiment_id": "E44",
+  "authority": "Continuation of explicitly approved E43 metadata recovery package after user supplied correct B endpoint and console public fingerprint. User asked to continue experiment. No new training or data-quality access.",
+  "predecessor": "E43 failed authentication at incorrectly selected work.buptic.top; immutable failure retained.",
+  "endpoint": "cjc@gpuserver.buptic.top",
+  "expected_hostname": "bupt-gpus1",
+  "verified_ed25519_fingerprint": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "endpoint_verification": "User established session via correct domain and supplied hostname/public fingerprint; parent separately connected with StrictHostKeyChecking=yes and obtained matching hostname/fingerprint, exit0. No known_hosts changes.",
+  "producer": "scripts/probe_ranking_v6_e43_b_metadata_roots.py",
+  "producer_sha256": "d9e3a8749243520632b4a7c976dca8630535c02c23b7037406e6ca736b2c9d1c",
+  "transport": "scripts/run_ranking_v6_e44_b_roots.py",
+  "limits": {"directory_entries": 1024, "selected_roots": 512, "address_space_bytes": 1073741824, "cpu_s": 20, "timeout_s": 120, "output_bytes_per_stream": 65536, "workers": 1, "automatic_retries": 0},
+  "scope": "One root-name inventory only after independent review; exclude protected exact name before stat/open, no recursion or file contents. Same unchanged E43 producer. Strict known-host checking with ED25519 algorithm; response requires verified hostname.",
+  "successor": "Freeze bounded metadata path discovery based on observed roots; tests and independent review before successor execution. Existing authorization covers selected E42 metadata hash-chain projections, not quality tables or training.",
+  "protected_root": "/ssd/cjc/multimode_ate_gnn_v1",
+  "remote_writes": false,
+  "training_release": false
+}

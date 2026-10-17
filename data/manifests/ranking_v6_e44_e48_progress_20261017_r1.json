@@ -1,0 +1,32 @@
+{
+  "status": "PASS_VERIFIED_B_METADATA_RECOVERY_PARTIAL_CHAIN",
+  "authority": "Same complete B-side bounded metadata recovery package approved after E42, continued by user after correcting intended endpoint.",
+  "endpoint": "cjc@gpuserver.buptic.top",
+  "hostname": "bupt-gpus1",
+  "verified_ed25519_fingerprint": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "host_identity_basis": "User supplied actual successful session hostname/public-key fingerprint; parent separately verified with strict SSH. No known_hosts modification. Reviewer did not independently connect.",
+  "historical_E43_failed_wrong_endpoint_preserved": true,
+  "actual_metadata_calls": 5,
+  "calls": [
+    {"stage":"E44","child_exit":0,"accepted":true,"kind":"workspace root directory names","entries":138,"selected_directories":72,"non_directory_candidates":49,"stdout_sha256":"1678e0ad17f91a666a533e78a30df022f070345b8e9774ed88da976741be612e","focused_tests":12,"regression_tests":574,"regression_executed":568,"skipped":6,"failures":0,"errors":0,"regression_seconds":64.285,"regression_log_sha256":"85862176aabea013a303d63567cf2753369b02f14aaeb282219511ae5490c41b"},
+    {"stage":"E45","child_exit":0,"accepted":true,"kind":"one level in four observed runtime roots","stdout_sha256":"e753dee368602bf24467b3acf7ac488ebe9fb3769610a4e3c28231c8271836b5","focused_tests":6,"regression_tests":580,"regression_executed":574,"skipped":6,"failures":0,"errors":0,"regression_seconds":59.997,"regression_log_sha256":"56aea3ac85ec5574a980e86d564c6ab22cf73d42c841ca8b3dd6cbec9e13f05e"},
+    {"stage":"E46","child_exit":0,"accepted":true,"kind":"one level in four observed metadata child directories","stdout_sha256":"5ff186aec432050cedc04230d2d13e2f072074d2b41083fa7233927072967010","focused_tests":6,"regression_tests":586,"regression_executed":580,"skipped":6,"failures":0,"errors":0,"regression_seconds":66.623,"regression_log_sha256":"a0fe22f0a7db7be836631a8c82f1a7155431add2b8758ae8ccc886f848fe37da"},
+    {"stage":"E47","child_exit":0,"accepted":true,"kind":"one exact manifest complete-byte SHA and four selected JSON values","stdout_sha256":"6c13c196cfb6ef02bbbb95a7bde64f9f151bf8a1e5ebd81142ff68ebb51960e9","focused_tests":10,"regression_tests":596,"regression_executed":590,"skipped":6,"failures":0,"errors":0,"regression_seconds":64.454,"regression_log_sha256":"37286de8ba3bc1e8e2bc01d56959b56880d7bcb65f994c99c66dbbdf32db50f4"},
+    {"stage":"E48","child_exit":0,"accepted":true,"kind":"direct standalone metadata/backup names only","entries":138,"matching_files":0,"stdout_sha256":"7c60b2c6f9a40ff1b7d764555402d54820a9e0d6340766b53931cd27b27a5d34","focused_tests":4,"regression_tests":600,"regression_executed":594,"skipped":6,"failures":0,"errors":0,"regression_seconds":65.432,"regression_log_sha256":"d2cb2917557e7b401ee5404e47289f74b3bcb36381f3ee805e48ff8591fdce53"}
+  ],
+  "test_count_boundary": "Stage-local regression snapshots overlap. Do not sum as distinct tests or add independent reviewer reruns. Synthetic transport timeout fixture outputs are not actual remote failures.",
+  "pre_gate_implementation_issue": "E47 initial 10 unit tests had 4 ERROR due to missing Windows Linux-only constants in mocked FD tests; fixed test setup only, then all 10 passed. No remote call before gates; not a Linux proof.",
+  "actual_package_manifest_bytes": 2374,
+  "actual_package_manifest_sha256": "66c6776c033c87c2b41fa6cdeb05852e650eb1fe5173600fae2f0d2a8907eafc",
+  "authenticated_candidate_receipt_binding_sha256": "48c164e99e653c1d00dbf8e7655447e2ffc09c9519c63b7191dff9a151b7456d",
+  "candidate_receipt_content_recovered": false,
+  "source_provenance_recovered": false,
+  "source_versions_certified": false,
+  "unselected_quality_values_decoded_or_exported": false,
+  "archive_headers_read": false,
+  "protected_directory_visited": false,
+  "remote_writes": false,
+  "training_release": false,
+  "independent_reviews": "Per-stage implementation gates and small actual receipts E44-E48 reviewed. Reviewer did not read original full manifest, all raw prior inputs or reproduce SSH identity verification.",
+  "next": "E49 frozen 72 observed roots, bounded whitelist metadata-directory name-only locator; requires new implementation/test/independent gate before actual call. Empty name result is not global absence."
+}

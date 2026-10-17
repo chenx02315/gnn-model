@@ -2,6 +2,14 @@
 
 ## 权威状态
 
+本轮E44–E49已连续实际执行6个只读节点。连接已恢复、E47正式package SHA及candidate receipt绑定已认证；E49在72个冻结非保护项目根的白名单目录中实际扫描94目录/883名称，全部根可访问、深度剪枝0，仅命中两份package manifest。candidate receipt与source_provenance在该范围内未找到；不称全B端不存在，也不重复打开另一manifest。相关完整回归最终609项（603执行/6跳过/0失败错误），门禁及独立复核后才每阶段执行一次，无自动重试/远端写入/训练。
+
+当前真正输入缺口是两份可读元数据或可信来源端投影/明确备份位置，非SSH或重复审批。已生成[精确请求](../data/manifests/ranking_v6_e49_missing_metadata_request_20261017_r1.json)和[E49记录](entries/E49_bounded_named_metadata_search.md)，包含已知原路径、candidate receipt SHA48c164...456d、字段和六TRAIN24行限制。原本地目录访问拒绝未绕过/改ACL；不盲扫整SSD、开大归档或进保护目录。收到可验证来源后沿既有恢复授权继续哈希链和版本认证；质量/完整计费/全集冻结与训练仍未放行。以下E44–E48及以前段落保留历史进展。
+
+E44–E47已连续推进：用户确认正确B入口为cjc@gpuserver.buptic.top，主代理严格校验连接和公钥指纹成功；E43错误入口失败保持原样，不再代表当前连接状态。门禁与独立复核后，三次限定列名调用实际成功，E47再一次完整SHA绑定的白名单投影成功，2374B实际manifest SHA与历史66c677...eafc一致，正式candidate_receipt原字节SHA已恢复为48c164e99e653c1d00dbf8e7655447e2ffc09c9519c63b7191dff9a151b7456d。未解码/导出其余质量值、不写远端或训练。见[E47](entries/E47_package_hash_projection.md)。
+
+下一依赖是实际找到候选receipt及其source_provenance并通过原字节哈希链，随后才能比较24份正式源版本；不能由本次package SHA相等跳过下游来源、全集和计费门禁。正在既有完整元数据恢复授权内继续有界名称/备份定位，不要求用户逐小步再授权；仍不读质量表、不增加电路、不启动训练。以下E43及以前段落保留历史状态。
+
 E43已获完整B端只读元数据恢复包授权，8针对性测试及570项相关回归通过（564执行/6跳过/0失败错误），独立复核后唯一一次SSH连接在主机密钥认证处失败，子进程exit255、stdout 0B。未取得目录清单、未执行远端读取器。当前单一外部阻塞是可信渠道核验B端端点和指纹；不删除/修改known_hosts、不关校验、不自动重试或换地址绕过。见[E43失败封存](entries/E43_b_metadata_host_identity_blocked.md)。原元数据恢复授权仍有效，但不能代替服务器身份认证，训练仍关闭。以下E42及更早段落保留历史状态。
 
 E42已完成来源链的静态定位：package manifest绑定candidate_receipt，后者绑定source_provenance及原测量文件SHA；仓库旧记录有manifest声明SHA，但不能据此认证每个源版本。一次精确Get-Item访问本地package manifest返回Access denied，内容未打开，次级not-found不是不存在证明。没有重复E38–E41，没有A/B调用或ACL修改。见[E42最小元数据请求](entries/E42_formal_source_binding.md)。

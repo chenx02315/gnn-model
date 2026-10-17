@@ -1,0 +1,48 @@
+{
+  "experiment_id": "E49",
+  "authority": "Approved B metadata-only recovery. The E44 actual name receipt freezes exactly 72 project roots; no root listing, broadened search, or content read.",
+  "input_receipt": "data/manifests/ranking_v6_e44_roots_20261017_r1.json",
+  "input_receipt_sha256": "1678e0ad17f91a666a533e78a30df022f070345b8e9774ed88da976741be612e",
+  "producer": "scripts/probe_ranking_v6_e49_named_metadata.py",
+  "transport": "scripts/run_ranking_v6_e49_named_metadata.py",
+  "endpoint": "cjc@gpuserver.buptic.top",
+  "hostname": "bupt-gpus1",
+  "scope": "Each frozen root top and whitelisted children through relative child depth 3. Directory components opened using descriptor-relative O_DIRECTORY|O_NOFOLLOW. Filter child names before nofollow stat. Exact metadata file names only; no content opens or hashes. Unavailable roots and depth-limited directories are explicit. All other child directories excluded.",
+  "exact_directory_names": [
+    "data",
+    "manifests",
+    "inputs",
+    "input",
+    "package",
+    "artifacts"
+  ],
+  "directory_prefixes": [
+    "formal_candidate_space",
+    "runtime_training_package",
+    "runtime_training_staging"
+  ],
+  "exact_file_names": [
+    "runtime_training_package_manifest_v2.json",
+    "receipt_v2.json",
+    "source_provenance_v2.tsv"
+  ],
+  "protected_root": "/ssd/cjc/multimode_ate_gnn_v1",
+  "protected_root_action": "Never stat, open, list, or visit",
+  "limits": {
+    "roots": 72,
+    "relative_child_depth": 3,
+    "directories": 512,
+    "entries_per_directory": 2048,
+    "total_entries": 20000,
+    "output_bytes_per_stream": 65536,
+    "address_space_bytes": 1073741824,
+    "cpu_s": 20,
+    "timeout_s": 120,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "coverage": "FROZEN_72_ROOTS_WHITELIST_CHILD_DEPTH_3_ONLY",
+  "receipt_caveat": "receipt_v2.json name alone is not authority. A missing match is not global absence. Any content access needs a separate exact path/schema/byte-SHA gate.",
+  "remote_writes": false,
+  "training_release": false
+}

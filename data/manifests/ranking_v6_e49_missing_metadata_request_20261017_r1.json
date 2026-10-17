@@ -1,0 +1,26 @@
+{
+  "purpose": "Recover two source metadata projections, not new model results or permission to train.",
+  "known_original_base": "C:/Users/86155/Desktop/new lab/runtime_training_staging_20260928/formal_candidate_space_v2_r1",
+  "access_boundary": "Original local directory previously denied; do not bypass OS permissions, take ownership, replace unknown ACLs or export whole quality data. Authorized source owner/administrator may provide selected metadata with source readback receipt, or identify an exact readable backup.",
+  "candidate_receipt": {
+    "path": "receipt_v2.json",
+    "expected_complete_byte_sha256": "48c164e99e653c1d00dbf8e7655447e2ffc09c9519c63b7191dff9a151b7456d",
+    "selected_fields": ["schema_version", "sha256.source_provenance", "sha256.candidate_space", "sha256.normalized_measurements"],
+    "expected_schema_version": "formal-candidate-space-v2-receipt",
+    "expected_candidate_space_sha256": "f55420e29e94ae74dff90f042c72fd7bd76ffa511b214ac89d7a238a18bd678e",
+    "expected_normalized_measurements_sha256": "59be15d3cb9e0c3a1d96bc368472df419c4a3d26fafdf491563a8bd7639d503a",
+    "rule": "Complete original bytes must match pinned package binding before trusting selected fields. Do not decode/export quality-derived counts or other values. Do not regenerate/reformat and claim same original SHA."
+  },
+  "source_provenance": {
+    "path": "source_provenance_v2.tsv",
+    "expected_complete_byte_sha256": "Must equal candidate_receipt.sha256.source_provenance; not yet known or fabricated.",
+    "columns": ["circuit", "stage", "source_sha256", "normalized_sha256", "row_count", "source_basename"],
+    "selected_circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "spi"],
+    "expected_selected_rows": 24,
+    "rule": "Preserve original logical row ordinal and metadata row order; no PASS/outcome/runtime filtering. Original source_sha256 is different from normalized_sha256. Export only TRAIN rows, not validation or BLIND."
+  },
+  "export_receipt": ["exporter source SHA/version", "source endpoint and exact path", "operation result", "stable regular-file identity/readback", "complete original file byte count and SHA", "selected-field/row schema", "projection byte count and SHA", "explicit exclusions and no-training status"],
+  "do_not_supply": ["outcomes or quality tables", "runtime values", "checkpoints", "whole experiment directory", "passwords or private keys"],
+  "B_scope_completed": "E49 observed 72 roots/94 whitelist directories/883 names, no unavailable roots or depth-pruned dirs; only two package manifest names, neither missing artifact. Not global B absence proof.",
+  "training_release": false
+}

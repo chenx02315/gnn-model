@@ -6,6 +6,10 @@
 
 ## 阅读入口
 
+- [E49限定定位与缺失元数据请求](entries/E49_bounded_named_metadata_search.md)：72根、94白名单目录、883名称条目实际检查完毕，仅命中两份package manifest；需候选receipt及逐源清单的可读投影/备份位置。不是连接阻塞，也不代表全B端不存在；训练仍关闭。
+- [E48根目录独立元数据备份名](entries/E48_metadata_backup_names.md)：一次名称/stat检查为空，未读归档header或解压；后续E49补充目录覆盖，不夸大为空间全局缺失。
+- [E47正式package哈希读回](entries/E47_package_hash_projection.md)：已恢复可信B连接并核对2374B完整manifest SHA，实际取得正式candidate receipt绑定；两份下游来源元数据仍待恢复，不训练。
+- [E44正确B端连接](entries/E44_verified_b_metadata_recovery.md) → [E45四根定位](entries/E45_four_runtime_roots.md) → [E46精确manifest位置](entries/E46_exact_package_manifest_location.md)：本次连续执行的真实只读节点；E43错误入口失败保留，不代表B端仍不可连接。
 - [E43 B端恢复与身份阻塞](entries/E43_b_metadata_host_identity_blocked.md)：已获完整元数据恢复授权；实现门禁通过，但唯一连接被SSH主机密钥变化拦下，远端目录/数据未读。需可信渠道核验B端身份，不改信任记录、不重试、不训练。
 - [E42正式源版本认证链](entries/E42_formal_source_binding.md)：已定位package→candidate receipt→逐源SHA链，但本地package manifest属性访问被拒；列出仅三个元数据投影的最小补齐请求，不改ACL、不猜版本、不训练。
 - [E41-r2修复与实际连接](entries/E41_r2_local_marker_join.md)：修复短路径误拒后，一次新本地诊断完成；16个声明全部各严格匹配1条计时记录，零缺失/多匹配。正式源版本及完整搜索计费仍未认证，未训练。

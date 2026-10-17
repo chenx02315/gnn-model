@@ -1,0 +1,12 @@
+{
+  "experiment_id": "E48",
+  "authority": "Same bounded metadata recovery package, after E47 authentic package candidate_receipt binding recovered; no content authority expansion.",
+  "scope": "Only direct names under /ssd/cjc matching standalone formal_candidate_space/source_provenance/runtime_training_package metadata/backup basenames or receipt_v2.json. lstat matching names only, skip symlinks/nonregular. No recursion, archive header or payload reading, extraction, content hashing/opening, protected or unrelated name stat.",
+  "purpose": "Check whether a specifically named standalone metadata copy or backup can supply still-missing candidate receipt and provenance. Empty result is not global B absence proof.",
+  "producer": "scripts/probe_ranking_v6_e48_metadata_backup_names.py",
+  "transport": "scripts/run_ranking_v6_e48_metadata_backup_names.py",
+  "limits": {"root_entries": 1024, "address_space_bytes": 1073741824, "cpu_s": 20, "timeout_s": 120, "output_bytes_per_stream": 65536, "workers": 1, "automatic_retries": 0},
+  "execution": "Exactly one new call after tests and independent review. Any archive header or content reading requires separate fixed implementation/review under existing metadata-only scope, not auto extraction.",
+  "remote_writes": false,
+  "training_release": false
+}

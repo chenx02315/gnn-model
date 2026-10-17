@@ -1,0 +1,12 @@
+{
+  "experiment_id": "E45",
+  "authority": "Existing complete B metadata recovery authorization, continued after verified E44 directory inventory.",
+  "input_receipt_sha256": "1678e0ad17f91a666a533e78a30df022f070345b8e9774ed88da976741be612e",
+  "scope": "List one level inside exactly four observed gnn_model_runtime_v2 roots. Only whitelist metadata-package/input/data directory names and two named metadata files are lstat/projected. No recursion, file-content open, dependency/environment/result/checkpoint descent, remote writes or protected-directory visit.",
+  "root_basis": "Four runtime-v2 roots actually observed by E44; not all 72 selected roots and no broad recursive search. A missing name here is not global absence proof.",
+  "producer": "scripts/probe_ranking_v6_e45_metadata_locations.py",
+  "transport": "scripts/run_ranking_v6_e45_metadata_locations.py",
+  "limits": {"entries_per_root": 2048, "roots": 4, "output_bytes_per_stream": 65536, "address_space_bytes": 1073741824, "cpu_s": 20, "timeout_s": 120, "workers": 1, "automatic_retries": 0},
+  "execution": "One fixed call only after focused tests and independent review; observed paths must be frozen/reviewed before file contents or further descent.",
+  "training_release": false
+}
