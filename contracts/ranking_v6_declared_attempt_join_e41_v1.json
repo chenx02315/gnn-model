@@ -1,0 +1,25 @@
+{
+  "experiment_id": "E41",
+  "purpose": "Local-only diagnostic of 16 E40 declared result markers against two existing Phase2 attempt metadata manifests. No new remote read or source/result/log file opening.",
+  "helper": "scripts/diagnose_ranking_v6_e41_declared_attempts.py",
+  "runner": "scripts/run_ranking_v6_e41_local_join.py",
+  "execution": "python -m scripts.run_ranking_v6_e41_local_join, no dynamic arguments; exactly one gated local read, zero retries",
+  "inputs": [
+    {"kind": "E40_path_metadata", "sha256": "49bb5cb21036827dd5d3e3f69b5d0eda72c5e1321fa0c110a04774b1cfa38858", "bytes": 5858},
+    {"kind": "s35932_attempt_metadata", "sha256": "af7236dc484e2a5e3a489787f98ec1ae5963ec34fe625585cd59820c48b4db36"},
+    {"kind": "s38417_attempt_metadata", "sha256": "30aea1c23bc6751c3b17e1e2e32ae36fc3cbd7934f03df22fb78df1f7c962300"}
+  ],
+  "selected_attempt_fields": ["circuit", "mode", "attempt_id", "stage", "source_log_path"],
+  "reader_policy": "Existing stable descriptor/ancestor/single-link/SHA reader, exact manifest schema and per-circuit TRAIN family. CSV bytes decode to generic strings for selection, but wall/status strings are not analyzed, evaluated, compared, returned or used to select attempts. All 6985 rows selected.",
+  "marker_rule": "Historical src/data/audit_runtime_action_attempt_mapping_v1.py basename(): last path component and strip exactly one matching suffix in order .driver.log/.log/.tsv/.csv. Only reproduce pure textual rule; never run/import historical quality mapper.",
+  "strict_scope": "Exact circuit+mode+marker; declared path lexically under its pinned coverage root/04_integer_refine; relative attempt path's first component exact coverage leaf, second component and metadata stage both 04_integer_refine. No resolving, realpath, following paths, fuzzy/global-basename choice or cross-stage fallback.",
+  "retention": "Count zero/one/multiple strict matches for each scoped source+mode declaration. Separately retain same-namespace stage conflicts, other-namespace and other-circuit/mode marker collisions; keep shared references. No automatic source-version or physical-call assignment, cost synthesis or data release.",
+  "limits": {"fixed_files": 3, "file_bytes": 8388608, "total_input_bytes": 12582912, "attempt_rows": 20000, "expected_attempt_rows": 6985, "declarations": 16, "output_bytes": 65536, "workers": 1, "automatic_retries": 0, "windows_hard_memory_cap_or_peak_claimed": false},
+  "gate": "Focused synthetic tests, independent source/semantic review and pre-call permission gate before one actual local execution. Errors produce fixed code, no raw rows/paths or partial successful result.",
+  "publication": "Git receives small counts/declaration marker and strict attempt-ID hashes, not raw paths, attempt records, result files or wall values.",
+  "quality_evaluated": false,
+  "wall_or_status_analyzed": false,
+  "paths_followed": false,
+  "costs_or_invocation_identity_certified": false,
+  "training_release": false
+}

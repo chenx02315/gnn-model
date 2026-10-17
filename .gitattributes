@@ -265,3 +265,12 @@ tests/test_ranking_v6_e40_summary.py -text
 data/manifests/ranking_v6_e40_* -text
 data/manifests/ranking_v6_e40_transport_20261017_r1.json whitespace=cr-at-eol
 experiment_overview/entries/E40_declared_result_paths.md -text
+
+# E41 failed diagnostic and exact failure evidence, original r1 retained.
+contracts/ranking_v6_declared_attempt_join_e41_v1.json -text
+scripts/diagnose_ranking_v6_e41_declared_attempts.py -text
+scripts/run_ranking_v6_e41_local_join.py -text
+tests/test_ranking_v6_e41_declared_attempts.py -text
+data/manifests/ranking_v6_e41_* -text
+data/manifests/ranking_v6_e41_failure_20261017_r1.json whitespace=cr-at-eol
+experiment_overview/entries/E41_local_marker_join_failed.md -text

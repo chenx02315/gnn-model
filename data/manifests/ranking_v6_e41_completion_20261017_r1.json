@@ -1,0 +1,61 @@
+{
+  "experiment_id": "E41_R1",
+  "status": "FAIL_CLOSED_ACTUAL_GUARD_UNKNOWN",
+  "actual_execution": {
+    "executions": 1,
+    "child_exit_code": 2,
+    "automatic_retries": 0,
+    "failure_stdout_bytes": 88,
+    "failure_stdout_sha256": "d268b04aa13d21c138f693d235090950818a69481251ab3e892cbbde19b1b529",
+    "source_phase_or_guard_identified": false,
+    "actual_guard": "UNKNOWN_ACTUAL_GUARD",
+    "completed_input_reads_or_selected_rows_known": false,
+    "partial_success_or_join_summary_emitted": false,
+    "new_remote_calls": 0,
+    "original_measurement_result_or_log_files_opened": false,
+    "costs_or_training_data_emitted": false,
+    "new_training_lsf_or_tessent_calls": 0
+  },
+  "frozen_implementation": {
+    "helper_sha256": "d28d94c7d6f7f861bec5f187bb42fbd8b906bb8c068a3262eb34a1770ad39626",
+    "runner_sha256": "77ad9654a5646ef54f5ddedec632d0dc4e01132259feb13a431996ba9ef6be20",
+    "tests_sha256": "865c74805e9ab9604b714259b46e253766456e62265eaab85d5b17a9eff85c1a",
+    "contract_sha256": "a3bb80259a947be552c98be5ccaa4183571779c2c142ab19fc99da1c216ba7af",
+    "original_failed_versions_preserved": true
+  },
+  "tests": {
+    "focused_independent_tests": 8,
+    "focused_skips_failures_errors": 0,
+    "related_tests_run": 550,
+    "related_executed": 544,
+    "related_skipped": 6,
+    "related_failures": 0,
+    "related_errors": 0,
+    "related_seconds": 62.016,
+    "raw_local_regression_log_sha256": "7f5b57e001c045d86263c5e77d9c8c862149ab57496515d486e4a257647c7098",
+    "test_pass_did_not_predict_actual_success": true,
+    "pre_execution_fixture_only_failure": "Synthetic JSON fixture was 5881B instead of at most5858B; shortened fabricated marker names, then fully reran focused tests. No actual input read for this correction."
+  },
+  "independent_review": {
+    "reviewer": "e27_review",
+    "pre_call_gate": "PASS_EXACTLY_ONE_FIXED_LOCAL_E41_DECLARED_MARKER_JOIN",
+    "post_failure_static_triage": "CONFIRMED_SYNTHETIC_SHALLOW_PATH_FALSE_REJECTION_ACTUAL_GUARD_UNKNOWN",
+    "confirmed_defect": "Helper globally requires len(source_log_path components)>=3 for all provided attempts. A safe unrelated endpoint/driver.log row appended to otherwise valid synthetic metadata causes E41_RELATIVE_LOG_NAMESPACE. Strict-match path depth must not exclude unrelated safe metadata.",
+    "causal_limitation": "This counterexample proves a code/contract boundary defect, not that it caused the actual failure. Generic r1 error omitted phase and guard; no actual metadata was reread after failure.",
+    "review_gap_acknowledged": "Initial eight tests and independent pre-call review omitted the shallow unrelated path boundary.",
+    "new_input_reads_remote_calls_or_writes_by_triage": 0,
+    "publication_review": "PASS_FAILURE_EVIDENCE_UNKNOWN_ACTUAL_GUARD_AND_REPAIR_BOUNDARIES_ONLY"
+  },
+  "next_version_plan": {
+    "preserve_r1": true,
+    "retain_safe_one_and_two_component_log_paths": true,
+    "represent_missing_namespace_or_stage_explicitly_without_fabrication": true,
+    "strict_match_still_requires_exact_namespace_stage_circuit_mode_marker": true,
+    "add_fixed_phase_enum_and_allowlisted_guard_codes_no_raw_exception_echo": true,
+    "regressions": ["unrelated shallow path retained", "same-marker shallow path never strict match", "unsafe paths still rejected", "shared references and zero/multiple matches retained"],
+    "implementation_tests_independent_review_and_fresh_hash_gate_required": true,
+    "additional_actual_execution_authorized": false,
+    "additional_execution_limit_if_approved": "One new local metadata diagnostic in a new directory, single worker, same bounds, zero automatic retries, no remote/result/quality/train access."
+  },
+  "training_release": false
+}
