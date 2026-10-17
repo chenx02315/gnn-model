@@ -1,0 +1,14 @@
+{
+  "accepted_metadata_receipt": true,
+  "audit_response_valid": true,
+  "elapsed_local_s": 5.465,
+  "exit_code": 0,
+  "output_limit_exceeded": false,
+  "remote_termination_verified": false,
+  "source_sha256": "ceb06eb105999555c1aede6525bb9d6cfc83696d0d05e312460c429d44080822",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdin_write_failed": false,
+  "stdout_sha256": "a742707477aa39553fab8f3ee14c808494cccfaad3ef9a05a661a309ad8b52ed",
+  "timeout": false,
+  "transport_pass": true
+}

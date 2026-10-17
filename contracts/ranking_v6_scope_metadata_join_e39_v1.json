@@ -1,0 +1,21 @@
+{
+  "experiment_id": "E39",
+  "authority": "Continue the user-approved six-TRAIN candidate/source metadata and runtime-mapping coverage audit; no quality values or training. Existing E35 mixed TRAIN/VALIDATION mapping-metadata permission remains limited to immediate six-TRAIN filtering.",
+  "scope": "Local only; fixed E38 metadata projection SHA a742707477aa39553fab8f3ee14c808494cccfaad3ef9a05a661a309ad8b52ed and E35 metadata edges SHA d5b25fdd934a18a352c286f572172ad8ba79fa064cf70dbe3f68e8e44e0fdfea.",
+  "implementation": "scripts/audit_ranking_v6_e39_scope_join.py",
+  "runner": "scripts/run_ranking_v6_e39_local_join.py",
+  "source_identity": "Preserve candidate spelling and circuit+coverage_root+stage_alias; retain each logical source row and duplicates. Original UID reconstructed independently from file version, never used to collapse roots.",
+  "config_comparison": "Canonical integer H/M representation only for semantic action comparison, matching E35 guard; original candidate ID is not canonicalized or renumbered.",
+  "classifications": ["UID_ABSENT", "UID_PRESENT_NO_CONFIG_MATCH", "ONE_SCOPED_CONFIG_MATCH", "MULTIPLE_SCOPED_CONFIG_MATCH"],
+  "partial_conditions": ["No mapping references", "Any absent UID", "Any UID without matching configuration", "Any multiple scoped configuration match", "Any duplicate scoped candidate identity"],
+  "non_partial_unmatched_rows": "Retain and count all source rows not matching old mapped references; absence from this selected mapping is not itself proof of failure, bad quality, erroneous exclusion or a missing runtime.",
+  "counts": "Mapped source units and scoped configuration rows are different grains. Matched-row total includes all ambiguous matches; it does not allocate costs or assert unique invocation.",
+  "input_gate": "Exact two pinned ordinary single-link bounded stable local files. Exact edge header; discard known validation metadata rows before join; reject unknown/BLIND circuits. Deduplicate repeated per-session references only into source/action/circuit tuples, not source rows or versions.",
+  "limits": {"source_files": 2, "total_input_bytes": 10485760, "projection_bytes": 1048576, "mixed_edge_rows": 100000, "summary_bytes": 65536, "worker_count": 1, "automatic_retries": 0, "windows_hard_memory_cap_or_peak_claim": false},
+  "execution_gate": "Synthetic tests and independent review before one actual local metadata join; no remote, quality source table or runtime manifest reads in this step.",
+  "source_metadata_config_join_is_invocation_proof": false,
+  "quality_or_runtime_cost_computed": false,
+  "historical_source_pre_outcome_or_full_universe_certified": false,
+  "versions_selected_or_merged": false,
+  "training_release": false
+}

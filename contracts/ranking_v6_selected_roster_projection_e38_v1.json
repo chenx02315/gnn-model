@@ -1,0 +1,23 @@
+{
+  "experiment_id": "E38",
+  "purpose": "Read-only six-TRAIN configuration metadata projection under the existing user permission, with explicit distinction between raw byte scanning and quality-value access.",
+  "base_stage": "E37 actual 32-path lstat receipt SHA82ef18e36816911a4e60f1f54287804eea8761b80d9a4ac0290e3ef6c0ff0f9a",
+  "source": "scripts/project_ranking_v6_e38_roster.py",
+  "transport": "scripts/run_ranking_v6_e38_readonly.py",
+  "fixed_scope": "Exactly the same 32 source paths under eight coverage roots for six TRAIN circuits as E37. Both Phase2 versions retained; no glob, recursion, argv paths, role expansion or copied quality input.",
+  "file_bytes": "Whole file bytes will be read transiently for full SHA-256 and TSV structure scanning. It would be false to claim no source file contents were read.",
+  "decoded_fields": ["header names only", "candidate", "h_patterns", "m_patterns"],
+  "ignored_fields": "Other values are scanned bytewise for TSV structure/bounds but not captured into per-field buffers, decoded, interpreted, tested for PASS/eligibility or persisted. No quality labels, cycles, F outcome or runtime values exported.",
+  "header_policy": "Only the 18 SEQ_FIELDS names documented in the historical Phase4 driver source, allowing subsets subject to required H/HMF-M fields. Unknown, duplicate or non-ASCII header closes failure; do not guess schema after actual failure.",
+  "row_policy": "Logical TSV record ordinal includes header as 1; preserve every data record, including non-PASS records without accessing their outcome. Reject malformed quotes/width, blank logical records or limits rather than silently skip. Legacy strip selected metadata strings; retain leading zeros. Blank/missing candidate uses one-based data-row fallback with origin recorded.",
+  "identity": "Keep circuit+coverage_root+stage_alias+candidate_raw as scoped identity. Original unscoped source UID may be reconstructed separately but never merges versions. Do not force this 32-file projection into E36's 24-file declaration.",
+  "stable_read": "POSIX descriptor ancestor walk, O_NOFOLLOW, ordinary single-link final FD, complete pre/open/post/path identity and byte-count equality; SHA binds read snapshot, not historical freeze time or complete generation universe.",
+  "limits": {"file_bytes": 8388608, "total_bytes": 41943040, "field_bytes": 65536, "record_bytes": 262144, "total_rows": 100000, "output_each_stream_bytes": 1048576, "address_space_bytes": 1073741824, "cpu_soft_seconds": 20, "worker_count": 1, "automatic_retries": 0, "transport_timeout_seconds": 120},
+  "publication": "Only metadata-only projection is saved in a new local staging directory; Git stores code, small summary/counts/receipts and SHA, not full projection or any raw source table.",
+  "gate": "Freeze code/tests, pass synthetic parser/transport/descriptor tests and independent pre-call review before exactly one actual read. Windows POSIX skip is not a Linux execution PASS. A closed failure is retained without retry or partial-success substitution.",
+  "remote_files_or_acl_changes": false,
+  "quality_values_decoded_or_evaluated": false,
+  "pass_or_eligible_filter": false,
+  "historical_source_completeness_or_pre_outcome_freeze_certified": false,
+  "training_or_lsf_tessent_release": false
+}

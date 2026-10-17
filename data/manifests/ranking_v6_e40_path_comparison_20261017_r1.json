@@ -1,0 +1,97 @@
+{
+  "projection_bytes": 5858,
+  "projection_sha256": "49bb5cb21036827dd5d3e3f69b5d0eda72c5e1321fa0c110a04774b1cfa38858",
+  "summary": {
+    "all_scanned_data_rows": 73,
+    "costs_computed": false,
+    "file_count": 4,
+    "interpretation": "Exact trimmed declaration strings only; equality is not file identity, independent invocation or cost ownership.",
+    "invocation_identity_certified": false,
+    "quality_evaluated": false,
+    "result_files_opened": false,
+    "source_bytes": 32919,
+    "source_origin_assigned": false,
+    "status": "PARTIAL_DECLARED_PATHS_NOT_INVOCATION_CERTIFICATION",
+    "strings_resolved_or_rebased": false,
+    "target_rows": 8,
+    "targets": [
+      {
+        "declared_path_comparison": {
+          "f_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "d84eb368c72e6526efb4be0702dbbdf3feebab4bc2a47d742f5ad66d22012f71",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "ef3abe1787dfdc6d73c30d5aae0043c3e125d41c5b68eb97c1b3c3a5a4d95ac3"
+          },
+          "h_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "2e3b80ad43b1da274f65336f8b184bf0352c2a5fecd9c26ef6558a7eb4509dda",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "1ea72e247151b0edd80652601f53b95896fe862f50f51cf08a16ea5589d9c5dd"
+          }
+        },
+        "source_candidate_uid": "s35932:hf_refine:H64-F4:1"
+      },
+      {
+        "declared_path_comparison": {
+          "f_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "4a25bb49f962ff71170d8a84e4b18927897d259795e69af2fc989ed4059764ca",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "753508b6f5a96f0807a505761259a67ac7e5ec2fba9306c766619136aa7dcddc"
+          },
+          "h_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "3a8b3411a34154c2e7d8c288e8e9207883863ab49537b9283aef1352dc6f7818",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "7bba2940dcbbb6fa1e726cd933f77ae2bd6b56b62acbe5989cb4811dd46421d4"
+          }
+        },
+        "source_candidate_uid": "s38417:hf_refine:H64-F4:10"
+      },
+      {
+        "declared_path_comparison": {
+          "f_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "189fd612a2a757c31576e3f55f3639d5c4fe11c3b281eef39e3019ac7837b560",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "66d05c015edab80ce5df5eb11cf8a183f20cedf1151d29757df9eb756857e315"
+          },
+          "h_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "78622f26276c54efb21367739552284a1148784cc36e207183c8511a8df5157c",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "4f759d97812fa756a49c5a5132b6de60a63119aed6263265cedea3f756220db0"
+          }
+        },
+        "source_candidate_uid": "s38417:hf_refine:H64-F4:11"
+      },
+      {
+        "declared_path_comparison": {
+          "f_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "05836fe317117ac2adbad3b9e61e0b05f18ede4ed4499915b8761a9964c04a70",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "e62fbef369da3e50e8893c5cdd05896bcebf6d49fb4ca0a42202c5a89fbabddc"
+          },
+          "h_result": {
+            "classification": "different_declared_strings",
+            "v1_missing": false,
+            "v1_sha256_of_trimmed_declaration": "4b7731339028c7caf4c21657bebdc3dc45642541a2d2218c86ae068bc8f4f360",
+            "v2_missing": false,
+            "v2_sha256_of_trimmed_declaration": "74e4349bf1bcc941d0eff177003178b6edcc389eb6e7ea8f47d4e044b89ee632"
+          }
+        },
+        "source_candidate_uid": "s38417:hf_refine:H64-F4:8"
+      }
+    ],
+    "training_release": false
+  }
+}

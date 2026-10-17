@@ -228,3 +228,40 @@ tests/test_ranking_v6_e37_source_paths.py -text
 data/manifests/ranking_v6_e37_* -text
 data/manifests/ranking_v6_e37_transport_20261016_r1.json whitespace=cr-at-eol
 experiment_overview/entries/E37_metadata_access_and_source_paths.md -text
+
+# E38 bounded configuration-only projection; raw tables and full projection stay outside Git.
+contracts/ranking_v6_selected_roster_projection_e38_v1.json -text
+scripts/project_ranking_v6_e38_roster.py -text
+scripts/run_ranking_v6_e38_readonly.py -text
+tests/test_ranking_v6_e38_roster.py -text
+data/manifests/ranking_v6_e38_* -text
+data/manifests/ranking_v6_e38_transport_20261016_r1.json whitespace=cr-at-eol
+experiment_overview/entries/E38_selected_config_projection.md -text
+
+# E39 metadata-only scope join, preserve raw small JSON receipt bytes.
+contracts/ranking_v6_scope_metadata_join_e39_v1.json -text
+contracts/ranking_v6_scope_reference_diagnostic_e39_v1.json -text
+scripts/audit_ranking_v6_e39_scope_join.py -text
+scripts/run_ranking_v6_e39_local_join.py -text
+scripts/diagnose_ranking_v6_e39_scope_refs.py -text
+scripts/run_ranking_v6_e39_scope_refs.py -text
+tests/test_ranking_v6_e39_scope_join.py -text
+tests/test_ranking_v6_e39_local_runner.py -text
+tests/test_ranking_v6_e39_scope_refs.py -text
+tests/test_ranking_v6_e39_scope_ref_runner.py -text
+data/manifests/ranking_v6_e39_* -text
+data/manifests/ranking_v6_e39_scope_join_summary_20261016_r1.json whitespace=cr-at-eol
+data/manifests/ranking_v6_e39_scope_refs_summary_20261016_r1.json whitespace=cr-at-eol
+experiment_overview/entries/E39_version_scope_join.md -text
+
+# E40 selected result-path declarations; full projection remains outside Git.
+contracts/ranking_v6_result_path_projection_e40_v1.json -text
+scripts/project_ranking_v6_e40_result_paths.py -text
+scripts/run_ranking_v6_e40_readonly.py -text
+scripts/summarize_ranking_v6_e40_result_paths.py -text
+tests/test_ranking_v6_e40_result_paths.py -text
+tests/test_ranking_v6_e40_transport.py -text
+tests/test_ranking_v6_e40_summary.py -text
+data/manifests/ranking_v6_e40_* -text
+data/manifests/ranking_v6_e40_transport_20261017_r1.json whitespace=cr-at-eol
+experiment_overview/entries/E40_declared_result_paths.md -text

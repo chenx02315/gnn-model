@@ -1,0 +1,22 @@
+{
+  "experiment_id": "E40",
+  "purpose": "Resolve what eight scoped source records declare as H/F result paths, without opening those result files, selecting a coverage version, or inferring invocation ownership.",
+  "trigger": "E39 found four multiple-config-scope sources; each has references in both Phase2 coverage versions. Mixed references alone are not evidence of invalid measurements.",
+  "base_projection_sha256": "a742707477aa39553fab8f3ee14c808494cccfaad3ef9a05a661a309ad8b52ed",
+  "source": "scripts/project_ranking_v6_e40_result_paths.py",
+  "transport": "scripts/run_ranking_v6_e40_readonly.py",
+  "fixed_scope": "Four HF-refine measurement files for s35932/s38417, both v1 and v2_merge_reclassify. Eight exact logical target rows from E38: s35932 candidate1 H9; s38417 candidates8 H101,10 H100,11 H102 in each version. No caller-selected paths or searches.",
+  "snapshot_checks": "Exact E38 file SHA, header SHA, byte count, total logical rows and target row/candidate/H/M/origin must match; preserve version scopes and blank-vs-zero metadata.",
+  "whole_bytes": "Read whole input files transiently only for SHA and TSV structural scan. This is source-content byte access, not no-content access. No raw measurement tables persisted.",
+  "selected_values": "For the eight target records only, decode candidate/H/M/origin and h_result/f_result path strings. Other records/fields structurally scanned, not captured, decoded, evaluated or exported. Header names are decoded.",
+  "path_policy": "Bounded safe POSIX declaration strings, including explicit empty fields; retain trimmed spelling without resolving, rebasing or following them. No result-file or log open, no F count, cycles, D95, status or outcome analysis.",
+  "interpretation": "Compare declared strings only. Identical strings support declared artifact reuse, not verified file identity or session ownership. Different strings do not prove independent calls or justify summed costs. Missing paths remain missing. Never majority-vote versions or choose fastest success.",
+  "limits": {"files": 4, "expected_input_bytes": 32919, "file_bytes": 65536, "total_bytes": 262144, "output_each_stream_bytes": 65536, "target_records": 8, "all_logical_data_records": 73, "address_space_bytes": 1073741824, "cpu_soft_seconds": 20, "worker_count": 1, "automatic_retries": 0, "timeout_seconds": 120},
+  "gate": "New implementation, synthetic tests and independent pre-call review required before exactly one fixed read. Preserve failures and do not retry. Frozen E38 source/transport not changed.",
+  "publication": "Full eight-row path metadata projection stays in a new local staging directory. Git only receives code, contract, small aggregate/path-equality receipts and SHA-256; not raw source tables or full result paths.",
+  "remote_writes_or_acl_changes": false,
+  "quality_evaluated": false,
+  "result_files_opened": false,
+  "source_origin_or_invocation_ownership_certified": false,
+  "training_release": false
+}

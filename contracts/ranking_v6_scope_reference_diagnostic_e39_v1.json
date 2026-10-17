@@ -1,0 +1,26 @@
+{
+  "experiment_id": "E39_FOCUSED_SCOPE_REFERENCES",
+  "purpose": "Explain the four actual multiple-scope configuration matches using already authorized runtime reference metadata, without selecting source origin or computing cost.",
+  "trigger_summary_sha256": "465a66c095d3b36229a0c908aa68275b0e3faf5bdbdedd88f31798856cb8a625",
+  "helper": "scripts/diagnose_ranking_v6_e39_scope_refs.py",
+  "runner": "scripts/run_ranking_v6_e39_scope_refs.py",
+  "fixed_inputs": [
+    {"kind": "E38_configuration_projection", "sha256": "a742707477aa39553fab8f3ee14c808494cccfaad3ef9a05a661a309ad8b52ed"},
+    {"kind": "E35_mapping_edges", "sha256": "d5b25fdd934a18a352c286f572172ad8ba79fa064cf70dbe3f68e8e44e0fdfea"},
+    {"kind": "s35932_runtime_manifest_metadata", "sha256": "af7236dc484e2a5e3a489787f98ec1ae5963ec34fe625585cd59820c48b4db36"},
+    {"kind": "s38417_runtime_manifest_metadata", "sha256": "30aea1c23bc6751c3b17e1e2e32ae36fc3cbd7934f03df22fb78df1f7c962300"}
+  ],
+  "target_selection": "Reconstruct the same 1776 single/4 multiple configuration classification from pinned metadata; require exactly four two-root Phase2 targets and 1780 distinct mapped source/action references. No guessed source IDs or arbitrary caller paths.",
+  "runtime_selected_fields": ["circuit", "mode", "attempt_id", "stage", "source_log_path"],
+  "membership": "Exact manifest schema, circuit, TRAIN role and circuit-family binding checked before selected metadata projection. Existing mixed-edge metadata validation rows discarded before analysis.",
+  "scope_rule": "For these two Phase2 circuits only, interpret safe relative log path's first component against the two fixed coverage-root basenames. No suffix search, absolute path, traversal, embedded path following or log opening.",
+  "retention": "Count all provided target references by mode and observed scope, including outside/zero cases. Missing/duplicate/join-conflicting references fail closed. Repeated references across different sources remain distinct source-reference units.",
+  "interpretation": "One-scope concentration or multiple-scope references are observations, not original source provenance or invocation certification. Always PARTIAL_SCOPE_OWNERSHIP_NOT_CERTIFIED; no majority vote or version assignment.",
+  "limits": {"fixed_local_files": 4, "total_bytes": 20971520, "each_file_bytes": 8388608, "attempt_metadata_rows": 20000, "output_bytes": 65536, "worker_count": 1, "automatic_retries": 0, "windows_hard_cap_or_peak_claim": false},
+  "gate": "Independent implementation and synthetic tests before one focused actual local diagnostic. No remote calls or source-measurement reads. Preserve failure evidence; not a retry of the completed E39 join.",
+  "wall_or_status_analysis": false,
+  "quality_values_or_costs_computed": false,
+  "source_origin_assigned": false,
+  "logs_or_embedded_paths_opened": false,
+  "training_release": false
+}

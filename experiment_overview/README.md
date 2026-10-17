@@ -6,6 +6,9 @@
 
 ## 阅读入口
 
+- [E40声明结果路径核对](entries/E40_declared_result_paths.md)：4文件8源记录的16个H/F声明已核，4组H与4组F字符串均不同。不是独立调用或计费证明；下一步本地接计时元数据，无新远端读取或训练。
+- [E39版本限定配置连接](entries/E39_version_scope_join.md)：旧映射1,780个source全部找到配置，1,776唯一、4个跨版本多匹配；2,539未匹配配置保留，不解释为失败。继续针对4个核来源引用，不放行训练。
+- [E38真实配置投影](entries/E38_selected_config_projection.md)：32文件八版本共4,323记录，34条行号回退；只解码candidate/H/M，保留全部记录和版本。E39已完成配置连接，4项歧义继续收敛，未放行训练。
 - [E37权限与来源路径](entries/E37_metadata_access_and_source_paths.md)：指定元数据ACL仍不可读，未改权限；已从固定计时元数据恢复来源，A端一次stat确认八根32文件存在。保留Phase2双版本，尚未读测量内容或放行训练。
 - [E36候选全集与生成边界](entries/E36_source_roster_generation_boundary.md)：源码确认旧动作按PASS筛选；补无质量清单合同与覆盖检查接口。实际清单目录访问被拒，尚未认证真实候选全集或执行前冻结，不放行训练。
 - [E35映射与费用口径](entries/E35_mapping_metadata_and_cost_scope.md)：25,437条session完整分区，7组跨stage记录均无当前候选引用；3次失败均有范围外阶段排除记录。明确唯一session秒数与历史引用费用代理不同，未放行训练。
