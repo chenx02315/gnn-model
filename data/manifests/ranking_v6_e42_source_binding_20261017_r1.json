@@ -1,0 +1,59 @@
+{
+  "experiment_id": "E42",
+  "status": "BLOCKED_AUTHORITY_METADATA_ACCESS_NOT_MISSING_RUNTIME",
+  "base_commit": "26df6f28dfeb5c6471f63df3b3331fa3e8468035",
+  "purpose": "Find the authenticated formal-candidate source-version chain using repository code and small historical seals, without rereading E38-E41 inputs, quality tables or runtime results.",
+  "static_chain": [
+    {"file": "src/data/build_runtime_training_package_v2.py", "sha256": "5ff9fe4d14079f47dd979669ff72dd78c79b18ca7314185c2db6bf1f87747cc5", "fact": "Package manifest source_sha256 binds candidate_receipt, candidate_space and normalized_measurements."},
+    {"file": "src/data/build_formal_candidate_space_v2.py", "sha256": "e8b3a49c0ff70fb69ef2e16e4c6794585f0d030862dbe80b52da429e080d8ed4", "fact": "Candidate receipt sha256.source_provenance binds a provenance TSV recording original source byte SHA separately from normalized copy SHA, circuit, stage, row count and basename."},
+    {"file": "data/manifests/runtime_training_package_v2_20261002.json", "sha256": "08c29d3ef4c316730b3b87a34fd3f355cd2084af2b54ba3a6cea806e1e827008", "fact": "Historical repository seal declares package manifest SHA and aggregate candidate/normalized hashes; this alone does not identify each original source version."}
+  ],
+  "historical_declared_pins_not_fresh_readback": {
+    "package_manifest": "66c6776c033c87c2b41fa6cdeb05852e650eb1fe5173600fae2f0d2a8907eafc",
+    "candidate_space": "f55420e29e94ae74dff90f042c72fd7bd76ffa511b214ac89d7a238a18bd678e",
+    "normalized_measurements": "59be15d3cb9e0c3a1d96bc368472df419c4a3d26fafdf491563a8bd7639d503a"
+  },
+  "new_local_access_observation": {
+    "operation": "One exact Get-Item metadata/stat attempt, no content open",
+    "path": "runtime_training_staging_20260928/runtime_training_package_v2_r1/runtime_training_package_manifest_v2.json",
+    "result": "ACCESS_DENIED",
+    "secondary_not_found_message_is_not_absence_proof": true,
+    "target_existence_and_original_DACL_confirmed": false,
+    "automatic_retries": 0,
+    "ACL_or_ownership_changes": 0
+  },
+  "minimal_export_request": {
+    "source_base": "C:/Users/86155/Desktop/new lab/runtime_training_staging_20260928",
+    "package_manifest": {
+      "path": "runtime_training_package_v2_r1/runtime_training_package_manifest_v2.json",
+      "selected_fields": ["schema_version", "source_sha256.candidate_receipt", "source_sha256.candidate_space", "source_sha256.normalized_measurements"],
+      "full_source_byte_sha256_required": true,
+      "do_not_export": ["circuit_oracle_cycles", "epsilon counts", "quality or outcome fields"]
+    },
+    "candidate_receipt": {
+      "path": "formal_candidate_space_v2_r1/receipt_v2.json",
+      "selected_fields": ["schema_version", "sha256.source_provenance", "sha256.candidate_space", "sha256.normalized_measurements"],
+      "full_source_byte_sha256_must_match_package_binding": true
+    },
+    "train_source_provenance": {
+      "path": "formal_candidate_space_v2_r1/source_provenance_v2.tsv",
+      "selected_fields": ["circuit", "stage", "source_sha256", "normalized_sha256", "row_count", "source_basename"],
+      "circuits": ["aes_core", "s13207", "s15850", "s35932", "s38417", "spi"],
+      "expected_rows": 24,
+      "full_source_byte_sha256_must_match_candidate_receipt": true,
+      "preserve_original_logical_row_and_exporter_receipt": true
+    },
+    "verification": "An authorized reader/exporter must attest selected fields to complete byte hashes and preserve namespace/order. Manually copying hash strings is not independent authentication. Do not export full package manifest (it includes quality-derived values), candidate tables, outcomes, runtime or checkpoints.",
+    "blocked_export_not_executed": true
+  },
+  "search_hygiene": "An initial repository content search was too broad and tool output was truncated, including historical result summaries. Those matches were not used as source-version, runtime or quality evidence. Subsequent inspection was restricted to named small metadata/code files. No raw label table or protected directory was opened.",
+  "new_A_B_calls": 0,
+  "E38_E41_actual_diagnostics_repeated": false,
+  "builder_mapper_or_trainer_executed": false,
+  "source_version_selected_or_cost_labels_changed": false,
+  "historical_hashes_treated_as_pre_outcome_freeze": false,
+  "training_release": false,
+  "independent_review": "STATIC_CHAIN_AND_SCOPE_PUBLICATION_PASS",
+  "independent_access_denial_reproduced": false,
+  "proposed_alternative_not_authorized_or_executed": "If the user explicitly permits a new remote scope, perform bounded metadata-only discovery on existing B under /ssd/cjc, excluding /ssd/cjc/multimode_ate_gnn_v1 before any target access. Only the three named metadata files/selected fields and TRAIN provenance; no quality artifacts, checkpoint, training, remote writes or broad extraction. Existence of a usable B copy is not yet established."
+}

@@ -283,3 +283,7 @@ tests/test_ranking_v6_e41_declared_attempts_r2.py -text
 data/manifests/ranking_v6_e41_r2_* -text
 data/manifests/ranking_v6_e41_r2_result_20261017_r1.json whitespace=cr-at-eol
 experiment_overview/entries/E41_r2_local_marker_join.md -text
+
+# E42 metadata-access boundary and minimal source-binding request.
+data/manifests/ranking_v6_e42_* -text
+experiment_overview/entries/E42_formal_source_binding.md -text

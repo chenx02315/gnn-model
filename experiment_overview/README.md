@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E42正式源版本认证链](entries/E42_formal_source_binding.md)：已定位package→candidate receipt→逐源SHA链，但本地package manifest属性访问被拒；列出仅三个元数据投影的最小补齐请求，不改ACL、不猜版本、不训练。
 - [E41-r2修复与实际连接](entries/E41_r2_local_marker_join.md)：修复短路径误拒后，一次新本地诊断完成；16个声明全部各严格匹配1条计时记录，零缺失/多匹配。正式源版本及完整搜索计费仍未认证，未训练。
 - [E41本地连接失败与修复边界](entries/E41_local_marker_join_failed.md)：历史r1失败已保留，实际触发检查仍未知；后续追加授权的修复和新诊断已由E41-r2完成，不重复申请同一步，也不开放训练。
 - [E40声明结果路径核对](entries/E40_declared_result_paths.md)：4文件8源记录的16个H/F声明已核，4组H与4组F字符串均不同。不是独立调用或计费证明；下一步本地接计时元数据，无新远端读取或训练。
