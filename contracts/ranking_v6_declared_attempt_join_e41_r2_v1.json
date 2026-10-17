@@ -1,0 +1,21 @@
+{
+  "experiment_id": "E41_R2",
+  "authorization": "User allowed full focused repair, tests, independent review and exactly one new local diagnostic after r1 failure. No additional remote/result-file/quality/training permission.",
+  "predecessor": "E41-r1 failure preserved at ff11e5b; failure SHA d268b04aa13d21c138f693d235090950818a69481251ab3e892cbbde19b1b529. Actual r1 guard remains UNKNOWN_ACTUAL_GUARD.",
+  "helper": "scripts/diagnose_ranking_v6_e41_declared_attempts_r2.py",
+  "runner": "scripts/run_ranking_v6_e41_local_join_r2.py",
+  "command": "python -m scripts.run_ranking_v6_e41_local_join_r2, no dynamic arguments",
+  "input_pins": [
+    "49bb5cb21036827dd5d3e3f69b5d0eda72c5e1321fa0c110a04774b1cfa38858",
+    "af7236dc484e2a5e3a489787f98ec1ae5963ec34fe625585cd59820c48b4db36",
+    "30aea1c23bc6751c3b17e1e2e32ae36fc3cbd7934f03df22fb78df1f7c962300"
+  ],
+  "repair": "Retain safe one/two-component relative paths. Single component has namespace=None and path_stage=None; two components have path_stage=None. Never invent a refinement stage. Strict matches still require exact declared lexical root/stage, circuit, mode, marker and both metadata/path stages. All earlier zero/multiple/collision/shared-reference safeguards retained.",
+  "failure_diagnostics": "Only fixed phase enum and allowlisted guard strings. Unrecognized exceptions map to UNCLASSIFIED_FAILURE; no raw exception/row/path echoed. No partial success output.",
+  "selected_attempt_fields": ["circuit", "mode", "attempt_id", "stage", "source_log_path"],
+  "unchanged_reader": "Stable ordinary single-link ancestor/FD/SHA reader and exact schema/TRAIN/family membership. Full generic CSV strings decoded for field selection; wall/status strings not analyzed or used to select records. No log or result path followed.",
+  "limits": {"files": 3, "file_bytes": 8388608, "total_input_bytes": 12582912, "expected_projection_bytes": 5858, "expected_attempt_rows": 6985, "max_attempt_rows": 20000, "declarations": 16, "output_bytes": 65536, "workers": 1, "automatic_retries": 0, "windows_hard_memory_cap_or_peak_claimed": false},
+  "gate": "Focused and full regression plus independent review and fresh SHA pins before one new local execution. Preserve failure, do not automatically run a third diagnostic. Independent result review and Chinese overview before normal version synchronization.",
+  "interpretation": "Always PARTIAL. Textual marker matches do not certify original source ownership, independent invocation, costs, candidate universe, pre-outcome freezing or training readiness.",
+  "remote_calls_result_reads_quality_analysis_training": false
+}
