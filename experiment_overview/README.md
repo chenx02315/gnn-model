@@ -6,6 +6,7 @@
 
 ## 阅读入口
 
+- [E43 B端恢复与身份阻塞](entries/E43_b_metadata_host_identity_blocked.md)：已获完整元数据恢复授权；实现门禁通过，但唯一连接被SSH主机密钥变化拦下，远端目录/数据未读。需可信渠道核验B端身份，不改信任记录、不重试、不训练。
 - [E42正式源版本认证链](entries/E42_formal_source_binding.md)：已定位package→candidate receipt→逐源SHA链，但本地package manifest属性访问被拒；列出仅三个元数据投影的最小补齐请求，不改ACL、不猜版本、不训练。
 - [E41-r2修复与实际连接](entries/E41_r2_local_marker_join.md)：修复短路径误拒后，一次新本地诊断完成；16个声明全部各严格匹配1条计时记录，零缺失/多匹配。正式源版本及完整搜索计费仍未认证，未训练。
 - [E41本地连接失败与修复边界](entries/E41_local_marker_join_failed.md)：历史r1失败已保留，实际触发检查仍未知；后续追加授权的修复和新诊断已由E41-r2完成，不重复申请同一步，也不开放训练。

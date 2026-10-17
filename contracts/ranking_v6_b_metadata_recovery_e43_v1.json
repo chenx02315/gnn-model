@@ -1,0 +1,20 @@
+{
+  "experiment_id": "E43",
+  "authority": "User explicitly allowed the complete B-side read-only metadata recovery package proposed after E42: bounded discovery of three named metadata artifacts, selected-field/hash-chain recovery, independent review. No remote writes, quality/checkpoint/protected-directory access or training.",
+  "protected_root": "/ssd/cjc/multimode_ate_gnn_v1",
+  "root_inventory": {
+    "source": "scripts/probe_ranking_v6_e43_b_metadata_roots.py",
+    "transport": "scripts/run_ranking_v6_e43_b_roots.py",
+    "ssh_target": "work.buptic.top",
+    "endpoint_basis": "Existing user SSH config declares work.buptic.top User cjc; B workspace is /ssd/cjc. Strict host-key verification; no credential/key contents read.",
+    "scope": "Only directory names directly under /ssd/cjc. Filter gnn_model, gnn-model, runtime_, formal_, multimode_ate_ prefixes. Exclude protected name BEFORE stat/open/visit. Do not descend any child. lstat candidate entries only, skip symlinks/non-directories.",
+    "limits": {"root_entries": 1024, "selected_directories": 512, "address_space_bytes": 1073741824, "cpu_soft_seconds": 20, "output_bytes_each_stream": 65536, "timeout_s": 120, "workers": 1, "automatic_retries": 0},
+    "execution_after_independent_gate": "One fixed root-name inventory into a new local receipt directory; errors preserved, no automatic retry. No data file content opens or hashing at this phase."
+  },
+  "successor_scope_already_authorized_but_not_yet_implemented": "Use observed root names to freeze a bounded named-metadata path inventory, independently review before further calls. Then selectively export only E42 fields with whole-byte SHA and stable FD identity; do not decode quality/oracle values or follow declared result paths. No request for another minor-step approval when gates pass within this scope.",
+  "named_artifacts": ["runtime_training_package_manifest_v2.json", "receipt_v2.json in formal candidate package", "source_provenance_v2.tsv"],
+  "hash_anchor": "Historical declared package manifest SHA66c6776c033c87c2b41fa6cdeb05852e650eb1fe5173600fae2f0d2a8907eafc; must verify actual bytes before trusting its candidate receipt hash chain. Existence/authentic copy not assumed.",
+  "publication": "Local staging for small metadata receipts; Git code, contracts, bounded summaries and SHA only. No data tar extraction, checkpoint or bulk file copying.",
+  "training_release": false,
+  "remote_write_or_acl_changes": false
+}

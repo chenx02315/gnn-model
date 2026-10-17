@@ -2,6 +2,8 @@
 
 ## 权威状态
 
+E43已获完整B端只读元数据恢复包授权，8针对性测试及570项相关回归通过（564执行/6跳过/0失败错误），独立复核后唯一一次SSH连接在主机密钥认证处失败，子进程exit255、stdout 0B。未取得目录清单、未执行远端读取器。当前单一外部阻塞是可信渠道核验B端端点和指纹；不删除/修改known_hosts、不关校验、不自动重试或换地址绕过。见[E43失败封存](entries/E43_b_metadata_host_identity_blocked.md)。原元数据恢复授权仍有效，但不能代替服务器身份认证，训练仍关闭。以下E42及更早段落保留历史状态。
+
 E42已完成来源链的静态定位：package manifest绑定candidate_receipt，后者绑定source_provenance及原测量文件SHA；仓库旧记录有manifest声明SHA，但不能据此认证每个源版本。一次精确Get-Item访问本地package manifest返回Access denied，内容未打开，次级not-found不是不存在证明。没有重复E38–E41，没有A/B调用或ACL修改。见[E42最小元数据请求](entries/E42_formal_source_binding.md)。
 
 当前阻塞为可读的三个元数据投影/来源回执，不是运行记录缺失：package manifest选定哈希字段、candidate receipt选定哈希字段、六TRAIN共24行source_provenance。不要整份解封package manifest（含结果派生值）、质量目录或另跑训练。需要有权限的来源端/管理员按回执中的精确路径和字段导出，或用户指定获准可读来源；单纯重复授权不等于OS权限已恢复。拿到后连续完成哈希链和版本比对/独立复核，不重复寻找路径或猜v1/v2。

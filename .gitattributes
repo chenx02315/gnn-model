@@ -287,3 +287,13 @@ experiment_overview/entries/E41_r2_local_marker_join.md -text
 # E42 metadata-access boundary and minimal source-binding request.
 data/manifests/ranking_v6_e42_* -text
 experiment_overview/entries/E42_formal_source_binding.md -text
+
+# E43 bounded metadata transport and immutable failure evidence.
+contracts/ranking_v6_b_metadata_recovery_e43_v1.json -text
+scripts/probe_ranking_v6_e43_b_metadata_roots.py -text
+scripts/run_ranking_v6_e43_b_roots.py -text
+tests/test_ranking_v6_e43_b_roots.py -text
+data/manifests/ranking_v6_e43_* -text
+data/manifests/ranking_v6_e43_transport_20261017_r1.json whitespace=cr-at-eol
+data/manifests/ranking_v6_e43_stderr_20261017_r1.log whitespace=cr-at-eol
+experiment_overview/entries/E43_b_metadata_host_identity_blocked.md -text
