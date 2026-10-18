@@ -39,6 +39,8 @@
 
 ## 记录规则
 
+新增 [E53 历史 receipt 备份恢复准备](entries/E53_receipt_backup_feasibility.md)：仅合成可行性实现，实际入口硬关闭；明确实际缺失的两份元数据与解阻方式，不是训练或历史内容恢复成功。
+
 2026-10-18 新增：[E50/E52 本地元数据定位](entries/E50_E52_local_metadata_recovery.md)、[E51 历史生成命令追溯](entries/E51_creation_history.md)。尚未恢复正式来源；小包检查和格式诊断通过不等于训练放行。E49 所谓原目录更正为推断位置，继续主动查实际创建命令。
 
 1. 执行前记录实验 ID、假设、固定样例/切分、seed、样本量、预算、指标、判据和源码版本。

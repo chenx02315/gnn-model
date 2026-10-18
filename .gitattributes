@@ -356,3 +356,8 @@ data/manifests/ranking_v6_e51_* -text whitespace=cr-at-eol
 data/manifests/ranking_v6_e52_* -text whitespace=cr-at-eol
 experiment_overview/entries/E50_E52_local_metadata_recovery.md -text
 experiment_overview/entries/E51_creation_history.md -text
+scripts/recover_ranking_v6_e53_receipt_history.cjs -text
+tests/test_ranking_v6_e53_receipt_history.py -text
+contracts/ranking_v6_receipt_history_recovery_e53_v1.json -text
+experiment_overview/entries/E53_receipt_backup_feasibility.md -text
+data/manifests/ranking_v6_e53_* -text whitespace=cr-at-eol

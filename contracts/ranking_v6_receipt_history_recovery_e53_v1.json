@@ -1,0 +1,88 @@
+{
+  "experiment_id": "E53",
+  "schema_version": "ranking_v6_receipt_history_recovery_e53_v1",
+  "phase": "DESIGN_AND_SYNTHETIC_FEASIBILITY_ONLY",
+  "producer": "scripts/recover_ranking_v6_e53_receipt_history.cjs",
+  "test": "tests/test_ranking_v6_e53_receipt_history.py",
+  "execution_authorized": false,
+  "cli": "Hard-disabled without filesystem driver; emits DISABLED_PENDING_SCOPE_AND_INDEPENDENT_REVIEW, exit 2. Requiring the module never opens files.",
+  "fixed_future_scope": {
+    "root": "C:/Users/86155/.codex/sessions/2026/07/25/rollout-2026-07-25T22-51-41-019f99c2-b229-7f42-8f37-255b4339afc8.jsonl",
+    "date": "2026-10-02",
+    "compressed_history_files": false,
+    "network": false
+  },
+  "limits": {
+    "input_bytes": 536870912,
+    "line_bytes": 2097152,
+    "selected_receipt_bytes": 65536,
+    "output_bytes": 65536,
+    "workers": 1,
+    "allowed_call_ids": 32,
+    "lexical_depth": 32,
+    "lexical_nodes": 4096,
+    "text_array_entries": 1,
+    "automatic_retries": 0
+  },
+  "positive_binding": {
+    "required": true,
+    "status": "NOT_RECOVERED",
+    "allowed_call_ids": [],
+    "future_gate": "Finite explicit call IDs positively bound by command metadata to receipt-only creation/read operations. Package --candidate-root references, timestamps, adjacency, schema markers and names alone are not positive binding. Do not invent IDs. API requires an explicit finite allowlist and rejects unbound output before text unescape."
+  },
+  "selection": "Buffer-only literal ASCII schema-marker and fixed root-date prefilter, then response_item/direct payload custom_tool_call_output or function_call_output and exact allowed call_id. Optional tool name must be exec/exec_command normalized enum. No JSON.parse of envelope/output; unknown metadata and bodies are structurally skipped without UTF-8 interpretation.",
+  "supported_wrappers": "Only a raw quoted output string or an output array with exactly one entry having exactly type=text and text=quoted-string. Arrays with zero or multiple entries, including receipt plus ordinary quality text, are rejected before any unescape. Exactly one schema-bearing text part and exactly one literal schema marker within that part are required. The selected part must be exactly one receipt JSON object with literal opening/closing object boundaries and optional trailing whitespace; mixed stdout prefixes/suffixes, objects/other entry kinds and unfamiliar wrappers are unsupported and counted, not adaptively decoded.",
+  "lexical_processing": "Unescape only selected schema-bearing text literal to Buffer, with 64KiB cap and ASCII-only decoded bytes. This supports Python builder ensure_ascii=True output, including retained nested Unicode JSON escapes, but rejects raw/non-ASCII first-layer values. Lexically validate exact builder receipt schema and grammar, duplicate keys, trailing bytes, key and node/depth limits without JSON.parse or semantic result-value conversion. No ordinary quality/model/row values are interpreted.",
+  "exact_receipt_schema": {
+    "schema_version": "formal-candidate-space-v2-receipt",
+    "root_keys": [
+      "schema_version",
+      "status",
+      "required_circuits",
+      "counts",
+      "sha256",
+      "gates",
+      "boundaries"
+    ],
+    "source_code_reference": "src/data/build_formal_candidate_space_v2.py:228-263",
+    "nested_schema": "Exact current builder counts/sha256/gates/boundaries key sets and JSON value kinds; roster string-array and status string. Values remain byte slices, not analytical evidence."
+  },
+  "reconstruction": "Sort raw unescaped ASCII key tokens and lexically format object/array indentation two spaces, separators matching Python json.dump(sort_keys=True,indent=2), ending with one newline. Preserve primitive JSON lexemes without interpreting their values. Reconstructed entire original-byte candidate must match the known receipt SHA before any hash field is accepted/exported.",
+  "required_original_receipt_sha256": "48c164e99e653c1d00dbf8e7655447e2ffc09c9519c63b7191dff9a151b7456d",
+  "after_authentication_projection": [
+    "schema_version",
+    "sha256.source_provenance",
+    "sha256.candidate_space",
+    "sha256.normalized_measurements"
+  ],
+  "forbidden_exports": [
+    "raw receipt",
+    "status value",
+    "counts values",
+    "required_circuits values",
+    "gates values",
+    "boundaries values",
+    "candidate_space_audit hash",
+    "ordinary outputs",
+    "quality tables",
+    "rows",
+    "models",
+    "historical commands"
+  ],
+  "mismatch_behavior": "Counters only; no rejected candidate values or hashes exported.",
+  "release_gate": "Projection/status authentication requires exactly one complete SHA-matching candidate across the entire bounded input, no input-bound hit and zero oversized-line skips. Matching duplicate copies are ambiguous: retain counts only and emit AMBIGUOUS_MATCHING_COPIES_NO_RELEASE with null projection. Any input-byte cap hit or oversized-line skip marks the scan incomplete and emits INCOMPLETE_INPUT_NO_RELEASE with null projection even when an earlier complete candidate matched. No partial-scan authentication release.",
+  "synthetic_api": "Expected hash and explicit call IDs are injected only for synthetic fixtures. Resource overrides may tighten but never raise fixed maxima. No actual history scan/receipt recovery authorized by tests.",
+  "remaining_blockers": [
+    "No positive receipt-only call binding recovered",
+    "Two requested metadata files remain unreadable",
+    "Even authenticated receipt alone does not recover source_provenance content",
+    "Independent privacy/scope review required before any future actual-read implementation or authorization"
+  ],
+  "training_release": false,
+  "provenance_recovered": false,
+  "actual_history_read": false,
+  "ordinary_result_values_decoded": false,
+  "acl_changed": false,
+  "remote_writes": false,
+  "protected_b_root_access": false
+}
