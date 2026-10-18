@@ -1,0 +1,100 @@
+{
+  "experiment_id": "E54",
+  "schema_version": "ranking_v6_source_binding_e54_v1",
+  "purpose": "Authenticate the user-copied receipt to the already sealed formal package, then its complete provenance bytes, exporting only selected receipt hashes and six TRAIN circuits' 24 source-metadata rows.",
+  "producer": "scripts/project_ranking_v6_e54_source_binding.py",
+  "fixed_handoff_base": "C:/Users/86155/Desktop/new lab/metadata_handoff_20261018_r1",
+  "fixed_files": [
+    {
+      "name": "receipt_v2.json",
+      "bytes": 1368,
+      "sha256": "48c164e99e653c1d00dbf8e7655447e2ffc09c9519c63b7191dff9a151b7456d"
+    },
+    {
+      "name": "source_provenance_v2.tsv",
+      "bytes": 5880,
+      "sha256": "b1bfb85632209948cd23c353cbc93da8d70871478f2f53098a8f9a255fc11ccb"
+    }
+  ],
+  "limits": {
+    "receipt_bytes": 131072,
+    "provenance_bytes": 1048576,
+    "output_bytes": 65536,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "stable_read": "Plain regular non-reparse single-link files only. Check path metadata before open, file-descriptor metadata before read, both after read, exact length and bounds. Same-API identity compares dev/ino/mode/nlink/size/mtime_ns/ctime_ns fully. Only Windows cross-API path-vs-FD comparison omits ctime_ns, as E52 established; same-API ctime changes still reject. Reparse checks apply before and after reads.",
+  "binding_order": [
+    "Stable read exact receipt and check full-byte SHA before JSON key or selected-value decoding.",
+    "Byte syntax projector decodes field names plus ONLY schema_version and sha256.source_provenance/candidate_space/normalized_measurements; never semantic values of ignored receipt fields.",
+    "Require schema formal-candidate-space-v2-receipt, aggregate candidate and normalized pins, and exact provenance SHA field before opening the provenance file.",
+    "Stable read complete provenance metadata, verify its full-byte SHA before any TSV field decoding.",
+    "Validate exact header/flat-row byte grammar; compare first-cell bytes against six TRAIN names; only selected fields are decoded."
+  ],
+  "receipt_selected_fields": [
+    "schema_version",
+    "sha256.source_provenance",
+    "sha256.candidate_space",
+    "sha256.normalized_measurements"
+  ],
+  "expected_candidate_space_sha256": "f55420e29e94ae74dff90f042c72fd7bd76ffa511b214ac89d7a238a18bd678e",
+  "expected_normalized_measurements_sha256": "59be15d3cb9e0c3a1d96bc368472df419c4a3d26fafdf491563a8bd7639d503a",
+  "tsv_header": [
+    "circuit",
+    "stage",
+    "source_sha256",
+    "normalized_sha256",
+    "row_count",
+    "source_basename"
+  ],
+  "train_circuits": [
+    "aes_core",
+    "s13207",
+    "s15850",
+    "s35932",
+    "s38417",
+    "spi"
+  ],
+  "allowed_stage_aliases": [
+    "hf_coarse",
+    "hmf_coarse",
+    "hf_refine",
+    "hmf_refine"
+  ],
+  "expected_selected_rows": 24,
+  "grid": "Exactly one row for each six-TRAIN-circuit x four-builder-stage pair. Unknown stage aliases, duplicates or incomplete grid reject. Do not assume total provenance row count; non-TRAIN rows remain byte-only and excluded count is explicit.",
+  "allowed_source_basenames": {
+    "hf_coarse": [
+      "measurements.tsv",
+      "02_hf_coarse__measurements.tsv"
+    ],
+    "hmf_coarse": [
+      "measurements.tsv",
+      "03_hmf_coarse__measurements.tsv"
+    ],
+    "hf_refine": [
+      "hf_measurements.tsv",
+      "04_integer_refine__hf_measurements.tsv"
+    ],
+    "hmf_refine": [
+      "hmf_measurements.tsv",
+      "04_integer_refine__hmf_measurements.tsv"
+    ]
+  },
+  "tsv_byte_policy": "Six unquoted columns (five tabs), LF records, no blank interior records, quotes, CR/control bytes or ambiguous multiline records. Non-TRAIN value bytes may be non-ASCII and are never decoded. Selected TRAIN rows must be ASCII with 64-lowerhex source/normalized SHA, bounded canonical decimal row_count and exact stage-compatible basename.",
+  "ordinal_namespace": {
+    "logical_ordinal": "One-based data-row ordinal in original provenance, excluding header and including skipped non-TRAIN rows.",
+    "physical_line": "One-based original physical line number, header included; physical_line=logical_ordinal+1.",
+    "order": "Preserve original selected-row order; never sort or renumber after filtering."
+  },
+  "output": "Complete metadata-file hashes/byte sizes and paths, four receipt projection fields, selected24 source metadata rows with both ordinals, exclusion/scan counts and safety flags. No raw receipt/provenance, non-TRAIN values, quality tables or source snapshot contents.",
+  "verification_gate": "Worker performs synthetic tests only. Parent independent review and gate are required before the fixed-path actual projection. No actual copied metadata content has been read by this implementation worker.",
+  "source_snapshot_files_opened": false,
+  "quality_or_outcome_files_opened": false,
+  "non_train_provenance_values_decoded": false,
+  "nonwhitelist_receipt_values_decoded": false,
+  "acl_changed": false,
+  "remote_files_written": false,
+  "protected_directory_visited": false,
+  "training_release": false
+}

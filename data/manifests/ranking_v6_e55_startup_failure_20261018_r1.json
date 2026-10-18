@@ -1,0 +1,24 @@
+{
+  "experiment_id": "E55_R1",
+  "status": "STARTUP_IMPORT_FAILED_BEFORE_METADATA_READ",
+  "command": "D:/Python/Python313/python.exe -I -S -B scripts/audit_ranking_v6_e55_original_sha_join.py",
+  "exit_code": 1,
+  "source_sha256": "604f1101e8d4c7037bfa259c6d516bf889e3e07eb7a438018844f298aca11359",
+  "observed_errors": [
+    "ModuleNotFoundError: No module named 'scripts'",
+    "ModuleNotFoundError: No module named 'project_ranking_v6_e54_source_binding'"
+  ],
+  "observed_failure_lines": [9, 11],
+  "main_entered": false,
+  "metadata_inputs_opened": false,
+  "comparison_result_produced": false,
+  "stdout_bytes": 0,
+  "tee_result_file_created": false,
+  "secondary_error": "Get-FileHash could not find comparison.json; this is not an input-hash mismatch.",
+  "stderr_original_byte_hash_available": false,
+  "evidence_type": "Structured transcription of execution tool output; not a raw stderr byte receipt",
+  "old_binary_retried": false,
+  "historical_or_source_data_changed": false,
+  "training_release": false,
+  "repair_plan": "New R2 fixed-absolute dependency import and real isolated subprocess synthetic-main test; unchanged original-SHA join and fixed inputs. Independent review before one new-version local comparison."
+}

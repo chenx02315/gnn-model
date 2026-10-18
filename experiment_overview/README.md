@@ -39,6 +39,10 @@
 
 ## 记录规则
 
+最新[E56 配置连接](entries/E56_formal_config_join.md)：此前四项多版本歧义已消除，1780映射源单位全部唯一配置匹配。尚无新模型训练结果；下一关是实际调用/完整费用/候选全集冻结。独立复核额度限制导致本批最终发布复核待办，先本地保留，不声称已远端同步。
+
+当前进展：[E54 来源链恢复](entries/E54_handoff_source_binding.md)和[E55 原SHA版本比较](entries/E55_original_source_sha_comparison.md)已实际完成；两份副本有效，24来源各匹配1份已记快照。不是新模型性能结果；当前继续来源限定的配置连接与后续费用/冻结门禁。以任务账本最新段为准。
+
 新增 [E53 历史 receipt 备份恢复准备](entries/E53_receipt_backup_feasibility.md)：仅合成可行性实现，实际入口硬关闭；明确实际缺失的两份元数据与解阻方式，不是训练或历史内容恢复成功。
 
 2026-10-18 新增：[E50/E52 本地元数据定位](entries/E50_E52_local_metadata_recovery.md)、[E51 历史生成命令追溯](entries/E51_creation_history.md)。尚未恢复正式来源；小包检查和格式诊断通过不等于训练放行。E49 所谓原目录更正为推断位置，继续主动查实际创建命令。

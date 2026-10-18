@@ -1,0 +1,73 @@
+{
+  "experiment_id": "E56",
+  "schema_version": "ranking_v6_formal_config_join_e56_v1",
+  "purpose": "Compare old mapping-source UID/action config equality over all32 E38 files and the24 files authenticated by E55 original-byte joins, retaining ambiguities and excluded metadata without selecting coverage versions by name.",
+  "source": "scripts/audit_ranking_v6_e56_formal_config_join.py",
+  "fixed_inputs": [
+    {
+      "path": "runtime_training_staging_20260928/v6_e55_original_sha_join_20261018_r2/comparison.json",
+      "sha256": "91a58264b4d339b475f0861c043ff3839eab34d72d098d893e191b78c221a225",
+      "max_bytes": 65536
+    },
+    {
+      "path": "runtime_training_staging_20260928/v6_e38_roster_projection_20261016_r1/stdout.log",
+      "sha256": "a742707477aa39553fab8f3ee14c808494cccfaad3ef9a05a661a309ad8b52ed",
+      "known_bytes": 199497,
+      "max_bytes": 1048576
+    },
+    {
+      "path": "runtime_training_staging_20260928/runtime_action_attempt_mapping_v1_r5/invocation_attempt_edges_v1.tsv",
+      "sha256": "d5b25fdd934a18a352c286f572172ad8ba79fa064cf70dbe3f68e8e44e0fdfea",
+      "known_bytes": 4481820,
+      "max_bytes": 10485760
+    }
+  ],
+  "limits": {
+    "combined_input_bytes": 10485760,
+    "output_bytes": 65536,
+    "edge_rows": 100000,
+    "changed_uid_details": 32,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "dependency": "Only fixed E54 stable_read imported by absolute __file__ sibling spec_from_file_location/module_from_spec/exec_module; no old E39/E38 runtime imports, sys.path/environment/site-package changes or remote dependencies.",
+  "read_gate": "Stable plain single-link non-reparse reads through frozen E54 helper. Verify complete byte SHA of all three pinned metadata files before decoding their JSON/TSV fields. No referenced source paths are opened.",
+  "e38_validation": "Standalone exact E38 selected-control projection schema and frozen32 SPECS/eight roots/four aliases copied from producer/validator CODE. Validate flags, totals, resources, file/header hashes, original sequential source rows, candidate origin and control numeric syntax. Extra quality fields reject.",
+  "formal_authentication": "E55 must report24 ONE original-SHA matches, zero ZERO/MULTIPLE. Each unique six-TRAIN x four-stage formal row must bind exactly one E38 path with equal circuit/stage/original full-file SHA/root and row_count. normalized_sha256 never authenticates or rescues a miss. Missing/mismatched/duplicate formal paths fail closed. Select24 by authenticated path keys, never v1/v2 names.",
+  "edge_header": [
+    "action_uid",
+    "source_candidate_uid",
+    "circuit",
+    "stage",
+    "action_scheme",
+    "h_patterns",
+    "m_patterns",
+    "mode",
+    "retry_group_id",
+    "retry_order",
+    "attempt_id",
+    "mapping_rule"
+  ],
+  "edge_byte_filter": "Strict flat twelve columns (eleven tabs), optional CRLF, no quotes or ambiguous multiline records. First inspect zero-based column2 circuit bytes. Only s5378/tv80 rows may be excluded; no other non-TRAIN scope accepted. Decode only TRAIN source_candidate_uid/action_uid/circuit; all other field bytes remain uninterpreted. Non-TRAIN private values are never decoded.",
+  "edge_identity": "Deduplicate exact source UID/action UID/circuit triples exactly as E39 local runner. Conflicting actions owned by one source UID reject. Source candidate spelling including leading zeros remains unchanged. Only H/M controls compare via int, reproducing E39 action UID semantics.",
+  "classes": [
+    "UID_ABSENT",
+    "UID_PRESENT_NO_CONFIG_MATCH",
+    "ONE_SCOPED_CONFIG_MATCH",
+    "MULTIPLE_SCOPED_CONFIG_MATCH"
+  ],
+  "grain": "Retain every E38 control source row including duplicate scoped candidates; no row dedup/version collapse. Class counts are mapping-source UID grain; matched/unmatched counts are scoped source-row grain. Ambiguous matches count all matching rows.",
+  "output": "Baseline32 and formal24 class/per-file matched/unmatched aggregates, explicit eight excluded-file and excluded-row counts, bounded changed/previously ambiguous source UID/action metadata with all matching roots/path/SHA and matching-row counts. No all-row output. Omitted UID detail count explicit; hard64KiB terminal output bound.",
+  "detail_selection": "Emit when classification changes or baseline classification is MULTIPLE; this examines the prior four ambiguities without claiming they are already resolved. Same mapping references are compared in both populations; excluded-source runtime edges/costs are not deleted.",
+  "synthetic_verification": "Worker runs14 synthetic tests only, including real python -I -S -B isolated helper import/mocked main from unrelated cwd, synthetic stdin fixture, stable_read forbidden. No actual three-input contents read by worker.",
+  "actual_execution_gate": "Independent review before exactly one fixed-input local metadata comparison. No quality/runtime value access, original source-file reads, network/A/B hosts, ACL changes or training execution.",
+  "release": {
+    "invocation_identity": false,
+    "historical_pre_outcome_freeze": false,
+    "complete_candidate_universe": false,
+    "full_search_cost": false,
+    "quality_join": false,
+    "fit_targets": false,
+    "training": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "experiment_id": "E55_R2",
+  "purpose": "Compare the authenticated 24 TRAIN provenance rows against 32 existing E38 original-byte snapshot hashes, with no source/quality/remote reads.",
+  "source": "scripts/audit_ranking_v6_e55_original_sha_join_r2.py",
+  "inputs": [
+    {
+      "path": "runtime_training_staging_20260928/v6_e54_source_binding_20261018_r1/projection.json",
+      "sha256": "8aca374b13a89035706a72006258e9373ba67f0f31eda5376215eb51d007ba9e"
+    },
+    {
+      "path": "gnn-model/data/manifests/ranking_v6_e38_projection_summary_20261016_r1.json",
+      "sha256": "80b152fa1a81232e4d778cd0abac88e077d8de1b0d6a33ca83ac305db9a8823d"
+    }
+  ],
+  "limits": {
+    "each_input_bytes": 65536,
+    "output_bytes": 65536,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "stable_read": "Reuse frozen E54 stable ordinary-single-link non-reparse file reader; verify each complete JSON byte SHA before decoding the metadata-only projection. Reject duplicate JSON keys. No wildcard paths or embedded-path following.",
+  "identity": "Exact circuit + stage alias + source_sha256 joins E38 circuit + stage_alias + sha256. normalized_sha256 is retained separately and NEVER used to rescue a raw-hash miss. Matching raw hash with contradictory row_count rejects the entire comparison.",
+  "metadata_grain": "Exactly 24 unique six-TRAIN by four-stage source records, preserving provenance row order/ordinals; compare all 32 inventory entries, retain their order and all coverage roots.",
+  "classes": [
+    "ZERO_ORIGINAL_SHA_MATCH",
+    "ONE_ORIGINAL_SHA_MATCH",
+    "MULTIPLE_IDENTICAL_BYTES_LOCATIONS"
+  ],
+  "multiple_policy": "Retain every matching location and reference count. Identical bytes at multiple roots do not identify a physical original path, invocation or cost lineage. Do not default to v2, choose fastest or merge locations.",
+  "basename_policy": "Only report basename equality as weak metadata; copied flat names may differ from original A layout names. Never use basename alone for identity or reject a valid hash match solely for name difference.",
+  "output": "24 metadata-only rows with all matching location metadata, class counts, all 32 inventory references including unused entries, byte-found/physical-unique flags. Zero matches remain explicit, not rewritten as successful source authentication.",
+  "input_provenance_binding": "E54 full receipt SHA matches package candidate_receipt anchor; provenance full SHA matches receipt bound source_provenance field. E55 proves only equality to recorded E38 snapshot bytes, not original-disk readback now or historical execution time.",
+  "release": {
+    "historical_pre_outcome_freeze": false,
+    "complete_candidate_universe": false,
+    "full_search_cost": false,
+    "quality_join": false,
+    "training": false
+  },
+  "actual_execution_gate": "Independent review before exactly one fixed-input versioned R2 comparison, not automatic R1 retry. Worker performs only synthetic isolated subprocess checks. No real metadata reads, source/quality files, hosts, ACLs, checkpoints or BLIND access during implementation.",
+  "startup_repair": "Only dependency-loading startup changes: resolve the fixed E54 helper sibling from absolute __file__.with_name(), load with importlib.util.spec_from_file_location/module_from_spec/exec_module. No sys.path/environment/site-package changes. Matching logic, input SHA pins, schemas and output fields remain byte-for-byte behaviorally unchanged.",
+  "prior_failure": {
+    "version": "E55_R1",
+    "source_sha256": "604f1101e8d4c7037bfa259c6d516bf889e3e07eb7a438018844f298aca11359",
+    "actual_attempts": 1,
+    "result": "ModuleNotFoundError before main and before metadata input opens under python -I -S -B.",
+    "comparison_computed": false,
+    "original_artifacts_preserved": true
+  },
+  "isolated_tests": "Retain eight pure synthetic join tests; add real subprocess python -I -S -B import test and isolated synthetic main test from an unrelated temporary cwd. Synthetic main replaces pinned_json and forbids stable_read; no actual projection/inventory/source inputs are opened. sys.path remains unchanged.",
+  "flag_scope": "Legacy all_physical_locations_unique is preserved for output compatibility but means exactly one matching recorded E38 inventory entry per formal row only. It does not certify physical original-path uniqueness beyond the recorded inventory."
+}
