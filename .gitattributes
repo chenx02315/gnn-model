@@ -343,3 +343,16 @@ data/manifests/ranking_v6_e46_* -text
 data/manifests/ranking_v6_e46_* whitespace=cr-at-eol
 data/manifests/ranking_v6_e45_* -text
 data/manifests/ranking_v6_e45_* whitespace=cr-at-eol
+scripts/discover_ranking_v6_e50_local_metadata.py -text
+scripts/find_ranking_v6_e51_creation_commands*.cjs -text whitespace=-blank-at-eof
+scripts/inspect_ranking_v6_e52_archive_headers.py -text
+tests/test_ranking_v6_e50_local_metadata.py -text
+tests/test_ranking_v6_e51_creation_commands*.py -text whitespace=-blank-at-eof
+tests/test_ranking_v6_e52_archive_headers.py -text
+contracts/ranking_v6_creation_history_e51*.json -text
+contracts/ranking_v6_local_recovery_e50_e52_v1.json -text
+data/manifests/ranking_v6_e50_* -text whitespace=cr-at-eol
+data/manifests/ranking_v6_e51_* -text whitespace=cr-at-eol
+data/manifests/ranking_v6_e52_* -text whitespace=cr-at-eol
+experiment_overview/entries/E50_E52_local_metadata_recovery.md -text
+experiment_overview/entries/E51_creation_history.md -text

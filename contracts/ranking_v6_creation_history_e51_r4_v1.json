@@ -1,0 +1,63 @@
+{
+  "experiment_id": "E51_R4",
+  "purpose": "Evidence-based selected-path projection repair after R3 recovered command records but not absolute location hints. Selector, fixed file/date scope, byte/resource bounds and cleanup are unchanged.",
+  "producer": "scripts/find_ranking_v6_e51_creation_commands_r4.cjs",
+  "root_jsonl": "C:/Users/86155/.codex/sessions/2026/07/25/rollout-2026-07-25T22-51-41-019f99c2-b229-7f42-8f37-255b4339afc8.jsonl",
+  "compressed_directory": "C:/Users/86155/.codex/sessions/2026/10/02",
+  "compressed_scope": "Exactly eleven direct-child regular *.jsonl.zst files; no recursion, symlinks, or user-supplied paths.",
+  "selection": "Buffer-only structural selector requires exact root type=response_item, root timestamp date 2026-10-02, direct payload type=function_call/custom_tool_call and approved exec/exec_command tool name. Unknown direct root/payload fields and their full values are structurally skipped, never UTF-8 decoded or JSON parsed. Duplicate known keys, escaped direct envelope keys, invalid JSON structure/numbers/escapes, unsupported status/call_id kinds and trailing bytes are rejected before selected decoding. No full history object is JSON parsed.",
+  "exports": "Filename, timestamp, tool name, explicit recordtype, has_invocation heuristic (script or python -m src.data.build_formal_candidate_space_v2) and selected clean metadata path/--output-root/--candidate-root snippets only. No whole commands, environment, credentials, outputs or result fields.",
+  "path_caveat": "Historical denied-path strings are metadata hints only and may be exported; their files are never accessed. Protected B root and checkpoint/sensitive path strings are suppressed.",
+  "text_only_path_prefixes": [
+    "/ssd/cjc/",
+    "/temp/jiangchuanc/",
+    "/home/cjc/",
+    "/home/jiangchuanc/",
+    "C:/Users/86155/Desktop/new lab/"
+  ],
+  "format_coverage": "Unescaped ASCII selected envelope keys/type/name values; arbitrary legal JSON whitespace/key ordering. Unknown direct fields accepted by structural skip. Any escaped direct root/payload/argument-object key is outside coverage and fails closed without decoding. Duplicate known keys rejected. Maximum structural depth 64. At most 100 retained identities. A command record is not execution proof.",
+  "payload_field_gate": "function_call requires quoted arguments and forbids input; custom_tool_call requires quoted input and forbids arguments. call_id if present must be quoted string or null; status if present is null or completed/in_progress/incomplete. These known checks occur before any selected decode; other metadata fields are structurally skipped.",
+  "limits": {
+    "files": 12,
+    "total_input_bytes": 536870912,
+    "raw_root_bytes": 536870912,
+    "decompressed_bytes_per_compressed_file": 33554432,
+    "total_compressed_decoded_bytes": 134217728,
+    "line_bytes": 2097152,
+    "output_bytes": 65536,
+    "records": 100,
+    "workers": 1
+  },
+  "coverage": "Freeze opened file sizes and scan only initial prefixes; ignore appends. Oversized lines counted and skipped. Bound-hit files and incomplete prefixes explicit; no global history absence claim.",
+  "evidence": "COMMAND_RECORD_NOT_EXECUTION_PROOF",
+  "network_used": false,
+  "data_files_opened": false,
+  "training_release": false,
+  "remote_writes": false,
+  "prior_execution_observation": "R1 emitted a PASS-looking packet with zero command matches, then a generic FAIL packet and exit 2. Actual post-output failure cause is unknown; double-close is a hypothesis, not established evidence. R1 artifacts and two-line output are preserved.",
+  "cleanup": "FileHandle objects own input descriptors. Await all handle cleanup before emitting any terminal packet. Cleanup failure emits only one bounded FAIL packet; no success is emitted before cleanup.",
+  "diagnostic": "Diagnostic projection unchanged from R3: only predefined envelope key/type/tool enums and value kinds; unknown keys are UNKNOWN_KEY. Command selector and selected-string decoding unchanged; only path projection adapted as specified in path_projection.",
+  "diagnostic_limits": {
+    "aggregate_formats": 64,
+    "direct_keys_per_object": 32,
+    "key_ascii_bytes": 48,
+    "structural_depth": 64
+  },
+  "execution_policy": "Independent review before one versioned R4 path-projection run. Same twelve fixed files, date and byte caps; no date/path expansion, automatic retries, network or actual-data access. R1/R2/R3 executed artifacts remain immutable. Implementation tests do not open actual history.",
+  "selected_decode": "Decode/JSON.parse only the selected quoted timestamp and command string. For exec_command, the selected arguments string is unescaped as a string, then its JSON argument object is structurally scanned for a unique quoted cmd; only that cmd literal is decoded/JSON parsed. No whole argument object is JSON parsed. No unknown root/payload metadata, id, result body or content value is decoded.",
+  "adaptation_evidence": {
+    "version": "E51_R3",
+    "status": "ACTUAL_PASS",
+    "source_sha256": "510ee6fe0039a94718da8ebb1560b3260decbe5ec894cadd2af352851c513e98",
+    "receipt_staging": "v6_e51_creation_history_20261018_r3/hints.json",
+    "receipt_sha256": "25ed024a1f50060e52d6f5d8fc5811e3f5a06366824d2675ab989fffa7259010",
+    "records": 25,
+    "preselected": 31,
+    "skipped": 34,
+    "has_invocation_true": 0,
+    "observed_projection": "Only relative formal_candidate_space_v2_r1 hints; no actual output root recovered.",
+    "interpretation": "Escaped command-source Windows paths warrant a bounded literal absolute-path projection update, not inferred creation roots or invocation proof."
+  },
+  "path_projection": "Only selected command strings: normalize backslash runs to one slash, preserve existing clean literal argv roots/metadata names, and project approved absolute path strings whose suffix is ASCII filename/path characters without spaces. Absolute paths are metadata_path_hint only, never asserted actual output roots. Require token boundaries on both sides; embedded URL/foreign-prefix suffixes and invalid suffix continuations are rejected. Quoted candidates must close their quote, preventing truncated quoted-path hints. Maximum twelve clean snippets per record.",
+  "path_expression_policy": "No evaluation, interpolation, variable lookup, concatenation or filesystem lookup. Literal argv paths may retain argv_output_root/argv_candidate_root roles; variable-based expressions are not bound. Absolute source/executable/base paths are generic hints, not output-root evidence. Existing traversal/protected/BLIND/checkpoint/credential exclusions remain enforced."
+}

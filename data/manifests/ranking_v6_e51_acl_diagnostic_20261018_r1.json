@@ -1,0 +1,12 @@
+{
+  "operation": "Get-Acl",
+  "target": "C:/Users/86155/Desktop/new lab/runtime_training_staging_20260928/formal_candidate_space_v2_r1",
+  "status": "ACCESS_DENIED",
+  "error_type": "UnauthorizedAccessException",
+  "message": "Attempted to perform an unauthorized operation.",
+  "acl_read_succeeded": false,
+  "file_contents_opened": false,
+  "acl_changed": false,
+  "elevation_attempted": false,
+  "diagnosis": "Directory access and ACL inspection are denied. No specific DACL entry, owner mismatch or encryption cause is established."
+}

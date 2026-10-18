@@ -1,0 +1,47 @@
+{
+  "experiment_id": "E51_R2",
+  "purpose": "Versioned bounded metadata-format diagnostic and resource-ownership repair, without broadening the command-content gate.",
+  "producer": "scripts/find_ranking_v6_e51_creation_commands_r2.cjs",
+  "root_jsonl": "C:/Users/86155/.codex/sessions/2026/07/25/rollout-2026-07-25T22-51-41-019f99c2-b229-7f42-8f37-255b4339afc8.jsonl",
+  "compressed_directory": "C:/Users/86155/.codex/sessions/2026/10/02",
+  "compressed_scope": "Exactly eleven direct-child regular *.jsonl.zst files; no recursion, symlinks, or user-supplied paths.",
+  "selection": "Buffer-only structural envelope selector requires exact top-root type=response_item and direct payload type=function_call or custom_tool_call, with approved exec/exec_command name, before UTF-8 decode or JSON.parse. Root keys limited to timestamp/type/payload; direct payload keys limited to type/call_id/name/arguments/input/status. Unknown or escaped envelope keys/type/name values, nested command-looking outputs, user/assistant/output envelopes and wrong tools are skipped without decoding. Date is exact root timestamp prefix 2026-10-02T; approved formal-candidate/provenance marker also required. Skipped envelope count is explicit.",
+  "exports": "Filename, timestamp, tool name, explicit recordtype, has_invocation heuristic (script or python -m src.data.build_formal_candidate_space_v2) and selected clean metadata path/--output-root/--candidate-root snippets only. No whole commands, environment, credentials, outputs or result fields.",
+  "path_caveat": "Historical denied-path strings are metadata hints only and may be exported; their files are never accessed. Protected B root and checkpoint/sensitive path strings are suppressed.",
+  "text_only_path_prefixes": [
+    "/ssd/cjc/",
+    "/temp/jiangchuanc/",
+    "/home/cjc/",
+    "/home/jiangchuanc/",
+    "C:/Users/86155/Desktop/new lab/"
+  ],
+  "format_coverage": "Strict unescaped ASCII envelope keys and type/name values only, with arbitrary JSON whitespace/key ordering. Escaped envelope keys/types and extra metadata keys are outside coverage and counted as skipped; missing matches are not history-wide absence. At most 100 retained deduplication identities. Diagnostics additionally count known direct-envelope shapes without weakening the command gate.",
+  "payload_field_gate": "Before any UTF-8 decode/JSON.parse: function_call requires quoted arguments and forbids input; custom_tool_call requires quoted input and forbids arguments. call_id if present must be a quoted string or null. status if present must be null or the fixed string completed/in_progress/incomplete. Objects, arrays, unknown status values and unused command fields are rejected without decoding.",
+  "limits": {
+    "files": 12,
+    "total_input_bytes": 536870912,
+    "raw_root_bytes": 536870912,
+    "decompressed_bytes_per_compressed_file": 33554432,
+    "total_compressed_decoded_bytes": 134217728,
+    "line_bytes": 2097152,
+    "output_bytes": 65536,
+    "records": 100,
+    "workers": 1
+  },
+  "coverage": "Freeze opened file sizes and scan only initial prefixes; ignore appends. Oversized lines counted and skipped. Bound-hit files and incomplete prefixes explicit; no global history absence claim.",
+  "evidence": "COMMAND_RECORD_NOT_EXECUTION_PROOF",
+  "network_used": false,
+  "data_files_opened": false,
+  "training_release": false,
+  "remote_writes": false,
+  "prior_execution_observation": "R1 emitted a PASS-looking packet with zero command matches, then a generic FAIL packet and exit 2. Actual post-output failure cause is unknown; double-close is a hypothesis, not established evidence. R1 artifacts and two-line output are preserved.",
+  "cleanup": "FileHandle objects own input descriptors. Await all handle cleanup before emitting any terminal packet. Cleanup failure emits only one bounded FAIL packet; no success is emitted before cleanup.",
+  "diagnostic": "For marked raw lines in the same date/file/byte scope, Buffer-only structural inspection exports aggregate known root.type/direct payload.type/toolname enums plus predefined direct envelope key enums and value kinds only. Every unknown/escaped/arbitrary identifier key maps to UNKNOWN_KEY without decoding or exporting its bytes. Allowed key enums are timestamp/type/payload/call_id/name/arguments/input/status/id/role/content/output/summary/encrypted_content/recipient/channel/phase. No argument/input/output/content/status values, nested body keys, arbitrary strings, or full commands exported. No diagnostic JSON.parse or UTF-8 decoding. Strict command envelope gate unchanged.",
+  "diagnostic_limits": {
+    "aggregate_formats": 64,
+    "direct_keys_per_object": 32,
+    "key_ascii_bytes": 48,
+    "structural_depth": 64
+  },
+  "execution_policy": "Review-gated single versioned diagnostic run only; no automatic retry and no expanded date/path window. Implementation tests do not open actual history files."
+}

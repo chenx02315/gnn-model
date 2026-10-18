@@ -1,0 +1,104 @@
+{
+  "schema_version": "ranking_v6_e50_e52_recovery_summary_v1",
+  "date": "2026-10-18",
+  "snapshot_through": "E51_R2",
+  "current_status_superseded_by": "ranking_v6_e51_completion_20261018_r4.json",
+  "current_caveat": "R4 recovered literal historical candidate/output root text. Earlier UNKNOWN fields and next_gate below are R2 historical snapshot only; successful execution and formal bytes remain unauthenticated.",
+  "status": "METADATA_RECOVERY_INCOMPLETE_NO_AUTHORITY_RECOVERED",
+  "e50": {
+    "evidence": "ACTUAL_NAME_SCAN_AND_BYTE_HASH_ONLY",
+    "receipt_staging": "v6_e50_local_names_20261017_r1/names.json",
+    "receipt_sha256": "64350120c110f244a144089faf48d69a25e80007178c4b7c4f9fec9b70d919d3",
+    "directories": 181,
+    "entries": 1631,
+    "excluded": 47,
+    "depth_pruned": 0,
+    "permission_errors": 8,
+    "focused_tests_passed": 5,
+    "hits": [
+      {
+        "path": "runtime_attempt_remediation_v2_r1_remote/outputs_v2/receipt_v2.json",
+        "bytes": 6635,
+        "byte_sha256": "9e854eb298b23a53efe59a4e77bf2f049bf12f108bb90e4ecc927fddf3ee5910",
+        "json_decoded": false,
+        "matches_formal_receipt_sha": false
+      },
+      {
+        "path": "runtime_v2_inputs_98efbd4.tar.gz",
+        "bytes": 350177
+      }
+    ]
+  },
+  "expected_formal_candidate_receipt_sha256": "48c164e99e653c1d00dbf8e7655447e2ffc09c9519c63b7191dff9a151b7456d",
+  "e52": {
+    "status": "ACTUAL_PASS",
+    "exit_code": 0,
+    "compressed_sha256": "0010aa115c96ce68609c814e8475bac6ae2017b7782b235fe9d3f5108d0e37d1",
+    "decoded_stream_bytes": 4036608,
+    "logical_members": 20,
+    "metadata_members": [],
+    "ordinary_payload_decoded": false,
+    "ordinary_payload_extracted": false,
+    "extension_metadata_may_be_decoded": true,
+    "receipt_sha256": "292c1e29d718abee4d32c1016da4d3722dee8722844c554d5e36dd02100745ad",
+    "focused_tests_passed": 8
+  },
+  "path_authority_correction": {
+    "legacy_field": "known_original_base",
+    "legacy_semantics_rejected": "AUTHENTICATED_ORIGINAL_LOCATION",
+    "correct_semantics": "INFERRED_CANDIDATE_LOCATION_PER_E36",
+    "inferred_candidate_base": "C:/Users/86155/Desktop/new lab/runtime_training_staging_20260928/formal_candidate_space_v2_r1",
+    "actual_builder_cli_output_root": "UNKNOWN",
+    "actual_builder_cli_candidate_root": "UNKNOWN",
+    "legacy_request_bytes_preserved": true
+  },
+  "git_date_clue": {
+    "commit": "284b8dd",
+    "first_builder_code_date": "2026-10-02",
+    "execution_proof": false
+  },
+  "e51_r1": {
+    "status": "ACTUAL_FAILED_NOT_ACCEPTED",
+    "exit_code": 2,
+    "stdout_json_lines": 2,
+    "stdout_order": [
+      "PASS_LOOKING_PACKET",
+      "FAIL_CLOSED_PACKET"
+    ],
+    "zero_matches_accepted": false,
+    "actual_guard_cause": "UNKNOWN",
+    "double_close": "SYNTHETIC_HYPOTHESIS_ONLY"
+  },
+  "e51_r2": {
+    "status": "ACTUAL_FORMAT_DIAGNOSTIC_PASS_NO_COMMAND_RECOVERY",
+    "actual_pass_claimed": true,
+    "exit_code": 0,
+    "terminal_json_lines": 1,
+    "receipt_sha256": "8ee0ed649109601dded9e9335349807cf4f9d404b44a4aedaa3005d88fcb62b8",
+    "complete_frozen_prefixes": 12,
+    "input_bytes": 332015908,
+    "compressed_decoded_bytes": 4206451,
+    "oversized_lines": 3,
+    "strict_envelope_skipped_lines": 63,
+    "command_records": 0,
+    "observed_custom_tool_call_exec_formats": 31,
+    "format_gap": "Additional root numeric metadata, payload id string and UNKNOWN_KEY object exclude otherwise relevant custom_tool_call/exec shapes under the old strict gate. Unknown keys and values were not decoded/exported.",
+    "execution_authorized_by_this_summary": false
+  },
+  "prior_snapshot_regression": {
+    "total": 633,
+    "executed": 627,
+    "skipped": 6,
+    "failures": 0,
+    "scope": "PRIOR_SNAPSHOT_ONLY_NOT_R2_VALIDATION"
+  },
+  "next_gate": "Implement and independently review an evidence-based versioned selector that structurally skips unknown metadata and decodes only selected command strings, then fixed-scope historical recovery under existing metadata-only authority. No automatic retry or window expansion.",
+  "authority_recovered": false,
+  "global_absence_claimed": false,
+  "training_release": false,
+  "quality_data_access": false,
+  "train_blind_access": false,
+  "lsf_tessent_started": false,
+  "acl_changed": false,
+  "protected_b_root_access": false
+}
