@@ -1,3 +1,4 @@
 # Preserve generated E57/E58 evidence bytes without changing the older root seal.
 ranking_v6_e57_* -text whitespace=cr-at-eol
 ranking_v6_e58_* -text whitespace=cr-at-eol
+ranking_v6_e59_* -text whitespace=cr-at-eol

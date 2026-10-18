@@ -1,11 +1,12 @@
 # 当前实验状态
 
-更新：2026-10-18。此文件是追加的当前入口；E54–E56 封存中的旧待办措辞保留当时状态，不改原 seal。
+更新：2026-10-18（E59 后）。此文件是可更新的当前入口；之前的 E57/E58 入口快照及其 seal 对应提交 `3f53814` 的原始 blob，而不是本次更新后的入口字节。实验原始小结果、代码和回执不重写；E54–E56 的旧待办措辞保留当时状态，不改原 seal。
 
 - E54–E56：来源链和 1780 配置映射通过，独立复核恢复并完成；已正常推送 `132291b`，不是仍在等待额度。
 - E57：实际一次两摘要连接通过，16 条声明完整保留，8 正式范围 + 8 其他版本，独立小结果复核通过。773 项回归中 767 执行通过、6 条件跳过、零失败/错误。
 - 仍未认证：实际调用谱系、完整累计 ATPG 计费、运行前候选/自适应生成策略冻结。未产生新训练目标或启动训练。
 - E58：已找到并静态检查本地 Phase4 closure reference 源码。参考代码的细化会使用过去结果，F 搜索路径可触发多次探测，缓存也会影响本次费用；尚未证实历史实际执行情况。不能把固定候选全集、最终 F 耗时和完整在线搜索费用混为一谈。尚未认证历史部署身份。
-- 继续方向：配套源码已给出 A 端 `00_framework/phase4_closure_driver_v2.py` 的精确候选路径；下一次限定核验其身份，再定位 Phase4 aes_core/spi 同时期部署/启动记录，将实际 driver SHA、命令/job 与输出根绑定。该远端候选本轮未打开；引用本地源码不等于历史执行证据。
+- E59：独立固定门禁后，已实际一次只读核验 A 端该 driver 的当前字节身份：52,317 B，SHA 与 E58 reference 完全一致。不解码/执行源码，不打开其引用数据，不修改远端。786 项相关回归中 780 执行通过、6 条件跳过、零失败/错误。
+- 继续方向：定位 Phase4 aes_core/spi 同时期部署/启动记录，将历史实际 driver SHA、命令/job 与输出根绑定。当前文件相同仍不是历史执行或策略冻结的证明；完整计费与训练均未放行。
 
-记录入口：[E56 复核闭环](entries/E56_r2_publication_review.md)、[E57 实际结果](entries/E57_formal_declaration_bridge.md)、[E58 源码线索](entries/E58_reference_driver_semantics.md)、[剩余证据与清单](SOURCE_EVIDENCE_GAPS.md)。
+记录入口：[E56 复核闭环](entries/E56_r2_publication_review.md)、[E57 实际结果](entries/E57_formal_declaration_bridge.md)、[E58 源码线索](entries/E58_reference_driver_semantics.md)、[E59 当前源码身份](entries/E59_current_driver_identity.md)、[剩余证据与清单](SOURCE_EVIDENCE_GAPS.md)。
