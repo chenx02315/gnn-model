@@ -1,0 +1,40 @@
+{
+  "experiment_id": "E58",
+  "status": "STATIC_LOCAL_REFERENCE_CODE_ONLY",
+  "source_name_inventory": {"scope": "Workspace top-level ordinary source filenames only; no recursion into staging", "extension_allowlist": [".py", ".tcl", ".sh"], "maximum_names": 200, "observed_names": 18},
+  "reference_source": {"path": "C:/Users/86155/Desktop/new lab/phase4_closure_driver_v2_reference.py", "bytes": 52317, "sha256": "4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94", "read_limit_bytes": 131072},
+  "companion_source_only_name_match_scan": {
+    "files": [
+      {"name": "phase4_spi_repeat_resume_v3.py", "bytes": 11130, "sha256": "3f51fb24a117f42745fac65de56f3f060af70a39a38d215338c6ffb473ffe714"},
+      {"name": "phase4_build_delivery_v3.py", "bytes": 8043, "sha256": "046374c06f5244298c197ea427b827bcc1078e290f3d086f7b485e3d3148de62"},
+      {"name": "audit_phase4_formal_v3.py", "bytes": 3266, "sha256": "a657df4e1789b85ae78ec4f681f57e89a72faa51641fc2bf99c18121355a2a66"}
+    ],
+    "each_source_read_limit_bytes": 131072,
+    "match": "phase4_spi_repeat_resume_v3.py:17 BASE_DRIVER joins PHASE_ROOT/00_framework/phase4_closure_driver_v2.py",
+    "deployed_candidate_path_clue": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/phase4_closure_driver_v2.py",
+    "matched_remote_file_opened": false,
+    "historical_execution_binding_proved": false
+  },
+  "source_scope": "Phase4 reference code; potentially relevant to aes_core/spi only among the six TRAIN circuits. Not an authenticated Phase2/3 producer.",
+  "static_findings": {
+    "coarse_grid": "Endpoint-dependent 5-percent checkpoints; HMF M checkpoint construction depends on per-H full-M output.",
+    "refine": "PASS/valid coarse candidates sorted by measured cycles, top-five regions and adaptive neighborhood/coordinate search.",
+    "f_completion": "May include coverage probe, full fallback, incremental scan, binary integer boundary and F-1 runs; final F result alone is not the whole search.",
+    "cache": "Existing output files plus marker may be reused; cache return lacks new wall time and measurement rows omit per-run wall time.",
+    "plan": "Records endpoint-derived plan, but no driver-source binding, candidate-parent decision ledger or freeze ACK.",
+    "export_manifest": "Hashes final export files, not a complete source/input/plan/driver-log invocation ledger."
+  },
+  "adaptive_policy_boundary": "Freeze prospective policy, domain constraints/generation rules, parameters, budgets and cache/accounting policy before relevant future outcomes; endpoint-dependent domain values and realized refinement points may depend on permitted past outcomes. Do not demand all realized future points fixed before all outcomes, or mistake present reference code for a historical freeze receipt.",
+  "source_code_review": "Parent and metadata_history_scout independently inspected exact local reference code without import/execution; final publication review recorded separately.",
+  "script_imported_or_executed": false,
+  "referenced_paths_followed": false,
+  "plan_logs_or_measurements_opened": false,
+  "a_b_or_remote_calls": 0,
+  "source_copied_into_git": false,
+  "deployed_source_identity_authenticated": false,
+  "historical_freeze_certified": false,
+  "full_search_cost_certified": false,
+  "new_runtime_or_quality_analysis": false,
+  "training_release": false,
+  "next_dependency": "Locate contemporaneous deployment/launch metadata binding executed driver SHA, command/job identity and output root for aes_core/spi. Reference filename or hash made now does not establish historical execution. Do not extend this Phase4 clue to Phase2/3."
+}

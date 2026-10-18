@@ -1,0 +1,53 @@
+{
+  "experiment_id": "E57",
+  "schema_version": "ranking_v6_formal_declaration_bridge_e57_v1",
+  "status": "ACTUAL_PENDING_INDEPENDENT_REVIEW",
+  "source": "scripts/audit_ranking_v6_e57_formal_declaration_bridge.py",
+  "purpose": "Bridge the four E56 formal-file source-unit bindings to existing E41-r2 strict H/F declaration SHA summaries only; retain all16 declarations and distinguish8 formal-root versus8 other-version declarations without deleting other attempts.",
+  "fixed_inputs": [
+    {
+      "path": "data/manifests/ranking_v6_e56_formal_config_comparison_20261018_r1.json",
+      "sha256": "d4510d427790a6d2667e3e932995ebb57b11a0cbe952c257331f8beeb47c77cc"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e41_r2_result_20261017_r1.json",
+      "sha256": "5a0a7cbb7c8ec087690aa551b18a5227623084e8c136f8b3e3dce73193295b99"
+    }
+  ],
+  "limits": {
+    "files": 2,
+    "each_input_bytes": 65536,
+    "total_input_bytes": 131072,
+    "output_bytes": 65536,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "reader": "Only fixed committed repository summaries. Absolute __file__ sibling importlib loader for frozen E54 stable_read; no sys.path/environment/site-package changes. Verify both complete raw SHA pins before decoding either JSON. Reject duplicate JSON keys and nonstandard constants. No CLI arguments, dynamic paths or referenced-file opens.",
+  "source_units": [
+    "s35932:hf_refine:H64-F4:1",
+    "s38417:hf_refine:H64-F4:8",
+    "s38417:hf_refine:H64-F4:10",
+    "s38417:hf_refine:H64-F4:11"
+  ],
+  "e56_gate": "Exact producer summary schema and false quality/runtime/cost/release flags. Preserve mapping-source UID totals N between baseline32 and formal24. Baseline class counts must be N-4 ONE plus4 MULTIPLE with zero absent/mismatch; formal must be N ONE and zero other classes. Pure bridge does not hardcode1780: the actual pinned execution receipt must check that observed dataset count separately. Exactly four complete changed details, each baseline MULTIPLE two distinct roots/locations/rows and formal ONE one row/location; formal path/root/source-SHA must be identical to a baseline member and agree with per-file summary metadata. Explicit excluded8 inventory files remain recorded, not dismissed.",
+  "namespace_bridge": "E41 carries coverage_version namespace only, not an absolute physical root. Resolve that exact namespace bijectively to the two E56 baseline metadata full roots for the same UID. Require unique namespaces/no suffix ambiguity; select by full-root equality to E56 formal root, never v1/v2-name preference. This is a metadata namespace bridge, not new physical path/call authentication.",
+  "e41_gate": "Exact E41_R2 producer/runner schema,16 declarations,8 scoped source rows,6985 provided attempt rows,16 total strict references and16 globally unique strict attempt-ID hashes. Exactly H/F x two metadata roots x four exact source UIDs; one strict match each, all conflict/other buckets zero, declaration present and lexical namespace valid. Duplicate/missing/out-of-scope declarations, modes, roots, malformed/duplicate hashes or inconsistent counters reject.",
+  "output": "All16 input declarations in original order with ordinal, unchanged source UID, namespace, resolved metadata coverage_root, H/F mode, FORMAL_BOUND/OTHER_VERSION partition, result-marker SHA and strict attempt-ID SHA only. Exactly8 formal and8 other-version. No raw attempt IDs, result paths, source-file leaf paths, controls, quality/runtime/cost values or new invocation data. fixed_input_reader_executed reports execution only; authorization remains external gate evidence, never self-certified by code.",
+  "tests": "12 synthetic tests including source-copy namespace consistency, v2-can-be-formal/no name preference, duplicate/missing/mode/scope/root/hash/counter failures, no quality/cost release, duplicate JSON rejection and real isolated -I -S -B mocked fixed-main. No actual committed input contents read by worker.",
+  "actual_execution_gate": "Parent independent source/test review before exactly one bounded fixed-summary run. This contract is pending that gate, not evidence that actual E57 execution has occurred.",
+  "open_questions": [
+    "Namespace-to-root association comes from existing E56 metadata only; E41 independently supplies no full root.",
+    "Strict attempt-ID SHA equality does not prove an independent physical invocation or its cost.",
+    "Other-version8 declarations remain real historical metadata references, not removable runtime/cost edges.",
+    "Historical pre-outcome freeze, full search cost, candidate universe and training remain separate unresolved gates."
+  ],
+  "release": {
+    "physical_calls": false,
+    "costs": false,
+    "quality_runtime_join": false,
+    "historical_pre_outcome_freeze": false,
+    "full_search_cost": false,
+    "fit_targets": false,
+    "training": false
+  }
+}
