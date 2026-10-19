@@ -1,0 +1,35 @@
+{
+  "experiment_id": "E60-r2",
+  "status": "IMPLEMENTATION_PENDING_INDEPENDENT_REVIEW",
+  "parent_contract": "contracts/ranking_v6_launch_metadata_e60_v1.json",
+  "producer": "scripts/project_ranking_v6_e60_launch_metadata_r2.py",
+  "transport": "scripts/run_ranking_v6_e60_readonly_r2.py",
+  "purpose": "One focused compatibility repair after E60 failure and independent E61 Python 3.6.8 capability observation. Original actual failure guard and reading progress remain UNKNOWN.",
+  "unchanged_scope": "Exactly the parent contract fixed roots, stems, suffix grammar, code-only content whitelist, metadata-only generic/submit/status files, no driver reread, byte budgets, anchor caps, strict response schema, no history/cost/training certification.",
+  "compatibility_repair": {
+    "ascii": "Exact str type and ord(c)<128 for every character; no str.isascii API.",
+    "enumeration": "Linux only. Lazy scandir of code-formatted /proc/self/fd/N for the live held final directory FD; this sole kernel magic-link exception is explicit. Pre/post alias stat matches full fstat identity. FD remains held through enumeration. Original ancestor nofollow chain and terminal identity rechecks retained.",
+    "prohibited": "No user alias, readlink target parsing, listdir, raw directory-path fallback, external link following, FD reuse/dup2 or remote environment upgrade. Missing/denied/mismatching proc alias fails closed. Not a hostile-mount or OS-sandbox guarantee.",
+    "failure_diagnostics": "Fixed allowlisted guard and last recorded phase, predetermined root index and selected ordinal only; no exception text, filenames, paths, source lines or data. Last phase is not proof of exact cleanup failure origin."
+  },
+  "limits": {
+    "entries_per_directory": 512,
+    "selected_files": 16,
+    "file_read_bytes": 2097152,
+    "total_read_bytes": 8388608,
+    "address_space_bytes": 536870912,
+    "cpu_s": 30,
+    "workers": 1,
+    "source_program_bytes": 32768,
+    "stdout_bytes": 16384,
+    "stderr_bytes": 16384,
+    "transport_timeout_s": 60,
+    "automatic_retries": 0
+  },
+  "source_cap_note": "32768 is the stdin program-text cap only, separate from unchanged observed project data and response caps; no memory increase.",
+  "tests": "Original 13 privacy/schema/budget/transport cases reused with Python-3.6-style scandir API mock, plus sibling binding, ASCII, live alias, proc absence/denial, pre/post identity, invalid FD, 513-entry no candidate access and redacted diagnostics. Windows mocks are not actual Linux/proc execution evidence.",
+  "execution_gate": "Freeze four file SHA values, related full regression and independent review before exactly one repaired call. Preserve any failure, no unchanged retry or further automatic repair loop.",
+  "historical_execution_certified": false,
+  "costs_computed": false,
+  "training_release": false
+}

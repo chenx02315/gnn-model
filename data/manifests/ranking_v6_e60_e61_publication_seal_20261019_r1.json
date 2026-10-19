@@ -1,0 +1,167 @@
+{
+  "schema": "ranking_v6_e60_e61_publication_seal_v1",
+  "date": "2026-10-19",
+  "scope": "E60 failed attempt, E61 capability observation, E60-r2 repaired one-time observation; no historical certification or training release.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "50950fe93fe122bc97944de5d3dc8d57405d7d5eb6b0efe0bff6a7b010ad45e2",
+      "bytes": 178
+    },
+    {
+      "path": "contracts/ranking_v6_launch_metadata_e60_r2_v1.json",
+      "sha256": "dae04ee7a69b3e7100ef60f4dc80df521ad5dfa65c714d307d3199c26004d3c0",
+      "bytes": 2856
+    },
+    {
+      "path": "contracts/ranking_v6_launch_metadata_e60_v1.json",
+      "sha256": "347d4f1ab0909d0417251ff9f558d6a9eaabdab0900c6d9544fae27bf410fb48",
+      "bytes": 6090
+    },
+    {
+      "path": "contracts/ranking_v6_python_api_e61_v1.json",
+      "sha256": "ef422634b249575680c8c08a0d178abef3a54a46225e9eb8d7b2033988dc6199",
+      "bytes": 3780
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "80b64828f5c1586ad100326ba357d634ad0f5d0861a329fdbc66707ae6dcfaee",
+      "bytes": 302
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_failed_response_20261018_r1.json",
+      "sha256": "2682aa3cd1340c381c0d8ea4ceb7f2b127582c1149e515dcbd0a98365b8eed00",
+      "bytes": 71
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_failed_transport_20261018_r1.json",
+      "sha256": "aaf791e125cd93477bddfaf7cdcd06613e58f16a3b5b7f4465985c3c7df2109f",
+      "bytes": 547
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_failure_20261018_r1.json",
+      "sha256": "a81ddf263af297cd69eae17533af2d18643ad9168d4bfadbcb98f6d628bac5e1",
+      "bytes": 2345
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_r2_completion_20261019_r1.json",
+      "sha256": "0d109a31c7b3d61bb532d6830ebcf2fdd29bb2704b26fca912dd1ec652048b89",
+      "bytes": 1738
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_r2_observation_20261019_r1.json",
+      "sha256": "01eaa49a135e4d1097f8bb3a6fa205c124103aa007b7d47852138d612d5456d8",
+      "bytes": 1310
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_r2_regression_20261019_r1.log",
+      "sha256": "4ce204c00e487bebbd82b86077b2a90a29ef7b1df47939d23bd115b6fab74ba4",
+      "bytes": 1454
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_r2_transport_20261019_r1.json",
+      "sha256": "bff78538ab20070a973a574352aa955c6b021556909ee6913d8c0ab6356c5b27",
+      "bytes": 544
+    },
+    {
+      "path": "data/manifests/ranking_v6_e60_regression_20261018_r1.log",
+      "sha256": "0fe16d847ede24ee6b2f7c767ada5131d034fc2c7da933b87a54e5d22c51fe61",
+      "bytes": 1424
+    },
+    {
+      "path": "data/manifests/ranking_v6_e61_completion_20261018_r1.json",
+      "sha256": "0fbade26963428b0b74134a37eb2e13415231423b663dbdd0834f134384dfc33",
+      "bytes": 2004
+    },
+    {
+      "path": "data/manifests/ranking_v6_e61_python_api_observation_20261018_r1.json",
+      "sha256": "60ffa156ea2533deaa2986947b433888aaeff30ca52b73cb076894a36ffb8c1f",
+      "bytes": 465
+    },
+    {
+      "path": "data/manifests/ranking_v6_e61_regression_20261018_r1.log",
+      "sha256": "26b52262937bf720609616408edb245382ed1554cbffcb4bc496654c7921f136",
+      "bytes": 1433
+    },
+    {
+      "path": "data/manifests/ranking_v6_e61_transport_20261018_r1.json",
+      "sha256": "e03c16e408e1a182ad47a77f56bcf7f23924076f3af3979aca80c47c2e84c7c7",
+      "bytes": 544
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "c1db14710e8d2f5e6eb75fba04e64c87b8d96b23b44e9fe9577db997ae40a77f",
+      "bytes": 3135
+    },
+    {
+      "path": "experiment_overview/entries/E60_launch_metadata_failed.md",
+      "sha256": "9812ec661fffdaa933876efe3cb972ee8b09598f0ffc9cba10342bd26adc27b0",
+      "bytes": 2582
+    },
+    {
+      "path": "experiment_overview/entries/E60_r2_launch_metadata_observation.md",
+      "sha256": "0a0da871a92a3443ea17f80cac4dd4f40f3b4fa157f93fdbb1cc3102ed81281d",
+      "bytes": 2384
+    },
+    {
+      "path": "experiment_overview/entries/E61_python_api_observation.md",
+      "sha256": "4c7bfcbb1c11a6e7e71e81b645d61238328c24943e927b2abbb343d574a985d3",
+      "bytes": 2013
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "65df78ca1f8e557c1fae6147e073ce639f2678f33810de4bc5441deb862c6897",
+      "bytes": 415
+    },
+    {
+      "path": "scripts/observe_ranking_v6_e61_python_api.py",
+      "sha256": "60accc3049c7c1e5b974a3b1733ac7d006fe5ffb9eaace25e323024e498d7648",
+      "bytes": 2885
+    },
+    {
+      "path": "scripts/project_ranking_v6_e60_launch_metadata_r2.py",
+      "sha256": "ab96ed9e2aa2a7b3a03be283f28c04d1fba67d70f4e52fc0e1211432b4e063bd",
+      "bytes": 19223
+    },
+    {
+      "path": "scripts/project_ranking_v6_e60_launch_metadata.py",
+      "sha256": "fa635f8e821860f93705aedc281399ec958f4b82826e70ef42c54caa6861114a",
+      "bytes": 15888
+    },
+    {
+      "path": "scripts/run_ranking_v6_e60_readonly_r2.py",
+      "sha256": "6b267096194e903f2f43955df07ea7a1770c87c6d0fcb927f91d672ab47d82e9",
+      "bytes": 5488
+    },
+    {
+      "path": "scripts/run_ranking_v6_e60_readonly.py",
+      "sha256": "adb17b9b9ef14e0c914efe25e574511113682fa9d2b19554f227f55bc6ccc1c6",
+      "bytes": 5412
+    },
+    {
+      "path": "scripts/run_ranking_v6_e61_readonly.py",
+      "sha256": "15a1229584510430b4c834c78dd65459c10092eb3f4987b0e512a0d126e6f6d1",
+      "bytes": 5402
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "ae956529dcd11050ad8692c0953c5a1759e71fac70d31ba8529f84d93357dea7",
+      "bytes": 178
+    },
+    {
+      "path": "tests/test_ranking_v6_e60_launch_metadata_r2.py",
+      "sha256": "5c1c43b410f91b8f84a97035454ba6f304e419087e84cf23ff6c181cc0933bba",
+      "bytes": 6304
+    },
+    {
+      "path": "tests/test_ranking_v6_e60_launch_metadata.py",
+      "sha256": "5892217987a6ec27accbacacfa1c3820f1252b614e87d124389d41384789aa66",
+      "bytes": 12929
+    },
+    {
+      "path": "tests/test_ranking_v6_e61_python_api.py",
+      "sha256": "79cd69d5b96e32a03f04de880e258fb96196c192422d248c2252e66edc0ef804",
+      "bytes": 7558
+    }
+  ]
+}

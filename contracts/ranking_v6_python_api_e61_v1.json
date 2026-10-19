@@ -1,0 +1,73 @@
+{
+  "experiment_id": "E61",
+  "schema_version": "ranking_v6_python_api_e61_v1",
+  "status": "IMPLEMENTATION_PENDING_INDEPENDENT_REVIEW",
+  "producer": "scripts/observe_ranking_v6_e61_python_api.py",
+  "transport": "Exact bounded E59 pattern: explicit reviewed producer SHA CLI pin before SSH, create-once local runtime_training_staging_20260928/v6_e61_python_api_* receipt only, bounded stdout/stderr collectors, zero retries, require exit0/no stderr/no timeout/overflow/writefailure and strict exact response schema. Absolute local producer import for validator works under -I -S -B. remote_termination_verified remains false.",
+  "purpose": "Separate minimal interpreter-capability observation to investigate E60 portability hypothesis without spending another project-data audit or probing any project path.",
+  "remote_observation": [
+    "sys.platform must equal linux",
+    "sys.version_info[:3] as three bounded integers only",
+    "hasattr(str,'isascii') as bool",
+    "getattr(os,'scandir',None) membership in getattr(os,'supports_fd',set()) as bool; no invocation"
+  ],
+  "remote_prohibited": [
+    "__file__ or project path access",
+    "open/stat/scandir/listdir probes",
+    "project directory enumeration",
+    "environment variables or full version strings",
+    "raw exception/type text",
+    "runtime/quality/result/status contents",
+    "API fallback",
+    "remote writes or job submissions"
+  ],
+  "interpretation": "Absent APIs are accepted observations, not data-audit success or proof of E60 actual failure cause. scandir_fd_advertised is feature metadata, not a demonstrated directory operation. A version mismatch is not automatically repaired.",
+  "limits": {
+    "address_space_bytes": 536870912,
+    "cpu_s": 30,
+    "workers": 1,
+    "automatic_retries": 0,
+    "producer_source_bytes": 16384,
+    "stdout_bytes": 16384,
+    "stderr_bytes": 16384,
+    "transport_timeout_s": 60,
+    "ssh_connect_timeout_s": 8
+  },
+  "ssh_command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "vnc.buptic.top",
+    "/usr/bin/python3 -I -S -B -"
+  ],
+  "output_schema": {
+    "status": "PASS_FIXED_PYTHON_API_OBSERVATION_ONLY",
+    "platform": "linux",
+    "python_version": "[major,minor,micro] integers only",
+    "str_isascii_available": "bool",
+    "scandir_fd_advertised": "bool",
+    "resource": "actual imposed positive address-space/CPU caps and workers1",
+    "project_files_opened": false,
+    "project_dirs_listed": false,
+    "remote_files_written": false,
+    "runtime_or_quality_values_accessed": false,
+    "historical_freeze_certified": false,
+    "historical_execution_certified": false,
+    "training_release": false
+  },
+  "tests": "Nine synthetic tests only, including mocked main with old-version/API/resource metadata and open/stat/scandir/listdir forbidden, strict response/resource/types/flags, fake one-shot transport acceptance of absent capabilities, failure/timeout/overflow/no retry and isolated validator import. No actual SSH or actual capability observation performed by worker.",
+  "original_e60": "Preserve all four executed E60 files and its failed generic receipt. No E60 fix, data rerun, listdir fallback or weakening of prior scope/guards in this version.",
+  "actual_execution_gate": "Independent review before parent performs exactly one separate fixed interpreter observation. Existing user read-only diagnosis scope confirmed; no additional project/source/log access inferred.",
+  "project_files_opened": false,
+  "project_dirs_listed": false,
+  "remote_files_written": false,
+  "runtime_or_quality_values_accessed": false,
+  "historical_freeze_certified": false,
+  "historical_execution_certified": false,
+  "training_release": false
+}

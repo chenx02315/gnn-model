@@ -1,1 +1,4 @@
 test_ranking_v6_e59_driver_identity.py -text
+test_ranking_v6_e60_launch_metadata.py -text
+test_ranking_v6_e60_launch_metadata_r2.py -text
+test_ranking_v6_e61_python_api.py -text

@@ -1,0 +1,94 @@
+{
+  "experiment_id": "E60",
+  "schema_version": "ranking_v6_launch_metadata_e60_v1",
+  "status": "IMPLEMENTATION_PENDING_INDEPENDENT_REVIEW",
+  "producer": "scripts/project_ranking_v6_e60_launch_metadata.py",
+  "transport": "Same fixed E59 ssh BatchMode/StrictHostKeyChecking/8s ConnectTimeout/vnc.buptic.top/python3-I-S-B stdin structure. Explicit reviewed source SHA,16KiB source/stdout/stderr limits,60s local timeout,create-once runtime_training_staging_20260928/v6_e60_launch_metadata_* receipt,zero retries; bounded failure evidence retained, remote termination not certified.",
+  "purpose": "One fixed two-directory launch-code metadata discovery; code-literal scheduler/SHA anchors are declarations, not evidence that submission/execution happened.",
+  "fixed_roots": [
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework"
+  ],
+  "name_inventory": {
+    "exact_stems": [
+      "phase4_closure_batch_v2_r1",
+      "phase4_closure_batch_v2"
+    ],
+    "suffix_tokens": [
+      "sh",
+      "lsf",
+      "submit",
+      "log",
+      "out",
+      "err",
+      "status",
+      "stdout",
+      "stderr",
+      "bsub",
+      "job",
+      "o",
+      "e"
+    ],
+    "tokens_per_basename": [
+      1,
+      3
+    ],
+    "ascii_only": true,
+    "recursion": false,
+    "filter_before_stat": true,
+    "driver_source_excluded": "phase4_closure_driver_v2.py",
+    "numeric_job_suffixes_guessed": false
+  },
+  "content_read_whitelist": {
+    "single_code_suffixes": [
+      "sh",
+      "lsf",
+      "bsub",
+      "job"
+    ],
+    "all_other_names": "METADATA_ONLY_NO_OPEN: basename/type/size only, sha256=null, anchors_scanned=false; includes ALL submit/submit.* generic logs/stdout/stderr/status. No whole mixed BLIND/log/status body hash or read is authorized.",
+    "roles": [
+      "LAUNCH_CODE",
+      "NONCODE_METADATA_ONLY",
+      "STATUS_METADATA_ONLY"
+    ],
+    "reason": "Creation recipe has not established separation of client submission stdout and job stdout; metadata discovery may locate a recipe but does not grant mixed outcome access."
+  },
+  "limits": {
+    "entries_per_directory": 512,
+    "selected_files": 16,
+    "file_read_bytes": 2097152,
+    "total_read_bytes": 8388608,
+    "address_space_bytes": 536870912,
+    "cpu_s": 30,
+    "workers": 1,
+    "scheduler_anchors_global": 8,
+    "sha_anchors_global": 8,
+    "stdout_bytes": 16384,
+    "stderr_bytes": 16384,
+    "transport_timeout_s": 60,
+    "automatic_retries": 0,
+    "producer_source_bytes": 16384
+  },
+  "filesystem": "No-follow descriptor-relative fixed ancestor chain. Directory/file pre/open/post identities and terminal directory full identity checked. Only ordinary single-link files, no symlinks/reparse-equivalent attributes. Name whitelist BEFORE file stat/open. No referenced file opens and no driver reread. Stable full byte SHA is computed before projecting code anchors.",
+  "budgets": "Directory>512 or selected>16 hard-fail closed, never truncated PASS. Oversized code files retain basename/type/size with NOT_OPENED_SIZE_LIMIT/hash null. Aggregate read budget skips with NOT_OPENED_TOTAL_BUDGET/hash null. All no-open files have anchors_scanned=false. Explicit scope_incomplete_for_contents and scope_incomplete_for_anchors; anchor caps retain recognized totals and omitted counts without raw lines.",
+  "parsing": {
+    "scope": "Only whitelisted code-file bytes. Other code lines, quality/status/runtime/BLIND values never decoded or output; code files ARE read/scanned, not executed.",
+    "scheduler": "Full physical LF line, optional CRLF: Job <1-20 decimal digits> is submitted to (default )?queue <1-64 ASCII alnum/_/./- chars>. Output exact bounded decimal job ID STRING and one-based logical_line only, not queue or raw line. This code literal may be a heredoc/example; it is not submission proof.",
+    "sha256": "Full physical LF line, optional CRLF, GNU forms exactly hex64+'  '+fixed_driver_path OR hex64+' *'+fixed_driver_path. Output normalized lowercase hash, matches_reference boolean and logical_line only.",
+    "fixed_driver_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/phase4_closure_driver_v2.py",
+    "reference_sha256": "4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94",
+    "literal_path_counts": "Count exact fixed driver absolute-path byte occurrences only, including unknown code lines. Literal occurrence count is NOT invocation count.",
+    "unknown_format": "No recognized anchors means no recognized anchors only; no raw fallback, no automatic scope widening or scheduler query.",
+    "status": "Always metadata-only no-open under this final privacy scope."
+  },
+  "output": "Exact bounded schema with fixed roots, selected basenames/type/size/role, current SHA for code read, no-open reason/hash null, anchor-scan boolean, recognized/omitted anchor counts, selected anchor metadata and explicit CODE_LITERALS_NOT_EXECUTION_PROOF. No raw code/log lines, commands, status/runtime/quality fields. NO_MATCH_WITHIN_FIXED_SCOPE is not global absence.",
+  "tests": "13 synthetic tests only: exact name grammar/filter-before-stat/no driver or generic/submit/status reads; two byte anchor forms/job spelling; size/total/name caps and incomplete evidence; stable FD/symlink/link/directory changes; independent8+8 caps; strict output validator; fake transport/no actual SSH and isolated validator import. Producer source explicitly <=16384 bytes. No status-hashing parser or unreachable legacy status-hash state exists.",
+  "actual_execution_gate": "Independent review before exactly one fixed-scope call. Worker has not executed SSH/payload main or read actual A/source/log files. No bjobs/LSF status query or remote submission, remote writes, deployment, plan inspection, referenced paths, historical freeze or training authority.",
+  "global_absence_claimed": false,
+  "historical_immutability_certified": false,
+  "historical_execution_certified": false,
+  "physical_call_certified": false,
+  "costs_computed": false,
+  "training_release": false
+}

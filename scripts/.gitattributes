@@ -1,3 +1,9 @@
 # Keep the reviewed E59 payload and transport byte-identical across checkouts.
 hash_ranking_v6_e59_phase4_driver.py -text
 run_ranking_v6_e59_readonly.py -text
+project_ranking_v6_e60_launch_metadata.py -text
+run_ranking_v6_e60_readonly.py -text
+project_ranking_v6_e60_launch_metadata_r2.py -text
+run_ranking_v6_e60_readonly_r2.py -text
+observe_ranking_v6_e61_python_api.py -text
+run_ranking_v6_e61_readonly.py -text
