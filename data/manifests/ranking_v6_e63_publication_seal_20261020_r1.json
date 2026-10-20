@@ -1,0 +1,92 @@
+{
+  "schema": "ranking_v6_e62_e63_publication_seal_v1",
+  "date": "2026-10-20",
+  "scope": "Local static launcher recipe and exact A current wrapper byte identity only; no mixed log read, history certification or training release.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "04ab736d032767eba12558c307daa655aff46abcf49588e68b716863174cc2e7",
+      "bytes": 224
+    },
+    {
+      "path": "contracts/ranking_v6_wrapper_identity_e63_v1.json",
+      "sha256": "b694b88b27f661860735b850bf1a51ef038aebb74d9e1c564d2aaa4bbe5f922b",
+      "bytes": 4263
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "e8aeadd21f406f768707c26802c850ae177204a1ce8b2aa226e999c51e7f66ea",
+      "bytes": 390
+    },
+    {
+      "path": "data/manifests/ranking_v6_e62_local_launch_recipe_20261020_r1.json",
+      "sha256": "acbc11c02e43bcbac031502bf2dfb90878ea4294875bc1deabd6be468644acfb",
+      "bytes": 6553
+    },
+    {
+      "path": "data/manifests/ranking_v6_e63_completion_20261020_r1.json",
+      "sha256": "c268666e6a117ffaf522880eb0858b192ad10efba809723f66d4721295812601",
+      "bytes": 1866
+    },
+    {
+      "path": "data/manifests/ranking_v6_e63_observation_20261020_r1.json",
+      "sha256": "8d3ca9d20d8d96e0b3d0e5b83ae76e2aaa5193b7d3f735b0874caf2e012716c0",
+      "bytes": 801
+    },
+    {
+      "path": "data/manifests/ranking_v6_e63_regression_20261020_r1.log",
+      "sha256": "c6f51e85e4df2949bfcd5b8118c6d8800e16513c494c79d8cd34cb5211534acd",
+      "bytes": 1468
+    },
+    {
+      "path": "data/manifests/ranking_v6_e63_transport_20261020_r1.json",
+      "sha256": "ca3ee53693524e31494d7ec76b40dbeafd51c3f2177cab1a36152f6b5638ecfb",
+      "bytes": 544
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "5cb59f32a0574f22a15847d39ecc45d3003c17e9d7190ae13f92be24c6dc0c2b",
+      "bytes": 4089
+    },
+    {
+      "path": "experiment_overview/entries/E62_local_launch_recipe.md",
+      "sha256": "43f8c7ed25f73c2d6b2bf67566bc5e50477c1be5e7e3735ec57d90537c6ea697",
+      "bytes": 2344
+    },
+    {
+      "path": "experiment_overview/entries/E63_current_wrapper_identity.md",
+      "sha256": "8b1c8420c56e6596fde9c5e2751abb69c269009323185022902b0fda0ac1d905",
+      "bytes": 2200
+    },
+    {
+      "path": "experiment_overview/SOURCE_EVIDENCE_GAPS.md",
+      "sha256": "a11ac0fefdf4aa9505295171f60e24cb02459d6c1ff51e45c73c02d4a644de53",
+      "bytes": 4500
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "ca294de6e8f940da9ea02fc831f42c3a8affbafc2265b63047a7f288ba270f6c",
+      "bytes": 496
+    },
+    {
+      "path": "scripts/hash_ranking_v6_e63_phase4_wrapper.py",
+      "sha256": "80e77eeee38f7b0413270a777b5fafd726a37e13def0da614c0c75706ad36c37",
+      "bytes": 6007
+    },
+    {
+      "path": "scripts/run_ranking_v6_e63_readonly.py",
+      "sha256": "18dad391eeb5ec58c9d22a1e00debae0c104746c0d4c32c8d1ef0237cd04a6fd",
+      "bytes": 5409
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "2b27caa8a1650d7d42135c35fffc01b5106715243c1820a4ebeab41df5be1aa4",
+      "bytes": 224
+    },
+    {
+      "path": "tests/test_ranking_v6_e63_wrapper_identity.py",
+      "sha256": "4971e4300fc963435bbbe62b6a1947cca7f313d4bb30ad6a156afbff120a2550",
+      "bytes": 11486
+    }
+  ]
+}

@@ -7,3 +7,5 @@ project_ranking_v6_e60_launch_metadata_r2.py -text
 run_ranking_v6_e60_readonly_r2.py -text
 observe_ranking_v6_e61_python_api.py -text
 run_ranking_v6_e61_readonly.py -text
+hash_ranking_v6_e63_phase4_wrapper.py -text
+run_ranking_v6_e63_readonly.py -text

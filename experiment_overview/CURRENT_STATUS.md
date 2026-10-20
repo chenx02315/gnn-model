@@ -1,6 +1,6 @@
 # 当前实验状态
 
-更新：2026-10-19（E60-r2 实际读取后）。此文件是可更新的当前入口；之前的 E57/E58 入口快照及其 seal 对应提交 `3f53814` 的原始 blob，而不是本次更新后的入口字节。实验原始小结果、代码和回执不重写；E54–E56 的旧待办措辞保留当时状态，不改原 seal。
+更新：2026-10-20（E62/E63 后）。此文件是可更新的当前入口；之前的 E57/E58 入口快照及其 seal 对应提交 `3f53814`，E60/E61 入口快照对应提交 `4bda05c` 的原始 blob，而不是本次更新后的入口字节。实验原始小结果、代码和回执不重写；旧待办措辞保留当时状态，不改原 seal。
 
 - E54–E56：来源链和 1780 配置映射通过，独立复核恢复并完成；已正常推送 `132291b`，不是仍在等待额度。
 - E57：实际一次两摘要连接通过，16 条声明完整保留，8 正式范围 + 8 其他版本，独立小结果复核通过。773 项回归中 767 执行通过、6 条件跳过、零失败/错误。
@@ -11,5 +11,8 @@
 - E61：独立一次解释器观测通过，A 端为 Python 3.6.8，缺少原读取器使用的两个新接口。这是当前兼容性缺口证据，不倒填 E60 的唯一原因，也不是目录审计通过。808 项相关回归中 802 执行通过、6 条件跳过。
 - E60-r2：兼容修复后实际一次读取与独立结果复核通过；两个目录 74/41 个条目，仅选中 2 字节状态文件的元数据，正文读取为零，没有取得启动代码/job/SHA 锚点。829 项回归中 823 执行通过、6 条件跳过。保持内存 512 MiB、单 worker、零自动重试，日志/submit/status 正文仍不打开。下一步查本地启动代码配方，不扩大到结果日志。详见 [E60-r2 实际观测](entries/E60_r2_launch_metadata_observation.md)。
 - 继续方向：定位 Phase4 aes_core/spi 同时期部署/启动记录，将历史实际 driver SHA、命令/job 与输出根绑定。当前文件相同仍不是历史执行或策略冻结的证明；完整计费与训练均未放行。
+- E62：本地 `phase4_bootstrap` 找到真正的 `start_`/`run_` 启动脚本，原精确前缀可能漏匹配；两份源码小快照与独立静态复核已保存。取消不再必要的宽目录查找，未执行远端；三个草稿完整隔离保留。launcher log 混有七电路状态，不能按纯提交日志读取。详见 [E62 启动配方](entries/E62_local_launch_recipe.md)。
+- E63：实际一次固定 wrapper SHA 核验及独立结果复核通过，A 端当前 2,323 B 与本地 SHA 完全一致。843 项回归中 837 执行通过、6 条件跳过。未认证历史部署/执行/冻结/费用。详见 [E63 当前 wrapper 身份](entries/E63_current_wrapper_identity.md)。
+- 当前下一权限门：已请求限定的一次混合 launcher log 读取，只导出 aes_core/spi 提交顺序/Job ID，批准前不读正文；批准后仍须新解析器、测试和独立复核。训练、LSF/Tessent 仍不启动。
 
 记录入口：[E56 复核闭环](entries/E56_r2_publication_review.md)、[E57 实际结果](entries/E57_formal_declaration_bridge.md)、[E58 源码线索](entries/E58_reference_driver_semantics.md)、[E59 当前源码身份](entries/E59_current_driver_identity.md)、[E60 失败保留](entries/E60_launch_metadata_failed.md)、[E61 解释器观测](entries/E61_python_api_observation.md)、[剩余证据与清单](SOURCE_EVIDENCE_GAPS.md)。

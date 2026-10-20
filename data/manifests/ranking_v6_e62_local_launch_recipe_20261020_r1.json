@@ -1,0 +1,49 @@
+{
+  "experiment_id": "E62",
+  "date": "2026-10-20",
+  "status": "PASS_LOCAL_STATIC_LAUNCH_RECIPE_ONLY",
+  "sources": [
+    {
+      "basename": "start_phase4_closure_batch_v2_r1.sh",
+      "local_path": "C:\\Users\\86155\\Desktop\\new lab\\phase4_bootstrap\\start_phase4_closure_batch_v2_r1.sh",
+      "byte_count": 680,
+      "sha256": "2f864c541e16b9e573e7aff0a98db6dcfeb45cfd016c663dccc287227662e5a3",
+      "source_bytes_base64": "IyEvdXNyL2Jpbi9lbnYgYmFzaApzZXQgLWV1byBwaXBlZmFpbAoKUEhBU0U9L3RlbXAvamlhbmdjaHVhbmMvbXVsdGltb2RlX2F0ZV9waGFzZTRfMjAyNjA4MjVfQQpGVz0kUEhBU0UvMDBfZnJhbWV3b3JrCkJBVENIX0lEPXBoYXNlNF9jbG9zdXJlX2JhdGNoX3YyX3IxCkxBVU5DSF9MT0c9JFBIQVNFL2xvZ3MvJHtCQVRDSF9JRH0ubGF1bmNoZXIubG9nClBJRF9GSUxFPSRQSEFTRS9sb2dzLyR7QkFUQ0hfSUR9LnBpZAoKW1sgISAtZSAkTEFVTkNIX0xPRyAmJiAhIC1lICRQSURfRklMRSAmJiAhIC1lICRQSEFTRS9sb2dzLyR7QkFUQ0hfSUR9LnByb2dyZXNzICYmICEgLWUgJFBIQVNFL2xvZ3MvJHtCQVRDSF9JRH0uc3RhdHVzIF1dIHx8IHsKICBlY2hvICJyZWZ1c2luZyBleGlzdGluZyB2MiBjbG9zdXJlIGxhdW5jaGVyIGV2aWRlbmNlIiA+JjIKICBleGl0IDczCn0KQVRFX0NMT1NVUkVfQkFUQ0hfSUQ9JEJBVENIX0lEIG5vaHVwIGJhc2ggIiRGVy9ydW5fcGhhc2U0X2Nsb3N1cmVfYmF0Y2hfdjIuc2giIFwKICA+ICIkTEFVTkNIX0xPRyIgMj4mMSA8IC9kZXYvbnVsbCAmCnBpZD0kIQpwcmludGYgJyVzXG4nICIkcGlkIiA+ICIkUElEX0ZJTEUiCnNsZWVwIDIKa2lsbCAtMCAiJHBpZCIKcHJpbnRmICdQSEFTRTRfQ0xPU1VSRV9WMl9XQVRDSEVSX1NUQVJURUQgcGlkPSVzXG4nICIkcGlkIgo="
+    },
+    {
+      "basename": "run_phase4_closure_batch_v2.sh",
+      "local_path": "C:\\Users\\86155\\Desktop\\new lab\\phase4_bootstrap\\run_phase4_closure_batch_v2.sh",
+      "byte_count": 2323,
+      "sha256": "d1d04f1338af9ec76fffe0224a7b1a1f5ca7ea0bb262e5f2db117a070c5b9f50",
+      "source_bytes_base64": "IyEvdXNyL2Jpbi9lbnYgYmFzaApzZXQgLWV1byBwaXBlZmFpbAoKUEhBU0U9L3RlbXAvamlhbmdjaHVhbmMvbXVsdGltb2RlX2F0ZV9waGFzZTRfMjAyNjA4MjVfQQpGVz0kUEhBU0UvMDBfZnJhbWV3b3JrCkRSSVZFUj0kRlcvcGhhc2U0X2Nsb3N1cmVfZHJpdmVyX3YyLnB5CkVORFBPSU5UX0JBVENIX1NUQVRVUz0kUEhBU0UvbG9ncy9waGFzZTRfZ2F0ZV9iYXRjaF92Ml9yMS5zdGF0dXMKQkFUQ0hfSUQ9JHtBVEVfQ0xPU1VSRV9CQVRDSF9JRDotcGhhc2U0X2Nsb3N1cmVfYmF0Y2hfdjJfcjF9CkJBVENIX0xPRz0kUEhBU0UvbG9ncy8ke0JBVENIX0lEfS5wcm9ncmVzcwpCQVRDSF9TVEFUVVM9JFBIQVNFL2xvZ3MvJHtCQVRDSF9JRH0uc3RhdHVzCmNpcmN1aXRzPShiMjAgYjIxIGIyMiB3Yl9kbWEgYWVzX2NvcmUgdHY4MCBzcGkpCgpbWyAkKHJlYWxwYXRoIC1lICIkUEhBU0UiKSA9PSAiJFBIQVNFIiBdXSB8fCB7IGVjaG8gIlBoYXNlNCByb290IG1pc3NpbmciID4mMjsgZXhpdCAyOyB9CltbIC1mICREUklWRVIgJiYgLWYgJEZXL3RyYW5zbGF0ZV9mYXVsdF9zdGF0ZV92MS5weSBdXSB8fCB7IGVjaG8gInYyIGNsb3N1cmUgZmlsZXMgbWlzc2luZyIgPiYyOyBleGl0IDI7IH0KW1sgISAtZSAkQkFUQ0hfTE9HICYmICEgLWUgJEJBVENIX1NUQVRVUyBdXSB8fCB7IGVjaG8gInJlZnVzaW5nIGV4aXN0aW5nIHYyIGJhdGNoIGV2aWRlbmNlIiA+JjI7IGV4aXQgNzM7IH0KW1sgLWYgJEVORFBPSU5UX0JBVENIX1NUQVRVUyAmJiAkKHRyIC1kICdcclxuJyA8ICIkRU5EUE9JTlRfQkFUQ0hfU1RBVFVTIikgPT0gMCBdXSB8fCB7CiAgZWNobyAiZW5kcG9pbnQgYmF0Y2ggaXMgbm90IFBBU1MiID4mMjsgZXhpdCAzMjsKfQoKYmF0Y2hfcmM9MApmb3IgY2lyY3VpdCBpbiAiJHtjaXJjdWl0c1tAXX0iOyBkbwogIHJvb3Q9JFBIQVNFLzEwX2NpcmN1aXRzLyRjaXJjdWl0CiAgY2xvc3VyZV9zdGF0dXM9JHJvb3QvMTBfY292ZXJhZ2U5NV9waGFzZTRfdjIvc3RhdHVzCiAgaWYgW1sgLWYgJGNsb3N1cmVfc3RhdHVzICYmICQodHIgLWQgJ1xyXG4nIDwgIiRjbG9zdXJlX3N0YXR1cyIpID09IDAgXV07IHRoZW4KICAgIHByaW50ZiAnJXNcdCVzXHRTS0lQX0NMT1NVUkVfUEFTU1xuJyAiJChkYXRlIC1JcykiICIkY2lyY3VpdCIgfCB0ZWUgLWEgIiRCQVRDSF9MT0ciCiAgICBjb250aW51ZQogIGZpCiAgaWYgW1sgLWUgJGNsb3N1cmVfc3RhdHVzIHx8IC1lICR7cm9vdH0vMTBfY292ZXJhZ2U5NV9waGFzZTRfdjIubG9jayBdXTsgdGhlbgogICAgcHJpbnRmICclc1x0JXNcdEJMT0NLX0VYSVNUSU5HX05PTlBBU1NfT1JfTE9DS1xuJyAiJChkYXRlIC1JcykiICIkY2lyY3VpdCIgfCB0ZWUgLWEgIiRCQVRDSF9MT0ciCiAgICBiYXRjaF9yYz0xCiAgICBjb250aW51ZQogIGZpCiAgam9iPSR7Y2lyY3VpdH1fcDRfZDk1X3YyCiAgb3V0PSRyb290L2xvZ3MvJHtqb2J9LmxzZi5vdXQKICBlcnI9JHJvb3QvbG9ncy8ke2pvYn0ubHNmLmVycgogIHByaW50ZiAtdiBjb21tYW5kICdtb2R1bGUgbG9hZCBtZW50b3IvdGVzc2VudDIwMjE7IEFURV9QSEFTRV9ST09UPSVxIHB5dGhvbjMgJXEgJXEnICIkUEhBU0UiICIkRFJJVkVSIiAiJGNpcmN1aXQiCiAgcHJpbnRmICclc1x0JXNcdENMT1NVUkVcdFNVQk1JVFxuJyAiJChkYXRlIC1JcykiICIkY2lyY3VpdCIgfCB0ZWUgLWEgIiRCQVRDSF9MT0ciCiAgYnN1Yl9yYz0wCiAgYnN1YiAtSyAtcSBub3JtYWwgLUogIiRqb2IiIC1vICIkb3V0IiAtZSAiJGVyciIgL2Jpbi9iYXNoIC1sYyAiJGNvbW1hbmQiIHx8IGJzdWJfcmM9JD8KICBmb3IgXyBpbiB7MS4uMTh9OyBkbwogICAgW1sgLWUgJGNsb3N1cmVfc3RhdHVzIF1dICYmIGJyZWFrCiAgICBzbGVlcCA1CiAgZG9uZQogIGlmIFtbICEgLWYgJGNsb3N1cmVfc3RhdHVzIHx8ICQodHIgLWQgJ1xyXG4nIDwgIiRjbG9zdXJlX3N0YXR1cyIpICE9IDAgXV07IHRoZW4KICAgIHByaW50ZiAnJXNcdCVzXHRDTE9TVVJFXHRGQUlMXHRic3ViX3JjPSVzXG4nICIkKGRhdGUgLUlzKSIgIiRjaXJjdWl0IiAiJGJzdWJfcmMiIHwgdGVlIC1hICIkQkFUQ0hfTE9HIgogICAgYmF0Y2hfcmM9MQogICAgY29udGludWUKICBmaQogIHByaW50ZiAnJXNcdCVzXHRDTE9TVVJFXHRQQVNTXG4nICIkKGRhdGUgLUlzKSIgIiRjaXJjdWl0IiB8IHRlZSAtYSAiJEJBVENIX0xPRyIKZG9uZQpwcmludGYgJyVzXHRCQVRDSFx0RE9ORVx0cmM9JXNcbicgIiQoZGF0ZSAtSXMpIiAiJGJhdGNoX3JjIiB8IHRlZSAtYSAiJEJBVENIX0xPRyIKcHJpbnRmICclc1xuJyAiJGJhdGNoX3JjIiA+ICIkQkFUQ0hfU1RBVFVTIgpleGl0ICIkYmF0Y2hfcmMiCg=="
+    }
+  ],
+  "source_snapshot_encoding": "base64 of original source bytes, not outputs; SHA verifies decoded bytes",
+  "reviewer": "/root/e27_review",
+  "static_facts": {
+    "starter_executes": "FW/run_phase4_closure_batch_v2.sh via nohup bash",
+    "starter_redirect": "wrapper stdout and stderr merged into phase4_closure_batch_v2_r1.launcher.log",
+    "starter_pid": "watcher $! only, not an LSF Job ID",
+    "wrapper_bsub": "bsub -K -q normal -J ${circuit}_p4_d95_v2 -o per-circuit .lsf.out -e per-circuit .lsf.err",
+    "launcher_privacy": "MIXED batch stdout including progress/status tee for all seven circuits, not pure submission echo; no body read granted",
+    "driver_binding": "exact driver path only, no recorded driver SHA or pre-outcome freeze ACK"
+  },
+  "draft_inventory": {
+    "actual_remote_calls": 0,
+    "status": "DEFERRED_NOT_NEEDED_AFTER_LOCAL_RECIPE_FOUND",
+    "local_preserved_directory": "runtime_training_staging_20260928/v6_e62_deferred_inventory_20261020_r1",
+    "synthetic_tests": 12,
+    "preserved_sha256": {
+      "project_ranking_v6_e62_code_inventory.py": "cb1743e24a3a603ba6ce5d85a6942cec7a537c21458c39e6411ae8fa3fc6a50d",
+      "run_ranking_v6_e62_readonly.py": "33434786fc14b58ef85819cd65adf9a7a5f473cd27cb17c83aa7c8cf5c2a3745",
+      "test_ranking_v6_e62_code_inventory.py": "c65b33ae75c93b59b1654649e65f8d81c96e91475872e70e2cc2f2967e709d3f"
+    },
+    "note": "Drafts moved intact, not deleted; not part of production or actual evidence."
+  },
+  "remote_access": false,
+  "logs_or_status_read": false,
+  "historical_execution_certified": false,
+  "costs_computed": false,
+  "training_release": false,
+  "next_dependency": "Independent-gated E63 current byte identity for exact wrapper path stated by starter; no guessed starter deployment path."
+}
