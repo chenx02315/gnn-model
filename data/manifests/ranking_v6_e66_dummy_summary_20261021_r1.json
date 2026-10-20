@@ -1,0 +1,91 @@
+{
+  "dummy_children": 3,
+  "execution_ready": false,
+  "journal_sha256": "068e00d64caedc6c4c6a17a319d09c23c39455e843f5c9ac8e72eb2d33a247cb",
+  "ledger_interval_sum": {
+    "attempt_ids": [
+      "local-failure",
+      "local-success",
+      "local-timeout"
+    ],
+    "cache_lookup_overhead_unmeasured": true,
+    "complete": true,
+    "cost_kind": "COMPLETE_SUM_OF_PHYSICAL_WALL_INTERVALS",
+    "execution_ready": false,
+    "incomplete_attempt_ids": [],
+    "online_cost_complete": false,
+    "physical_atpg_wall_ns_sum": 163580200,
+    "quality_used_to_filter_cost": false,
+    "runner_integration_verified": false,
+    "unverified_termination_ids": [],
+    "wall_clock_makespan_computed": false
+  },
+  "real_atpg_attempts": 0,
+  "real_runner_integration": false,
+  "receipts": [
+    {
+      "attempt_id": "local-success",
+      "child_reaped": true,
+      "dummy_only": true,
+      "execution_ready": false,
+      "hard_process_memory_guard_claimed": false,
+      "ledger_terminal_recorded": true,
+      "pid": 33016,
+      "process_tree_termination_proved": false,
+      "profile": "success",
+      "real_atpg_integration": false,
+      "recorded_interval_ns": 25140200,
+      "returncode": 0,
+      "status": "DUMMY_TERMINAL_RECORDED",
+      "termination_verified": true,
+      "timing_scope": "DUMMY_PRESTART_RECORD_TO_REAP_INCLUDES_JOURNAL_AND_LAUNCH",
+      "training_release": false
+    },
+    {
+      "attempt_id": "local-failure",
+      "child_reaped": true,
+      "dummy_only": true,
+      "execution_ready": false,
+      "hard_process_memory_guard_claimed": false,
+      "ledger_terminal_recorded": true,
+      "pid": 45692,
+      "process_tree_termination_proved": false,
+      "profile": "failure",
+      "real_atpg_integration": false,
+      "recorded_interval_ns": 24299300,
+      "returncode": 7,
+      "status": "DUMMY_TERMINAL_RECORDED",
+      "termination_verified": true,
+      "timing_scope": "DUMMY_PRESTART_RECORD_TO_REAP_INCLUDES_JOURNAL_AND_LAUNCH",
+      "training_release": false
+    },
+    {
+      "attempt_id": "local-timeout",
+      "child_reaped": true,
+      "dummy_only": true,
+      "execution_ready": false,
+      "hard_process_memory_guard_claimed": false,
+      "ledger_terminal_recorded": true,
+      "pid": 18928,
+      "process_tree_termination_proved": false,
+      "profile": "timeout",
+      "real_atpg_integration": false,
+      "recorded_interval_ns": 114140700,
+      "returncode": 1,
+      "status": "DUMMY_TERMINAL_RECORDED",
+      "termination_verified": true,
+      "timing_scope": "DUMMY_PRESTART_RECORD_TO_REAP_INCLUDES_JOURNAL_AND_LAUNCH",
+      "training_release": false
+    }
+  ],
+  "remote_access": false,
+  "replay_matches_live": true,
+  "states": {
+    "local-failure": "FAILED",
+    "local-success": "SUCCESS",
+    "local-timeout": "TIMEOUT"
+  },
+  "status": "PASS_LOCAL_DUMMY_PROCESS_INTEGRATION_ONLY",
+  "timing_note": "Measured local dummy record-to-reap interval includes journal/launch/wait/cleanup; not ATPG runtime",
+  "training_release": false
+}

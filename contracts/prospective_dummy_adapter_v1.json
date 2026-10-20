@@ -1,0 +1,42 @@
+{
+  "schema_version": "prospective_dummy_adapter_v1",
+  "experiment_id": "E66",
+  "status": "LOCAL_DUMMY_IMPLEMENTATION_ONLY_PENDING_INDEPENDENT_REVIEW",
+  "source": "src/data/prospective_dummy_adapter_v1.py",
+  "tests": "tests/test_prospective_dummy_adapter_v1.py",
+  "base_ledger": "src/data/prospective_attempt_ledger_v1.py",
+  "base_ledger_sha256": "b82869c4060f009c4a30906aada92dad7b7721f1a8474e8905e6bb7687672aec",
+  "purpose": "Offline engineering validation connecting real tiny local Python dummy children to the frozen E65 journal. Not an ATPG adapter, executor admission gate, remote launcher or training release.",
+  "api": "run_dummy(journal, attempt_id, profile, timeout_s=0.1, clock=None). Exact E65 Journal type and internally fixed synthetic plan SHA required; no caller command, circuit, environment, job, working-directory, input, output or provenance interface. Clock injection is for synthetic evidence only.",
+  "profiles": {
+    "success": "[sys.executable,-I,-S,-B,-c,'raise SystemExit(0)']",
+    "failure": "[sys.executable,-I,-S,-B,-c,'raise SystemExit(7)']",
+    "timeout": "[sys.executable,-I,-S,-B,-c,'import time; time.sleep(2)']"
+  },
+  "launch": "Immutable allowlist of three literal programs; shell=False, stdin/stdout/stderr DEVNULL, cwd is a freshly created empty TemporaryDirectory, no generated child code files and no child-generated subprocesses. No caller-supplied env or arbitrary argv. Current local Python executable and inherited process environment are not real-runner cohort admission evidence.",
+  "recording_order": "PLAN append/flush/fsync ACK, then capture START monotonic/UTC, then START append/flush/fsync ACK, then exactly one Popen. A failed PLAN or START append cannot launch. START execution identity host is explicitly synthetic-local-host, job_id/pid null; actual child PID and returncode are only returned in the local receipt. No retroactive job identity inference.",
+  "provenance": "All fields internally constructed: toy-circuit, synthetic job/host/environment/driver/input labels, profile+timeout configuration SHA and call key, exact actual fixed argv command digest, fixed synthetic plan SHA, new clock-session identity and ephemeral temporary output_root. No genuine plan admission or real data access. E65 ATOMIC_ATPG_PROCESS_ONLY cost_node is required solely for toy protocol compatibility: it does not make this duration an ATPG measurement.",
+  "timing_scope": "DUMMY_PRESTART_RECORD_TO_REAP_INCLUDES_JOURNAL_AND_LAUNCH",
+  "timing_meaning": "Integer monotonic END minus START; includes START journal flush/fsync, launch dispatch, child wait and any timeout kill/reap latency. UTC is metadata only. Not exclusive process wall time, real ATPG wall time, CPU time, ATE cycles, online search elapsed time or generalization/cost evidence.",
+  "terminal_recording": "After child wait/reap, append END SUCCESS for exit0, FAILED for nonzero, TIMEOUT for timeout with successful cleanup. d95, ate_cycles and output_artifact_sha256 remain null. termination_verified can be true only after this fixed child is reaped; no general process-tree termination guarantee is made. No invented quality or successful cache artifact.",
+  "failure_policy": "Popen failure after durable START returns a fixed incomplete receipt and leaves RUNNING without an invented END or zero duration. Any same-journal PLANNED/RUNNING/unverified-terminal record prevents another dispatch. Kill/reap cleanup is attempted on timeout, unexpected wait/record errors or interruption after a child object exists. One kill and one bounded reap; any cleanup error remains incomplete even if a later wait reaps. A genuinely unreaped child permanently poisons this module instance against dispatch on any journal, with no public reset. Unexpected errors/interrupts propagate after cleanup. END append/fsync error propagates after reaping and the E65 writer remains poisoned; no extra append, repair or success receipt.",
+  "limits": {
+    "workers": 1,
+    "automatic_retries": 0,
+    "timeout_min_s": 0.05,
+    "timeout_max_s": 1.0,
+    "cleanup_reap_timeout_s": 1.0,
+    "stdout": "DEVNULL",
+    "stderr": "DEVNULL",
+    "stdin": "DEVNULL",
+    "process_memory_guard": null
+  },
+  "concurrency": "Nonblocking module-global worker lock rejects overlapping adapter calls. Global poison is set immediately before Popen, covering interruption before a handle returns and the post-assignment/pre-cleanup-handler gap. It clears ONLY after verified child wait/reap AND successful END acknowledgement. Cleanup never clears it; every incomplete/error/interrupted path remains poisoned, even if cleanup later reaps the child. Ordinary spawn exceptions retain the fixed incomplete receipt; KeyboardInterrupt/SystemExit propagate. Poison prevents dispatch even on a new journal; no public reset. This is not cross-process scheduling or a resource-admission service.",
+  "verification": "14 focused tests: three actual tiny local children per suite only; fake subprocess tests assert START is durably replayable before Popen, exact fixed argv and fresh empty cwd, PLAN/START/END fsync failure paths, ordinary/interrupted Popen boundary global poison across new journals, sys.settrace interruption after Popen assignment before the cleanup handler, kill/reap failure/global poison, interruption cleanup, unresolved-journal rejection, fixed profile and timeout validation, lock behavior and unchanged frozen E65 source hash. Other fixtures are toy temporary journals. No remote, SSH, Tessent, LSF, model, real inputs or real jobs accessed.",
+  "limitations": "No real ATPG memory admission or runtime collector; memory cap remains null. Cleanup attempts for interruptions apply only after the cleanup handler is established: the post-Popen/pre-handler interruption window conservatively preserves global poison, but does not guarantee immediate child cleanup or reap. No process-tree supervisor, persistent poison recovery, retry engine, cache consumer, deployment, remote integration, UI or training. Disk replay integrity does not prove fsync acknowledgement, complete actual execution or resource admission. Parent contract and independent review remain separate from any future real-run authority.",
+  "execution_ready": false,
+  "training_release": false,
+  "real_atpg_integration": false,
+  "process_tree_termination_proved": false,
+  "hard_process_memory_guard_claimed": false
+}

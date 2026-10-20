@@ -1,0 +1,22 @@
+{
+  "experiment_id": "E66",
+  "date": "2026-10-21",
+  "reviewer": "/root/e27_review",
+  "implementation_verdict": "PASS_LOCAL_DUMMY_IMPLEMENTATION_ONLY",
+  "result_verdict": "E66_ACTUAL_DUMMY_RESULT_AND_PUBLICATION_CONTENT_PASS",
+  "architecture_review": "/root/e66_interrupt_strategy",
+  "reviewer_adapter_tests": {"tests":14,"skipped":0,"failures":0,"errors":0,"seconds":0.231},
+  "post_result_review_added_children": 0,
+  "evidence_checked": ["final adapter/test/contract/demo raw SHA-256","E65 unchanged source SHA","optimized explicit demo guards","45-test focus log","900-test related regression log","completion and dummy summary","three Chinese overview documents","exact local toy journal raw SHA and 9-event canonical hash chain","three per-attempt intervals and aggregate","null quality/artifact fields and false real-experiment claims"],
+  "journal_sha256": "068e00d64caedc6c4c6a17a319d09c23c39455e843f5c9ac8e72eb2d33a247cb",
+  "dummy_interval_ns_by_profile": {"success":25140200,"failure":24299300,"timeout":114140700},
+  "dummy_interval_ns_sum": 163580200,
+  "publication_contract_sha256": "2ddf7da6d525f382346b1aa44f85a1e7261e26147e1ba2c2d6f40bb4150e9fa3",
+  "interruption_limit_acknowledged": "Before cleanup handler establishment, global poison blocks further dispatch but immediate child reap is not guaranteed.",
+  "artifact_authenticity_or_real_atpg_claim": false,
+  "hard_process_memory_guard_claimed": false,
+  "remote_access": false,
+  "training_release": false,
+  "execution_ready": false,
+  "seal_and_index_verification": "Parent separately verifies final publication seal and exact owned index before commit; not included in this earlier content verdict."
+}

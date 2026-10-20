@@ -6,3 +6,4 @@ test_ranking_v6_e63_wrapper_identity.py -text
 test_ranking_v6_e64_submission_metadata.py -text
 test_prospective_attempt_ledger_v1.py -text
 test_prospective_capture_plan_v1.py -text
+test_prospective_dummy_adapter_v1.py -text

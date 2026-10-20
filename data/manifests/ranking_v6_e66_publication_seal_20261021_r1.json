@@ -1,0 +1,96 @@
+{
+  "schema": "ranking_v6_e66_publication_seal_v1",
+  "date": "2026-10-21",
+  "base_commit": "673c5497a4e229078c0c69c0549c718f2c4ccdf8",
+  "scope": "Fixed tiny local Python dummy engineering evidence only; not real ATPG/runtime labels/training. Raw local toy journal remains staging, only its SHA and small summary published.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "5a0634eadc369f42a2be927d52f0f058f7cc41abcde7b1017479d9700434cc5d",
+      "bytes": 404
+    },
+    {
+      "path": "contracts/prospective_dummy_adapter_v1.json",
+      "sha256": "2ddf7da6d525f382346b1aa44f85a1e7261e26147e1ba2c2d6f40bb4150e9fa3",
+      "bytes": 6398
+    },
+    {
+      "path": "src/data/.gitattributes",
+      "sha256": "119ce460b2a3384a50a98ff2b040855970f4dd38d42e063159ae8e7a25d14202",
+      "bytes": 194
+    },
+    {
+      "path": "src/data/prospective_dummy_adapter_v1.py",
+      "sha256": "f87ac19f6dc2fc268646119b27dae7853bc40a6d05a3989b0096e340f8503bad",
+      "bytes": 6132
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "0349e179a5707154b8b39a26c40804d9cd44ac97e65874918bd00c26cb1c7d1e",
+      "bytes": 402
+    },
+    {
+      "path": "tests/test_prospective_dummy_adapter_v1.py",
+      "sha256": "d568adf7c69f1d6892d1762bad43ffe012ab75c51f77399418b6db5a9699f3a9",
+      "bytes": 14322
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "a662f6132eeca1b3380e64300920e040a925a87dfa4f4a5158ddb3642c9cbcee",
+      "bytes": 669
+    },
+    {
+      "path": "scripts/demo_prospective_dummy_adapter_v1.py",
+      "sha256": "78c864e3b6cc84ad625f0febf8f141273df97ea3f5d1d45e2f77b0b326d67789",
+      "bytes": 2914
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "b91cc6b09ced13d3ee930947f2fe6a12048c2e478b7c684c3c2124a9b1620c60",
+      "bytes": 522
+    },
+    {
+      "path": "data/manifests/ranking_v6_e66_completion_20261021_r1.json",
+      "sha256": "cdc4f7de7188706c0b43e51418e6b36293ea103d1cc2454c37e87fd30a5d3199",
+      "bytes": 2327
+    },
+    {
+      "path": "data/manifests/ranking_v6_e66_dummy_summary_20261021_r1.json",
+      "sha256": "0a4e988562ab90231821180baf7c78ac450248e84551fce56e0ad24f68085dd3",
+      "bytes": 3016
+    },
+    {
+      "path": "data/manifests/ranking_v6_e66_focused_20261021_r1.log",
+      "sha256": "d8fe5ef192e9bfa0667ceb74735ebb2e6b8bb8c38e3466c5688fa9a13159da15",
+      "bytes": 7595
+    },
+    {
+      "path": "data/manifests/ranking_v6_e66_regression_20261021_r1.log",
+      "sha256": "9db63615a0f45b649b1776ab6e139e60b365f2a5b96e561c593038550bd205dd",
+      "bytes": 1525
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "574bf504e18ad3600d44c5d945db0cdb2c7c1dae14314d4ed7ff43805c46f50b",
+      "bytes": 6326
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "sha256": "665b2af9efa109e85b7822eb80e3c2646d5a6dc8cabfd717db11fe488238c2ca",
+      "bytes": 5968
+    },
+    {
+      "path": "experiment_overview/entries/E66_local_dummy_process_validation.md",
+      "sha256": "364c79e0f406a80bc1dda5267a0d5585bb95433562206a1a74754099e7769acd",
+      "bytes": 4593
+    },
+    {
+      "path": "data/manifests/ranking_v6_e66_independent_review_20261021_r1.json",
+      "bytes": 1684,
+      "sha256": "bc9df38bcd808023b3e812253051b7433336c9e0157aa6e76c382a94a25ed733"
+    }
+  ],
+  "excludes_self": true,
+  "execution_ready": false,
+  "training_release": false
+}
