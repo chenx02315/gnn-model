@@ -1,0 +1,19 @@
+{
+  "experiment_id": "E64",
+  "date": "2026-10-20",
+  "basis": "Direct user reply to the preceding bounded mixed-launcher-log authorization question in this thread",
+  "user_answer": "授权上述限定的一次元数据提取",
+  "source_version_before_work": "4039011fd14f5526e685d66b10173cdc5279cdf0",
+  "authorized_sequence": ["implement bounded parser", "synthetic tests and independent review", "one exact-file read only after gates pass", "independent result review and evidence sealing"],
+  "fixed_input_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/logs/phase4_closure_batch_v2_r1.launcher.log",
+  "input_limit_bytes": 2097152,
+  "targets": ["aes_core", "spi"],
+  "authorized_observations": "Target-only submission order and Job ID; missing or ambiguous associations must not be guessed",
+  "mixed_input_acknowledged": true,
+  "other_circuit_status_quality_runtime_output_allowed": false,
+  "other_file_reads_allowed": false,
+  "jobs_or_training_allowed": false,
+  "automatic_retries": 0,
+  "historical_execution_or_freeze_certification_implied": false,
+  "note": "This grants one bounded mixed-body read, not generic log access, runtime extraction, deployment, scheduler queries or training. No target log body read has occurred at authorization-record creation."
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "ranking_v6_e64_publication_seal_v1",
+  "date": "2026-10-20",
+  "scope": "One explicitly authorized fixed mixed-log read with target-only metadata projection; NO_MATCH, identity recovery unresolved. Separate local code-only followup. No retry, new logs, scheduler or training.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "97f49c7ecb5ce8347d3693dd8832ff1a429644fc574ddfda88088c36f1313bb1",
+      "bytes": 273
+    },
+    {
+      "path": "contracts/ranking_v6_submission_metadata_e64_v1.json",
+      "sha256": "38641ca4279ddd0bfee92d33593c445c2ae994ff68b7b4fed57d58565498c76d",
+      "bytes": 5228
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "2c7fc3db5cbf5db125adeaf6b596812003f7b3a966d7cc0cf38a237aa5cc6b53",
+      "bytes": 434
+    },
+    {
+      "path": "data/manifests/ranking_v6_e64_authorization_20261020_r1.json",
+      "sha256": "ecd7bbcf2423e2c855c83b2349e04f2bce189f45e464b9a82a666e8af9a36b6d",
+      "bytes": 1288
+    },
+    {
+      "path": "data/manifests/ranking_v6_e64_completion_20261020_r1.json",
+      "sha256": "4605cc1b34566cf161059cb5c0dc4e1533a3c58dce4a92890c28a6c196fcc495",
+      "bytes": 2222
+    },
+    {
+      "path": "data/manifests/ranking_v6_e64_local_followup_20261020_r1.json",
+      "sha256": "7ae62f391263088a002434f6f01628f210d61c61073f6ef75d759d80664255d3",
+      "bytes": 1878
+    },
+    {
+      "path": "data/manifests/ranking_v6_e64_observation_20261020_r1.json",
+      "sha256": "d5e29a0520152f471c0165af83c315ca9daa843d9a6b65cd5bed3d9630c023c6",
+      "bytes": 736
+    },
+    {
+      "path": "data/manifests/ranking_v6_e64_regression_20261020_r1.log",
+      "sha256": "122dcb8ceefc4645b72d8dcfe3bc389e3676f2ea38720fb926a447fc4164f46b",
+      "bytes": 1480
+    },
+    {
+      "path": "data/manifests/ranking_v6_e64_transport_20261020_r1.json",
+      "sha256": "a9f505ebbe38807ef69ee202a8c63a0825bb62331b0fcade84549f07692c19a3",
+      "bytes": 544
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "14182b882d6fcdce0bc7ae88209be67c5f9e740e630b9d2223f9c37f4d92e70c",
+      "bytes": 4897
+    },
+    {
+      "path": "experiment_overview/entries/E64_submission_metadata_no_match.md",
+      "sha256": "fefff0a7d347d140d6a8d10de9bb1688b49f6e931c9240fd1634b03e972c6b21",
+      "bytes": 3869
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "1e676c8bc97851670b6fe494fd11ca113a793dfaed9ec1f27c38d3405bcff6ec",
+      "bytes": 585
+    },
+    {
+      "path": "scripts/project_ranking_v6_e64_submission_metadata.py",
+      "sha256": "0d2d7a08dc60d1f63a72a9cc271792b3e4772e49cc2ca2299a358bf2468f55b6",
+      "bytes": 8167
+    },
+    {
+      "path": "scripts/run_ranking_v6_e64_readonly.py",
+      "sha256": "a69c1647bbf087f3ec4c4b5d8302678f89aabc48ab3b238499a12eb096192a2f",
+      "bytes": 5420
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "653596f0464f6c56e7918c925130f6fd13de908a0cd2ec1379ae0cc2a71bfae5",
+      "bytes": 273
+    },
+    {
+      "path": "tests/test_ranking_v6_e64_submission_metadata.py",
+      "sha256": "1fcf150d2cdfb730568dab540bfb16abec21c37e93579ebbfa3e0d511e3b5792",
+      "bytes": 9344
+    }
+  ]
+}

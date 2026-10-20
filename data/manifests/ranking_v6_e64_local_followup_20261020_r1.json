@@ -1,0 +1,28 @@
+{
+  "experiment_id": "E64_LOCAL_STATIC_FOLLOWUP",
+  "status": "STATIC_ALTERNATIVE_SOURCE_MAP_ONLY",
+  "source_path": "C:/Users/86155/Desktop/new lab/phase4_spi_repeat_resume_v3.py",
+  "source_byte_count": 11130,
+  "source_sha256": "3f51fb24a117f42745fac65de56f3f060af70a39a38d215338c6ffb473ffe714",
+  "reviewed_by": "/root/metadata_history_scout",
+  "source_only_facts": [
+    {"lines":"14-25,135-140,194-195","fact":"Single SPI v3 repair entrypoint imports absolute v2 driver and changes AUDIT_NAME; not a multi-circuit batch launcher."},
+    {"lines":"67-93","fact":"No bsub/LSF submission call; missing repeat work delegates to base.safe_run."},
+    {"lines":"35-41,67-70","fact":"Existing repeat/scheme TSV rows skipped, but no invocation ID or explicit cache-hit/launched state recorded by helper."},
+    {"lines":"151-165","fact":"Provenance hashes three inherited v2 artifacts; no helper/base-driver SHA, outer job ID, launch command or freeze ACK recorded."},
+    {"lines":"181-188","fact":"Export hashes cover export files only; no clientstdout/jobstdout naming recipe."}
+  ],
+  "minimum_useful_future_metadata": [
+    "Contemporaneous wrapper or invocation receipt naming helper and imported driver paths with launch-time SHA values",
+    "Command/argv, submission method, job or PID plus host and time",
+    "Inherited source artifact hashes and exact target v3 output root",
+    "Exact client and job stdout/stderr paths and provenance hashes or audited naming recipe"
+  ],
+  "not_an_explanation_of_e64_no_match": true,
+  "referenced_files_or_data_read": false,
+  "code_executed_or_imported": false,
+  "remote_access": false,
+  "historical_invocation_certified": false,
+  "training_release": false,
+  "authority_note": "This records existing local code facts only. It does not grant any of the proposed future evidence reads or repeat the consumed launcher read."
+}
