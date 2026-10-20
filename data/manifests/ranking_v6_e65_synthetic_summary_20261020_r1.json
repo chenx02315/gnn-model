@@ -1,0 +1,80 @@
+{
+  "complete_physical_interval_example": {
+    "attempt_ids": [
+      "failed",
+      "prefix",
+      "retry"
+    ],
+    "cache_lookup_overhead_unmeasured": true,
+    "complete": true,
+    "cost_kind": "COMPLETE_SUM_OF_PHYSICAL_WALL_INTERVALS",
+    "execution_ready": false,
+    "incomplete_attempt_ids": [],
+    "online_cost_complete": false,
+    "physical_atpg_wall_ns_sum": 15000000000,
+    "quality_used_to_filter_cost": false,
+    "runner_integration_verified": false,
+    "unverified_termination_ids": [],
+    "wall_clock_makespan_computed": false
+  },
+  "execution_ready": false,
+  "explanation": "10s shared prefix + 2s failed attempt + 3s retry = 15s physical union, not 30s action-incidence sum",
+  "formal_performance_claim": false,
+  "incomplete_example": {
+    "attempt_ids": [
+      "unfinished"
+    ],
+    "cache_lookup_overhead_unmeasured": true,
+    "complete": false,
+    "cost_kind": "LOWER_BOUND_INCOMPLETE",
+    "execution_ready": false,
+    "incomplete_attempt_ids": [
+      "unfinished"
+    ],
+    "online_cost_complete": false,
+    "physical_atpg_wall_ns_sum": 0,
+    "quality_used_to_filter_cost": false,
+    "runner_integration_verified": false,
+    "unverified_termination_ids": [],
+    "wall_clock_makespan_computed": false
+  },
+  "journal_sha256": "1881f8ea877c55d6dfb4c7590d7e95031069589fc35815358dc55b59b7c93c91",
+  "model_training": false,
+  "plan_assessment": {
+    "artifact_contents_verified": false,
+    "configuration_complete": false,
+    "execution_authority_verified": false,
+    "execution_ready": false,
+    "missing_fields": [
+      "freeze_components.candidate_domain_policy_sha256",
+      "freeze_components.candidate_roster_sha256",
+      "freeze_components.policy_orders_sha256",
+      "freeze_components.seed_manifest_sha256",
+      "freeze_components.shared_prefix_policy_sha256",
+      "freeze_components.cache_policy_sha256",
+      "freeze_components.driver_sha256",
+      "freeze_components.recorder_sha256",
+      "freeze_components.runner_adapter_sha256",
+      "freeze_components.environment_manifest_sha256",
+      "freeze_components.storage_manifest_sha256",
+      "freeze_components.d95_fault_universe_sha256",
+      "freeze_components.split_contract_sha256",
+      "freeze_components.frozen_model_sha256",
+      "freeze_components.external_preregistration_receipt_sha256",
+      "freeze_components.execution_authorization_receipt_sha256",
+      "limits.memory_limit_bytes",
+      "limits.attempt_wall_timeout_s",
+      "limits.max_physical_attempts",
+      "limits.candidate_count",
+      "comparison.epsilon"
+    ],
+    "preregistration_authenticated": false,
+    "schema_valid": true,
+    "status": "OFFLINE_CONFIGURATION_ONLY_EXTERNAL_GATES_REQUIRED",
+    "training_release": false
+  },
+  "real_attempts_executed": 0,
+  "remote_access": false,
+  "status": "PASS_SYNTHETIC_DEMONSTRATION_ONLY",
+  "timing_values": "FABRICATED_FIXTURE_VALUES_NOT_MEASURED_RUNTIME"
+}

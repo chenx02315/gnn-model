@@ -4,3 +4,5 @@ test_ranking_v6_e60_launch_metadata_r2.py -text
 test_ranking_v6_e61_python_api.py -text
 test_ranking_v6_e63_wrapper_identity.py -text
 test_ranking_v6_e64_submission_metadata.py -text
+test_prospective_attempt_ledger_v1.py -text
+test_prospective_capture_plan_v1.py -text

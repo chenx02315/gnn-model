@@ -1,0 +1,97 @@
+{
+  "schema": "ranking_v6_e65_publication_seal_v1",
+  "date": "2026-10-20",
+  "scope": "Offline prospective ledger/plan assessment, synthetic fixtures only. No runner integration, capture release, remote access, training or performance claim.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "ca685399e02a6fbd7acb0692cc02f5565a965e2ad9a14975e0b3cb0ead5a61b6",
+      "bytes": 364
+    },
+    {
+      "path": "contracts/prospective_capture_plan_v1.template.json",
+      "sha256": "69a6a32c5bd1732b30ee695948516ec88953552068e921a9c6428a9820fdda07",
+      "bytes": 1467
+    },
+    {
+      "path": "contracts/prospective_capture_protocol_v1.json",
+      "sha256": "c12dc2597921ace55063d284c71185acc57b9f8bffc6428d24b2396f9a122eb8",
+      "bytes": 4975
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "71cd91f2cd4900502ac53e22d75c37d24aed7a63e1c6240e831594b0663386fc",
+      "bytes": 478
+    },
+    {
+      "path": "data/manifests/ranking_v6_e65_completion_20261020_r1.json",
+      "sha256": "45b06d33caa445e629643d927984cea8d2bd0fde66999eb5822f6cdd080c4565",
+      "bytes": 1841
+    },
+    {
+      "path": "data/manifests/ranking_v6_e65_regression_20261020_r1.log",
+      "sha256": "d9a8f15f2e3a8423e20b4c54a927aa0bbf3734d5d5c2915a5da066a3d514407c",
+      "bytes": 1511
+    },
+    {
+      "path": "data/manifests/ranking_v6_e65_synthetic_summary_20261020_r1.json",
+      "sha256": "5d5da07ede28a53b81d56b4948257741aaac13330042a0ef40841862540ffcb1",
+      "bytes": 2926
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "eef3b8e5eedea1ccf1399ea5b20e96174ae7f60733a6ba8a73b572a061a5f816",
+      "bytes": 5799
+    },
+    {
+      "path": "experiment_overview/entries/E65_prospective_ledger_preparation.md",
+      "sha256": "b67b28509142d6dcfbedee9abda921bcbc2af7c92ad182ffd4761e249cefd6ef",
+      "bytes": 4910
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "sha256": "76cacda8afc93851f1cd7a265562b4504b851c764447cc72384ddcb02a01577d",
+      "bytes": 5117
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "4f9905b23b16f565615dba217d09a8b44d149f0e71f2bb2aa2a8a183ddc7f10f",
+      "bytes": 626
+    },
+    {
+      "path": "scripts/demo_prospective_cost_ledger_v1.py",
+      "sha256": "00e4011608f2de5c5f1c398d0bd36de9fcbf1a9064aed711e677554b614e660c",
+      "bytes": 4725
+    },
+    {
+      "path": "src/data/.gitattributes",
+      "sha256": "a822438a635ed951d6546094ce2459bafdf3b8af8e4ae5fdab8d72d7d44d02f2",
+      "bytes": 156
+    },
+    {
+      "path": "src/data/prospective_attempt_ledger_v1.py",
+      "sha256": "b82869c4060f009c4a30906aada92dad7b7721f1a8474e8905e6bb7687672aec",
+      "bytes": 19662
+    },
+    {
+      "path": "src/data/prospective_capture_plan_v1.py",
+      "sha256": "29d0aeb9b1d81e13074e7019988124fd9feb9a5b4948e5e8c21f6903fb3463cd",
+      "bytes": 4205
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "afadff2e7c7eb7cd63b18827729edb47cd4aed9e6e168b66bde36a698ac6fc3f",
+      "bytes": 359
+    },
+    {
+      "path": "tests/test_prospective_attempt_ledger_v1.py",
+      "sha256": "48515e11233476801446372236c2c4cb425fe71fa0dc8cc3140061b718529c6a",
+      "bytes": 17528
+    },
+    {
+      "path": "tests/test_prospective_capture_plan_v1.py",
+      "sha256": "498ca931f048777bfb680d1e1eee0921cbb96fd7018af96f17a2946882565b93",
+      "bytes": 2985
+    }
+  ]
+}

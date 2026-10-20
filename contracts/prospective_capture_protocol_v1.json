@@ -1,0 +1,55 @@
+{
+  "schema_version": "prospective_capture_protocol_v1",
+  "status": "OFFLINE_IMPLEMENTATION_NOT_CAPTURE_RELEASE",
+  "purpose": "Prospective data must measure cumulative atomic ATPG process wall costs to a D95-safe epsilon-near-optimal candidate, separately from ATE cycles and total online elapsed time.",
+  "scope": {
+    "prepared_train_circuits": ["aes_core", "spi"],
+    "family_assignment_source": "contracts/data_split_v1.json:formal_runtime_membership.TRAIN",
+    "split_modified": false,
+    "blind_or_validation_access": false,
+    "historical_evidence_modified": false
+  },
+  "components": {
+    "ledger": "src/data/prospective_attempt_ledger_v1.py",
+    "configuration_assessor": "src/data/prospective_capture_plan_v1.py",
+    "unready_plan_template": "contracts/prospective_capture_plan_v1.template.json"
+  },
+  "cost_semantics": {
+    "node": "ATOMIC_ATPG_PROCESS_ONLY: one actual process interval, not an inclusive wrapper interval containing child process nodes",
+    "units": "Integer nanosecond units from paired monotonic-clock records in the same session; nanosecond units do not assert nanosecond resolution. UTC is metadata only.",
+    "aggregate": "Set union of physical attempt IDs reachable from requested action references through parents and retry_of. Each physical interval counted once, including failed attempts and their observed retries.",
+    "incomplete": "PLANNED/RUNNING without terminal evidence, or termination unverified: incomplete lower-bound sum, not zero-cost completion. Explicit pre-start cancellation may have no ATPG process duration.",
+    "cache": "Known, verified successful provider with matching semantic operation identity and output artifact SHA. Reference only, no fabricated new physical attempt. Unknown/external providers rejected rather than treated as free work.",
+    "quality": "D95 verification and ATE cycles are independent fields, never substituted for runtime or used to discard charged failures.",
+    "not_measured": "Queue delay, recommendation/lookup/validation overhead, overlapping process makespan and full end-to-end online search cost are not certified by this library. Summed process wall intervals are not automatically online elapsed time."
+  },
+  "journal_semantics": {
+    "events": ["PLAN", "START", "END", "LINK", "CACHE"],
+    "provenance_keys": ["driver_sha256", "config_sha256", "plan_sha256", "input_sha256", "environment_cohort", "clock_identity", "command_sha256", "output_root", "job_identity"],
+    "semantic_identity_keys": ["driver_sha256", "config_sha256", "input_sha256", "command_sha256", "environment_cohort"],
+    "durability": "Exclusive-create single-owning-writer file. Validate before append; flush/fsync before publishing the acknowledged in-memory transition. I/O uncertainty poisons the writer; never silently truncate, repair, reopen-to-append or retry an event.",
+    "replay": "Strict bounded canonical JSONL, sequential event hashes and replayed transitions. Partial tail or tampering rejects. Integrity is not source authenticity or evidence that every real process was recorded. Replay of complete bytes does not prove the original fsync acknowledgment.",
+    "filesystem_assumption": "Caller provides an authorized local journal path. This prototype is not a hostile-ancestor filesystem sandbox or remote collector.",
+    "limits": {"events":10000,"line_bytes":16384,"total_bytes":16777216}
+  },
+  "execution_limits": {
+    "workers": 1,
+    "automatic_retries": 0,
+    "actual_memory_limit_bytes": null,
+    "actual_wall_timeout_s": null,
+    "actual_attempt_budget": null,
+    "note": "Actual experiment limits remain unresolved and must not be invented or borrowed from the 512 MiB metadata-reader cap."
+  },
+  "admission_requirements": [
+    "Freeze the legal candidate domain/roster and each baseline or model order before measuring their future outcomes; adaptive policy must freeze rules/budget/cache semantics and retain decision-parent references.",
+    "Freeze the model checkpoint, seeds, D95 fault universe, driver/configuration and environment cohort; no outcome-filtered roster.",
+    "Verify source artifacts and family isolation rather than trusting user-supplied SHA strings alone.",
+    "Implement and independently verify the real process/clock adapter and launch/record crash-window reconciliation before claiming complete attempt coverage.",
+    "Record external preregistration and scope-specific execution authorization, explicit resources, storage and finite stop conditions.",
+    "Approve the whole bounded actual collection package separately; current offline code and filled template never grant remote access, jobs, tuning, training or BLIND access."
+  ],
+  "validation_scope": "Synthetic fixtures and temporary journals only. No measured ATPG duration, new training data, model improvement or acceleration claim is produced.",
+  "execution_ready": false,
+  "training_release": false,
+  "remote_or_scheduler_actions_allowed": false
+}

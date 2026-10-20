@@ -1,0 +1,46 @@
+{
+  "schema_version": "prospective_capture_plan_v1",
+  "status": "DRAFT_NOT_REGISTERED",
+  "scope": {
+    "circuits": ["aes_core", "spi"],
+    "family_by_circuit": {"aes_core": "iwls_aes_core", "spi": "iwls_spi"},
+    "role": "TRAIN_ONLY"
+  },
+  "mode_sizes": {"H": 64, "M": 16, "F": 4},
+  "quality_floor": "D95",
+  "objective": "cumulative_atomic_atpg_process_wall_ns",
+  "freeze_components": {
+    "candidate_domain_policy_sha256": null,
+    "candidate_roster_sha256": null,
+    "policy_orders_sha256": null,
+    "seed_manifest_sha256": null,
+    "shared_prefix_policy_sha256": null,
+    "cache_policy_sha256": null,
+    "driver_sha256": null,
+    "recorder_sha256": null,
+    "runner_adapter_sha256": null,
+    "environment_manifest_sha256": null,
+    "storage_manifest_sha256": null,
+    "d95_fault_universe_sha256": null,
+    "split_contract_sha256": null,
+    "frozen_model_sha256": null,
+    "external_preregistration_receipt_sha256": null,
+    "execution_authorization_receipt_sha256": null
+  },
+  "limits": {
+    "memory_limit_bytes": null,
+    "attempt_wall_timeout_s": null,
+    "max_physical_attempts": null,
+    "candidate_count": null,
+    "workers": 1,
+    "automatic_retries": 0
+  },
+  "comparison": {
+    "policies": ["fixed_rule", "frozen_model", "seeded_random"],
+    "epsilon": null,
+    "epsilon_reference": "frozen_pilot_roster_only",
+    "online_elapsed_claim": false,
+    "formal_generalization_claim": false
+  },
+  "execution_ready": false
+}

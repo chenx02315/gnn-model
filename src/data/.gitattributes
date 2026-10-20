@@ -1,0 +1,3 @@
+# Preserve prospective recorder/assessor bytes used in the implementation seal.
+prospective_attempt_ledger_v1.py -text
+prospective_capture_plan_v1.py -text
