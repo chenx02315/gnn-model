@@ -1,0 +1,15 @@
+test_actual_fixed_local_contracts_partial_only (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_actual_fixed_local_contracts_partial_only) ... ok
+test_legacy_policy_conflicts_not_silently_merged (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_legacy_policy_conflicts_not_silently_merged) ... ok
+test_missing_source_rejected_no_scan (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_missing_source_rejected_no_scan) ... ok
+test_no_dataset_or_unknown_source_read (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_no_dataset_or_unknown_source_read) ... ok
+test_wrong_train_family_rejected (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_wrong_train_family_rejected) ... ok
+test_even_filled_dummy_hashes_do_not_grant_execution (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_even_filled_dummy_hashes_do_not_grant_execution) ... ok
+test_pins_are_exact_and_no_unknown_fields_accepted (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_pins_are_exact_and_no_unknown_fields_accepted) ... ok
+test_real_template_is_explicitly_unready (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_real_template_is_explicitly_unready) ... ok
+test_resource_bool_nan_or_retries_rejected (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_resource_bool_nan_or_retries_rejected) ... ok
+test_scope_modes_and_policy_cannot_be_silently_changed (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_scope_modes_and_policy_cannot_be_silently_changed) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.031s
+
+OK

@@ -1,0 +1,80 @@
+{
+  "schema": "ranking_v6_e67_publication_seal_v1",
+  "date": "2026-10-21",
+  "scope": "Partial local preparation, 21 to 18 missing fields; no real ATPG runtime data or execution release.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "bytes": 443,
+      "sha256": "e2f0e0700fcdce8a78b46071c1376c173cafcc1d978846bbe11dce45623165d4"
+    },
+    {
+      "path": "contracts/prospective_pilot_policy_v1.json",
+      "bytes": 3128,
+      "sha256": "e57c7ff5c90b415227da7ef9b2707b5e492ee84b005f96f3df17ab3ab24cd039"
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "bytes": 707,
+      "sha256": "e8bfac1989c8aa4e0f372378d8ba2de67b4e9d9da4c499af8d78d5d88757529b"
+    },
+    {
+      "path": "scripts/prepare_prospective_pilot_v1.py",
+      "bytes": 5753,
+      "sha256": "d97254cc834fd821020fad15e2d93ed74de31ddfda4517e5fced188de8de3c9c"
+    },
+    {
+      "path": "tests/.gitattributes",
+      "bytes": 449,
+      "sha256": "adeb80d6d3b28634a7ae1db34950e1846b8f7de8fb85512250d24ff3882e13f8"
+    },
+    {
+      "path": "tests/test_prospective_pilot_preparation_v1.py",
+      "bytes": 2587,
+      "sha256": "3c7385512e26904ea9fff30323482c168a06a9e92e6e873b45253e4a66f26f79"
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "bytes": 566,
+      "sha256": "e80fbf9e21adef412684458a156b1d66d2e6fee5088b82c8c4a554c01288860c"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e67_preparation_20261021_r1.json",
+      "bytes": 6776,
+      "sha256": "9260ea80e65057bc970aceb41e40c20093177770fe9aa8c978292f1e39d2f1fc"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e67_focused_20261021_r1.log",
+      "bytes": 1705,
+      "sha256": "e24b6c508564ee8421bb760409144af2b8c8fab80b42b5e4792ce89cfdc9ab3c"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e67_regression_20261021_r1.log",
+      "bytes": 1530,
+      "sha256": "f7d0204e23329bf40cb0db367dc97f00edcf40895280af07b2970b4583bce9bc"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e67_completion_review_20261021_r1.json",
+      "bytes": 2248,
+      "sha256": "84d0cbc3e9b153af9875f891870176968731a5f52f6a53d6df1a02be6bc1bf66"
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "bytes": 6816,
+      "sha256": "763635da85d3b5d96678227b73dd3b43bf5130a8f709097829fcb57b96776a16"
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "bytes": 6498,
+      "sha256": "b262fa8cabc266a281ad415d2fb5e7d068980e2fdf2eb86b63f9fda5537cb949"
+    },
+    {
+      "path": "experiment_overview/entries/E67_prospective_pilot_preparation.md",
+      "bytes": 6683,
+      "sha256": "35343f6d8e167f7dda1a649a92fefe4a4b8ee18fbb7ccf72a6d4a21c644063c5"
+    }
+  ],
+  "excludes_self": true,
+  "execution_ready": false,
+  "training_release": false
+}

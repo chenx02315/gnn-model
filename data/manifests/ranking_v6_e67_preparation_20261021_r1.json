@@ -1,0 +1,179 @@
+{
+  "assessment": {
+    "artifact_contents_verified": false,
+    "configuration_complete": false,
+    "execution_authority_verified": false,
+    "execution_ready": false,
+    "missing_fields": [
+      "freeze_components.candidate_domain_policy_sha256",
+      "freeze_components.candidate_roster_sha256",
+      "freeze_components.policy_orders_sha256",
+      "freeze_components.seed_manifest_sha256",
+      "freeze_components.shared_prefix_policy_sha256",
+      "freeze_components.cache_policy_sha256",
+      "freeze_components.driver_sha256",
+      "freeze_components.runner_adapter_sha256",
+      "freeze_components.environment_manifest_sha256",
+      "freeze_components.storage_manifest_sha256",
+      "freeze_components.d95_fault_universe_sha256",
+      "freeze_components.frozen_model_sha256",
+      "freeze_components.external_preregistration_receipt_sha256",
+      "freeze_components.execution_authorization_receipt_sha256",
+      "limits.memory_limit_bytes",
+      "limits.attempt_wall_timeout_s",
+      "limits.max_physical_attempts",
+      "limits.candidate_count"
+    ],
+    "preregistration_authenticated": false,
+    "schema_valid": true,
+    "status": "OFFLINE_CONFIGURATION_ONLY_EXTERNAL_GATES_REQUIRED",
+    "training_release": false
+  },
+  "evidence": {
+    "contracts/data_split_v1.json": {
+      "bytes": 4431,
+      "sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda"
+    },
+    "contracts/formal_candidate_space_v2.json": {
+      "bytes": 1421,
+      "sha256": "e43bdf4064010460d7959f0cc23c612619a9394d3749d607f33d00b9624c5384"
+    },
+    "contracts/prospective_capture_plan_v1.template.json": {
+      "bytes": 1467,
+      "sha256": "69a6a32c5bd1732b30ee695948516ec88953552068e921a9c6428a9820fdda07"
+    },
+    "contracts/prospective_capture_protocol_v1.json": {
+      "bytes": 4975,
+      "sha256": "c12dc2597921ace55063d284c71185acc57b9f8bffc6428d24b2396f9a122eb8"
+    },
+    "contracts/prospective_pilot_policy_v1.json": {
+      "bytes": 3128,
+      "sha256": "e57c7ff5c90b415227da7ef9b2707b5e492ee84b005f96f3df17ab3ab24cd039"
+    },
+    "contracts/runtime_policy_v1.json": {
+      "bytes": 3969,
+      "sha256": "03f6f5bb47b41dcf65357369582b81b30d15546b84b7a716901f2edd19e48586"
+    },
+    "contracts/runtime_policy_v2.json": {
+      "bytes": 1541,
+      "sha256": "94e5e903f1debfafab35131bb9245a681db7df6616e1d869f651fdb5ceaadc35"
+    },
+    "contracts/runtime_training_v2.json": {
+      "bytes": 6478,
+      "sha256": "e936f7264fae75d766d0b18dcc3be5ffcba4c54a49aebdbcb46bf1e8cf636614"
+    },
+    "src/data/prospective_attempt_ledger_v1.py": {
+      "bytes": 19662,
+      "sha256": "b82869c4060f009c4a30906aada92dad7b7721f1a8474e8905e6bb7687672aec"
+    },
+    "src/data/prospective_dummy_adapter_v1.py": {
+      "bytes": 6132,
+      "sha256": "f87ac19f6dc2fc268646119b27dae7853bc40a6d05a3989b0096e340f8503bad"
+    }
+  },
+  "execution_ready": false,
+  "historical_roster_not_reused": "Historical formal_candidate_space_v2 selects PASS measurements. It cannot establish an outcome-independent prospective roster.",
+  "legacy_policy_conflicts": [
+    "runtime_policy_v1 permits one transient retry; new pilot permits zero automatic retries",
+    "runtime_policy_v1 uses configured timeout when elapsed is absent; new pilot prohibits runtime imputation",
+    "runtime_policy_v1 enables prefix reuse and charges restore costs; real restore accounting is not integrated for new pilot"
+  ],
+  "next_work": [
+    "Freeze legal structural roster and exact three policy permutations without future outcomes",
+    "Bind real ATPG atomic-process adapter, D95 fault set, inputs and driver/config",
+    "Verify actual environment/storage/memory/time/attempt budgets",
+    "Seal whole package with external preregistration and scope-specific authority"
+  ],
+  "original_missing_count": 21,
+  "pins_mean": "Current local bytes only; split membership checked, not historical recovery/release. Recorder is library only, not an actual ATPG adapter.",
+  "plan": {
+    "comparison": {
+      "epsilon": 0.01,
+      "epsilon_reference": "frozen_pilot_roster_only",
+      "formal_generalization_claim": false,
+      "online_elapsed_claim": false,
+      "policies": [
+        "fixed_rule",
+        "frozen_model",
+        "seeded_random"
+      ]
+    },
+    "execution_ready": false,
+    "freeze_components": {
+      "cache_policy_sha256": null,
+      "candidate_domain_policy_sha256": null,
+      "candidate_roster_sha256": null,
+      "d95_fault_universe_sha256": null,
+      "driver_sha256": null,
+      "environment_manifest_sha256": null,
+      "execution_authorization_receipt_sha256": null,
+      "external_preregistration_receipt_sha256": null,
+      "frozen_model_sha256": null,
+      "policy_orders_sha256": null,
+      "recorder_sha256": "b82869c4060f009c4a30906aada92dad7b7721f1a8474e8905e6bb7687672aec",
+      "runner_adapter_sha256": null,
+      "seed_manifest_sha256": null,
+      "shared_prefix_policy_sha256": null,
+      "split_contract_sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda",
+      "storage_manifest_sha256": null
+    },
+    "limits": {
+      "attempt_wall_timeout_s": null,
+      "automatic_retries": 0,
+      "candidate_count": null,
+      "max_physical_attempts": null,
+      "memory_limit_bytes": null,
+      "workers": 1
+    },
+    "mode_sizes": {
+      "F": 4,
+      "H": 64,
+      "M": 16
+    },
+    "objective": "cumulative_atomic_atpg_process_wall_ns",
+    "quality_floor": "D95",
+    "schema_version": "prospective_capture_plan_v1",
+    "scope": {
+      "circuits": [
+        "aes_core",
+        "spi"
+      ],
+      "family_by_circuit": {
+        "aes_core": "iwls_aes_core",
+        "spi": "iwls_spi"
+      },
+      "role": "TRAIN_ONLY"
+    },
+    "status": "DRAFT_NOT_REGISTERED"
+  },
+  "prohibited_substitutions": [
+    "E66 dummy as real runner",
+    "current driver hash as historical execution proof",
+    "historical PASS table as prospective candidate freeze",
+    "training memory cap as ATPG cap",
+    "configured timeout as missing wall time",
+    "filled SHA as authenticated preregistration"
+  ],
+  "proposals": {
+    "actual_execution_allowed": false,
+    "epsilon": 0.01,
+    "epsilon_carried_as_draft_only": true,
+    "policy_path": "contracts/prospective_pilot_policy_v1.json",
+    "seeds": [
+      20260824,
+      20260825,
+      20260826
+    ],
+    "seeds_applied_to_plan": false
+  },
+  "real_data_read": false,
+  "remaining_missing_count": 18,
+  "remote_access": false,
+  "resolved_pin_sources": {
+    "recorder_sha256": "src/data/prospective_attempt_ledger_v1.py",
+    "split_contract_sha256": "contracts/data_split_v1.json"
+  },
+  "schema": "prospective-pilot-preparation-v1",
+  "status": "PARTIAL_LOCAL_PREPARATION_NOT_EXECUTABLE",
+  "training_release": false
+}

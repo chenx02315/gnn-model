@@ -1,0 +1,57 @@
+{
+  "schema": "prospective-pilot-policy-v1",
+  "status": "OFFLINE_DESIGN_NOT_REGISTERED",
+  "scope": {"circuits":["aes_core","spi"],"role":"TRAIN_ONLY","mode_sizes":{"H":64,"M":16,"F":4},"quality_floor":"D95"},
+  "objective": "cumulative_atomic_atpg_process_wall_ns",
+  "candidate_policy": {
+    "schemes": ["HF","HMF"],
+    "roster": null,
+    "candidate_count": null,
+    "selection": "Freeze legal structural candidate coordinates before future measurements; do not filter using historical PASS, D95, cycles, runtime or epsilon outcomes.",
+    "f_search": "An action may require multiple physical F probes; every probe and failure must have its own charged attempt. F is not a free oracle or one presumed final call.",
+    "legal_domain_and_d95_universe_verified": false
+  },
+  "comparison": {
+    "policies": ["fixed_rule","frozen_model","seeded_random"],
+    "same_roster_and_resources": true,
+    "proposed_epsilon": 0.01,
+    "epsilon_definition": "A D95-verified action hits if its ATE cycles <= (1+epsilon)*minimum D95-verified cycles within the prospectively frozen pilot roster. No full-space optimum claim.",
+    "proposed_seeds": [20260824,20260825,20260826],
+    "seed_origin": "Proposed pilot design constants only; existing TRAIN seed provenance is not authenticated by this preparation.",
+    "epsilon_source": "contracts/runtime_training_v2.json:scope.epsilon (0.01); preserve the historical 1 percent research target, not a looser 5 percent endpoint.",
+    "model_checkpoint": null,
+    "frozen_orders": null,
+    "orders_must_be_permutations": true,
+    "freeze_before_future_outcomes": true,
+    "reporting": "Report hits, no-hit/censored sessions, charged failures and incomplete costs; never silently keep hits only."
+  },
+  "runtime": {
+    "workers": 1,
+    "automatic_retries": 0,
+    "missing_elapsed": "INCOMPLETE_NO_IMPUTATION",
+    "timeouts": null,
+    "memory_limit_bytes": null,
+    "max_physical_attempts": null,
+    "stop_on_unverified_termination_or_ledger_error": true,
+    "dummy_timeouts_or_training_memory_caps_are_not_atpg_limits": true
+  },
+  "reuse": {
+    "primary_session_start": "cold_artifact_cache",
+    "cross_method_reuse": false,
+    "cross_session_reuse": false,
+    "prefix_reuse_enabled": false,
+    "reason": "Initial pilot disables reuse symmetrically until real materialization/restore costs and identities are measured; ledger cache support alone is not runtime integration proof.",
+    "os_page_cache_controlled": false,
+    "record_order_and_environment": true
+  },
+  "old_policy_compatibility": {
+    "base_for_new_execution": false,
+    "conflicts": ["runtime_policy_v1 permits one transient retry; new pilot permits zero automatic retries","runtime_policy_v1 uses configured timeout when elapsed is absent; new pilot prohibits runtime imputation","runtime_policy_v1 enables prefix reuse and charges restore costs; real restore accounting is not integrated for new pilot"],
+    "legacy_files_unchanged": true
+  },
+  "real_runner": null,
+  "external_preregistration": null,
+  "execution_authorization": null,
+  "execution_ready": false,
+  "training_release": false
+}
