@@ -1,0 +1,25 @@
+{
+  "experiment_id":"E70",
+  "date":"2026-10-21",
+  "verdict":"PASS_ACTUAL_READ_GATE",
+  "reviewer":"/root/e27_review",
+  "independent_focused_tests":24,
+  "independent_focused_seconds":0.104,
+  "review_scope":"Full payload/transport/authority/request review plus pure A8/B8 request validation, no actual SSH by reviewer.",
+  "pins":{
+    "scripts/read_prospective_metadata_v1.py":"ba510db05ebfe27f8c601bfd01bc69128c024f95121b426d4c4e08362dc8d0c8",
+    "tests/test_prospective_metadata_reader_v1.py":"ac981a4534e93e6f4aedac7aa9b0fd1d4f33450e29aa03bcc769bd80821fe89f",
+    "scripts/run_prospective_metadata_v1.py":"3a87ca4a0168bb2d0e7a1f2b74e5bd2c98f20e80e1852cb059b0c86e1b451ba5",
+    "tests/test_prospective_metadata_transport_v1.py":"722add185111aba63ae79239554abc5cd816e762fbe08373dbead043379b31bb",
+    "contracts/prospective_metadata_authorization_e70_20261021.json":"6d6993b182d430e579e9fbf2498926341a76f9fa204e6099c5c18f45c92ed6c5",
+    "contracts/prospective_metadata_scope_request_v1.json":"45f540c6d60d17a9c1f47fad05b787a8d82ca570344a82f077aac5dd008e3b10"
+  },
+  "phase":"v6_e70_metadata_20261021_r1",
+  "actual_use_scope":"Fixed A8 then B8, once each, serial, zero automatic retries. No new paths or inventory without another implementation review within the already approved envelope.",
+  "review_fix":"Bind global phase budget to exactly one directory and authorization anchor; alternate directories cannot reset quotas.",
+  "no_worker_receipt_checkpoint_or_quality_reads":true,
+  "read_only_metadata_authority_only":true,
+  "real_atpg_or_training_authority":false,
+  "execution_ready":false,
+  "training_release":false
+}

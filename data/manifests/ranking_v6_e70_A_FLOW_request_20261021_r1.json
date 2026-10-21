@@ -1,0 +1,32 @@
+{
+  "automatic_retries": 0,
+  "cached_ed25519_pin": "SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UpdateHostKeys=no",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "HostKeyAlgorithms=ssh-ed25519",
+    "vnc.buptic.top",
+    "/usr/bin/python3 -I -S -B -"
+  ],
+  "output_cap": 32768,
+  "request": {
+    "inventory_dirs": [],
+    "paths": [
+      "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/mapped_flow_v2/stage_mapped_common_atpg_no_tsdb_v2.tcl",
+      "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/mapped_flow_v2/stage_mapped_incremental_atpg_no_tsdb_v3.tcl"
+    ],
+    "role": "A"
+  },
+  "scope_sha256": "45f540c6d60d17a9c1f47fad05b787a8d82ca570344a82f077aac5dd008e3b10",
+  "source_sha256": "ba510db05ebfe27f8c601bfd01bc69128c024f95121b426d4c4e08362dc8d0c8",
+  "timeout_s": 60
+}

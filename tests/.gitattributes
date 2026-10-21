@@ -9,3 +9,5 @@ test_prospective_capture_plan_v1.py -text
 test_prospective_dummy_adapter_v1.py -text
 test_prospective_pilot_preparation_v1.py -text
 test_prospective_candidate_template_v1.py -text
+test_prospective_metadata_reader_v1.py -text
+test_prospective_metadata_transport_v1.py -text

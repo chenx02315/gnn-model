@@ -1,0 +1,161 @@
+{
+  "schema": "ranking_v6_e70_publication_seal_v1",
+  "date": "2026-10-21",
+  "base_commit": "6ec79eacc83051c3a77bc42dbb96d32bf12a5b89",
+  "scope": "User-approved bounded A/B metadata phase completed: 3 SSH sessions,16 actual source/metadata files,167086 body bytes,9749 returned metadata bytes. No checkpoint/quality/runtime-label data, jobs or training. File quota exhausted.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "5feae32fdcb26c74f33cf254b28758d43ffa26a3f3f408a06caeec83b1f54918",
+      "bytes": 596
+    },
+    {
+      "path": "contracts/prospective_metadata_authorization_e70_20261021.json",
+      "sha256": "6d6993b182d430e579e9fbf2498926341a76f9fa204e6099c5c18f45c92ed6c5",
+      "bytes": 1365
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "7abd70d46e8dc316c7e2bff341f91cc4458993e3fdcfcaf10ffb5969ca0e3a21",
+      "bytes": 833
+    },
+    {
+      "path": "scripts/read_prospective_metadata_v1.py",
+      "sha256": "ba510db05ebfe27f8c601bfd01bc69128c024f95121b426d4c4e08362dc8d0c8",
+      "bytes": 27752
+    },
+    {
+      "path": "scripts/run_prospective_metadata_v1.py",
+      "sha256": "e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434",
+      "bytes": 11900
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "6bd7840bc6ff3bf1c028b91feb829469d841494a81c2f5e629c01b9c95d69f05",
+      "bytes": 590
+    },
+    {
+      "path": "tests/test_prospective_metadata_reader_v1.py",
+      "sha256": "ac981a4534e93e6f4aedac7aa9b0fd1d4f33450e29aa03bcc769bd80821fe89f",
+      "bytes": 15670
+    },
+    {
+      "path": "tests/test_prospective_metadata_transport_v1.py",
+      "sha256": "b0ab50080c2b30962a1b0d70ffd4a6203a9f41a9cb7e3f844d11678b744834eb",
+      "bytes": 7051
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "ba4172bb0e9d6941878044cdf45b9b2da57f71b6726209aa5d42bafb66a9a78c",
+      "bytes": 698
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "4e2d3861ba7eca2de73fec748c71f0aa27dc6943301b154f66899acceb8cd65a",
+      "bytes": 8566
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "sha256": "9cf370907e3c42849d590510a23d5bb0f4db33ebb2d7c29eb50a59e15dcdeb6e",
+      "bytes": 8058
+    },
+    {
+      "path": "experiment_overview/entries/E70_bounded_AB_metadata_observation.md",
+      "sha256": "a9a6f5e51e810e85d03ee92924cba23a7f82281146e180bd9386efcb9092366b",
+      "bytes": 6066
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_A_FLOW_metadata_20261021_r1.json",
+      "sha256": "c96cb1c28e55ceb145605e1c7bfa6bf10dbb64762e60201c79f1f2bbd474c902",
+      "bytes": 1313
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_A_FLOW_request_20261021_r1.json",
+      "sha256": "dd438ffa39ade888299d8bb60d68058300f609323e362f022a339f0fbf245b97",
+      "bytes": 951
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_A_FLOW_transport_20261021_r1.json",
+      "sha256": "af4289f54eeb8932d0b86a5f549417f214097ae7de50afffa32c1fcb705f8941",
+      "bytes": 456
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_A_metadata_20261021_r1.json",
+      "sha256": "3cab19a331f97742c676c13503ccaae6b613f521ffd3bead520e288eef8089cc",
+      "bytes": 3949
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_A_request_20261021_r1.json",
+      "sha256": "ca32c62026e578f0c5f7a73e7d1bd4d888d22c523af552f3dc0112d21511d722",
+      "bytes": 1595
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_A_transport_20261021_r1.json",
+      "sha256": "c31139489815da77f00ef23d2c2c20a3e4df3dab1c0889205b5f3daf3292528a",
+      "bytes": 456
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_B_metadata_20261021_r1.json",
+      "sha256": "44dd0769e609a9a30074f35d021e0ef0197aec945ce8f9b3a659a92380ca85b9",
+      "bytes": 4487
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_B_request_20261021_r1.json",
+      "sha256": "62b192b12c596d3ac7924f4b6857e7a991bf99ab495faa98495ece36198b52cd",
+      "bytes": 1503
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_B_transport_20261021_r1.json",
+      "sha256": "ee72f60d1c50264189387d4b2677eb181387eaebc6ddd9a1127107ac7e199805",
+      "bytes": 456
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_completion_review_20261021_r1.json",
+      "sha256": "6b6794858d4472e16e8bdee2735b8e22e5ab3ded874fbf5e199eeec6d617bb7c",
+      "bytes": 2764
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_focused_20261021_r1.log",
+      "sha256": "9e53ddc623e49b685a755806335db05408f5b396bffee18c6fb5e2cacddeaf52",
+      "bytes": 4475
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_observation_summary_20261021_r1.json",
+      "sha256": "2a00662ac2b3b380c4fa0d3d36b5b139950980d97479a7ac6b60117c091359d1",
+      "bytes": 5730
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_phase_anchor_20261021_r1.json",
+      "sha256": "c1fb41a752b5a093d0d934239826b7b64f5f42143206b0f9260e416fbebe34e8",
+      "bytes": 225
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_preflow_transport_source_20261021_r1.txt",
+      "sha256": "3a87ca4a0168bb2d0e7a1f2b74e5bd2c98f20e80e1852cb059b0c86e1b451ba5",
+      "bytes": 11652
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_preread_review_20261021_r1.json",
+      "sha256": "8c49fa7fc0149d4e983a52759683c38a4773d271947fa981a837f3645c71ab0b",
+      "bytes": 1635
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_publication_review_20261021_r1.json",
+      "sha256": "70d9540339aa387d4904411ad74fcae86ab2e801b72f19cb49ff617ce1f68355",
+      "bytes": 1072
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_regression_20261021_r1.log",
+      "sha256": "b0f2878e6ee7128f65abf408f737d615d689c6a15095321f31b92a1f207b631f",
+      "bytes": 1626
+    },
+    {
+      "path": "data/manifests/ranking_v6_e70_sessions_20261021_r1.jsonl",
+      "sha256": "425c8b2bd29dae77d15674fab83963f59be557cf6f9d50e305d1a576704bbd70",
+      "bytes": 2513
+    }
+  ],
+  "excludes_self": true,
+  "execution_ready": false,
+  "training_release": false
+}

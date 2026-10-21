@@ -1,0 +1,159 @@
+{
+  "actual_model_checkpoint_authenticated": false,
+  "checked_path_count": 18,
+  "checkpoint_or_quality_or_runtime_data_read": false,
+  "common_fault_counts_declared_by_current_manifests": {
+    "aes_core": 71216,
+    "spi": 10418
+  },
+  "current_code_raw_matches": [
+    {
+      "local_reference": "..\\phase4_closure_driver_v2_reference.py",
+      "remote_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/phase4_closure_driver_v2.py",
+      "sha256": "4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94"
+    },
+    {
+      "local_reference": "..\\phase4_bootstrap\\run_phase4_closure_batch_v2.sh",
+      "remote_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/run_phase4_closure_batch_v2.sh",
+      "sha256": "d1d04f1338af9ec76fffe0224a7b1a1f5ca7ea0bb262e5f2db117a070c5b9f50"
+    },
+    {
+      "local_reference": "src\\models\\ranking_v5_train_jit_admission_v3.py",
+      "remote_path": "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/src/models/ranking_v5_train_jit_admission_v3.py",
+      "sha256": "c1104f613a92c6315fe09495d4995c7755827294cf69e92564ce8d51785de30d"
+    },
+    {
+      "local_reference": "src\\models\\ranking_v5_freeze_codec_v2.py",
+      "remote_path": "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/src/models/ranking_v5_freeze_codec_v2.py",
+      "sha256": "aa51f59d6556eee816479a25321f0a8a76264641954c1b0e71169910c935535a"
+    },
+    {
+      "local_reference": "src\\models\\ranking_v5_train_artifact_readback_v2.py",
+      "remote_path": "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/src/models/ranking_v5_train_artifact_readback_v2.py",
+      "sha256": "a67388fd1b6716eb559f0f236c1069e119f0e753ef38749b335d63039db77b2a"
+    },
+    {
+      "local_reference": "scripts\\run_v5_train_single_fit_v3.py",
+      "remote_path": "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/scripts/run_v5_train_single_fit_v3.py",
+      "sha256": "1b22f4f58b645e180ed2f9c5afdffa39a04fe12fa2d93e35b697fdf947d3544a"
+    },
+    {
+      "local_reference": "..\\phase4_bootstrap\\stage_mapped_common_atpg_no_tsdb_v2.tcl",
+      "remote_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/mapped_flow_v2/stage_mapped_common_atpg_no_tsdb_v2.tcl",
+      "sha256": "dd26a13d1542052ca6664b4b1f8ef23afb76a9d0dfc8c6ea23b40a98d057ae8a"
+    },
+    {
+      "local_reference": "..\\phase4_bootstrap\\stage_mapped_incremental_atpg_no_tsdb_v3.tcl",
+      "remote_path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/mapped_flow_v2/stage_mapped_incremental_atpg_no_tsdb_v3.tcl",
+      "sha256": "4f95afb6d693f43f4747dfa06db2e3735ecca8506391ac0a00a24d3d23f1aaa3"
+    }
+  ],
+  "current_config_metadata": {
+    "aes_core": {
+      "CELL_LIBRARY": "/home/jiangchuanc/Desktop/multimode_ate_20260725_A_staging/00_inputs_readonly/scc28nhk_hsc31_lvt_scan.tcelllib",
+      "CIRCUIT": "aes_core",
+      "EXTERNAL_CHANNELS": "4",
+      "F_CHAIN_COUNT": "4",
+      "H_CHAIN_COUNT": "64",
+      "M_CHAIN_COUNT": "16",
+      "TIMEPLATE_NS": "40",
+      "TOP_MODULE": "aes_cipher_top"
+    },
+    "spi": {
+      "CELL_LIBRARY": "/home/jiangchuanc/Desktop/multimode_ate_20260725_A_staging/00_inputs_readonly/scc28nhk_hsc31_lvt_scan.tcelllib",
+      "CIRCUIT": "spi",
+      "EXTERNAL_CHANNELS": "4",
+      "F_CHAIN_COUNT": "4",
+      "H_CHAIN_COUNT": "64",
+      "M_CHAIN_COUNT": "16",
+      "TIMEPLATE_NS": "40",
+      "TOP_MODULE": "spi_top"
+    }
+  },
+  "date": "2026-10-21",
+  "execution_ready": false,
+  "experiment_id": "E70",
+  "fault_or_library_or_graph_bytes_authenticated": false,
+  "missing_original_paths": [
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/stage_mapped_common_atpg_no_tsdb_v2.tcl",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/stage_mapped_incremental_atpg_no_tsdb_v3.tcl"
+  ],
+  "protected_root_accessed": false,
+  "real_atpg_jobs": 0,
+  "real_atpg_memory_budget_verified": false,
+  "remaining_file_read_quota": 0,
+  "remote_writes": false,
+  "requested_vs_realized_limit_equivalence_verified": false,
+  "sessions": [
+    {
+      "budget": {
+        "body_bytes": 59340,
+        "files_read": 6,
+        "inventory_entries": 0
+      },
+      "host": {
+        "hostname": "bupt-vncs2",
+        "platform": "linux",
+        "python_version": [
+          3,
+          6,
+          8
+        ]
+      },
+      "session": "01_A",
+      "status": "PASS_METADATA_ONLY",
+      "stdout_bytes": 3949,
+      "stdout_sha256": "3cab19a331f97742c676c13503ccaae6b613f521ffd3bead520e288eef8089cc"
+    },
+    {
+      "budget": {
+        "body_bytes": 100516,
+        "files_read": 8,
+        "inventory_entries": 0
+      },
+      "host": {
+        "hostname": "bupt-gpus1",
+        "platform": "linux",
+        "python_version": [
+          3,
+          11,
+          2
+        ]
+      },
+      "session": "02_B",
+      "status": "PASS_METADATA_ONLY",
+      "stdout_bytes": 4487,
+      "stdout_sha256": "44dd0769e609a9a30074f35d021e0ef0197aec945ce8f9b3a659a92380ca85b9"
+    },
+    {
+      "budget": {
+        "body_bytes": 7230,
+        "files_read": 2,
+        "inventory_entries": 0
+      },
+      "host": {
+        "hostname": "bupt-vncs2",
+        "platform": "linux",
+        "python_version": [
+          3,
+          6,
+          8
+        ]
+      },
+      "session": "03_A_FLOW",
+      "status": "PASS_METADATA_ONLY",
+      "stdout_bytes": 1313,
+      "stdout_sha256": "c96cb1c28e55ceb145605e1c7bfa6bf10dbb64762e60201c79f1f2bbd474c902"
+    }
+  ],
+  "status": "PASS_BOUNDED_CURRENT_METADATA_OBSERVATION",
+  "training_or_inference": false,
+  "training_release": false,
+  "usage": {
+    "body_bytes": 167086,
+    "entries": 0,
+    "files": 16,
+    "returned_bytes": 9749,
+    "sessions": 3
+  }
+}

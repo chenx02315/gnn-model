@@ -1,0 +1,12 @@
+{
+  "experiment_id":"E70",
+  "date":"2026-10-21",
+  "reviewer":"/root/e27_review",
+  "verdict":"E70_PUBLICATION_CONTENT_PASS",
+  "checks":["Three copied request/metadata/transport triplets equal original phase bytes","Phase journal and authorization anchor copied exactly","Preflow source snapshot SHA matches old gate","Eight current local reference code hashes match remote observations","Final reader and transport pins unchanged","Summary, completion, Chinese status/plan and detailed report agree","Final25 focused and936 related test logs accurate, earlier tests not double-counted","No actual checkpoint/input bytes/freeze/search costs/ATPG resource admission claimed","No remaining file quota or new collection/training release"],
+  "new_remote_or_model_actions":0,
+  "documentation_clarification":"Parent changed actual-used Tcl wording to current-driver-referenced Tcl/current bytes only; no historical execution claim.",
+  "seal_index_verification":"Separate final byte/scope verification before commit",
+  "execution_ready":false,
+  "training_release":false
+}

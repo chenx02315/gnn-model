@@ -41,6 +41,8 @@
 
 ## 当前状态
 
+E70 已实际完成整体只读授权阶段（2026-10-21）：3 会话/16 文件，代码、两电路配置和输入身份声明见 [E70](entries/E70_bounded_AB_metadata_observation.md)。下文“待批准的资料请求”是 E69 的历史快照，本轮用户已一次批准且已执行完毕，不再等待对该阶段的重复授权。下一本地节点是把实际来源接到输入控制绑定和进程记录试点设计；checkpoint/真实库图故障字节与 ATPG 限额仍未知，不冒称已补完或转入训练。
+
 E69 连续核实：已知基础模型使用整数 H/M 和完整候选集合最大值作分母，历史字段来自 measurement；请求/产出同义性、安全准入和实际 checkpoint 特征版本均待证。先补控制绑定，不原样训练。整体只读资料核实范围已在 `contracts/prospective_metadata_scope_request_v1.json` 准备，但它不是授权回执，尚未访问远端。批准该阶段后应连续完成所有本地门禁、最多 16 文件/2 MiB 的资料核实与封存，不逐小步再问。见 [E69](entries/E69_prospective_model_input_binding.md)。
 
 E68 连续推进（2026-10-21）：已把候选规则做成可测试纯函数，不读历史 outcome；924 个符号模板和三 seed 提案顺序只作离线设计，真实候选数仍空。下一依赖是端点/输入身份、现有模型输入兼容和真实 Tessent 生命周期观察，不再修改旧 driver 结果或用 wrapper 计时冒充原子成本。详细接入点见 [E68](entries/E68_candidate_domain_and_runner_boundary.md)。

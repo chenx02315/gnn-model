@@ -1,0 +1,38 @@
+{
+  "automatic_retries": 0,
+  "cached_ed25519_pin": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "command": [
+    "ssh",
+    "-T",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "StrictHostKeyChecking=yes",
+    "-o",
+    "UpdateHostKeys=no",
+    "-o",
+    "ConnectTimeout=8",
+    "-o",
+    "HostKeyAlgorithms=ssh-ed25519",
+    "cjc@gpuserver.buptic.top",
+    "/usr/bin/python3 -I -S -B -"
+  ],
+  "output_cap": 32768,
+  "request": {
+    "inventory_dirs": [],
+    "paths": [
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/jit_admission_iwls_aes_core_20260824.json",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/jit_admission_iwls_spi_20260824.json",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2_iwls_aes_core_20260824.stdout.log.memory.json",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2_iwls_spi_20260824.stdout.log.memory.json",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/src/models/ranking_v5_train_jit_admission_v3.py",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/src/models/ranking_v5_freeze_codec_v2.py",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/src/models/ranking_v5_train_artifact_readback_v2.py",
+      "/ssd/cjc/gnn_model_ranking_v5_train_20261011_r2/scripts/run_v5_train_single_fit_v3.py"
+    ],
+    "role": "B"
+  },
+  "scope_sha256": "45f540c6d60d17a9c1f47fad05b787a8d82ca570344a82f077aac5dd008e3b10",
+  "source_sha256": "ba510db05ebfe27f8c601bfd01bc69128c024f95121b426d4c4e08362dc8d0c8",
+  "timeout_s": 60
+}

@@ -1,0 +1,21 @@
+{
+  "schema":"prospective-metadata-authorization-e70-v1",
+  "date":"2026-10-21",
+  "scope_contract":"contracts/prospective_metadata_scope_request_v1.json",
+  "scope_contract_sha256":"45f540c6d60d17a9c1f47fad05b787a8d82ca570344a82f077aac5dd008e3b10",
+  "basis":"User explicitly approved the whole A/B read-only metadata phase, at most16 small files/2MiB, no BLIND, result labels, jobs, training or inference. Do not request approval per file/test/review.",
+  "user_authorization_received":true,
+  "read_only_metadata_phase_authorized":true,
+  "local_implementation_tests_review_and_sealing_in_scope":true,
+  "per_source_independent_review_before_remote_use_required":true,
+  "expected_B_ed25519_fingerprint":"SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "expected_A_ed25519_fingerprint":"SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM",
+  "A_identity_basis":"Existing vnc.buptic.top alias and ED25519 key in existing known_hosts; no key added or replaced.",
+  "B_identity_basis":"Existing user-verified gpuserver.buptic.top key and bupt-gpus1 hostname, reconfirmed against local known_hosts without remote action.",
+  "protected_root":"/ssd/cjc/multimode_ate_gnn_v1",
+  "new_job_or_training_authority":false,
+  "remote_writes_allowed":false,
+  "checkpoint_bodies_or_result_labels_allowed":false,
+  "execution_ready":false,
+  "training_release":false
+}
