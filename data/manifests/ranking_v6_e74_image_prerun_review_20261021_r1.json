@@ -1,0 +1,13 @@
+{
+  "verdict": "PASS_INDEPENDENT_PREEXECUTION_REVIEW",
+  "mode": "image",
+  "reviewer": "/root/e73_probe_review",
+  "scope": "One fixed read-only metadata session; not container execution",
+  "source_sha256": "4ef2fd24b9ff05f4f11859753d8eaee100b43c68a34850e5491a2c6d81e4bbde",
+  "controller_sha256": "3ebcb7e71e9e15c4279f3c55a562ba72462c41d2e16817f02759ff26d2639956",
+  "auth_sha256": "3c3363fae281a84938ba2d288060cb542afd375345c5d5777bf7ec17b93a7ce1",
+  "payload_sha256": "5aff9a05da630f3d9c799b4d2ece55e4202321d0452e8db2980c66373eb574ac",
+  "payload_bytes": 2813,
+  "fake_tests_passed": 9,
+  "actual_remote_calls_by_reviewer": 0
+}

@@ -1,0 +1,10 @@
+{
+  "auth_sha256": "3c3363fae281a84938ba2d288060cb542afd375345c5d5777bf7ec17b93a7ce1",
+  "host_pin": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "mode": "image",
+  "output_cap": 4096,
+  "payload_sha256": "5aff9a05da630f3d9c799b4d2ece55e4202321d0452e8db2980c66373eb574ac",
+  "review_sha256": "ca48bcb312f0d19a81a38f881953b6dd48bc5ad40a40f45daf7cee84c72bfa72",
+  "source_sha256": "4ef2fd24b9ff05f4f11859753d8eaee100b43c68a34850e5491a2c6d81e4bbde",
+  "stdin_bytes": 2813
+}

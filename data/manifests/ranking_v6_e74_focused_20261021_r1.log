@@ -1,0 +1,27 @@
+test_checked_failure_preserves_bounded_raw (test_linux_lifecycle_executor_e74.ExecutorTests.test_checked_failure_preserves_bounded_raw) ... ok
+test_cidfile_bad_contents (test_linux_lifecycle_executor_e74.ExecutorTests.test_cidfile_bad_contents) ... ok
+test_cleanup_projection_is_narrow_and_bounded (test_linux_lifecycle_executor_e74.ExecutorTests.test_cleanup_projection_is_narrow_and_bounded) ... ok
+test_container_config_rejects_device_or_volume (test_linux_lifecycle_executor_e74.ExecutorTests.test_container_config_rejects_device_or_volume) ... ok
+test_create_response_lost_cidfile_identity_before_kill (test_linux_lifecycle_executor_e74.ExecutorTests.test_create_response_lost_cidfile_identity_before_kill) ... ok
+test_create_response_lost_unknown_id_never_kills_by_name (test_linux_lifecycle_executor_e74.ExecutorTests.test_create_response_lost_unknown_id_never_kills_by_name) ... ok
+test_cumulative_read_and_cleanup_reserve (test_linux_lifecycle_executor_e74.ExecutorTests.test_cumulative_read_and_cleanup_reserve) ... ok
+test_gate_positive_and_reject_missing_or_wrong_values (test_linux_lifecycle_executor_e74.ExecutorTests.test_gate_positive_and_reject_missing_or_wrong_values) ... ok
+test_global_deadline_reserves_cleanup (test_linux_lifecycle_executor_e74.ExecutorTests.test_global_deadline_reserves_cleanup) ... ok
+test_image_volume_preflight_gate (test_linux_lifecycle_executor_e74.ExecutorTests.test_image_volume_preflight_gate) ... ok
+test_request_validation_before_io (test_linux_lifecycle_executor_e74.ExecutorTests.test_request_validation_before_io) ... ok
+test_strict_json (test_linux_lifecycle_executor_e74.ExecutorTests.test_strict_json) ... ok
+test_bad_projection (test_linux_lifecycle_phase_e74.ImageTests.test_bad_projection) ... ok
+test_only_fixed_projection (test_linux_lifecycle_phase_e74.ImageTests.test_only_fixed_projection) ... ok
+test_read_never_consumes_above_remaining_budget (test_linux_lifecycle_phase_e74.ImageTests.test_read_never_consumes_above_remaining_budget) ... ok
+test_volume_record_not_admitted (test_linux_lifecycle_phase_e74.ImageTests.test_volume_record_not_admitted) ... ok
+test_wrong_host_before_commands (test_linux_lifecycle_phase_e74.ImageTests.test_wrong_host_before_commands) ... ok
+test_auth_pin_before_transport (test_linux_lifecycle_phase_e74.PhaseTests.test_auth_pin_before_transport) ... ok
+test_compressed_payload_exact_source (test_linux_lifecycle_phase_e74.PhaseTests.test_compressed_payload_exact_source) ... ok
+test_decompression_bound (test_linux_lifecycle_phase_e74.PhaseTests.test_decompression_bound) ... ok
+test_invalid_mode_before_io (test_linux_lifecycle_phase_e74.PhaseTests.test_invalid_mode_before_io) ... ok
+test_source_fits_payload_bound (test_linux_lifecycle_phase_e74.PhaseTests.test_source_fits_payload_bound) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.009s
+
+OK

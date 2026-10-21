@@ -19,3 +19,5 @@ test_prospective_linux_resource_gate_v1.py -text
 test_linux_lifecycle_environment_e73.py -text
 test_linux_lifecycle_phase_e73.py -text
 test_prospective_linux_lifecycle_v2.py -text
+test_linux_lifecycle_executor_e74.py -text
+test_linux_lifecycle_phase_e74.py -text

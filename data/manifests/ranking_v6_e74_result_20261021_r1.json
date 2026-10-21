@@ -1,0 +1,31 @@
+{
+  "schema": "e74-phase-result-v1",
+  "date": "2026-10-21",
+  "status": "BLOCKED_PYTHON_CAPABILITY_UNVERIFIED",
+  "amendment_authorized": true,
+  "authority_sha256": "3c3363fae281a84938ba2d288060cb542afd375345c5d5777bf7ec17b93a7ce1",
+  "actual_image_session_accepted": true,
+  "image_response_sha256": "f042245d85703386a48fe16068ac700c83601f09e54bf7a448a48b0a98120587",
+  "phase": "v6_e73_linux_validation_20261021_r1",
+  "cumulative": {
+    "ssh_sessions": 2,
+    "stdin_bytes": 10384,
+    "return_bytes": 5452,
+    "metadata_bytes": 20925,
+    "original_observed_image_records": 32,
+    "enriched_existing_records": 2
+  },
+  "image_metadata_not_python_execution_proof": true,
+  "python_absence_claimed": false,
+  "actual_new_containers": 0,
+  "actual_linux_profiles": 0,
+  "actual_atpg_jobs": 0,
+  "actual_training": 0,
+  "remote_workspace_created_by_this_phase": false,
+  "execution_freeze_issued": false,
+  "execute_preexecution_pass_issued": false,
+  "automatic_retry": false,
+  "execution_ready": false,
+  "training_release": false,
+  "next_dependency": "Trustworthy positive Python-capability evidence for one already-present immutable image admitted by the scope; no pull/build or trial container."
+}
