@@ -1,0 +1,21 @@
+{
+  "schema": "prospective-candidate-template-v1",
+  "status": "OFFLINE_SYMBOLIC_DESIGN_NOT_REAL_ROSTER",
+  "circuits": ["aes_core","spi"],
+  "role": "TRAIN_ONLY",
+  "mode_chain_counts": {"H":64,"M":16,"F":4},
+  "grid": "one-pattern anchor plus 5,10,...100 percent anchors. HF:21 slots; HMF:21*21 slots;462 per circuit,924 total symbolic templates.",
+  "reference_code": {"path":"../phase4_closure_driver_v2_reference.py","sha256":"4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94","review_only_no_import":true},
+  "difference_from_historical_pipeline": "Freeze symbolic rule before future outcomes. Do not reuse PASS-selected historical rows or top-five outcome-dependent integer refinement. This is a newly specified pilot domain, not a reconstruction of historical measured actions.",
+  "rounding": "Integer half-up: clamp((full_patterns*percent+50)//100,1,full_patterns). one anchor=1. Positive bounded integer endpoints only; zero/absent endpoints fail closed, not silently removed.",
+  "conditional_M": "Each actual H limit needs its own independently verified M-full endpoint after that H. No global full-M substitution. All endpoint creation attempts must be charged, not free precompute.",
+  "aliasing": "Resolve only after endpoint count/provenance admission. Multiple symbolic templates can map to one requested integer action; preserve all alias UIDs. A policy collapses aliases at first occurrence, never counts aliases as independent successful trials.",
+  "action_identity_limit": "Mapping identifies requested pattern limits only. Actual returned pattern counts and semantic equivalence of separate invocations still require real driver and artifact verification; matching counts alone cannot justify cache reuse.",
+  "random_comparator": "Versioned SHA-256 permutation of seed and template UID, deterministic. Not an exact reproduction of historical PRNG or proof of statistical uniformity. Actual integer order collapses aliases. Freeze mapping and orders before evaluation.",
+  "model_compatibility": "Unverified: existing model may require integer counts or endpoint features. Never fill those with fake values or claim a frozen model order from symbolic templates alone.",
+  "endpoint_admission_and_real_driver": null,
+  "real_integer_candidate_count": null,
+  "full_grid_atpg_budget_authorized": false,
+  "execution_ready": false,
+  "training_release": false
+}

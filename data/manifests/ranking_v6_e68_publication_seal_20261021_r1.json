@@ -1,0 +1,90 @@
+{
+  "schema": "ranking_v6_e68_publication_seal_v1",
+  "date": "2026-10-21",
+  "scope": "Offline symbolic candidate templates and static runner-boundary review only; no real roster, endpoint timing, model order or execution authority.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "sha256": "0b17765dde3342fff0e1583752e3afe5ca125d4133bd9e68c59101000a7b51d0",
+      "bytes": 488
+    },
+    {
+      "path": "contracts/prospective_candidate_template_v1.json",
+      "sha256": "53f2162cc207eabef965a3711f5b9889f74b0b4470c8696adaab05749545a8d1",
+      "bytes": 2399
+    },
+    {
+      "path": "src/data/.gitattributes",
+      "sha256": "76c991f5ff985c1d2c0bfec8584668113f2744ca739673bcac43f0839ef79ae8",
+      "bytes": 237
+    },
+    {
+      "path": "src/data/prospective_candidate_template_v1.py",
+      "sha256": "032359a27793152ae2a97c7583d246a30f4fda7317accfc6509d647f5d64d563",
+      "bytes": 4789
+    },
+    {
+      "path": "tests/.gitattributes",
+      "sha256": "70a6d1347aa907792cf54f9c35d7870ece916d39cbe3b178061888bf0952e4fe",
+      "bytes": 497
+    },
+    {
+      "path": "tests/test_prospective_candidate_template_v1.py",
+      "sha256": "517837d9187f99603fe9d72df538e6971983ca6e56369c683774337016bc3cdf",
+      "bytes": 2704
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "sha256": "8bb30a6dda3627a4f32c1b7d15749cdbc900c65fd28e9fcc5ffbf2a629d36df9",
+      "bytes": 758
+    },
+    {
+      "path": "scripts/prepare_prospective_candidate_template_v1.py",
+      "sha256": "fa63d7acea97460d62418584776b7696b4f18fe0b95f975c4307e215f6873066",
+      "bytes": 2612
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "sha256": "5e7f7b23abc013d721c4ad9811be09f4cd12d864578ed2b35b974c5d1c3576c0",
+      "bytes": 610
+    },
+    {
+      "path": "data/manifests/ranking_v6_e68_completion_review_20261021_r1.json",
+      "sha256": "f1ad760300e57e3fb8dd7021d6f8f9c7c1a61319e4d38b3c6c6fb635d203ac7b",
+      "bytes": 2392
+    },
+    {
+      "path": "data/manifests/ranking_v6_e68_focused_20261021_r1.log",
+      "sha256": "27516fa1cf71f943d5f74487a6f412cee965951e04859ea15686688c3dd2c7dd",
+      "bytes": 2637
+    },
+    {
+      "path": "data/manifests/ranking_v6_e68_regression_20261021_r1.log",
+      "sha256": "a17f70f72c3fcbdf1a80d2027149110ce6340ff9f5eaf929560493a1f0469dbf",
+      "bytes": 1536
+    },
+    {
+      "path": "data/manifests/ranking_v6_e68_template_summary_20261021_r1.json",
+      "sha256": "f614a147c5a98c4ffe3aa57795cb7f7d75e8aae34d1aeea7faf498b761b112c5",
+      "bytes": 2258
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "sha256": "e67231c8b263db14b032727a7877cf3316b6576d1c131abb41f30feec4ecf561",
+      "bytes": 7400
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "sha256": "ebc6f6325c1a924c82f9b4171e2c74250548f89d2a681dac83d3d8903bc92e3f",
+      "bytes": 6942
+    },
+    {
+      "path": "experiment_overview/entries/E68_candidate_domain_and_runner_boundary.md",
+      "sha256": "389d480957ffc6f8e5db2c8b489b88c14ed37cb7547a0dc8009928b9583e28a8",
+      "bytes": 4646
+    }
+  ],
+  "excludes_self": true,
+  "execution_ready": false,
+  "training_release": false
+}

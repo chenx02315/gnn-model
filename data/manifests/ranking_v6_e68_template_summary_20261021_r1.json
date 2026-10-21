@@ -1,0 +1,81 @@
+{
+  "actual_atpg_execution": false,
+  "anchors": [
+    "one",
+    "p005",
+    "p010",
+    "p015",
+    "p020",
+    "p025",
+    "p030",
+    "p035",
+    "p040",
+    "p045",
+    "p050",
+    "p055",
+    "p060",
+    "p065",
+    "p070",
+    "p075",
+    "p080",
+    "p085",
+    "p090",
+    "p095",
+    "p100"
+  ],
+  "current_model_accepts_symbolic_features_verified": false,
+  "endpoint_measurement_costs_included": false,
+  "execution_ready": false,
+  "fixed_mode_chain_counts": {
+    "F": 4,
+    "H": 64,
+    "M": 16
+  },
+  "frozen_model_order_available": false,
+  "hypothetical_alias_example": {
+    "h_full": 1,
+    "integer_actions": 2,
+    "m_full_by_h": {
+      "1": 1
+    },
+    "synthetic_counts_only": true,
+    "template_count": 462
+  },
+  "integer_action_count": null,
+  "local_artifacts": {
+    "proposed_random_orders.json": {
+      "bytes": 80942,
+      "sha256": "f40e0ec6747c9fc48a20909415e31bbab5c376646a7558bd4e0be8d6c2bcddc6"
+    },
+    "templates.json": {
+      "bytes": 133433,
+      "sha256": "f8187e8694eeee284a85a7cf19baeea627278491259f625c35483b0c6d1823e8"
+    }
+  },
+  "per_circuit_scheme_counts": {
+    "HF": 21,
+    "HMF": 441
+  },
+  "per_circuit_template_count": 462,
+  "random_order_sha256": {
+    "aes_core": {
+      "20260824": "e8711d4ea9fff90173fe1efaf93c97387839a7d4298abae6ec6a86692ead3dde",
+      "20260825": "5004c869ab351ac645cda22200af93e266aec2389d1b3d7cfa0edf586a134350",
+      "20260826": "52e84caea327bd524a60c6e66091d5d3ff1d9dcf87e0fc1dede83bfb331c9461"
+    },
+    "spi": {
+      "20260824": "4404f74cc9f68bde4afcd54c4444e254002b08ebec411764b924dfb9f837f19f",
+      "20260825": "69447e5d9802377f3cac4bcd6ed4cf2789f7ce0a8715fd9cf476dc00b61971a8",
+      "20260826": "fc58934590612c9c3e951dd016d76a2fe60ebfd1ccf83c00098317d86fb75b34"
+    }
+  },
+  "real_candidate_count_applied_to_plan": false,
+  "real_endpoint_provenance_verified": false,
+  "real_roster_frozen": false,
+  "reference_source_sha256": "4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94",
+  "schema": "prospective-candidate-template-v1",
+  "status": "SYMBOLIC_TEMPLATE_ONLY_NO_ENDPOINTS_OR_RELEASE",
+  "template_count": 924,
+  "template_sha256": "3b4db9da7ceb28d39212cdd2de3aad1cd412fd614cce8bf9bc6892c7ac22226a",
+  "training_release": false
+}

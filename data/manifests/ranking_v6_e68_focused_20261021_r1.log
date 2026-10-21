@@ -1,0 +1,21 @@
+test_exact_roster_no_outcome_columns (tests.test_prospective_candidate_template_v1.TemplateTests.test_exact_roster_no_outcome_columns) ... ok
+test_half_up_and_positive_extremes (tests.test_prospective_candidate_template_v1.TemplateTests.test_half_up_and_positive_extremes) ... ok
+test_integer_aliases_not_duplicate_charges (tests.test_prospective_candidate_template_v1.TemplateTests.test_integer_aliases_not_duplicate_charges) ... ok
+test_invalid_order_rejected_and_no_mutation (tests.test_prospective_candidate_template_v1.TemplateTests.test_invalid_order_rejected_and_no_mutation) ... ok
+test_per_h_conditional_m_endpoint_required (tests.test_prospective_candidate_template_v1.TemplateTests.test_per_h_conditional_m_endpoint_required) ... ok
+test_seeded_permutation_deterministic_and_seed_sensitive (tests.test_prospective_candidate_template_v1.TemplateTests.test_seeded_permutation_deterministic_and_seed_sensitive) ... ok
+test_actual_fixed_local_contracts_partial_only (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_actual_fixed_local_contracts_partial_only) ... ok
+test_legacy_policy_conflicts_not_silently_merged (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_legacy_policy_conflicts_not_silently_merged) ... ok
+test_missing_source_rejected_no_scan (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_missing_source_rejected_no_scan) ... ok
+test_no_dataset_or_unknown_source_read (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_no_dataset_or_unknown_source_read) ... ok
+test_wrong_train_family_rejected (tests.test_prospective_pilot_preparation_v1.PreparationTests.test_wrong_train_family_rejected) ... ok
+test_even_filled_dummy_hashes_do_not_grant_execution (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_even_filled_dummy_hashes_do_not_grant_execution) ... ok
+test_pins_are_exact_and_no_unknown_fields_accepted (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_pins_are_exact_and_no_unknown_fields_accepted) ... ok
+test_real_template_is_explicitly_unready (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_real_template_is_explicitly_unready) ... ok
+test_resource_bool_nan_or_retries_rejected (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_resource_bool_nan_or_retries_rejected) ... ok
+test_scope_modes_and_policy_cannot_be_silently_changed (tests.test_prospective_capture_plan_v1.ProspectivePlanTests.test_scope_modes_and_policy_cannot_be_silently_changed) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.043s
+
+OK

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "E68",
+  "date": "2026-10-21",
+  "status": "PASS_OFFLINE_SYMBOLIC_TEMPLATE_ONLY",
+  "base_commit": "e7335ad7a5b888cc23a3c6cfff81454743c5e576",
+  "template_count": 924,
+  "per_circuit": {"HF":21,"HMF":441},
+  "integer_candidate_count": null,
+  "reference_source_sha256": "4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94",
+  "local_tcl_sources": [
+    {"path":"../phase4_bootstrap/stage_mapped_common_atpg_no_tsdb_v2.tcl","bytes":3096,"sha256":"dd26a13d1542052ca6664b4b1f8ef23afb76a9d0dfc8c6ea23b40a98d057ae8a"},
+    {"path":"../phase4_bootstrap/stage_mapped_incremental_atpg_no_tsdb_v3.tcl","bytes":4134,"sha256":"4f95afb6d693f43f4747dfa06db2e3735ecca8506391ac0a00a24d3d23f1aaa3"}
+  ],
+  "focused": {"tests":16,"skipped":0,"failures":0,"errors":0,"seconds":0.043,"exit_code":0,"log_sha256":"27516fa1cf71f943d5f74487a6f412cee965951e04859ea15686688c3dd2c7dd"},
+  "related_regression": {"tests":911,"executed":905,"skipped":6,"failures":0,"errors":0,"seconds":41.816,"exit_code":0,"log_sha256":"a17f70f72c3fcbdf1a80d2027149110ce6340ff9f5eaf929560493a1f0469dbf"},
+  "independent_review": {
+    "reviewer": "/root/e27_review",
+    "verdict": "PASS_OFFLINE_SYMBOLIC_TEMPLATE_ONLY",
+    "pure_unit_tests": 6,
+    "independent_decimal_half_up_mapping_checks": 10584,
+    "checks": ["924 symbolic templates,462 per circuit","alias completeness and first occurrence collapse","Decimal mapping oracle","script static review only","symbolic count not integer candidate count or actual budget","no cache/model/endpoint compatibility claim"],
+    "new_child_or_remote_runs": 0
+  },
+  "runner_boundary_review": {"reviewer":"/root/e49_metadata_locator","mode":"static source only","result":"Existing /usr/bin/time wrapper interval and post-exit quality processing do not prove atomic Tessent process timing; cache provider/timeout/identity gaps remain."},
+  "reference_driver_or_tcl_imported_or_executed": false,
+  "referenced_real_inputs_opened": false,
+  "full_related_suite_includes_existing_E66_tiny_children": true,
+  "real_endpoint_provenance_verified": false,
+  "real_model_input_compatibility_verified": false,
+  "real_roster_frozen": false,
+  "full_grid_execution_authorized": false,
+  "real_atpg_attempts": 0,
+  "new_measured_runtime_labels": 0,
+  "remote_access": false,
+  "training_or_tuning": false,
+  "execution_ready": false,
+  "training_release": false
+}

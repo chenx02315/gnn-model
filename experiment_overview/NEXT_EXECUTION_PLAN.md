@@ -41,6 +41,8 @@
 
 ## 当前状态
 
+E68 连续推进（2026-10-21）：已把候选规则做成可测试纯函数，不读历史 outcome；924 个符号模板和三 seed 提案顺序只作离线设计，真实候选数仍空。下一依赖是端点/输入身份、现有模型输入兼容和真实 Tessent 生命周期观察，不再修改旧 driver 结果或用 wrapper 计时冒充原子成本。详细接入点见 [E68](entries/E68_candidate_domain_and_runner_boundary.md)。
+
 E67 补齐（2026-10-21）：已有准备脚本与固定十份本地来源哈希；账本/切分两项 SHA 和 1% epsilon 草案已落实，18 项仍缺。新规则独立于历史 runtime_policy，明确零自动重试、不插补、首试点关闭复用。具体每项产物和依赖顺序见 [E67](entries/E67_prospective_pilot_preparation.md)。真实候选必须由合法结构域产生，不能沿用历史 PASS 选择；真实资源上限不借用训练限额。本状态替代下文旧 21 缺项快照，不改旧 seal。
 
 2026-10-21 补充：E66 已完成固定本地 Python 小进程的适配验证（成功、失败、超时），独立实现复核通过；45 项针对性测试、900 项相关回归通过（6 条件跳过），一次集成落盘和重放一致。它不是实际 ATPG adapter，也未解决通用进程树、持久 PID 或真实内存守卫。见 [E66 小结果](entries/E66_local_dummy_process_validation.md)。
