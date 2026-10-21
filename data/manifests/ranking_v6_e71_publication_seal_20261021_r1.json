@@ -1,0 +1,111 @@
+{
+  "schema": "ranking-v6-e71-publication-seal-v1",
+  "date": "2026-10-21",
+  "base_commit": "756b56113a1b0777ba0b75f4a942a9adb9b65b2f",
+  "scope": "Local request binding and pure process-observation validation only. Two existing E70 pinned projections. Four fabricated attempts; no real timing or model compatibility evidence. No remote access or actual ATPG/training.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "bytes": 640,
+      "sha256": "b527a3bfb7540b86bb8aa0b154d6809c234d1acd2f797ed2f7a449bc6bbe2012"
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "bytes": 742,
+      "sha256": "801f06a726f739ff067f40d915509fb40dc407f0b17949bf51ec0f8a17c59e2c"
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "bytes": 879,
+      "sha256": "91bac606e3fe4260b56c1476dd11a32ff71ced30ced48e3a7a9fa31a9bcfce43"
+    },
+    {
+      "path": "src/data/.gitattributes",
+      "bytes": 319,
+      "sha256": "a6d6daa8ffb8be38214c12d367f6e1c1db26004be2de7a92afdfeea866657ec6"
+    },
+    {
+      "path": "tests/.gitattributes",
+      "bytes": 729,
+      "sha256": "5dcb3bbede9b28da7425f7c3e8a6830bde232c58208d88f40dcd5740669181be"
+    },
+    {
+      "path": "contracts/prospective_input_observation_v1.json",
+      "bytes": 3465,
+      "sha256": "22bcda2a2dd7ce1fce6ad1f147d4f68a96907b7407d1d105642b52c56f3a05d5"
+    },
+    {
+      "path": "src/data/prospective_input_binding_v1.py",
+      "bytes": 4424,
+      "sha256": "1acfed165d9cdfeedb6abd886ff028be221d840fe39c2894ca4070fd81ab5e32"
+    },
+    {
+      "path": "src/data/prospective_process_observation_v1.py",
+      "bytes": 7753,
+      "sha256": "f95aef2254073f9f290bf5c1288d8c7e93abce48c8ba73ebf9eff1b9b5cddd90"
+    },
+    {
+      "path": "scripts/prepare_prospective_input_binding_v1.py",
+      "bytes": 4343,
+      "sha256": "684e3cb9b72a47548cefa1cb78d66c594a26d77e3e38105c2cfa5bf53cc8d3ec"
+    },
+    {
+      "path": "tests/test_prospective_input_binding_v1.py",
+      "bytes": 3881,
+      "sha256": "8ec9773c132df8a1f66f6344e1502d9b18f67aa710d1ca5cb602e933d9333139"
+    },
+    {
+      "path": "tests/test_prospective_input_preparation_v1.py",
+      "bytes": 2052,
+      "sha256": "903d8b133b4c5c9cfccbeb384d63a72f8a1dc7d611d189d5af17c59b5d245aa1"
+    },
+    {
+      "path": "tests/test_prospective_process_observation_v1.py",
+      "bytes": 7796,
+      "sha256": "c31dff129424bb05b005df8b5d5b52b9dc6d66c2a263dd3cc683c1cde1ad1f4e"
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "bytes": 9290,
+      "sha256": "b243f6976cd48ece01dfca2314bba9f9990acef3615275a76585635dce43b82a"
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "bytes": 8520,
+      "sha256": "b4899370dff80890b4b71042370935355096c1f6eb6b6c32f7285c77ab60c8d2"
+    },
+    {
+      "path": "experiment_overview/entries/E71_request_binding_and_process_observation.md",
+      "bytes": 5299,
+      "sha256": "78a75b0cc37080cd830667a6b367580cf9f46c866f70034d39c0580611716d10"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e71_focused_20261021_r1.log",
+      "bytes": 3052,
+      "sha256": "70290ff133278b66ad98ea0cbd49b4c9b90f627e78054d8e04db198ee34e5c66"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e71_preparation_20261021_r1.json",
+      "bytes": 13296,
+      "sha256": "81aa3a6d75d7a51a3b90e3e078ad3699a7958e23526483d8d72f8cccbbf3ecbc"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e71_regression_20261021_r2.log",
+      "bytes": 1646,
+      "sha256": "b9159668c234ec11e9c586d84f1b02c8cf651aef239a905fae5198df1a8e4a3c"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e71_regression_initial_20261021_r1.log",
+      "bytes": 3885,
+      "sha256": "ad621fe244bc3cd7af623cf71d2bcf23cb17a565b9add0a849c5a0c5b45bc68b"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e71_review_20261021_r1.json",
+      "bytes": 2421,
+      "sha256": "066b5f78a8d51b6c9df8ab24a5202515f70fd820b1c79fd0056c22619ee49793"
+    }
+  ],
+  "excludes_self": true,
+  "execution_ready": false,
+  "training_release": false
+}

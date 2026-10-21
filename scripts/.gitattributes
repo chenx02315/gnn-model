@@ -17,3 +17,4 @@ prepare_prospective_pilot_v1.py -text
 prepare_prospective_candidate_template_v1.py -text
 read_prospective_metadata_v1.py -text
 run_prospective_metadata_v1.py -text
+prepare_prospective_input_binding_v1.py -text

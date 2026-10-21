@@ -1,0 +1,25 @@
+test_determinism_no_mutation_and_full_roster_binding (tests.test_prospective_input_binding_v1.BindingTests.test_determinism_no_mutation_and_full_roster_binding) ... ok
+test_identity_and_container_bounds (tests.test_prospective_input_binding_v1.BindingTests.test_identity_and_container_bounds) ... ok
+test_m_scheme_and_aliases (tests.test_prospective_input_binding_v1.BindingTests.test_m_scheme_and_aliases) ... ok
+test_outcome_fields_rejected (tests.test_prospective_input_binding_v1.BindingTests.test_outcome_fields_rejected) ... ok
+test_pins_never_authenticate_bytes_or_unlock (tests.test_prospective_input_binding_v1.BindingTests.test_pins_never_authenticate_bytes_or_unlock) ... ok
+test_requested_caps_and_conditional_prefix (tests.test_prospective_input_binding_v1.BindingTests.test_requested_caps_and_conditional_prefix) ... ok
+test_strict_numeric_and_scope (tests.test_prospective_input_binding_v1.BindingTests.test_strict_numeric_and_scope) ... ok
+test_changed_projection_fails_before_parse (tests.test_prospective_input_preparation_v1.PreparationTests.test_changed_projection_fails_before_parse) ... ok
+test_missing_source_no_scan (tests.test_prospective_input_preparation_v1.PreparationTests.test_missing_source_no_scan) ... ok
+test_only_two_pinned_projection_reads (tests.test_prospective_input_preparation_v1.PreparationTests.test_only_two_pinned_projection_reads) ... ok
+test_all_statuses_and_roles_charged (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_all_statuses_and_roles_charged) ... ok
+test_bad_bindings (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_bad_bindings) ... ok
+test_boundaries_and_containers (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_boundaries_and_containers) ... ok
+test_cross_attempt_clock_and_identity (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_cross_attempt_clock_and_identity) ... ok
+test_fresh_repeated_command_is_independently_charged (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_fresh_repeated_command_is_independently_charged) ... ok
+test_incomplete_and_unverified_never_impute (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_incomplete_and_unverified_never_impute) ... ok
+test_integer_types_and_bounds (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_integer_types_and_bounds) ... ok
+test_sequence_and_duplicate_rejection (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_sequence_and_duplicate_rejection) ... ok
+test_unknown_and_labels_rejected_at_every_stage (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_unknown_and_labels_rejected_at_every_stage) ... ok
+test_zero_interval_and_signed_returncode (tests.test_prospective_process_observation_v1.ProcessObservationTests.test_zero_interval_and_signed_returncode) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.012s
+
+OK

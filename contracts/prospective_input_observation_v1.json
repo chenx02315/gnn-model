@@ -1,0 +1,38 @@
+{
+  "schema": "prospective-input-observation-v1",
+  "status": "LOCAL_IMPLEMENTATION_NOT_REAL_RUNNER_RELEASE",
+  "scope": {"circuits": ["aes_core", "spi"], "role": "TRAIN_ONLY", "mode_chain_counts": {"H": 64, "M": 16, "F": 4}},
+  "input_binding": {
+    "implementation": "src/data/prospective_input_binding_v1.py",
+    "accepted_coordinates": "positive integer requested H/M PATTERN_LIMIT, before execution; HF has no M stage",
+    "conditional_m": "M request is tied to the exact H prefix, not independent full-M",
+    "requested_is_not_realized": "PATTERN_LIMIT maps to set_atpg_limits -Pattern_count; generated #test_patterns remains a separate later observation. Equality is unproved.",
+    "normalization": "Freeze and authenticate the entire roster SHA and its maxima before selecting any top-k; a subset must not reset the denominators.",
+    "outcome_fields": "Rejected in request schema, including generated h_patterns/m_patterns, F count, D95, cycles and runtime",
+    "safety": "New actions are not preverified safe under the old model contract; final F verification does not retroactively authenticate model admission.",
+    "checkpoint_compatibility": "Not established. No legacy feature vectors or model orders are emitted.",
+    "identity_pins": "Supplied digests are not byte authentication. Fault-manifest SHA cannot replace fault-body identity."
+  },
+  "process_observation": {
+    "implementation": "src/data/prospective_process_observation_v1.py",
+    "kind": "pure event validation only, no process launch or live memory guard",
+    "limits": {"physical_attempts": 64, "events": 256, "workers": 1, "automatic_retries": 0},
+    "limit_scope": "Validator container bounds only; 64 is not an approved real ATPG attempt budget.",
+    "clock_identity": "same host and boot, observed PID plus process start ticks; monotonic timestamps must be comparable",
+    "charged_roles": ["endpoint", "probe", "search"],
+    "cost_scope": "launch-observation to reap-observation includes dispatch/reap overhead; not create_patterns-only time, exclusive kernel time, old-ledger atomic duration or full online end-to-end cost",
+    "incomplete": "Missing or unverified reap returns null complete total, never configured-timeout substitution or zero cost",
+    "failure": "Observed failed, timeout and cancelled intervals are charged, not dropped",
+    "tree_termination": "A supplied termination_verified flag is an assertion, not an OS-authenticated process-tree proof. Actual runner must independently establish it before another launch.",
+    "legacy_ledger": "Do not copy these observation intervals into the E65 atomic ATPG cost node. A versioned real adapter and explicit timing bridge remain required."
+  },
+  "next_actual_runner_gates": [
+    "Authenticate executable, input bytes, exact model/feature version if used, full requested roster and conditional endpoint provenance",
+    "Pin real ATPG memory, timeout, disk and finite physical-attempt budget; metadata reader caps and synthetic timings are not ATPG limits",
+    "Implement Linux process-group lifecycle, durable prelaunch/reap evidence and memory enforcement; validate with bounded synthetic processes before Tessent",
+    "Freeze one complete collection package and obtain its scope-specific execution authority; existing E70 file budget is exhausted",
+    "Do not train until real data, unique joins and independent audit pass"
+  ],
+  "execution_ready": false,
+  "training_release": false
+}

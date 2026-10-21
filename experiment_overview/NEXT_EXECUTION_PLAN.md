@@ -41,6 +41,8 @@
 
 ## 当前状态
 
+E71：已把请求坐标和未来实际产出分开，并将进程观察顺序/身份/不完整费用做成纯函数检查。准备脚本连接 E70 的既有两份小投影，仅使用人为 H=1/M=1 示例，未认证真实 roster 或模型兼容。下一实质节点是 Linux 实际生命周期/内存守卫与完整执行包，不能把解析器上限当成实际 ATPG 预算；本地记录见 [E71](entries/E71_request_binding_and_process_observation.md)。
+
 E70 已实际完成整体只读授权阶段（2026-10-21）：3 会话/16 文件，代码、两电路配置和输入身份声明见 [E70](entries/E70_bounded_AB_metadata_observation.md)。下文“待批准的资料请求”是 E69 的历史快照，本轮用户已一次批准且已执行完毕，不再等待对该阶段的重复授权。下一本地节点是把实际来源接到输入控制绑定和进程记录试点设计；checkpoint/真实库图故障字节与 ATPG 限额仍未知，不冒称已补完或转入训练。
 
 E69 连续核实：已知基础模型使用整数 H/M 和完整候选集合最大值作分母，历史字段来自 measurement；请求/产出同义性、安全准入和实际 checkpoint 特征版本均待证。先补控制绑定，不原样训练。整体只读资料核实范围已在 `contracts/prospective_metadata_scope_request_v1.json` 准备，但它不是授权回执，尚未访问远端。批准该阶段后应连续完成所有本地门禁、最多 16 文件/2 MiB 的资料核实与封存，不逐小步再问。见 [E69](entries/E69_prospective_model_input_binding.md)。

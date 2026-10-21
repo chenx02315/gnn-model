@@ -1,0 +1,43 @@
+................................................................................{"session": "01_A", "accepted": true, "execution_ready": false}
+................................................................................................s.............................................s.......{"accepted_metadata_receipt": false, "audit_response_valid": false, "elapsed_local_s": 0.001, "exit_code": -9, "output_limit_exceeded": false, "remote_termination_verified": false, "source_sha256": "9f56e761d79bfdb34304a012586cb04d16b435ef6130091a97702e559260a2f2", "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "stdin_write_failed": true, "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "timeout": true, "transport_pass": false}
+.......................................s..................................................E....EE..............................................................................................................................................................................................................................................................................................................................................................................................................s.......................................................................................................................s.........................................................................................s
+======================================================================
+ERROR: test_ranking_v6_e40_summary (unittest.loader._FailedTest.test_ranking_v6_e40_summary)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ranking_v6_e40_summary
+Traceback (most recent call last):
+  File "D:\Python\Python313\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\86155\Desktop\new lab\gnn-model\tests\test_ranking_v6_e40_summary.py", line 5, in <module>
+    from test_ranking_v6_e40_transport import synthetic_payload
+ModuleNotFoundError: No module named 'test_ranking_v6_e40_transport'
+
+
+======================================================================
+ERROR: test_ranking_v6_e41_declared_attempts (unittest.loader._FailedTest.test_ranking_v6_e41_declared_attempts)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ranking_v6_e41_declared_attempts
+Traceback (most recent call last):
+  File "D:\Python\Python313\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\86155\Desktop\new lab\gnn-model\tests\test_ranking_v6_e41_declared_attempts.py", line 11, in <module>
+    from test_ranking_v6_e40_transport import synthetic_payload
+ModuleNotFoundError: No module named 'test_ranking_v6_e40_transport'
+
+
+======================================================================
+ERROR: test_ranking_v6_e41_declared_attempts_r2 (unittest.loader._FailedTest.test_ranking_v6_e41_declared_attempts_r2)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_ranking_v6_e41_declared_attempts_r2
+Traceback (most recent call last):
+  File "D:\Python\Python313\Lib\unittest\loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "C:\Users\86155\Desktop\new lab\gnn-model\tests\test_ranking_v6_e41_declared_attempts_r2.py", line 11, in <module>
+    from test_ranking_v6_e40_transport import synthetic_payload
+ModuleNotFoundError: No module named 'test_ranking_v6_e40_transport'
+
+
+----------------------------------------------------------------------
+Ran 936 tests in 67.888s
+
+FAILED (errors=3, skipped=6)

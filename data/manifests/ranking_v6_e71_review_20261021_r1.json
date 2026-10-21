@@ -1,0 +1,26 @@
+{
+  "schema": "ranking-v6-e71-independent-review-v1",
+  "date": "2026-10-21",
+  "base_commit": "756b56113a1b0777ba0b75f4a942a9adb9b65b2f",
+  "reviewer": "/root/e71_review",
+  "verdict": "PASS_LOCAL_ONLY_IMPLEMENTATION",
+  "independent_focused_tests": {"tests": 20, "failures": 0, "errors": 0, "skipped": 0},
+  "parent_focused_tests": {"tests": 20, "failures": 0, "errors": 0, "skipped": 0, "elapsed_s": 0.012},
+  "related_regression": {"modules": 97, "tests": 956, "executed_pass": 950, "skipped": 6, "failures": 0, "errors": 0, "elapsed_s": 71.759},
+  "initial_harness_failure_preserved": {"tests_count_including_failed_import_placeholders": 936, "errors": 3, "failures": 0, "skipped": 6, "elapsed_s": 67.888, "cause": "E40/E41 sibling test imports require tests directory in sys.path", "resolution": "Correct only harness module search path; complete rerun, no old product or test edits"},
+  "reviewed_sources": {
+    "src/data/prospective_input_binding_v1.py": "1acfed165d9cdfeedb6abd886ff028be221d840fe39c2894ca4070fd81ab5e32",
+    "src/data/prospective_process_observation_v1.py": "f95aef2254073f9f290bf5c1288d8c7e93abce48c8ba73ebf9eff1b9b5cddd90",
+    "scripts/prepare_prospective_input_binding_v1.py": "684e3cb9b72a47548cefa1cb78d66c594a26d77e3e38105c2cfa5bf53cc8d3ec",
+    "tests/test_prospective_input_binding_v1.py": "8ec9773c132df8a1f66f6344e1502d9b18f67aa710d1ca5cb602e933d9333139",
+    "tests/test_prospective_input_preparation_v1.py": "903d8b133b4c5c9cfccbeb384d63a72f8a1dc7d611d189d5af17c59b5d245aa1",
+    "tests/test_prospective_process_observation_v1.py": "c31dff129424bb05b005df8b5d5b52b9dc6d66c2a263dd3cc683c1cde1ad1f4e",
+    "contracts/prospective_input_observation_v1.json": "22bcda2a2dd7ce1fce6ad1f147d4f68a96907b7407d1d105642b52c56f3a05d5"
+  },
+  "checked": ["request-only schema, entire supplied roster identity and maxima", "two fixed E70 projection pins, no followed data paths", "no legacy model feature compatibility claim", "bounded sequential comparable-clock process identities", "all statuses and roles charged; incomplete complete-total null", "timeout/cancelled zero return code allowed without relabeling", "four fabricated attempts uniquely bound to synthetic circuit examples", "no E65 atomic cost or real execution/termination authentication claim"],
+  "remote_sessions": 0,
+  "actual_atpg_jobs": 0,
+  "new_training": false,
+  "execution_ready": false,
+  "training_release": false
+}
