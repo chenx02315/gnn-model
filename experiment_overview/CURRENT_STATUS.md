@@ -1,5 +1,7 @@
 # 当前实验状态
 
+E76（2026-10-21）：已完成持久账本与清理验收协议的本地合成串联；先INTENT确认再启动，身份确认和终态确认均必需，任何未知/清理/ACK失败整包费用为null且阻止下一项。修复身份字典别名及空句柄误判；25针对性测试、1,096相关回归（1,090通过/6跳过/0失败错误）及独立结果复核通过。八类fixture两次9文件字节一致，真实进程/远端/容器均0。E75真实Linux清理通过仍有效，但新账本尚未真实Linux联跑，不是生产runner或训练放行。见[E76记录](entries/E76_durable_lifecycle_journal_synthetic_integration.md)及回执。
+
 E75（2026-10-21）：已从历史真实回执恢复精确Python镜像，定点核实当前仍存在后，独立执行预审与唯一一次Linux隔离验证均完成；成功/失败/超时三个场景真实通过，全部回收且组为空，容器已退出。实测128MiB/swap0/pids16/OOM group0，未做OOM压力。Python镜像缺口与Linux正向门禁已解决；未运行ATPG/训练，持久账本集成与生产输入/资源门禁仍待补。原阶段4/4 SSH、1/1容器已用，不重跑。见 [E75实际结果](entries/E75_python_image_recovered_linux_gate_pass.md)。下文E74为历史快照，不再代表当前阻塞。
 
 E74（2026-10-21）：OOM 修订已获批准；独立预审后实际一次只读补充两个既有镜像的窄字段（275 B），两者无隐式卷，但 Python 可用性尚无正向证据。状态 `BLOCKED_PYTHON_CAPABILITY_UNVERIFIED`，不是无 Python 或缺授权；未创建容器、未运行 Linux 场景/ATPG/训练。累计原阶段 2/4 SSH，不重置额度。见 [E74 真实记录](entries/E74_approved_amendment_image_metadata.md)。下文 E73“修订待批准”是历史快照，已由本段更新。

@@ -1,0 +1,28 @@
+test_nested_second_journal_cannot_launch_a_worker (test_prospective_lifecycle_journal_demo_v2.WorkerBarrierTests.test_nested_second_journal_cannot_launch_a_worker) ... ok
+test_append_deepcopies_caller_payload (test_prospective_lifecycle_journal_v2.JournalTests.test_append_deepcopies_caller_payload) ... ok
+test_backend_mutates_original_identity_but_live_matches_replay (test_prospective_lifecycle_journal_v2.JournalTests.test_backend_mutates_original_identity_but_live_matches_replay) ... ok
+test_baseexception_after_launch_cleans_and_propagates (test_prospective_lifecycle_journal_v2.JournalTests.test_baseexception_after_launch_cleans_and_propagates) ... ok
+test_cleanup_failure_or_residual_group_blocks (test_prospective_lifecycle_journal_v2.JournalTests.test_cleanup_failure_or_residual_group_blocks) ... ok
+test_cross_attempt_clock_barrier_and_bool_type (test_prospective_lifecycle_journal_v2.JournalTests.test_cross_attempt_clock_barrier_and_bool_type) ... ok
+test_empty_journal_is_not_zero_cost_complete (test_prospective_lifecycle_journal_v2.JournalTests.test_empty_journal_is_not_zero_cost_complete) ... ok
+test_exclusive_create (test_prospective_lifecycle_journal_v2.JournalTests.test_exclusive_create) ... ok
+test_finish_exception_cleans_and_blocks (test_prospective_lifecycle_journal_v2.JournalTests.test_finish_exception_cleans_and_blocks) ... ok
+test_hardlink_identity_refused (test_prospective_lifecycle_journal_v2.JournalTests.test_hardlink_identity_refused) ... ok
+test_incomplete_replay_never_zero_fills (test_prospective_lifecycle_journal_v2.JournalTests.test_incomplete_replay_never_zero_fills) ... ok
+test_intent_append_failure_never_launches (test_prospective_lifecycle_journal_v2.JournalTests.test_intent_append_failure_never_launches) ... ok
+test_launched_append_failure_still_cleans_known_handle (test_prospective_lifecycle_journal_v2.JournalTests.test_launched_append_failure_still_cleans_known_handle) ... ok
+test_primary_and_cleanup_exceptions_both_preserved (test_prospective_lifecycle_journal_v2.JournalTests.test_primary_and_cleanup_exceptions_both_preserved) ... ok
+test_reject_non_synthetic_backend (test_prospective_lifecycle_journal_v2.JournalTests.test_reject_non_synthetic_backend) ... ok
+test_short_write_poison (test_prospective_lifecycle_journal_v2.JournalTests.test_short_write_poison) ... ok
+test_snapshot_detects_external_file_change (test_prospective_lifecycle_journal_v2.JournalTests.test_snapshot_detects_external_file_change) ... ok
+test_tamper_and_duplicate_rejected (test_prospective_lifecycle_journal_v2.JournalTests.test_tamper_and_duplicate_rejected) ... ok
+test_terminal_full_row_fsync_failure_replay_cannot_claim_ack (test_prospective_lifecycle_journal_v2.JournalTests.test_terminal_full_row_fsync_failure_replay_cannot_claim_ack) ... ok
+test_three_profiles_serial_live_ack_and_replay_not_ack (test_prospective_lifecycle_journal_v2.JournalTests.test_three_profiles_serial_live_ack_and_replay_not_ack) ... ok
+test_torn_tail_rejected (test_prospective_lifecycle_journal_v2.JournalTests.test_torn_tail_rejected) ... ok
+test_unknown_spawn_blocks_retry_and_cost (test_prospective_lifecycle_journal_v2.JournalTests.test_unknown_spawn_blocks_retry_and_cost) ... ok
+test_wrong_clock_and_identity_replay_rejected (test_prospective_lifecycle_journal_v2.JournalTests.test_wrong_clock_and_identity_replay_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.091s
+
+OK

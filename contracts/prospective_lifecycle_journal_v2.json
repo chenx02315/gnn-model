@@ -1,0 +1,62 @@
+{
+  "schema": "prospective-lifecycle-journal-v2-local-synthetic",
+  "status": "LOCAL_IMPLEMENTATION_NOT_PRODUCTION_OR_REMOTE_RELEASE",
+  "purpose": "Join write-before-launch intent, process identity and verified cleanup with a durable journal, without falsely labelling inclusive intervals as atomic ATPG runtime",
+  "implementation": "src/data/prospective_lifecycle_journal_v2.py",
+  "history_preserved": true,
+  "prior_ledger": "src/data/prospective_attempt_ledger_v1.py",
+  "prior_ledger_semantics_unchanged": "ATOMIC_ATPG_PROCESS_ONLY and its historical lower-bound aggregate are not silently changed by v2",
+  "linux_reference": {
+    "gate_source_sha256": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15",
+    "actual_e75_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+    "role": "Reference for group-cleanup boundary only; no retrospective journal events or timestamps are invented",
+    "integrated_v2_live_linux_test_performed": false
+  },
+  "cost_semantics": {
+    "clock_owner": "Coordinator, not backend-supplied elapsed time",
+    "start": "Immediately before INTENT append/flush/fsync acknowledgment",
+    "end": "After verified cleanup, before terminal append/flush/fsync acknowledgment",
+    "includes": ["intent journal acknowledgment", "launch dispatch", "LAUNCHED identity journal acknowledgment", "wait", "cleanup and empty-group verification"],
+    "excludes": ["terminal journal acknowledgment", "queue delay", "recommendation and cache lookup overhead"],
+    "unit": "integer nanosecond units; synthetic fixture time is not measured wall runtime",
+    "complete_live_sum_requires": "Every intended attempt has acknowledged identity, verified cleanup and acknowledged terminal event in this live writer",
+    "any_uncertainty": "Whole usable sum is null; never zero-fill, drop failed attempts or publish a partial lower bound as complete",
+    "replay_limit": "Complete canonical bytes and hash chain do not prove original fsync acknowledgment or process execution. Replay alone cannot release usable cost labels.",
+    "not_atomic_atpg_cost": true
+  },
+  "lifecycle": {
+    "order": ["INTENT durable acknowledgment", "synthetic backend launch", "LAUNCHED durable identity acknowledgment", "wait and cleanup", "REAPED durable terminal acknowledgment"],
+    "profiles": ["success", "failure", "timeout_group"],
+    "single_worker": true,
+    "automatic_retries": 0,
+    "unknown_spawn": "Incomplete, block all later attempts; absence is not inferred from an exception",
+    "post_launch_exceptions": "Known-handle cleanup on Exception and BaseException; cancellation is not transformed into success",
+    "journal_error": "Stop and preserve original bytes; no reopen-to-append, truncate or repair"
+  },
+  "bounds": {"attempts": 64, "events": 256, "line_bytes": 16384, "journal_bytes": 1048576},
+  "evidence_and_permissions": {
+    "backend": "Synthetic in-process fault fixture only, no arbitrary command or production adapter",
+    "actual_processes": 0,
+    "new_remote_sessions": 0,
+    "new_containers": 0,
+    "real_atpg_jobs": 0,
+    "real_training": 0,
+    "os_authenticated": false,
+    "power_loss_or_hostile_filesystem_durability_proved": false,
+    "no_protected_root_checkpoint_quality_or_blind_data": true
+  },
+  "validation": [
+    "all three terminal outcomes recorded and included",
+    "intent failure launches nothing",
+    "unknown spawn does not become absence or zero cost",
+    "identity acknowledgment failure still cleans known handle",
+    "cleanup failure or residual group blocks the phase",
+    "terminal acknowledgment failure suppresses complete usable sum",
+    "BaseException cleanup and propagation",
+    "short write, flush or fsync uncertainty poisons writer",
+    "tampered, partial, duplicate, reordered or wrong-clock replay rejected",
+    "byte-complete replay cannot authenticate fsync acknowledgment"
+  ],
+  "execution_ready": false,
+  "training_release": false
+}

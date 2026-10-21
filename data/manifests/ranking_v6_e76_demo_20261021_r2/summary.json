@@ -1,0 +1,631 @@
+{
+  "case_count": 7,
+  "cases": [
+    {
+      "backend_launch_calls": 3,
+      "case": "healthy",
+      "cleanup_calls": 3,
+      "exception": null,
+      "journal_bytes": 3734,
+      "journal_sha256": "2ece498e87da785804fa85bc48e39aa02147bd5db85b7d2eceb9b512b46c421c",
+      "live": {
+        "active_attempt_id": null,
+        "actual_processes": 0,
+        "attempt_count": 3,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": 200,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          },
+          "fixture-1": {
+            "end_ns": 400,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 12,
+              "start_ticks": 102
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "failure",
+            "session": "fixture-clock",
+            "start_ns": 300
+          },
+          "fixture-2": {
+            "end_ns": 600,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 13,
+              "start_ticks": 103
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "timeout_group",
+            "session": "fixture-clock",
+            "start_ns": 500
+          }
+        },
+        "complete_live_acknowledged": true,
+        "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 9,
+        "fsync_acknowledgments_verified": true,
+        "head_sha256": "edb9fc3cc86b8ae9d601ac7b2d0a21818a0f4d1c978a3d0b418af558353c6a67",
+        "observed_interval_ns_sum_or_None": 300,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": true,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": null,
+        "actual_processes": 0,
+        "attempt_count": 3,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": 200,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          },
+          "fixture-1": {
+            "end_ns": 400,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 12,
+              "start_ticks": 102
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "failure",
+            "session": "fixture-clock",
+            "start_ns": 300
+          },
+          "fixture-2": {
+            "end_ns": 600,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 13,
+              "start_ticks": 103
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "timeout_group",
+            "session": "fixture-clock",
+            "start_ns": 500
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 9,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "edb9fc3cc86b8ae9d601ac7b2d0a21818a0f4d1c978a3d0b418af558353c6a67",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": true,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    },
+    {
+      "backend_launch_calls": 0,
+      "case": "intent_ack_error",
+      "cleanup_calls": 0,
+      "exception": "OSError",
+      "journal_bytes": 836,
+      "journal_sha256": "607a8edab74fea75d1d77f85787f43aef982ecf48c53370a2ba167866dc59c8f",
+      "live": {
+        "active_attempt_id": null,
+        "actual_processes": 0,
+        "attempt_count": 0,
+        "attempts": {},
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 0,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "2ab746bdfefc27a1772bfe9972a8cf4720bea81cdd32d468a1d43714c1d2c800",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": "fixture-first",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-first": {
+            "end_ns": null,
+            "identity": null,
+            "interval_ns": null,
+            "phase": "INTENT",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 1,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "6061fc966b61102f8fab8671b993c05091baea6bf35f460f01afd6441cf207fb",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    },
+    {
+      "backend_launch_calls": 1,
+      "case": "unknown_spawn",
+      "cleanup_calls": 0,
+      "exception": "RuntimeError",
+      "journal_bytes": 832,
+      "journal_sha256": "46abe0d9188b9375d715f934b01659be8b1b0bbe00b74492fa566fd04f7ff85d",
+      "live": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": null,
+            "interval_ns": null,
+            "phase": "INTENT",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 1,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "687e1fca1b4066b40dd11df986c4c02d7f90f05b2315992f02adea956ed1e6ce",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": null,
+            "interval_ns": null,
+            "phase": "INTENT",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 1,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "687e1fca1b4066b40dd11df986c4c02d7f90f05b2315992f02adea956ed1e6ce",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    },
+    {
+      "backend_launch_calls": 1,
+      "case": "finish_error",
+      "cleanup_calls": 1,
+      "exception": "RuntimeError",
+      "journal_bytes": 1139,
+      "journal_sha256": "a7e4e1987d6cb9982e7ff5ba50d80f020378866dd4009d13310c0b0c6e3c4870",
+      "live": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "11d22992146fb0b2c0f458544d4291a206d0a8d29a23a4501e049d246c5332a3",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "11d22992146fb0b2c0f458544d4291a206d0a8d29a23a4501e049d246c5332a3",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    },
+    {
+      "backend_launch_calls": 1,
+      "case": "residual_group",
+      "cleanup_calls": 1,
+      "exception": "ValueError",
+      "journal_bytes": 1139,
+      "journal_sha256": "a7e4e1987d6cb9982e7ff5ba50d80f020378866dd4009d13310c0b0c6e3c4870",
+      "live": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "11d22992146fb0b2c0f458544d4291a206d0a8d29a23a4501e049d246c5332a3",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "11d22992146fb0b2c0f458544d4291a206d0a8d29a23a4501e049d246c5332a3",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    },
+    {
+      "backend_launch_calls": 1,
+      "case": "cancellation",
+      "cleanup_calls": 1,
+      "exception": "FixtureCancel",
+      "journal_bytes": 1139,
+      "journal_sha256": "a7e4e1987d6cb9982e7ff5ba50d80f020378866dd4009d13310c0b0c6e3c4870",
+      "live": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "11d22992146fb0b2c0f458544d4291a206d0a8d29a23a4501e049d246c5332a3",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": "fixture-0",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-0": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "11d22992146fb0b2c0f458544d4291a206d0a8d29a23a4501e049d246c5332a3",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    },
+    {
+      "backend_launch_calls": 1,
+      "case": "terminal_ack_error",
+      "cleanup_calls": 1,
+      "exception": "OSError",
+      "journal_bytes": 1620,
+      "journal_sha256": "9f9e2814320f15e152238c1a57b24131bb3779a954be87ad3bc3930ea0809932",
+      "live": {
+        "active_attempt_id": "fixture-first",
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-first": {
+            "end_ns": null,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": null,
+            "phase": "LAUNCHED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 2,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "981ba7dfecb09a8fa9efdcc5e00709ba4861e951bb7d7e8df6136df7169a21a5",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": false,
+        "synthetic_only": true,
+        "training_release": false
+      },
+      "replay": {
+        "active_attempt_id": null,
+        "actual_processes": 0,
+        "attempt_count": 1,
+        "attempts": {
+          "fixture-first": {
+            "end_ns": 200,
+            "identity": {
+              "boot_id": "fixture-boot",
+              "host": "synthetic-fixture",
+              "pid": 11,
+              "start_ticks": 101
+            },
+            "interval_ns": 100,
+            "phase": "REAPED",
+            "profile": "success",
+            "session": "fixture-clock",
+            "start_ns": 100
+          }
+        },
+        "complete_live_acknowledged": false,
+        "cost_kind": null,
+        "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+        "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+        "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+        "event_count": 3,
+        "fsync_acknowledgments_verified": false,
+        "head_sha256": "d7e678a33edd6c7848c96ebc4f35710ea6778a0e46cda2b036d0292eb3fe6f2d",
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "physical_atpg_runtime_ns": null,
+        "production_execution_ready": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-lifecycle-journal-v2",
+        "structural_complete": true,
+        "synthetic_only": true,
+        "training_release": false
+      }
+    }
+  ],
+  "execution_ready": false,
+  "fixture_clock_not_measured_wall_runtime": true,
+  "integrated_live_linux_validation": false,
+  "new_containers": 0,
+  "os_authenticated": false,
+  "real_atpg_jobs": 0,
+  "real_processes": 0,
+  "remote_sessions": 0,
+  "status": "PASS_LOCAL_SYNTHETIC_JOURNAL_INTEGRATION_ONLY",
+  "synthetic_only": true,
+  "training_release": false,
+  "training_runs": 0
+}

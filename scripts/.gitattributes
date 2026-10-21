@@ -27,3 +27,4 @@ probe_linux_lifecycle_images_e74.py -text
 run_linux_lifecycle_phase_e74.py -text
 probe_linux_lifecycle_image_e75.py -text
 run_linux_lifecycle_phase_e75.py -text
+demo_prospective_lifecycle_journal_v2.py -text
