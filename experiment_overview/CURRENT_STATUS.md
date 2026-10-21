@@ -1,5 +1,7 @@
 # 当前实验状态
 
+E75（2026-10-21）：已从历史真实回执恢复精确Python镜像，定点核实当前仍存在后，独立执行预审与唯一一次Linux隔离验证均完成；成功/失败/超时三个场景真实通过，全部回收且组为空，容器已退出。实测128MiB/swap0/pids16/OOM group0，未做OOM压力。Python镜像缺口与Linux正向门禁已解决；未运行ATPG/训练，持久账本集成与生产输入/资源门禁仍待补。原阶段4/4 SSH、1/1容器已用，不重跑。见 [E75实际结果](entries/E75_python_image_recovered_linux_gate_pass.md)。下文E74为历史快照，不再代表当前阻塞。
+
 E74（2026-10-21）：OOM 修订已获批准；独立预审后实际一次只读补充两个既有镜像的窄字段（275 B），两者无隐式卷，但 Python 可用性尚无正向证据。状态 `BLOCKED_PYTHON_CAPABILITY_UNVERIFIED`，不是无 Python 或缺授权；未创建容器、未运行 Linux 场景/ATPG/训练。累计原阶段 2/4 SSH，不重置额度。见 [E74 真实记录](entries/E74_approved_amendment_image_metadata.md)。下文 E73“修订待批准”是历史快照，已由本段更新。
 
 E73（2026-10-21）：整体授权后已实际只读连接 B：SSH/Docker 正常，Docker20.10.24+dfsg1/cgroup2；32 条镜像记录按上限截断。前一版误用了不存在的 `--cgroup-conf`，因此容器/场景/ATPG/训练均未启动。已完成最小 v2 本地修订及 41 项 mock/独立复核：保持128MiB/swap0/pids16/次数/零重试，仅记录OOM group0/1而不强制1。此项语义变更需单独明确，不能静默套用原批准；[E73 真实记录与修订](entries/E73_actual_B_probe_and_minimal_revision.md)。

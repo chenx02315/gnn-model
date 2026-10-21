@@ -1,0 +1,12 @@
+{
+  "accepted": true,
+  "exit_code": 0,
+  "overflow": false,
+  "reason": null,
+  "remote_termination_verified": false,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+  "threads_incomplete": false,
+  "timeout": false,
+  "write_failed": false
+}

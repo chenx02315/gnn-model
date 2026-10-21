@@ -1,0 +1,11 @@
+{
+  "verdict": "PASS_INDEPENDENT_PREEXECUTION_REVIEW",
+  "reviewer": "/root/e72_review_final",
+  "mode": "recover_image",
+  "source_sha256": "e7b54807451e8c9216c3d076198fd9e7b9a1ace7324e69e86d7353f7b5a21c77",
+  "payload_sha256": "91998cb330ebebbf102edf565a4389b15b7583ef885e0e61f0d61b11886e1bae",
+  "controller_sha256": "296bf5ed77389c11411075f9cbb9595f29444ceec09ee60fa7e209a7f3f25418",
+  "recovery_authorization_sha256": "5eb72f94a06441a89c413d2aa057e45ff2ff0f8a174f1ca3540c25ddcb26ed6a",
+  "independent_fake_tests": 8,
+  "container_execution_review_issued": false
+}

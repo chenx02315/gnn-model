@@ -1,0 +1,8 @@
+{"event":"START","mode":"probe","output_cap":8192,"source_sha256":"0c578acc40a21fe9add443adea539de14f0c771ce010c7a82a752d89e1717db2","stdin_bytes":7571}
+{"accepted":true,"event":"END","mode":"probe","return_bytes":4710}
+{"auth_sha256":"3c3363fae281a84938ba2d288060cb542afd375345c5d5777bf7ec17b93a7ce1","event":"START","mode":"image","output_cap":4096,"stdin_bytes":2813}
+{"accepted":true,"event":"END","mode":"image","return_bytes":742}
+{"event":"START","mode":"recover_image","output_cap":2048,"stdin_bytes":2676}
+{"accepted":true,"event":"END","mode":"recover_image","return_bytes":473}
+{"event":"START","mode":"execute","output_cap":8192,"stdin_bytes":17364}
+{"accepted":true,"event":"END","mode":"execute","return_bytes":3430}

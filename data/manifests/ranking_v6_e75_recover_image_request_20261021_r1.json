@@ -1,0 +1,11 @@
+{
+  "authorization_sha256": "5eb72f94a06441a89c413d2aa057e45ff2ff0f8a174f1ca3540c25ddcb26ed6a",
+  "controller_sha256": "1ef174900f35b06094a67b6cd9f3698370878656eb2c3c3a40bddeed049ff48f",
+  "host_pin": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "mode": "recover_image",
+  "output_cap": 2048,
+  "payload_sha256": "91998cb330ebebbf102edf565a4389b15b7583ef885e0e61f0d61b11886e1bae",
+  "review_sha256": "93552c5abaa944a5e063d6547bd73deedc054294a211a5d966d7c9094c9b2043",
+  "source_sha256": "e7b54807451e8c9216c3d076198fd9e7b9a1ace7324e69e86d7353f7b5a21c77",
+  "stdin_bytes": 2676
+}

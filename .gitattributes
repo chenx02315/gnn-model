@@ -373,6 +373,7 @@ contracts/ranking_v6_formal_config_join_e56_v1.json -text
 experiment_overview/entries/E54_handoff_source_binding.md -text
 experiment_overview/entries/E55_original_source_sha_comparison.md -text
 experiment_overview/entries/E74_approved_amendment_image_metadata.md -text
+experiment_overview/entries/E75_python_image_recovered_linux_gate_pass.md -text
 experiment_overview/entries/E56_formal_config_join.md -text
 data/manifests/ranking_v6_e54_* -text whitespace=cr-at-eol
 data/manifests/ranking_v6_e55_* -text whitespace=cr-at-eol

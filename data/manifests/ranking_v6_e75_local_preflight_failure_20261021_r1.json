@@ -1,0 +1,10 @@
+{
+  "status": "LOCAL_PREFLIGHT_FAILED_BEFORE_REMOTE_DISPATCH",
+  "failed_controller_sha256": "296bf5ed77389c11411075f9cbb9595f29444ceec09ee60fa7e209a7f3f25418",
+  "exception": "UnicodeDecodeError: ascii codec cannot decode Chinese user_request in local recovery authorization",
+  "point": "run(): io.decode(read(AUTH,4096))",
+  "actual_new_ssh_sessions": 0,
+  "phase_journal_new_entries": 0,
+  "actual_new_containers": 0,
+  "repair": "Decode this review-SHA-bound local authorization as UTF-8; keep remote response parsing strict ASCII; add regression; new review r2 required"
+}

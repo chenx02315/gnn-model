@@ -1,0 +1,13 @@
+{
+  "verdict": "PASS_INDEPENDENT_PREEXECUTION_REVIEW",
+  "reviewer": "/root/e72_review_final",
+  "mode": "execute",
+  "source_sha256": "dd5cc32619b3f53d79ba8995ed9f7b002c264bb4f8cd9ae93fa0006970526cfc",
+  "payload_sha256": "730d9cc3d3bcc79c90b778406ce561cf935cfa42e428c41fc92fadd52f17a017",
+  "controller_sha256": "1ef174900f35b06094a67b6cd9f3698370878656eb2c3c3a40bddeed049ff48f",
+  "recovery_authorization_sha256": "5eb72f94a06441a89c413d2aa057e45ff2ff0f8a174f1ca3540c25ddcb26ed6a",
+  "freeze_sha256": "8d8d07505816b70980d2868a9edd080b4ecbefa8692467da920d7db1e046a89e",
+  "options_sha256": "5545255d7c6c3fe6336b3b98f49cd8c711e05a2dbc7208b07ecab3a437e564a7",
+  "image_response_sha256": "0c188cef7e1ba833de70552a1cbd2e0e5d5f4afea191cdea588fffb38e4cf1a5",
+  "scope": "Single original container attempt, session four, 128MiB/swap0/pids16, three fixed profiles, zero retry; not a measured PASS or training release"
+}

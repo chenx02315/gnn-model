@@ -1,0 +1,16 @@
+test_duplicate_or_unresolved_journal_rejected (test_linux_lifecycle_phase_e75.RecoveryTests.test_duplicate_or_unresolved_journal_rejected) ... ok
+test_execute_response_requires_real_gate_result (test_linux_lifecycle_phase_e75.RecoveryTests.test_execute_response_requires_real_gate_result) ... ok
+test_existing_quota_continues (test_linux_lifecycle_phase_e75.RecoveryTests.test_existing_quota_continues) ... ok
+test_fixed_payload_and_no_extra_mode (test_linux_lifecycle_phase_e75.RecoveryTests.test_fixed_payload_and_no_extra_mode) ... ok
+test_frozen_execute_wire_within_original_phase_budget (test_linux_lifecycle_phase_e75.RecoveryTests.test_frozen_execute_wire_within_original_phase_budget) ... ok
+test_historical_forged_file_rejected (test_linux_lifecycle_phase_e75.RecoveryTests.test_historical_forged_file_rejected) ... ok
+test_historical_raw_identity_and_python (test_linux_lifecycle_phase_e75.RecoveryTests.test_historical_raw_identity_and_python) ... ok
+test_image_source_fixed_single_id (test_linux_lifecycle_phase_e75.RecoveryTests.test_image_source_fixed_single_id) ... ok
+test_metadata_not_python_execution_proof (test_linux_lifecycle_phase_e75.RecoveryTests.test_metadata_not_python_execution_proof) ... ok
+test_transport_failure_not_admitted (test_linux_lifecycle_phase_e75.RecoveryTests.test_transport_failure_not_admitted) ... ok
+test_utf8_approval_reaches_payload_without_remote_io (test_linux_lifecycle_phase_e75.RecoveryTests.test_utf8_approval_reaches_payload_without_remote_io) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.009s
+
+OK

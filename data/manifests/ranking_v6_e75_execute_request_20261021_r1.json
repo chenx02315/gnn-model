@@ -1,0 +1,11 @@
+{
+  "authorization_sha256": "5eb72f94a06441a89c413d2aa057e45ff2ff0f8a174f1ca3540c25ddcb26ed6a",
+  "controller_sha256": "1ef174900f35b06094a67b6cd9f3698370878656eb2c3c3a40bddeed049ff48f",
+  "host_pin": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "mode": "execute",
+  "output_cap": 8192,
+  "payload_sha256": "730d9cc3d3bcc79c90b778406ce561cf935cfa42e428c41fc92fadd52f17a017",
+  "review_sha256": "ab390551e0bc21e4f7b8ebd04daddefe60dafef2aec739fd38d24d5ac3dffbf4",
+  "source_sha256": "dd5cc32619b3f53d79ba8995ed9f7b002c264bb4f8cd9ae93fa0006970526cfc",
+  "stdin_bytes": 17364
+}

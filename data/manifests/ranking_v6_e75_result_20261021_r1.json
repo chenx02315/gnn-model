@@ -1,0 +1,93 @@
+{
+  "schema": "e75-measured-linux-synthetic-result-v1",
+  "date": "2026-10-21",
+  "status": "PASS_FIXED_LINUX_SYNTHETIC_GROUP_ONLY",
+  "python_gap_resolved": true,
+  "historical_image_currently_present": true,
+  "image_id": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+  "source_sha256": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15",
+  "raw_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+  "container_id": "cf22bf2e3eb9c08e68a917d7258645ec153a11849b4da3220ef9f92ffd6c2eff",
+  "container_running": false,
+  "container_exit": 0,
+  "actual_new_containers_total": 1,
+  "actual_profiles_total": 3,
+  "automatic_retries": 0,
+  "profiles": [
+    {
+      "command_sha256": "1413924e11e7cac91ba01e965c42f83ec276895c7a856f937308853733db5a7e",
+      "grandchild_pid": null,
+      "leader_pid": 7,
+      "leader_reaped": true,
+      "leader_start_ticks": 192558163,
+      "observed_group_empty": true,
+      "observed_interval_ns": 7763687,
+      "profile": "success",
+      "returncode": 0,
+      "time_scope": "before_popen_to_verified_group_cleanup_includes_dispatch_and_polling",
+      "timed_out": false
+    },
+    {
+      "command_sha256": "fed4a4ed7a87d1f14b1b1ea9310a1095acc9feb2db17315603a9d73b82c6b7a2",
+      "grandchild_pid": null,
+      "leader_pid": 8,
+      "leader_reaped": true,
+      "leader_start_ticks": 192558164,
+      "observed_group_empty": true,
+      "observed_interval_ns": 7593167,
+      "profile": "failure",
+      "returncode": 7,
+      "time_scope": "before_popen_to_verified_group_cleanup_includes_dispatch_and_polling",
+      "timed_out": false
+    },
+    {
+      "command_sha256": "f341a9a15932c880e3708880aaefe21a770e4b074388e604513f473ac8e27017",
+      "grandchild_pid": 10,
+      "leader_pid": 9,
+      "leader_reaped": true,
+      "leader_start_ticks": 192558165,
+      "observed_group_empty": true,
+      "observed_interval_ns": 416963111,
+      "profile": "timeout_group",
+      "returncode": -9,
+      "time_scope": "before_popen_to_verified_group_cleanup_includes_dispatch_and_polling",
+      "timed_out": true
+    }
+  ],
+  "environment": {
+    "active_oom_test": false,
+    "boot_id": "1b6e28e2-8e22-48b8-a186-9d75809924fe",
+    "cgroup_relative_path": "/",
+    "host": "cf22bf2e3eb9",
+    "kernel": "6.1.0-47-amd64",
+    "kernel_configuration_observed": true,
+    "memory_limit_bytes": 134217728,
+    "oom_group": 0,
+    "oom_group_atomic_kill_guaranteed": false,
+    "pids_max": 16,
+    "platform": "linux",
+    "production_atpg_limits_verified": false,
+    "python": [
+      3,
+      11,
+      2
+    ],
+    "swap_limit_bytes": 0
+  },
+  "phase_usage": {
+    "ssh_sessions": 4,
+    "stdin_bytes": 30424,
+    "return_bytes": 9355,
+    "conservative_metadata_and_command_output_bytes": 24365,
+    "metadata_bound_includes_attach_output": true
+  },
+  "universal_process_tree_termination_proved": false,
+  "active_oom_test": false,
+  "durable_runner_integrated": false,
+  "actual_atpg_jobs": 0,
+  "actual_training": 0,
+  "protected_data_access": false,
+  "execution_ready": false,
+  "training_release": false,
+  "next_gate": "Integrate durable prelaunch/reap ledger and this bounded lifecycle into the prospective runner; no real ATPG/training permission follows from this measured synthetic PASS."
+}

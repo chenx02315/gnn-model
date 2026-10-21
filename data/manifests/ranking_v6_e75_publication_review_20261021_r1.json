@@ -1,0 +1,17 @@
+{
+  "verdict": "PASS_SCOPED_PUBLICATION",
+  "reviewer": "/root/e72_review_final",
+  "scope": "E75 historical exact-image recovery, one measured Linux synthetic gate, small Chinese overview and receipts only",
+  "actual_response_source_freeze_and_quota_verified": true,
+  "entry_sha256": "730d119d147b60b09165c14091a9717373942e1fc67078413f18fe51f15233f3",
+  "regression_tests": 1071,
+  "regression_executed_pass": 1065,
+  "regression_skipped": 6,
+  "regression_failures": 0,
+  "regression_errors": 0,
+  "regression_seconds": 40.601,
+  "focused_tests": 11,
+  "further_remote_sessions": 0,
+  "production_execution_ready": false,
+  "training_release": false
+}
