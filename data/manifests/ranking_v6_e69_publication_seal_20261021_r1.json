@@ -1,0 +1,50 @@
+{
+  "schema": "ranking_v6_e69_publication_seal_v1",
+  "date": "2026-10-21",
+  "scope": "Static local model input-binding findings and UNAUTHORIZED metadata-scope proposal; no inference, data reads or remote permission.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "bytes": 537,
+      "sha256": "f099073ded8ef46a303f563d9fc966c67c701fe3b41ddd027ddb4950ef737d28"
+    },
+    {
+      "path": "contracts/prospective_metadata_scope_request_v1.json",
+      "bytes": 2829,
+      "sha256": "45f540c6d60d17a9c1f47fad05b787a8d82ca570344a82f077aac5dd008e3b10"
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "bytes": 654,
+      "sha256": "2b297a682a67c22e88ba88daefe29c509cff2b849269627310a8a92abbce3c1b"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e69_static_input_binding_20261021_r1.json",
+      "bytes": 1783,
+      "sha256": "5825284643fb7dcbb1b2749821862ef52f00610f31579e739df63014364416b7"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e69_review_20261021_r1.json",
+      "bytes": 946,
+      "sha256": "c65d24927e6987ffb45138ac8544a0997d6fbc13e3c80ebe6a0f7b0c3c3e0927"
+    },
+    {
+      "path": "experiment_overview/entries/E69_prospective_model_input_binding.md",
+      "bytes": 4238,
+      "sha256": "b4528123b52ec26309f15909a45de174874579f45c9402de0752303b0af8ed7b"
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "bytes": 7897,
+      "sha256": "4a03692a084b5d00016f9916585c9cca2ead7c26197b6befbb08ce7809471cc9"
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "bytes": 7528,
+      "sha256": "db3a66096730adcb530d36e32a26a3bfd2f228e82788d6062736571ee06f1a2e"
+    }
+  ],
+  "excludes_self": true,
+  "execution_ready": false,
+  "training_release": false
+}

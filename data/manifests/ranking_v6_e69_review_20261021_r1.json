@@ -1,0 +1,14 @@
+{
+  "experiment_id":"E69",
+  "date":"2026-10-21",
+  "status":"E69_STATIC_CONTENT_REVIEW_PASS",
+  "reviewer":"/root/e27_review",
+  "scope":"Six exact local code/contracts SHA and key semantics; no dataset/checkpoint/model/remote execution.",
+  "checked":["7 scalar features and per-circuit candidate-set maxima","measured H/M counts feeding h_limit/m_limit","F excluded from action key","independent target fields","unknown-safe rejection in existing contract","requested versus actual binding not assumed","no claim all historical models leaked","actual checkpoint feature version not authenticated"],
+  "new_tests_or_model_runs":0,
+  "requested_remote_metadata_phase_authorized":false,
+  "request_contract_is_authorization_receipt":false,
+  "parent_schema_check":"Request is bounded to aes_core/spi non-protected metadata, 16 files/2 MiB; all release fields false. No request execution.",
+  "execution_ready":false,
+  "training_release":false
+}

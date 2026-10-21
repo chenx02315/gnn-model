@@ -1,0 +1,34 @@
+{
+  "schema":"prospective-metadata-scope-request-v1",
+  "status":"PROPOSED_PENDING_USER_AUTHORIZATION_NOT_A_RECEIPT",
+  "purpose":"One bundled read-only A/B metadata phase to resolve prospective aes_core/spi input-control, model-version and resource identities; do not seek approval for each local implementation/test/review step.",
+  "circuit_scope":["aes_core","spi"],
+  "host_scope":["existing verified A endpoint only","existing verified B endpoint only"],
+  "path_scope":{
+    "A_root":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A",
+    "A_allowed":"Existing code/config/input-identity manifests for the two circuits; fixed metadata keys only.",
+    "B_root":"/ssd/cjc",
+    "B_allowed":"Existing non-protected gnn_model experiment code/contracts and model/feature/environment identity sidecars; no checkpoint body or labels.",
+    "protected_root_rejected_before_access":"/ssd/cjc/multimode_ate_gnn_v1",
+    "recursive_directory_scan_allowed":false
+  },
+  "bounds":{
+    "ssh_sessions_total_max":4,
+    "per_session_timeout_s":60,
+    "ordinary_files_read_total_max":16,
+    "per_file_bytes_max":131072,
+    "total_file_body_bytes_max":2097152,
+    "shallow_filename_entries_total_max":200,
+    "returned_metadata_bytes_max":65536,
+    "connection_only_transient_retry_max":1,
+    "successful_body_reads_may_repeat":false
+  },
+  "allowed_metadata":["verified host identity","code/config SHA and declared input identities","requested PATTERN_LIMIT control fields without outcomes","common-fault denominator identity/count, not detected counts","model/feature-version sidecar identity, not checkpoint tensors","static graph identity sidecar","tool/environment/storage and previously configured resource-limit metadata"],
+  "admission_requirements":["Local implementation and independent review of exact source selectors and output whitelist before remote use","Verify existing SSH host identity; never bypass host-key mismatch","No referenced paths followed beyond the bounded scope","Missing or conflicting metadata stays unverified; sidecar declarations do not authenticate unread actual artifact bytes"],
+  "forbidden":["LSF/Tessent/ATPG jobs","training/tuning/inference","new Docker containers or services","BLIND/VALIDATION data","mixed historical launcher or result logs including consumed E64 log","candidate outcome/quality/runtime tables","checkpoint body","protected directories","remote writes or deletions","silently increasing quotas or budgets"],
+  "after_phase":"Seal findings and assemble one concrete finite collection package. Actual collection requires separate whole-package authority with resolved resources and stop conditions, not one approval per small code task.",
+  "user_authorization_received":false,
+  "remote_access_released":false,
+  "execution_ready":false,
+  "training_release":false
+}
