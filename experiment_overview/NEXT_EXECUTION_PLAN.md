@@ -41,6 +41,8 @@
 
 ## 当前状态
 
+E72：已连续完成固定 Linux 生命周期/内存门禁本地实现、一次修复和独立复核；本机 Linux 环境不可用是真实执行阻塞，不把 mock 或 Windows 负向验收当成正向 PASS。下个整体范围已冻结到 `contracts/prospective_linux_lifecycle_scope_e72_v1.json`：B 端既有镜像有界核实→精确 image/source/options 冻结→独立预审→最多一容器固定三场景→审计/封存/同步，不逐小步重复申请。该范围尚未获得新容器/远端执行许可；不凭 E70 已耗尽额度越界。见 [E72](entries/E72_linux_lifecycle_and_memory_gate.md)。
+
 E71：已把请求坐标和未来实际产出分开，并将进程观察顺序/身份/不完整费用做成纯函数检查。准备脚本连接 E70 的既有两份小投影，仅使用人为 H=1/M=1 示例，未认证真实 roster 或模型兼容。下一实质节点是 Linux 实际生命周期/内存守卫与完整执行包，不能把解析器上限当成实际 ATPG 预算；本地记录见 [E71](entries/E71_request_binding_and_process_observation.md)。
 
 E70 已实际完成整体只读授权阶段（2026-10-21）：3 会话/16 文件，代码、两电路配置和输入身份声明见 [E70](entries/E70_bounded_AB_metadata_observation.md)。下文“待批准的资料请求”是 E69 的历史快照，本轮用户已一次批准且已执行完毕，不再等待对该阶段的重复授权。下一本地节点是把实际来源接到输入控制绑定和进程记录试点设计；checkpoint/真实库图故障字节与 ATPG 限额仍未知，不冒称已补完或转入训练。

@@ -1,0 +1,82 @@
+{
+  "schema": "prospective-linux-lifecycle-scope-e72-v1",
+  "status": "LOCAL_IMPLEMENTATION_LINUX_POSITIVE_GATE_PENDING",
+  "purpose": "One fixed synthetic Linux lifecycle validation, not a new ATPG/training experiment",
+  "source": "scripts/verify_prospective_linux_lifecycle_v1.py",
+  "positive_acceptance": {
+    "platform": "linux",
+    "exit_code": 0,
+    "gate_pass": true,
+    "profiles_exactly": ["success", "failure", "timeout_group"],
+    "all_leaders_reaped": true,
+    "all_observed_groups_empty": true,
+    "timeout_grandchild_observed_before_kill": true,
+    "no_skipped_profiles": true,
+    "resource_preflight_before_and_after_profiles": true,
+    "windows_negative_or_mock_tests_do_not_satisfy_acceptance": true
+  },
+  "fixed_synthetic_resources": {
+    "memory_max_bytes": 134217728,
+    "memory_swap_max_bytes": 0,
+    "memory_oom_group": 1,
+    "pids_max": 16,
+    "workers": 1,
+    "concurrent_gate_containers": 1,
+    "profile_wait_timeout_s": 0.4,
+    "cleanup_wait_s": 2,
+    "finite_child_self_exit_s": 3,
+    "outer_wall_timeout_s": 30,
+    "automatic_retries": 0,
+    "active_oom_allocation_test": false,
+    "not_an_atpg_memory_or_time_budget": true
+  },
+  "sandbox_preconditions": [
+    "Dedicated PID namespace; the gate Python process is PID 1",
+    "Standard read-only cgroup2 mount with fixed limits already installed outside the gate",
+    "Only gate PID in cgroup.procs and pids.current=1 before each profile and after completion",
+    "No network, GPU, repository/data/checkpoint mounts, host namespace, privileged mode or new capability",
+    "Only exact reviewed script read-only and <=1 MiB scratch tmpfs; stdout/stderr combined <=16 KiB",
+    "No installation, image pull, build, host cgroup modification or limit increase"
+  ],
+  "proposed_whole_execution_package": {
+    "user_authorization_received": false,
+    "reason": "This request is separate from exhausted E70 read-only quota and previous consumed synthetic validations",
+    "local_linux_probe": "WSL unavailable; docker command not found on current Windows client",
+    "candidate_endpoint": "Existing verified B endpoint cjc@gpuserver.buptic.top only",
+    "new_remote_output_root": "/ssd/cjc/gnn_model_linux_lifecycle_e72_20261021_r1",
+    "maximum_ssh_sessions": 4,
+    "maximum_session_seconds": 60,
+    "maximum_existing_image_metadata_entries": 32,
+    "maximum_image_metadata_bytes": 32768,
+    "image_selection": "Choose one already-present Python-capable image and pin immutable image ID/digest before creation; if none exists, stop without pull/build",
+    "maximum_new_containers": 1,
+    "maximum_actual_profile_launches": 3,
+    "maximum_synthetic_grandchildren": 1,
+    "maximum_uploaded_files": 2,
+    "maximum_upload_bytes": 32768,
+    "maximum_return_bytes": 16384,
+    "steps_under_single_authorization": [
+      "Bounded existing Docker/Python image metadata inspection only",
+      "Freeze exact image ID, source SHA and container resource/options manifest",
+      "Independent read-only final execution review and fresh endpoint/resource gates",
+      "Create at most one isolated nonprivileged no-network container, run exact three-profile script once",
+      "Capture bounded result/exit/container state and SHA; timeout or incomplete cleanup stops without retry",
+      "Seal small overview/receipts and normally commit/push existing origin/main without reasking each local step"
+    ],
+    "container_cleanup": "On failure/timeout stop only the exact newly-created container ID; preserve its exit/identity receipt; do not delete unrelated containers/images or overwrite existing output directories",
+    "forbidden": ["A host access", "protected /ssd/cjc/multimode_ate_gnn_v1", "BLIND/VALIDATION", "quality/runtime data or checkpoint bodies", "LSF/Tessent", "training/inference", "image download/build", "host cgroup writes", "raising limits", "automatic retry"]
+  },
+  "evidence_limits": {
+    "pure_snapshot_gate": "Consistency check only; caller-supplied flags do not authenticate kernel state",
+    "linux_gate": "Fixed non-daemonizing Python process-group scope only, not a universal daemon/process-tree termination guarantee",
+    "memory": "Reads actual configured kernel limits; no active OOM stress and no production ATPG memory certification",
+    "timing": "Before-Popen to cleanup interval includes dispatch and polling; not E65 exclusive atomic ATPG cost",
+    "durable_runner": "Not integrated with durable prelaunch/reap journal; a pass cannot release production capture"
+  },
+  "primary_references": [
+    "https://www.man7.org/linux/man-pages/man2/PR_SET_CHILD_SUBREAPER.2const.html",
+    "https://www.kernel.org/doc/html/v6.6/admin-guide/cgroup-v2.html"
+  ],
+  "execution_ready": false,
+  "training_release": false
+}

@@ -1,0 +1,25 @@
+{
+  "docker_command": null,
+  "linux_positive_executed": false,
+  "negative_gate": {
+    "execution_ready": false,
+    "gate_pass": false,
+    "reason": "LINUX_REQUIRED",
+    "schema": "prospective-linux-lifecycle-gate-v1",
+    "status": "BLOCKED_OR_FAILED_NO_RETRY",
+    "training_release": false
+  },
+  "negative_gate_exit_code": 78,
+  "platform": "win32",
+  "python": [
+    3,
+    13,
+    1
+  ],
+  "wsl_probe": {
+    "bytes": 200,
+    "exit_code": 1,
+    "sha256": "97fc49d5096be9494632d9f3364298114f0a3c58e2206cff53bb67c5c6c8f9fc",
+    "text": "\u672a\u5b89\u88c5\u9002\u7528\u4e8e Linux \u7684 Windows \u5b50\u7cfb\u7edf\u3002\u53ef\u901a\u8fc7\u8fd0\u884c \u201cwsl.exe --install\u201d \u8fdb\u884c\u5b89\u88c5\u3002\r\r\n\u6709\u5173\u8be6\u7ec6\u4fe1\u606f\uff0c\u8bf7\u8bbf\u95ee https://aka.ms/wslinstall\r\r\n"
+  }
+}

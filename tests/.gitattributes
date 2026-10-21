@@ -14,3 +14,5 @@ test_prospective_metadata_transport_v1.py -text
 test_prospective_input_binding_v1.py -text
 test_prospective_input_preparation_v1.py -text
 test_prospective_process_observation_v1.py -text
+test_prospective_linux_lifecycle_v1.py -text
+test_prospective_linux_resource_gate_v1.py -text

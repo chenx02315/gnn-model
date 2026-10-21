@@ -1,0 +1,103 @@
+{
+  "schema": "ranking-v6-e72-publication-seal-v1",
+  "date": "2026-10-21",
+  "base_commit": "59c966dc80ba47116402c8eb17bc6de8f29d1793",
+  "status": "PASS_LOCAL_IMPLEMENTATION_LINUX_EXECUTION_PENDING",
+  "scope": "Pure/mock and Windows negative validation only. No positive Linux profiles or remote access. Fixed synthetic Linux package awaits explicit isolated-runner authority. No real ATPG/training.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "bytes": 692,
+      "sha256": "bec1d2bd254055ef906f3010fcad92e5ae9bef62424d9dd3bd5b2050e195eb58"
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "bytes": 786,
+      "sha256": "12d44dbd7d33f00ed130b70e79ac512275bbe99e27766af77bb2b703cae56826"
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "bytes": 926,
+      "sha256": "bc8cd9144dc23f9d80dfdf5bda882885efe46894a1bcf6aec1cfa2366cdb0ffc"
+    },
+    {
+      "path": "src/data/.gitattributes",
+      "bytes": 363,
+      "sha256": "72f8eb45162486e888fc65fba148551328d5e67b187fb897cb10b3643d80a18f"
+    },
+    {
+      "path": "tests/.gitattributes",
+      "bytes": 823,
+      "sha256": "9d9dcca47d71ef6b279d60c9c690473a99e909ad77c7ad82d8acc7ad36e70b92"
+    },
+    {
+      "path": "contracts/prospective_linux_lifecycle_scope_e72_v1.json",
+      "bytes": 4762,
+      "sha256": "82fa3c895afbde96935d2c849ca07e5fc7159a0715400fbd2b9f5bde56639dad"
+    },
+    {
+      "path": "scripts/verify_prospective_linux_lifecycle_v1.py",
+      "bytes": 10102,
+      "sha256": "68b9104149b3adbc9c2d7cad21bbe8c080364428027503fb5cb38fd27ea31bf9"
+    },
+    {
+      "path": "src/data/prospective_linux_resource_gate_v1.py",
+      "bytes": 3674,
+      "sha256": "7e5ac052e8d245798c1d247e89cf685c99b097d76095e358aa4bc56a7168d0a4"
+    },
+    {
+      "path": "tests/test_prospective_linux_lifecycle_v1.py",
+      "bytes": 11086,
+      "sha256": "fb1e6caa35ef0d42a5aa8af6d605789acdb60138e2abc7b6fb507941b297d4b2"
+    },
+    {
+      "path": "tests/test_prospective_linux_resource_gate_v1.py",
+      "bytes": 7121,
+      "sha256": "03c168336a57872c7c25dea8404f1880998d46c84365f058dfa2ae77a6e132e9"
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "bytes": 9831,
+      "sha256": "8be568b4c078a38a4657acf4aa1410c50ac1e0df3245d84026fb1c93d9603bda"
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "bytes": 9139,
+      "sha256": "cc4d60981088ac9a3b0689b411153277d348c1dd5ca02a051a878edf97a0751e"
+    },
+    {
+      "path": "experiment_overview/entries/E72_linux_lifecycle_and_memory_gate.md",
+      "bytes": 5997,
+      "sha256": "350860a3b4295adb9f15872cf3ff8d09fd14d7015d9c113b7b99d82a666d6db5"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e72_focused_20261021_r2.log",
+      "bytes": 5889,
+      "sha256": "cb6b20c20b90e01fdd5eecd09c9aebc1c1103950891139f98345c6d23bb3f3e6"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e72_focused_initial_20261021_r1.log",
+      "bytes": 4812,
+      "sha256": "17793f5048032e290fccada42a44d6d04013d0efc0f290bac6695f911a9d3ec1"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e72_local_preflight_20261021_r1.json",
+      "bytes": 853,
+      "sha256": "e796e2d140790a4f7b95807c2807b088a8ce9c714efb7e9014c6c5909c705667"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e72_regression_20261021_r2.log",
+      "bytes": 1686,
+      "sha256": "b75f67a58f3ec761297c9d1634c85da13943b04cf0b88700b067b4797b7c5881"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e72_review_20261021_r2.json",
+      "bytes": 2894,
+      "sha256": "41ffd57c08c4d68e6cd41366313fe9959c198d8e14257d8457da6817d9ca7990"
+    }
+  ],
+  "excludes_self": true,
+  "positive_linux_gate_pass": false,
+  "execution_ready": false,
+  "training_release": false
+}

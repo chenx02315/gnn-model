@@ -1,0 +1,45 @@
+test_adopted_wait_is_group_scoped (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_adopted_wait_is_group_scoped) ... ok
+test_cgroup_path_no_escape (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_cgroup_path_no_escape) ... ok
+test_cleanup_error_even_with_empty_group_is_incomplete (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_cleanup_error_even_with_empty_group_is_incomplete) ... ok
+test_identity_and_marker_failure_use_same_cleanup (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_identity_and_marker_failure_use_same_cleanup) ... ok
+test_main_non_linux_is_failed_gate_not_skip (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_main_non_linux_is_failed_gate_not_skip) ... ok
+test_mock_spawn_failure_never_moves_to_another_profile (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_mock_spawn_failure_never_moves_to_another_profile) ... ok
+test_mock_success_leader_has_new_session_and_cleanup (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_mock_success_leader_has_new_session_and_cleanup) ... ok
+test_non_init_stops_before_kernel_reads (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_non_init_stops_before_kernel_reads) ... ok
+test_non_linux_stops_before_io_and_launch (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_non_linux_stops_before_io_and_launch) ... ok
+test_only_fixed_profiles (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_only_fixed_profiles) ... ok
+test_persistent_group_is_incomplete (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_persistent_group_is_incomplete) ... ok
+test_preflight_bad_limits_and_shared_scope (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_preflight_bad_limits_and_shared_scope) ... ok
+test_preflight_fixture_observation_not_linux_execution (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_preflight_fixture_observation_not_linux_execution) ... ok
+test_stat_parser_with_parentheses (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_stat_parser_with_parentheses) ... ok
+test_subreaper_rejection_prevents_temp_or_launch (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_subreaper_rejection_prevents_temp_or_launch) ... ok
+test_timeout_grandchild_cleanup_is_mandatory (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_timeout_grandchild_cleanup_is_mandatory) ... ok
+test_wrong_proc_namespace_rejected (tests.test_prospective_linux_lifecycle_v1.LifecycleTests.test_wrong_proc_namespace_rejected) ... ok
+test_all_integer_fields_exclude_bool_and_coercion (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_all_integer_fields_exclude_bool_and_coercion) ... ok
+test_all_prelaunch_flags_exactly_true (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_all_prelaunch_flags_exactly_true) ... ok
+test_cgroup_v2_required (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_cgroup_v2_required) ... ok
+test_constants_and_synthetic_scope (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_constants_and_synthetic_scope) ... ok
+test_current_memory_boundaries (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_current_memory_boundaries) ... ok
+test_expected_limit_must_match (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_expected_limit_must_match) ... ok
+test_fixed_synthetic_cap (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_fixed_synthetic_cap) ... ok
+test_forged_consistent_flags_are_not_os_evidence (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_forged_consistent_flags_are_not_os_evidence) ... ok
+test_input_and_output_detached (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_input_and_output_detached) ... ok
+test_integer_overflow_rejected (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_integer_overflow_rejected) ... ok
+test_integer_subclass_rejected (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_integer_subclass_rejected) ... ok
+test_linux_required (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_linux_required) ... ok
+test_memory_limit_positive (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_memory_limit_positive) ... ok
+test_missing_every_field_fails_closed (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_missing_every_field_fails_closed) ... ok
+test_non_builtin_dict_rejected (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_non_builtin_dict_rejected) ... ok
+test_oom_group_required (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_oom_group_required) ... ok
+test_pids_cap (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_pids_cap) ... ok
+test_same_length_unknown_key_rejected (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_same_length_unknown_key_rejected) ... ok
+test_smallest_limit_and_pid_boundaries (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_smallest_limit_and_pid_boundaries) ... ok
+test_swap_disabled_exactly (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_swap_disabled_exactly) ... ok
+test_unknown_fields_rejected (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_unknown_fields_rejected) ... ok
+test_unlimited_max_string_rejected (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_unlimited_max_string_rejected) ... ok
+test_valid_snapshot_never_authenticates_or_releases (tests.test_prospective_linux_resource_gate_v1.ResourceGateTests.test_valid_snapshot_never_authenticates_or_releases) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.015s
+
+OK
