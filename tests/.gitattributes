@@ -16,3 +16,6 @@ test_prospective_input_preparation_v1.py -text
 test_prospective_process_observation_v1.py -text
 test_prospective_linux_lifecycle_v1.py -text
 test_prospective_linux_resource_gate_v1.py -text
+test_linux_lifecycle_environment_e73.py -text
+test_linux_lifecycle_phase_e73.py -text
+test_prospective_linux_lifecycle_v2.py -text

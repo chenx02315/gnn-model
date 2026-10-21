@@ -1,0 +1,25 @@
+test_bad_identity_never_launches (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_bad_identity_never_launches) ... ok
+test_cleanup_escalates_only_our_cli (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_cleanup_escalates_only_our_cli) ... ok
+test_cli_rejects_all_arguments_and_bounds_return (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_cli_rejects_all_arguments_and_bounds_return) ... ok
+test_combined_stdout_stderr_cap (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_combined_stdout_stderr_cap) ... ok
+test_create_help_is_read_only_and_missing_flag_not_guessed (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_create_help_is_read_only_and_missing_flag_not_guessed) ... ok
+test_exactly_32_also_reports_conservative_truncation (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_exactly_32_also_reports_conservative_truncation) ... ok
+test_failed_image_list_clears_all_docker_claims (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_failed_image_list_clears_all_docker_claims) ... ok
+test_fixed_projection_and_no_python_capability_claim (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_fixed_projection_and_no_python_capability_claim) ... ok
+test_import_has_no_probe_io (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_import_has_no_probe_io) ... ok
+test_info_values_are_observations_not_guesses (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_info_values_are_observations_not_guesses) ... ok
+test_invalid_projection_is_blocked (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_invalid_projection_is_blocked) ... ok
+test_missing_or_permission_denied_has_no_guesses (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_missing_or_permission_denied_has_no_guesses) ... ok
+test_row_32_stops_before_any_byte_of_33_and_accepts_deliberate_cli_stop (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_row_32_stops_before_any_byte_of_33_and_accepts_deliberate_cli_stop) ... ok
+test_timeout_reaps_cli (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_timeout_reaps_cli) ... ok
+test_fixed_mode_no_io (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_fixed_mode_no_io) ... ok
+test_other_host_or_malformed_response_not_accepted (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_other_host_or_malformed_response_not_accepted) ... ok
+test_single_probe_dispatch_and_no_reset (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_single_probe_dispatch_and_no_reset) ... ok
+test_source_review_and_auth_are_before_ssh (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_source_review_and_auth_are_before_ssh) ... ok
+test_transport_failure_recorded_without_retry (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_transport_failure_recorded_without_retry) ... ok
+test_unresolved_session_blocks (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_unresolved_session_blocks) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.371s
+
+OK

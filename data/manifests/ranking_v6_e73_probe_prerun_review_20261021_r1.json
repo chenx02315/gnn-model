@@ -1,0 +1,20 @@
+{
+  "schema": "e73-independent-prerun-review-v1",
+  "date": "2026-10-21",
+  "mode": "probe",
+  "verdict": "PASS_INDEPENDENT_PREEXECUTION_REVIEW",
+  "reviewer": "/root/e73_probe_review",
+  "source_sha256": "0c578acc40a21fe9add443adea539de14f0c771ce010c7a82a752d89e1717db2",
+  "controller_sha256": "52617abdbdecaaf6dcc869c935ab33c6ac23338f5b7253150ce844d5ada11a42",
+  "authorization_sha256": "d758c91cd61a0aaa3745387892acf5b82de327c3a27c83dc0db0d623029a1bda",
+  "scope_sha256": "82fa3c895afbde96935d2c849ca07e5fc7159a0715400fbd2b9f5bde56639dad",
+  "transport_sha256": "e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434",
+  "independent_tests": {"tests": 23, "skipped": 0, "failures": 0, "errors": 0, "elapsed_s": 0.464},
+  "initial_review_finding_resolved": "Required create-help failure could retain metadata_collected. Both exception paths now block and controller independently rejects reason/missing capability schema. Nonzero/timeout/byte-cap covered.",
+  "authorized_actual_action": "Exactly one bounded B read-only probe: projected Docker info, <=32 image rows and docker create --help",
+  "maximum_return_bytes": 8192,
+  "no_container_creation_or_execute_approval": true,
+  "linux_positive_gate_pass": false,
+  "execution_ready": false,
+  "training_release": false
+}

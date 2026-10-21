@@ -1,5 +1,7 @@
 # 当前实验状态
 
+E73（2026-10-21）：整体授权后已实际只读连接 B：SSH/Docker 正常，Docker20.10.24+dfsg1/cgroup2；32 条镜像记录按上限截断。前一版误用了不存在的 `--cgroup-conf`，因此容器/场景/ATPG/训练均未启动。已完成最小 v2 本地修订及 41 项 mock/独立复核：保持128MiB/swap0/pids16/次数/零重试，仅记录OOM group0/1而不强制1。此项语义变更需单独明确，不能静默套用原批准；[E73 真实记录与修订](entries/E73_actual_B_probe_and_minimal_revision.md)。
+
 E72（2026-10-21）：已继续实现 Linux 固定进程组清理入口和纯内存快照门禁；初审发现的异常路径孙进程回收缺口、proc namespace 检查及测试缺口已一次聚焦修复，40 新测试与独立复核通过。当前 Windows 无 WSL/Docker；实际负向入口返回 78/gate_pass=false，Linux 正向仍未执行。一个 B 端 128 MiB、3 场景、零重试的完整隔离验证范围已准备，尚非新容器授权或生产 runner 放行。见 [E72](entries/E72_linux_lifecycle_and_memory_gate.md)。
 
 E71 验证封存：20 项新测试及独立复核通过；相关回归 956 项中 950 执行通过、6 条件跳过、无失败/错误。首次测试入口造成的 3 个旧模块导入错误及完整复跑日志均保留；没有修改旧测试来放宽验收。

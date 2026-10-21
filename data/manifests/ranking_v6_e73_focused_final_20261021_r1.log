@@ -1,0 +1,46 @@
+test_bad_identity_never_launches (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_bad_identity_never_launches) ... ok
+test_cleanup_escalates_only_our_cli (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_cleanup_escalates_only_our_cli) ... ok
+test_cli_rejects_all_arguments_and_bounds_return (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_cli_rejects_all_arguments_and_bounds_return) ... ok
+test_combined_stdout_stderr_cap (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_combined_stdout_stderr_cap) ... ok
+test_create_help_failure_cannot_keep_accepted_status (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_create_help_failure_cannot_keep_accepted_status) ... ok
+test_create_help_is_read_only_and_missing_flag_not_guessed (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_create_help_is_read_only_and_missing_flag_not_guessed) ... ok
+test_create_help_timeout_and_bytecap_are_blocked (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_create_help_timeout_and_bytecap_are_blocked) ... ok
+test_exactly_32_also_reports_conservative_truncation (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_exactly_32_also_reports_conservative_truncation) ... ok
+test_failed_image_list_clears_all_docker_claims (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_failed_image_list_clears_all_docker_claims) ... ok
+test_fixed_projection_and_no_python_capability_claim (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_fixed_projection_and_no_python_capability_claim) ... ok
+test_import_has_no_probe_io (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_import_has_no_probe_io) ... ok
+test_info_values_are_observations_not_guesses (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_info_values_are_observations_not_guesses) ... ok
+test_invalid_projection_is_blocked (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_invalid_projection_is_blocked) ... ok
+test_missing_or_permission_denied_has_no_guesses (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_missing_or_permission_denied_has_no_guesses) ... ok
+test_row_32_stops_before_any_byte_of_33_and_accepts_deliberate_cli_stop (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_row_32_stops_before_any_byte_of_33_and_accepts_deliberate_cli_stop) ... ok
+test_timeout_reaps_cli (tests.test_linux_lifecycle_environment_e73.ProbeTests.test_timeout_reaps_cli) ... ok
+test_fixed_mode_no_io (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_fixed_mode_no_io) ... ok
+test_other_host_or_malformed_response_not_accepted (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_other_host_or_malformed_response_not_accepted) ... ok
+test_reason_or_missing_capability_response_not_accepted (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_reason_or_missing_capability_response_not_accepted) ... ok
+test_single_probe_dispatch_and_no_reset (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_single_probe_dispatch_and_no_reset) ... ok
+test_source_review_and_auth_are_before_ssh (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_source_review_and_auth_are_before_ssh) ... ok
+test_transport_failure_recorded_without_retry (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_transport_failure_recorded_without_retry) ... ok
+test_unresolved_session_blocks (tests.test_linux_lifecycle_phase_e73.PhaseTests.test_unresolved_session_blocks) ... ok
+test_adopted_wait_is_group_scoped (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_adopted_wait_is_group_scoped) ... ok
+test_cgroup_path_no_escape (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_cgroup_path_no_escape) ... ok
+test_cleanup_error_even_with_empty_group_is_incomplete (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_cleanup_error_even_with_empty_group_is_incomplete) ... ok
+test_group_zero_is_observed_not_hidden (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_group_zero_is_observed_not_hidden) ... ok
+test_identity_and_marker_failure_use_same_cleanup (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_identity_and_marker_failure_use_same_cleanup) ... ok
+test_main_non_linux_is_failed_gate_not_skip (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_main_non_linux_is_failed_gate_not_skip) ... ok
+test_mock_spawn_failure_never_moves_to_another_profile (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_mock_spawn_failure_never_moves_to_another_profile) ... ok
+test_mock_success_leader_has_new_session_and_cleanup (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_mock_success_leader_has_new_session_and_cleanup) ... ok
+test_non_init_stops_before_kernel_reads (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_non_init_stops_before_kernel_reads) ... ok
+test_non_linux_stops_before_io_and_launch (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_non_linux_stops_before_io_and_launch) ... ok
+test_only_fixed_profiles (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_only_fixed_profiles) ... ok
+test_persistent_group_is_incomplete (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_persistent_group_is_incomplete) ... ok
+test_preflight_bad_limits_and_shared_scope (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_preflight_bad_limits_and_shared_scope) ... ok
+test_preflight_fixture_observation_not_linux_execution (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_preflight_fixture_observation_not_linux_execution) ... ok
+test_stat_parser_with_parentheses (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_stat_parser_with_parentheses) ... ok
+test_subreaper_rejection_prevents_temp_or_launch (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_subreaper_rejection_prevents_temp_or_launch) ... ok
+test_timeout_grandchild_cleanup_is_mandatory (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_timeout_grandchild_cleanup_is_mandatory) ... ok
+test_wrong_proc_namespace_rejected (tests.test_prospective_linux_lifecycle_v2.LifecycleTests.test_wrong_proc_namespace_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 0.864s
+
+OK

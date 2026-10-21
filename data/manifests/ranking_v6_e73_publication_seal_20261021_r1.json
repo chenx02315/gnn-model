@@ -1,0 +1,145 @@
+{
+  "schema": "ranking-v6-e73-publication-seal-v1",
+  "date": "2026-10-21",
+  "base_commit": "fb95a4e0ef6d9c2e4ab78bd255633f69dfe7a954",
+  "status": "ACTUAL_READONLY_ENVIRONMENT_AUDITED_V2_SEMANTICS_AMENDMENT_PENDING",
+  "scope": "One real B metadata session, 32 bounded image rows, no container/job/data operations. Local v2 revision reviewed and tested but not execution-authorized. Preserve original phase quota consumption.",
+  "files": [
+    {
+      "path": "contracts/.gitattributes",
+      "bytes": 814,
+      "sha256": "3b08186889c5a81c54d99cce08d7d88c6f30af90375d4b7079d9e10c627a42a3"
+    },
+    {
+      "path": "data/manifests/.gitattributes",
+      "bytes": 830,
+      "sha256": "a8f252646dd1ad60d5581e474010b04da8c4b14d3248a0e5fec4a28cfee113ca"
+    },
+    {
+      "path": "scripts/.gitattributes",
+      "bytes": 1059,
+      "sha256": "9ae6fabb7e09d19497268f04599de90e44de06a17fc579b947b0426efe8be6c3"
+    },
+    {
+      "path": "tests/.gitattributes",
+      "bytes": 954,
+      "sha256": "64c51b859d3de61f1ba63a868589e6823befb2f13174aa159dbdc7019b03c590"
+    },
+    {
+      "path": "contracts/prospective_linux_lifecycle_authorization_e73_20261021.json",
+      "bytes": 1395,
+      "sha256": "d758c91cd61a0aaa3745387892acf5b82de327c3a27c83dc0db0d623029a1bda"
+    },
+    {
+      "path": "contracts/prospective_linux_lifecycle_amendment_e73_v2.json",
+      "bytes": 2496,
+      "sha256": "c656364f5ec261f8039fb0eaa4db8777ebfb243ed2dd70cef02e539d7928577e"
+    },
+    {
+      "path": "scripts/probe_linux_lifecycle_environment_e73.py",
+      "bytes": 7571,
+      "sha256": "0c578acc40a21fe9add443adea539de14f0c771ce010c7a82a752d89e1717db2"
+    },
+    {
+      "path": "scripts/run_linux_lifecycle_phase_e73.py",
+      "bytes": 7668,
+      "sha256": "52617abdbdecaaf6dcc869c935ab33c6ac23338f5b7253150ce844d5ada11a42"
+    },
+    {
+      "path": "scripts/verify_prospective_linux_lifecycle_v2.py",
+      "bytes": 10202,
+      "sha256": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15"
+    },
+    {
+      "path": "tests/test_linux_lifecycle_environment_e73.py",
+      "bytes": 12139,
+      "sha256": "21f64225d468d29af782fe6d6b3fb594161861b1ac13b0953f5f6286bfda8e6c"
+    },
+    {
+      "path": "tests/test_linux_lifecycle_phase_e73.py",
+      "bytes": 4659,
+      "sha256": "a737c4cfbd88ed1ae12bd12e917f6e57612903010b25c75b4c71282089f8cf23"
+    },
+    {
+      "path": "tests/test_prospective_linux_lifecycle_v2.py",
+      "bytes": 11936,
+      "sha256": "0ac54558c789dc98919fbeeec86f8624ce1c4c9937accb40885f7260d8f685eb"
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "bytes": 10370,
+      "sha256": "d863c6c44531a1e525e92acf9b28799080c975410f757cedc6f74ef52e212ed6"
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "bytes": 9645,
+      "sha256": "21a6c8ea1a32a640e7f0355c6c3deac7df4ffdb627ed8599958e22c7af0e78d0"
+    },
+    {
+      "path": "experiment_overview/entries/E73_actual_B_probe_and_minimal_revision.md",
+      "bytes": 5200,
+      "sha256": "4d3b6925fba029c90d70bf94ea72ed1303bc15d9f689a596f7380dd20cc185f5"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_completion_review_20261021_r1.json",
+      "bytes": 3208,
+      "sha256": "74810e8c876d3d1aacf52b9b191de28aa63657d5c6abeb15ab1e2380e114e9d5"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_environment_20261021_r1.json",
+      "bytes": 4710,
+      "sha256": "a82c28a2923745754be9933b66dee47845d79763eaf6c9a875695373dcabe05f"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_focused_final_20261021_r1.log",
+      "bytes": 6276,
+      "sha256": "aa0867632f6e4a60e63f66bc6977234db7325e3d7d6f0a0fb8cc66f868593fc1"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_focused_intermediate_20261021_r1.log",
+      "bytes": 3046,
+      "sha256": "0458cc2744e53751eff84965eeeb40da054a7519e499491e1bf0cc2f258f1886"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_phase_anchor_20261021_r1.json",
+      "bytes": 233,
+      "sha256": "e7ca4212d08dc95b073f408a2243cef941dc2a76a3d626f9de00aae484bf3fb2"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_probe_prerun_review_20261021_r1.json",
+      "bytes": 1288,
+      "sha256": "922ef9bea172965eb360600ae8b382bee6c2cb1139417688d3739e7935e08e50"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_regression_final_20261021_r1.log",
+      "bytes": 1729,
+      "sha256": "2171c54cfa76639af823fb44f80a96535f7139db44d933f8578ee2e087d9146f"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_regression_intermediate_20261021_r1.log",
+      "bytes": 1707,
+      "sha256": "a3c4007e7037638496d2acbf3c2ed0ec66a93c0cecc99f54e77537b3b4986f17"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_request_20261021_r1.json",
+      "bytes": 401,
+      "sha256": "24e5e929e6c90643588f8087d28b1e46df6c4943c04a7a8ee5bbf56b5a4dc91a"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_sessions_20261021_r1.jsonl",
+      "bytes": 220,
+      "sha256": "c5746491efe9ec8613a2e30faab9bcfc6cbb036fc53fb5ba7614b446469b4d8f"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e73_transport_20261021_r1.json",
+      "bytes": 352,
+      "sha256": "d308d30b88c2f62c07354022b1373a1cb11810ee59d4c4728e004925f665add8"
+    }
+  ],
+  "excludes_self": true,
+  "actual_containers_created": 0,
+  "positive_linux_gate_pass": false,
+  "v2_execution_authorization_received": false,
+  "execution_ready": false,
+  "training_release": false
+}

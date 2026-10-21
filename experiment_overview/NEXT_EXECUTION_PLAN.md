@@ -41,6 +41,8 @@
 
 ## 当前状态
 
+E73：已授权并消费一次真实 B 只读连接，证实 Docker 可用；真正阻塞是我方 v1 对 `--cgroup-conf` 的错误假设，不是 SSH 或授权缺失。最小修订已实现并独立复核，保持内存/次数不变，只将OOM group强制1改为记录0/1。原scope不被改写；待该单一语义修订明确后，沿原phase剩余额度继续完整执行包，不重扫32条记录、不多建容器、不逐步骤确认。[E73](entries/E73_actual_B_probe_and_minimal_revision.md)。
+
 E72：已连续完成固定 Linux 生命周期/内存门禁本地实现、一次修复和独立复核；本机 Linux 环境不可用是真实执行阻塞，不把 mock 或 Windows 负向验收当成正向 PASS。下个整体范围已冻结到 `contracts/prospective_linux_lifecycle_scope_e72_v1.json`：B 端既有镜像有界核实→精确 image/source/options 冻结→独立预审→最多一容器固定三场景→审计/封存/同步，不逐小步重复申请。该范围尚未获得新容器/远端执行许可；不凭 E70 已耗尽额度越界。见 [E72](entries/E72_linux_lifecycle_and_memory_gate.md)。
 
 E71：已把请求坐标和未来实际产出分开，并将进程观察顺序/身份/不完整费用做成纯函数检查。准备脚本连接 E70 的既有两份小投影，仅使用人为 H=1/M=1 示例，未认证真实 roster 或模型兼容。下一实质节点是 Linux 实际生命周期/内存守卫与完整执行包，不能把解析器上限当成实际 ATPG 预算；本地记录见 [E71](entries/E71_request_binding_and_process_observation.md)。

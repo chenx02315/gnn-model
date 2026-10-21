@@ -1,0 +1,42 @@
+{
+  "schema": "prospective-linux-lifecycle-amendment-e73-v2",
+  "date": "2026-10-21",
+  "status": "LOCAL_REVISION_ONLY_NOT_EXECUTION_AUTHORITY",
+  "amends_scope_sha256": "82fa3c895afbde96935d2c849ca07e5fc7159a0715400fbd2b9f5bde56639dad",
+  "existing_authorization_sha256": "d758c91cd61a0aaa3745387892acf5b82de327c3a27c83dc0db0d623029a1bda",
+  "actual_blocker": "B Docker 20.10.24+dfsg1 with cgroup v2 does not expose --cgroup-conf. V1 mistakenly assumed this CLI capability. No container was created.",
+  "proposed_changes": {
+    "source": "scripts/verify_prospective_linux_lifecycle_v2.py",
+    "source_sha256": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15",
+    "memory_oom_group": "Observe and record the existing kernel value 0 or 1; do not write/force it, and do not claim atomic OOM group kill",
+    "docker_cli": "Remove the unsupported --cgroup-conf requirement; use standard resource/namespace flags only",
+    "oom_semantics_changed": true,
+    "failure_cleanup": "Keep mandatory process-group kill/reap/empty verification and external exact-container stop on failure/timeout; this is not a claim about tested OOM behavior"
+  },
+  "unchanged": {
+    "memory_max_bytes": 134217728,
+    "memory_swap_max_bytes": 0,
+    "pids_max": 16,
+    "workers": 1,
+    "maximum_new_containers_total": 1,
+    "maximum_gate_runs_total": 1,
+    "maximum_profiles_total": 3,
+    "maximum_synthetic_grandchildren": 1,
+    "outer_wall_timeout_s": 30,
+    "automatic_retries": 0,
+    "active_oom_stress_test": false,
+    "no_network_gpu_privileged_mode_or_data_mount": true,
+    "no_image_pull_build_or_host_cgroup_write": true,
+    "no_atpg_training_inference_or_checkpoint_data": true,
+    "no_second_inventory_scan": true,
+    "existing_phase_session_upload_return_bounds_continue": true
+  },
+  "image_freeze_next": "Only choose an image already in the bounded 32 observed records and project its immutable ID/command/volumes metadata before freeze. No new image list or Python-capability claim from a name alone.",
+  "authority_boundary": "The existing approval explicitly required OOM group=1. Do not silently substitute this v2 under that approval. Local implementation/tests/review may complete; actual v2 container requires approval of this precise amendment.",
+  "user_amendment_authorization_received": false,
+  "v1_container_runs_consumed": 0,
+  "v2_container_runs_consumed": 0,
+  "positive_linux_gate_pass": false,
+  "execution_ready": false,
+  "training_release": false
+}
