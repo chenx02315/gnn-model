@@ -1,0 +1,1496 @@
+{
+  "evidence": {
+    "contracts/data_split_v1.json": {
+      "bytes": 4431,
+      "sha256": "ffecd5093453f69c11263501b822ad7bb8f7eefd5da60dd7863331088f6fbcda"
+    },
+    "contracts/model_convergence_e84_v1.json": {
+      "bytes": 4289,
+      "sha256": "0ba3dc3928dcb7ef096909ca8689e75f7022a7cb1c6a31ecb4cb961ee4db7698"
+    },
+    "data/manifests/ranking_v6_e70_observation_summary_20261021_r1.json": {
+      "bytes": 5730,
+      "sha256": "2a00662ac2b3b380c4fa0d3d36b5b139950980d97479a7ac6b60117c091359d1"
+    },
+    "data/manifests/ranking_v6_e79_convergence_20261022_r1.json": {
+      "bytes": 11359,
+      "sha256": "1b0535baf9ac57d5f42008edcaa4da4a2b8e3c93913844de0142f4deb1f441c8"
+    },
+    "scripts/execute_acquisition_input_probe_e84.py": {
+      "bytes": 3894,
+      "sha256": "080d03cb46f2b154c1ace3a962b5c36540ae3623b99e5b3a3f07b5c98ea29766"
+    },
+    "scripts/prepare_prospective_acquisition_e84.py": {
+      "bytes": 5480,
+      "sha256": "31f19f6e7c1cbac18066789349af43657a7540015f9e81b598442d456f30d7a3"
+    },
+    "scripts/probe_acquisition_inputs_e84.py": {
+      "bytes": 5428,
+      "sha256": "ce3a317be1efc89ba959afacd7a30201c68c158a401594b6d9f582fb509971ee"
+    },
+    "src/data/prospective_acquisition_pilot_v1.py": {
+      "bytes": 6956,
+      "sha256": "be5c338ac9429920f08ccfd03cae7087e5114f90e05b51883408f7e0228e90f3"
+    },
+    "src/data/prospective_request_features_v1.py": {
+      "bytes": 6129,
+      "sha256": "a592fb99a06c4f084ef10043ec6c215f0d72208c0dfe6ce608971653d56a6fd5"
+    },
+    "src/data/prospective_tessent_stage_v1.py": {
+      "bytes": 11594,
+      "sha256": "8349b2760b6381c82a03af8905419356948dc74bc3899a0d9a623eec11da6cc4"
+    }
+  },
+  "execution_ready": false,
+  "historical_requests": {
+    "aes_core": "EXACT_INVOCATION_REQUEST_JOIN_NOT_YET_VERIFIED",
+    "s13207": "EXACT_INVOCATION_REQUEST_JOIN_NOT_YET_VERIFIED",
+    "s15850": "EXACT_INVOCATION_REQUEST_JOIN_NOT_YET_VERIFIED",
+    "s35932": "EXACT_INVOCATION_REQUEST_JOIN_NOT_YET_VERIFIED",
+    "s38417": "EXACT_INVOCATION_REQUEST_JOIN_NOT_YET_VERIFIED",
+    "spi": "EXACT_INVOCATION_REQUEST_JOIN_NOT_YET_VERIFIED"
+  },
+  "input_references": {
+    "aes_core": {
+      "cell_library": "/home/jiangchuanc/Desktop/multimode_ate_20260725_A_staging/00_inputs_readonly/scc28nhk_hsc31_lvt_scan.tcelllib",
+      "common_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2",
+      "config": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/01_config/config.env",
+      "count_body_authenticated": false,
+      "declared_common_fault_count": 71216,
+      "input_identity_currently_authenticated": false,
+      "input_source": "Current E70 metadata plus inspected reference-driver path recipes",
+      "top_module": "aes_cipher_top",
+      "tsdb_by_mode": {
+        "F": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/F_mapped_tsdb",
+        "H": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/H_mapped_tsdb",
+        "M": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/M_mapped_tsdb"
+      }
+    },
+    "spi": {
+      "cell_library": "/home/jiangchuanc/Desktop/multimode_ate_20260725_A_staging/00_inputs_readonly/scc28nhk_hsc31_lvt_scan.tcelllib",
+      "common_root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2",
+      "config": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/01_config/config.env",
+      "count_body_authenticated": false,
+      "declared_common_fault_count": 10418,
+      "input_identity_currently_authenticated": false,
+      "input_source": "Current E70 metadata plus inspected reference-driver path recipes",
+      "top_module": "spi_top",
+      "tsdb_by_mode": {
+        "F": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/F_mapped_tsdb",
+        "H": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/H_mapped_tsdb",
+        "M": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/M_mapped_tsdb"
+      }
+    }
+  },
+  "new_training_runs": 0,
+  "plan": {
+    "acceptance": {
+      "cycles": "Combined HF/HMF tester cycles from authenticated artifacts",
+      "d95": "FU equals authenticated frozen N and 100 * DS_DI_union_count >= 95 * N",
+      "graph": "Join pre-execution structural descriptors by authenticated design identity",
+      "incomplete": "Keep missing fields null and block usable-label release",
+      "positive": "Within 1 percent of measured safe roster best; not full-space optimal",
+      "unique_faults": "Use authenticated common-fault mapping and union across stages; do not sum stage detections or trust Tessent target alone",
+      "unsafe_or_failed": "Keep all action rows with status; no positive label",
+      "zero_pattern_dialect": "If zero-pattern output lacks TesterCycle, keep cycles unavailable pending dialect qualification; never invent zero"
+    },
+    "accounting": {
+      "charge": "Every started translation and Tessent attempt, including failures",
+      "no_hit": "Report no-hit and incurred cost; do not drop the session",
+      "parent_failure": "Stop the entire circuit phase under E83; retain charges and all remaining actions as NOT_ATTEMPTED",
+      "record": "Per-attempt monotonic interval and full session interval separately",
+      "setup_and_tsdb_copy": "Record separately; include in session cost",
+      "unknown_elapsed": "INCOMPLETE_NO_IMPUTATION",
+      "unknown_termination": "Stop the complete pilot; do not launch another task"
+    },
+    "action_count": 18,
+    "actual_atpg_calls": 0,
+    "automatic_retries": 0,
+    "checkpoint_required": false,
+    "circuits": [
+      "aes_core",
+      "spi"
+    ],
+    "cross_action_prefix_reuse": false,
+    "epsilon": 0.01,
+    "epsilon_reference": "MEASURED_SAFE_PILOT_ROSTER_ONLY",
+    "execution_ready": false,
+    "f_boundary_minimality_proven": false,
+    "f_policy": "SINGLE_COVERAGE_TARGET_95_NO_FALLBACK_OR_BOUNDARY_SEARCH",
+    "f_target_is_not_d95_proof": true,
+    "formal_generalization_claim": false,
+    "graph_required_before_structure_ablation": true,
+    "graph_required_to_launch_atpg": false,
+    "integer_endpoint_calibration_required": false,
+    "late_binding": {
+      "immutable_fields": [
+        "action_uid",
+        "stage",
+        "control",
+        "depends_on"
+      ],
+      "implemented": false,
+      "receipt_fields": [
+        "parent_result_sha256",
+        "translation_result_sha256"
+      ],
+      "rule": "Match the exact frozen parent task and acknowledged verified output; never substitute an old result, a guessed hash, or another action",
+      "storage": "Separate execution receipts; never mutate the frozen plan"
+    },
+    "max_tessent_calls": 48,
+    "max_total_tasks": 78,
+    "max_translation_calls": 30,
+    "mode_chain_counts": {
+      "F": 4,
+      "H": 64,
+      "M": 16
+    },
+    "normalization_scope": "ENTIRE_FROZEN_PILOT_ROSTER",
+    "phases": [
+      {
+        "attempt_timeout_s": null,
+        "authenticated_input_manifest_sha256": null,
+        "circuit": "aes_core",
+        "cleanup_timeout_s": null,
+        "declared_common_fault_count": null,
+        "disk_bytes_limit": null,
+        "max_tessent_calls": 24,
+        "max_total_tasks": 39,
+        "max_translation_calls": 15,
+        "memory_limit_bytes": null,
+        "output_bytes_per_attempt_limit": null,
+        "requested_max_h": 16,
+        "requested_max_m": 4,
+        "requested_roster": [
+          {
+            "action_uid": "aes_core:HF:h1",
+            "h_request": 1,
+            "m_request": null,
+            "scheme": "HF"
+          },
+          {
+            "action_uid": "aes_core:HF:h16",
+            "h_request": 16,
+            "m_request": null,
+            "scheme": "HF"
+          },
+          {
+            "action_uid": "aes_core:HF:h4",
+            "h_request": 4,
+            "m_request": null,
+            "scheme": "HF"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m1",
+            "h_request": 16,
+            "m_request": 1,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m4",
+            "h_request": 16,
+            "m_request": 4,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m1",
+            "h_request": 1,
+            "m_request": 1,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m4",
+            "h_request": 1,
+            "m_request": 4,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m1",
+            "h_request": 4,
+            "m_request": 1,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m4",
+            "h_request": 4,
+            "m_request": 4,
+            "scheme": "HMF"
+          }
+        ],
+        "roster_sha256": "8e0f2a213d9da87f253997188f51c825a40c981002fda7ac1b44c98792586eda",
+        "tasks": [
+          {
+            "action_uid": "aes_core:HF:h1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HF:h1:H"
+          },
+          {
+            "action_uid": "aes_core:HF:h1",
+            "depends_on": [
+              "aes_core:HF:h1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HF:h1:H",
+            "target_mode": "F",
+            "task_uid": "aes_core:HF:h1:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HF:h1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HF:h1:H",
+              "aes_core:HF:h1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HF:h1:H",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HF:h1:F"
+          },
+          {
+            "action_uid": "aes_core:HF:h16",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 16
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HF:h16:H"
+          },
+          {
+            "action_uid": "aes_core:HF:h16",
+            "depends_on": [
+              "aes_core:HF:h16:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HF:h16:H",
+            "target_mode": "F",
+            "task_uid": "aes_core:HF:h16:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HF:h16",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HF:h16:H",
+              "aes_core:HF:h16:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HF:h16:H",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HF:h16:F"
+          },
+          {
+            "action_uid": "aes_core:HF:h4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HF:h4:H"
+          },
+          {
+            "action_uid": "aes_core:HF:h4",
+            "depends_on": [
+              "aes_core:HF:h4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HF:h4:H",
+            "target_mode": "F",
+            "task_uid": "aes_core:HF:h4:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HF:h4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HF:h4:H",
+              "aes_core:HF:h4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HF:h4:H",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HF:h4:F"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 16
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h16:m1:H"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m1",
+            "depends_on": [
+              "aes_core:HMF:h16:m1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m1:H",
+            "target_mode": "M",
+            "task_uid": "aes_core:HMF:h16:m1:M:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [
+              "aes_core:HMF:h16:m1:H",
+              "aes_core:HMF:h16:m1:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m1:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h16:m1:M"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m1",
+            "depends_on": [
+              "aes_core:HMF:h16:m1:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m1:M",
+            "target_mode": "F",
+            "task_uid": "aes_core:HMF:h16:m1:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HMF:h16:m1:M",
+              "aes_core:HMF:h16:m1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m1:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h16:m1:F"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 16
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h16:m4:H"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m4",
+            "depends_on": [
+              "aes_core:HMF:h16:m4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m4:H",
+            "target_mode": "M",
+            "task_uid": "aes_core:HMF:h16:m4:M:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [
+              "aes_core:HMF:h16:m4:H",
+              "aes_core:HMF:h16:m4:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m4:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h16:m4:M"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m4",
+            "depends_on": [
+              "aes_core:HMF:h16:m4:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m4:M",
+            "target_mode": "F",
+            "task_uid": "aes_core:HMF:h16:m4:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h16:m4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HMF:h16:m4:M",
+              "aes_core:HMF:h16:m4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h16:m4:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h16:m4:F"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h1:m1:H"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m1",
+            "depends_on": [
+              "aes_core:HMF:h1:m1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m1:H",
+            "target_mode": "M",
+            "task_uid": "aes_core:HMF:h1:m1:M:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [
+              "aes_core:HMF:h1:m1:H",
+              "aes_core:HMF:h1:m1:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m1:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h1:m1:M"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m1",
+            "depends_on": [
+              "aes_core:HMF:h1:m1:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m1:M",
+            "target_mode": "F",
+            "task_uid": "aes_core:HMF:h1:m1:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HMF:h1:m1:M",
+              "aes_core:HMF:h1:m1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m1:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h1:m1:F"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h1:m4:H"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m4",
+            "depends_on": [
+              "aes_core:HMF:h1:m4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m4:H",
+            "target_mode": "M",
+            "task_uid": "aes_core:HMF:h1:m4:M:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [
+              "aes_core:HMF:h1:m4:H",
+              "aes_core:HMF:h1:m4:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m4:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h1:m4:M"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m4",
+            "depends_on": [
+              "aes_core:HMF:h1:m4:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m4:M",
+            "target_mode": "F",
+            "task_uid": "aes_core:HMF:h1:m4:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h1:m4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HMF:h1:m4:M",
+              "aes_core:HMF:h1:m4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h1:m4:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h1:m4:F"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h4:m1:H"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m1",
+            "depends_on": [
+              "aes_core:HMF:h4:m1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m1:H",
+            "target_mode": "M",
+            "task_uid": "aes_core:HMF:h4:m1:M:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [
+              "aes_core:HMF:h4:m1:H",
+              "aes_core:HMF:h4:m1:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m1:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h4:m1:M"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m1",
+            "depends_on": [
+              "aes_core:HMF:h4:m1:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m1:M",
+            "target_mode": "F",
+            "task_uid": "aes_core:HMF:h4:m1:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HMF:h4:m1:M",
+              "aes_core:HMF:h4:m1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m1:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h4:m1:F"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h4:m4:H"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m4",
+            "depends_on": [
+              "aes_core:HMF:h4:m4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m4:H",
+            "target_mode": "M",
+            "task_uid": "aes_core:HMF:h4:m4:M:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [
+              "aes_core:HMF:h4:m4:H",
+              "aes_core:HMF:h4:m4:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m4:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h4:m4:M"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m4",
+            "depends_on": [
+              "aes_core:HMF:h4:m4:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m4:M",
+            "target_mode": "F",
+            "task_uid": "aes_core:HMF:h4:m4:F:translate"
+          },
+          {
+            "action_uid": "aes_core:HMF:h4:m4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "aes_core:HMF:h4:m4:M",
+              "aes_core:HMF:h4:m4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "aes_core:HMF:h4:m4:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "aes_core:HMF:h4:m4:F"
+          }
+        ]
+      },
+      {
+        "attempt_timeout_s": null,
+        "authenticated_input_manifest_sha256": null,
+        "circuit": "spi",
+        "cleanup_timeout_s": null,
+        "declared_common_fault_count": null,
+        "disk_bytes_limit": null,
+        "max_tessent_calls": 24,
+        "max_total_tasks": 39,
+        "max_translation_calls": 15,
+        "memory_limit_bytes": null,
+        "output_bytes_per_attempt_limit": null,
+        "requested_max_h": 16,
+        "requested_max_m": 4,
+        "requested_roster": [
+          {
+            "action_uid": "spi:HF:h1",
+            "h_request": 1,
+            "m_request": null,
+            "scheme": "HF"
+          },
+          {
+            "action_uid": "spi:HF:h16",
+            "h_request": 16,
+            "m_request": null,
+            "scheme": "HF"
+          },
+          {
+            "action_uid": "spi:HF:h4",
+            "h_request": 4,
+            "m_request": null,
+            "scheme": "HF"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m1",
+            "h_request": 16,
+            "m_request": 1,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m4",
+            "h_request": 16,
+            "m_request": 4,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m1",
+            "h_request": 1,
+            "m_request": 1,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m4",
+            "h_request": 1,
+            "m_request": 4,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m1",
+            "h_request": 4,
+            "m_request": 1,
+            "scheme": "HMF"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m4",
+            "h_request": 4,
+            "m_request": 4,
+            "scheme": "HMF"
+          }
+        ],
+        "roster_sha256": "ac30b4e800e69b4bac833b569618219beaa1572e26ec2e33f83170d8b9a5ee4f",
+        "tasks": [
+          {
+            "action_uid": "spi:HF:h1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HF:h1:H"
+          },
+          {
+            "action_uid": "spi:HF:h1",
+            "depends_on": [
+              "spi:HF:h1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HF:h1:H",
+            "target_mode": "F",
+            "task_uid": "spi:HF:h1:F:translate"
+          },
+          {
+            "action_uid": "spi:HF:h1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HF:h1:H",
+              "spi:HF:h1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HF:h1:H",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HF:h1:F"
+          },
+          {
+            "action_uid": "spi:HF:h16",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 16
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HF:h16:H"
+          },
+          {
+            "action_uid": "spi:HF:h16",
+            "depends_on": [
+              "spi:HF:h16:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HF:h16:H",
+            "target_mode": "F",
+            "task_uid": "spi:HF:h16:F:translate"
+          },
+          {
+            "action_uid": "spi:HF:h16",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HF:h16:H",
+              "spi:HF:h16:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HF:h16:H",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HF:h16:F"
+          },
+          {
+            "action_uid": "spi:HF:h4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HF:h4:H"
+          },
+          {
+            "action_uid": "spi:HF:h4",
+            "depends_on": [
+              "spi:HF:h4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HF:h4:H",
+            "target_mode": "F",
+            "task_uid": "spi:HF:h4:F:translate"
+          },
+          {
+            "action_uid": "spi:HF:h4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HF:h4:H",
+              "spi:HF:h4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HF:h4:H",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HF:h4:F"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 16
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h16:m1:H"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m1",
+            "depends_on": [
+              "spi:HMF:h16:m1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m1:H",
+            "target_mode": "M",
+            "task_uid": "spi:HMF:h16:m1:M:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [
+              "spi:HMF:h16:m1:H",
+              "spi:HMF:h16:m1:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m1:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h16:m1:M"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m1",
+            "depends_on": [
+              "spi:HMF:h16:m1:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m1:M",
+            "target_mode": "F",
+            "task_uid": "spi:HMF:h16:m1:F:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HMF:h16:m1:M",
+              "spi:HMF:h16:m1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m1:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h16:m1:F"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 16
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h16:m4:H"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m4",
+            "depends_on": [
+              "spi:HMF:h16:m4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m4:H",
+            "target_mode": "M",
+            "task_uid": "spi:HMF:h16:m4:M:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [
+              "spi:HMF:h16:m4:H",
+              "spi:HMF:h16:m4:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m4:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h16:m4:M"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m4",
+            "depends_on": [
+              "spi:HMF:h16:m4:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m4:M",
+            "target_mode": "F",
+            "task_uid": "spi:HMF:h16:m4:F:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h16:m4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HMF:h16:m4:M",
+              "spi:HMF:h16:m4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h16:m4:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h16:m4:F"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h1:m1:H"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m1",
+            "depends_on": [
+              "spi:HMF:h1:m1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m1:H",
+            "target_mode": "M",
+            "task_uid": "spi:HMF:h1:m1:M:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [
+              "spi:HMF:h1:m1:H",
+              "spi:HMF:h1:m1:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m1:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h1:m1:M"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m1",
+            "depends_on": [
+              "spi:HMF:h1:m1:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m1:M",
+            "target_mode": "F",
+            "task_uid": "spi:HMF:h1:m1:F:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HMF:h1:m1:M",
+              "spi:HMF:h1:m1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m1:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h1:m1:F"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h1:m4:H"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m4",
+            "depends_on": [
+              "spi:HMF:h1:m4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m4:H",
+            "target_mode": "M",
+            "task_uid": "spi:HMF:h1:m4:M:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [
+              "spi:HMF:h1:m4:H",
+              "spi:HMF:h1:m4:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m4:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h1:m4:M"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m4",
+            "depends_on": [
+              "spi:HMF:h1:m4:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m4:M",
+            "target_mode": "F",
+            "task_uid": "spi:HMF:h1:m4:F:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h1:m4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HMF:h1:m4:M",
+              "spi:HMF:h1:m4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h1:m4:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h1:m4:F"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h4:m1:H"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m1",
+            "depends_on": [
+              "spi:HMF:h4:m1:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m1:H",
+            "target_mode": "M",
+            "task_uid": "spi:HMF:h4:m1:M:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m1",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 1
+            },
+            "depends_on": [
+              "spi:HMF:h4:m1:H",
+              "spi:HMF:h4:m1:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m1:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h4:m1:M"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m1",
+            "depends_on": [
+              "spi:HMF:h4:m1:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m1:M",
+            "target_mode": "F",
+            "task_uid": "spi:HMF:h4:m1:F:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m1",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HMF:h4:m1:M",
+              "spi:HMF:h4:m1:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m1:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h4:m1:F"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": null,
+            "stage": "H",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h4:m4:H"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m4",
+            "depends_on": [
+              "spi:HMF:h4:m4:H"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m4:H",
+            "target_mode": "M",
+            "task_uid": "spi:HMF:h4:m4:M:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m4",
+            "control": {
+              "kind": "PATTERN_LIMIT",
+              "value": 4
+            },
+            "depends_on": [
+              "spi:HMF:h4:m4:H",
+              "spi:HMF:h4:m4:M:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m4:H",
+            "stage": "M",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h4:m4:M"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m4",
+            "depends_on": [
+              "spi:HMF:h4:m4:M"
+            ],
+            "kind": "TRANSLATION",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m4:M",
+            "target_mode": "F",
+            "task_uid": "spi:HMF:h4:m4:F:translate"
+          },
+          {
+            "action_uid": "spi:HMF:h4:m4",
+            "control": {
+              "kind": "COVERAGE_PERCENT",
+              "value": "95"
+            },
+            "depends_on": [
+              "spi:HMF:h4:m4:M",
+              "spi:HMF:h4:m4:F:translate"
+            ],
+            "kind": "TESSENT",
+            "output_sha256": null,
+            "parent_result_sha256": null,
+            "parent_result_task_uid": "spi:HMF:h4:m4:M",
+            "stage": "F",
+            "stage_index": 1,
+            "task_uid": "spi:HMF:h4:m4:F"
+          }
+        ]
+      }
+    ],
+    "plan_sha256": "90a94e8ce2ee77be1296d67f17ed953fa92dfbe79c3675ea650149d595cdbbc4",
+    "requested_feature_schema": "REQUESTED_COUNT_V1",
+    "role": "TRAIN_ACQUISITION_ONLY",
+    "schema": "prospective-acquisition-pilot-v1",
+    "sessions_per_circuit": 1,
+    "training_release": false,
+    "workers": 1
+  },
+  "real_atpg_calls": 0,
+  "remaining_before_real_collection": [
+    "Executable/environment and immutable TSDB input identities",
+    "Common-fault body/mapping semantics and translation implementation qualification",
+    "Actual ATPG memory/timeout/license/thread/disk/output caps and enforcement",
+    "Real runner integration and exact-parent live-output late binding",
+    "Zero-pattern report dialect and combined H/M/F cycles qualification",
+    "Whole bounded acquisition package review and execution release"
+  ],
+  "resolved_dependencies": [
+    "No old model/checkpoint needed to collect new data",
+    "No graph needed to run ATPG; graph authentication required before structural ablation",
+    "Literal roster needs no outcome-derived full-H/conditional-M endpoints",
+    "Finite exact task upper bound: 48 Tessent and 30 translation calls",
+    "Two separate 39-task phases fit the existing 64-task phase bound"
+  ],
+  "schema": "e84-acquisition-preparation-v1",
+  "status": "EXACT_ACQUISITION_PLAN_PREPARED_REAL_INPUT_AND_RESOURCE_GAPS_REMAIN",
+  "training_release": false
+}

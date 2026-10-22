@@ -396,3 +396,12 @@ scripts/demo_prospective_task_lifecycle_e83.py -text
 contracts/prospective_task_lifecycle_e83_v1.json -text
 experiment_overview/entries/E83_paired_budget_lifecycle.md -text
 data/manifests/ranking_v6_e83_* -text whitespace=cr-at-eol
+src/data/prospective_acquisition_pilot_v1.py -text
+tests/test_prospective_acquisition_pilot_v1.py -text
+tests/test_prospective_acquisition_input_probe_e84.py -text
+scripts/probe_acquisition_inputs_e84.py -text
+scripts/execute_acquisition_input_probe_e84.py -text
+scripts/prepare_prospective_acquisition_e84.py -text
+contracts/model_convergence_e84_v1.json -text
+experiment_overview/entries/E84_model_convergence_and_real_input_preparation.md -text
+data/manifests/ranking_v6_e84_* -text whitespace=cr-at-eol

@@ -1,0 +1,16 @@
+{
+  "schema": "e84-publication-review-v1",
+  "date": "2026-10-23",
+  "reviewer": "/root/e72_review_final",
+  "verdict": "PASS_SCOPED_PUBLICATION",
+  "entry_sha256": "111bba3ac1e1cc64a31597d85d7bd82e53ffc619538b9b7235698ffdea5a23e7",
+  "review_receipt_sha256": "9002a659b9ab18de0a694fbe073aca0ed7bb166c00d04b68d408b32becb3e434",
+  "input_audit_sha256": "164ae536a6e3572a9fde55e4e0a9d327c07f94b5b26de07984dd17cabd7c02d2",
+  "checks": ["Ten preparation source pins and exact current plan", "18 literal request rows without outcomes", "13 input file hashes against actual raw observation", "20-path scope, six directory-only rows, one unfollowed symlink", "Focused and related-regression counts and first mock failure disclosure", "Same completion-policy cohort before future training", "Late binder unimplemented and actual resource values unknown", "No claim of model improvement, actual ATPG collection or training completion"],
+  "source_code_changed_after_pre_observation_review": false,
+  "additional_remote_observation_by_reviewer": false,
+  "publication_only": true,
+  "actual_atpg_calls": 0,
+  "training_runs": 0,
+  "overall_goal_complete": false
+}

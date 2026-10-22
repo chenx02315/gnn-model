@@ -1,0 +1,19 @@
+circuit	action_uid	scheme	h_request	m_request	f_control_kind	f_control_value
+aes_core	aes_core:HF:h1	HF	1		COVERAGE_PERCENT	95
+aes_core	aes_core:HF:h16	HF	16		COVERAGE_PERCENT	95
+aes_core	aes_core:HF:h4	HF	4		COVERAGE_PERCENT	95
+aes_core	aes_core:HMF:h16:m1	HMF	16	1	COVERAGE_PERCENT	95
+aes_core	aes_core:HMF:h16:m4	HMF	16	4	COVERAGE_PERCENT	95
+aes_core	aes_core:HMF:h1:m1	HMF	1	1	COVERAGE_PERCENT	95
+aes_core	aes_core:HMF:h1:m4	HMF	1	4	COVERAGE_PERCENT	95
+aes_core	aes_core:HMF:h4:m1	HMF	4	1	COVERAGE_PERCENT	95
+aes_core	aes_core:HMF:h4:m4	HMF	4	4	COVERAGE_PERCENT	95
+spi	spi:HF:h1	HF	1		COVERAGE_PERCENT	95
+spi	spi:HF:h16	HF	16		COVERAGE_PERCENT	95
+spi	spi:HF:h4	HF	4		COVERAGE_PERCENT	95
+spi	spi:HMF:h16:m1	HMF	16	1	COVERAGE_PERCENT	95
+spi	spi:HMF:h16:m4	HMF	16	4	COVERAGE_PERCENT	95
+spi	spi:HMF:h1:m1	HMF	1	1	COVERAGE_PERCENT	95
+spi	spi:HMF:h1:m4	HMF	1	4	COVERAGE_PERCENT	95
+spi	spi:HMF:h4:m1	HMF	4	1	COVERAGE_PERCENT	95
+spi	spi:HMF:h4:m4	HMF	4	4	COVERAGE_PERCENT	95

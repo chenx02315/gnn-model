@@ -1,0 +1,48 @@
+{
+  "schema": "model-convergence-e84-v1",
+  "goal": "Fixed H64/M16/F4: find a D95-safe combination within 1 percent of measured best cycles earlier and reduce cumulative ATPG search wall time",
+  "stage_1": {
+    "name": "request_result_runtime_acquisition",
+    "implementation": "src/data/prospective_acquisition_pilot_v1.py",
+    "circuits": ["aes_core", "spi"],
+    "purpose": "Qualify new data collection with 18 prospectively declared actions, not model performance",
+    "historical_request_recovery": "For all six TRAIN families, recover original requested controls by exact invocation provenance where possible; never rename realized patterns as requests",
+    "checkpoint_required": false,
+    "graph_required_to_launch_atpg": false,
+    "completion": "Frozen controls, authenticated inputs and mapping, actual attempt and session timings, all 18 action statuses including NOT_ATTEMPTED, independent audit; incomplete labels remain unavailable"
+  },
+  "stage_2": {
+    "name": "circuit_information_ablation",
+    "entry": "Six TRAIN families have authenticated pre-execution features and matched outcomes/costs; two-circuit pilot alone is insufficient",
+    "request_schema": "REQUESTED_COUNT_V1",
+    "completion_cohort": "Require the same F-completion policy and input/environment cohort for compared labels; never pool historical F-boundary and new single-target95 labels as equivalent outcomes",
+    "first_comparison": ["candidate_request_MLP", "same_MLP_with_static_circuit_summary"],
+    "structural_descriptors_to_qualify": ["node_count", "edge_count", "sequential_cell_fraction", "mean_fanout", "p95_fanout", "logic_depth"],
+    "structure_definition_gate": "Freeze graph node/edge/cell definitions, depth behavior for cycles, fanout quantile definition, and design/mode mapping before extracting values; no guessed or placeholder descriptors",
+    "later_comparison": "Only after the first comparison, test whether GraphSAGE adds benefit beyond qualified static descriptors",
+    "baselines": ["fixed_rule", "tree_ranker_with_same_available_features"],
+    "fit_vs_transfer": "Report both fitting-family ranks and held-family ranks; holdout failure does not prove representation is the cause",
+    "split": "Six TRAIN families, leave one family out; normalize using fitting families only",
+    "seeds": [20260824, 20260825, 20260826],
+    "controls": "Freeze one common ranking objective and equal updates, sampler work and resources before any fit; add structural descriptors as the isolated first comparison variable",
+    "prior_E30": "Existing two-estimator E30 design is historical and unexecuted. Do not silently claim this new representation ablation is the E30 experiment or tune estimators simultaneously",
+    "d95_head": "No single-class D95 head; evaluate safety and keep failed/unsafe rows explicitly",
+    "metrics": ["first_near_optimal_rank", "hit_at_10", "best_cycle_regret_at_10", "charged_cost_and_no_hit_flag"],
+    "s35932": "Report all families and separately five informative families; selecting ten out of ten is guaranteed",
+    "training_budget": null,
+    "training_ready": false
+  },
+  "stage_3": {
+    "name": "prospective_runtime_comparison",
+    "entry": "Freeze selected model and all policy orders before results; acquire separate fair sessions under the same candidate domain and completion policy",
+    "report": "D95 acceptance, K10 hit/no-hit, cycles and cumulative real ATPG and session wall times including failures/timeouts/translation/setup/selection",
+    "no_hit": "Keep paid cost and censoring flag, not success-only average time",
+    "pilot_policy_change": "E84 single coverage-target F is a new acquisition policy; its labels cannot silently replace historical F-boundary/minimality labels or establish full-space optimality",
+    "blind": "Remain sealed during data repair, feature choice and TRAIN model selection",
+    "ready": false
+  },
+  "resource_policy": {"workers": 1, "automatic_retries": 0, "increase_existing_memory_limit": false, "actual_atpg_memory_limit_bytes": null},
+  "local_implementation_and_readonly_preparation_authority": "Current user instruction to execute the preceding plan; preserve earlier protected-data and bounded-execution constraints",
+  "real_jobs_started": 0,
+  "training_started": 0
+}

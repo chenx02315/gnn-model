@@ -1,0 +1,98 @@
+{
+  "schema": "ranking-v6-e84-input-audit-r1",
+  "date": "2026-10-23",
+  "status": "PARTIAL_CURRENT_INPUT_BYTES_ONLY_NOT_EXECUTION_READY",
+  "basis": "One completed bounded A-side read-only probe; this audit uses only its small receipts and the E70 observation summary.",
+  "receipt_files": {
+    "start.json": {"bytes": 899, "sha256": "05d346f04df7ec6771a302ebd0513c1c13c9cbad15d0a75784413a34859f5631"},
+    "stdout.json": {"bytes": 7760, "sha256": "86faf335641e0b64e3a091efca2fb6cad697cfd7296fb901667cb7ff1e0f5356"},
+    "transport.json": {"bytes": 377, "sha256": "1c0c05481121b639d42f42a2e205dc9c8f06aefd326db2aacde9fa15865c4653"},
+    "stderr.log": {"bytes": 0, "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}
+  },
+  "code_pins": {
+    "scripts/probe_acquisition_inputs_e84.py": "ce3a317be1efc89ba959afacd7a30201c68c158a401594b6d9f582fb509971ee",
+    "scripts/execute_acquisition_input_probe_e84.py": "080d03cb46f2b154c1ace3a962b5c36540ae3623b99e5b3a3f07b5c98ea29766",
+    "transport_sha256_reported_in_start": "e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434"
+  },
+  "transport": {
+    "exit_code": 0,
+    "timeout": false,
+    "overflow": false,
+    "threads_incomplete": false,
+    "write_failed": false,
+    "remote_termination_verified": false,
+    "stdout_bytes": 7760,
+    "stdout_sha256": "86faf335641e0b64e3a091efca2fb6cad697cfd7296fb901667cb7ff1e0f5356",
+    "stderr_bytes": 0
+  },
+  "observation": {
+    "hostname": "bupt-vncs2",
+    "python_version": [3, 6, 8],
+    "fixed_paths": 20,
+    "stat_path_count": 20,
+    "regular_file_bodies_hashed": 13,
+    "directories_stat_only": 6,
+    "nonregular_library_paths": 1,
+    "body_bytes_hashed": 11763518,
+    "directory_entries_enumerated": 0,
+    "remote_writes": 0,
+    "external_programs_launched_by_probe": 0,
+    "actual_atpg_calls": 0,
+    "training_runs": 0
+  },
+  "file_pins": [
+    {"role":"TRANSLATOR","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/00_framework/translate_fault_state_v1.py","bytes":7620,"sha256":"bddec0d4cd34d72c77b693e770dd8d54fdb5e9e76b5f416848fe7f1e61632e82"},
+    {"role":"CONFIG","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/01_config/config.env","bytes":784,"sha256":"0ec2f1c16f0f38c1207df3a6bd315c1675f412e9874398d5bcb4e84e4d57e401"},
+    {"role":"COMMON_MANIFEST","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2/manifest.json","bytes":1554,"sha256":"c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f"},
+    {"role":"FAULT_MAPPING_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2/canonical_fault_mapping.tsv","bytes":3385680,"sha256":"b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8"},
+    {"role":"H_FAULT_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2/H_common_initial_faults.basic","bytes":2245676,"sha256":"6c1287af9af0b2c64a917f712d4eeaa88fdd510e3b3e878b95e856c0e22c7d0b"},
+    {"role":"M_FAULT_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2/M_common_initial_faults.basic","bytes":2245676,"sha256":"b4005966e37c53b369db9f33a1c49632d43041a9af79a7d29e6afe88b5124414"},
+    {"role":"F_FAULT_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/03_fault_universe/common_aes_core_m16_phase4_v2/F_common_initial_faults.basic","bytes":2245666,"sha256":"70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566"},
+    {"role":"CONFIG","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/01_config/config.env","bytes":761,"sha256":"b4fdd89c038200a958c81358f73bab9a96481100d3c3eede680849b23a189f85"},
+    {"role":"COMMON_MANIFEST","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2/manifest.json","bytes":1601,"sha256":"d2ddcb23ac9295cbef63953579edfa59d9bcb00787cb884f56d0e8724289fca5"},
+    {"role":"FAULT_MAPPING_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2/canonical_fault_mapping.tsv","bytes":573008,"sha256":"42b62fa47c5f171b7544aadaadb0f4a1f62a45e6cacd4c64c477ab706015320f"},
+    {"role":"H_FAULT_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2/H_common_initial_faults.basic","bytes":351838,"sha256":"edcc0102ade212a942ab4b98e7c55d1bd97cbbd7fd4817e4ceb216be118a55bb"},
+    {"role":"M_FAULT_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2/M_common_initial_faults.basic","bytes":351838,"sha256":"a8741335b50611f0b4e6a6cec6712862d1c829a97d98b3ab347009a21172f305"},
+    {"role":"F_FAULT_BYTES","path":"/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/03_fault_universe/common_spi_m16_phase4_v2/F_common_initial_faults.basic","bytes":351816,"sha256":"4fd1bef9ba95d31aec94b16490926b63469e6ca6ccd0289956f0eeded6b44ec2"}
+  ],
+  "tsdb_directory_metadata_only": [
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/H_mapped_tsdb",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/M_mapped_tsdb",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/F_mapped_tsdb",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/H_mapped_tsdb",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/M_mapped_tsdb",
+    "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/F_mapped_tsdb"
+  ],
+  "library": {
+    "path":"/home/jiangchuanc/Desktop/multimode_ate_20260725_A_staging/00_inputs_readonly/scc28nhk_hsc31_lvt_scan.tcelllib",
+    "status":"NOT_SINGLE_LINK_REGULAR_FILE",
+    "lstat_mode":40960,
+    "mode_type":"SYMLINK_BY_OBSERVED_LSTAT_MODE",
+    "lstat_size":100,
+    "body_sha256":null,
+    "link_target_read":false,
+    "link_followed":false,
+    "target_identity_known":false
+  },
+  "e70_comparison": {
+    "reference":"data/manifests/ranking_v6_e70_observation_summary_20261021_r1.json",
+    "reference_sha256":"2a00662ac2b3b380c4fa0d3d36b5b139950980d97479a7ac6b60117c091359d1",
+    "same_host":"bupt-vncs2",
+    "e70_declared_common_fault_counts":{"aes_core":71216,"spi":10418},
+    "current_fault_body_cardinality_verified":false,
+    "config_or_manifest_sha_compared_to_e70_summary":false,
+    "reason":"E70 summary gives config values and declared manifest counts, but not those four earlier file SHA values. No extra E70 source was used in this audit."
+  },
+  "unresolved": {
+    "library_body_and_target_identity":true,
+    "tsdb_contents_and_netlist_identity":true,
+    "tessent_executable_path_body_and_version":true,
+    "fault_mapping_semantics_and_fault_cardinality":true,
+    "graph_and_checkpoint_identity":true,
+    "real_atpg_memory_timeout_license_thread_and_output_caps":true,
+    "remote_termination_verified":false
+  },
+  "all_inputs_authenticated":false,
+  "execution_ready":false,
+  "training_release":false
+}
