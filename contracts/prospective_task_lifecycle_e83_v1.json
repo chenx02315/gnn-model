@@ -1,0 +1,18 @@
+{
+  "schema": "e83-paired-budget-lifecycle-contract-v1",
+  "scope": "LOCAL_SYNTHETIC_PROTOCOL_ONLY",
+  "predecessor_commit": "9a830f01bfe80a551836b963649a7d2365aa60a1",
+  "stores": ["binding.json", "budget.jsonl", "lifecycle.jsonl"],
+  "ownership": "One exclusive new phase directory and one live coordinator; no reopen, repair, retry, external journal objects or caller-supplied acknowledgment receipts",
+  "binding": ["phase_uid", "full ordered request-only task plan", "all declared caps", "fixed per-task synthetic profiles", "fixed clock session", "versioned deterministic attempt identifiers"],
+  "sequence": ["budget debit local fsync acknowledgment", "lifecycle intent local fsync acknowledgment", "synthetic launch callback", "lifecycle identity acknowledgment", "synthetic finish and known-handle cleanup", "lifecycle terminal acknowledgment", "per-attempt budget settlement acknowledgment"],
+  "failure": "Any uncertain boundary stops the entire coordinator. Debits are never refunded. Known handles must receive cleanup even when observation or acknowledgment fails. Unknown spawn never permits the next task.",
+  "cost": "Only the current derived attempt interval is settled, never the cumulative lifecycle sum. Incomplete or uncertain phase cost is null. Synthetic intervals are not ATPG runtime.",
+  "replay": "Readonly bounded canonical/hash-chain validation and paired-prefix consistency only. Valid crash prefixes remain incomplete. Replayed bytes never certify historical fsync acknowledgment, physical cross-file write order or authorize resume; this is not an atomic two-file transaction.",
+  "limits": {"max_tasks": 64, "max_journal_bytes_each": 1048576, "single_worker": true, "automatic_retry": false},
+  "boundaries": ["Caller-selected namespace is not a global quota", "Injected synthetic backend flags do not sandbox callback code", "Windows local fsync is not Linux or power-loss qualification", "No real input, resource guard or translation identity is authenticated"],
+  "actual_processes_launched": 0,
+  "new_remote_sessions": 0,
+  "execution_ready": false,
+  "training_release": false
+}

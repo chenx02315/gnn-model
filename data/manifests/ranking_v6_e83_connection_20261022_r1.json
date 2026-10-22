@@ -1,0 +1,1464 @@
+{
+  "actual_processes_launched": 0,
+  "cases": [
+    {
+      "callbacks": [
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ]
+      ],
+      "case": "success",
+      "files": {
+        "binding.json": {
+          "bytes": 2636,
+          "sha256": "6dd7b2b67533327eca70d1dd1d250b405a07dd6ca138b14641a7f305236e742d"
+        },
+        "budget.jsonl": {
+          "bytes": 8211,
+          "sha256": "89a608baf13dbf4e7f859744af3419870bd3145695f6b86f696e486ef95d7150"
+        },
+        "lifecycle.jsonl": {
+          "bytes": 6314,
+          "sha256": "5467185ad831454bc0756058db44d2d4422af0956ac295cbff8b7617e5a1d6eb"
+        }
+      },
+      "live": {
+        "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+        "bridge_poisoned": false,
+        "budget": {
+          "OS_power_loss_durability_proved": false,
+          "OS_resource_limits_enforced": false,
+          "active_slot": null,
+          "asserted_elapsed_ns_sum": 23,
+          "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+          "consumed_counts": {
+            "STATUS_TRANSLATION": 2,
+            "TESSENT_STAGE": 3
+          },
+          "declared_plan_complete": true,
+          "durable_debit_ack_verified": true,
+          "elapsed_is_not_authenticated_atpg_runtime": true,
+          "event_count": 10,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "head_sha256": "4a6a63cdde7ee297061521b1188f66ff5be2c3b686bc0dcf0f91948f37d6bdd9",
+          "launch_authorized": false,
+          "namespace_global_quota_proved": false,
+          "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+          "plan_task_count": 5,
+          "reserved_envelope_ns": 60,
+          "schema": "prospective-stage-budget-journal-v2",
+          "settled_task_count": 5,
+          "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+          "stopped_reason": null,
+          "training_release": false,
+          "writer_poisoned": false
+        },
+        "complete_live_acknowledged": true,
+        "execution_ready": false,
+        "fsync_acknowledgments_verified": true,
+        "launch_authorized": false,
+        "lifecycle": {
+          "active_attempt_id": null,
+          "actual_processes": 0,
+          "attempt_count": 5,
+          "attempts": {
+            "a26f8a42066bd5f04fe2cb34474f1553ada85ea90": {
+              "end_ns": 145,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 3,
+                "start_ticks": 3
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 140
+            },
+            "a52a4e52353402cc83aec826efe994af8f4269488": {
+              "end_ns": 185,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 5,
+                "start_ticks": 5
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 180
+            },
+            "a7101ffc8ad95243fcd6bc1deae3da4d2586dda26": {
+              "end_ns": 124,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 2,
+                "start_ticks": 2
+              },
+              "interval_ns": 4,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 120
+            },
+            "aa2b0413b273a4811b6ce8a8d1379e43f0a30d2b9": {
+              "end_ns": 164,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 4,
+                "start_ticks": 4
+              },
+              "interval_ns": 4,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 160
+            },
+            "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+              "end_ns": 105,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 1,
+                "start_ticks": 1
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 100
+            }
+          },
+          "complete_live_acknowledged": true,
+          "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+          "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+          "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+          "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+          "event_count": 15,
+          "fsync_acknowledgments_verified": true,
+          "head_sha256": "547094fc3b3eadcfcb772602aafd5544867e9838531a02590bb56acbf1edb068",
+          "observed_interval_ns_sum_or_None": 23,
+          "os_authenticated": false,
+          "physical_atpg_runtime_ns": null,
+          "production_execution_ready": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-lifecycle-journal-v2",
+          "structural_complete": true,
+          "synthetic_only": true,
+          "training_release": false
+        },
+        "observed_interval_ns_sum_or_None": 23,
+        "os_authenticated": false,
+        "paired_plan_complete": true,
+        "paired_task_count": 5,
+        "phase_complete_live_acknowledged": true,
+        "phase_failed_or_stopped": false,
+        "phase_uid": "synthetic-phase-e83-success",
+        "poisoned": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-task-lifecycle-bridge-v1",
+        "structural_full_success": true,
+        "structural_incomplete": false,
+        "structural_paired_prefix_valid": true,
+        "synthetic_only": true,
+        "task_count": 5,
+        "training_release": false
+      },
+      "next_task_blocked": null,
+      "replay": {
+        "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+        "budget": {
+          "OS_power_loss_durability_proved": false,
+          "OS_resource_limits_enforced": false,
+          "active_slot": null,
+          "asserted_elapsed_ns_sum": null,
+          "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+          "consumed_counts": {
+            "STATUS_TRANSLATION": 2,
+            "TESSENT_STAGE": 3
+          },
+          "declared_plan_complete": true,
+          "durable_debit_ack_verified": false,
+          "elapsed_is_not_authenticated_atpg_runtime": true,
+          "event_count": 10,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": false,
+          "head_sha256": "4a6a63cdde7ee297061521b1188f66ff5be2c3b686bc0dcf0f91948f37d6bdd9",
+          "launch_authorized": false,
+          "namespace_global_quota_proved": false,
+          "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+          "plan_task_count": 5,
+          "reserved_envelope_ns": 60,
+          "schema": "prospective-stage-budget-journal-v2",
+          "settled_task_count": 5,
+          "state_kind": "STRUCTURAL_REPLAY_ONLY_NO_HISTORICAL_ACK",
+          "stopped_reason": null,
+          "structural_replay_valid": true,
+          "training_release": false,
+          "writer_poisoned": null
+        },
+        "complete_live_acknowledged": false,
+        "execution_ready": false,
+        "fsync_acknowledgments_verified": false,
+        "launch_authorized": false,
+        "lifecycle": {
+          "active_attempt_id": null,
+          "actual_processes": 0,
+          "attempt_count": 5,
+          "attempts": {
+            "a26f8a42066bd5f04fe2cb34474f1553ada85ea90": {
+              "end_ns": 145,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 3,
+                "start_ticks": 3
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 140
+            },
+            "a52a4e52353402cc83aec826efe994af8f4269488": {
+              "end_ns": 185,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 5,
+                "start_ticks": 5
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 180
+            },
+            "a7101ffc8ad95243fcd6bc1deae3da4d2586dda26": {
+              "end_ns": 124,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 2,
+                "start_ticks": 2
+              },
+              "interval_ns": 4,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 120
+            },
+            "aa2b0413b273a4811b6ce8a8d1379e43f0a30d2b9": {
+              "end_ns": 164,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 4,
+                "start_ticks": 4
+              },
+              "interval_ns": 4,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 160
+            },
+            "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+              "end_ns": 105,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 1,
+                "start_ticks": 1
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 100
+            }
+          },
+          "complete_live_acknowledged": false,
+          "cost_kind": null,
+          "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+          "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+          "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+          "event_count": 15,
+          "fsync_acknowledgments_verified": false,
+          "head_sha256": "547094fc3b3eadcfcb772602aafd5544867e9838531a02590bb56acbf1edb068",
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "physical_atpg_runtime_ns": null,
+          "production_execution_ready": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-lifecycle-journal-v2",
+          "structural_complete": true,
+          "synthetic_only": true,
+          "training_release": false
+        },
+        "no_writer_resume": true,
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "paired_plan_complete": true,
+        "paired_task_count": 5,
+        "phase_complete_live_acknowledged": false,
+        "phase_failed_or_stopped": false,
+        "phase_uid": "synthetic-phase-e83-success",
+        "poisoned": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-task-lifecycle-bridge-v1",
+        "structural_full_success": true,
+        "structural_incomplete": false,
+        "structural_paired_prefix_valid": true,
+        "synthetic_only": true,
+        "task_count": 5,
+        "training_release": false
+      },
+      "snapshots": [
+        {
+          "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+          "bridge_poisoned": false,
+          "budget": {
+            "OS_power_loss_durability_proved": false,
+            "OS_resource_limits_enforced": false,
+            "active_slot": null,
+            "asserted_elapsed_ns_sum": 5,
+            "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+            "consumed_counts": {
+              "STATUS_TRANSLATION": 0,
+              "TESSENT_STAGE": 1
+            },
+            "declared_plan_complete": false,
+            "durable_debit_ack_verified": true,
+            "elapsed_is_not_authenticated_atpg_runtime": true,
+            "event_count": 2,
+            "execution_ready": false,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "8993f9bb0ff5b4d2f17e77ed2b51e627afc6927ad79874cdc1ec5d4f40480bb6",
+            "launch_authorized": false,
+            "namespace_global_quota_proved": false,
+            "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+            "plan_task_count": 5,
+            "reserved_envelope_ns": 12,
+            "schema": "prospective-stage-budget-journal-v2",
+            "settled_task_count": 1,
+            "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+            "stopped_reason": null,
+            "training_release": false,
+            "writer_poisoned": false
+          },
+          "complete_live_acknowledged": false,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "launch_authorized": false,
+          "lifecycle": {
+            "active_attempt_id": null,
+            "actual_processes": 0,
+            "attempt_count": 1,
+            "attempts": {
+              "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+                "end_ns": 105,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 1,
+                  "start_ticks": 1
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 100
+              }
+            },
+            "complete_live_acknowledged": true,
+            "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+            "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+            "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+            "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+            "event_count": 3,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "41469c4c1d9a1ea0c8fd1c68fb33c9285b188bc09982b7f94bed418943e06923",
+            "observed_interval_ns_sum_or_None": 5,
+            "os_authenticated": false,
+            "physical_atpg_runtime_ns": null,
+            "production_execution_ready": false,
+            "real_atpg_jobs": 0,
+            "schema": "prospective-lifecycle-journal-v2",
+            "structural_complete": true,
+            "synthetic_only": true,
+            "training_release": false
+          },
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "paired_plan_complete": false,
+          "paired_task_count": 1,
+          "phase_complete_live_acknowledged": false,
+          "phase_failed_or_stopped": false,
+          "phase_uid": "synthetic-phase-e83-success",
+          "poisoned": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_full_success": false,
+          "structural_incomplete": true,
+          "structural_paired_prefix_valid": true,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        },
+        {
+          "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+          "bridge_poisoned": false,
+          "budget": {
+            "OS_power_loss_durability_proved": false,
+            "OS_resource_limits_enforced": false,
+            "active_slot": null,
+            "asserted_elapsed_ns_sum": 9,
+            "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+            "consumed_counts": {
+              "STATUS_TRANSLATION": 1,
+              "TESSENT_STAGE": 1
+            },
+            "declared_plan_complete": false,
+            "durable_debit_ack_verified": true,
+            "elapsed_is_not_authenticated_atpg_runtime": true,
+            "event_count": 4,
+            "execution_ready": false,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "e081614a30473ed0a4569f606d8bddcb5519a070e0aa5e30e91d7e133d5eb047",
+            "launch_authorized": false,
+            "namespace_global_quota_proved": false,
+            "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+            "plan_task_count": 5,
+            "reserved_envelope_ns": 24,
+            "schema": "prospective-stage-budget-journal-v2",
+            "settled_task_count": 2,
+            "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+            "stopped_reason": null,
+            "training_release": false,
+            "writer_poisoned": false
+          },
+          "complete_live_acknowledged": false,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "launch_authorized": false,
+          "lifecycle": {
+            "active_attempt_id": null,
+            "actual_processes": 0,
+            "attempt_count": 2,
+            "attempts": {
+              "a7101ffc8ad95243fcd6bc1deae3da4d2586dda26": {
+                "end_ns": 124,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 2,
+                  "start_ticks": 2
+                },
+                "interval_ns": 4,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 120
+              },
+              "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+                "end_ns": 105,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 1,
+                  "start_ticks": 1
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 100
+              }
+            },
+            "complete_live_acknowledged": true,
+            "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+            "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+            "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+            "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+            "event_count": 6,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "fb5c26353420785f78e22c45880befc44c8cedbf3ad0488cf396c8a4a704d223",
+            "observed_interval_ns_sum_or_None": 9,
+            "os_authenticated": false,
+            "physical_atpg_runtime_ns": null,
+            "production_execution_ready": false,
+            "real_atpg_jobs": 0,
+            "schema": "prospective-lifecycle-journal-v2",
+            "structural_complete": true,
+            "synthetic_only": true,
+            "training_release": false
+          },
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "paired_plan_complete": false,
+          "paired_task_count": 2,
+          "phase_complete_live_acknowledged": false,
+          "phase_failed_or_stopped": false,
+          "phase_uid": "synthetic-phase-e83-success",
+          "poisoned": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_full_success": false,
+          "structural_incomplete": true,
+          "structural_paired_prefix_valid": true,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        },
+        {
+          "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+          "bridge_poisoned": false,
+          "budget": {
+            "OS_power_loss_durability_proved": false,
+            "OS_resource_limits_enforced": false,
+            "active_slot": null,
+            "asserted_elapsed_ns_sum": 14,
+            "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+            "consumed_counts": {
+              "STATUS_TRANSLATION": 1,
+              "TESSENT_STAGE": 2
+            },
+            "declared_plan_complete": false,
+            "durable_debit_ack_verified": true,
+            "elapsed_is_not_authenticated_atpg_runtime": true,
+            "event_count": 6,
+            "execution_ready": false,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "27fa917d315ca81a8231d4881d6ca06abc706fb4cb198cf15a3c764bc9400bc5",
+            "launch_authorized": false,
+            "namespace_global_quota_proved": false,
+            "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+            "plan_task_count": 5,
+            "reserved_envelope_ns": 36,
+            "schema": "prospective-stage-budget-journal-v2",
+            "settled_task_count": 3,
+            "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+            "stopped_reason": null,
+            "training_release": false,
+            "writer_poisoned": false
+          },
+          "complete_live_acknowledged": false,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "launch_authorized": false,
+          "lifecycle": {
+            "active_attempt_id": null,
+            "actual_processes": 0,
+            "attempt_count": 3,
+            "attempts": {
+              "a26f8a42066bd5f04fe2cb34474f1553ada85ea90": {
+                "end_ns": 145,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 3,
+                  "start_ticks": 3
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 140
+              },
+              "a7101ffc8ad95243fcd6bc1deae3da4d2586dda26": {
+                "end_ns": 124,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 2,
+                  "start_ticks": 2
+                },
+                "interval_ns": 4,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 120
+              },
+              "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+                "end_ns": 105,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 1,
+                  "start_ticks": 1
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 100
+              }
+            },
+            "complete_live_acknowledged": true,
+            "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+            "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+            "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+            "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+            "event_count": 9,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "fb7446d5b06249181615df19806c522e1158b7f9ecee22aee14af39e290c0dda",
+            "observed_interval_ns_sum_or_None": 14,
+            "os_authenticated": false,
+            "physical_atpg_runtime_ns": null,
+            "production_execution_ready": false,
+            "real_atpg_jobs": 0,
+            "schema": "prospective-lifecycle-journal-v2",
+            "structural_complete": true,
+            "synthetic_only": true,
+            "training_release": false
+          },
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "paired_plan_complete": false,
+          "paired_task_count": 3,
+          "phase_complete_live_acknowledged": false,
+          "phase_failed_or_stopped": false,
+          "phase_uid": "synthetic-phase-e83-success",
+          "poisoned": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_full_success": false,
+          "structural_incomplete": true,
+          "structural_paired_prefix_valid": true,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        },
+        {
+          "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+          "bridge_poisoned": false,
+          "budget": {
+            "OS_power_loss_durability_proved": false,
+            "OS_resource_limits_enforced": false,
+            "active_slot": null,
+            "asserted_elapsed_ns_sum": 18,
+            "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+            "consumed_counts": {
+              "STATUS_TRANSLATION": 2,
+              "TESSENT_STAGE": 2
+            },
+            "declared_plan_complete": false,
+            "durable_debit_ack_verified": true,
+            "elapsed_is_not_authenticated_atpg_runtime": true,
+            "event_count": 8,
+            "execution_ready": false,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "44e6fc11e675306d51a5e501ca5d70e85750e28c2328c1690259da7f9bcad074",
+            "launch_authorized": false,
+            "namespace_global_quota_proved": false,
+            "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+            "plan_task_count": 5,
+            "reserved_envelope_ns": 48,
+            "schema": "prospective-stage-budget-journal-v2",
+            "settled_task_count": 4,
+            "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+            "stopped_reason": null,
+            "training_release": false,
+            "writer_poisoned": false
+          },
+          "complete_live_acknowledged": false,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "launch_authorized": false,
+          "lifecycle": {
+            "active_attempt_id": null,
+            "actual_processes": 0,
+            "attempt_count": 4,
+            "attempts": {
+              "a26f8a42066bd5f04fe2cb34474f1553ada85ea90": {
+                "end_ns": 145,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 3,
+                  "start_ticks": 3
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 140
+              },
+              "a7101ffc8ad95243fcd6bc1deae3da4d2586dda26": {
+                "end_ns": 124,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 2,
+                  "start_ticks": 2
+                },
+                "interval_ns": 4,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 120
+              },
+              "aa2b0413b273a4811b6ce8a8d1379e43f0a30d2b9": {
+                "end_ns": 164,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 4,
+                  "start_ticks": 4
+                },
+                "interval_ns": 4,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 160
+              },
+              "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+                "end_ns": 105,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 1,
+                  "start_ticks": 1
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 100
+              }
+            },
+            "complete_live_acknowledged": true,
+            "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+            "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+            "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+            "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+            "event_count": 12,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "643154697178a9c18f974953751af66706f43743ade2d607c3b1637d4864af80",
+            "observed_interval_ns_sum_or_None": 18,
+            "os_authenticated": false,
+            "physical_atpg_runtime_ns": null,
+            "production_execution_ready": false,
+            "real_atpg_jobs": 0,
+            "schema": "prospective-lifecycle-journal-v2",
+            "structural_complete": true,
+            "synthetic_only": true,
+            "training_release": false
+          },
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "paired_plan_complete": false,
+          "paired_task_count": 4,
+          "phase_complete_live_acknowledged": false,
+          "phase_failed_or_stopped": false,
+          "phase_uid": "synthetic-phase-e83-success",
+          "poisoned": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_full_success": false,
+          "structural_incomplete": true,
+          "structural_paired_prefix_valid": true,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        },
+        {
+          "binding_sha256": "393633435500291ee6ccbcd78ebf16bf75555d7078f91e9ce5c6aedff4a8425c",
+          "bridge_poisoned": false,
+          "budget": {
+            "OS_power_loss_durability_proved": false,
+            "OS_resource_limits_enforced": false,
+            "active_slot": null,
+            "asserted_elapsed_ns_sum": 23,
+            "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+            "consumed_counts": {
+              "STATUS_TRANSLATION": 2,
+              "TESSENT_STAGE": 3
+            },
+            "declared_plan_complete": true,
+            "durable_debit_ack_verified": true,
+            "elapsed_is_not_authenticated_atpg_runtime": true,
+            "event_count": 10,
+            "execution_ready": false,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "4a6a63cdde7ee297061521b1188f66ff5be2c3b686bc0dcf0f91948f37d6bdd9",
+            "launch_authorized": false,
+            "namespace_global_quota_proved": false,
+            "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+            "plan_task_count": 5,
+            "reserved_envelope_ns": 60,
+            "schema": "prospective-stage-budget-journal-v2",
+            "settled_task_count": 5,
+            "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+            "stopped_reason": null,
+            "training_release": false,
+            "writer_poisoned": false
+          },
+          "complete_live_acknowledged": true,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "launch_authorized": false,
+          "lifecycle": {
+            "active_attempt_id": null,
+            "actual_processes": 0,
+            "attempt_count": 5,
+            "attempts": {
+              "a26f8a42066bd5f04fe2cb34474f1553ada85ea90": {
+                "end_ns": 145,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 3,
+                  "start_ticks": 3
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 140
+              },
+              "a52a4e52353402cc83aec826efe994af8f4269488": {
+                "end_ns": 185,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 5,
+                  "start_ticks": 5
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 180
+              },
+              "a7101ffc8ad95243fcd6bc1deae3da4d2586dda26": {
+                "end_ns": 124,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 2,
+                  "start_ticks": 2
+                },
+                "interval_ns": 4,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 120
+              },
+              "aa2b0413b273a4811b6ce8a8d1379e43f0a30d2b9": {
+                "end_ns": 164,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 4,
+                  "start_ticks": 4
+                },
+                "interval_ns": 4,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 160
+              },
+              "ab56299c634b0aaa045724bfe2cfc085f7f843344": {
+                "end_ns": 105,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 1,
+                  "start_ticks": 1
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "success",
+                "session": "synthetic-clock",
+                "start_ns": 100
+              }
+            },
+            "complete_live_acknowledged": true,
+            "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+            "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+            "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+            "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+            "event_count": 15,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "547094fc3b3eadcfcb772602aafd5544867e9838531a02590bb56acbf1edb068",
+            "observed_interval_ns_sum_or_None": 23,
+            "os_authenticated": false,
+            "physical_atpg_runtime_ns": null,
+            "production_execution_ready": false,
+            "real_atpg_jobs": 0,
+            "schema": "prospective-lifecycle-journal-v2",
+            "structural_complete": true,
+            "synthetic_only": true,
+            "training_release": false
+          },
+          "observed_interval_ns_sum_or_None": 23,
+          "os_authenticated": false,
+          "paired_plan_complete": true,
+          "paired_task_count": 5,
+          "phase_complete_live_acknowledged": true,
+          "phase_failed_or_stopped": false,
+          "phase_uid": "synthetic-phase-e83-success",
+          "poisoned": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_full_success": true,
+          "structural_incomplete": false,
+          "structural_paired_prefix_valid": true,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        }
+      ]
+    },
+    {
+      "callbacks": [
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ]
+      ],
+      "case": "known_failure",
+      "files": {
+        "binding.json": {
+          "bytes": 2642,
+          "sha256": "e5c40ae351fff138bf4fb26c72331b38d7b1aa3293c1406bf719d2f1c11fa145"
+        },
+        "budget.jsonl": {
+          "bytes": 2697,
+          "sha256": "e08e1fbc0791984fd77eef747b67502749e49828c1a89a32c5977c05eb146d79"
+        },
+        "lifecycle.jsonl": {
+          "bytes": 1700,
+          "sha256": "ebc39fc862a92bf34d59ec7f97866ab481eb5c650dc795f25e211bf483e5fc49"
+        }
+      },
+      "live": {
+        "binding_sha256": "286b789700475f0115d9002ad8b3853ea51f1d5e67f4c37be1a580e309a2eb9a",
+        "bridge_poisoned": false,
+        "budget": {
+          "OS_power_loss_durability_proved": false,
+          "OS_resource_limits_enforced": false,
+          "active_slot": null,
+          "asserted_elapsed_ns_sum": 5,
+          "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+          "consumed_counts": {
+            "STATUS_TRANSLATION": 0,
+            "TESSENT_STAGE": 1
+          },
+          "declared_plan_complete": false,
+          "durable_debit_ack_verified": true,
+          "elapsed_is_not_authenticated_atpg_runtime": true,
+          "event_count": 2,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "head_sha256": "99975abe79dc4d8cf2bf40fcb86c53f484abbe8f088dee7b130e101346a02aae",
+          "launch_authorized": false,
+          "namespace_global_quota_proved": false,
+          "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+          "plan_task_count": 5,
+          "reserved_envelope_ns": 12,
+          "schema": "prospective-stage-budget-journal-v2",
+          "settled_task_count": 1,
+          "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+          "stopped_reason": "STOP_FAILED_TASK_NO_RETRY",
+          "training_release": false,
+          "writer_poisoned": false
+        },
+        "complete_live_acknowledged": false,
+        "execution_ready": false,
+        "fsync_acknowledgments_verified": true,
+        "launch_authorized": false,
+        "lifecycle": {
+          "active_attempt_id": null,
+          "actual_processes": 0,
+          "attempt_count": 1,
+          "attempts": {
+            "aab2fa93155c7f1f3b2b8e1437d742f2b0014ed81": {
+              "end_ns": 105,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 1,
+                "start_ticks": 1
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "failure",
+              "session": "synthetic-clock",
+              "start_ns": 100
+            }
+          },
+          "complete_live_acknowledged": true,
+          "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+          "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+          "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+          "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+          "event_count": 3,
+          "fsync_acknowledgments_verified": true,
+          "head_sha256": "544d47e749681f410d8c2c2b30b823845f8bd26029a4c612c2b0db57f2071897",
+          "observed_interval_ns_sum_or_None": 5,
+          "os_authenticated": false,
+          "physical_atpg_runtime_ns": null,
+          "production_execution_ready": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-lifecycle-journal-v2",
+          "structural_complete": true,
+          "synthetic_only": true,
+          "training_release": false
+        },
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "paired_plan_complete": false,
+        "paired_task_count": 1,
+        "phase_complete_live_acknowledged": false,
+        "phase_failed_or_stopped": true,
+        "phase_uid": "synthetic-phase-e83-known_failure",
+        "poisoned": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-task-lifecycle-bridge-v1",
+        "structural_full_success": false,
+        "structural_incomplete": true,
+        "structural_paired_prefix_valid": true,
+        "synthetic_only": true,
+        "task_count": 5,
+        "training_release": false
+      },
+      "next_task_blocked": true,
+      "replay": {
+        "binding_sha256": "286b789700475f0115d9002ad8b3853ea51f1d5e67f4c37be1a580e309a2eb9a",
+        "budget": {
+          "OS_power_loss_durability_proved": false,
+          "OS_resource_limits_enforced": false,
+          "active_slot": null,
+          "asserted_elapsed_ns_sum": null,
+          "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+          "consumed_counts": {
+            "STATUS_TRANSLATION": 0,
+            "TESSENT_STAGE": 1
+          },
+          "declared_plan_complete": false,
+          "durable_debit_ack_verified": false,
+          "elapsed_is_not_authenticated_atpg_runtime": true,
+          "event_count": 2,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": false,
+          "head_sha256": "99975abe79dc4d8cf2bf40fcb86c53f484abbe8f088dee7b130e101346a02aae",
+          "launch_authorized": false,
+          "namespace_global_quota_proved": false,
+          "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+          "plan_task_count": 5,
+          "reserved_envelope_ns": 12,
+          "schema": "prospective-stage-budget-journal-v2",
+          "settled_task_count": 1,
+          "state_kind": "STRUCTURAL_REPLAY_ONLY_NO_HISTORICAL_ACK",
+          "stopped_reason": "STOP_FAILED_TASK_NO_RETRY",
+          "structural_replay_valid": true,
+          "training_release": false,
+          "writer_poisoned": null
+        },
+        "complete_live_acknowledged": false,
+        "execution_ready": false,
+        "fsync_acknowledgments_verified": false,
+        "launch_authorized": false,
+        "lifecycle": {
+          "active_attempt_id": null,
+          "actual_processes": 0,
+          "attempt_count": 1,
+          "attempts": {
+            "aab2fa93155c7f1f3b2b8e1437d742f2b0014ed81": {
+              "end_ns": 105,
+              "identity": {
+                "boot_id": "synthetic-boot",
+                "host": "synthetic-local",
+                "pid": 1,
+                "start_ticks": 1
+              },
+              "interval_ns": 5,
+              "phase": "REAPED",
+              "profile": "failure",
+              "session": "synthetic-clock",
+              "start_ns": 100
+            }
+          },
+          "complete_live_acknowledged": false,
+          "cost_kind": null,
+          "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+          "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+          "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+          "event_count": 3,
+          "fsync_acknowledgments_verified": false,
+          "head_sha256": "544d47e749681f410d8c2c2b30b823845f8bd26029a4c612c2b0db57f2071897",
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "physical_atpg_runtime_ns": null,
+          "production_execution_ready": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-lifecycle-journal-v2",
+          "structural_complete": true,
+          "synthetic_only": true,
+          "training_release": false
+        },
+        "no_writer_resume": true,
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "paired_plan_complete": false,
+        "paired_task_count": 1,
+        "phase_complete_live_acknowledged": false,
+        "phase_failed_or_stopped": true,
+        "phase_uid": "synthetic-phase-e83-known_failure",
+        "poisoned": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-task-lifecycle-bridge-v1",
+        "structural_full_success": false,
+        "structural_incomplete": true,
+        "structural_paired_prefix_valid": true,
+        "synthetic_only": true,
+        "task_count": 5,
+        "training_release": false
+      },
+      "snapshots": [
+        {
+          "binding_sha256": "286b789700475f0115d9002ad8b3853ea51f1d5e67f4c37be1a580e309a2eb9a",
+          "bridge_poisoned": false,
+          "budget": {
+            "OS_power_loss_durability_proved": false,
+            "OS_resource_limits_enforced": false,
+            "active_slot": null,
+            "asserted_elapsed_ns_sum": 5,
+            "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+            "consumed_counts": {
+              "STATUS_TRANSLATION": 0,
+              "TESSENT_STAGE": 1
+            },
+            "declared_plan_complete": false,
+            "durable_debit_ack_verified": true,
+            "elapsed_is_not_authenticated_atpg_runtime": true,
+            "event_count": 2,
+            "execution_ready": false,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "99975abe79dc4d8cf2bf40fcb86c53f484abbe8f088dee7b130e101346a02aae",
+            "launch_authorized": false,
+            "namespace_global_quota_proved": false,
+            "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+            "plan_task_count": 5,
+            "reserved_envelope_ns": 12,
+            "schema": "prospective-stage-budget-journal-v2",
+            "settled_task_count": 1,
+            "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+            "stopped_reason": "STOP_FAILED_TASK_NO_RETRY",
+            "training_release": false,
+            "writer_poisoned": false
+          },
+          "complete_live_acknowledged": false,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": true,
+          "launch_authorized": false,
+          "lifecycle": {
+            "active_attempt_id": null,
+            "actual_processes": 0,
+            "attempt_count": 1,
+            "attempts": {
+              "aab2fa93155c7f1f3b2b8e1437d742f2b0014ed81": {
+                "end_ns": 105,
+                "identity": {
+                  "boot_id": "synthetic-boot",
+                  "host": "synthetic-local",
+                  "pid": 1,
+                  "start_ticks": 1
+                },
+                "interval_ns": 5,
+                "phase": "REAPED",
+                "profile": "failure",
+                "session": "synthetic-clock",
+                "start_ns": 100
+              }
+            },
+            "complete_live_acknowledged": true,
+            "cost_kind": "SYNTHETIC_ACKED_PRELAUNCH_TO_VERIFIED_CLEANUP",
+            "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+            "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+            "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+            "event_count": 3,
+            "fsync_acknowledgments_verified": true,
+            "head_sha256": "544d47e749681f410d8c2c2b30b823845f8bd26029a4c612c2b0db57f2071897",
+            "observed_interval_ns_sum_or_None": 5,
+            "os_authenticated": false,
+            "physical_atpg_runtime_ns": null,
+            "production_execution_ready": false,
+            "real_atpg_jobs": 0,
+            "schema": "prospective-lifecycle-journal-v2",
+            "structural_complete": true,
+            "synthetic_only": true,
+            "training_release": false
+          },
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "paired_plan_complete": false,
+          "paired_task_count": 1,
+          "phase_complete_live_acknowledged": false,
+          "phase_failed_or_stopped": true,
+          "phase_uid": "synthetic-phase-e83-known_failure",
+          "poisoned": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_full_success": false,
+          "structural_incomplete": true,
+          "structural_paired_prefix_valid": true,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        }
+      ]
+    },
+    {
+      "callbacks": [
+        [
+          "launch"
+        ]
+      ],
+      "case": "unknown_spawn",
+      "files": {
+        "binding.json": {
+          "bytes": 2642,
+          "sha256": "f65beb170611c47d8d5bfb63b6efb84cd83ddac9af106e35607316e4349137c0"
+        },
+        "budget.jsonl": {
+          "bytes": 2012,
+          "sha256": "7fcc8a56a1c99961a7651e8622610604fdb0932a76e12a0c0dcd4fe1bd9c49eb"
+        },
+        "lifecycle.jsonl": {
+          "bytes": 866,
+          "sha256": "c75d3921f641de8aa29f8b79cfe96e1e321e130554ff8cb7041fcba50dd1a8bf"
+        }
+      },
+      "live": {
+        "binding_sha256": "6440c0c118681fc84fc8a33300145e04be5e712ab444f9eede0d94f88a0df730",
+        "bridge_poisoned": true,
+        "budget": null,
+        "complete_live_acknowledged": false,
+        "execution_ready": false,
+        "fsync_acknowledgments_verified": false,
+        "launch_authorized": false,
+        "lifecycle": null,
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "paired_plan_complete": false,
+        "paired_task_count": null,
+        "phase_complete_live_acknowledged": false,
+        "phase_failed_or_stopped": true,
+        "phase_uid": "synthetic-phase-e83-unknown_spawn",
+        "poisoned": true,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-task-lifecycle-bridge-v1",
+        "structural_paired_prefix_valid": false,
+        "synthetic_only": true,
+        "task_count": 5,
+        "training_release": false
+      },
+      "next_task_blocked": true,
+      "replay": {
+        "binding_sha256": "6440c0c118681fc84fc8a33300145e04be5e712ab444f9eede0d94f88a0df730",
+        "budget": {
+          "OS_power_loss_durability_proved": false,
+          "OS_resource_limits_enforced": false,
+          "active_slot": 0,
+          "asserted_elapsed_ns_sum": null,
+          "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+          "consumed_counts": {
+            "STATUS_TRANSLATION": 0,
+            "TESSENT_STAGE": 1
+          },
+          "declared_plan_complete": false,
+          "durable_debit_ack_verified": false,
+          "elapsed_is_not_authenticated_atpg_runtime": true,
+          "event_count": 1,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": false,
+          "head_sha256": "0a98854bf61c2172ff915b537f9faacf738a3ea390b5c36b8a9e3476e75c070e",
+          "launch_authorized": false,
+          "namespace_global_quota_proved": false,
+          "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+          "plan_task_count": 5,
+          "reserved_envelope_ns": 12,
+          "schema": "prospective-stage-budget-journal-v2",
+          "settled_task_count": 0,
+          "state_kind": "STRUCTURAL_REPLAY_ONLY_NO_HISTORICAL_ACK",
+          "stopped_reason": null,
+          "structural_replay_valid": true,
+          "training_release": false,
+          "writer_poisoned": null
+        },
+        "complete_live_acknowledged": false,
+        "execution_ready": false,
+        "fsync_acknowledgments_verified": false,
+        "launch_authorized": false,
+        "lifecycle": {
+          "active_attempt_id": "a1d3fe68067ca64ccd4d1985576c2d26cb3d60c78",
+          "actual_processes": 0,
+          "attempt_count": 1,
+          "attempts": {
+            "a1d3fe68067ca64ccd4d1985576c2d26cb3d60c78": {
+              "end_ns": null,
+              "identity": null,
+              "interval_ns": null,
+              "phase": "INTENT",
+              "profile": "success",
+              "session": "synthetic-clock",
+              "start_ns": 100
+            }
+          },
+          "complete_live_acknowledged": false,
+          "cost_kind": null,
+          "cost_scope": "SYNTHETIC_PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK",
+          "e75_gate_raw_sha256": "ba40af43a9a3d6f79f8abcf0c563cbb42705cf639222a384044ef51f87d66e8e",
+          "e75_review_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+          "event_count": 1,
+          "fsync_acknowledgments_verified": false,
+          "head_sha256": "3250b7ec5569a61130efe0325d2e35b0e7070801e71388975ff8a52968c3b7af",
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "physical_atpg_runtime_ns": null,
+          "production_execution_ready": false,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-lifecycle-journal-v2",
+          "structural_complete": false,
+          "synthetic_only": true,
+          "training_release": false
+        },
+        "no_writer_resume": true,
+        "observed_interval_ns_sum_or_None": null,
+        "os_authenticated": false,
+        "paired_plan_complete": false,
+        "paired_task_count": 0,
+        "phase_complete_live_acknowledged": false,
+        "phase_failed_or_stopped": false,
+        "phase_uid": "synthetic-phase-e83-unknown_spawn",
+        "poisoned": false,
+        "real_atpg_jobs": 0,
+        "schema": "prospective-task-lifecycle-bridge-v1",
+        "structural_full_success": false,
+        "structural_incomplete": true,
+        "structural_paired_prefix_valid": true,
+        "synthetic_only": true,
+        "task_count": 5,
+        "training_release": false
+      },
+      "snapshots": [
+        {
+          "binding_sha256": "6440c0c118681fc84fc8a33300145e04be5e712ab444f9eede0d94f88a0df730",
+          "bridge_poisoned": true,
+          "budget": null,
+          "complete_live_acknowledged": false,
+          "execution_ready": false,
+          "fsync_acknowledgments_verified": false,
+          "launch_authorized": false,
+          "lifecycle": null,
+          "observed_interval_ns_sum_or_None": null,
+          "os_authenticated": false,
+          "paired_plan_complete": false,
+          "paired_task_count": null,
+          "phase_complete_live_acknowledged": false,
+          "phase_failed_or_stopped": true,
+          "phase_uid": "synthetic-phase-e83-unknown_spawn",
+          "poisoned": true,
+          "real_atpg_jobs": 0,
+          "schema": "prospective-task-lifecycle-bridge-v1",
+          "structural_paired_prefix_valid": false,
+          "synthetic_only": true,
+          "task_count": 5,
+          "training_release": false
+        }
+      ]
+    }
+  ],
+  "execution_ready": false,
+  "fabricated_elapsed_is_measured_atpg_runtime": false,
+  "new_containers": 0,
+  "new_remote_sessions": 0,
+  "schema": "e83-local-paired-journal-connection-v1",
+  "sources": {
+    "contracts/prospective_task_lifecycle_e83_v1.json": {
+      "bytes": 2119,
+      "sha256": "efc478e178fead04f1fe17fc693a117536307b68450b1e4f920c53210d62300b"
+    },
+    "scripts/demo_prospective_task_lifecycle_e83.py": {
+      "bytes": 5553,
+      "sha256": "c7cc6568a1f99c4e268bf937f62b1f712f4bd718163e402d63bedb82a76591e4"
+    },
+    "scripts/demo_prospective_tessent_stage_e81.py": {
+      "bytes": 6197,
+      "sha256": "43ddc6c2729b998c386da994607b19659ebf21324f8abf078062b2f89306bec2"
+    },
+    "src/data/prospective_lifecycle_journal_v2.py": {
+      "bytes": 16548,
+      "sha256": "67861346f3725c479af9061d21869db7f7ecf21d70085df16e80dea17ed1e59e"
+    },
+    "src/data/prospective_request_features_v1.py": {
+      "bytes": 6129,
+      "sha256": "a592fb99a06c4f084ef10043ec6c215f0d72208c0dfe6ce608971653d56a6fd5"
+    },
+    "src/data/prospective_stage_budget_journal_v2.py": {
+      "bytes": 13491,
+      "sha256": "4d7d6a27d564525cb09e1753f9f00ba05f12ec72f2be355130c9e922f54a1ac1"
+    },
+    "src/data/prospective_stage_budget_v1.py": {
+      "bytes": 7140,
+      "sha256": "5b97bad5bdd8f66f31f5ea855296dc94986c1aa89d95bfba09fc45aa854a4716"
+    },
+    "src/data/prospective_stage_observation_v1.py": {
+      "bytes": 9166,
+      "sha256": "4f87639fc8928b4f098f4d00510e7cc0e2d7d1115c33ca65c93c6494537f086b"
+    },
+    "src/data/prospective_task_lifecycle_bridge_v1.py": {
+      "bytes": 22282,
+      "sha256": "b3e9ac38847c85320e75f924af68530ead01afb8bf8755496bab8ebb83571b5f"
+    },
+    "src/data/prospective_tessent_stage_v1.py": {
+      "bytes": 11594,
+      "sha256": "8349b2760b6381c82a03af8905419356948dc74bc3899a0d9a623eec11da6cc4"
+    },
+    "tests/test_prospective_lifecycle_journal_v2.py": {
+      "bytes": 16121,
+      "sha256": "98f9cefdafc8ae5af17b560f3d3ed042079fd66f906e8b80a7817eb8eb1da0ee"
+    },
+    "tests/test_prospective_task_lifecycle_bridge_v1.py": {
+      "bytes": 17989,
+      "sha256": "775fd55241111ac2c05981e51612a7e9ce22fc2b76157be4517dc6a067aa20c8"
+    },
+    "tests/test_prospective_tessent_stage_v1.py": {
+      "bytes": 10895,
+      "sha256": "686190679462b0cd28d6f1f14c9585c89c6c498741c0950c08598935f6c6d6c7"
+    }
+  },
+  "status": "PASS_LOCAL_SYNTHETIC_PAIRED_CONNECTION_ONLY",
+  "training_release": false
+}

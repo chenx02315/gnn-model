@@ -1,0 +1,18 @@
+{
+  "schema": "e83-intermediate-review-findings-v1",
+  "status": "DRAFT_REVIEW_NOT_FINAL_ACCEPTANCE",
+  "findings": [
+    {"kind": "static", "issue": "Paired join initially compared only consumed task UID/request, not the full budget header plan and caps against binding manifest", "required_repair": "Canonical exact header pin including unconsumed tasks and all caps"},
+    {"kind": "static", "issue": "Full os.listdir on malformed phase could allocate an unbounded directory listing", "required_repair": "Bounded scandir stops at the fourth entry; exactly three fixed entries allowed"},
+    {"kind": "static", "issue": "Inherited E76 REAPED identity comparison used Python equality, allowing bool/int/float aliases if a chain is recomputed", "required_repair": "New bridge strict identity validation plus canonical equality; preserve historical E76 module"},
+    {"kind": "design", "issue": "Profile or clock session selected after the manifest would not be preregistered", "required_repair": "Full per-task synthetic profile map and clock session bound before creating journals"},
+    {"kind": "static", "issue": "Creation cleanup could skip budget close if lifecycle close raised; binding descriptor close could be attempted twice after an uncertain close", "required_repair": "Attempt both writer closes via finally and transfer descriptor ownership before close"},
+    {"kind": "static", "issue": "Callback readiness initially checked acknowledgment flags without fresh manifest and paired-state checks", "required_repair": "Recheck manifest, active task/attempt and expected lifecycle phase before launch/finish callbacks; cleanup remains unconditional for known handles"}
+  ],
+  "worker_intermediate_test": {"testsRun": 14, "passed": 14, "seconds": 0.489, "final_source_validation": false},
+  "independent_intermediate_counterexample": {"source_sha256": "b3e9ac38847c85320e75f924af68530ead01afb8bf8755496bab8ebb83571b5f", "observation": "By the time the callback-tamper probe executed, code was repaired: BINDING_CHANGED raised and callbacks were launch then cleanup, with finish suppressed. This is repaired-code evidence, not an executed reproduction of the older draft."},
+  "new_remote_sessions": 0,
+  "new_atpg_calls": 0,
+  "execution_ready": false,
+  "training_release": false
+}

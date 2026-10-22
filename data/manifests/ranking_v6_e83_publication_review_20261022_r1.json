@@ -1,0 +1,25 @@
+{
+  "schema": "e83-publication-review-v1",
+  "verdict": "PASS_SCOPED_PUBLICATION",
+  "reviewer": "/root/e72_review_final",
+  "overview_sha256": "021abfa67523a016d1380636f3dfdd8cdb462753b917b46d79bc5d6fef332670",
+  "validation_sha256": "da2c24b5689b2497a475205e227130e186cbd0ec96afbe6e3fae298e2aa98eba",
+  "summary_sha256": "9769eeb09570e1c5578aec4b4d9076849d096e0aac47d87076cab083e370aa11",
+  "verified": [
+    "All 16 validation pins match actual bytes: 13 sources, summary and two logs",
+    "20 parent/.767 and 20 independent/.793 test runs distinguished",
+    "1205 total/1199 passed/6 conditional skips/0 failures/errors/42.130 matches raw regression",
+    "Three case projections match raw summary and paired journal replay",
+    "Nine raw files per repeat byte-equal was independently checked",
+    "Success settles individual 5/4/5/4/5 intervals, not repeated cumulative totals",
+    "Known failure and unknown spawn retain one Tessent debit, null full phase cost, block next task",
+    "Static draft findings distinguished from repaired-code callback probe; old E76/E82 unchanged",
+    "Oct22 batch start and Oct23 completion explicitly documented",
+    "No physical cross-file write order, atomic transaction, global namespace/origin, Linux/power-loss or real ATPG/training claim"
+  ],
+  "new_remote_sessions": 0,
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

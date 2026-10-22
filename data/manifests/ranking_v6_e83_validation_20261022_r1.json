@@ -1,0 +1,226 @@
+{
+  "schema": "e83-validation-and-result-review-v1",
+  "status": "PASS_LOCAL_SYNTHETIC_PAIRED_CONNECTION_ONLY",
+  "batch_anchor_date": "2026-10-22",
+  "completed_local_date": "2026-10-23",
+  "pins": {
+    "contracts/prospective_task_lifecycle_e83_v1.json": {
+      "bytes": 2119,
+      "sha256": "efc478e178fead04f1fe17fc693a117536307b68450b1e4f920c53210d62300b"
+    },
+    "scripts/demo_prospective_task_lifecycle_e83.py": {
+      "bytes": 5553,
+      "sha256": "c7cc6568a1f99c4e268bf937f62b1f712f4bd718163e402d63bedb82a76591e4"
+    },
+    "scripts/demo_prospective_tessent_stage_e81.py": {
+      "bytes": 6197,
+      "sha256": "43ddc6c2729b998c386da994607b19659ebf21324f8abf078062b2f89306bec2"
+    },
+    "src/data/prospective_lifecycle_journal_v2.py": {
+      "bytes": 16548,
+      "sha256": "67861346f3725c479af9061d21869db7f7ecf21d70085df16e80dea17ed1e59e"
+    },
+    "src/data/prospective_request_features_v1.py": {
+      "bytes": 6129,
+      "sha256": "a592fb99a06c4f084ef10043ec6c215f0d72208c0dfe6ce608971653d56a6fd5"
+    },
+    "src/data/prospective_stage_budget_journal_v2.py": {
+      "bytes": 13491,
+      "sha256": "4d7d6a27d564525cb09e1753f9f00ba05f12ec72f2be355130c9e922f54a1ac1"
+    },
+    "src/data/prospective_stage_budget_v1.py": {
+      "bytes": 7140,
+      "sha256": "5b97bad5bdd8f66f31f5ea855296dc94986c1aa89d95bfba09fc45aa854a4716"
+    },
+    "src/data/prospective_stage_observation_v1.py": {
+      "bytes": 9166,
+      "sha256": "4f87639fc8928b4f098f4d00510e7cc0e2d7d1115c33ca65c93c6494537f086b"
+    },
+    "src/data/prospective_task_lifecycle_bridge_v1.py": {
+      "bytes": 22282,
+      "sha256": "b3e9ac38847c85320e75f924af68530ead01afb8bf8755496bab8ebb83571b5f"
+    },
+    "src/data/prospective_tessent_stage_v1.py": {
+      "bytes": 11594,
+      "sha256": "8349b2760b6381c82a03af8905419356948dc74bc3899a0d9a623eec11da6cc4"
+    },
+    "tests/test_prospective_lifecycle_journal_v2.py": {
+      "bytes": 16121,
+      "sha256": "98f9cefdafc8ae5af17b560f3d3ed042079fd66f906e8b80a7817eb8eb1da0ee"
+    },
+    "tests/test_prospective_task_lifecycle_bridge_v1.py": {
+      "bytes": 17989,
+      "sha256": "775fd55241111ac2c05981e51612a7e9ce22fc2b76157be4517dc6a067aa20c8"
+    },
+    "tests/test_prospective_tessent_stage_v1.py": {
+      "bytes": 10895,
+      "sha256": "686190679462b0cd28d6f1f14c9585c89c6c498741c0950c08598935f6c6d6c7"
+    },
+    "data/manifests/ranking_v6_e83_connection_20261022_r1.json": {
+      "bytes": 58624,
+      "sha256": "9769eeb09570e1c5578aec4b4d9076849d096e0aac47d87076cab083e370aa11"
+    },
+    "data/manifests/ranking_v6_e83_focused_20261022_r1.log": {
+      "bytes": 3590,
+      "sha256": "d397c3ca053361bf461434137d4b610479ac5b38a6805e360a9f2ef164efdb68"
+    },
+    "data/manifests/ranking_v6_e83_regression_20261022_r1.log": {
+      "bytes": 2210,
+      "sha256": "0ef7245238dc917efba857cece01d0cd57db550dc5e5f7de5db2d71fb8ffdc5b"
+    }
+  },
+  "focused": {
+    "testsRun": 20,
+    "passed": 20,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.767
+  },
+  "regression": {
+    "testsRun": 1205,
+    "passed": 1199,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 42.13
+  },
+  "independent_review": {
+    "reviewer": "/root/e72_review_final",
+    "verdict": "FINAL_LOCAL_SYNTHETIC_PAIRED_CONNECTION_PASS",
+    "testsRun": 20,
+    "seconds": 0.793,
+    "source_pins_verified": 13,
+    "raw_files_per_fixture": 9,
+    "repeat_raw_files_byte_equal": true
+  },
+  "repeat_summary_sha256": "9769eeb09570e1c5578aec4b4d9076849d096e0aac47d87076cab083e370aa11",
+  "cases": [
+    {
+      "case": "success",
+      "files": {
+        "binding.json": {
+          "bytes": 2636,
+          "sha256": "6dd7b2b67533327eca70d1dd1d250b405a07dd6ca138b14641a7f305236e742d"
+        },
+        "budget.jsonl": {
+          "bytes": 8211,
+          "sha256": "89a608baf13dbf4e7f859744af3419870bd3145695f6b86f696e486ef95d7150"
+        },
+        "lifecycle.jsonl": {
+          "bytes": 6314,
+          "sha256": "5467185ad831454bc0756058db44d2d4422af0956ac295cbff8b7617e5a1d6eb"
+        }
+      },
+      "callbacks": [
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ],
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ]
+      ],
+      "next_task_blocked": null,
+      "live_complete": true,
+      "live_sum": 23,
+      "replay_complete": true,
+      "debit_counts": {
+        "STATUS_TRANSLATION": 2,
+        "TESSENT_STAGE": 3
+      }
+    },
+    {
+      "case": "known_failure",
+      "files": {
+        "binding.json": {
+          "bytes": 2642,
+          "sha256": "e5c40ae351fff138bf4fb26c72331b38d7b1aa3293c1406bf719d2f1c11fa145"
+        },
+        "budget.jsonl": {
+          "bytes": 2697,
+          "sha256": "e08e1fbc0791984fd77eef747b67502749e49828c1a89a32c5977c05eb146d79"
+        },
+        "lifecycle.jsonl": {
+          "bytes": 1700,
+          "sha256": "ebc39fc862a92bf34d59ec7f97866ab481eb5c650dc795f25e211bf483e5fc49"
+        }
+      },
+      "callbacks": [
+        [
+          "launch",
+          "finish",
+          "cleanup"
+        ]
+      ],
+      "next_task_blocked": true,
+      "live_complete": false,
+      "live_sum": null,
+      "replay_complete": false,
+      "debit_counts": {
+        "STATUS_TRANSLATION": 0,
+        "TESSENT_STAGE": 1
+      }
+    },
+    {
+      "case": "unknown_spawn",
+      "files": {
+        "binding.json": {
+          "bytes": 2642,
+          "sha256": "f65beb170611c47d8d5bfb63b6efb84cd83ddac9af106e35607316e4349137c0"
+        },
+        "budget.jsonl": {
+          "bytes": 2012,
+          "sha256": "7fcc8a56a1c99961a7651e8622610604fdb0932a76e12a0c0dcd4fe1bd9c49eb"
+        },
+        "lifecycle.jsonl": {
+          "bytes": 866,
+          "sha256": "c75d3921f641de8aa29f8b79cfe96e1e321e130554ff8cb7041fcba50dd1a8bf"
+        }
+      },
+      "callbacks": [
+        [
+          "launch"
+        ]
+      ],
+      "next_task_blocked": true,
+      "live_complete": false,
+      "live_sum": null,
+      "replay_complete": false,
+      "debit_counts": {
+        "STATUS_TRANSLATION": 0,
+        "TESSENT_STAGE": 1
+      }
+    }
+  ],
+  "boundaries": [
+    "Synthetic per-attempt intervals are not real ATPG runtime or ATE cycles",
+    "Readonly cross-file prefix consistency is not historical fsync acknowledgment, actual write order or an atomic two-store transaction",
+    "Caller-selected fixed directory is not a global quota; identical budget bytes cannot prove physical origin across independent directories",
+    "Windows local tests do not qualify Linux, power-loss durability or adversarial same-user TOCTOU safety",
+    "Full regression contains old tiny local child-process tests; E83 added module/tests/demo launch none"
+  ],
+  "new_remote_sessions": 0,
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}
