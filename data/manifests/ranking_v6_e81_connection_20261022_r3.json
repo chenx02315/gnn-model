@@ -1,0 +1,622 @@
+{
+  "actual_processes_launched": 0,
+  "budget_plan": [
+    {
+      "cleanup_ns": 2,
+      "depends_on": [],
+      "kind": "TESSENT_STAGE",
+      "request_sha256": "67fc4302b2c45616bdc5adce8f63d62efeef494e9f471c9f5f736c1094b52db3",
+      "stage": "H",
+      "task_uid": "attempt-h:tessent",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [],
+      "kind": "STATUS_TRANSLATION",
+      "request_sha256": "8c050211efbf9920f3865a81f27ca983413066d3d1f0d4ed977c8dcc12dca1be",
+      "stage": "M",
+      "task_uid": "attempt-m:translation",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [
+        "attempt-m:translation"
+      ],
+      "kind": "TESSENT_STAGE",
+      "request_sha256": "8c050211efbf9920f3865a81f27ca983413066d3d1f0d4ed977c8dcc12dca1be",
+      "stage": "M",
+      "task_uid": "attempt-m:tessent",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [],
+      "kind": "STATUS_TRANSLATION",
+      "request_sha256": "0cd140806dc43e39e0701fef4455bb254b27914c91ff1f6bd9d502d06c95f114",
+      "stage": "F",
+      "task_uid": "attempt-f:translation",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [
+        "attempt-f:translation"
+      ],
+      "kind": "TESSENT_STAGE",
+      "request_sha256": "0cd140806dc43e39e0701fef4455bb254b27914c91ff1f6bd9d502d06c95f114",
+      "stage": "F",
+      "task_uid": "attempt-f:tessent",
+      "timeout_ns": 10
+    }
+  ],
+  "budget_snapshots": [
+    {
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 5,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 0,
+        "TESSENT_STAGE": 1
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": false,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "launch_authorized": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 12,
+      "schema": "prospective-declared-task-budget-v1",
+      "settled_task_count": 1,
+      "state_kind": "IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 9,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 1,
+        "TESSENT_STAGE": 1
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": false,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "launch_authorized": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 24,
+      "schema": "prospective-declared-task-budget-v1",
+      "settled_task_count": 2,
+      "state_kind": "IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 14,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 1,
+        "TESSENT_STAGE": 2
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": false,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "launch_authorized": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 36,
+      "schema": "prospective-declared-task-budget-v1",
+      "settled_task_count": 3,
+      "state_kind": "IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 18,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 2,
+        "TESSENT_STAGE": 2
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": false,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "launch_authorized": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 48,
+      "schema": "prospective-declared-task-budget-v1",
+      "settled_task_count": 4,
+      "state_kind": "IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 23,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 2,
+        "TESSENT_STAGE": 3
+      },
+      "declared_plan_complete": true,
+      "durable_debit_ack_verified": false,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "launch_authorized": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 60,
+      "schema": "prospective-declared-task-budget-v1",
+      "settled_task_count": 5,
+      "state_kind": "IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+      "stopped_reason": null,
+      "training_release": false
+    }
+  ],
+  "durable_budget_implemented": false,
+  "execution_ready": false,
+  "final_budget": {
+    "OS_resource_limits_enforced": false,
+    "active_slot": null,
+    "asserted_elapsed_ns_sum": 23,
+    "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+    "consumed_counts": {
+      "STATUS_TRANSLATION": 2,
+      "TESSENT_STAGE": 3
+    },
+    "declared_plan_complete": true,
+    "durable_debit_ack_verified": false,
+    "elapsed_is_not_authenticated_atpg_runtime": true,
+    "execution_ready": false,
+    "launch_authorized": false,
+    "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+    "plan_task_count": 5,
+    "reserved_envelope_ns": 60,
+    "schema": "prospective-declared-task-budget-v1",
+    "settled_task_count": 5,
+    "state_kind": "IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+    "stopped_reason": null,
+    "training_release": false
+  },
+  "fixture_reports_and_future_parent_hashes_known_in_advance": true,
+  "new_containers": 0,
+  "new_remote_sessions": 0,
+  "new_training_runs": 0,
+  "observations": {
+    "asserted_elapsed_ns_sum": 15,
+    "elapsed_is_not_authenticated_runtime_label": true,
+    "execution_ready": false,
+    "feature_bundle_sha256": "f2ee947c93280c0ecd70bbf1d167ed393e7e754d9ad0492f784e173d1e8c936b",
+    "feature_bundle_unchanged": true,
+    "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+    "legacy_checkpoint_compatible": false,
+    "observation_count": 3,
+    "observations": [
+      {
+        "acceptance_authenticated": false,
+        "attempt_uid": "attempt-h",
+        "generated_patterns": 2,
+        "meets_declared_d95_threshold": false,
+        "request_sha256": "67fc4302b2c45616bdc5adce8f63d62efeef494e9f471c9f5f736c1094b52db3",
+        "requested_control": {
+          "kind": "PATTERN_LIMIT",
+          "value": 4
+        },
+        "requested_equals_generated": false,
+        "status": "SUCCESS"
+      },
+      {
+        "acceptance_authenticated": false,
+        "attempt_uid": "attempt-m",
+        "generated_patterns": 2,
+        "meets_declared_d95_threshold": false,
+        "request_sha256": "8c050211efbf9920f3865a81f27ca983413066d3d1f0d4ed977c8dcc12dca1be",
+        "requested_control": {
+          "kind": "PATTERN_LIMIT",
+          "value": 2
+        },
+        "requested_equals_generated": true,
+        "status": "SUCCESS"
+      },
+      {
+        "acceptance_authenticated": false,
+        "attempt_uid": "attempt-f",
+        "generated_patterns": 2,
+        "meets_declared_d95_threshold": true,
+        "request_sha256": "0cd140806dc43e39e0701fef4455bb254b27914c91ff1f6bd9d502d06c95f114",
+        "requested_control": {
+          "kind": "PATTERN_LIMIT",
+          "value": 3
+        },
+        "requested_equals_generated": false,
+        "status": "SUCCESS"
+      }
+    ],
+    "os_authenticated": false,
+    "processes_launched_by_this_function": 0,
+    "requested_realized_equivalence_proved": false,
+    "run_uid": "run-1",
+    "schema": "prospective-stage-observation-v1",
+    "source_observations_authenticated": false,
+    "training_release": false
+  },
+  "online_adaptive_request_binding_implemented": false,
+  "parsed_reports": [
+    {
+      "ate_cycles": 99,
+      "ate_cycles_not_wall_time": true,
+      "attempt_uid": "attempt-h",
+      "classes": {
+        "DI": 15,
+        "DS": 30,
+        "FU": 100,
+        "PT": 55
+      },
+      "d95_verified": false,
+      "detected_common_faults": 45,
+      "execution_ready": false,
+      "generated_patterns": 2,
+      "parent_detected_min": null,
+      "parent_min_authenticated": false,
+      "pre_atpg_classes": null,
+      "process_monitor_implemented": false,
+      "recipe_sha256": "7e0b55a5332164e27bd418ce5ca050d129e07ccbd3aefd8945079c0d23e62bd1",
+      "report_bytes_authenticated": false,
+      "requested_control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 4
+      },
+      "requested_pattern_limit": 4,
+      "requested_vs_realized_equivalence_verified": false,
+      "schema": "prospective-tessent-text-observation-v1",
+      "stage": "H",
+      "status": "PARSED_TEXT_ONLY_NOT_AUTHENTICATED",
+      "training_release": false,
+      "translated_status_verified": false
+    },
+    {
+      "ate_cycles": 99,
+      "ate_cycles_not_wall_time": true,
+      "attempt_uid": "attempt-m",
+      "classes": {
+        "DI": 15,
+        "DS": 30,
+        "FU": 100,
+        "PT": 55
+      },
+      "d95_verified": false,
+      "detected_common_faults": 45,
+      "execution_ready": false,
+      "generated_patterns": 2,
+      "parent_detected_min": 45,
+      "parent_min_authenticated": false,
+      "pre_atpg_classes": {
+        "DI": 15,
+        "DS": 30,
+        "FU": 100
+      },
+      "process_monitor_implemented": false,
+      "recipe_sha256": "04db90831b135afda4940e9d12bedd0629594f6ecd28ed910a5e0122132f32c5",
+      "report_bytes_authenticated": false,
+      "requested_control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 2
+      },
+      "requested_pattern_limit": 2,
+      "requested_vs_realized_equivalence_verified": false,
+      "schema": "prospective-tessent-text-observation-v1",
+      "stage": "M",
+      "status": "PARSED_TEXT_ONLY_NOT_AUTHENTICATED",
+      "training_release": false,
+      "translated_status_verified": false
+    },
+    {
+      "ate_cycles": 99,
+      "ate_cycles_not_wall_time": true,
+      "attempt_uid": "attempt-f",
+      "classes": {
+        "DI": 5,
+        "DS": 90,
+        "FU": 100,
+        "PT": 55
+      },
+      "d95_verified": false,
+      "detected_common_faults": 95,
+      "execution_ready": false,
+      "generated_patterns": 2,
+      "parent_detected_min": 45,
+      "parent_min_authenticated": false,
+      "pre_atpg_classes": {
+        "DI": 15,
+        "DS": 30,
+        "FU": 100
+      },
+      "process_monitor_implemented": false,
+      "recipe_sha256": "b00257ebc5505af3fccc2babee018a3ab0770d7086055a14decb6f674389c3b3",
+      "report_bytes_authenticated": false,
+      "requested_control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 3
+      },
+      "requested_pattern_limit": 3,
+      "requested_vs_realized_equivalence_verified": false,
+      "schema": "prospective-tessent-text-observation-v1",
+      "stage": "F",
+      "status": "PARSED_TEXT_ONLY_NOT_AUTHENTICATED",
+      "training_release": false,
+      "translated_status_verified": false
+    }
+  ],
+  "physical_resource_guard_implemented": false,
+  "real_report_dialect_qualified": false,
+  "real_translation_implemented": false,
+  "recipes": [
+    {
+      "action_uid": "hmf",
+      "argv": [
+        "tessent",
+        "-shell",
+        "-license_wait",
+        "5",
+        "-log",
+        "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/logs/H_attempt-h.log",
+        "-dofile",
+        "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/code/common.tcl"
+      ],
+      "attempt_uid": "attempt-h",
+      "common_fault_count": 100,
+      "control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 4
+      },
+      "env": {
+        "CELL_LIBRARY": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/inputs/aes_core/cells.lib",
+        "CIRCUIT": "aes_core",
+        "CIRCUIT_ROOT": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core",
+        "COMMON_FAULT_DIR": "common_frozen",
+        "MODE": "H",
+        "PATTERN_LIMIT": "4",
+        "PHASE": "runs/run-1/attempts",
+        "RUN_ID": "attempt-h",
+        "TOP_MODULE": "aes_cipher_top",
+        "TSDB_INPUT_DIR": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/tsdb/attempt-h"
+      },
+      "execution_ready": false,
+      "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+      "intended_tcl_source_sha256": "dd26a13d1542052ca6664b4b1f8ef23afb76a9d0dfc8c6ea23b40a98d057ae8a",
+      "lineage_verified": false,
+      "memory_timeout_enforced": false,
+      "process_monitor_implemented": false,
+      "recipe_sha256": "7e0b55a5332164e27bd418ce5ca050d129e07ccbd3aefd8945079c0d23e62bd1",
+      "request_sha256": "67fc4302b2c45616bdc5adce8f63d62efeef494e9f471c9f5f736c1094b52db3",
+      "required_tasks": [],
+      "requires_exclusive_result_dir": true,
+      "result_dir": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/H_attempt-h",
+      "result_dir_exists_checked": false,
+      "run_uid": "run-1",
+      "schema": "prospective-tessent-stage-recipe-v1",
+      "source_and_input_authenticated": false,
+      "stage": "H",
+      "stage_index": 1,
+      "training_release": false,
+      "translated_status_verified": false
+    },
+    {
+      "action_uid": "hmf",
+      "argv": [
+        "tessent",
+        "-shell",
+        "-license_wait",
+        "5",
+        "-log",
+        "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/logs/M_attempt-m.log",
+        "-dofile",
+        "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/code/incremental.tcl"
+      ],
+      "attempt_uid": "attempt-m",
+      "common_fault_count": 100,
+      "control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 2
+      },
+      "env": {
+        "CELL_LIBRARY": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/inputs/aes_core/cells.lib",
+        "CIRCUIT": "aes_core",
+        "CIRCUIT_ROOT": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core",
+        "COMMON_FAULT_DIR": "common_frozen",
+        "MODE": "M",
+        "PATTERN_LIMIT": "2",
+        "PHASE": "runs/run-1/attempts",
+        "RUN_ID": "attempt-m",
+        "STATUS_FILE": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-m/translated_status.mtfi",
+        "STATUS_TRANSLATION_MANIFEST": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-m/translation_manifest.json",
+        "TOP_MODULE": "aes_cipher_top",
+        "TSDB_INPUT_DIR": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/tsdb/attempt-m"
+      },
+      "execution_ready": false,
+      "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+      "intended_tcl_source_sha256": "4f95afb6d693f43f4747dfa06db2e3735ecca8506391ac0a00a24d3d23f1aaa3",
+      "lineage_verified": false,
+      "memory_timeout_enforced": false,
+      "process_monitor_implemented": false,
+      "recipe_sha256": "04db90831b135afda4940e9d12bedd0629594f6ecd28ed910a5e0122132f32c5",
+      "request_sha256": "8c050211efbf9920f3865a81f27ca983413066d3d1f0d4ed977c8dcc12dca1be",
+      "required_tasks": [
+        {
+          "charged_as_free": false,
+          "implemented": false,
+          "kind": "translate_status",
+          "output_manifest": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-m/translation_manifest.json",
+          "output_status_file": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-m/translated_status.mtfi",
+          "parent_attempt_uid": "attempt-h",
+          "parent_result_sha256": "f16842ffc84998e875161e22629cfeabc16ce80a3c6e76f082bc325a1ee03465",
+          "target_mode": "M",
+          "target_native_common_faults": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/03_fault_universe/common_frozen/M_common_initial_faults.basic"
+        }
+      ],
+      "requires_exclusive_result_dir": true,
+      "result_dir": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/M_attempt-m",
+      "result_dir_exists_checked": false,
+      "run_uid": "run-1",
+      "schema": "prospective-tessent-stage-recipe-v1",
+      "source_and_input_authenticated": false,
+      "stage": "M",
+      "stage_index": 1,
+      "training_release": false,
+      "translated_status_verified": false
+    },
+    {
+      "action_uid": "hmf",
+      "argv": [
+        "tessent",
+        "-shell",
+        "-license_wait",
+        "5",
+        "-log",
+        "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/logs/F_attempt-f.log",
+        "-dofile",
+        "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/code/incremental.tcl"
+      ],
+      "attempt_uid": "attempt-f",
+      "common_fault_count": 100,
+      "control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 3
+      },
+      "env": {
+        "CELL_LIBRARY": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/inputs/aes_core/cells.lib",
+        "CIRCUIT": "aes_core",
+        "CIRCUIT_ROOT": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core",
+        "COMMON_FAULT_DIR": "common_frozen",
+        "MODE": "F",
+        "PATTERN_LIMIT": "3",
+        "PHASE": "runs/run-1/attempts",
+        "RUN_ID": "attempt-f",
+        "STATUS_FILE": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-f/translated_status.mtfi",
+        "STATUS_TRANSLATION_MANIFEST": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-f/translation_manifest.json",
+        "TOP_MODULE": "aes_cipher_top",
+        "TSDB_INPUT_DIR": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/tsdb/attempt-f"
+      },
+      "execution_ready": false,
+      "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+      "intended_tcl_source_sha256": "4f95afb6d693f43f4747dfa06db2e3735ecca8506391ac0a00a24d3d23f1aaa3",
+      "lineage_verified": false,
+      "memory_timeout_enforced": false,
+      "process_monitor_implemented": false,
+      "recipe_sha256": "b00257ebc5505af3fccc2babee018a3ab0770d7086055a14decb6f674389c3b3",
+      "request_sha256": "0cd140806dc43e39e0701fef4455bb254b27914c91ff1f6bd9d502d06c95f114",
+      "required_tasks": [
+        {
+          "charged_as_free": false,
+          "implemented": false,
+          "kind": "translate_status",
+          "output_manifest": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-f/translation_manifest.json",
+          "output_status_file": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/_prereq/attempt-f/translated_status.mtfi",
+          "parent_attempt_uid": "attempt-m",
+          "parent_result_sha256": "e57f920b63b246d9f24387f3b6338be0cc19c513cfe7ffdf71c0d9378d1706bc",
+          "target_mode": "F",
+          "target_native_common_faults": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/03_fault_universe/common_frozen/F_common_initial_faults.basic"
+        }
+      ],
+      "requires_exclusive_result_dir": true,
+      "result_dir": "/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1/aes_core/runs/run-1/attempts/F_attempt-f",
+      "result_dir_exists_checked": false,
+      "run_uid": "run-1",
+      "schema": "prospective-tessent-stage-recipe-v1",
+      "source_and_input_authenticated": false,
+      "stage": "F",
+      "stage_index": 1,
+      "training_release": false,
+      "translated_status_verified": false
+    }
+  ],
+  "requests": [
+    {
+      "action_uid": "hmf",
+      "attempt_uid": "attempt-h",
+      "control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 4
+      },
+      "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+      "parent_attempt_uid": null,
+      "parent_result_sha256": null,
+      "run_uid": "run-1",
+      "stage": "H",
+      "stage_index": 1
+    },
+    {
+      "action_uid": "hmf",
+      "attempt_uid": "attempt-m",
+      "control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 2
+      },
+      "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+      "parent_attempt_uid": "attempt-h",
+      "parent_result_sha256": "f16842ffc84998e875161e22629cfeabc16ce80a3c6e76f082bc325a1ee03465",
+      "run_uid": "run-1",
+      "stage": "M",
+      "stage_index": 1
+    },
+    {
+      "action_uid": "hmf",
+      "attempt_uid": "attempt-f",
+      "control": {
+        "kind": "PATTERN_LIMIT",
+        "value": 3
+      },
+      "freeze_sha256": "1528a2d3e12acdaafa35122b0dc703edbf6fc33f3e1e8c37da76b6f6fababaed",
+      "parent_attempt_uid": "attempt-m",
+      "parent_result_sha256": "e57f920b63b246d9f24387f3b6338be0cc19c513cfe7ffdf71c0d9378d1706bc",
+      "run_uid": "run-1",
+      "stage": "F",
+      "stage_index": 1
+    }
+  ],
+  "schema": "e81-offline-stage-connection-v1",
+  "sources": {
+    "contracts/prospective_tessent_stage_e81_v1.json": {
+      "bytes": 3468,
+      "sha256": "aeb29fbc176e6f4bb78f32f186e795c3beed6b9d29a00a78f2d8630730c04a5b"
+    },
+    "scripts/demo_prospective_tessent_stage_e81.py": {
+      "bytes": 6197,
+      "sha256": "43ddc6c2729b998c386da994607b19659ebf21324f8abf078062b2f89306bec2"
+    },
+    "src/data/prospective_stage_budget_v1.py": {
+      "bytes": 7140,
+      "sha256": "5b97bad5bdd8f66f31f5ea855296dc94986c1aa89d95bfba09fc45aa854a4716"
+    },
+    "src/data/prospective_tessent_stage_v1.py": {
+      "bytes": 11594,
+      "sha256": "8349b2760b6381c82a03af8905419356948dc74bc3899a0d9a623eec11da6cc4"
+    },
+    "tests/test_prospective_stage_budget_v1.py": {
+      "bytes": 5143,
+      "sha256": "7f53e774607e51a2c20d877abb8ec425bb6c636f4b8c5f3931035e6244d2d937"
+    },
+    "tests/test_prospective_tessent_stage_v1.py": {
+      "bytes": 10895,
+      "sha256": "686190679462b0cd28d6f1f14c9585c89c6c498741c0950c08598935f6c6d6c7"
+    }
+  },
+  "status": "PASS_SYNTHETIC_STAGE_CONNECTION_ONLY",
+  "training_release": false,
+  "translation_steps_are_only_synthetic_assertions": true
+}

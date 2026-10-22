@@ -33,3 +33,4 @@ execute_linux_journal_e78.py -text
 run_linux_journal_phase_e78.py -text
 prepare_prospective_pilot_e79.py -text
 demo_prospective_request_observation_e80.py -text
+demo_prospective_tessent_stage_e81.py -text

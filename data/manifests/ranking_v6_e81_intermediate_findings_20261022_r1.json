@@ -1,0 +1,15 @@
+{
+  "schema":"e81-intermediate-parser-findings-v1",
+  "status":"PRESERVED_NOT_FINAL_ACCEPTANCE",
+  "early_stage_module_sha256":"e127dcbdacbfd74d8bebd0469d8834485696dce0c76001c5c8bcf4aee7ecbc71",
+  "early_stage_tests_sha256":"f34a7c57a9b40291b4233bcac40d6de736402e7b65920b42215be2386567cdfb",
+  "early_stage_tests_passed":8,
+  "budget_tests_passed":6,
+  "independent_counterexamples":["Mismatched actual ATPG control marker accepted", "TesterCycle decimal numeric suffix truncated to integer", "Post-ATPG FU mismatch or missing accepted"],
+  "repair_required":"Exact requested-control marker, integer token grammar and postFU equality plus regression tests",
+  "early_demo_directories":["runtime_training_staging_20260928/v6_e81_stage_20261022_r1", "runtime_training_staging_20260928/v6_e81_stage_20261022_r2"],
+  "new_remote_sessions":0,
+  "new_containers":0,
+  "new_atpg_calls":0,
+  "training_release":false
+}

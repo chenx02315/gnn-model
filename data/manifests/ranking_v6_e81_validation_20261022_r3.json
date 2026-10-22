@@ -1,0 +1,87 @@
+{
+  "schema": "e81-validation-and-result-review-v1",
+  "status": "PASS_LOCAL_SYNTHETIC_CONNECTION_ONLY",
+  "source_pins": {
+    "contracts/prospective_tessent_stage_e81_v1.json": {
+      "bytes": 3468,
+      "sha256": "aeb29fbc176e6f4bb78f32f186e795c3beed6b9d29a00a78f2d8630730c04a5b"
+    },
+    "scripts/demo_prospective_tessent_stage_e81.py": {
+      "bytes": 6197,
+      "sha256": "43ddc6c2729b998c386da994607b19659ebf21324f8abf078062b2f89306bec2"
+    },
+    "src/data/prospective_stage_budget_v1.py": {
+      "bytes": 7140,
+      "sha256": "5b97bad5bdd8f66f31f5ea855296dc94986c1aa89d95bfba09fc45aa854a4716"
+    },
+    "src/data/prospective_tessent_stage_v1.py": {
+      "bytes": 11594,
+      "sha256": "8349b2760b6381c82a03af8905419356948dc74bc3899a0d9a623eec11da6cc4"
+    },
+    "tests/test_prospective_stage_budget_v1.py": {
+      "bytes": 5143,
+      "sha256": "7f53e774607e51a2c20d877abb8ec425bb6c636f4b8c5f3931035e6244d2d937"
+    },
+    "tests/test_prospective_tessent_stage_v1.py": {
+      "bytes": 10895,
+      "sha256": "686190679462b0cd28d6f1f14c9585c89c6c498741c0950c08598935f6c6d6c7"
+    }
+  },
+  "summary_bytes": 23590,
+  "summary_sha256": "706ffcff681f4b5bb6e272f369a04a3a18f6479ce8d6b61269dfc955e6103001",
+  "repeat_summary_sha256": "706ffcff681f4b5bb6e272f369a04a3a18f6479ce8d6b61269dfc955e6103001",
+  "focused": {
+    "testsRun": 14,
+    "passed": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 0.008
+  },
+  "regression": {
+    "testsRun": 1170,
+    "passed": 1164,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 6,
+    "seconds": 74.643
+  },
+  "logs": [
+    {
+      "path": "data/manifests/ranking_v6_e81_focused_20261022_r3.log",
+      "bytes": 2476,
+      "sha256": "028f92824663b6fb5ee1a36a2561076be02cc974a42ed60e4740892f27771d37"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e81_regression_20261022_r3.log",
+      "bytes": 2175,
+      "sha256": "cec609f634317e70b5fe98af3c5d13602708d7e7c7843c784704d4ddc945e178"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/e72_review_final",
+    "verdict": "PASS_LOCAL_SYNTHETIC_CONNECTION",
+    "testsRun": 14,
+    "seconds": 0.011,
+    "counterexamples_repaired": 3,
+    "source_pins_verified": 6
+  },
+  "synthetic_task_counts": {
+    "TESSENT_STAGE": 3,
+    "STATUS_TRANSLATION": 2
+  },
+  "synthetic_budget_asserted_elapsed": 23,
+  "synthetic_observation_asserted_elapsed": 15,
+  "synthetic_reserved_envelope": 60,
+  "all_numbers_are_fixture_assertions_not_measured_time": true,
+  "legacy_regression_tiny_local_children_may_run": true,
+  "new_remote_sessions": 0,
+  "new_containers": 0,
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "real_translation_implemented": false,
+  "durable_budget_implemented": false,
+  "physical_resource_guard_implemented": false,
+  "execution_ready": false,
+  "training_release": false
+}

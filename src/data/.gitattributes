@@ -11,3 +11,5 @@ prospective_linux_journal_v3.py -text
 prospective_pilot_budget_v1.py -text
 prospective_request_features_v1.py -text
 prospective_stage_observation_v1.py -text
+prospective_tessent_stage_v1.py -text
+prospective_stage_budget_v1.py -text

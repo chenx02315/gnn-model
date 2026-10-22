@@ -30,3 +30,5 @@ test_prospective_pilot_budget_v1.py -text
 test_prospective_pilot_e79.py -text
 test_prospective_request_features_v1.py -text
 test_prospective_stage_observation_v1.py -text
+test_prospective_tessent_stage_v1.py -text
+test_prospective_stage_budget_v1.py -text

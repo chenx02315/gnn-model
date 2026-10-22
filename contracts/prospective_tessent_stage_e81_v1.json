@@ -1,0 +1,47 @@
+{
+  "schema":"e81-offline-tessent-stage-contract-v1",
+  "status":"PURE_RECIPE_TEXT_PARSER_AND_IN_MEMORY_DEBIT_ONLY",
+  "scope":{"circuits":["aes_core","spi"],"role":"TRAIN_ONLY","mode_sizes":{"H":64,"M":16,"F":4}},
+  "future_root":"/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1",
+  "future_root_created_or_authorized":false,
+  "compiler":{
+    "source":"src/data/prospective_tessent_stage_v1.py",
+    "input":"Exact REQUESTED_COUNT_V1 freeze and E80 stage request",
+    "output":"Fixed argv/env and run-isolated future paths only; no launch API, inherited env, user-selected root or shell",
+    "H":"Common Tcl with fixed pattern request",
+    "M_F":"Incremental Tcl with mandatory target-native status translation prerequisite; no translation implementation or free helper",
+    "controls":"One of PATTERN_LIMIT, TEST_COVERAGE_LIMIT or neither FULL, never both",
+    "source_identity":"Intended Tcl source SHA pins match reviewed references, not deployed bytes or Tessent qualification",
+    "actual_binary_library_netlist_tsdb_fault_identity_authenticated":false,
+    "memory_timeout_enforced":false,
+    "license_wait_is_not_whole_attempt_timeout":true
+  },
+  "parser":{
+    "input":"Bounded supplied text strings only; no actual report file access",
+    "checks":["unique strict #test_patterns and DS/DI records", "postFU equals declared full common count", "bounded integer TesterCycle maximum without silently truncating numeric suffixes, reported as ATE cycles only", "exact stage/run/mode and requested-control Tcl marker dialect", "reject ERROR/FATAL and invalid pin_pathname", "incremental preFU equals declared full common count", "preDS+DI covers supplied parent minimum"],
+    "requested_counts_and_generated_counts_separate":true,
+    "parent_min_and_reports_authenticated":false,
+    "real_report_dialect_qualified":false,
+    "d95_verified":false
+  },
+  "budget":{
+    "source":"src/data/prospective_stage_budget_v1.py",
+    "state":"IN_MEMORY_SYNTHETIC_PROTOCOL_NOT_DURABLE",
+    "rule":"Reserve exact ordered slot before token; STATUS_TRANSLATION and TESSENT_STAGE consume separate counters/envelopes; same task binding cannot be renamed or consumed twice",
+    "failure":"No refunds or retry; failed tasks stop, unresolved completion/elapsed/cleanup poisons subsequent slots, observed envelope overrun retained and stops",
+    "cap_exhaustion":"CENSORED_DECLARED_BUDGET_EXHAUSTED, not D95 infeasible",
+    "asserted_elapsed_scope":"Known settled prefix only, not full session or authenticated ATPG time",
+    "recreation":"Recreating a RAM object resets state; not a restart/resume or durable quota mechanism",
+    "online_adaptive_slot_late_binding_implemented":false,
+    "durable_budget_debit_ack_verified":false,
+    "tokens_authorize_launch":false
+  },
+  "synthetic_connection":"Known fabricated reports and parent hashes are fixtures; parsing/debit success is not physical translation, process execution or data validation",
+  "remaining_actual_dependencies":["exact real input/environment/resource identities", "authenticated target-native translation and fault mapping", "real process launcher and memory/time/output guards", "durable budget admission and adaptive request late binding", "actual report dialect validation", "separate whole execution package and authority"],
+  "new_remote_sessions":0,
+  "new_containers":0,
+  "new_atpg_calls":0,
+  "new_training_runs":0,
+  "execution_ready":false,
+  "training_release":false
+}

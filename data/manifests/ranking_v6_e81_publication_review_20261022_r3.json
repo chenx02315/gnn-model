@@ -1,0 +1,14 @@
+{
+  "schema":"e81-publication-review-v1",
+  "verdict":"PASS_SCOPED_PUBLICATION",
+  "reviewer":"/root/e72_review_final",
+  "overview_sha256":"43c304339d4c9a1e0d30dd267a3dc50522234ae8b312dd63e667fb1311a4b9ba",
+  "validation_sha256":"f93a55c5e51c58da5beb42ebe27155e5ce6eb47fded992e68615adfa9393ec45",
+  "summary_sha256":"706ffcff681f4b5bb6e272f369a04a3a18f6479ce8d6b61269dfc955e6103001",
+  "verified":["14 parent/.008 and 14 independent/.011 tests distinguished", "1170 total/1164 pass/6 skips/0 failures/errors/74.643 matches raw regression", "Six source pins, two log pins and summary bytes/hash match", "Three parser counterexamples repaired and earlier fixtures preserved", "Task asserted sum23 differs in scope from Tessent-only15", "Known fixture parent hashes are not online preregistration", "RAM budget is not durable quota or actual launch authority", "No physical guard, real translation or actual report qualification claimed"],
+  "new_remote_sessions":0,
+  "new_atpg_calls":0,
+  "new_training_runs":0,
+  "execution_ready":false,
+  "training_release":false
+}
