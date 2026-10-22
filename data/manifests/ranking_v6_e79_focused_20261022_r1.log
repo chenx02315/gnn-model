@@ -1,0 +1,21 @@
+test_candidate_alias_count_is_only_declared_upper_not_roster_proof (test_prospective_pilot_budget_v1.BudgetTests.test_candidate_alias_count_is_only_declared_upper_not_roster_proof) ... ok
+test_complete_conditional_without_prefix_rebuild (test_prospective_pilot_budget_v1.BudgetTests.test_complete_conditional_without_prefix_rebuild) ... ok
+test_endpoints_extras_and_sessions_all_multiplied_and_zero_allowed (test_prospective_pilot_budget_v1.BudgetTests.test_endpoints_extras_and_sessions_all_multiplied_and_zero_allowed) ... ok
+test_exact_keys_bool_as_int_and_large_values_rejected (test_prospective_pilot_budget_v1.BudgetTests.test_exact_keys_bool_as_int_and_large_values_rejected) ... ok
+test_f_search_exhaustive_small_bound_and_f_one_not_double_counted (test_prospective_pilot_budget_v1.BudgetTests.test_f_search_exhaustive_small_bound_and_f_one_not_double_counted) ... ok
+test_missing_numeric_values_keep_every_bound_null (test_prospective_pilot_budget_v1.BudgetTests.test_missing_numeric_values_keep_every_bound_null) ... ok
+test_prefix_rebuild_is_per_f_probe_not_cross_action_cache (test_prospective_pilot_budget_v1.BudgetTests.test_prefix_rebuild_is_per_f_probe_not_cross_action_cache) ... ok
+test_new_checkpoint_evidence_needs_explicit_reassessment (test_prospective_pilot_e79.PreparationTests.test_new_checkpoint_evidence_needs_explicit_reassessment) ... ok
+test_readiness_flag_cannot_be_promoted (test_prospective_pilot_e79.PreparationTests.test_readiness_flag_cannot_be_promoted) ... ok
+test_real_gaps_preserved_and_example_never_releases (test_prospective_pilot_e79.PreparationTests.test_real_gaps_preserved_and_example_never_releases) ... ok
+test_reference_source_drift_rejects (test_prospective_pilot_e79.PreparationTests.test_reference_source_drift_rejects) ... ok
+test_actual_fixed_local_contracts_partial_only (test_prospective_pilot_preparation_v1.PreparationTests.test_actual_fixed_local_contracts_partial_only) ... ok
+test_legacy_policy_conflicts_not_silently_merged (test_prospective_pilot_preparation_v1.PreparationTests.test_legacy_policy_conflicts_not_silently_merged) ... ok
+test_missing_source_rejected_no_scan (test_prospective_pilot_preparation_v1.PreparationTests.test_missing_source_rejected_no_scan) ... ok
+test_no_dataset_or_unknown_source_read (test_prospective_pilot_preparation_v1.PreparationTests.test_no_dataset_or_unknown_source_read) ... ok
+test_wrong_train_family_rejected (test_prospective_pilot_preparation_v1.PreparationTests.test_wrong_train_family_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.059s
+
+OK

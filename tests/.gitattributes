@@ -26,3 +26,5 @@ test_prospective_lifecycle_journal_v2.py -text
 test_prospective_lifecycle_journal_demo_v2.py -text
 test_prospective_linux_journal_v3.py -text
 test_linux_journal_phase_e78.py -text
+test_prospective_pilot_budget_v1.py -text
+test_prospective_pilot_e79.py -text

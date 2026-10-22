@@ -31,3 +31,4 @@ demo_prospective_lifecycle_journal_v2.py -text
 demo_prospective_linux_journal_v3.py -text
 execute_linux_journal_e78.py -text
 run_linux_journal_phase_e78.py -text
+prepare_prospective_pilot_e79.py -text

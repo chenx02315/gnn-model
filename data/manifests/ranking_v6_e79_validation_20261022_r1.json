@@ -1,0 +1,20 @@
+{
+  "schema":"e79-local-validation-v1",
+  "status":"PASS_LOCAL_CONVERGENCE_ONLY_REAL_PILOT_BLOCKED",
+  "source_sha256":{
+    "src/data/prospective_pilot_budget_v1.py":"cc1233424ac0aea640d1c321f2923532b6b009ae5ed015911b643e2758a26def",
+    "tests/test_prospective_pilot_budget_v1.py":"9dec84330ba00f35706ece4c4a52e8a7a6fcb1f871f3e2a7c8c9f19406438afc",
+    "scripts/prepare_prospective_pilot_e79.py":"b72a461db3048d0780582ebcc7885a77e7e3dd0b230d3bca7b4aee7640f1eb12",
+    "tests/test_prospective_pilot_e79.py":"268bdc1ad29f94c437b478988480daa095d00957b3112e1d606685db6a7e9ce4",
+    "contracts/prospective_pilot_readiness_e79_v1.json":"de39265c4a49a284e0144c49ada9ac4fc48b227cc2e1ace1b69ed3e28a58838e"
+  },
+  "focused":{"testsRun":16,"new_tests":11,"existing_tests":5,"passed":16,"skipped":0,"failures":0,"errors":0,"seconds":0.059,"log_sha256":"342ebafd9e6ebfb9295d9528dea27799289d067983917ec6f533bc7efc456743"},
+  "regression":{"testsRun":1138,"passed":1132,"skipped":6,"failures":0,"errors":0,"seconds":43.878,"log_sha256":"c34ecfa617b21f280ef03789ad0c954d28e29e4ae36dfb4ee1592713205b50f0"},
+  "independent_review":{"reviewer":"/root/e72_review_final","verdict":"PASS_LOCAL_CONVERGENCE_ONLY","testsRun":16,"seconds":0.057,"evidence_sources_verified":10,"formula_checked_against_pinned_reference_driver":true},
+  "determinism":{"runs":2,"bytes_each":11359,"byte_identical":true,"summary_sha256":"1b0535baf9ac57d5f42008edcaa4da4a2b8e3c93913844de0142f4deb1f441c8"},
+  "scope":{"new_remote_sessions":0,"new_containers":0,"new_atpg_calls":0,"new_training_runs":0,"new_tests_launch_processes":false,"legacy_regression_includes_tiny_local_children":true},
+  "real_budget_remains_null":true,
+  "toy_192_calls_2304_seconds_not_measured_or_authorized":true,
+  "execution_ready":false,
+  "training_release":false
+}

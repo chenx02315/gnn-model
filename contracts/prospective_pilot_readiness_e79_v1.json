@@ -1,0 +1,62 @@
+{
+  "schema":"e79-pilot-convergence-v1",
+  "status":"LOCAL_DESIGN_ONLY_NOT_A_REAL_EXECUTION_PACKAGE",
+  "scope":{"circuits":["aes_core","spi"],"role":"TRAIN_ONLY","mode_sizes":{"H":64,"M":16,"F":4},"quality_floor":"D95","epsilon":0.01},
+  "goal":"Reduce cumulative measured ATPG search cost to a D95-safe combination within 1 percent of the best cycles in the prospectively frozen pilot roster; no full-space optimum or generalization claim",
+  "decision":"Finish the four concrete work packages below; do not rerun training, expand circuits, reinterpret old PASS tables as prospective inputs, or rerun the E78 Python sandbox",
+  "work_packages":[
+    {
+      "id":"I_INPUT_IDENTITIES",
+      "status":"PARTIAL",
+      "known":"E70 authenticated current driver, Tcl and config bytes; common-fault manifest declares aes_core=71216 and spi=10418",
+      "missing":["exact executable and compatible libraries", "netlist and fault-body identities", "static graph identity", "frozen checkpoint, feature version and normalization identities if model is used"],
+      "acceptance":"A bounded allowlist of exact ordinary inputs with byte SHA, mode/top mapping, common-fault cardinality/mapping and executable environment binding; manifest digest is not body digest",
+      "next_local_action":"Specify exact identity fields and a future bounded evidence request from known local references, without opening data or checkpoint bodies"
+    },
+    {
+      "id":"D_REQUEST_DOMAIN_AND_MODEL_SEMANTICS",
+      "status":"BLOCKED_BINDING",
+      "known":"E68 supplies only symbolic anchors; E71 validates requested H/M pattern caps separately from realized counts and pins full supplied roster maxima",
+      "missing":["authenticated full-H and per-H conditional full-M endpoints with charged creation attempts", "integer roster and aliases", "proof or versioned replacement of legacy realized-count model features", "prospective safety admission semantics"],
+      "acceptance":"Freeze outcome-free requested actions, exact aliases, full-roster SHA and normalization before policy selection. Never infer requested=realized or legacy checkpoint compatibility from equal-looking numbers",
+      "next_local_action":"Prepare request-versus-realized observation schema and explicit legacy-compatible or new-request-feature decision; no checkpoint retrofit or model order until binding passes",
+      "safety":"Unknown actions are not D95-preverified by a template. Any proposed versioned completion policy must verify D95 before acceptance and charge infeasible/timeout attempts; this does not release the old safe-only model interface"
+    },
+    {
+      "id":"R_TESSENT_ADAPTER_AND_RESOURCES",
+      "status":"PARTIAL_SYNTHETIC_BACKEND_ONLY",
+      "known":"E78 passed the fixed Python Linux process/journal integration only",
+      "missing":["fixed Tessent stage adapter and all subprocess lineage", "real ATPG memory and timeout enforcement", "license/thread policy", "new output/storage/inode and per-attempt output bounds", "timing bridge to cumulative ATPG and session clocks"],
+      "acceptance":"Versioned adapter binds actual stage argv/env/input identities, every physical call, bounded cleanup and durable journal. Actual ATPG limits must be independently evidenced; 128MiB synthetic or old training limits cannot substitute",
+      "next_local_action":"Define stage request/result and timing interfaces against the inspected driver/Tcl, then unit-test without launching processes"
+    },
+    {
+      "id":"B_FAIR_ORDERS_AND_COMPLETE_BUDGET",
+      "status":"MISSING_REAL_CAPS",
+      "known":"Reference F completion includes coverage probe, possible full-F fallback, integer linear correction and binary boundary search",
+      "missing":["real per-circuit F upper pattern bounds", "endpoint and helper call envelopes", "candidate roster count", "session/seed schedule", "three frozen policy orders", "actual timeout/cleanup caps", "preregistration and pilot execution authority"],
+      "acceptance":"Count endpoint, prefix reconstruction, every F probe, failures and any additional subprocesses. Policies use the same frozen roster/resources and no free cross-method/session artifacts; missing elapsed stays incomplete",
+      "next_local_action":"Use the pure conditional budget calculator to expose missing caps; produce actual numeric limits only after authenticated inputs and stage envelopes exist"
+    }
+  ],
+  "conditional_budget":{
+    "source":"src/data/prospective_pilot_budget_v1.py",
+    "reference_f_search_upper":"2 + U + ceil(log2(U)) for positive authenticated full-F bound U: coverage and fallback plus at most U linear and ceil(log2(U)) binary calls",
+    "f_minus_one":"In the inspected bracket algorithm F-1 is an already-measured low endpoint or incoming F=0 state; an extra future confirmation must be charged separately if introduced",
+    "initial_design_prefix_rebuild_per_f_call":true,
+    "prefix_rebuild_meaning":"Conservative HMF envelope charges H and M before each F call as well as initial prefix creation; no cross-candidate, cross-policy or cross-session free prefix",
+    "real_caps_by_circuit":{
+      "aes_core":{"f_full_pattern_bound":null,"candidate_count_upper":null,"sessions":null,"endpoint_calls_per_session_upper":null,"extra_calls_per_session_upper":null,"prefix_rebuild_per_f_call":true,"attempt_timeout_s":null,"cleanup_timeout_s":null},
+      "spi":{"f_full_pattern_bound":null,"candidate_count_upper":null,"sessions":null,"endpoint_calls_per_session_upper":null,"extra_calls_per_session_upper":null,"prefix_rebuild_per_f_call":true,"attempt_timeout_s":null,"cleanup_timeout_s":null}
+    },
+    "computed_real_attempt_budget":null,
+    "computed_real_time_allowance":null,
+    "time_scope":"Only summed declared per-attempt timeout plus cleanup allowances; not a wall-time upper bound for queue/license/setup/IO/whole-session overhead",
+    "coverage_of_unlisted_invocations":"Not established. Any unlisted physical subprocess invalidates use as an actual execution budget"
+  },
+  "comparison":{"policies":["fixed_rule","frozen_model","seeded_random"],"frozen_orders":null,"actual_seed_manifest":null,"same_roster_and_resources":true,"prefix_artifact_reuse":false,"cross_method_or_session_artifact_reuse":false,"os_page_cache_controlled":false,"historical_pass_roster_reused":false},
+  "cost_reporting":{"attempt_clock":"Versioned observed pre-INTENT-to-verified-cleanup interval from E78 is not atomic create_patterns time", "session_clock":"Future collection must also record setup/endpoints/selection/IO/terminal accounting overhead and no-hit/censored sessions; not implemented or measured here", "ate_cycles":"Quality axis only, not runtime", "unknown_elapsed":"INCOMPLETE_NO_IMPUTATION"},
+  "current_authority":{"local_code_tests_and_review":true,"new_remote_access":false,"new_container":false,"LSF_or_Tessent":false,"checkpoint_or_labels":false,"training":false},
+  "execution_ready":false,
+  "training_release":false
+}

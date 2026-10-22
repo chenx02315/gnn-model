@@ -1,5 +1,7 @@
 # 下一步执行决策：收敛历史追查，准备可审计的前瞻采集
 
+2026-10-22 E79 最新：已完成四块收敛与条件预算计算。核心决策：旧特征使用实测 pattern 数，不能未证明同义就替换为请求限额；下一步先建立请求/观察分离与模型版本决定，不立即重训或扩电路。预算器覆盖声明的端点/探测/重建/额外调用包络，不认证完整旧 driver；所有实际资源、候选数和 U 仍缺，真实执行/训练保持关闭。见 [E79](entries/E79_pilot_input_resource_budget_convergence.md)。
+
 2026-10-22 E78 最新：新包已获批且一次 Linux 账本联跑通过；本阶段进入独立结果封存与版本同步，不再请求重复执行。之后优先本地梳理 aes_core/spi 小试点的输入/模型映射、生产资源与完整累计预算缺项，固定清单后再评估真实采集所需门禁。当前通过不授予真实 ATPG、LSF 或训练权限。见 [E78](entries/E78_approved_linux_journal_integration.md)。
 
 2026-10-22 E77 最新：已补固定 Linux 后端与持久账本的本地连接代码、模拟故障测试和独立审查。接下来只推进新有界完整联跑包，不继续寻找镜像或原样重复训练。草案 `contracts/prospective_linux_journal_v3_execution_request.json` 尚无执行授权：因旧额度耗尽且需新增专属可写账本挂载，先取得整包授权，再连续冻结入口、预审、一次执行、审计和同步；无中途扩权或自动重试。见 [E77](entries/E77_fixed_linux_backend_journal_preparation.md)。

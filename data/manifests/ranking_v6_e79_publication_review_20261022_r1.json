@@ -1,0 +1,14 @@
+{
+  "schema":"e79-publication-review-v1",
+  "verdict":"PASS_SCOPED_PUBLICATION",
+  "reviewer":"/root/e72_review_final",
+  "scope":"Local convergence contract, pure conditional budget calculator, bounded local preparation and small receipts only",
+  "overview_sha256":"23ea52bd6d80cd637ec67baaaee6b7b427dcf81dcac1e4c5809f6617a5ad2bb0",
+  "convergence_result_sha256":"1b0535baf9ac57d5f42008edcaa4da4a2b8e3c93913844de0142f4deb1f441c8",
+  "checks":["Code/contract/source/result hashes unchanged", "Focused16/.059 and independently executed16/.057 distinguished", "Full1138/1132pass/6skip/0fail/0error/43.878 matches raw log", "U4 toy example 8 F calls,26 per action,64 per session,192 total,2304 summed seconds remains conditional", "Real circuit caps and budgets remain null", "Budget exhaustion is censored, not D95 infeasibility", "License wait flag is not whole-attempt wall limit", "Interrupted review was not counted as PASS"],
+  "new_remote_sessions":0,
+  "new_atpg_calls":0,
+  "new_training_runs":0,
+  "execution_ready":false,
+  "training_release":false
+}

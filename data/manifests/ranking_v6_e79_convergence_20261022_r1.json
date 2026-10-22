@@ -1,0 +1,247 @@
+{
+  "actual_atpg_calls": 0,
+  "counts_declared_only_by_fault_manifests": {
+    "aes_core": 71216,
+    "spi": 10418
+  },
+  "current_budget_assessments": {
+    "aes_core": {
+      "actual_atpg_calls": 0,
+      "call_scope": "DECLARED_STAGE_CALLS_ONLY_NOT_ALL_REAL_RUNNER_LAUNCHES",
+      "cross_candidate_cache_assumed": false,
+      "cross_method_cache_assumed": false,
+      "cross_session_cache_assumed": false,
+      "declared": {
+        "attempt_timeout_s": null,
+        "candidate_count_upper": null,
+        "cleanup_timeout_s": null,
+        "endpoint_calls_per_session_upper": null,
+        "extra_calls_per_session_upper": null,
+        "f_full_pattern_bound": null,
+        "prefix_rebuild_per_f_call": true,
+        "sessions": null
+      },
+      "execution_ready": false,
+      "f_probe_calls_per_action_upper": null,
+      "hmf_base_calls_per_action_upper": null,
+      "missing_fields": [
+        "f_full_pattern_bound",
+        "candidate_count_upper",
+        "sessions",
+        "endpoint_calls_per_session_upper",
+        "extra_calls_per_session_upper",
+        "attempt_timeout_s",
+        "cleanup_timeout_s"
+      ],
+      "physical_calls_per_action_upper": null,
+      "physical_calls_per_session_upper": null,
+      "schema": "prospective-pilot-conditional-budget-v1",
+      "status": "INCOMPLETE_DESIGN",
+      "summed_attempt_envelope_seconds_upper": null,
+      "time_scope": "SUM_OF_ALLOWED_ATTEMPT_AND_CLEANUP_CAPS_ONLY_NOT_END_TO_END_WALL",
+      "total_physical_calls_upper": null,
+      "training_release": false
+    },
+    "spi": {
+      "actual_atpg_calls": 0,
+      "call_scope": "DECLARED_STAGE_CALLS_ONLY_NOT_ALL_REAL_RUNNER_LAUNCHES",
+      "cross_candidate_cache_assumed": false,
+      "cross_method_cache_assumed": false,
+      "cross_session_cache_assumed": false,
+      "declared": {
+        "attempt_timeout_s": null,
+        "candidate_count_upper": null,
+        "cleanup_timeout_s": null,
+        "endpoint_calls_per_session_upper": null,
+        "extra_calls_per_session_upper": null,
+        "f_full_pattern_bound": null,
+        "prefix_rebuild_per_f_call": true,
+        "sessions": null
+      },
+      "execution_ready": false,
+      "f_probe_calls_per_action_upper": null,
+      "hmf_base_calls_per_action_upper": null,
+      "missing_fields": [
+        "f_full_pattern_bound",
+        "candidate_count_upper",
+        "sessions",
+        "endpoint_calls_per_session_upper",
+        "extra_calls_per_session_upper",
+        "attempt_timeout_s",
+        "cleanup_timeout_s"
+      ],
+      "physical_calls_per_action_upper": null,
+      "physical_calls_per_session_upper": null,
+      "schema": "prospective-pilot-conditional-budget-v1",
+      "status": "INCOMPLETE_DESIGN",
+      "summed_attempt_envelope_seconds_upper": null,
+      "time_scope": "SUM_OF_ALLOWED_ATTEMPT_AND_CLEANUP_CAPS_ONLY_NOT_END_TO_END_WALL",
+      "total_physical_calls_upper": null,
+      "training_release": false
+    }
+  },
+  "evidence": {
+    "../phase4_closure_driver_v2_reference.py": {
+      "bytes": 52317,
+      "sha256": "4394d366098c7c64614dced1cade709373b315fc3749a8f93404d5c496ecfb94"
+    },
+    "contracts/prospective_pilot_readiness_e79_v1.json": {
+      "bytes": 6975,
+      "sha256": "de39265c4a49a284e0144c49ada9ac4fc48b227cc2e1ace1b69ed3e28a58838e"
+    },
+    "data/manifests/ranking_v6_e67_preparation_20261021_r1.json": {
+      "bytes": 6776,
+      "sha256": "9260ea80e65057bc970aceb41e40c20093177770fe9aa8c978292f1e39d2f1fc"
+    },
+    "data/manifests/ranking_v6_e68_template_summary_20261021_r1.json": {
+      "bytes": 2258,
+      "sha256": "f614a147c5a98c4ffe3aa57795cb7f7d75e8aae34d1aeea7faf498b761b112c5"
+    },
+    "data/manifests/ranking_v6_e70_observation_summary_20261021_r1.json": {
+      "bytes": 5730,
+      "sha256": "2a00662ac2b3b380c4fa0d3d36b5b139950980d97479a7ac6b60117c091359d1"
+    },
+    "data/manifests/ranking_v6_e71_preparation_20261021_r1.json": {
+      "bytes": 13296,
+      "sha256": "81aa3a6d75d7a51a3b90e3e078ad3699a7958e23526483d8d72f8cccbbf3ecbc"
+    },
+    "data/manifests/ranking_v6_e78_actual_validation_20261022_r1.json": {
+      "bytes": 4202,
+      "sha256": "cc14afc10c0b75d688aa7e53cf86069abe0de54e4c7b003f41add0c60cf896b0"
+    },
+    "data/manifests/ranking_v6_e78_result_review_20261022_r1.json": {
+      "bytes": 1413,
+      "sha256": "f2e3df64080c6311169a10218cf21b36c81b343c5991e435921f730fa86840f0"
+    },
+    "src/data/prospective_input_binding_v1.py": {
+      "bytes": 4424,
+      "sha256": "1acfed165d9cdfeedb6abd886ff028be221d840fe39c2894ca4070fd81ab5e32"
+    },
+    "src/data/prospective_pilot_budget_v1.py": {
+      "bytes": 4667,
+      "sha256": "cc1233424ac0aea640d1c321f2923532b6b009ae5ed015911b643e2758a26def"
+    }
+  },
+  "example_is_not_a_measured_or_authorized_pilot": true,
+  "execution_ready": false,
+  "historical_e67_missing_fields_preserved": [
+    "freeze_components.candidate_domain_policy_sha256",
+    "freeze_components.candidate_roster_sha256",
+    "freeze_components.policy_orders_sha256",
+    "freeze_components.seed_manifest_sha256",
+    "freeze_components.shared_prefix_policy_sha256",
+    "freeze_components.cache_policy_sha256",
+    "freeze_components.driver_sha256",
+    "freeze_components.runner_adapter_sha256",
+    "freeze_components.environment_manifest_sha256",
+    "freeze_components.storage_manifest_sha256",
+    "freeze_components.d95_fault_universe_sha256",
+    "freeze_components.frozen_model_sha256",
+    "freeze_components.external_preregistration_receipt_sha256",
+    "freeze_components.execution_authorization_receipt_sha256",
+    "limits.memory_limit_bytes",
+    "limits.attempt_wall_timeout_s",
+    "limits.max_physical_attempts",
+    "limits.candidate_count"
+  ],
+  "known_fixed_linux_backend_is_not_tessent_adapter": true,
+  "new_containers": 0,
+  "new_remote_sessions": 0,
+  "new_training_runs": 0,
+  "real_atpg_memory_limit_bytes": null,
+  "real_atpg_timeout_s": null,
+  "real_candidate_count": null,
+  "reference_f_probe_formula": "2+U+ceil(log2(U)); every additional future confirmation charged separately",
+  "schema": "e79-pilot-convergence-result-v1",
+  "semantic_checkpoint_compatibility_verified": false,
+  "status": "PASS_LOCAL_CONVERGENCE_ONLY_REAL_PILOT_BLOCKED",
+  "synthetic_arithmetic_example": {
+    "actual_atpg_calls": 0,
+    "call_scope": "DECLARED_STAGE_CALLS_ONLY_NOT_ALL_REAL_RUNNER_LAUNCHES",
+    "cross_candidate_cache_assumed": false,
+    "cross_method_cache_assumed": false,
+    "cross_session_cache_assumed": false,
+    "declared": {
+      "attempt_timeout_s": 10,
+      "candidate_count_upper": 2,
+      "cleanup_timeout_s": 2,
+      "endpoint_calls_per_session_upper": 5,
+      "extra_calls_per_session_upper": 7,
+      "f_full_pattern_bound": 4,
+      "prefix_rebuild_per_f_call": true,
+      "sessions": 3
+    },
+    "execution_ready": false,
+    "f_probe_calls_per_action_upper": 8,
+    "hmf_base_calls_per_action_upper": 2,
+    "missing_fields": [],
+    "physical_calls_per_action_upper": 26,
+    "physical_calls_per_session_upper": 64,
+    "schema": "prospective-pilot-conditional-budget-v1",
+    "status": "CONDITIONAL_DECLARED_CAPS_ONLY",
+    "summed_attempt_envelope_seconds_upper": 2304,
+    "time_scope": "SUM_OF_ALLOWED_ATTEMPT_AND_CLEANUP_CAPS_ONLY_NOT_END_TO_END_WALL",
+    "total_physical_calls_upper": 192,
+    "training_release": false
+  },
+  "training_release": false,
+  "work_packages": [
+    {
+      "acceptance": "A bounded allowlist of exact ordinary inputs with byte SHA, mode/top mapping, common-fault cardinality/mapping and executable environment binding; manifest digest is not body digest",
+      "id": "I_INPUT_IDENTITIES",
+      "known": "E70 authenticated current driver, Tcl and config bytes; common-fault manifest declares aes_core=71216 and spi=10418",
+      "missing": [
+        "exact executable and compatible libraries",
+        "netlist and fault-body identities",
+        "static graph identity",
+        "frozen checkpoint, feature version and normalization identities if model is used"
+      ],
+      "next_local_action": "Specify exact identity fields and a future bounded evidence request from known local references, without opening data or checkpoint bodies",
+      "status": "PARTIAL"
+    },
+    {
+      "acceptance": "Freeze outcome-free requested actions, exact aliases, full-roster SHA and normalization before policy selection. Never infer requested=realized or legacy checkpoint compatibility from equal-looking numbers",
+      "id": "D_REQUEST_DOMAIN_AND_MODEL_SEMANTICS",
+      "known": "E68 supplies only symbolic anchors; E71 validates requested H/M pattern caps separately from realized counts and pins full supplied roster maxima",
+      "missing": [
+        "authenticated full-H and per-H conditional full-M endpoints with charged creation attempts",
+        "integer roster and aliases",
+        "proof or versioned replacement of legacy realized-count model features",
+        "prospective safety admission semantics"
+      ],
+      "next_local_action": "Prepare request-versus-realized observation schema and explicit legacy-compatible or new-request-feature decision; no checkpoint retrofit or model order until binding passes",
+      "safety": "Unknown actions are not D95-preverified by a template. Any proposed versioned completion policy must verify D95 before acceptance and charge infeasible/timeout attempts; this does not release the old safe-only model interface",
+      "status": "BLOCKED_BINDING"
+    },
+    {
+      "acceptance": "Versioned adapter binds actual stage argv/env/input identities, every physical call, bounded cleanup and durable journal. Actual ATPG limits must be independently evidenced; 128MiB synthetic or old training limits cannot substitute",
+      "id": "R_TESSENT_ADAPTER_AND_RESOURCES",
+      "known": "E78 passed the fixed Python Linux process/journal integration only",
+      "missing": [
+        "fixed Tessent stage adapter and all subprocess lineage",
+        "real ATPG memory and timeout enforcement",
+        "license/thread policy",
+        "new output/storage/inode and per-attempt output bounds",
+        "timing bridge to cumulative ATPG and session clocks"
+      ],
+      "next_local_action": "Define stage request/result and timing interfaces against the inspected driver/Tcl, then unit-test without launching processes",
+      "status": "PARTIAL_SYNTHETIC_BACKEND_ONLY"
+    },
+    {
+      "acceptance": "Count endpoint, prefix reconstruction, every F probe, failures and any additional subprocesses. Policies use the same frozen roster/resources and no free cross-method/session artifacts; missing elapsed stays incomplete",
+      "id": "B_FAIR_ORDERS_AND_COMPLETE_BUDGET",
+      "known": "Reference F completion includes coverage probe, possible full-F fallback, integer linear correction and binary boundary search",
+      "missing": [
+        "real per-circuit F upper pattern bounds",
+        "endpoint and helper call envelopes",
+        "candidate roster count",
+        "session/seed schedule",
+        "three frozen policy orders",
+        "actual timeout/cleanup caps",
+        "preregistration and pilot execution authority"
+      ],
+      "next_local_action": "Use the pure conditional budget calculator to expose missing caps; produce actual numeric limits only after authenticated inputs and stage envelopes exist",
+      "status": "MISSING_REAL_CAPS"
+    }
+  ]
+}
