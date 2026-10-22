@@ -1,0 +1,50 @@
+{
+  "schema": "e77-proposed-integrated-linux-execution-package-v1",
+  "date": "2026-10-22",
+  "status": "PROPOSED_ONLY_NO_REMOTE_AUTHORIZATION",
+  "user_authorization_received": false,
+  "purpose": "One fixed Linux process-and-journal integration validation after local mock tests and independent review, not ATPG/training",
+  "reason_separate_package_needed": "E75's four SSH sessions and sole container are consumed. New journal integration also needs narrowly scoped persistent output, which E75's script-only read-only mount did not authorize.",
+  "endpoint": "cjc@gpuserver.buptic.top",
+  "cached_ed25519_fingerprint": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "exact_existing_image": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+  "new_output_root": "/ssd/cjc/gnn_model_linux_journal_v3_20261022_r1",
+  "resource_limits": {"memory_bytes":134217728,"swap_extra_bytes":0,"pids_limit":16,"workers":1,"tmpfs_bytes":1048576},
+  "bounds": {
+    "ssh_sessions_total": 2,
+    "seconds_per_session": 60,
+    "container_attach_timeout_seconds": 30,
+    "new_containers_total": 1,
+    "actual_profiles_total": 3,
+    "synthetic_grandchildren_total": 1,
+    "automatic_retries": 0,
+    "uploaded_source_files": 3,
+    "uploaded_source_bytes": 65536,
+    "phase_stdin_bytes": 65536,
+    "phase_return_bytes": 16384,
+    "metadata_and_collected_journal_bytes": 32768,
+    "journal_file_bytes": 1048576,
+    "new_root_entries": 16
+  },
+  "second_session": "Only bounded audit or exact-ID cleanup of this same container after uncertainty; never another creation or execution retry",
+  "read_budget_scope": "Metadata-and-collected-journal cap covers host-side Docker projections and collected result/journal bodies. Existing gate kernel pseudofile reads retain their reviewed per-read limits within the fixed three-profile run, and are not presented as measured host metadata bytes.",
+  "mounts": {
+    "readonly": "Exact reviewed source files only",
+    "writable": "One fresh empty journal-output subdirectory under the exclusive new root, mounted as /journal; no pre-existing data or repository mount",
+    "reason": "Keep write-before-launch and identity records outside ephemeral container scratch so a failed container does not silently erase the intended-attempt evidence",
+    "filesystem_limit": "Fsync ACK and surviving bytes are not a proof of power-loss durability or historical ACK on replay"
+  },
+  "steps_covered_by_one_future_approval": [
+    "Complete bounded launcher/collector implementation and local tests",
+    "Freeze actual source/image/options SHA and independent preexecution review",
+    "Fresh exact-ID image/resource/host checks, no image inventory/pull/build",
+    "Create one container, run success/failure/timeout_group once with durable journal",
+    "Verify real identity/cleanup/ACK sequence, export small raw journal and result hashes",
+    "On failure stop, preserve evidence, do not rerun; only own exact-ID cleanup is allowed",
+    "Independent result audit, Chinese overview, SHA seal and normal version synchronization"
+  ],
+  "isolation": "No network, GPU, privileged mode, added capabilities, host namespace, image healthcheck or arbitrary command/data input; readonly rootfs and no-new-privileges",
+  "forbidden": ["A host", "protected /ssd/cjc/multimode_ate_gnn_v1", "BLIND or other real labels/checkpoint bodies", "LSF/Tessent", "training/inference", "image pull/build/install", "host cgroup writes", "limit increase", "automatic retries"],
+  "execution_ready": false,
+  "training_release": false
+}

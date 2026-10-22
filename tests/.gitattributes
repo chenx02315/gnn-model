@@ -24,3 +24,4 @@ test_linux_lifecycle_phase_e74.py -text
 test_linux_lifecycle_phase_e75.py -text
 test_prospective_lifecycle_journal_v2.py -text
 test_prospective_lifecycle_journal_demo_v2.py -text
+test_prospective_linux_journal_v3.py -text

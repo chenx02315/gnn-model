@@ -1,0 +1,22 @@
+test_cleanup_failure_blocks_and_preserves_incomplete (test_prospective_linux_journal_v3.JournalTests.test_cleanup_failure_blocks_and_preserves_incomplete) ... ok
+test_e76_fake_backend_rejected (test_prospective_linux_journal_v3.JournalTests.test_e76_fake_backend_rejected) ... ok
+test_exact_profile_order_and_same_backend_binding (test_prospective_linux_journal_v3.JournalTests.test_exact_profile_order_and_same_backend_binding) ... ok
+test_full_three_profiles_fixed_backend_and_replay_boundary (test_prospective_linux_journal_v3.JournalTests.test_full_three_profiles_fixed_backend_and_replay_boundary) ... ok
+test_intent_ack_failure_never_spawns_and_disables_backend (test_prospective_linux_journal_v3.JournalTests.test_intent_ack_failure_never_spawns_and_disables_backend) ... ok
+test_launched_ack_failure_cleans_known_handle (test_prospective_linux_journal_v3.JournalTests.test_launched_ack_failure_cleans_known_handle) ... ok
+test_metadata_and_cleanup_error_preserve_primary_cause (test_prospective_linux_journal_v3.JournalTests.test_metadata_and_cleanup_error_preserve_primary_cause) ... ok
+test_metadata_failure_known_proc_is_cleaned_internally (test_prospective_linux_journal_v3.JournalTests.test_metadata_failure_known_proc_is_cleaned_internally) ... ok
+test_none_popen_handle_is_unknown_and_not_cleaned (test_prospective_linux_journal_v3.JournalTests.test_none_popen_handle_is_unknown_and_not_cleaned) ... ok
+test_pgrp_identity_mismatch_cleans_known_proc (test_prospective_linux_journal_v3.JournalTests.test_pgrp_identity_mismatch_cleans_known_proc) ... ok
+test_postlaunch_baseexception_always_cleans (test_prospective_linux_journal_v3.JournalTests.test_postlaunch_baseexception_always_cleans) ... ok
+test_postlaunch_exception_always_cleans (test_prospective_linux_journal_v3.JournalTests.test_postlaunch_exception_always_cleans) ... ok
+test_replay_rejects_wrong_or_repeated_profile_and_pid1 (test_prospective_linux_journal_v3.JournalTests.test_replay_rejects_wrong_or_repeated_profile_and_pid1) ... ok
+test_replay_torn_and_tampered_rejected (test_prospective_linux_journal_v3.JournalTests.test_replay_torn_and_tampered_rejected) ... ok
+test_terminal_fullrow_fsync_failure_replay_not_ack (test_prospective_linux_journal_v3.JournalTests.test_terminal_fullrow_fsync_failure_replay_not_ack) ... ok
+test_unknown_spawn_stops_phase_without_cleanup_none (test_prospective_linux_journal_v3.JournalTests.test_unknown_spawn_stops_phase_without_cleanup_none) ... ok
+test_windows_preflight_before_scratch_or_popen (test_prospective_linux_journal_v3.JournalTests.test_windows_preflight_before_scratch_or_popen) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.236s
+
+OK

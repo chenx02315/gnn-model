@@ -1,0 +1,47 @@
+{
+  "schema": "e77-final-local-tests-v1",
+  "status": "PASS_LOCAL_TESTS_ONLY",
+  "focused": {
+    "testsRun": 18,
+    "passed": 18,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.241
+  },
+  "regression": {
+    "testsRun": 1114,
+    "passed": 1108,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 115.25
+  },
+  "regression_patterns": [
+    "test_ranking_v6*.py",
+    "test_prospective*.py",
+    "test_linux_lifecycle*_e73.py",
+    "test_linux_lifecycle*_e74.py",
+    "test_linux_lifecycle*_e75.py"
+  ],
+  "regression_runner": "Python unittest unified discovery; tests directory on sys.path for legacy sibling imports",
+  "python": "D:/Python/Python313/python.exe",
+  "logs": [
+    {
+      "path": "data/manifests/ranking_v6_e77_focused_20261022_r4.log",
+      "bytes": 2918,
+      "sha256": "300d0c2f4ace09b490e40bbcc7d0c9b9e31e731625b538b314552e998fa5fcb3"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e77_regression_20261022_r4.log",
+      "bytes": 1831,
+      "sha256": "1f527d961800a95cfec369fa0bfa218f1bd84f5c7bbbe8645639c90e82091d5b"
+    }
+  ],
+  "new_v3_actual_children": 0,
+  "new_remote_sessions": 0,
+  "new_containers": 0,
+  "legacy_regression_tiny_local_children_may_run": true,
+  "integrated_live_linux_validation": false,
+  "training_release": false
+}

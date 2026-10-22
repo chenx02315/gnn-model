@@ -1,0 +1,17 @@
+{
+  "status": "INTERMEDIATE_NOT_FINAL_ACCEPTANCE",
+  "module_sha256": "5cadbeb33484304467c16b04af32a506a2b0a9d877349b052fdc5c14f5f6c0fe",
+  "tests_sha256": "32a33cb668f1a9719705ed5a366b9fb9af8acd0efaadd9e882fe63e6cb1c3299",
+  "initial_mock_tests_passed": 16,
+  "initial_demo_summary_bytes": 25977,
+  "initial_demo_summary_sha256": "227ab28da99d8b36ec46bdb835515b4e92aae8cbae4496c63d75552ec71b05ea",
+  "initial_demo_preserved_at": "runtime_training_staging_20260928/v6_e77_mock_demo_20261022_r1",
+  "independent_findings": [
+    "One terminated profile incorrectly published complete status and a numeric sum for a fixed three-profile phase",
+    "Replay schema lacked exact three-profile order and repetition bound",
+    "Ready/preflight failure did not prevent same-journal backend replacement",
+    "Child PID 1 was not rejected"
+  ],
+  "real_children_or_remote_calls": 0,
+  "final_acceptance_requires_repaired_source_and_new_receipts": true
+}

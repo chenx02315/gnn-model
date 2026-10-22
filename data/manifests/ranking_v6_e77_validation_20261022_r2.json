@@ -1,0 +1,193 @@
+{
+  "schema": "e77-local-mock-validation-v1",
+  "status": "PASS_LOCAL_MOCKED_LINUX_JOURNAL_CONNECTION_ONLY",
+  "module_sha256": "2af4c8fb07d1d46f18759974fafeb1864267bdbb8d6b576a8222268f2a10df20",
+  "fixture_helper_sha256": "2d417c80e3b224577fe196b4763909eb1724313a3d0914d26b5469a463e1885b",
+  "demo_sha256": "c280008be2acbe5f14021420f900e01efa1619c80adb0167b545b2edf3b934d3",
+  "cases": [
+    {
+      "case": "healthy",
+      "exception": null,
+      "intercepted_popen_calls": 3,
+      "intercepted_cleanup_calls": 3,
+      "live_fixed_complete": true,
+      "live_ack_complete": true,
+      "live_mock_interval_sum": 30,
+      "replay_fixed_complete": true,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "2a26388531897870e02a7c6ce4674f25927527bbbe908af814fe8c45ee7cfe58",
+      "journal_bytes": 3700
+    },
+    {
+      "case": "intent_ack",
+      "exception": "OSError",
+      "intercepted_popen_calls": 0,
+      "intercepted_cleanup_calls": 0,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "d7b8f908a5a989e38a788d30daf749f63b833f7a09eb72f77788a1d02798c08f",
+      "journal_bytes": 349
+    },
+    {
+      "case": "unknown_spawn",
+      "exception": "OSError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 0,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "journal_bytes": 636
+    },
+    {
+      "case": "none_handle",
+      "exception": "ValueError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 0,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "journal_bytes": 636
+    },
+    {
+      "case": "identity_read",
+      "exception": "RuntimeError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 1,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "journal_bytes": 636
+    },
+    {
+      "case": "launched_ack",
+      "exception": "OSError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 1,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "11f3bd782cb66712dcbe70cc72d0468e17e1748e9f3a1451d60655fc3f403665",
+      "journal_bytes": 632
+    },
+    {
+      "case": "cleanup_failure",
+      "exception": "RuntimeError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 1,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "a76f4410b424c8b3d59ac1b406c5bcbc2d57d57e94bf680b1ee838882c4c1e04",
+      "journal_bytes": 968
+    },
+    {
+      "case": "terminal_ack",
+      "exception": "OSError",
+      "intercepted_popen_calls": 3,
+      "intercepted_cleanup_calls": 3,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": true,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "f1ebe59a887fb1a9ac3ee0c219780164782dcc204b77b4ccc5fcc30d918ced12",
+      "journal_bytes": 3763
+    }
+  ],
+  "deterministic_files": [
+    {
+      "name": "cleanup_failure.jsonl",
+      "bytes": 968,
+      "sha256": "a76f4410b424c8b3d59ac1b406c5bcbc2d57d57e94bf680b1ee838882c4c1e04",
+      "second_run_sha256": "a76f4410b424c8b3d59ac1b406c5bcbc2d57d57e94bf680b1ee838882c4c1e04",
+      "hash_match": true
+    },
+    {
+      "name": "healthy.jsonl",
+      "bytes": 3700,
+      "sha256": "2a26388531897870e02a7c6ce4674f25927527bbbe908af814fe8c45ee7cfe58",
+      "second_run_sha256": "2a26388531897870e02a7c6ce4674f25927527bbbe908af814fe8c45ee7cfe58",
+      "hash_match": true
+    },
+    {
+      "name": "identity_read.jsonl",
+      "bytes": 636,
+      "sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "second_run_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "hash_match": true
+    },
+    {
+      "name": "intent_ack.jsonl",
+      "bytes": 349,
+      "sha256": "d7b8f908a5a989e38a788d30daf749f63b833f7a09eb72f77788a1d02798c08f",
+      "second_run_sha256": "d7b8f908a5a989e38a788d30daf749f63b833f7a09eb72f77788a1d02798c08f",
+      "hash_match": true
+    },
+    {
+      "name": "launched_ack.jsonl",
+      "bytes": 632,
+      "sha256": "11f3bd782cb66712dcbe70cc72d0468e17e1748e9f3a1451d60655fc3f403665",
+      "second_run_sha256": "11f3bd782cb66712dcbe70cc72d0468e17e1748e9f3a1451d60655fc3f403665",
+      "hash_match": true
+    },
+    {
+      "name": "none_handle.jsonl",
+      "bytes": 636,
+      "sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "second_run_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "hash_match": true
+    },
+    {
+      "name": "summary.json",
+      "bytes": 28585,
+      "sha256": "38c5ac599edaa78438a12547b67b270d34de79898c2a7ca05bf181c381be5b7e",
+      "second_run_sha256": "38c5ac599edaa78438a12547b67b270d34de79898c2a7ca05bf181c381be5b7e",
+      "hash_match": true
+    },
+    {
+      "name": "terminal_ack.jsonl",
+      "bytes": 3763,
+      "sha256": "f1ebe59a887fb1a9ac3ee0c219780164782dcc204b77b4ccc5fcc30d918ced12",
+      "second_run_sha256": "f1ebe59a887fb1a9ac3ee0c219780164782dcc204b77b4ccc5fcc30d918ced12",
+      "hash_match": true
+    },
+    {
+      "name": "unknown_spawn.jsonl",
+      "bytes": 636,
+      "sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "second_run_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "hash_match": true
+    }
+  ],
+  "actual_v3_children": 0,
+  "new_remote_sessions": 0,
+  "new_containers": 0,
+  "integrated_live_linux_validation": false,
+  "os_authenticated": false,
+  "execution_ready": false,
+  "training_release": false
+}

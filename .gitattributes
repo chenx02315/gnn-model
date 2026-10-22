@@ -379,3 +379,4 @@ experiment_overview/entries/E56_formal_config_join.md -text
 data/manifests/ranking_v6_e54_* -text whitespace=cr-at-eol
 data/manifests/ranking_v6_e55_* -text whitespace=cr-at-eol
 data/manifests/ranking_v6_e56_* -text whitespace=cr-at-eol
+experiment_overview/entries/E77_fixed_linux_backend_journal_preparation.md -text

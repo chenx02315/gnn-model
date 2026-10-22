@@ -1,5 +1,7 @@
 # 下一步执行决策：收敛历史追查，准备可审计的前瞻采集
 
+2026-10-22 E77 最新：已补固定 Linux 后端与持久账本的本地连接代码、模拟故障测试和独立审查。接下来只推进新有界完整联跑包，不继续寻找镜像或原样重复训练。草案 `contracts/prospective_linux_journal_v3_execution_request.json` 尚无执行授权：因旧额度耗尽且需新增专属可写账本挂载，先取得整包授权，再连续冻结入口、预审、一次执行、审计和同步；无中途扩权或自动重试。见 [E77](entries/E77_fixed_linux_backend_journal_preparation.md)。
+
 E76（2026-10-21）：持久账本与清理验收协议的本地模拟串联已通过25项针对性测试与八类固定故障案例。先写意图确认再启动、身份与终态ACK失败不出完整费用、完整回放不能冒充ACK等规则已落地。下一节点是真实Linux进程后端与账本联跑/崩溃窗口核验；E75只证明旧固定清理脚本，不能直接覆盖新组合。零新增远端/容器；八类新增fixture不启动进程，全回归仍包含旧模块微型本地子进程测试。不解封生产或训练。见 [E76](entries/E76_durable_lifecycle_journal_synthetic_integration.md)。
 
 2026-10-21 E75 最新：历史精确镜像已恢复并现时核实，一次Linux成功/失败/超时清理验证真实通过。实测128MiB/swap0/pids16/OOM group0；不代表OOM压力/生产资源或真实ATPG加速通过。当前下一节点是持久调用账本与有界进程清理集成、异常路径本地合成测试；原4次连接与唯一容器机会已用，不再远端重试。真实ATPG/训练未解封。见 [E75](entries/E75_python_image_recovered_linux_gate_pass.md)。E74及更早镜像缺口为历史状态。

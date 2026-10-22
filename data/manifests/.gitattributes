@@ -21,3 +21,6 @@ ranking_v6_e75_* -text whitespace=cr-at-eol
 ranking_v6_e76_* -text whitespace=cr-at-eol
 ranking_v6_e76_demo_20261021_r2/** -text whitespace=cr-at-eol
 ranking_v6_e76_demo_20261021_r4/** -text whitespace=cr-at-eol
+ranking_v6_e77_* -text whitespace=cr-at-eol
+ranking_v6_e77_demo_20261022_r2/** -text whitespace=cr-at-eol
+ranking_v6_e77_demo_20261022_r4/** -text whitespace=cr-at-eol

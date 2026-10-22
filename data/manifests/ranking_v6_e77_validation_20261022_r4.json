@@ -1,0 +1,213 @@
+{
+  "schema": "e77-local-mock-validation-v1",
+  "status": "PASS_LOCAL_MOCKED_LINUX_JOURNAL_CONNECTION_ONLY",
+  "sources": [
+    {
+      "path": "src/data/prospective_linux_journal_v3.py",
+      "sha256": "1077c04f92af8c49937e7489e1ad15063af42eb7a6fa8b231af14ba7477f94b9"
+    },
+    {
+      "path": "tests/test_prospective_linux_journal_v3.py",
+      "sha256": "9e4073c29ad97d66315db9d204bfc950afae3182304d79b9254185ac83ce2719"
+    },
+    {
+      "path": "scripts/demo_prospective_linux_journal_v3.py",
+      "sha256": "c280008be2acbe5f14021420f900e01efa1619c80adb0167b545b2edf3b934d3"
+    },
+    {
+      "path": "contracts/prospective_linux_journal_v3.json",
+      "sha256": "3f77a5d8d91ede7d18b14aea5ac8f97858abdb77c15f9d5968d3e9d5026793dc"
+    },
+    {
+      "path": "contracts/prospective_linux_journal_v3_execution_request.json",
+      "sha256": "24903819e19b5a794bd81f86b149e01e91b9156bc6addfedaab89c4e115e7b68"
+    }
+  ],
+  "cases": [
+    {
+      "case": "healthy",
+      "exception": null,
+      "intercepted_popen_calls": 3,
+      "intercepted_cleanup_calls": 3,
+      "live_fixed_complete": true,
+      "live_ack_complete": true,
+      "live_mock_interval_sum": 30,
+      "replay_fixed_complete": true,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "2a26388531897870e02a7c6ce4674f25927527bbbe908af814fe8c45ee7cfe58",
+      "journal_bytes": 3700
+    },
+    {
+      "case": "intent_ack",
+      "exception": "OSError",
+      "intercepted_popen_calls": 0,
+      "intercepted_cleanup_calls": 0,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "d7b8f908a5a989e38a788d30daf749f63b833f7a09eb72f77788a1d02798c08f",
+      "journal_bytes": 349
+    },
+    {
+      "case": "unknown_spawn",
+      "exception": "OSError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 0,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "journal_bytes": 636
+    },
+    {
+      "case": "none_handle",
+      "exception": "ValueError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 0,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "journal_bytes": 636
+    },
+    {
+      "case": "identity_read",
+      "exception": "RuntimeError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 1,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "journal_bytes": 636
+    },
+    {
+      "case": "launched_ack",
+      "exception": "OSError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 1,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "11f3bd782cb66712dcbe70cc72d0468e17e1748e9f3a1451d60655fc3f403665",
+      "journal_bytes": 632
+    },
+    {
+      "case": "cleanup_failure",
+      "exception": "RuntimeError",
+      "intercepted_popen_calls": 1,
+      "intercepted_cleanup_calls": 1,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": false,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "a76f4410b424c8b3d59ac1b406c5bcbc2d57d57e94bf680b1ee838882c4c1e04",
+      "journal_bytes": 968
+    },
+    {
+      "case": "terminal_ack",
+      "exception": "OSError",
+      "intercepted_popen_calls": 3,
+      "intercepted_cleanup_calls": 3,
+      "live_fixed_complete": false,
+      "live_ack_complete": false,
+      "live_mock_interval_sum": null,
+      "replay_fixed_complete": true,
+      "replay_ack_verified": false,
+      "replay_interval_sum": null,
+      "journal_sha256": "f1ebe59a887fb1a9ac3ee0c219780164782dcc204b77b4ccc5fcc30d918ced12",
+      "journal_bytes": 3763
+    }
+  ],
+  "files": [
+    {
+      "name": "cleanup_failure.jsonl",
+      "bytes": 968,
+      "sha256": "a76f4410b424c8b3d59ac1b406c5bcbc2d57d57e94bf680b1ee838882c4c1e04",
+      "repeat_sha256": "a76f4410b424c8b3d59ac1b406c5bcbc2d57d57e94bf680b1ee838882c4c1e04"
+    },
+    {
+      "name": "healthy.jsonl",
+      "bytes": 3700,
+      "sha256": "2a26388531897870e02a7c6ce4674f25927527bbbe908af814fe8c45ee7cfe58",
+      "repeat_sha256": "2a26388531897870e02a7c6ce4674f25927527bbbe908af814fe8c45ee7cfe58"
+    },
+    {
+      "name": "identity_read.jsonl",
+      "bytes": 636,
+      "sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "repeat_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994"
+    },
+    {
+      "name": "intent_ack.jsonl",
+      "bytes": 349,
+      "sha256": "d7b8f908a5a989e38a788d30daf749f63b833f7a09eb72f77788a1d02798c08f",
+      "repeat_sha256": "d7b8f908a5a989e38a788d30daf749f63b833f7a09eb72f77788a1d02798c08f"
+    },
+    {
+      "name": "launched_ack.jsonl",
+      "bytes": 632,
+      "sha256": "11f3bd782cb66712dcbe70cc72d0468e17e1748e9f3a1451d60655fc3f403665",
+      "repeat_sha256": "11f3bd782cb66712dcbe70cc72d0468e17e1748e9f3a1451d60655fc3f403665"
+    },
+    {
+      "name": "none_handle.jsonl",
+      "bytes": 636,
+      "sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "repeat_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994"
+    },
+    {
+      "name": "summary.json",
+      "bytes": 28585,
+      "sha256": "3729c21a33b5c16aafba38458c1e627c796430e14d3b2cb0d4c6d484865acdbb",
+      "repeat_sha256": "3729c21a33b5c16aafba38458c1e627c796430e14d3b2cb0d4c6d484865acdbb"
+    },
+    {
+      "name": "terminal_ack.jsonl",
+      "bytes": 3763,
+      "sha256": "f1ebe59a887fb1a9ac3ee0c219780164782dcc204b77b4ccc5fcc30d918ced12",
+      "repeat_sha256": "f1ebe59a887fb1a9ac3ee0c219780164782dcc204b77b4ccc5fcc30d918ced12"
+    },
+    {
+      "name": "unknown_spawn.jsonl",
+      "bytes": 636,
+      "sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994",
+      "repeat_sha256": "41121c65d2210975b4bec983f606536735b5c21a0a1d174a04a786d3e7abd994"
+    }
+  ],
+  "file_count": 9,
+  "total_bytes": 39905,
+  "repeat_byte_identical": true,
+  "actual_v3_children": 0,
+  "new_remote_sessions": 0,
+  "new_containers": 0,
+  "mock_clock_not_wall_runtime": true,
+  "integrated_live_linux_validation": false,
+  "os_authenticated": false,
+  "remote_authorized": false,
+  "training_release": false,
+  "previous_r2": "Intermediate before phase host/boot consistency barrier; retained, not final acceptance",
+  "entrypoint_note": "Direct script invocation first failed with ModuleNotFoundError src before output; corrected invocation uses PYTHONPATH=.; r4/r5 completed without code change",
+  "focused_tests": 18,
+  "focused_failures": 0,
+  "focused_errors": 0,
+  "focused_skipped": 0
+}

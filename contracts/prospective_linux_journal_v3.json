@@ -1,0 +1,60 @@
+{
+  "schema": "prospective-linux-journal-v3-preparation",
+  "date": "2026-10-22",
+  "status": "LOCAL_IMPLEMENTATION_AND_MOCK_VALIDATION_ONLY",
+  "purpose": "Prepare the fixed Linux process backend and durable journal connection; do not run a new remote or container validation under exhausted E75 quota",
+  "source": "src/data/prospective_linux_journal_v3.py",
+  "prior_synthetic_module_preserved": "src/data/prospective_lifecycle_journal_v2.py",
+  "reused_linux_gate": "scripts/verify_prospective_linux_lifecycle_v2.py",
+  "reused_linux_gate_sha256": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15",
+  "reference_actual_e75_response_sha256": "e7a2ccdcaa900b12d9ab813c8940791a1edd731914eb0517b15012e8e93762ef",
+  "fixed_backend": {
+    "profiles_in_order": ["success", "failure", "timeout_group"],
+    "maximum_attempts_each": 1,
+    "workers": 1,
+    "automatic_retries": 0,
+    "arbitrary_commands_or_input_data": false,
+    "kernel_gates": "Exact reused preflight: Linux PID 1 and matching proc view, dedicated cgroup v2, memory128MiB, swap0, pids16, observed OOM group0/1, no pre-existing descendants",
+    "subreaper": "Required before launch and after actual kernel preflight; no shell or host cgroup write",
+    "scratch": "Backend-owned new /tmp directory only after preflight; no caller-selected working directory",
+    "child": "Fixed reviewed Python payload with new session, inherited stdin/stdout/stderr disabled as in E75",
+    "identity": "Internally observed host, boot ID, PID, start ticks and PGID bound to owned handle; never caller flags as kernel proof",
+    "cleanup": "Reuse reviewed cleanup_group on own known handle; confirm reaping and empty group. Failure on identity acquisition cleans internally before error propagation.",
+    "unknown_spawn": "No reliable handle means incomplete and no retry; never synthesize absence or a successful reap"
+  },
+  "journal": {
+    "order": ["ready/preflight", "coordinator start clock", "INTENT write/fsync ACK", "launch", "LAUNCHED identity ACK", "finish", "verified cleanup", "coordinator end clock", "REAPED terminal ACK"],
+    "same_phase_backend_identity": "Do not switch backend instances mid-phase to reset profile consumption; all LAUNCHED records must share the first accepted host and boot ID",
+    "interval": "Before INTENT append to after cleanup and before terminal append; includes intent/identity ACK, dispatch/checks, wait and cleanup. Not atomic ATPG process time or full end-to-end search cost.",
+    "incomplete": "Any unknown launch, identity, cleanup or acknowledgment uncertainty makes whole usable interval sum null and stops the phase",
+    "replay": "Strict bounded canonical hashchain replay, never proof of original fsync ACK, source authenticity or OS execution",
+    "provenance": "E75 remains historical reference only; no invented retrospective v3 journal or timestamps"
+  },
+  "current_validation": {
+    "type": "Local mock tests only; patch Popen/preflight/kernel calls, do not launch v3 children",
+    "integrated_live_linux_validation": false,
+    "new_remote_sessions": 0,
+    "new_containers": 0,
+    "new_v3_actual_children": 0,
+    "legacy_regression_tiny_local_children_may_run": true,
+    "blind_checkpoint_quality_or_training_access": false,
+    "process_summary": "Use observed identity records and unresolved intents, not an inherited static actual_processes=0 claim on a real-capable adapter",
+    "os_authenticated": false
+  },
+  "required_tests": [
+    "preflight rejection before scratch/Popen",
+    "exact fixed Python commands with no shell and new session",
+    "INTENT ACK failure launches nothing",
+    "known handle identity-acquisition failure cleans before raising",
+    "None or unknown spawn blocks later attempts",
+    "LAUNCHED ACK or finish Exception/BaseException still cleans owned handle",
+    "cleanup or residual-group uncertainty blocks later attempts",
+    "full terminal bytes with fsync failure cannot release cost or replay ACK",
+    "fixed profile cannot run twice or be reset by swapping backend",
+    "strict identity/clock and replay/live structural consistency"
+  ],
+  "remote_execution_authorization": false,
+  "e75_quota_reset_allowed": false,
+  "production_atpg_execution_ready": false,
+  "training_release": false
+}
