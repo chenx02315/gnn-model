@@ -1,0 +1,43 @@
+{
+  "schema":"e80-request-observation-feature-resolution-v1",
+  "status":"LOCAL_IMPLEMENTATION_ONLY_NO_CHECKPOINT_OR_EXECUTION_RELEASE",
+  "decision":"Implement a distinct REQUESTED_COUNT_V1 interface; never substitute requested caps for legacy realized-count inputs or retrofit historical checkpoint metadata",
+  "scope":{"circuits":["aes_core","spi"],"role":"TRAIN_ONLY","mode_sizes":{"H":64,"M":16,"F":4},"quality_floor":"D95"},
+  "features":{
+    "implementation":"src/data/prospective_request_features_v1.py",
+    "schema_id":"REQUESTED_COUNT_V1",
+    "inputs":"Exact outcome-free action_uid/scheme/h_request/m_request rows, common-fault count and graph SHA",
+    "columns":["scheme_hf","scheme_hmf","log1p_h_request","log1p_m_request","h_request_fraction_of_frozen_roster_max","m_request_fraction_of_frozen_roster_max","log1p_common_fault_count"],
+    "normalization":"Freeze entire caller-supplied roster and its maxima before selection; subsets use the same denominators",
+    "pins":"Freeze binds graph, common count, roster and feature schema. Supplied hashes do not authenticate graph or external full-roster completeness",
+    "HF_M_zero":"Numeric sentinel for absence of an M stage, not an observed M result",
+    "outcome_inputs_rejected":true,
+    "D95_preverified":false
+  },
+  "observation":{
+    "implementation":"src/data/prospective_stage_observation_v1.py",
+    "join":"run/action/attempt/stage/index plus exact frozen request hash; parent attempt and parent result SHA identify conditional prefixes",
+    "controls":"H/M PATTERN_LIMIT from frozen action; F explicit PATTERN_LIMIT, FULL or bounded decimal-string COVERAGE_PERCENT",
+    "requested_and_realized":"Keep requested control and generated pattern count separately, whether equal or different; equality is only a sample observation, never a semantic proof",
+    "lineage":"H then conditional M for HMF, F numbered probes; each F needs a fresh successful prefix under this conservative version. No cross-action prefix reuse",
+    "process_identity":"Strict host/boot/PID/start-ticks assertions with unique entity and common host/boot per run; not OS authentication",
+    "failure":"Failed actions cannot continue; unresolved exit/termination/elapsed blocks any later attempt. Missing elapsed remains null, not timeout imputation",
+    "quality":"Successful process is not D95 safety; threshold comparison uses declared common count only and never authenticates mapping/report bytes",
+    "runtime":"Summed caller-asserted elapsed intervals are not authenticated ATPG labels or end-to-end search cost",
+    "validator_bound":"At most 64 paired dictionaries is a parser limit, not a real attempt budget or execution authorization"
+  },
+  "checkpoint_policy":{
+    "legacy_or_unknown_schema":"Reject with CHECKPOINT_FEATURE_SCHEMA_MISMATCH, including same-length seven-value vectors",
+    "exact_new_schema":"Schema-ID comparison only, no body/weights/provenance authentication or inference permission",
+    "historical_models_and_data_modified":false,
+    "actual_checkpoint_authenticated":false,
+    "new_training_required_if_no_legacy_equivalence_proof":"A separately approved data/model version with actual request provenance is needed; this implementation does not authorize training or convert historical realized counts into requests"
+  },
+  "remaining_actual_gates":["Authenticate executable/netlist/library/fault/graph and real request lineage", "Bind and validate a real Tessent stage adapter with memory/time/output/session limits", "Collect independently audited requested-count training data, not relabeled realized counts", "Freeze model and full-roster orders under compatible schema before evaluation", "Pass separate data/training/actual-execution permissions"],
+  "new_remote_sessions":0,
+  "new_containers":0,
+  "new_training_runs":0,
+  "execution_ready":false,
+  "training_release":false,
+  "inference_release":false
+}

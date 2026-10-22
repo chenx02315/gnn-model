@@ -1,0 +1,14 @@
+{
+  "schema":"e80-publication-review-v1",
+  "verdict":"PASS_SCOPED_PUBLICATION",
+  "reviewer":"/root/e72_review_final",
+  "overview_sha256":"e7d8e3c13d53e55322fe4f0cf2aa09533b56e3fcd9e98723f2cf4c3ccce64e86",
+  "raw_summary_sha256":"fae571451f56988fe359035fadadd93804eaccc982ffbce578b5e96a3e862a09",
+  "verified":["Final source and raw summary hashes unchanged", "Parent18/.010 and independent18/.010 distinguished", "Full1156/1150pass/6skip/0failerror/73.539 matches raw logs", "New request schema and realized observations stay separate", "Old checkpoint compatibility is unproved, never inferred from value equality or vector length", "D95 threshold is not authenticated admission and asserted time is not a runtime label", "Historical models/data preserved and no real checkpoint, ATPG, inference or training access"],
+  "new_remote_sessions":0,
+  "new_atpg_calls":0,
+  "new_training_runs":0,
+  "execution_ready":false,
+  "training_release":false,
+  "inference_release":false
+}

@@ -1,0 +1,18 @@
+{
+  "schema":"e80-tests-and-independent-result-review-v1",
+  "status":"PASS_LOCAL_REQUEST_FEATURE_AND_OBSERVATION_ONLY",
+  "focused":{"testsRun":18,"feature_tests":7,"observation_tests":11,"passed":18,"skipped":0,"failures":0,"errors":0,"seconds":0.010,"log_sha256":"c17d707ec5c14802cefeec56843d176b176192b039dd1a5234e0c591e790e0f1"},
+  "regression":{"testsRun":1156,"passed":1150,"skipped":6,"failures":0,"errors":0,"seconds":73.539,"log_sha256":"7b370344a91ca2a654538377af730a7c255c97fa870007cb0973135034b5f580"},
+  "independent_review":{"reviewer":"/root/e72_review_final","verdict":"PASS_LOCAL_SYNTHETIC_RESULT","testsRun":18,"seconds":0.010,"checked_source_pins":6,"fresh_demo_equals_raw":true},
+  "checks":["Whole-request roster and maxima remain stable across subsets", "Requested4 and generated2 remain separate", "Changing generatedF/cycles/detected counts leaves features unchanged", "Explicit request/action/attempt/stage/hash and successful parent lineage", "Fresh prefix per F and stale-M rejection", "Known failure charged without same-action retry; unknown cost/termination blocks later calls", "Legacy/unknown feature schema rejected; new-ID match does not authenticate checkpoint", "Canonical freeze comparison rejects bool/int/float aliases"],
+  "new_tests_and_demo_launch_no_processes":true,
+  "legacy_full_regression_includes_tiny_local_children":true,
+  "new_remote_sessions":0,
+  "new_atpg_calls":0,
+  "new_training_runs":0,
+  "real_checkpoint_authenticated":false,
+  "legacy_equivalence_proved":false,
+  "execution_ready":false,
+  "training_release":false,
+  "inference_release":false
+}

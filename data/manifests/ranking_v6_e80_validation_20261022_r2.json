@@ -1,0 +1,57 @@
+{
+  "schema": "e80-local-synthetic-validation-v1",
+  "status": "PASS_LOCAL_REQUEST_OBSERVATION_CONNECTION_ONLY",
+  "sources": [
+    {
+      "path": "src/data/prospective_request_features_v1.py",
+      "bytes": 6129,
+      "sha256": "a592fb99a06c4f084ef10043ec6c215f0d72208c0dfe6ce608971653d56a6fd5"
+    },
+    {
+      "path": "src/data/prospective_stage_observation_v1.py",
+      "bytes": 9166,
+      "sha256": "4f87639fc8928b4f098f4d00510e7cc0e2d7d1115c33ca65c93c6494537f086b"
+    },
+    {
+      "path": "tests/test_prospective_request_features_v1.py",
+      "bytes": 6685,
+      "sha256": "0396652ad1088a756be85b57fb87f7e7da79eaba3a4243d7819faa6224e119a5"
+    },
+    {
+      "path": "tests/test_prospective_stage_observation_v1.py",
+      "bytes": 10559,
+      "sha256": "b89595e89552ca92ea09b5e585e4fe1da2380611b928938679213690f981eed1"
+    },
+    {
+      "path": "scripts/demo_prospective_request_observation_e80.py",
+      "bytes": 4276,
+      "sha256": "a790f674959117da1d902203d8997e2959cc3b757a91fe478b58c334e4c07fa8"
+    },
+    {
+      "path": "contracts/prospective_request_observation_e80_v1.json",
+      "bytes": 3915,
+      "sha256": "7dd67c93a4fb84f424fb5bce7cfe1867449fa08af967f86bb165b1be07929204"
+    }
+  ],
+  "determinism": {
+    "runs": 2,
+    "summary_bytes": 12361,
+    "summary_sha256": "fae571451f56988fe359035fadadd93804eaccc982ffbce578b5e96a3e862a09",
+    "repeat_sha256": "fae571451f56988fe359035fadadd93804eaccc982ffbce578b5e96a3e862a09"
+  },
+  "intermediate_demo": {
+    "path": "..\\runtime_training_staging_20260928\\v6_e80_connection_20261022_r1\\summary.json",
+    "bytes": 12360,
+    "sha256": "84a269d8cec9401e1134e46a9fd3bfadf70191e12fc3040b09ae3edac0182955",
+    "status": "PRESERVED_NOT_FINAL_BEFORE_CANONICAL_TYPE_FIX_AND_FINAL_TESTS"
+  },
+  "new_remote_sessions": 0,
+  "new_containers": 0,
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "real_checkpoint_authenticated": false,
+  "legacy_equivalence_proved": false,
+  "execution_ready": false,
+  "training_release": false,
+  "inference_release": false
+}
