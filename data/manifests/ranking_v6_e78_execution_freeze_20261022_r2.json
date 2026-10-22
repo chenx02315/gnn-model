@@ -1,0 +1,29 @@
+{
+  "authorization_sha256": "570b599869583a89f4c2666344c6fc8e3cd9915e0bb4eed9189cfa64c399263b",
+  "controller_sha256": "da9a8a8c2625d35cd84a9896735debf0edc0da6f52e27dd606021b5ffacce200",
+  "helper_sha256": "77b18d54b46a382c309ad66d14e2eda35fcbb44efa1e09f3976a1910c66c2ab4",
+  "host_pin": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "image_id": "sha256:66ec58a325c4165749971d95dbbe1636d8423cc7328be110c5df38ed42ca57e7",
+  "payload_bytes": 36750,
+  "payload_sha256": "c40f4b03f4b1e921ce3e8b8fa5b30e0c179c347e8c7edc861b537c6141986ebe",
+  "proposal_sha256": "24903819e19b5a794bd81f86b149e01e91b9156bc6addfedaab89c4e115e7b68",
+  "source_bytes": 48889,
+  "source_sha256": {
+    "gate.py": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15",
+    "v2.py": "67861346f3725c479af9061d21869db7f7ecf21d70085df16e80dea17ed1e59e",
+    "v3.py": "1077c04f92af8c49937e7489e1ad15063af42eb7a6fa8b231af14ba7477f94b9"
+  },
+  "transport_sha256": "e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434",
+  "schema": "e78-execution-freeze-v1",
+  "status": "FROZEN_FOR_INDEPENDENT_REVIEW_NOT_YET_EXECUTED",
+  "first_session_read_cap": 28672,
+  "reserved_second_read_bytes": 4096,
+  "first_session_return_cap": 14336,
+  "reserved_second_return_bytes": 2048,
+  "container_limit": 1,
+  "profiles": 3,
+  "automatic_retries": 0,
+  "new_root": "/ssd/cjc/gnn_model_linux_journal_v3_20261022_r1",
+  "bootstrap_in_frozen_helper": true,
+  "training_release": false
+}

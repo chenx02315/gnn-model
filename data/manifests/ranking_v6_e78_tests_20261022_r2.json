@@ -1,0 +1,16 @@
+{
+  "schema":"e78-local-tests-v1",
+  "status":"PASS_LOCAL_MOCK_PREEXECUTION_TESTS",
+  "focused":{"testsRun":13,"passed":13,"skipped":0,"failures":0,"errors":0,"seconds":0.066},
+  "regression":{"testsRun":1127,"passed":1121,"skipped":6,"failures":0,"errors":0,"seconds":78.665},
+  "focused_log_sha256":"861bacc3f2b14b071971a4ccce64af376be1d8577a0e165ace2276c467eb74f0",
+  "regression_log_sha256":"72dd2cd2d63657ff54d0415d92b89b9e9ec46c1cde1e6a46118523fa7552527c",
+  "helper_sha256":"77b18d54b46a382c309ad66d14e2eda35fcbb44efa1e09f3976a1910c66c2ab4",
+  "controller_sha256":"da9a8a8c2625d35cd84a9896735debf0edc0da6f52e27dd606021b5ffacce200",
+  "tests_sha256":"172009b1f88d9fe20b21c93faa14294eefe95197bca91c5c3b2b2400544bb829",
+  "new_e78_tests_use_only_mock_transport_and_processes":true,
+  "legacy_full_regression_includes_tiny_local_children":true,
+  "new_remote_sessions_before_tests":0,
+  "new_containers_before_tests":0,
+  "training_release":false
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "e78-local-preflight-v1",
+  "status": "PASS_LOCAL_PINS_ONLY_NOT_REMOTE_EXECUTION",
+  "base_commit": "0b17d2b7f14f2e70950b63e4f7fdc0b5d3be0ff7",
+  "origin_main_matches_base": true,
+  "authorization_sha256": "570b599869583a89f4c2666344c6fc8e3cd9915e0bb4eed9189cfa64c399263b",
+  "proposal_sha256": "24903819e19b5a794bd81f86b149e01e91b9156bc6addfedaab89c4e115e7b68",
+  "cached_ed25519_pin_verified_locally": "SHA256:IF1uJU6T8bAB/nWJn9HibWGcvuVfiYFdQTECrNQlbPo",
+  "source_pins": {
+    "src/data/prospective_lifecycle_journal_v2.py": "67861346f3725c479af9061d21869db7f7ecf21d70085df16e80dea17ed1e59e",
+    "scripts/verify_prospective_linux_lifecycle_v2.py": "3a777175d1f4687e03950c5dd0aa97b8c3cba3a90905be672af274f7c28dea15",
+    "src/data/prospective_linux_journal_v3.py": "1077c04f92af8c49937e7489e1ad15063af42eb7a6fa8b231af14ba7477f94b9"
+  },
+  "unrelated_user_untracked_files_preserved": true,
+  "new_remote_sessions": 0,
+  "new_containers": 0,
+  "execution_ready": false,
+  "training_release": false
+}

@@ -1,0 +1,22 @@
+{
+  "schema":"e78-intermediate-local-preparation-findings-v1",
+  "status":"INTERMEDIATE_NOT_EXECUTION_ACCEPTANCE",
+  "new_remote_sessions":0,
+  "new_containers":0,
+  "findings":[
+    "Initial helper authorization constant contained a SHA transcription error; detected before transport",
+    "Initial 7800-byte success receipt limit could not fit the full valid 8424-byte mock result; approved overall limits permit a bounded corrected collector",
+    "Initial 4096-byte journal collector was too close to realistic clock and identity expansion",
+    "Initial local join used head instead of actual head_sha256 schema key",
+    "Independent review required first-session cleanup/audit reserves within whole-package byte caps",
+    "Independent review required exact bounded journal reads with before/after inode and path identity checks",
+    "Independent review required realistic full helper success and exact-CID failure cleanup tests plus live sum and release-flag checks"
+  ],
+  "first_focused_tests":9,
+  "first_focused_seconds":0.055,
+  "first_focused_failures":0,
+  "first_focused_errors":0,
+  "first_regression":"ranking_v6_e78_regression_20261022_r1.log; intermediate because focused source repairs continued during the run",
+  "acceptance_requires":"Final source freeze, focused/full regression, independent preexecution review before any SSH",
+  "training_release":false
+}

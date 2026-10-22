@@ -1,5 +1,7 @@
 # 下一步执行决策：收敛历史追查，准备可审计的前瞻采集
 
+2026-10-22 E78 最新：新包已获批且一次 Linux 账本联跑通过；本阶段进入独立结果封存与版本同步，不再请求重复执行。之后优先本地梳理 aes_core/spi 小试点的输入/模型映射、生产资源与完整累计预算缺项，固定清单后再评估真实采集所需门禁。当前通过不授予真实 ATPG、LSF 或训练权限。见 [E78](entries/E78_approved_linux_journal_integration.md)。
+
 2026-10-22 E77 最新：已补固定 Linux 后端与持久账本的本地连接代码、模拟故障测试和独立审查。接下来只推进新有界完整联跑包，不继续寻找镜像或原样重复训练。草案 `contracts/prospective_linux_journal_v3_execution_request.json` 尚无执行授权：因旧额度耗尽且需新增专属可写账本挂载，先取得整包授权，再连续冻结入口、预审、一次执行、审计和同步；无中途扩权或自动重试。见 [E77](entries/E77_fixed_linux_backend_journal_preparation.md)。
 
 E76（2026-10-21）：持久账本与清理验收协议的本地模拟串联已通过25项针对性测试与八类固定故障案例。先写意图确认再启动、身份与终态ACK失败不出完整费用、完整回放不能冒充ACK等规则已落地。下一节点是真实Linux进程后端与账本联跑/崩溃窗口核验；E75只证明旧固定清理脚本，不能直接覆盖新组合。零新增远端/容器；八类新增fixture不启动进程，全回归仍包含旧模块微型本地子进程测试。不解封生产或训练。见 [E76](entries/E76_durable_lifecycle_journal_synthetic_integration.md)。

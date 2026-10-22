@@ -1,0 +1,20 @@
+test_bootstrap_imports_exact_modules_without_running (test_linux_journal_phase_e78.E78Tests.test_bootstrap_imports_exact_modules_without_running) ... ok
+test_budget_reserves_cleanup_bytes_and_time (test_linux_journal_phase_e78.E78Tests.test_budget_reserves_cleanup_bytes_and_time) ... ok
+test_build_only_pins_and_quotas (test_linux_journal_phase_e78.E78Tests.test_build_only_pins_and_quotas) ... ok
+test_config_rejects_gpu_extra_mount_and_wrong_rootfs (test_linux_journal_phase_e78.E78Tests.test_config_rejects_gpu_extra_mount_and_wrong_rootfs) ... ok
+test_controller_create_once_and_start_ack_before_transport (test_linux_journal_phase_e78.E78Tests.test_controller_create_once_and_start_ack_before_transport) ... ok
+test_controller_failure_consumes_only_attempt (test_linux_journal_phase_e78.E78Tests.test_controller_failure_consumes_only_attempt) ... ok
+test_foreign_label_never_killed (test_linux_journal_phase_e78.E78Tests.test_foreign_label_never_killed) ... ok
+test_helper_complete_mocked_one_container_three_profiles (test_linux_journal_phase_e78.E78Tests.test_helper_complete_mocked_one_container_three_profiles) ... ok
+test_image_volume_preflight_blocks_before_any_root_write (test_linux_journal_phase_e78.E78Tests.test_image_volume_preflight_blocks_before_any_root_write) ... ok
+test_journal_exact_prebudget_read_and_same_size_tamper (test_linux_journal_phase_e78.E78Tests.test_journal_exact_prebudget_read_and_same_size_tamper) ... ok
+test_lost_create_response_recovers_cid_and_kills_only_owned (test_linux_journal_phase_e78.E78Tests.test_lost_create_response_recovers_cid_and_kills_only_owned) ... ok
+test_malformed_response_and_tampered_journal_fail_closed (test_linux_journal_phase_e78.E78Tests.test_malformed_response_and_tampered_journal_fail_closed) ... ok
+test_realistic_full_receipt_fits_and_replays (test_linux_journal_phase_e78.E78Tests.test_realistic_full_receipt_fits_and_replays) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.066s
+
+OK
+{"accepted": true, "phase": "C:\\Users\\86155\\AppData\\Local\\Temp\\tmpltzn10t8\\phase", "execution_ready": false, "training_release": false}
+{"accepted": false, "phase": "C:\\Users\\86155\\AppData\\Local\\Temp\\tmpsf1elxmt\\phase", "execution_ready": false, "training_release": false}

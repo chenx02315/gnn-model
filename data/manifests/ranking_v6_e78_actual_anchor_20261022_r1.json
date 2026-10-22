@@ -1,0 +1,14 @@
+{
+  "authorization_sha256": "570b599869583a89f4c2666344c6fc8e3cd9915e0bb4eed9189cfa64c399263b",
+  "execution_ready": false,
+  "first_read_cap": 28672,
+  "first_return_cap": 14336,
+  "no_retry": true,
+  "payload_sha256": "c40f4b03f4b1e921ce3e8b8fa5b30e0c179c347e8c7edc861b537c6141986ebe",
+  "proposal_sha256": "24903819e19b5a794bd81f86b149e01e91b9156bc6addfedaab89c4e115e7b68",
+  "review_sha256": "9d6c52aed74290543e24017f88035c851ac6860de809fac1ddf881cdcc912b30",
+  "schema": "e78-phase-anchor-v1",
+  "second_read_reserve": 4096,
+  "second_return_reserve": 2048,
+  "training_release": false
+}

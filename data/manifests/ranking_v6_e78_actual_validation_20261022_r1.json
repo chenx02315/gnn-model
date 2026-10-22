@@ -1,0 +1,131 @@
+{
+  "schema": "e78-actual-linux-journal-validation-v1",
+  "status": "PASS_FIXED_LINUX_JOURNAL_ONLY",
+  "container_id": "9a2946635f8a5a2aaad224ba2e517bd95dde919a59e5b2d663f22a193b3eaf7d",
+  "container_exit": 0,
+  "running": false,
+  "oom_killed": false,
+  "cleanup_verified": true,
+  "ssh_sessions_used": 1,
+  "ssh_sessions_authorized_max": 2,
+  "new_containers_used": 1,
+  "new_containers_authorized_max": 1,
+  "automatic_retries": 0,
+  "stdin_bytes": 36750,
+  "returned_bytes": 7990,
+  "host_metadata_plus_journal_read_bytes": 10464,
+  "journal_bytes": 3803,
+  "journal_sha256": "50fdfda37290d17886dc96ced894ba744ad998a338bda38fc92fa0838a6d4fea",
+  "journal_head_sha256": "d92573de026ba6170801b6dab2ef8a30eba4935eed81123a64fca6d95abc6e5b",
+  "fixed_profiles": [
+    "success",
+    "failure",
+    "timeout_group"
+  ],
+  "terminal_events": [
+    {
+      "attempt_id": "e78-1",
+      "clock_session": "e78-fixed-clock",
+      "end_ns": 1988323300180690,
+      "identity": {
+        "boot_id": "1b6e28e2-8e22-48b8-a186-9d75809924fe",
+        "host": "9a2946635f8a",
+        "pgrp": 7,
+        "pid": 7,
+        "start_ticks": 198832329
+      },
+      "interval_ns": 14856694,
+      "leader_reaped": true,
+      "observed_group_empty": true,
+      "returncode": 0,
+      "status": "SUCCESS",
+      "timed_out": false
+    },
+    {
+      "attempt_id": "e78-2",
+      "clock_session": "e78-fixed-clock",
+      "end_ns": 1988323318222310,
+      "identity": {
+        "boot_id": "1b6e28e2-8e22-48b8-a186-9d75809924fe",
+        "host": "9a2946635f8a",
+        "pgrp": 8,
+        "pid": 8,
+        "start_ticks": 198832331
+      },
+      "interval_ns": 12425921,
+      "leader_reaped": true,
+      "observed_group_empty": true,
+      "returncode": 7,
+      "status": "FAILURE",
+      "timed_out": false
+    },
+    {
+      "attempt_id": "e78-3",
+      "clock_session": "e78-fixed-clock",
+      "end_ns": 1988323747708593,
+      "identity": {
+        "boot_id": "1b6e28e2-8e22-48b8-a186-9d75809924fe",
+        "host": "9a2946635f8a",
+        "pgrp": 9,
+        "pid": 9,
+        "start_ticks": 198832333
+      },
+      "interval_ns": 422409179,
+      "leader_reaped": true,
+      "observed_group_empty": true,
+      "returncode": -9,
+      "status": "TIMEOUT",
+      "timed_out": true
+    }
+  ],
+  "live_acknowledged": true,
+  "observed_synthetic_interval_ns_sum": 449691794,
+  "cost_scope": "PRE_INTENT_ACK_TO_POST_VERIFIED_CLEANUP_PRE_TERMINAL_ACK_INCLUSIVE_NOT_ATOMIC_ATPG",
+  "replay_ack_verified": false,
+  "replay_usable_sum": null,
+  "raw_evidence_files": [
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_anchor_20261022_r1.json",
+      "bytes": 593,
+      "sha256": "429411f8e88de5a28e26a1c201df9eb615451980ef8f769d9f6ba690174b21f2"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_events_20261022_r1.jsonl",
+      "bytes": 3803,
+      "sha256": "50fdfda37290d17886dc96ced894ba744ad998a338bda38fc92fa0838a6d4fea"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_request_20261022_r1.json",
+      "bytes": 1020,
+      "sha256": "c2a6cc82d58dc469cda13de8e6937f2abc436c4c5b00a0a0e0bf1587b691d586"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_sessions_20261022_r1.jsonl",
+      "bytes": 227,
+      "sha256": "c39cd031a15d5b5c36db75f5d30c329ffddeeb676daabcff0b2dd5c201d680e0"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_stderr_20261022_r1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_stdout_20261022_r1.log",
+      "bytes": 7990,
+      "sha256": "f64607af634e7b01192cb611f2f26fae00e0cf7c6f6b7bbbed34f73e97935bbe"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e78_actual_transport_20261022_r1.json",
+      "bytes": 456,
+      "sha256": "85b1052d8e49784bef5f4300b6c3c501309a86d3cefe95ca286810dc328f69f7"
+    }
+  ],
+  "second_ssh_not_needed": true,
+  "new_physical_atpg_runtime_labels": 0,
+  "real_atpg_jobs": 0,
+  "production_release": false,
+  "training_release": false,
+  "oom_stress_test": false,
+  "power_loss_durability_proved": false,
+  "universal_process_tree_termination_proved": false
+}

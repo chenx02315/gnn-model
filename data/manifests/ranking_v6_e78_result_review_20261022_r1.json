@@ -1,0 +1,26 @@
+{
+  "schema":"e78-independent-result-review-v1",
+  "verdict":"PASS_FIXED_LINUX_JOURNAL_INTEGRATION_ONLY",
+  "reviewer":"/root/e72_review_final",
+  "stdout_sha256":"f64607af634e7b01192cb611f2f26fae00e0cf7c6f6b7bbbed34f73e97935bbe",
+  "journal_sha256":"50fdfda37290d17886dc96ced894ba744ad998a338bda38fc92fa0838a6d4fea",
+  "journal_bytes":3803,
+  "independent_checks":[
+    "Raw stdout and base64 journal bytes match the exact preserved event file",
+    "Strict canonical hashchain replay passes for nine fixed ordered events",
+    "Exit codes 0/7/-9 and timeout false/false/true; each leader reaped and group empty",
+    "PID/PGID 7/8/9 with common container hostname and boot ID",
+    "Live sum equals all three raw intervals: 449691794ns",
+    "Replay head and attempts match live; replay ACK false and usable interval None",
+    "Reconstructed container stdout 1841 bytes matches outer byte count and hash",
+    "Request/build/freeze/source/authorization/independent-prerun receipt pins match",
+    "Attach and container exit zero, running false, OOMKilled false and cleanup verified",
+    "One SSH 36750-byte input and 7990-byte return, 10464 host read bytes, one container and zero retries"
+  ],
+  "second_session_needed":false,
+  "cost_not_atomic_atpg_or_end_to_end_search":true,
+  "power_loss_durability_proved":false,
+  "universal_os_proof":false,
+  "production_release":false,
+  "training_release":false
+}

@@ -1,5 +1,7 @@
 # 下一节点账本（更新至 2026-10-21）
 
+2026-10-22 E78 最新：一次真实 Linux 账本集成已完成；原包唯一容器机会已使用，第二会话无需使用，不重跑。下一工程依赖是 aes_core/spi 前瞻小试点的真实输入控制、模型输入同义性、生产资源及完整搜索预算，不再重复验证相同 Python 三场景。当前仍不允许真实 ATPG、LSF、训练或真实标签访问。见 [E78](entries/E78_approved_linux_journal_integration.md)。
+
 2026-10-22 E77 最新：本地 v3 真实代码路径与模拟故障门禁已实现并独立检查，不重跑旧 E75。下一节点为新包的入口冻结/独立预审 → 一次实际 Linux 账本联跑 → 容器清理审计 → 封存同步。新包仅草案，新增专属可写账本目录需完整授权；当前不能 SSH/创建容器。无 ATPG、LSF 或训练放行。见 [E77](entries/E77_fixed_linux_backend_journal_preparation.md)。
 
 E76最新：本地合成账本串联及故障验证已完成，不重复实现或重跑E75。下一实质门禁为真实Linux后端适配和持久账本联跑/崩溃窗口核验；目前没有真实进程后端接入或新远端执行许可。E75原额度已用完，不能清零复用。真实ATPG/训练保持关闭。见 [E76](entries/E76_durable_lifecycle_journal_synthetic_integration.md)。

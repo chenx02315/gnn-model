@@ -1,0 +1,2 @@
+{"event":"START","mode":"execute","output_cap":14336,"payload_sha256":"c40f4b03f4b1e921ce3e8b8fa5b30e0c179c347e8c7edc861b537c6141986ebe","stdin_bytes":36750}
+{"accepted":true,"event":"END","mode":"execute","return_bytes":7990}

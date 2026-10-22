@@ -1,0 +1,14 @@
+{
+  "schema":"e78-scoped-publication-review-v1",
+  "verdict":"PASS_SCOPED_PUBLICATION",
+  "reviewer":"/root/e72_review_final",
+  "scope":"Completed fixed Linux synthetic process and durable-journal integration package only",
+  "verified":["All curated raw-evidence sizes and SHA-256 match preserved files", "Curated terminal payloads exactly match raw REAPED events", "Live head and 449691794ns sum agree with raw journal", "Overview and current task entries match actual limits and evidence boundaries", "Final source and test pins unchanged after execution", "Focused 13 tests and full 1127 tests with 6 skips and no failures/errors supported by preserved logs"],
+  "remote_sessions":1,
+  "containers":1,
+  "automatic_retries":0,
+  "second_session_used":false,
+  "new_tests_or_remote_calls_needed_for_publication":false,
+  "production_release":false,
+  "training_release":false
+}
