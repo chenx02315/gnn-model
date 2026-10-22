@@ -1,0 +1,30 @@
+{
+  "schema": "e82-intermediate-findings-v1",
+  "status": "INITIAL_DRAFT_NOT_ACCEPTED",
+  "static_findings": [
+    "create re-read caller-owned mutable plan after header fsync, risking header/live binding divergence; require frozen header initialization and mutation injection test",
+    "close exception must permanently disable writer and avoid second close on potentially reused descriptor"
+  ],
+  "parent_preliminary_test": {
+    "testsRun": 12,
+    "seconds": 0.079,
+    "failures": 1,
+    "errors": 10,
+    "final_validation": false,
+    "observation": "Draft run while tests were still under construction; widespread JOURNAL_IDENTITY_CHANGED and secondary Windows temporary-file cleanup errors; investigation required, not accepted as expected skips"
+  },
+  "source_snapshot_note": "Local r0 snapshot was copied after concurrent initial fixes; it is an intermediate snapshot, not asserted to reproduce every earlier finding.",
+  "local_snapshot_sha256": "136fa6bb18de34a33a31d764e0578914a6e6e820b98c348be1dcce0c85b2e458",
+  "first_frozen_version": {
+    "module_sha256": "7f1df1c66d086920a4daa35219b4403d9ca8876699da4ee1bc9c13737fe767c8",
+    "tests_sha256": "39b9e4cbcdc7c18a6f04c25a573055230a73f9f92833049e07a239eff6c57933",
+    "parent_focused": "13 pass, 0.108 seconds, no skips",
+    "synthetic_summary_sha256": "2a7bffba9e42a18bc94f307c60450e615c380deb17d0b202440f2161bc594880",
+    "accepted": false,
+    "parent_intermediate_regression": "1183 total, 1177 pass, 6 conditional skips, zero failures/errors, 71.722 seconds; not final because the independent counterexample required a source revision",
+    "independent_counterexample": "Reentrant fsync callback calls snapshot, which poisons writer while expected identity is still old; outer append still returned a token. Observed during_append_snapshot_poison=True and token_returned_after_poison=h True. Must fail closed before returning token."
+  },
+  "new_atpg_calls": 0,
+  "execution_ready": false,
+  "training_release": false
+}

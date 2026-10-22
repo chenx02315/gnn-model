@@ -1,0 +1,26 @@
+{
+  "schema": "e82-local-budget-journal-contract-v2",
+  "scope": "LOCAL_SYNTHETIC_FILE_PROTOCOL_ONLY",
+  "predecessor": "prospective_tessent_stage_e81_v1.json",
+  "requirements": [
+    "Exclusive creation at one caller-trusted fixed phase journal path",
+    "Full plan and caps bound in journal before any debit",
+    "Debit local fsync acknowledgment precedes token return",
+    "Settlement local fsync acknowledgment precedes next debit",
+    "Failures never refund and uncertain IO poisons writer",
+    "Readonly replay cannot resume writer or authenticate historical acknowledgments"
+  ],
+  "limits": {
+    "max_journal_bytes": 1048576,
+    "max_events": 256,
+    "single_writer": true,
+    "automatic_retry": false
+  },
+  "namespace_boundary": "Caller must retain the fixed phase path; a new arbitrary directory cannot be prevented by a local file library from creating a separate quota.",
+  "durability_boundary": "Local fsync success is not power-loss, directory-entry durability, Linux filesystem qualification or adversarial same-user TOCTOU proof.",
+  "integration": "E81 fixed synthetic 3 Tessent plus 2 translation task plan; no process callbacks or execution API",
+  "actual_processes_launched": 0,
+  "new_remote_sessions": 0,
+  "execution_ready": false,
+  "training_release": false
+}

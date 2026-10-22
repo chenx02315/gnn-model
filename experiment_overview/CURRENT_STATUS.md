@@ -1,5 +1,7 @@
 # 当前实验状态
 
+E82（2026-10-22）：已将 E81 固定配方接入独占文件扣账协议，落盘确认后才交 token，失败不退款，回放不恢复写入或历史 ACK。计划别名、关闭异常、Windows 身份时间戳、FIFO 阻塞与重入后错误发 token 均经修复和反例验证；15 项专项及独立复核通过，1,185 项回归中 1,179 通过/6 跳过/零失败错误，两次摘要字节一致。仅本地合成协议，不是全局额度、真实资源或执行放行。见 [E82](entries/E82_persistent_task_budget_journal.md)。
+
 E81（2026-10-22）：已接出离线固定 Tessent stage 配方、严格报告文本解析与有序内存扣账原型。H common/MF incremental、三类互斥控制、run 隔离路径、目标原生翻译前置任务均明确；修复日志控制不符、小数 cycle 截断、FU 缺失/不符三个反例。14 项新测试及独立审核通过；1,170 项回归中 1,164 通过/6 跳过/零失败错误。合成串联分别计 3 个 Tessent 槽与 2 个翻译槽；无真实执行、翻译、OS 守卫或持久额度放行。见 [E81](entries/E81_offline_tessent_stage_and_budget.md)。
 
 E80（2026-10-22）：请求/实测混用问题已落实修复：新 `REQUESTED_COUNT_V1` 七维接口仅使用冻结的运行前请求和全清单分母，结果单独按 run/action/attempt/stage/hash/前缀身份连接。旧/未知 schema 拒绝，新 ID 匹配也不认证权重或推理。请求 4 实产 2、结果变化不改特征、前缀与错误连接反例均验证；18 项新测试及独立复核通过，1,156 项回归中 1,150 通过/6 跳过/零失败错误。未重训、未运行 ATPG。见 [E80 修复记录](entries/E80_requested_features_and_stage_observation.md)。

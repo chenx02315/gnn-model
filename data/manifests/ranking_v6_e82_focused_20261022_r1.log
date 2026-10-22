@@ -1,0 +1,18 @@
+test_caller_plan_mutation_during_header_fsync_cannot_rebind_live (test_prospective_stage_budget_journal_v2.StageJournalTests.test_caller_plan_mutation_during_header_fsync_cannot_rebind_live) ... ok
+test_close_failure_makes_writer_permanently_unavailable (test_prospective_stage_budget_journal_v2.StageJournalTests.test_close_failure_makes_writer_permanently_unavailable) ... ok
+test_complete_three_tasks_live_ack_then_replay_no_historical_ack (test_prospective_stage_budget_journal_v2.StageJournalTests.test_complete_three_tasks_live_ack_then_replay_no_historical_ack) ... ok
+test_debit_full_row_fsync_failure_poison_replay_ack_false (test_prospective_stage_budget_journal_v2.StageJournalTests.test_debit_full_row_fsync_failure_poison_replay_ack_false) ... ok
+test_dependency_cap_denial_and_no_refund_or_retry (test_prospective_stage_budget_journal_v2.StageJournalTests.test_dependency_cap_denial_and_no_refund_or_retry) ... ok
+test_failed_and_unknown_settlement_never_retry (test_prospective_stage_budget_journal_v2.StageJournalTests.test_failed_and_unknown_settlement_never_retry) ... ok
+test_header_shortwrite_preserves_no_recreation (test_prospective_stage_budget_journal_v2.StageJournalTests.test_header_shortwrite_preserves_no_recreation) ... ok
+test_path_replace_and_hardlink_poison (test_prospective_stage_budget_journal_v2.StageJournalTests.test_path_replace_and_hardlink_poison) ... ok
+test_recomputed_chain_still_rejects_bool_token_alias (test_prospective_stage_budget_journal_v2.StageJournalTests.test_recomputed_chain_still_rejects_bool_token_alias) ... ok
+test_replay_rejects_fifo_before_open_and_uses_nonblocking_flag (test_prospective_stage_budget_journal_v2.StageJournalTests.test_replay_rejects_fifo_before_open_and_uses_nonblocking_flag) ... ok
+test_settlement_full_row_fsync_failure_poison_replay_ack_false (test_prospective_stage_budget_journal_v2.StageJournalTests.test_settlement_full_row_fsync_failure_poison_replay_ack_false) ... ok
+test_shortwrite_poison_and_torn_replay_rejected (test_prospective_stage_budget_journal_v2.StageJournalTests.test_shortwrite_poison_and_torn_replay_rejected) ... ok
+test_symlink_torn_oversize_noncanonical_and_duplicate_json (test_prospective_stage_budget_journal_v2.StageJournalTests.test_symlink_torn_oversize_noncanonical_and_duplicate_json) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.108s
+
+OK

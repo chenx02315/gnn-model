@@ -1,0 +1,88 @@
+{
+  "schema": "e82-validation-and-result-review-v2",
+  "status": "PASS_LOCAL_SYNTHETIC_FILE_PROTOCOL_ONLY",
+  "pins": {
+    "src/data/prospective_stage_budget_journal_v2.py": {
+      "bytes": 13491,
+      "sha256": "4d7d6a27d564525cb09e1753f9f00ba05f12ec72f2be355130c9e922f54a1ac1"
+    },
+    "tests/test_prospective_stage_budget_journal_v2.py": {
+      "bytes": 14360,
+      "sha256": "cf535e5c0215c85d4ea3ee25bd4d198f5abb8e7be14800734dc9ea45bc18152a"
+    },
+    "scripts/demo_prospective_stage_budget_e82.py": {
+      "bytes": 3527,
+      "sha256": "97f93ac231c25b1aaff8756ec6481065fd4ece8ff51efec145621692aa5e4049"
+    },
+    "contracts/prospective_stage_budget_e82_v2.json": {
+      "bytes": 1298,
+      "sha256": "69be4d5116e2c01ce2cbbc066560d0d440aa6a349ff3f5b783b7e5e2cb2486d0"
+    },
+    "data/manifests/ranking_v6_e82_connection_20261022_r3.json": {
+      "bytes": 9984,
+      "sha256": "1ef4e29dce91d24a5d7144fa05de3f6abd24a1c16f379c600f7c96b3c398a2ed"
+    },
+    "data/manifests/ranking_v6_e82_focused_20261022_r3.log": {
+      "bytes": 2797,
+      "sha256": "300eba0d2f35c4993570a259d219fd87ceb1787ed845f5c92f2258872147a647"
+    },
+    "data/manifests/ranking_v6_e82_regression_20261022_r3.log": {
+      "bytes": 2190,
+      "sha256": "4b5664082a43915ece0a5e69fa34bd3cdd64c18f88fb95fefb2710ba3f545af2"
+    }
+  },
+  "focused": {
+    "testsRun": 15,
+    "passed": 15,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.117
+  },
+  "regression": {
+    "testsRun": 1185,
+    "passed": 1179,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 70.756
+  },
+  "independent_review": {
+    "reviewer": "/root/e72_review_final",
+    "verdict": "FINAL_LOCAL_SYNTHETIC_FILE_PROTOCOL_PASS",
+    "testsRun": 15,
+    "seconds": 0.124,
+    "reentrant_debit_and_settle_counterexamples_rechecked": true
+  },
+  "repeat_summary_sha256": "1ef4e29dce91d24a5d7144fa05de3f6abd24a1c16f379c600f7c96b3c398a2ed",
+  "journal": {
+    "bytes": 8211,
+    "sha256": "89a608baf13dbf4e7f859744af3419870bd3145695f6b86f696e486ef95d7150",
+    "canonical_rows": 11,
+    "events": 10
+  },
+  "synthetic": {
+    "tessent_slots": 3,
+    "translation_slots": 2,
+    "reserved_envelope_ns": 60,
+    "asserted_elapsed_ns": 23,
+    "measured_atpg_runtime": false
+  },
+  "preserved_intermediate_results": [
+    "ranking_v6_e82_intermediate_findings_20261022_r0.json",
+    "ranking_v6_e82_connection_20261022_r1.json",
+    "ranking_v6_e82_focused_20261022_r1.log",
+    "ranking_v6_e82_regression_20261022_r1.log"
+  ],
+  "boundaries": [
+    "Same fixed phase path exclusive creation only, not global quota across arbitrary new directories",
+    "Replay never authenticates past fsync ACK and cannot reopen writer",
+    "Windows local fsync/fault tests do not qualify Linux, power-loss or same-user TOCTOU safety",
+    "Full regression contains old tiny local child-process tests; E82 additions and demos launch none"
+  ],
+  "new_remote_sessions": 0,
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

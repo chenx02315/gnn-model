@@ -1,0 +1,279 @@
+{
+  "actual_processes_launched": 0,
+  "budget_plan": [
+    {
+      "cleanup_ns": 2,
+      "depends_on": [],
+      "kind": "TESSENT_STAGE",
+      "request_sha256": "67fc4302b2c45616bdc5adce8f63d62efeef494e9f471c9f5f736c1094b52db3",
+      "stage": "H",
+      "task_uid": "attempt-h:tessent",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [],
+      "kind": "STATUS_TRANSLATION",
+      "request_sha256": "8c050211efbf9920f3865a81f27ca983413066d3d1f0d4ed977c8dcc12dca1be",
+      "stage": "M",
+      "task_uid": "attempt-m:translation",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [
+        "attempt-m:translation"
+      ],
+      "kind": "TESSENT_STAGE",
+      "request_sha256": "8c050211efbf9920f3865a81f27ca983413066d3d1f0d4ed977c8dcc12dca1be",
+      "stage": "M",
+      "task_uid": "attempt-m:tessent",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [],
+      "kind": "STATUS_TRANSLATION",
+      "request_sha256": "0cd140806dc43e39e0701fef4455bb254b27914c91ff1f6bd9d502d06c95f114",
+      "stage": "F",
+      "task_uid": "attempt-f:translation",
+      "timeout_ns": 10
+    },
+    {
+      "cleanup_ns": 2,
+      "depends_on": [
+        "attempt-f:translation"
+      ],
+      "kind": "TESSENT_STAGE",
+      "request_sha256": "0cd140806dc43e39e0701fef4455bb254b27914c91ff1f6bd9d502d06c95f114",
+      "stage": "F",
+      "task_uid": "attempt-f:tessent",
+      "timeout_ns": 10
+    }
+  ],
+  "execution_ready": false,
+  "existing_phase_path_rejected": true,
+  "fabricated_elapsed_is_measured_runtime": false,
+  "fabricated_elapsed_ns": 23,
+  "journal": {
+    "bytes": 8211,
+    "sha256": "89a608baf13dbf4e7f859744af3419870bd3145695f6b86f696e486ef95d7150"
+  },
+  "linux_qualification": false,
+  "live": {
+    "OS_power_loss_durability_proved": false,
+    "OS_resource_limits_enforced": false,
+    "active_slot": null,
+    "asserted_elapsed_ns_sum": 23,
+    "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+    "consumed_counts": {
+      "STATUS_TRANSLATION": 2,
+      "TESSENT_STAGE": 3
+    },
+    "declared_plan_complete": true,
+    "durable_debit_ack_verified": true,
+    "elapsed_is_not_authenticated_atpg_runtime": true,
+    "event_count": 10,
+    "execution_ready": false,
+    "fsync_acknowledgments_verified": true,
+    "head_sha256": "4a6a63cdde7ee297061521b1188f66ff5be2c3b686bc0dcf0f91948f37d6bdd9",
+    "launch_authorized": false,
+    "namespace_global_quota_proved": false,
+    "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+    "plan_task_count": 5,
+    "reserved_envelope_ns": 60,
+    "schema": "prospective-stage-budget-journal-v2",
+    "settled_task_count": 5,
+    "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+    "stopped_reason": null,
+    "training_release": false,
+    "writer_poisoned": false
+  },
+  "namespace_anchor_enforced_outside_library": false,
+  "new_containers": 0,
+  "new_remote_sessions": 0,
+  "power_loss_durability_verified": false,
+  "replay": {
+    "OS_power_loss_durability_proved": false,
+    "OS_resource_limits_enforced": false,
+    "active_slot": null,
+    "asserted_elapsed_ns_sum": null,
+    "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+    "consumed_counts": {
+      "STATUS_TRANSLATION": 2,
+      "TESSENT_STAGE": 3
+    },
+    "declared_plan_complete": true,
+    "durable_debit_ack_verified": false,
+    "elapsed_is_not_authenticated_atpg_runtime": true,
+    "event_count": 10,
+    "execution_ready": false,
+    "fsync_acknowledgments_verified": false,
+    "head_sha256": "4a6a63cdde7ee297061521b1188f66ff5be2c3b686bc0dcf0f91948f37d6bdd9",
+    "launch_authorized": false,
+    "namespace_global_quota_proved": false,
+    "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+    "plan_task_count": 5,
+    "reserved_envelope_ns": 60,
+    "schema": "prospective-stage-budget-journal-v2",
+    "settled_task_count": 5,
+    "state_kind": "STRUCTURAL_REPLAY_ONLY_NO_HISTORICAL_ACK",
+    "stopped_reason": null,
+    "structural_replay_valid": true,
+    "training_release": false,
+    "writer_poisoned": null
+  },
+  "schema": "e82-local-budget-connection-v2",
+  "snapshots": [
+    {
+      "OS_power_loss_durability_proved": false,
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 5,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 0,
+        "TESSENT_STAGE": 1
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": true,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "fsync_acknowledgments_verified": true,
+      "launch_authorized": false,
+      "namespace_global_quota_proved": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 12,
+      "schema": "prospective-stage-budget-journal-v2",
+      "settled_task_count": 1,
+      "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_power_loss_durability_proved": false,
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 9,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 1,
+        "TESSENT_STAGE": 1
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": true,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "fsync_acknowledgments_verified": true,
+      "launch_authorized": false,
+      "namespace_global_quota_proved": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 24,
+      "schema": "prospective-stage-budget-journal-v2",
+      "settled_task_count": 2,
+      "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_power_loss_durability_proved": false,
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 14,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 1,
+        "TESSENT_STAGE": 2
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": true,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "fsync_acknowledgments_verified": true,
+      "launch_authorized": false,
+      "namespace_global_quota_proved": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 36,
+      "schema": "prospective-stage-budget-journal-v2",
+      "settled_task_count": 3,
+      "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_power_loss_durability_proved": false,
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 18,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 2,
+        "TESSENT_STAGE": 2
+      },
+      "declared_plan_complete": false,
+      "durable_debit_ack_verified": true,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "fsync_acknowledgments_verified": true,
+      "launch_authorized": false,
+      "namespace_global_quota_proved": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 48,
+      "schema": "prospective-stage-budget-journal-v2",
+      "settled_task_count": 4,
+      "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+      "stopped_reason": null,
+      "training_release": false
+    },
+    {
+      "OS_power_loss_durability_proved": false,
+      "OS_resource_limits_enforced": false,
+      "active_slot": null,
+      "asserted_elapsed_ns_sum": 23,
+      "asserted_elapsed_scope": "SETTLED_KNOWN_PREFIX_ONLY_NOT_FULL_PLAN_OR_SESSION",
+      "consumed_counts": {
+        "STATUS_TRANSLATION": 2,
+        "TESSENT_STAGE": 3
+      },
+      "declared_plan_complete": true,
+      "durable_debit_ack_verified": true,
+      "elapsed_is_not_authenticated_atpg_runtime": true,
+      "execution_ready": false,
+      "fsync_acknowledgments_verified": true,
+      "launch_authorized": false,
+      "namespace_global_quota_proved": false,
+      "plan_sha256": "c8122a4a745bfbc9d0915b414920023a6176160d976de0178848aae3eba491aa",
+      "plan_task_count": 5,
+      "reserved_envelope_ns": 60,
+      "schema": "prospective-stage-budget-journal-v2",
+      "settled_task_count": 5,
+      "state_kind": "LIVE_LOCAL_FSYNC_ACK_ONLY",
+      "stopped_reason": null,
+      "training_release": false
+    }
+  ],
+  "sources": {
+    "contracts/prospective_stage_budget_e82_v2.json": {
+      "bytes": 1298,
+      "sha256": "69be4d5116e2c01ce2cbbc066560d0d440aa6a349ff3f5b783b7e5e2cb2486d0"
+    },
+    "scripts/demo_prospective_stage_budget_e82.py": {
+      "bytes": 3527,
+      "sha256": "97f93ac231c25b1aaff8756ec6481065fd4ece8ff51efec145621692aa5e4049"
+    },
+    "src/data/prospective_stage_budget_journal_v2.py": {
+      "bytes": 13491,
+      "sha256": "4d7d6a27d564525cb09e1753f9f00ba05f12ec72f2be355130c9e922f54a1ac1"
+    },
+    "tests/test_prospective_stage_budget_journal_v2.py": {
+      "bytes": 14360,
+      "sha256": "cf535e5c0215c85d4ea3ee25bd4d198f5abb8e7be14800734dc9ea45bc18152a"
+    }
+  },
+  "status": "PASS_LOCAL_SYNTHETIC_FILE_CONNECTION_ONLY",
+  "training_release": false
+}

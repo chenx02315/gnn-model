@@ -1,0 +1,136 @@
+{
+  "schema": "e82-staged-publication-seal-v2",
+  "status": "PASS_WORKTREE_EQUALS_STAGED_BYTES",
+  "base_commit": "8cfc6a767aeb813c59e6bf74474899adc80227c9",
+  "excludes_self": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 21176,
+      "sha256": "8c7a611a79cecc9be37e1764b3b4277bf16fe3dd07aaa1eeaf5db48e04d661ec",
+      "staged_sha256": "8c7a611a79cecc9be37e1764b3b4277bf16fe3dd07aaa1eeaf5db48e04d661ec",
+      "git_blob": "48df8b6bba6127fa2c7c7729684c2c63c369271b"
+    },
+    {
+      "path": "contracts/prospective_stage_budget_e82_v2.json",
+      "bytes": 1298,
+      "sha256": "69be4d5116e2c01ce2cbbc066560d0d440aa6a349ff3f5b783b7e5e2cb2486d0",
+      "staged_sha256": "69be4d5116e2c01ce2cbbc066560d0d440aa6a349ff3f5b783b7e5e2cb2486d0",
+      "git_blob": "1e2f29140823858d3be9b85aee0f0db9989e2654"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_connection_20261022_r1.json",
+      "bytes": 9984,
+      "sha256": "2a7bffba9e42a18bc94f307c60450e615c380deb17d0b202440f2161bc594880",
+      "staged_sha256": "2a7bffba9e42a18bc94f307c60450e615c380deb17d0b202440f2161bc594880",
+      "git_blob": "a6cdd83a0730e967d368bcff2acc2572003c830e"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_connection_20261022_r3.json",
+      "bytes": 9984,
+      "sha256": "1ef4e29dce91d24a5d7144fa05de3f6abd24a1c16f379c600f7c96b3c398a2ed",
+      "staged_sha256": "1ef4e29dce91d24a5d7144fa05de3f6abd24a1c16f379c600f7c96b3c398a2ed",
+      "git_blob": "6e97a763f7ca200970602a196264c5d7e8ddfa40"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_focused_20261022_r1.log",
+      "bytes": 2425,
+      "sha256": "a8a37a7a81cc92bf5166f257a953079893463203c4d466723fc4111d2219a483",
+      "staged_sha256": "a8a37a7a81cc92bf5166f257a953079893463203c4d466723fc4111d2219a483",
+      "git_blob": "335a2215c32b4a25ef70be04b0b14c415f5afc52"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_focused_20261022_r3.log",
+      "bytes": 2797,
+      "sha256": "300eba0d2f35c4993570a259d219fd87ceb1787ed845f5c92f2258872147a647",
+      "staged_sha256": "300eba0d2f35c4993570a259d219fd87ceb1787ed845f5c92f2258872147a647",
+      "git_blob": "5111518afbffe67c306aae3bce0e9a549abfeebe"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_intermediate_findings_20261022_r0.json",
+      "bytes": 1998,
+      "sha256": "01fc097d9e03ab00980e29c57137a4aac7588e3a3cb7a2aa9d7f8489e747f0b2",
+      "staged_sha256": "01fc097d9e03ab00980e29c57137a4aac7588e3a3cb7a2aa9d7f8489e747f0b2",
+      "git_blob": "0d61a013cf721c2934dfa38d09d7b46cf20c35cd"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_publication_review_20261022_r3.json",
+      "bytes": 1251,
+      "sha256": "52dbdb2573e5904b035cd43ef97c2c3e8384918364902a1998cbe6bfc4d2c7a4",
+      "staged_sha256": "52dbdb2573e5904b035cd43ef97c2c3e8384918364902a1998cbe6bfc4d2c7a4",
+      "git_blob": "822365dcf14a8cc4722602c6ee32bced4cf86301"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_regression_20261022_r1.log",
+      "bytes": 2188,
+      "sha256": "e438ea50935b38bc70341c1977809c6d40b067abb02d48142dc817ad8ee40a13",
+      "staged_sha256": "e438ea50935b38bc70341c1977809c6d40b067abb02d48142dc817ad8ee40a13",
+      "git_blob": "fa547fbc29eb9f6534b01e46804ffe29a537b47e"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_regression_20261022_r3.log",
+      "bytes": 2190,
+      "sha256": "4b5664082a43915ece0a5e69fa34bd3cdd64c18f88fb95fefb2710ba3f545af2",
+      "staged_sha256": "4b5664082a43915ece0a5e69fa34bd3cdd64c18f88fb95fefb2710ba3f545af2",
+      "git_blob": "8d0b1f80f5e2c37fc06e79cb139243627f88e4b4"
+    },
+    {
+      "path": "data/manifests/ranking_v6_e82_validation_20261022_r3.json",
+      "bytes": 3055,
+      "sha256": "4ee3c86005838e749a0a31e99f92ace2dd4a6e212e591b816e9a41c13c03e934",
+      "staged_sha256": "4ee3c86005838e749a0a31e99f92ace2dd4a6e212e591b816e9a41c13c03e934",
+      "git_blob": "e481c9f31bfa6eba7dde6a9c2fa02305f434c864"
+    },
+    {
+      "path": "experiment_overview/CURRENT_STATUS.md",
+      "bytes": 15713,
+      "sha256": "5238344300a01b6359f0102d5550dde62c859862cb8c9753d90d1d0004abeb67",
+      "staged_sha256": "5238344300a01b6359f0102d5550dde62c859862cb8c9753d90d1d0004abeb67",
+      "git_blob": "23984bec00a0ef37d6b83a1481678b17a9bff86b"
+    },
+    {
+      "path": "experiment_overview/NEXT_EXECUTION_PLAN.md",
+      "bytes": 14283,
+      "sha256": "d77b7d62e4baaad3b650901610b63848f90f2e4ddc552a720df5605af4bd30a8",
+      "staged_sha256": "d77b7d62e4baaad3b650901610b63848f90f2e4ddc552a720df5605af4bd30a8",
+      "git_blob": "e4cffa103b8c00551731ca8d8196d07e764ebbcd"
+    },
+    {
+      "path": "experiment_overview/NEXT_TASKS.md",
+      "bytes": 43392,
+      "sha256": "a4573c6a8ce119caf6938809ff1c14528200cb91355e615a721c946b76135929",
+      "staged_sha256": "a4573c6a8ce119caf6938809ff1c14528200cb91355e615a721c946b76135929",
+      "git_blob": "b7462c44fe73c8fa4e37196bf99aa4d5cf169dca"
+    },
+    {
+      "path": "experiment_overview/entries/E82_persistent_task_budget_journal.md",
+      "bytes": 3492,
+      "sha256": "bd605d36afc7dd71e512bbbc259a7b2c297a906e6b1eb31ced6b4dd83cb72bae",
+      "staged_sha256": "bd605d36afc7dd71e512bbbc259a7b2c297a906e6b1eb31ced6b4dd83cb72bae",
+      "git_blob": "801bf945d6c8f341852305d9e8be47fce7e2bb7b"
+    },
+    {
+      "path": "scripts/demo_prospective_stage_budget_e82.py",
+      "bytes": 3527,
+      "sha256": "97f93ac231c25b1aaff8756ec6481065fd4ece8ff51efec145621692aa5e4049",
+      "staged_sha256": "97f93ac231c25b1aaff8756ec6481065fd4ece8ff51efec145621692aa5e4049",
+      "git_blob": "9aaa9fec210ca069433639eab1667e993bbae9ab"
+    },
+    {
+      "path": "src/data/prospective_stage_budget_journal_v2.py",
+      "bytes": 13491,
+      "sha256": "4d7d6a27d564525cb09e1753f9f00ba05f12ec72f2be355130c9e922f54a1ac1",
+      "staged_sha256": "4d7d6a27d564525cb09e1753f9f00ba05f12ec72f2be355130c9e922f54a1ac1",
+      "git_blob": "2d6e37fde51954dd34eb96d5e0eaf2bc3bbf7a77"
+    },
+    {
+      "path": "tests/test_prospective_stage_budget_journal_v2.py",
+      "bytes": 14360,
+      "sha256": "cf535e5c0215c85d4ea3ee25bd4d198f5abb8e7be14800734dc9ea45bc18152a",
+      "staged_sha256": "cf535e5c0215c85d4ea3ee25bd4d198f5abb8e7be14800734dc9ea45bc18152a",
+      "git_blob": "b3d536eead0ac3d99b0b3f7b2aed66a142e69ad8"
+    }
+  ],
+  "execution_ready": false,
+  "training_release": false
+}

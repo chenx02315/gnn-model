@@ -1,0 +1,23 @@
+{
+  "schema": "e82-publication-review-v2",
+  "verdict": "PASS_SCOPED_PUBLICATION",
+  "reviewer": "/root/e72_review_final",
+  "overview_sha256": "bd605d36afc7dd71e512bbbc259a7b2c297a906e6b1eb31ced6b4dd83cb72bae",
+  "validation_sha256": "4ee3c86005838e749a0a31e99f92ace2dd4a6e212e591b816e9a41c13c03e934",
+  "summary_sha256": "1ef4e29dce91d24a5d7144fa05de3f6abd24a1c16f379c600f7c96b3c398a2ed",
+  "verified": [
+    "17 staged paths scope reviewed; only E82 additions, attributes and three overview heads",
+    "All seven validation pins match actual bytes",
+    "15 parent/.117 and 15 independent/.124 tests distinguished",
+    "1185 total/1179 passed/6 conditional skips/0 failures/errors/70.756 matches raw regression",
+    "Earlier 13-pass version explicitly not accepted; intermediate findings and outputs retained",
+    "11 canonical journal rows/10 events/3 Tessent+2 translation/60 envelope/23 synthetic asserted elapsed",
+    "Readonly replay does not authenticate historical fsync ACK or usable time",
+    "Fixed namespace trust, Windows local fsync, no Linux/power-loss/global quota qualification stated"
+  ],
+  "new_remote_sessions": 0,
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}
