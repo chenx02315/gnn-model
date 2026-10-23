@@ -424,3 +424,9 @@ tests/test_prospective_acquisition_request_v1.py -text
 contracts/prospective_acquisition_request_e87_v1.json -text
 experiment_overview/entries/E87_graphless_acquisition_requests.md -text
 data/manifests/ranking_v6_e87_* -text whitespace=cr-at-eol
+scripts/probe_acquisition_semantics_e88.py -text
+scripts/execute_acquisition_semantics_probe_e88.py -text
+tests/test_prospective_acquisition_semantics_e88.py -text
+contracts/prospective_input_semantics_e88_v1.json -text
+experiment_overview/entries/E88_real_common_input_namespace_audit.md -text
+data/manifests/ranking_v6_e88_* -text whitespace=cr-at-eol

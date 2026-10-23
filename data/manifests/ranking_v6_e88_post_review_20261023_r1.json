@@ -1,0 +1,20 @@
+{
+  "schema": "e88-post-observation-review-v1",
+  "date": "2026-10-23",
+  "reviewer": "/root/e85_fallback_review",
+  "model": "gpt-6-sol",
+  "verdict": "POST_OBSERVATION_PASS_SCOPED_READ_ONLY",
+  "receipt_sha256": {
+    "start.json": "526d322d7c54d208cce1b38db676ca91cdb1ff23322c54ff794d0c2292212f82",
+    "stdout.json": "f46ed9fea9f5fecaea146ae75807db06fbd75887fc21a995a8da44ebe65b09c8",
+    "transport.json": "23339820f2c8a309e6f6f3faf8f9c91bb0ae2087a9f501e6283fa18dcac94a95",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "verified": ["Receipt hashes and lengths match transport", "Reader and transport source pins match start", "11 file byte sum matches 11758011 and all bounds", "All ten E84 common input SHA and size pairs match", "Both circuit counts and six mode set comparisons pass", "No program launch, remote write, ATPG or training", "Broad semantics/version/readiness claims remain false"],
+  "reviewer_remote_calls": 0,
+  "reviewer_writes": 0,
+  "remote_body_hashes_independently_recomputed": false,
+  "remote_termination_verified": false,
+  "execution_ready": false,
+  "training_release": false
+}

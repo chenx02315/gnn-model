@@ -1,0 +1,18 @@
+test_ancestor_swap_to_symlink_stops_before_body (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_ancestor_swap_to_symlink_stops_before_body) ... ok
+test_basic_duplicate_quotes_stuck_and_count_fail (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_basic_duplicate_quotes_stuck_and_count_fail) ... ok
+test_controller_bad_reader_pin_fails_before_phase_or_transport (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_controller_bad_reader_pin_fails_before_phase_or_transport) ... ok
+test_exact_sets_and_eleventh_launcher_body (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_exact_sets_and_eleventh_launcher_body) ... ok
+test_file_cap_and_fd_nofollow_swap_no_body_read_or_leak (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_file_cap_and_fd_nofollow_swap_no_body_read_or_leak) ... ok
+test_fixed_scope_and_host_guard_before_read (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_fixed_scope_and_host_guard_before_read) ... ok
+test_manifest_raw_sha_binding_fails_before_set_claim (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_manifest_raw_sha_binding_fails_before_set_claim) ... ok
+test_manifest_required_fields_and_duplicate_json (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_manifest_required_fields_and_duplicate_json) ... ok
+test_mapping_duplicate_missing_swapped_and_stuck_fail (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_mapping_duplicate_missing_swapped_and_stuck_fail) ... ok
+test_mapping_extra_metadata_column_allowed_but_width_and_header_strict (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_mapping_extra_metadata_column_allowed_but_width_and_header_strict) ... ok
+test_partial_stops_following_files (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_partial_stops_following_files) ... ok
+test_swapped_f_rows_same_set_rejected_by_per_row_offset (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_swapped_f_rows_same_set_rejected_by_per_row_offset) ... ok
+test_swapped_mode_mapping_fails_set_equality (tests.test_prospective_acquisition_semantics_e88.SemanticsTests.test_swapped_mode_mapping_fails_set_equality) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.152s
+
+OK

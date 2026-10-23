@@ -1,0 +1,34 @@
+{
+  "schema": "prospective-input-semantics-e88-v1",
+  "purpose": "Qualify current aes_core/spi common-input namespace and set consistency before actual acquisition",
+  "endpoint": "A: vnc.buptic.top, hostname bupt-vncs2",
+  "files": {
+    "common_root_pattern": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/{circuit}/03_fault_universe/common_{circuit}_m16_phase4_v2",
+    "circuits": ["aes_core", "spi"],
+    "per_root": ["manifest.json", "canonical_fault_mapping.tsv", "H_common_initial_faults.basic", "M_common_initial_faults.basic", "F_common_initial_faults.basic"],
+    "launcher": "/cad/mentor/tessent2021_2/bin/tessent",
+    "launcher_sha256": "d92e81eaacf0727fd18d4cafa67d7c9a066069c6d8f7fc05caaf1252c3e44905"
+  },
+  "bounds": {"sessions": 1, "automatic_retries": 0, "fixed_files": 11, "per_file_bytes": 8388608, "total_body_bytes": 33554432, "chunk_bytes": 65536, "output_bytes": 32768, "reader_address_space_bytes": 268435456, "reader_cpu_seconds": 20, "transport_seconds": 60},
+  "namespace_rule_reference": {
+    "local_source": "../03_脚本工具/multimode_generic/build_common_fault_universe.py",
+    "source_sha256": "4e22cf0b8399965ab1e88573a4833d641b4a3ef3e7477faf5985842153628d8f",
+    "rule": "H/M native paths equal canonical_core_path; applying manifest f_flat_instance_offset to /U<number>/ components in each F native path must yield canonical_core_path",
+    "scope": "Explicit audit acceptance rule from local reference, not proof of historical deployed generator identity or electrical/logical fault equivalence"
+  },
+  "checks": [
+    "Linux host and helper limits before input reads",
+    "FD-anchored no-follow directory ancestors and single-link stable ordinary files",
+    "Manifest stuck-at schema, common count, per-mode counts and offset",
+    "Mapping uniqueness and per-row canonical namespace rule",
+    "Exact unique native fault set equality for H/M/F",
+    "Manifest mapping/basic SHA and path consistency",
+    "Post-observation compare current ten input hashes with E84 observations; retain drift and do not release execution if changed"
+  ],
+  "declared_common_fault_counts": {"aes_core": 71216, "spi": 10418},
+  "not_in_scope": ["Fault rows or detected-class totals exported", "Directory scans", "BLIND/results/logs/graphs/checkpoints", "Program launch", "Remote writes", "Full engine/version qualification", "ATPG resources", "Electrical or logical equivalence proof", "Actual runtime measurement"],
+  "actual_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

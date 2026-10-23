@@ -1,0 +1,19 @@
+{
+  "schema": "e88-pre-observation-review-v1",
+  "date": "2026-10-23",
+  "reviewer": "/root/e85_fallback_review",
+  "model": "gpt-6-sol",
+  "verdict": "PRE_OBSERVATION_PASS_SCOPED_READ_ONLY",
+  "reader_sha256": "c9f405a0997df7dc26d3d9aa4b4cbc5f1b2f0e5ee84b635a35589d28b7e39ea4",
+  "controller_sha256": "17b7e947bb7bed4acfb70be8eb4b5665c79347ca804aa6ed299c831f6fc06ee6",
+  "tests_sha256": "e3a62c87a871f831bd4cbd98928546ebfe9b6a2e1f45248b085b4fdefd3a8d90",
+  "contract_sha256": "621d53e22c873ef7635c9196903ca39643c11c7ae200b81e2c215cc14400d5a2",
+  "independent_tests": {"total": 13, "failures": 0, "errors": 0},
+  "parent_regression": {"total": 1274, "passed": 1268, "skipped": 6, "failures": 0, "errors": 0, "seconds": 76.887, "exit_code": 0},
+  "scope": "One A-side read of eleven fixed input files, no scan, program launch, remote write or ATPG",
+  "limits": "256MiB address space and 20 CPU seconds before reads; 8MiB/file,32MiB total,64KiB chunks,32KiB output,60s transport,zero retries",
+  "old_quota_reused": false,
+  "limitations": ["Not adversarial rename or mount-change proof", "Not electrical/logical fault equivalence proof", "Not full engine or actual ATPG resource qualification"],
+  "execution_ready": false,
+  "training_release": false
+}
