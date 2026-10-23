@@ -1,0 +1,21 @@
+{
+  "schema": "e85-pre-observation-review-v1",
+  "date": "2026-10-23",
+  "reviewer": "/root/e85_fallback_review",
+  "model": "gpt-6-sol",
+  "verdict": "PRE_OBSERVATION_PASS_SCOPED_READ_ONLY",
+  "source_sha256": "3d1058f09a10c2c95c4af20c625e6e9784b91ff43c099d679e52cd8cb30b9ef5",
+  "tests_sha256": "c4bb0c564ff77190981d1997c70c62ea1a4d20bd0f0117a83ec5f954a0881c4a",
+  "controller_sha256": "777b76e5ed4b6cdf4bfcc7fe1ce9bbfc65e24cb67aa9c11367d0c34670f6d1fb",
+  "transport_sha256": "e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434",
+  "independent_focused_tests": {"total": 19, "failures": 0, "errors": 0},
+  "parent_focused_tests": {"total": 27, "failures": 0, "errors": 0, "seconds": 0.070, "includes_static_descriptor_tests": 8},
+  "python_36_syntax": "AST parse of helper, controller and tests; not an actual Python 3.6 runtime claim",
+  "fixed_blocker": "Each directory ancestor is opened relative to a held parent descriptor with O_DIRECTORY|O_NOFOLLOW; children and regular files use held dir_fd. Python 3.6 enumeration uses the fixed kernel /proc/self/fd alias of that held descriptor",
+  "scope": "One new bounded A input preparation observation, no ATPG, training, executable launch or remote write",
+  "limitations": ["Not an adversarial directory-rename or mount-change proof", "Input bytes and tree hashes do not prove mapping or tool compatibility", "Actual A output and actual ATPG resource limits not yet observed by this review"],
+  "old_authorization_quota_reused": false,
+  "actual_atpg_calls": 0,
+  "training_runs": 0,
+  "training_release": false
+}

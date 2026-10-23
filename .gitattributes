@@ -405,3 +405,12 @@ scripts/prepare_prospective_acquisition_e84.py -text
 contracts/model_convergence_e84_v1.json -text
 experiment_overview/entries/E84_model_convergence_and_real_input_preparation.md -text
 data/manifests/ranking_v6_e84_* -text whitespace=cr-at-eol
+src/data/prospective_circuit_summary_v1.py -text
+tests/test_prospective_circuit_summary_v1.py -text
+scripts/probe_acquisition_tree_inputs_e85.py -text
+scripts/execute_acquisition_tree_probe_e85.py -text
+scripts/summarize_acquisition_observation_e85.py -text
+tests/test_prospective_acquisition_tree_inputs_e85.py -text
+contracts/prospective_structure_features_e85_v1.json -text
+experiment_overview/entries/E85_structure_and_real_input_trees.md -text
+data/manifests/ranking_v6_e85_* -text whitespace=cr-at-eol

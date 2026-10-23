@@ -1,0 +1,134 @@
+{
+  "actual_atpg_calls": 0,
+  "actual_atpg_memory_limit_bytes": null,
+  "actual_atpg_timeout_s": null,
+  "body_bytes_hashed": 15903091,
+  "date": "2026-10-23",
+  "directories": 62,
+  "entries": 258,
+  "entrypoint": {
+    "body_sha256": "d92e81eaacf0727fd18d4cafa67d7c9a066069c6d8f7fc05caaf1252c3e44905",
+    "bytes": 3658,
+    "candidates_tested": 2,
+    "components_inspected": 3,
+    "invalid_components": 0,
+    "last_candidate_reason": "FileNotFoundError",
+    "program_launched": false,
+    "resolved_binary": "/cad/mentor/tessent2021_2/bin/tessent",
+    "status": "CURRENT_BINARY_BODY_HASHED_NO_VERSION",
+    "symlink_hops": 0,
+    "version_verified": false
+  },
+  "execution_ready": false,
+  "final_regression": {
+    "errors": 0,
+    "failures": 0,
+    "passed": 1238,
+    "skipped": 6,
+    "total": 1244
+  },
+  "focused_tests": {
+    "errors": 0,
+    "failures": 0,
+    "total": 27
+  },
+  "hostname": "bupt-vncs2",
+  "independent_review": {
+    "reviewer": "/root/e85_fallback_review",
+    "scope": "Local receipt/source consistency, not independent rehash of remote bodies",
+    "verdict": "PASS_SCOPED_E85_READ_ONLY_OBSERVATION"
+  },
+  "library": {
+    "body_sha256": "34a3ca7df9262548eaf05ff544e2da080a541ab60467ef23193f6543ac5e5217",
+    "bytes": 248814,
+    "mode": 436,
+    "path": "/home/jiangchuanc/Desktop/multimode_ate_20260725_A_staging/00_inputs_readonly/scc28nhk_hsc31_lvt_scan.tcelllib",
+    "resolved_path": "/home/jiangchuanc/Desktop/work/SCC28NHK_HSC31_LVT_V0p1/liberty/0.8v/scc28nhk_hsc31_lvt_scan.tcelllib",
+    "status": "CURRENT_BODY_HASHED",
+    "symlink_hops": 1
+  },
+  "model_benefit_proven": false,
+  "new_training_runs": 0,
+  "python_version": [
+    3,
+    6,
+    8
+  ],
+  "receipt_directory": "C:\\Users\\86155\\Desktop\\new lab\\runtime_training_staging_20260928\\v6_e85_tree_inputs_20261023_r1",
+  "receipts": {
+    "start.json": {
+      "bytes": 1154,
+      "sha256": "319bc833838916e7203701d30e8122404d0d4a566a3b7a27ae1953bc6aa74e91"
+    },
+    "stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout.json": {
+      "bytes": 3943,
+      "sha256": "702968b299d36f7d85bdfa3f2b6c9a23fb99cd8f5094ed0ed37fa6e002794e74"
+    },
+    "transport.json": {
+      "bytes": 377,
+      "sha256": "0a6c7418e9d15bed9ca12bbf211a63600c79224bd4cfe5ba7f3154b66441778b"
+    }
+  },
+  "remote_termination_verified": false,
+  "resource_status": "PARTIAL_INFORMATIONAL_ONLY_NOT_ACTUAL_ATPG_LIMITS",
+  "schema": "e85-local-observation-summary-v1",
+  "sources": {
+    "contracts/prospective_structure_features_e85_v1.json": {
+      "bytes": 3302,
+      "sha256": "7f821dfc282748cdf3857617b78c98a422e53d437b58d5226ea757fb531fa333"
+    },
+    "scripts/execute_acquisition_tree_probe_e85.py": {
+      "bytes": 3752,
+      "sha256": "777b76e5ed4b6cdf4bfcc7fe1ce9bbfc65e24cb67aa9c11367d0c34670f6d1fb"
+    },
+    "scripts/probe_acquisition_tree_inputs_e85.py": {
+      "bytes": 20856,
+      "sha256": "3d1058f09a10c2c95c4af20c625e6e9784b91ff43c099d679e52cd8cb30b9ef5"
+    },
+    "src/data/prospective_circuit_summary_v1.py": {
+      "bytes": 3992,
+      "sha256": "3068f3cb9266a119833a29c06dcd99b0c3a323c92e3ea90d7c036be7f514ca79"
+    },
+    "tests/test_prospective_acquisition_tree_inputs_e85.py": {
+      "bytes": 15870,
+      "sha256": "c4bb0c564ff77190981d1997c70c62ea1a4d20bd0f0117a83ec5f954a0881c4a"
+    },
+    "tests/test_prospective_circuit_summary_v1.py": {
+      "bytes": 3656,
+      "sha256": "f64ac7ea8fe611cb3a9c84ec2d9b6ff5939f3351415627bcc631229620f8970f"
+    }
+  },
+  "status": "PASS_SCOPED_INPUT_OBSERVATION_NOT_EXECUTION_READY",
+  "training_release": false,
+  "tree_hashes": [
+    {
+      "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/H_mapped_tsdb",
+      "sha256": "d2790b690818a06e2f2766da78634368a73c88a07ff156421b0fa25e71c12287"
+    },
+    {
+      "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/M_mapped_tsdb",
+      "sha256": "cf3ad90c295b4ad6e775bc288e738fd74c97a1f9725af6616ed25f642dfb8353"
+    },
+    {
+      "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/99_tmp/F_mapped_tsdb",
+      "sha256": "ac602e864f6e5746622e0faf26e68a4a317f90e15eb0f2bc5350013216402259"
+    },
+    {
+      "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/H_mapped_tsdb",
+      "sha256": "f0bba6966e59707014ac52f7fc34c55cd1acb4cb10488b56bcddd689a91d3d35"
+    },
+    {
+      "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/M_mapped_tsdb",
+      "sha256": "112ab605cbf56af8f7d7ab544174b61b5b9550cb7e4ecf08d7284e95cdfa4d8e"
+    },
+    {
+      "root": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/99_tmp/F_mapped_tsdb",
+      "sha256": "2347df778235d5882f82043b2e6848b0ad82452bfd13f98c1a5f6110c95db765"
+    }
+  ],
+  "tsdb_files": 202
+}

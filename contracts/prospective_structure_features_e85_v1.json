@@ -1,0 +1,38 @@
+{
+  "schema": "prospective-structure-features-e85-v1",
+  "feature_version": "STATIC_CIRCUIT_SUMMARY_V1",
+  "implementation": "src/data/prospective_circuit_summary_v1.py",
+  "input": {
+    "source": "Authenticated pre-execution mapped-design topology using build_runtime_graphs_v1 node and directed edge-pair schema",
+    "node": "One standard-cell instance with cell_type and explicit boolean sequential_flag",
+    "edge": "Unique directed driver-cell to consumer-cell pair, not number of connected pins or nets",
+    "max_nodes": 50000,
+    "max_edges": 250000,
+    "bound_status": "Implementation input bounds, not observed peak memory or proof that every real graph fits"
+  },
+  "features": [
+    {"name": "log1p_node_count", "definition": "log(1 + number of standard-cell nodes)"},
+    {"name": "log1p_edge_count", "definition": "log(1 + number of unique directed cell edges)"},
+    {"name": "sequential_cell_fraction", "definition": "Sequential nodes / all nodes; requires qualified sequential flags"},
+    {"name": "mean_fanout", "definition": "Mean unique outgoing-cell degree over all nodes including sinks"},
+    {"name": "p95_fanout", "definition": "Sorted outgoing degrees at integer nearest-rank ceil(0.95*N), including zeros"},
+    {"name": "logic_depth", "definition": "Maximum combinational-cell count on a directed path after cutting edges into sequential nodes; isolated combinational node=1, sequential-only=0"}
+  ],
+  "cycle_policy": "Remaining combinational cycle gives missing depth and incomplete feature vector. Do not impute zero or silently drop a family; resolve graph/descriptor scope before the ablation",
+  "topology_limitations": "Descriptors concern the supplied cell graph, not electrical pin/net fanout or STA depth. The existing builder uses regex pin/sequential classification and omits self edges; qualification must address those source limitations before real use",
+  "digest_scope": "descriptor_topology_sha256 uses this descriptor's canonical payload without trailing LF. It is not the builder topology hash, raw graph file hash or an isomorphism-invariant graph identity",
+  "normalization": "Fit using fitting families only; frozen transform for held family; no clipping or held-data extrema",
+  "ablation": {
+    "A": "Seven REQUESTED_COUNT_V1 features plus six deliberately masked zero structural slots",
+    "B": "Same seven request features plus six STATIC_CIRCUIT_SUMMARY_V1 descriptors",
+    "hidden_network": "Both arms use identical 13->32->32->1 architecture, 1537 parameters and paired identical initial weights; fixed objective, updates and seeds",
+    "mask_scope": "A's six zero slots are a prespecified ablation intervention, never an imputation for missing graph data. Qualify every graph and complete descriptor vector before either arm",
+    "avoid_confounds": "No simultaneous estimator retuning, graph encoder replacement, F-completion policy mixing or expanded training budget",
+    "causal_limit": "Matched architecture isolates the availability of structural inputs, but does not prove the cause of historical transfer failure or generalization beyond the tested families"
+  },
+  "supplied_graph_digest_is_authentication": false,
+  "real_graphs_read": 0,
+  "training_runs": 0,
+  "model_benefit_proven": false,
+  "training_ready": false
+}

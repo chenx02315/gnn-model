@@ -1,0 +1,150 @@
+{
+  "actual_training_runs": 0,
+  "cases": {
+    "chain": {
+      "depth_status": "COMPLETE",
+      "descriptor_topology_sha256": "bba24f6889fdd0b7f8660798636f1f43444a20ef075bdc791a7f78324ef4f8b7",
+      "design_mode_mapping_authenticated": false,
+      "edge_count": 2,
+      "execution_ready": false,
+      "feature_columns": [
+        "log1p_node_count",
+        "log1p_edge_count",
+        "sequential_cell_fraction",
+        "mean_fanout",
+        "p95_fanout",
+        "logic_depth"
+      ],
+      "feature_vector_complete": true,
+      "logic_depth": 3,
+      "model_inference_performed": false,
+      "node_count": 3,
+      "outcome_fields_used": false,
+      "schema": "STATIC_CIRCUIT_SUMMARY_V1",
+      "sequential_cell_count": 0,
+      "supplied_graph_bytes_authenticated": false,
+      "training_release": false,
+      "values": [
+        1.3862943611198906,
+        1.0986122886681098,
+        0.0,
+        0.6666666666666666,
+        1,
+        3
+      ]
+    },
+    "combinational_loop": {
+      "depth_status": "COMBINATIONAL_CYCLE_UNSUPPORTED",
+      "descriptor_topology_sha256": "6a2d958f423773928bd353d1dab30af703c7239d1afd3747b5225ce13e201ff1",
+      "design_mode_mapping_authenticated": false,
+      "edge_count": 2,
+      "execution_ready": false,
+      "feature_columns": [
+        "log1p_node_count",
+        "log1p_edge_count",
+        "sequential_cell_fraction",
+        "mean_fanout",
+        "p95_fanout",
+        "logic_depth"
+      ],
+      "feature_vector_complete": false,
+      "logic_depth": null,
+      "model_inference_performed": false,
+      "node_count": 2,
+      "outcome_fields_used": false,
+      "schema": "STATIC_CIRCUIT_SUMMARY_V1",
+      "sequential_cell_count": 0,
+      "supplied_graph_bytes_authenticated": false,
+      "training_release": false,
+      "values": [
+        1.0986122886681098,
+        1.0986122886681098,
+        0.0,
+        1.0,
+        1,
+        null
+      ]
+    },
+    "fork": {
+      "depth_status": "COMPLETE",
+      "descriptor_topology_sha256": "4811fffd177e18bd1eed200b0d0238ed30967e0f4dabee31266645fb70d0dce3",
+      "design_mode_mapping_authenticated": false,
+      "edge_count": 2,
+      "execution_ready": false,
+      "feature_columns": [
+        "log1p_node_count",
+        "log1p_edge_count",
+        "sequential_cell_fraction",
+        "mean_fanout",
+        "p95_fanout",
+        "logic_depth"
+      ],
+      "feature_vector_complete": true,
+      "logic_depth": 2,
+      "model_inference_performed": false,
+      "node_count": 3,
+      "outcome_fields_used": false,
+      "schema": "STATIC_CIRCUIT_SUMMARY_V1",
+      "sequential_cell_count": 0,
+      "supplied_graph_bytes_authenticated": false,
+      "training_release": false,
+      "values": [
+        1.3862943611198906,
+        1.0986122886681098,
+        0.0,
+        0.6666666666666666,
+        2,
+        2
+      ]
+    },
+    "registered_feedback": {
+      "depth_status": "COMPLETE",
+      "descriptor_topology_sha256": "b190ffbeb3deb10fae863d9d3ee27608a2af926c8f4cd48b730c45fdf3ae0175",
+      "design_mode_mapping_authenticated": false,
+      "edge_count": 4,
+      "execution_ready": false,
+      "feature_columns": [
+        "log1p_node_count",
+        "log1p_edge_count",
+        "sequential_cell_fraction",
+        "mean_fanout",
+        "p95_fanout",
+        "logic_depth"
+      ],
+      "feature_vector_complete": true,
+      "logic_depth": 2,
+      "model_inference_performed": false,
+      "node_count": 4,
+      "outcome_fields_used": false,
+      "schema": "STATIC_CIRCUIT_SUMMARY_V1",
+      "sequential_cell_count": 2,
+      "supplied_graph_bytes_authenticated": false,
+      "training_release": false,
+      "values": [
+        1.6094379124341003,
+        1.6094379124341003,
+        0.5,
+        1.0,
+        1,
+        2
+      ]
+    }
+  },
+  "evidence": {
+    "contracts/prospective_structure_features_e85_v1.json": {
+      "bytes": 3302,
+      "sha256": "7f821dfc282748cdf3857617b78c98a422e53d437b58d5226ea757fb531fa333"
+    },
+    "src/data/prospective_circuit_summary_v1.py": {
+      "bytes": 3992,
+      "sha256": "3068f3cb9266a119833a29c06dcd99b0c3a323c92e3ea90d7c036be7f514ca79"
+    },
+    "tests/test_prospective_circuit_summary_v1.py": {
+      "bytes": 3656,
+      "sha256": "f64ac7ea8fe611cb3a9c84ec2d9b6ff5939f3351415627bcc631229620f8970f"
+    }
+  },
+  "model_benefit_proven": false,
+  "real_graphs_read": 0,
+  "schema": "e85-structure-hand-examples-v1"
+}

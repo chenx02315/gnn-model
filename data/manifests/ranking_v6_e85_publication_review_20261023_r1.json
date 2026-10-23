@@ -1,0 +1,27 @@
+{
+  "schema": "e85-publication-review-v1",
+  "date": "2026-10-23",
+  "reviewer": "/root/e85_fallback_review",
+  "model": "gpt-6-sol",
+  "verdict": "PASS_SCOPED_LOCAL_COMMIT_AND_NORMAL_PUSH",
+  "prior_actual_observation_verdict": "PASS_SCOPED_E85_READ_ONLY_OBSERVATION",
+  "observation_sha256": "702968b299d36f7d85bdfa3f2b6c9a23fb99cd8f5094ed0ed37fa6e002794e74",
+  "summary_sha256": "5801a7b87156d807d8dccb4608d6c0f3151481bbf820e4670654d93b06f6bca4",
+  "generator_sha256": "50d3e602a09d35d3eda9538649d9a983b82c7a36f31c842fb87c20329fe4b3de",
+  "checks": [
+    "Read-only summarize() reproduced staged candidate observation and summary byte-for-byte",
+    "Four local receipt hashes and current source pins matched",
+    "Independent focused rerun: 27 passed, zero failures/errors",
+    "Final regression log: 1244 total, 1238 passed, 6 skipped, zero failures/errors",
+    "Chinese overview and latest state distinguish implementation/input hashing from actual acquisition or model benefit",
+    "git diff --check clean; -text attributes preserve evidence bytes"
+  ],
+  "editorial_followup": "NEXT_TASKS date header corrected from 2026-10-21 to 2026-10-23 after review; no evidence changed",
+  "reviewer_remote_calls": 0,
+  "reviewer_writes": 0,
+  "remote_body_hashes_independently_recomputed": false,
+  "actual_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

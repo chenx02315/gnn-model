@@ -1,0 +1,29 @@
+{
+  "schema": "e85-intermediate-scope-findings-v1",
+  "date": "2026-10-23",
+  "stage": "LOCAL_PREPARATION_BEFORE_ANY_E85_REMOTE_INVOCATION",
+  "static_descriptors": {"independent_verdict": "PASS_SCOPED_IMPLEMENTATION", "tests": 8, "failures": 0, "errors": 0, "seconds": 0.001, "real_graphs_read": 0, "model_benefit_proven": false},
+  "first_reader_review": {
+    "reviewer": "/root/e72_review_final",
+    "verdict": "PRE_OBSERVATION_BLOCKED",
+    "findings": ["Missing self resource limits in first draft", "Directory/entry counters reset for each tree and budget errors swallowed", "TSDB root symlinks resolved before being rejected", "Library and PATH targets lacked outcome/checkpoint/BLIND/log/graph name exclusions"],
+    "quota_interruption": true
+  },
+  "fallback_review": {
+    "reviewer": "/root/e85_fallback_review",
+    "model": "gpt-6-sol",
+    "verdict": "PRE_OBSERVATION_BLOCKED",
+    "reader_sha256_reported_by_reviewer": "4cbf25b2207ffe3037b507ba2c06ad3b6f2d414c2a77ff7b64a08a7ec1549175",
+    "finding": "Pathname lstat then scandir/open still follows a concurrently replaced ancestor or directory symlink; late identity rejection occurs after possible out-of-scope body read",
+    "local_tests_passed": 16,
+    "tests_did_not_establish": "Race-safe scope enforcement",
+    "repair_assigned": "Descriptor-relative ancestor opens, tree traversal and file opens with O_NOFOLLOW; Python 3.6 compatible bounded enumeration"
+  },
+  "related_regression_r1": {"total": 1241, "passed": 1235, "skipped": 6, "failures": 0, "errors": 0, "seconds": 76.163, "scope": "Intermediate draft before descriptor-relative repair; not final production-reader validation"},
+  "draft_evidence": "Current thread tool and review transcripts; intermediate source was not committed or separately snapshotted",
+  "e85_actual_remote_sessions": 0,
+  "actual_atpg_calls": 0,
+  "training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

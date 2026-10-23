@@ -1,0 +1,13 @@
+test_combinational_cycle_stays_missing (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_combinational_cycle_stays_missing) ... ok
+test_duplicate_boolean_out_of_range_and_label_fields_rejected (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_duplicate_boolean_out_of_range_and_label_fields_rejected) ... ok
+test_hand_calculated_chain (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_hand_calculated_chain) ... ok
+test_inputs_unchanged_and_no_release_claim (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_inputs_unchanged_and_no_release_claim) ... ok
+test_isolated_and_sequential_only_depth (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_isolated_and_sequential_only_depth) ... ok
+test_nearest_rank_p95_includes_zero_fanout_nodes (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_nearest_rank_p95_includes_zero_fanout_nodes) ... ok
+test_permutations_preserve_features_and_canonical_edge_digest (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_permutations_preserve_features_and_canonical_edge_digest) ... ok
+test_register_cuts_feedback_and_depth_resets (tests.test_prospective_circuit_summary_v1.CircuitSummaryTests.test_register_cuts_feedback_and_depth_resets) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK
