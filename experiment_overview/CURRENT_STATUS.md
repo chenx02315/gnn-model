@@ -1,5 +1,7 @@
 # 当前实验状态
 
+2026-10-24 E96本地实现封存：四项无pattern接受测试的输入准备、进程监督、协调账本和临时文件采样监控经独立限定复核通过。修复DFS树哈希、僵尸子进程回收、整包截止与scratch缺项；相关回归1,429项中1,418执行通过、11条件跳过、零失败错误。scratch覆盖专属具名目录并保留1MiB未来账本余量，不是配额，不能统计已删除但仍打开的文件或目录外写入。真实Linux物理验证、新作业整体批准及部署/登记/恢复入口仍待完成，整包不放行；新LSF/Tessent/ATPG/训练均0。详见 [E96](entries/E96_fixed_acceptance_execution_chain.md)。
+
 2026-10-24 E95：作业内memory-v1预检组件已实现并经五项聚焦修复后独立复核通过，16专项通过；相关回归1,371项中6跳过、零失败错误。能检查精确job域、实际kernel限额与稳定身份，不从-M参数推断生效；目前全为本地合成/实现证据，真实collector/LSF/Tessent调用均0。整体job executor尚待接线，512MiB/每项10分钟/整作业45分钟仅建议，批准cap仍null，新作业未授权。下一阶段需一次整体资源与作业授权，而非逐模式审批；未放行ATPG或训练。见 [E95](entries/E95_job_bound_memory_preflight.md)。
 
 2026-10-23 E94：四项无pattern Tessent接受配方及只读能力探针经聚焦修复、独立复审通过，相关回归1,355项中6跳过、零失败错误。实际一次A能力观察读取四proc/11,901B，启用的memory/freezer/pids v1挂载可见，但当前账号对四常规cgroup根写权限hint全false；不证明未来LSF作业硬限制，也未扫描其他委派子组。下一路径为作业内资源生效前置门禁的LSF整体包，不直接启动Tessent；尚无新LSF/Tessent/ATPG/训练。见 [E94](entries/E94_tessent_acceptance_and_resource_capability.md)。

@@ -469,3 +469,14 @@ experiment_overview/entries/E95_job_bound_memory_preflight.md -text
 src/data/prospective_lsf_memory_preflight_v1.py -text
 tests/test_prospective_lsf_memory_preflight_v1.py -text
 data/manifests/ranking_v6_e95_* -text whitespace=cr-at-eol
+src/data/prospective_acceptance_materializer_v1.py -text
+src/data/prospective_acceptance_process_v1.py -text
+src/data/prospective_acceptance_coordinator_v1.py -text
+src/data/prospective_acceptance_scratch_v1.py -text
+tests/test_prospective_acceptance_materializer_v1.py -text
+tests/test_prospective_acceptance_process_v1.py -text
+tests/test_prospective_acceptance_coordinator_v1.py -text
+tests/test_prospective_acceptance_scratch_v1.py -text
+experiment_overview/entries/E96_fixed_acceptance_execution_chain.md -text
+contracts/prospective_acceptance_execution_e96_v1.json -text
+data/manifests/ranking_v6_e96_* -text whitespace=cr-at-eol

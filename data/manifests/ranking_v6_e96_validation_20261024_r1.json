@@ -1,0 +1,38 @@
+{
+  "schema": "e96-local-validation-v1",
+  "status": "PASS_LOCAL_IMPLEMENTATION_ONLY",
+  "prior_commit": "cf2b287411139158470c86cefb17a20b2b40bb4c",
+  "source_sha256": {
+    "src/data/prospective_acceptance_materializer_v1.py": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+    "src/data/prospective_acceptance_process_v1.py": "a0fa0bf11f66652e13859d684666f5a6aabec0bb20e1b07775080e233b69d6cf",
+    "src/data/prospective_acceptance_coordinator_v1.py": "1c792e1ae7838dcc16b02977db0d25fad27b4be675ab2d4757c6252c2c159f32",
+    "src/data/prospective_acceptance_scratch_v1.py": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86"
+  },
+  "test_sha256": {
+    "tests/test_prospective_acceptance_materializer_v1.py": "afff6cb087a1d2c53d5b955489cc37eeb1bafc513b5db2d41d46f2afdbd04c46",
+    "tests/test_prospective_acceptance_process_v1.py": "ee08b2c2444c32986a95d9f19a0855b33fa737faad682ce0ee2d067d7d22ddba",
+    "tests/test_prospective_acceptance_coordinator_v1.py": "991dddbbbfb81eaa7d7f5ec9325ab9198f3551ad93c197a8bbe5fd2142976d1c",
+    "tests/test_prospective_acceptance_scratch_v1.py": "6334452f8695d93f341c3cd4dfe349c06dd756da4a4e451951c7b63efd2522d1"
+  },
+  "focused_tests": {"materializer_total": 13, "materializer_linux_skips": 5, "process_pass": 26, "coordinator_pass": 9, "scratch_pass": 10},
+  "python36_ast": {"modules": 4, "tests": 4, "independently_checked": true},
+  "regression": {
+    "log": "data/manifests/ranking_v6_e96_regression_20261024_r2.log",
+    "sha256": "cb63211aa3afc272388b1022faf8f966bec4ca696d4781f3121f6678828afbaf",
+    "tests_run": 1429, "passed": 1418, "skipped": 11,
+    "failures": 0, "errors": 0, "seconds": 75.286, "exit_code": 0
+  },
+  "prior_regression_retained": {
+    "log": "data/manifests/ranking_v6_e96_regression_20261024_r1.log",
+    "sha256": "41b89ec36841b4e373efea4eb080013147b66eed637bde71ca24691f9f0c92e4",
+    "tests_run": 1415, "skipped": 11, "failures": 0, "errors": 0,
+    "note": "Before scratch implementation, not final-source validation"
+  },
+  "review_provenance": "Independent local reviewer messages transcribed by parent; not remote execution receipts",
+  "reviewers": ["/root/e96_materializer_review", "/root/e96_cleanup_expert", "/root/e96_coordinator_review"],
+  "publication_prep_review": "PASS_FOR_FOUR_SOURCE_PINS_AST_AND_NOTREADY_CONTRACT",
+  "linux_physical_validation_passed": false,
+  "caller_assertion_is_user_consent": false,
+  "actual_remote_calls": 0, "actual_tessent_calls": 0, "actual_atpg_calls": 0,
+  "training_runs": 0, "execution_ready": false, "training_release": false
+}

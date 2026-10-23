@@ -1,0 +1,55 @@
+{
+  "schema": "e96-review-history-v1",
+  "provenance": "Parent transcription of independent local review messages; not a remote execution receipt",
+  "initial_materializer_review": {
+    "verdict": "CHANGES_REQUIRED",
+    "source_sha256": "69a8ade773313efc4825172ed4c8c46b163f5cfa0981c5f589a0f35bbe0b6d7b",
+    "test_sha256": "62c5343d1a581e6128cbcce74020085464272e59b260267a81819ac3752a516f",
+    "finding": "Global path sorting disagreed with frozen E85 sorted-child DFS tree digest; pre-open pinned size and tree bounds needed tightening"
+  },
+  "materializer_focused_review": {
+    "reviewer": "/root/e96_materializer_review",
+    "verdict": "PASS_SCOPED_DFS_AND_BOUNDS_REPAIR",
+    "source_sha256": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+    "test_sha256": "afff6cb087a1d2c53d5b955489cc37eeb1bafc513b5db2d41d46f2afdbd04c46",
+    "tests_run": 13,
+    "tests_skipped_linux_physical": 5,
+    "graph_scope": "Frozen E85 native TSDB names permitted; independent ML graph artifacts are not in the fixed input scope"
+  },
+  "process_focused_review_before_expert": {
+    "reviewer": "/root/e95_memory_preflight_review",
+    "verdict": "CHANGES_REQUIRED",
+    "source_sha256": "5ed676d7c1d4d0e0b4355134bcc4b0d32493eb74e5a00deb526b5fbce0a87b94",
+    "test_sha256": "9b46a589e273380d80a665a0c53f802aae51964c7c512b2e9211074e047b572b",
+    "finding": "Adopted zombies absent from cgroup.procs could remain unreaped while cleanup returned true",
+    "ordinary_retry_limit_reached": true
+  },
+  "expert_cleanup_escalation": {
+    "reviewer": "/root/e96_cleanup_expert",
+    "verdict": "NO_BLOCKING_DEFECT_IN_SCOPED_SOURCE_REPAIR",
+    "changes": ["Discover own children separately", "Reap only identity-checked own zombies", "Popen exclusively reaps leader", "Remove killpg", "Fresh empty children and self-only leaf required for success"],
+    "reviewer_reran_mock_tests": false,
+    "real_linux_verified": false,
+    "pid_signal_atomicity_proven": false
+  },
+  "coordinator_initial_review": {
+    "reviewer": "/root/e96_coordinator_review",
+    "verdict": "CHANGES_REQUIRED",
+    "findings": ["Scratch threshold absent", "INTENT persistence could consume package deadline before a new launch"]
+  },
+  "coordinator_deadline_focused_review": {
+    "verdict": "PASS_SCOPED_DEADLINE_REPAIR",
+    "reviewer_local_mock_tests": 31,
+    "changes": ["Recheck after INTENT", "Recheck after durable PREFLIGHT before ACK", "Share absolute package deadline with execution cleanup and logs"]
+  },
+  "scratch_initial_review": {
+    "reviewer": "/root/e96_coordinator_review",
+    "verdict": "NO_BLOCKING_DEFECT_IN_DECLARED_SAMPLED_NAMED_TREE_SCOPE",
+    "reviewer_local_mock_tests": 43,
+    "limits": ["Not a kernel quota", "Between-sample overshoot possible", "No open-unlinked or outside-root accounting", "Cooperative scan time bound does not interrupt blocking metadata IO"]
+  },
+  "physical_linux_tests_passed": false,
+  "actual_remote_calls": 0,
+  "execution_ready": false,
+  "training_release": false
+}
