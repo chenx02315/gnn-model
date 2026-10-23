@@ -9,6 +9,7 @@ import json
 
 from src.data import prospective_acquisition_pilot_v1 as pilot
 from src.data import prospective_request_features_v1 as features
+from src.data import prospective_acquisition_request_v1 as acquisition
 from src.data import prospective_tessent_stage_v1 as stage
 
 SCHEMA = 'prospective-acquisition-binding-v1'
@@ -48,10 +49,14 @@ class Binder(object):
         phase = next(row for row in plan['phases'] if row['circuit'] == circuit)
         if freeze is not None:
             require(stage.safe_uid(run_uid), 'RUN_UID')
-            checked = features.build_features(freeze)
-            require(freeze['circuit'] == circuit and
-                    checked['feature_schema_id'] == features.FEATURE_SCHEMA_ID,
-                    'FREEZE_CIRCUIT_OR_SCHEMA')
+            if type(freeze) is dict and freeze.get('schema') == acquisition.SCHEMA:
+                checked = acquisition.validate_freeze(freeze, plan)
+                require(checked['circuit'] == circuit, 'FREEZE_CIRCUIT_OR_SCHEMA')
+            else:
+                checked = features.build_features(freeze)
+                require(freeze['circuit'] == circuit and
+                        checked['feature_schema_id'] == features.FEATURE_SCHEMA_ID,
+                        'FREEZE_CIRCUIT_OR_SCHEMA')
             require(freeze['requested_roster'] == phase['requested_roster'] and
                     freeze['roster_sha256'] == phase['roster_sha256'] and
                     freeze['requested_max_h'] == phase['requested_max_h'] and

@@ -1,0 +1,21 @@
+{
+  "schema": "prospective-acquisition-request-e87-v1",
+  "implementation": "src/data/prospective_acquisition_request_v1.py",
+  "purpose": "Compile exact pilot acquisition requests without requiring model graphs or checkpoints",
+  "freeze_schema": "prospective-acquisition-request-freeze-v1",
+  "frozen_inputs": ["Exact E84 plan SHA", "Circuit and entire requested roster", "Roster SHA and request maxima", "Positive common-fault count", "Caller-supplied input-manifest SHA"],
+  "validation": "Exact key set, canonical rebuild and exact E84 plan validation; reject model/outcome fields and mutated controls",
+  "input_authentication": "SHA and count remain caller claims until physical input semantic audit is joined; no authentication is established by this pure schema",
+  "integration": {
+    "stage_compiler": "Exact new schema dispatch uses acquisition validation; existing E80 feature-freeze path remains separate",
+    "binder": "Graphless freeze can compile H/M/F request recipes after exact parent/translation binding",
+    "paths": "Existing E81 derived future root/argv/env unchanged; no directories created or deployed",
+    "model_compatibility": "Does not generate model features, certify old weights or weaken the E80 graph requirement"
+  },
+  "supersedes": "E86 graph-dependent compiler gap only; E86 physical provenance, durable debit and actual resource gaps remain",
+  "real_graphs_read": 0,
+  "actual_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

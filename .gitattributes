@@ -419,3 +419,8 @@ tests/test_prospective_acquisition_binding_v1.py -text
 contracts/prospective_acquisition_binding_e86_v1.json -text
 experiment_overview/entries/E86_exact_parent_late_binding.md -text
 data/manifests/ranking_v6_e86_* -text whitespace=cr-at-eol
+src/data/prospective_acquisition_request_v1.py -text
+tests/test_prospective_acquisition_request_v1.py -text
+contracts/prospective_acquisition_request_e87_v1.json -text
+experiment_overview/entries/E87_graphless_acquisition_requests.md -text
+data/manifests/ranking_v6_e87_* -text whitespace=cr-at-eol

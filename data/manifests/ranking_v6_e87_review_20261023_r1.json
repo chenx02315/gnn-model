@@ -1,0 +1,21 @@
+{
+  "schema": "e87-scoped-implementation-review-v1",
+  "date": "2026-10-23",
+  "reviewer": "/root/e85_fallback_review",
+  "model": "gpt-6-sol",
+  "verdict": "SCOPED_PASS_GRAPHLESS_ACQUISITION_RECIPE_NOT_COLLECTOR",
+  "source_sha256": "2cbd2fd1e0689d12e19c22ca8536a789cf7241ce11c5fc68f2d23a0ae85cebcf",
+  "test_sha256": "0967c23190dd2bd6502dd95a1bcc23300e0de7a45722798b8f597c5f16e667e3",
+  "stage_source_sha256": "f40abcd0162e4b698542a91288e26263b467789591bec125046f2c5f12c3b110",
+  "binder_source_sha256": "29804349ff853bd5ee2765f162e91037602affd3ef60ba0411cf4109254fe3bf",
+  "focused": {"total": 40, "failures": 0, "errors": 0},
+  "regression": {"total": 1261, "passed": 1255, "skipped": 6, "failures": 0, "errors": 0, "seconds": 78.744, "exit_code": 0},
+  "graph_hash_fabricated": false,
+  "old_E80_path_preserved": true,
+  "both_circuit_39_slot_fixture_chains_verified": true,
+  "reviewer_remote_calls": 0,
+  "actual_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

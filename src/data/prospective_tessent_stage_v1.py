@@ -9,6 +9,7 @@ import json
 import re
 
 from src.data import prospective_request_features_v1 as features
+from src.data import prospective_acquisition_request_v1 as acquisition
 from src.data import prospective_stage_observation_v1 as observations
 
 ROOT = '/temp/jiangchuanc/multimode_ate_prospective_e81_20261022_r1'
@@ -46,7 +47,10 @@ def compile_stage(freeze, request):
     recipe neither creates nor checks that artifact. Every path is derived,
     never caller supplied. No shell, inherited environment, or launch API.
     """
-    features.build_features(freeze)  # Revalidate the entire supplied freeze.
+    if type(freeze) is dict and freeze.get('schema') == acquisition.SCHEMA:
+        acquisition.validate_freeze(freeze)
+    else:
+        features.build_features(freeze)  # Keep the E80 path unchanged.
     require(type(request) is dict and set(request)==observations.REQUEST_KEYS,
             'REQUEST_KEYS')
     run_uid=request['run_uid'];uid=request['attempt_uid'];action=request['action_uid']
