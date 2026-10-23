@@ -430,3 +430,15 @@ tests/test_prospective_acquisition_semantics_e88.py -text
 contracts/prospective_input_semantics_e88_v1.json -text
 experiment_overview/entries/E88_real_common_input_namespace_audit.md -text
 data/manifests/ranking_v6_e88_* -text whitespace=cr-at-eol
+src/data/prospective_fault_translation_v1.py -text
+tests/test_prospective_fault_translation_v1.py -text
+scripts/probe_acquisition_resources_e90.py -text
+scripts/execute_acquisition_resources_probe_e90.py -text
+tests/test_prospective_acquisition_resources_e90.py -text
+contracts/prospective_resource_dialect_e90_v1.json -text
+contracts/prospective_fault_class_policy_e91_v2.json -text
+experiment_overview/entries/E89_E90_translation_and_resource_preparation.md -text
+experiment_overview/entries/E91_explicit_fault_class_policy.md -text
+data/manifests/ranking_v6_e89_* -text whitespace=cr-at-eol
+data/manifests/ranking_v6_e90_* -text whitespace=cr-at-eol
+data/manifests/ranking_v6_e91_* -text whitespace=cr-at-eol

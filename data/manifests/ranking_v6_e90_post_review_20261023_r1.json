@@ -1,0 +1,21 @@
+{
+  "schema": "e90-post-read-review-v1",
+  "reviewer": "/root/e89_e90_review_fallback",
+  "model": "gpt-5.6-sol",
+  "verdict": "PASS_POST_READ_SCOPED",
+  "real_translation_status": "BLOCK_REAL_E89_TRANSLATION_CLASS_DIALECT",
+  "start_sha256": "6fd386533a5e83a25aa73d32e4517d863e0a53a19f9685a5a165bb4e2823e23c",
+  "stdout_sha256": "d4d2ca335e74d20b9837d29013cfbf366150dfba499e9d3fa5aa335fff7e0e8b",
+  "transport_sha256": "de5c8570555b1bc73c7e2fc2d0ec8c765f156cbbcdc15f52c288db44748cf671",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "files": 6,
+  "body_bytes": 2998539,
+  "stdout_bytes": 3471,
+  "actual_atpg_calls": 0,
+  "training_runs": 0,
+  "remote_termination_verified": false,
+  "actual_atpg_memory_limit_bytes": null,
+  "execution_ready": false,
+  "training_release": false,
+  "next": "Review explicit DI dotted-class whitelist and conservative AU/EQ/RE treatment; no wildcard or inferred EQ detection"
+}

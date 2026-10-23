@@ -1,0 +1,20 @@
+{
+  "schema": "prospective-resource-dialect-e90-v1",
+  "purpose": "Read existing TRAIN result syntax and historical resource footers without acquiring new model labels",
+  "circuits": ["aes_core", "spi"],
+  "scope": "Each circuit: exact H full faults.mtfi and H/F full driver logs from source-known Phase4 v2 paths; six files total",
+  "source_path_references": ["scripts/run_phase4_nonblind_runtime_recovery_r3.sh:baseline_log", "../phase4_bootstrap/phase4_closure_driver_v2.py:full_path and metric"],
+  "reader": "scripts/probe_acquisition_resources_e90.py",
+  "reader_sha256": "7e18997f441d35008b60624df157ed47bedf834066e99b5dc88ba5e533da21e0",
+  "controller_sha256": "b2fcb70c1fae43bfeabdf22f32cfe1e1fc1c8d44bfdc1dc054923a0f3823a36b",
+  "limits": {"ssh_sessions": 1, "automatic_retries": 0, "reader_address_space_bytes": 268435456, "reader_cpu_seconds": 20, "file_bytes": 8388608, "body_bytes": 33554432, "response_bytes": 16384, "transport_seconds": 60},
+  "exports": ["File SHA and size", "MTFI row count and envelope compatibility flags", "Class dialect spellings without frequencies", "Historical RSS footer fields without elapsed/cycles"],
+  "claims_not_made": ["Full source native-key authentication", "Tessent acceptance", "Logical or electrical equivalence", "Compact RSS unit qualification", "Actual memory or timeout limit", "Resource reservation", "New runtime labels or model benefit"],
+  "directory_scans": 0,
+  "program_launches": 0,
+  "remote_writes": 0,
+  "actual_atpg_calls": 0,
+  "training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

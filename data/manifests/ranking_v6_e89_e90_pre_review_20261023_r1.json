@@ -1,0 +1,20 @@
+{
+  "schema": "e89-e90-independent-pre-review-v1",
+  "reviewer": "/root/e89_e90_review_fallback",
+  "model": "gpt-5.6-sol",
+  "e89_verdict": "PASS_SCOPED_IMPLEMENTATION",
+  "e90_verdict": "PASS_PRE_OBSERVATION_READ_ONLY",
+  "e89_source_sha256": "4bb623902f881400c0c950af7257ec355b616882d80219ebb046aac58159dbe9",
+  "e90_reader_sha256": "7e18997f441d35008b60624df157ed47bedf834066e99b5dc88ba5e533da21e0",
+  "e90_controller_sha256": "b2fcb70c1fae43bfeabdf22f32cfe1e1fc1c8d44bfdc1dc054923a0f3823a36b",
+  "independent_tests": 17,
+  "independent_tests_passed": 17,
+  "regression_total": 1291,
+  "regression_passed": 1285,
+  "regression_skipped": 6,
+  "failures": 0,
+  "errors": 0,
+  "reviewer_remote_calls": 0,
+  "execution_ready": false,
+  "training_release": false
+}

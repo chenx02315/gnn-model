@@ -1,0 +1,12 @@
+test_class_bound_and_encoding_fail (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_class_bound_and_encoding_fail) ... ok
+test_dialect_projection_without_fault_rows_or_class_counts (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_dialect_projection_without_fault_rows_or_class_counts) ... ok
+test_exact_scope_and_no_follow_bound (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_exact_scope_and_no_follow_bound) ... ok
+test_host_guard_prevents_reads_and_limit_failure_prevents_reads (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_host_guard_prevents_reads_and_limit_failure_prevents_reads) ... ok
+test_malformed_and_unknown_envelope_are_not_qualified (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_malformed_and_unknown_envelope_are_not_qualified) ... ok
+test_missing_duplicate_and_too_many_rss_no_fastest_selection (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_missing_duplicate_and_too_many_rss_no_fastest_selection) ... ok
+test_rss_observation_does_not_create_limit_or_runtime (tests.test_prospective_acquisition_resources_e90.ResourceDialectTests.test_rss_observation_does_not_create_limit_or_runtime) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.007s
+
+OK

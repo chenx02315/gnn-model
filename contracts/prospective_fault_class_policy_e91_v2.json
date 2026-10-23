@@ -1,0 +1,15 @@
+{
+  "schema": "prospective-fault-class-policy-e91-v2",
+  "basis": "E90 actual TRAIN dialect observation plus explicit-detection-only legacy translation policy",
+  "detected": ["DS", "DI", "DI_1 through DI_99", "DI.CLK", "DI.SCAN", "DI.SEN", "DI.SR"],
+  "recognized_not_carried": ["FU", "PT", "UU", "TI", "AU", "UC", "UO", "AU.PC", "AU.TC", "EQ", "RE"],
+  "unknown": "Reject; no startswith DI wildcard",
+  "EQ": "Never infer detection from adjacent rows; exclude from transfer. This does not assert EQ is physically undetected",
+  "minimum_pre_detected": "Union of explicit target-baseline detections and explicit translated detections only; lower bound, not complete semantic detection count",
+  "consequence": "Conservative omitted status may require additional ATPG work; retain policy identity for costs and never mix as an untagged completion-policy cohort",
+  "qualification": "Implementation policy only until actual pinned input validation and Tessent acceptance; no electrical equivalence claim",
+  "new_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}
