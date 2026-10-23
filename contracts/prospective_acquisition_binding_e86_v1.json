@@ -1,0 +1,33 @@
+{
+  "schema": "prospective-acquisition-binding-e86-v1",
+  "purpose": "Bind exact E84 intent slots to caller-supplied live-result claims without rewriting the frozen DAG",
+  "implementation": "src/data/prospective_acquisition_binding_v1.py",
+  "scope": "Pure volatile validator; not durable admission, filesystem authentication, process monitor or real collector",
+  "invariants": [
+    "Only exact next frozen task may bind or commit",
+    "Parent result must belong to the same circuit/action and exact named parent task",
+    "M/F require the exact translation task, parent result SHA and target mode",
+    "Supplied opaque bytes must match supplied output SHA and positive success/live ACK/authentication claims",
+    "Caller claims are never independently authenticated OS evidence",
+    "Failure must not advance cursor; returned state is copied",
+    "Frozen intent does not change as parent output identities become known"
+  ],
+  "graph_independence": {
+    "collection_requires_graph": false,
+    "without_genuine_compatible_feature_freeze": "Intent binding only; request and recipe remain null, compilation_ready=false",
+    "existing_E81_compiler_gap": "Its E80 freeze requires a graph hash. A separate graph-independent acquisition request/compiler integration is still required; never invent a placeholder graph hash"
+  },
+  "compatibility": "E84 two-dependency DAG and unknown future request SHA cannot be passed directly to E82/E83 static single-dependency synthetic task schema",
+  "remaining": [
+    "Authenticate physical result manifest and individual files",
+    "Verify real process identity, termination and durable live ACK",
+    "Bind exact adaptive request to durable debit before physical execution",
+    "Qualify target-native translation contents and common-fault semantics",
+    "Enforce actual ATPG memory/time/thread/license/output/storage limits",
+    "Integrate graph-independent acquisition recipe without changing model feature contract"
+  ],
+  "actual_atpg_calls": 0,
+  "new_training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

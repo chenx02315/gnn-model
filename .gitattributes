@@ -414,3 +414,8 @@ tests/test_prospective_acquisition_tree_inputs_e85.py -text
 contracts/prospective_structure_features_e85_v1.json -text
 experiment_overview/entries/E85_structure_and_real_input_trees.md -text
 data/manifests/ranking_v6_e85_* -text whitespace=cr-at-eol
+src/data/prospective_acquisition_binding_v1.py -text
+tests/test_prospective_acquisition_binding_v1.py -text
+contracts/prospective_acquisition_binding_e86_v1.json -text
+experiment_overview/entries/E86_exact_parent_late_binding.md -text
+data/manifests/ranking_v6_e86_* -text whitespace=cr-at-eol
