@@ -1,0 +1,18 @@
+{
+  "schema": "e94-focused-pre-review-v1",
+  "reviewer": "/root/e89_e90_review_fallback",
+  "model": "gpt-5.6-sol",
+  "resource_controller_verdict": "PASS_SCOPED_PARTIAL_RESOURCE_CAPABILITY_CONTROLLER",
+  "acceptance_compiler_verdict": "PASS_SCOPED_TESSENT_ACCEPTANCE_RECIPE_COMPILER",
+  "reader_sha256": "19b59088dfbd10152822cec9b14c7d8f00d1a5c00784aed65a5302690126438a",
+  "controller_sha256": "7d2b79c481e4113502fec856521c6adbe5fe5e72d9d06bcbf0a97f1257352000",
+  "resource_test_sha256": "8af1275884b107a7c1c3d2bc6b2e4977918f1befb3b46a323d9335c83f299b07",
+  "compiler_sha256": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2",
+  "compiler_test_sha256": "1a594240b4b4c04dfc0cf94d80fd5e6888fe178d460677a9e18c2fd7185c8efe",
+  "recipe_sha256": "67c927c315354adf9ad09466fa679e46c3417d64065d0cb44819af8a3e65271e",
+  "independent_tests_passed": 23,
+  "python36_ast_files_passed": 5,
+  "scope": "Partial read-only capability probe and pure recipe compiler only; no guard installation or Tessent/LSF authorization",
+  "execution_ready": false,
+  "training_release": false
+}

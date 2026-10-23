@@ -1,0 +1,24 @@
+{
+  "schema": "e94-initial-review-findings-v1",
+  "reviewer": "/root/e89_e90_review_fallback",
+  "model": "gpt-5.6-sol",
+  "verdict": "BLOCKED_BEFORE_ANY_REMOTE_EXECUTION",
+  "controller_issue": "Response validator accepted omitted capability fields and extra admission claim; fixed by exact top-level and nested capability schema validation",
+  "compiler_issue": "Tcl omitted known clock-off/split-capture/random-ATPG/F-fill initialization; fixed to match reference order and mode branches",
+  "earlier_parent_issue": "Parsed dict plus asserted old SHA did not authenticate observation bytes; public compiler changed to raw bytes only with actual SHA verification before parse",
+  "correction_scope": "One focused implementation correction per independently identified component, no remote retry",
+  "before_correction_regression": {
+    "path": "data/manifests/ranking_v6_e94_regression_20261023_r1.log",
+    "sha256": "80a126eacd825446755fc2abe93a9f752c0ddd509926e6ce82615cfd9fd00017",
+    "tests_run": 1355,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "role": "Historical intermediate test run, not final source identity verification"
+  },
+  "remote_resource_probe_calls_at_review": 0,
+  "tessent_calls": 0,
+  "atpg_calls": 0,
+  "execution_ready": false,
+  "training_release": false
+}

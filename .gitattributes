@@ -456,3 +456,11 @@ tests/test_prospective_acquisition_translation_e93.py -text
 experiment_overview/entries/E93_literal_backslash_path_repair.md -text
 data/manifests/ranking_v6_e93_* -text whitespace=cr-at-eol
 contracts/prospective_real_translation_e93_v1.json -text
+src/data/prospective_tessent_acceptance_v1.py -text
+tests/test_prospective_tessent_acceptance_v1.py -text
+scripts/probe_tessent_resource_capability_e94.py -text
+scripts/execute_tessent_resource_capability_e94.py -text
+tests/test_prospective_resource_capability_e94.py -text
+contracts/prospective_tessent_acceptance_e94_v1.json -text
+experiment_overview/entries/E94_tessent_acceptance_and_resource_capability.md -text
+data/manifests/ranking_v6_e94_* -text whitespace=cr-at-eol
