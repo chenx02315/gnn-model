@@ -1,0 +1,22 @@
+{
+  "schema": "e95-initial-review-findings-v1",
+  "reviewer": "/root/e95_memory_preflight_review",
+  "model": "gpt-6.1-sol",
+  "verdict": "CHANGES_REQUIRED_BEFORE_KERNEL_AUTHENTICATED_PREFLIGHT",
+  "reviewed_core_sha256": "8e10849b3450d845990110f0d7932e4c78d0734b0fcaa2bcd1fcc3983218fa08",
+  "reviewed_test_sha256": "7d5303f15ec3d427a96e75de106674cf4ebbd417d1ec97a8a3b85389ff1a291e",
+  "existing_synthetic_tests_passed": 14,
+  "findings": [
+    "Mount parser did not bind opened filesystem device and accepted conflicting overmount",
+    "Mode-bit-only write checks missed named-user access ACLs",
+    "Global producer-safe claim exceeded root/job checked scope",
+    "Per-file sentinel and aggregate reads could exceed declared physical read bounds",
+    "CPU volatility test changed PPID instead of utime and lacked changed-starttime rejection"
+  ],
+  "correction_policy": "One focused parent repair followed by full regression and independent re-review",
+  "actual_collect_calls": 0,
+  "remote_calls": 0,
+  "lsf_registration_calls": 0,
+  "tessent_calls": 0,
+  "training_runs": 0
+}

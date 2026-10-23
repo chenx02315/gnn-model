@@ -464,3 +464,8 @@ tests/test_prospective_resource_capability_e94.py -text
 contracts/prospective_tessent_acceptance_e94_v1.json -text
 experiment_overview/entries/E94_tessent_acceptance_and_resource_capability.md -text
 data/manifests/ranking_v6_e94_* -text whitespace=cr-at-eol
+contracts/prospective_lsf_acceptance_e95_request_v1.json -text
+experiment_overview/entries/E95_job_bound_memory_preflight.md -text
+src/data/prospective_lsf_memory_preflight_v1.py -text
+tests/test_prospective_lsf_memory_preflight_v1.py -text
+data/manifests/ranking_v6_e95_* -text whitespace=cr-at-eol

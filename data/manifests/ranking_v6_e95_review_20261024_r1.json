@@ -1,0 +1,19 @@
+{
+  "schema": "e95-memory-preflight-review-v1",
+  "verdict": "PASS_SCOPED_MEMORY_PREFLIGHT_IMPLEMENTATION",
+  "reviewer": "/root/e95_memory_preflight_review",
+  "model": "gpt-6.1-sol",
+  "core_sha256": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+  "test_sha256": "24f4ac9daf9859facbc090f28a276dd7b5e157b6d1a7e67ae47f27ef995e9e62",
+  "independent_synthetic_tests_passed": 16,
+  "python36_ast_files_passed": 2,
+  "five_initial_findings_resolved": true,
+  "approved_memory_cap_bytes": null,
+  "actual_kernel_collector_calls": 0,
+  "actual_lsf_registration_calls": 0,
+  "actual_tessent_calls": 0,
+  "actual_atpg_calls": 0,
+  "scope": "Local implementation only; not current A configuration, job acceptance, new cap approval, future tool inheritance or cleanup",
+  "execution_ready": false,
+  "training_release": false
+}

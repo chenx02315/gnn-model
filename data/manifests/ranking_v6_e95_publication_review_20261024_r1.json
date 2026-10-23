@@ -1,0 +1,20 @@
+{
+  "schema": "e95-publication-review-v1",
+  "verdict": "PASS_SCOPED_PUBLICATION",
+  "reviewer": "/root/e95_memory_preflight_review",
+  "model": "gpt-6.1-sol",
+  "source_and_test_pins_match": true,
+  "regression_sha256": "493a082618ebadbdcfe0dcb50fb5353a062b00cef048df4fd7291e5eb5177186",
+  "regression_tests_run": 1371,
+  "regression_skipped": 6,
+  "regression_failures": 0,
+  "regression_errors": 0,
+  "whole_job_executor_implemented": false,
+  "approved_memory_cap_bytes": null,
+  "new_job_authority_conferred": false,
+  "actual_kernel_collector_calls": 0,
+  "actual_remote_calls": 0,
+  "actual_tessent_calls": 0,
+  "execution_ready": false,
+  "training_release": false
+}

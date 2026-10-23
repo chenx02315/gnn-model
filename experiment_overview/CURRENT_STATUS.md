@@ -1,5 +1,7 @@
 # 当前实验状态
 
+2026-10-24 E95：作业内memory-v1预检组件已实现并经五项聚焦修复后独立复核通过，16专项通过；相关回归1,371项中6跳过、零失败错误。能检查精确job域、实际kernel限额与稳定身份，不从-M参数推断生效；目前全为本地合成/实现证据，真实collector/LSF/Tessent调用均0。整体job executor尚待接线，512MiB/每项10分钟/整作业45分钟仅建议，批准cap仍null，新作业未授权。下一阶段需一次整体资源与作业授权，而非逐模式审批；未放行ATPG或训练。见 [E95](entries/E95_job_bound_memory_preflight.md)。
+
 2026-10-23 E94：四项无pattern Tessent接受配方及只读能力探针经聚焦修复、独立复审通过，相关回归1,355项中6跳过、零失败错误。实际一次A能力观察读取四proc/11,901B，启用的memory/freezer/pids v1挂载可见，但当前账号对四常规cgroup根写权限hint全false；不证明未来LSF作业硬限制，也未扫描其他委派子组。下一路径为作业内资源生效前置门禁的LSF整体包，不直接启动Tessent；尚无新LSF/Tessent/ATPG/训练。见 [E94](entries/E94_tessent_acceptance_and_resource_capability.md)。
 
 2026-10-23 E93实际更新：独立预审与完整回归通过后，已执行一次新版本只读验证。aes_core/spi四项H→M/F真实固定输入计算翻译全部通过，10文件/12,065,221B，stdout 4,337B、stderr 0、退出0、无超时/溢出/重试。输入哈希匹配，E92失败保留；不是Tessent实际接受、远端翻译产物落盘、ATPG资源放行或模型提升。最新回归1,332项中6跳过、零失败错误。下一步收敛到Tessent接受、真实内存/超时和完整runner，而非再查相同输入。见 [E93](entries/E93_literal_backslash_path_repair.md)。

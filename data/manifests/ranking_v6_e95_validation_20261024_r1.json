@@ -1,0 +1,27 @@
+{
+  "schema": "e95-local-validation-v1",
+  "status": "PASS_LOCAL_MEMORY_PREFLIGHT_IMPLEMENTATION_ONLY",
+  "core_sha256": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+  "test_sha256": "24f4ac9daf9859facbc090f28a276dd7b5e157b6d1a7e67ae47f27ef995e9e62",
+  "focused_synthetic_tests_passed": 16,
+  "independent_review": "PASS_SCOPED_MEMORY_PREFLIGHT_IMPLEMENTATION",
+  "regression": {
+    "path": "data/manifests/ranking_v6_e95_regression_20261024_r1.log",
+    "sha256": "493a082618ebadbdcfe0dcb50fb5353a062b00cef048df4fd7291e5eb5177186",
+    "tests_run": 1371,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "real_kernel_collector_calls": 0,
+  "remote_calls": 0,
+  "lsf_registration_calls": 0,
+  "lsf_resume_calls": 0,
+  "tessent_calls": 0,
+  "atpg_calls": 0,
+  "whole_job_executor_implemented": false,
+  "approved_memory_cap_bytes": null,
+  "execution_ready": false,
+  "training_release": false
+}
