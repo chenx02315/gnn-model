@@ -1,0 +1,20 @@
+{
+  "schema": "prospective-real-translation-e92-v1",
+  "role": "Read-only computed compatibility validation, not Tessent acceptance, ATPG, model labels or pilot search cost",
+  "circuits": ["aes_core", "spi"],
+  "per_circuit_inputs": ["Common manifest", "Canonical mapping", "Pinned existing H full MTFI", "M common initial BASIC", "F common initial BASIC"],
+  "transitions": ["H_TO_M", "H_TO_F"],
+  "reader_sha256": "494358dc7453f66057b822396f11b22fb0c6db96822aec78bdbcec96e158bc15",
+  "controller_sha256": "d5d78a5caa2604cb9162c3054eaf04d8fccab93e8fce4f25d75908c6d62b46a8",
+  "core_sha256": "6907ecf2d810b613ac7704224a397cd5d58fe60e8c57745bf7020c8ad4d3acc6",
+  "e88_sha256": "f46ed9fea9f5fecaea146ae75807db06fbd75887fc21a995a8da44ebe65b09c8",
+  "e90_sha256": "d4d2ca335e74d20b9837d29013cfbf366150dfba499e9d3fa5aa335fff7e0e8b",
+  "limits": {"fixed_files": 10, "file_bytes": 8388608, "total_bytes": 33554432, "response_bytes": 16384, "payload_bytes": 65536, "helper_address_space_bytes": 268435456, "helper_cpu_seconds": 20, "transport_seconds": 60, "sessions": 1, "automatic_retries": 0},
+  "exports": "Four sanitized result statuses, output and manifest hashes, byte counts and deduplicated input pins; no fault rows or detection counts",
+  "remote_writes": 0,
+  "program_launches": 0,
+  "atpg_calls": 0,
+  "training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

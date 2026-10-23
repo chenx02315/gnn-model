@@ -1,0 +1,19 @@
+{
+  "schema": "e92-local-verification-pending-independent-review-v1",
+  "status": "LOCAL_TESTS_PASS_INDEPENDENT_REVIEW_UNAVAILABLE",
+  "reader_sha256": "494358dc7453f66057b822396f11b22fb0c6db96822aec78bdbcec96e158bc15",
+  "controller_sha256": "d5d78a5caa2604cb9162c3054eaf04d8fccab93e8fce4f25d75908c6d62b46a8",
+  "tests_sha256": "6a053516a894b2835d08d4d44908d11f3666f78c4848cf8e20869f0ad2ec6fc3",
+  "regression_sha256": "a82ea95cf84e29a014d316a7c570aaad86c5897ddc6a62bdff7ef1c163263886",
+  "parent_focused_tests": {"total": 24, "failures": 0, "errors": 0},
+  "regression": {"total": 1305, "passed": 1299, "skipped": 6, "failures": 0, "errors": 0, "seconds": 42.680, "exit_code": 0},
+  "independent_reviewer": "/root/e89_e90_review_fallback",
+  "independent_review": "Interrupted by usage limit; no PASS verdict exists",
+  "actual_phase_exists": false,
+  "actual_remote_calls": 0,
+  "actual_atpg_calls": 0,
+  "new_training_runs": 0,
+  "resume": "Revalidate these pins, obtain independent pre-observation review, then deliberately invoke the create-once controller exactly once; never treat local tests or this record as release",
+  "execution_ready": false,
+  "training_release": false
+}

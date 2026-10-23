@@ -1,0 +1,26 @@
+{
+  "schema": "e93-path-policy-review-v1",
+  "verdict": "PASS_SCOPED_PATH_POLICY_IMPLEMENTATION",
+  "reviewer": "/root/e89_e90_review_fallback",
+  "model": "gpt-5.6-sol",
+  "core_sha256": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+  "test_sha256": "03b578a93d36ea8620ec1c6b6d69434f342cbe4d5899cad8717f32ba192acf1c",
+  "independent_combined_tests_passed": 38,
+  "python36_ast_files_passed": 2,
+  "regression": {
+    "path": "data/manifests/ranking_v6_e93_regression_20261023_r1.log",
+    "sha256": "fecde5ce7c0937edbb61eed37029c640762f476c4419a4d83080833da2a13870",
+    "tests_run": 1319,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0
+  },
+  "path_policy": "OPAQUE_INTERNAL_BACKSLASH_NO_UNESCAPE_V2",
+  "original_v1_preserved": true,
+  "e92_failure_preserved": true,
+  "actual_translation_verified": false,
+  "tessent_acceptance_verified": false,
+  "execution_ready": false,
+  "training_release": false,
+  "scope": "LOCAL_IMPLEMENTATION_ONLY_NOT_NEW_REMOTE_PHASE_AUTHORIZATION"
+}

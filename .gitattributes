@@ -442,3 +442,17 @@ experiment_overview/entries/E91_explicit_fault_class_policy.md -text
 data/manifests/ranking_v6_e89_* -text whitespace=cr-at-eol
 data/manifests/ranking_v6_e90_* -text whitespace=cr-at-eol
 data/manifests/ranking_v6_e91_* -text whitespace=cr-at-eol
+scripts/probe_acquisition_translation_e92.py -text
+scripts/execute_acquisition_translation_probe_e92.py -text
+tests/test_prospective_acquisition_translation_e92.py -text
+contracts/prospective_real_translation_e92_v1.json -text
+experiment_overview/entries/E92_real_translation_validation_pending.md -text
+data/manifests/ranking_v6_e92_* -text whitespace=cr-at-eol
+src/data/prospective_fault_translation_v2.py -text
+tests/test_prospective_fault_translation_v2.py -text
+scripts/probe_acquisition_translation_e93.py -text
+scripts/execute_acquisition_translation_probe_e93.py -text
+tests/test_prospective_acquisition_translation_e93.py -text
+experiment_overview/entries/E93_literal_backslash_path_repair.md -text
+data/manifests/ranking_v6_e93_* -text whitespace=cr-at-eol
+contracts/prospective_real_translation_e93_v1.json -text

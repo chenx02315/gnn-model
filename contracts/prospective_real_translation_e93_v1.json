@@ -1,0 +1,23 @@
+{
+  "schema": "prospective-real-translation-e93-v1",
+  "role": "One versioned focused corrective read-only compatibility validation; not a retry of E92 phase, Tessent acceptance, ATPG, labels or pilot cost",
+  "predecessor_failure": "data/manifests/ranking_v6_e92_actual_failure_20261023_r1.json",
+  "policy_review": "data/manifests/ranking_v6_e93_review_20261023_r1.json",
+  "circuits": ["aes_core", "spi"],
+  "transitions": ["H_TO_M", "H_TO_F"],
+  "reader_sha256": "e3850a2575437313c11f7868ec89c41677aa19bd121675974721c2ab506dcf9c",
+  "controller_sha256": "cf27095a9c35730c76cf3d1124365977a38872df1334fae9e2f2638b0f9c3421",
+  "test_sha256": "c6a6824d16f9ff88b53c7c4b7da18d2a9ad5b6b203e5fbcc4b168ef046c3aa5a",
+  "core_sha256": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+  "e88_sha256": "f46ed9fea9f5fecaea146ae75807db06fbd75887fc21a995a8da44ebe65b09c8",
+  "e90_sha256": "d4d2ca335e74d20b9837d29013cfbf366150dfba499e9d3fa5aa335fff7e0e8b",
+  "phase": "runtime_training_staging_20260928/v6_e93_translation_compat_20261023_r1",
+  "limits": {"fixed_files": 10, "file_bytes": 8388608, "total_bytes": 33554432, "response_bytes": 16384, "payload_bytes": 65536, "helper_address_space_bytes": 268435456, "helper_cpu_seconds": 20, "transport_seconds": 60, "sessions": 1, "automatic_retries": 0},
+  "exports": "Four sanitized statuses, hashes and byte counts plus input identities; no fault rows, detection counts or performance labels",
+  "old_phase_reuse": false,
+  "remote_writes": 0,
+  "atpg_calls": 0,
+  "training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

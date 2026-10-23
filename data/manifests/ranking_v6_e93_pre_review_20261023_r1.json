@@ -1,0 +1,26 @@
+{
+  "schema": "e93-readonly-probe-pre-review-v1",
+  "verdict": "PASS_SCOPED_READ_ONLY_PROBE",
+  "reviewer": "/root/e89_e90_review_fallback",
+  "model": "gpt-5.6-sol",
+  "reader_sha256": "e3850a2575437313c11f7868ec89c41677aa19bd121675974721c2ab506dcf9c",
+  "controller_sha256": "cf27095a9c35730c76cf3d1124365977a38872df1334fae9e2f2638b0f9c3421",
+  "test_sha256": "c6a6824d16f9ff88b53c7c4b7da18d2a9ad5b6b203e5fbcc4b168ef046c3aa5a",
+  "core_sha256": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+  "independent_combined_tests_passed": 51,
+  "python36_ast_files_passed": 3,
+  "payload_bytes": 24527,
+  "parent_full_regression": {
+    "path": "data/manifests/ranking_v6_e93_regression_20261023_r2.log",
+    "sha256": "7b3fc8975ffd861ee701ce502d16b5f27bca91155af157787077d93657bf1e41",
+    "tests_run": 1332,
+    "skipped": 6,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "publication_wording_review": "PASS_AFTER_NUL_CR_LF_TAB_PRECISION_FIX",
+  "remote_phase_authorization_conferred_by_review": false,
+  "execution_ready": false,
+  "training_release": false
+}
