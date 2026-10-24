@@ -13,7 +13,8 @@ TRANSPORT = ROOT / 'scripts/run_prospective_metadata_v1.py'
 TRANSPORT_SHA = 'e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434'
 STAGING = ROOT.parent / 'runtime_training_staging_20260928'
 OPERATIONS = frozenset(('retire_observe','retire_execute','retire_confirm',
-    'deployment','registration','registration_review','pre_resume_observation','resume') +
+    'deployment','registration','registration_review','pre_resume_observation','resume',
+    'host_queue_observation') +
     tuple('job_observation_' + str(n) for n in range(1, 17)))
 
 
