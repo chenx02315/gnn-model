@@ -182,7 +182,8 @@ class _Domain:
         os.close(self.fd)
 
 
-def _capture(proc, domain, deadline, buffers):
+def _capture(proc, domain, deadline, buffers, limit=None):
+    ceiling = CAPTURE_LIMIT if limit is None else min(CAPTURE_LIMIT, limit)
     with selectors.DefaultSelector() as selector:
         for name, pipe in (('stdout', proc.stdout), ('stderr', proc.stderr)):
             os.set_blocking(pipe.fileno(), False)
@@ -191,7 +192,7 @@ def _capture(proc, domain, deadline, buffers):
             _require(time.monotonic() < deadline, 'TIMEOUT')
             domain.monitor()
             for key, _ in selector.select(min(0.05, max(0, deadline-time.monotonic()))):
-                remaining = CAPTURE_LIMIT - sum(map(len, buffers.values()))
+                remaining = ceiling - sum(map(len, buffers.values()))
                 _require(remaining > 0, 'CAPTURE_BUDGET_EXHAUSTED')
                 block = os.read(key.fd, min(65536, remaining))
                 if block:
@@ -271,6 +272,7 @@ class AcceptanceProcess:
         self.package_deadline = package_deadline
         self.cursor = 0
         self.aborted = False
+        self.capture_remaining = CAPTURE_LIMIT
 
     def run_item(self, circuit, transition):
         _require(_WORKER.acquire(blocking=False), 'ONE_WORKER_ONLY')
@@ -294,6 +296,7 @@ class AcceptanceProcess:
                      'EXACT_SERIAL_ROSTER')
             self.cursor += 1  # Every accepted launch attempt is consumed, even spawn failure.
             self.aborted = True
+            _require(self.capture_remaining > 0, 'PACKAGE_CAPTURE_BUDGET_EXHAUSTED')
             validate_authorization(self.authorization, compiled['recipe_sha256'])
             domain = _Domain(self.authorization)  # fresh E95 before any subprocess
             from .prospective_acceptance_materializer_v1 import verify_materialized_item
@@ -325,7 +328,8 @@ class AcceptanceProcess:
             launched = _launch_proof(domain, identity, self.authorization)
             launched['preflight_ack'] = ack
             self.event_sink('LAUNCHED', launched)
-            _capture(proc, domain, deadline-CLEANUP_RESERVE, buffers)
+            _capture(proc, domain, deadline-CLEANUP_RESERVE, buffers,
+                     limit=self.capture_remaining)
             capture_complete = True
             marker = ('E94_TRANSLATED_STATUS_ACCEPTANCE=PASS %s %s' %
                       (circuit, transition)).encode('ascii')
@@ -369,6 +373,7 @@ class AcceptanceProcess:
                         except Exception:
                             cleaned = False
                 finally:
+                    self.capture_remaining -= sum(map(len, buffers.values()))
                     _WORKER.release()
         if not cleaned or time.monotonic() > deadline:
             status = 'CLEANUP_UNKNOWN' if not cleaned else 'FAIL'
@@ -388,6 +393,7 @@ class AcceptanceProcess:
                     logs_saved=logs_saved,
                     log_capture_complete=capture_complete,
                     consumed_attempts=self.cursor, execution_ready=False,
+                    package_capture_remaining_bytes=self.capture_remaining,
                     scratch=(scratch.summary() if scratch is not None else None),
                     training_release=False, actual_atpg_calls=0,
                     memory_scope='CURRENT_WORKER_NOT_UNIVERSAL_INESCAPABILITY')

@@ -1,0 +1,39 @@
+{
+  "schema": "e97-execution-preparation-and-live-wait-seal-v1",
+  "status": "BLOCKED_QUEUE_EXPIRED_PERMIT_JOB_STILL_PEND",
+  "objective_complete": false,
+  "regression": {
+    "log": "data/manifests/ranking_v6_e97_regression_20261024_r5.log",
+    "sha256": "f693f38f01922fa5968f12421fafab51e6d266de00da891bfc1f0340942ac4b6",
+    "tests_run": 1549, "passed": 1537, "skipped": 12,
+    "failures": 0, "errors": 0, "exit_code": 0, "seconds": 73.953,
+    "windows_skips_are_not_linux_pass": true
+  },
+  "independent_staged_identity_review": {
+    "reviewer": "/root/e97_lsf_probe_builder", "verdict": "PASS_SCOPED_STAGED_IDENTITY",
+    "files_reviewed": 57, "manifest_members": 23, "synthesized_empty_initializers": 4,
+    "staged_blob_sha_matches_current_bytes": true, "unrelated_untracked_excluded": true
+  },
+  "job": {
+    "job_id": 394230, "submitted_total": 1, "resume_calls_total": 1,
+    "resume_acknowledged": true, "actual_job_retries": 0,
+    "latest_observation_phase": "v6_e97_job_result_observation_20261024_r4",
+    "latest_response_sha256": "fc0fe941c8d70aa94bd2c1e676d3b3f258762b187082ddcd777a5ae3bc2cf4de",
+    "latest_observed_state": "PEND", "outputs": "ALL_THREE_FIXED_FILES_MISSING",
+    "kernel_memory_pass": false, "linux_gate_pass": false,
+    "tessent_acceptance_pass": false, "atpg_calls": 0, "training_runs": 0
+  },
+  "permit": {"max_age_seconds": 600, "automatic_renewal_allowed": false, "queue_delay_does_not_extend_age": true},
+  "independent_queue_age_audit": {
+    "reviewer": "/root/e96_materializer_review",
+    "verdict": "CURRENT_ACCEPTANCE_PATH_NO_LONGER_VIABLE_WITH_FROZEN_PERMIT",
+    "audited_at_utc": "2026-10-24T09:50:56Z",
+    "latest_permit_expiry_upper_bound_utc": "2026-10-24T04:31:53Z",
+    "latest_decoded_bjobs_sha256": "c1a5c2a33b827417b7c8e3035346e41aaf18706c4566834ddc997cdff7fe7106",
+    "basis": "300s observation-to-resume review window plus 600s frozen worker permit max age",
+    "expected_future_rejection": "PERMIT_FRESHNESS before Linux gates or Tessent if clocks remain normal and permit unchanged",
+    "actual_terminal_failure_observed": false
+  },
+  "next_action": "Preserve current job and evidence; obtain consolidated authority for old job disposition, queue-safe new-version deployment and one new held job. Do not renew, overwrite, cancel, migrate or resubmit under old authorization",
+  "no_atpg_training_or_blind_release": true
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "e97-resume-premutation-failure-v1",
+  "job_id": 394230,
+  "failed_phase": "v6_e97_resume_20261024_r1",
+  "failed_core_sha256": "ccdb4c4280b7cb0e7ecd80ab8cbabca63e6eeeec94f861ade80e74f6cd3f72c1",
+  "failed_payload_sha256": "3884eda4adebc995936428a25cff7c7d602b3daa7dd4e375a15222e9244d826b",
+  "stdout_sha256": "022d469f90daa54080b00e4406f06f672a2d059780ed47d2bd2fad6e52c301a8",
+  "stdout_bytes": 102,
+  "exit_code": 1,
+  "error_code": "RESUME_BINARY_PIN",
+  "resume_calls": 0,
+  "resume_intent_created": false,
+  "permit_created": false,
+  "boundary_basis": "Fixed verified source fails before mkdir resume, persist intent or permit, and bresume client",
+  "diagnostic_phase": "v6_e97_resume_binary_observation_20261024_r1",
+  "diagnostic_stdout_sha256": "f8aed6ecfa7d003de8c204adae2f4e151efd29f8eb68c899ea4e853731a714a7",
+  "diagnostic_stdout_bytes": 443,
+  "actual_bresume_metadata": {
+    "dev": 43, "ino": 1049102, "nlink": 4, "size": 3021440,
+    "mtime_ns": 1404504463000000000, "uid": 0, "gid": 10007,
+    "st_mode": 33261, "mode": 493, "regular": true, "symlink": false
+  },
+  "diagnosis": "Original setup did not record nlink; all original fields match. Control helper assumed 1, actual read-only observation gives 4. No evidence of a link-count change over time",
+  "focused_core_sha256": "70e99cca1ecfef1ed29d102b9a992d193fc8ac3615d9b76545f56e8f7d9b6a49",
+  "focused_change": "Require exactly nlink 4 instead of the unsupported assumption 1; all other checks unchanged",
+  "independent_scope_verdict": "PASS_PREMUTATION_FOCUSED_REPAIR_WITHIN_ORIGINAL_AUTHORIZATION",
+  "reviewer": "/root/e96_materializer_review",
+  "does_not_authorize_automatic_retry_after_mutation_or_unknown_resume": true,
+  "job_count_max": 1,
+  "actual_job_retries": 0,
+  "tessent_calls": 0, "atpg_calls": 0, "training_runs": 0
+}

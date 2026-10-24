@@ -480,3 +480,17 @@ tests/test_prospective_acceptance_scratch_v1.py -text
 experiment_overview/entries/E96_fixed_acceptance_execution_chain.md -text
 contracts/prospective_acceptance_execution_e96_v1.json -text
 data/manifests/ranking_v6_e96_* -text whitespace=cr-at-eol
+contracts/prospective_acceptance_authorization_e97_20261024.json -text
+scripts/probe_acceptance_lsf_e97.py -text
+scripts/execute_acceptance_lsf_probe_e97.py -text
+scripts/run_acceptance_job_e97.py -text
+tests/test_prospective_acceptance_lsf_probe_e97.py -text
+tests/test_prospective_acceptance_lsf_controller_e97.py -text
+tests/test_prospective_acceptance_job_entry_e97.py -text
+tests/test_prospective_acceptance_linux_e97.py -text
+data/manifests/ranking_v6_e97_* -text whitespace=cr-at-eol
+experiment_overview/entries/E97_authorized_acceptance_job.md -text
+scripts/*acceptance*e97.py -text
+scripts/*acceptance*e97_r2.py -text
+tests/test_prospective_acceptance*e97.py -text
+src/data/prospective_acceptance_registration_e97.py -text

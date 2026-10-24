@@ -1,0 +1,43 @@
+{
+  "schema": "prospective-acceptance-authorization-e97-v1",
+  "recorded_at_utc": "2026-10-24T03:20:13Z",
+  "user_message": "批准你继续做",
+  "basis": "Explicit approval immediately following the consolidated one-job E95 request; automatic goal-continuation messages were not treated as consent",
+  "user_authorization_received": true,
+  "request_path": "contracts/prospective_lsf_acceptance_e95_request_v1.json",
+  "request_sha256": "0855155c442e15735e60a7e0780702231b80c580b2d5af773c308e90a68d3106",
+  "implementation_contract_path": "contracts/prospective_acceptance_execution_e96_v1.json",
+  "implementation_contract_sha256": "f07d0e1f77f4df951fca85a3aebd274554fa9045acb64c51c5378826b22645f8",
+  "code_commit_before_authorization": "ea7d8896057ec79d0a32d04e5f2fbca7c4cc55dd",
+  "allowed": {
+    "a_bounded_scheduler_setup_metadata": true,
+    "a_new_isolated_bundle_deployment": true,
+    "single_held_job_registration": true,
+    "automatic_resume_only_after_independent_registration_and_fresh_pre_resume_reviews": true,
+    "linux_synthetic_and_job_bound_resource_gates_before_tool": true,
+    "tessent_no_pattern_acceptance_cases_max": 4
+  },
+  "job_constraints": {
+    "job_count_max": 1, "held_at_registration": true, "array": false,
+    "rerunnable": false, "workers": 1, "automatic_retries": 0,
+    "ram_cap_bytes": 536870912, "ram_plus_swap_cap_bytes": 536870912,
+    "per_item_wall_including_cleanup_seconds": 600,
+    "job_wall_seconds": 2700,
+    "sampled_process_abort_threshold": 64,
+    "sampled_scratch_abort_threshold_bytes": 134217728,
+    "combined_captured_output_cap_bytes": 16777216,
+    "raise_resource_limits_after_failure": false
+  },
+  "unknown_spawn_or_registration_must_not_be_retried": true,
+  "missing_kernel_memory_proof_prevents_tessent": true,
+  "atpg_authorized": false,
+  "training_authorized": false,
+  "blind_authorized": false,
+  "protected_historical_paths_unchanged": true,
+  "actual_job_registered": false,
+  "job_id": null,
+  "registration_review_passed": false,
+  "pre_resume_review_passed": false,
+  "execution_ready": false,
+  "training_release": false
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "queue-safe-acceptance-e98-proposal-v1",
+  "status": "PROPOSAL_NOT_AUTHORIZATION",
+  "user_authorization_received": false,
+  "reason": "E97 exact job remained queued beyond its frozen 600s worker permit age",
+  "old_job_id": 394230,
+  "old_job_disposition_proposed": "After explicit approval, cancel only 394230 and confirm terminal before a new registration",
+  "lifecycle_repair": {
+    "fresh_review_at_resume_max_seconds": 300,
+    "proposed_queue_start_lease_seconds": 86400,
+    "queue_lease_requires_explicit_approval": true,
+    "job_and_code_and_authorization_and_recipe_binding": true,
+    "external_review_receipt_hash_binding": true,
+    "exclusive_once_only_worker_start_marker": true,
+    "kernel_memory_and_linux_gates_required_before_tool": true,
+    "failures_record_only_fixed_stage_and_error_enums": true,
+    "expired_lease_or_unknown_resume_must_not_be_retried": true
+  },
+  "proposed_new_execution": {
+    "new_isolated_directory": true,
+    "new_held_job_count_max": 1,
+    "array": false, "rerunnable": false, "workers": 1,
+    "automatic_retries": 0,
+    "automatic_resume_only_after_independent_registration_and_fresh_pre_resume_reviews": true,
+    "ram_cap_bytes": 536870912, "ram_plus_swap_cap_bytes": 536870912,
+    "per_item_wall_including_cleanup_seconds": 600,
+    "worker_job_wall_seconds": 2700,
+    "tessent_no_pattern_cases_max": 4,
+    "combined_tool_output_cap_bytes": 16777216,
+    "sampled_process_abort_threshold": 64,
+    "sampled_scratch_abort_threshold_bytes": 134217728,
+    "raise_limits": false
+  },
+  "atpg_authorized": false, "training_authorized": false, "blind_authorized": false,
+  "deployed": false, "jobs_registered": 0,
+  "required_tests": ["hours_in_queue_within_lease", "expired_resume_review_zero_calls", "expired_queue_lease_zero_tools", "wrong_job_or_pins_zero_tools", "duplicate_start_rejected", "array_or_multiple_workers_rejected", "kernel_ram_or_memsw_failure_fixed_error_code", "unknown_resume_consumes_attempt", "worker_wall_starts_at_entry", "no_secret_or_exception_text_in_failure_record"]
+}

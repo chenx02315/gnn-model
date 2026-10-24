@@ -2,6 +2,7 @@
 import ast
 import json
 import os
+import sys
 from pathlib import Path
 import tempfile
 import unittest
@@ -117,6 +118,14 @@ class CoordinatorTests(unittest.TestCase):
                 self.run_fake()
         self.assertEqual(FakeProcess.instances[0].calls, [])
 
+    def test_external_entry_deadline_cannot_be_reset(self):
+        with mock.patch.object(m.time, 'monotonic', return_value=1000), \
+             mock.patch.object(m, '_components', return_value=(FakeMaterializer, FakeProcess)), \
+             mock.patch.object(m, '_DurableJournal', FakeJournal):
+            with self.assertRaisesRegex(m.CoordinatorError, 'INSUFFICIENT_ITEM_WALL_BUDGET'):
+                m.run_package(E85, E93, authority(), package_deadline=1599)
+        self.assertEqual(FakeProcess.instances[0].calls, [])
+
     def test_no_authority_or_excess_cap_before_components(self):
         for changes in ({'approved': False}, {'memory_cap_bytes': None},
                         {'memory_cap_bytes': True}, {'memory_cap_bytes': m.MAX_MEMORY + 1},
@@ -200,7 +209,7 @@ class CoordinatorTests(unittest.TestCase):
 
     def test_python36_and_no_direct_process_or_scheduler_calls(self):
         source = Path(m.__file__).read_text(encoding='utf-8')
-        tree = ast.parse(source, feature_version=(3, 6))
+        tree = ast.parse(source, **({'feature_version': (3, 6)} if sys.version_info >= (3, 8) else {}))
         attrs = {x.func.attr for x in ast.walk(tree) if isinstance(x, ast.Call)
                  and isinstance(x.func, ast.Attribute)}
         self.assertFalse(attrs & {'Popen', 'system', 'kill', 'killpg'})

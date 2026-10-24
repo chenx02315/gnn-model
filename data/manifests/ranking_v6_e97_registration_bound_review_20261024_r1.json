@@ -1,0 +1,11 @@
+{
+  "schema": "e97-independent-resume-review-v1",
+  "stage": "registration",
+  "job_id": 394230,
+  "passed": true,
+  "independent": true,
+  "reviewer": "e96_materializer_review",
+  "issued_at_epoch": 1792814987,
+  "observation_sha256": "1b695ba83e2e25ed124dde34688b9ee8575c568f8b2f6ca807cc9e79d0160cb2",
+  "composite_requested_worker_nonarray_accepted": true
+}

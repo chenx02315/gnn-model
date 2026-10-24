@@ -1,0 +1,66 @@
+{
+  "schema": "e97-review-history-v1",
+  "provenance": "Parent transcription of independent review messages and observed local failure; not scheduler execution evidence",
+  "setup_probe_initial_failure": {
+    "source_sha256": "c4dba7a37aa75580afb18b1e9edcb769e09e0f9e92fb15802b06fe078291630f",
+    "finding": "Missing status/boundary fields would reject successful remote observation; discovered before any remote session",
+    "remote_session_consumed": false
+  },
+  "setup_probe_focused_pass": {
+    "reader_sha256": "38387328bf7a9d3d4b3bfef973ec6b1094e630e09f22515de0140e3da5272433",
+    "controller_sha256": "671d132fc5b54133ff45c2565d0591df550af7198b8d93efe4af2584dc45c263",
+    "probe_tests": 11, "controller_tests": 3,
+    "reviewer": "/root/e96_materializer_review"
+  },
+  "entry_initial_review": {
+    "source_sha256": "ce7ac8793262f28204367b566671933cd852c0b4179507008f50aed4ed790833",
+    "verdict": "CHANGES_REQUIRED",
+    "findings": ["Sentinel overread", "Failure gate evidence not persisted", "Terminal result discarded", "License allowlist not forwarded"]
+  },
+  "entry_focused_review": {
+    "source_sha256": "2afdfee446882929683ff2c8cbb7a16ec94f03365ad35fe42c749b8e8e546fd9",
+    "verdict": "PASS_SCOPED_IMPLEMENTATION",
+    "reviewer": "/root/e96_materializer_review",
+    "mock_tests_across_entry_process_coordinator_scratch": 65,
+    "actual_linux_fixture_run": false
+  },
+  "bundle_initial_actual_local_failure": {
+    "builder_sha256": "f2c0e4502093f994b59e1355e2de3ce02cc955674a7cdc1d0467ce3cac4dab3c",
+    "error_code": "E97_SOURCE_CHANGED",
+    "stage_created": false, "archive_created": false,
+    "diagnosis": "Windows lstat/fstat expose different stable ctime views; dev/inode/mode/nlink/size/mtime agree",
+    "example_e93_named_ctime_ns": 1792769983062810400,
+    "example_e93_fd_ctime_ns": 1792769983063808600
+  },
+  "bundle_windows_focused_repair": {
+    "builder_sha256": "7560b09dca6cd1a87d59690db01d21a9f7921c441d79dd96d10d88816bc53d84",
+    "tests": 8, "verdict": "PASS_SCOPED_WINDOWS_REPAIR",
+    "posix_full_cross_ctime_checks_preserved": true,
+    "reviewer": "/root/e96_materializer_review"
+  },
+  "registration_plan_initial_review": {
+    "source_sha256": "e6a393393f94806c3b6ad6d3cbc065a55b07b37ec34385b46ba39811f45d5e13",
+    "finding": "span[hosts=1] does not bind the required bupt-vncs2 host",
+    "actual_registration_attempts": 0
+  },
+  "registration_plan_focused_review": {
+    "source_sha256": "4ee2430beaf22454c55526b393d6379fc754a364ac816284f131f5eb5f2eacf8",
+    "verdict": "PASS_PURE_PLANNER_ONLY", "tests": 12,
+    "reviewer": "/root/e97_lsf_probe_builder"
+  },
+  "deployment_preexecution_review": {
+    "verdict": "PASS_SCOPED_ONE_DEPLOYMENT_ONLY",
+    "reviewer": "/root/e96_materializer_review",
+    "helper_tests": 12, "controller_tests": 3,
+    "independent_archive_and_manifest_reread": true
+  },
+  "regression_before_deployment": {
+    "log": "data/manifests/ranking_v6_e97_regression_20261024_r1.log",
+    "sha256": "1e2a52f5bb28fedc0b9fc15c8757cd78b2df62a33e9a975845299482041bc7b2",
+    "tests_run": 1499, "passed": 1487, "skipped": 12,
+    "failures": 0, "errors": 0, "seconds": 78.062, "exit_code": 0,
+    "includes_actual_linux_fixture": false
+  },
+  "actual_tessent_calls": 0, "actual_atpg_calls": 0, "training_runs": 0,
+  "execution_ready": false, "training_release": false
+}

@@ -55,7 +55,7 @@ class Tests(unittest.TestCase):
         domain.monitor.side_effect = lambda: domain.scratch_monitor.sample()
         marker = b'E94_TRANSLATED_STATUS_ACCEPTANCE=PASS aes_core H_TO_M\n'
         effects = capture if isinstance(capture, Exception) else None
-        def capture_streams(proc, domain, deadline, buffers):
+        def capture_streams(proc, domain, deadline, buffers, **kwargs):
             if callable(capture):
                 return capture(proc, domain, deadline, buffers)
             if isinstance(capture, tuple):
@@ -171,7 +171,7 @@ class Tests(unittest.TestCase):
         sink = Mock(side_effect=OSError('fsync'))
         result = self.simulate(sink=sink)
         self.assertEqual(result['spawn_attempts'], 0)
-        self.assertEqual(sink.call_args.args[0], 'PREFLIGHT')
+        self.assertEqual(sink.call_args[0][0], 'PREFLIGHT')
 
     def test_separate_streams_cannot_hide_error_or_synthesize_marker(self):
         marker = b'E94_TRANSLATED_STATUS_ACCEPTANCE=PASS aes_core H_TO_M\n'
@@ -283,7 +283,7 @@ class Tests(unittest.TestCase):
              patch.object(process, '_save_logs'):
             result = backend.run_item('aes_core', 'H_TO_M')
         domain.cleanup.assert_called_once()
-        self.assertIsNone(domain.cleanup.call_args.args[0])
+        self.assertIsNone(domain.cleanup.call_args[0][0])
         self.assertIsNone(result['tessent_calls'])
         self.assertEqual(result['spawn_attempts'], 1)
         self.assertFalse(result['cleanup_verified'])
@@ -328,13 +328,17 @@ class Tests(unittest.TestCase):
             for circuit, transition, _ in recipe.ROSTER:
                 marker = ('E94_TRANSLATED_STATUS_ACCEPTANCE=PASS %s %s\n' %
                           (circuit, transition)).encode()
-                capture.side_effect = lambda proc, domain, deadline, buffers: buffers['stdout'].extend(marker)
+                capture.side_effect = lambda proc, domain, deadline, buffers, **kwargs: buffers['stdout'].extend(marker)
                 self.assertTrue(backend.run_item(circuit, transition)['accepted'])
             self.assertEqual(popen.call_count, 4)
+            limits = [call[1]['limit'] for call in capture.call_args_list]
+            self.assertEqual(limits[0], process.CAPTURE_LIMIT)
+            self.assertTrue(all(a > b for a, b in zip(limits, limits[1:])))
+            self.assertLess(backend.capture_remaining, process.CAPTURE_LIMIT)
             for call, item in zip(popen.call_args_list, backend.bundle['items']):
-                self.assertEqual(call.args[0], item['argv'])
-                self.assertFalse(call.kwargs['shell'])
-                self.assertTrue(call.kwargs['start_new_session'])
+                self.assertEqual(call[0][0], item['argv'])
+                self.assertFalse(call[1]['shell'])
+                self.assertTrue(call[1]['start_new_session'])
             self.assertFalse(backend.run_item('aes_core', 'H_TO_M')['accepted'])
             self.assertEqual(popen.call_count, 4)
 

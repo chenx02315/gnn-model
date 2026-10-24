@@ -1,0 +1,19 @@
+{
+  "schema": "e97-independent-registration-review-v1",
+  "reviewer": "/root/e96_materializer_review",
+  "recorded_at_utc": "2026-10-24T04:03:46Z",
+  "job_id": 394230,
+  "verdict": "PASS_REGISTRATION_ONLY",
+  "authorization_sha256": "db9aa1bd63c7a3f7c9935ff4e99c2931041e59fb225b39e4338b06efd1619935",
+  "code_manifest_sha256": "b2c14a936f029d17eedc5faed6f23ddd7abf2b57cf625155739f09915135edad",
+  "fresh_response_sha256": "12f202c0697550192a6204c39cc27f7355a2704dfb52abe490c1ab8a81e86d6e",
+  "decoded_bjobs_stdout_bytes": 1553,
+  "decoded_bjobs_stdout_sha256": "46bee348a1d01471bafec646880fe6e17abfcfef976338527a5cbda5d99be0e6",
+  "review_scope": ["seven_original_registration_records_and_hashes", "fresh_PSUSP_45min_snapshot", "same_exact_job_and_fixed_entry", "authorization_identity"],
+  "original_discrepant_snapshot_preserved": true,
+  "discrepancy_cause": null,
+  "pre_resume_review_passed": false,
+  "resume_authorized_by_this_receipt_alone": false,
+  "actual_kernel_memory_proof": false,
+  "remaining": ["fresh_pre_resume_job_and_code_checks", "independent_resume_controller_review", "exclusive_fresh_permit", "worker_kernel_memory_and_linux_gates"]
+}

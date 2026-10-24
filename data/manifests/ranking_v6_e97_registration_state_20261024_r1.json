@@ -1,0 +1,22 @@
+{
+  "schema": "e97-registration-state-observation-v1",
+  "job_id": 394230,
+  "jobs_submitted": 1,
+  "resume_calls": 0,
+  "resume_permit_created": false,
+  "initial_observation": {"state": "PEND", "runlimit_minutes": 2700, "preserved": true},
+  "fresh_observation": {
+    "phase": "v6_e97_fresh_job_state_20261024_r1",
+    "stdout_bytes": 2279,
+    "stdout_sha256": "12f202c0697550192a6204c39cc27f7355a2704dfb52abe490c1ab8a81e86d6e",
+    "state": "PSUSP", "runlimit_minutes": 45, "displayed_memlimit": "512 M",
+    "requested_host": "bupt-vncs2", "rerunnable": false,
+    "submission_with_hold": true, "expected_command_observed": true,
+    "ssh_exit_code": 0, "stderr_bytes": 0, "timeout": false, "overflow": false
+  },
+  "discrepancy_cause": null,
+  "independent_registration_review": "PASS_REGISTRATION_ONLY",
+  "fresh_pre_resume_review": "PENDING",
+  "actual_kernel_memory_proof": false,
+  "tessent_calls": 0, "atpg_calls": 0, "new_training_runs": 0
+}

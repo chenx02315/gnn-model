@@ -3,6 +3,7 @@ import ast
 from contextlib import contextmanager, ExitStack
 from pathlib import Path
 import stat
+import sys
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
@@ -125,7 +126,8 @@ class Tests(unittest.TestCase):
 
     def test_python36_syntax(self):
         for path in (Path(m.__file__), Path(__file__)):
-            ast.parse(path.read_text(encoding='utf-8'), feature_version=(3, 6))
+            ast.parse(path.read_text(encoding='utf-8'),
+                      **({'feature_version': (3, 6)} if sys.version_info >= (3, 8) else {}))
 
     def test_root_open_error_is_retained_without_false_sample(self):
         monitor = m.ScratchMonitor(10)

@@ -5,6 +5,7 @@ resume reviews. A matching authorization dictionary is not proof of consent.
 Nothing executes merely by importing this module.
 """
 import hashlib
+import math
 import json
 import os
 import re
@@ -138,7 +139,8 @@ def _error_code(exc):
     return text if re.fullmatch(r'[A-Z][A-Z0-9_]{0,95}', text) else type(exc).__name__
 
 
-def run_package(raw_e85, raw_e93, authorization, license_environment=None):
+def run_package(raw_e85, raw_e93, authorization, license_environment=None,
+                package_deadline=None):
     """Execute only after external authorization/reviews; caller owns that gate.
 
     Library tests replace the two physical components. This is not a scheduler
@@ -147,11 +149,15 @@ def run_package(raw_e85, raw_e93, authorization, license_environment=None):
     plan = recipes.compile_acceptance(raw_e85, raw_e93, recipes.E85_SHA256,
                                       recipes.E93_SHA256)
     authority_sha = validate_authorization(authorization, plan['recipe_sha256'])
+    require(package_deadline is None or
+            (type(package_deadline) in (int, float) and math.isfinite(package_deadline)),
+            'PACKAGE_DEADLINE')
     require(_WORKER.acquire(False), 'SINGLE_WORKER_REQUIRED')
     materializer = None
     journal = None
     receipts = []
     started = time.monotonic()
+    absolute_deadline = min(started + JOB_SECONDS, package_deadline) if package_deadline is not None else started + JOB_SECONDS
     ordinal = 0
     launch_seen = False
     preflight_seen = False
@@ -171,7 +177,7 @@ def run_package(raw_e85, raw_e93, authorization, license_environment=None):
             if kind == 'PREFLIGHT':
                 require(not preflight_seen and not launch_seen, 'PREFLIGHT_ACK_ORDER')
                 ack = journal.append('PREFLIGHT', dict(ordinal=ordinal, evidence=payload))
-                require(time.monotonic() < started + JOB_SECONDS,
+                require(time.monotonic() < absolute_deadline,
                         'JOB_WALL_BUDGET')
                 preflight_seen = True
             else:
@@ -183,9 +189,9 @@ def run_package(raw_e85, raw_e93, authorization, license_environment=None):
 
         process = Process(raw_e85, raw_e93, authorization,
                           license_environment=license_environment, event_sink=event_sink,
-                          package_deadline=started + JOB_SECONDS)
+                          package_deadline=absolute_deadline)
         for ordinal, (circuit, transition, mode) in enumerate(recipes.ROSTER, 1):
-            require(time.monotonic() - started < JOB_SECONDS, 'JOB_WALL_BUDGET')
+            require(time.monotonic() < absolute_deadline, 'JOB_WALL_BUDGET')
             item = materializer.materialize_item(circuit, transition)
             require(item['circuit'] == circuit and item['transition'] == transition,
                     'MATERIALIZED_ROSTER_BINDING')
@@ -193,13 +199,13 @@ def run_package(raw_e85, raw_e93, authorization, license_environment=None):
                 transition=transition, tcl_sha256=item['tcl_sha256'],
                 translated_status_sha256=item['translated_status_sha256'],
                 translation_manifest_sha256=item['translation_manifest_sha256']))
-            require(JOB_SECONDS - (time.monotonic() - started) >= 600,
+            require(absolute_deadline - time.monotonic() >= 600,
                     'INSUFFICIENT_ITEM_WALL_BUDGET')
             launch_seen = False
             preflight_seen = False
             journal.append('INTENT', dict(ordinal=ordinal, circuit=circuit,
                 transition=transition, maximum_attempts=1, automatic_retries=0))
-            require(JOB_SECONDS - (time.monotonic() - started) >= 600,
+            require(absolute_deadline - time.monotonic() >= 600,
                     'INSUFFICIENT_ITEM_WALL_BUDGET')
             receipt = process.run_item(circuit, transition)
             require(type(receipt) is dict and receipt.get('circuit') == circuit and
@@ -213,7 +219,7 @@ def run_package(raw_e85, raw_e93, authorization, license_environment=None):
                     receipt.get('cleanup_verified') is True and
                     type(receipt.get('returncode')) is int and receipt['returncode'] == 0,
                     'ACCEPTANCE_OR_CLEANUP_FAILED')
-        require(time.monotonic() - started <= JOB_SECONDS, 'JOB_WALL_BUDGET')
+        require(time.monotonic() <= absolute_deadline, 'JOB_WALL_BUDGET')
         ack = journal.append('CLOSE', dict(status='FOUR_ACCEPTANCE_CASES_COMPLETE_ONLY',
             cases=len(receipts), actual_atpg_calls=0, training_release=False))
         return dict(schema=SCHEMA, status='FOUR_ACCEPTANCE_CASES_COMPLETE_ONLY',
