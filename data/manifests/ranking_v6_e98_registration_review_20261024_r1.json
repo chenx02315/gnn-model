@@ -1,0 +1,14 @@
+{
+  "schema": "e98-independent-review-v1",
+  "stage": "registration",
+  "job_id": 394238,
+  "passed": true,
+  "independent": true,
+  "reviewer": "e96_materializer_review",
+  "reviewed_at_epoch": 1792837247,
+  "authorization_sha256": "da27486a2ed20d55c8b8de7071882364c9648ab49054d2a319d07cb2a73076f5",
+  "code_manifest_sha256": "c6780832d3d0e62d030c4cc74814f2f9550be710ade154f40bf6ec0512bd29ef",
+  "recipe_sha256": "916fa1475bacaf78a4c4162a65f609cc61333d17f0a37eb97fabbc8975a67f02",
+  "registration_evidence_sha256": "9d3d805c1f9718a9b822598228c3e67937c94eada5aa6b08df1bc9d0e139529e",
+  "observation_sha256": "f3a47e3d80171fd9b0a91d988f43e2d99549c31c4120173376f8a0aa7fbf7d70"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "e98-independent-retirement-review-v1",
+  "job_id": 394230,
+  "passed": true,
+  "independent": true,
+  "observation_sha256": "a6085836405c4ea3278d5142f7202f26956bb079a263248f1f3494ea0532dfd7",
+  "issued_at_epoch": 1792836529
+}

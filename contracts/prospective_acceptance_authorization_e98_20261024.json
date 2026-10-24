@@ -1,0 +1,42 @@
+{
+  "schema": "prospective-acceptance-authorization-e98-v1",
+  "recorded_at_utc": "2026-10-24T09:58:04Z",
+  "user_message": "批准上述整体补救包",
+  "user_authorization_received": true,
+  "proposal_path": "contracts/prospective_queue_safe_acceptance_e98_proposal_v1.json",
+  "proposal_sha256": "0908edaf434d80af4cb0535da6cd78a088d7e5592dcbe4a6b996faff4d0d9268",
+  "base_commit": "42e7eca82bb993d100270e9ee496d8494fa98bb1",
+  "old_job": {"job_id": 394230, "cancel_exact_id_allowed": true, "terminal_confirmation_required_before_new_registration": true, "preserve_all_existing_files_and_permit": true},
+  "new_bundle_root": "/temp/jiangchuanc/gnn_model_acceptance_e98_20261024_r1_bundle",
+  "new_acceptance_root": "/temp/jiangchuanc/multimode_ate_acceptance_e98_20261024_r1",
+  "allowed": {
+    "queue_safe_lifecycle_repair_and_independent_review": true,
+    "new_isolated_deployment": true,
+    "new_held_job_count_max": 1,
+    "automatic_resume_only_after_independent_registration_and_fresh_pre_resume_reviews": true,
+    "tessent_no_pattern_acceptance_cases_max": 4
+  },
+  "limits": {
+    "fresh_pre_resume_review_max_age_seconds": 300,
+    "queue_start_lease_seconds": 86400,
+    "ram_cap_bytes": 536870912,
+    "ram_plus_swap_cap_bytes": 536870912,
+    "workers": 1, "array": false, "rerunnable": false,
+    "automatic_retries": 0,
+    "per_item_wall_including_cleanup_seconds": 600,
+    "worker_job_wall_seconds": 2700,
+    "combined_tool_output_cap_bytes": 16777216,
+    "sampled_process_abort_threshold": 64,
+    "sampled_scratch_abort_threshold_bytes": 134217728,
+    "raise_resource_limits": false
+  },
+  "unknown_registration_or_resume_consumes_attempt": true,
+  "expired_queue_lease_must_fail_closed_without_renewal": true,
+  "single_worker_start_claim_required": true,
+  "kernel_and_linux_gates_required_before_tool": true,
+  "atpg_authorized": false, "training_authorized": false, "blind_authorized": false,
+  "historical_and_protected_directories_unchanged": true,
+  "old_job_cancellation_performed_at_authorization": false,
+  "new_jobs_registered_at_authorization": 0,
+  "new_job_id_at_authorization": null
+}

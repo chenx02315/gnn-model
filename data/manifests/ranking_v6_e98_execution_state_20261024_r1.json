@@ -1,0 +1,41 @@
+{
+  "schema": "e98-authorized-acceptance-execution-state-v1",
+  "status": "WAIT_LSF_JOB_394238",
+  "objective_complete": false,
+  "authorization_sha256": "da27486a2ed20d55c8b8de7071882364c9648ab49054d2a319d07cb2a73076f5",
+  "old_job": {"job_id": 394230, "cancellation_calls": 1, "terminal_confirmed": true, "terminal_state": "EXIT", "remote_terminal_proof_sha256": "c88cb018b0138096235d62fcc1c86a29aab4349434e219db7903f6d206a98d82"},
+  "deployment": {
+    "root": "/temp/jiangchuanc/gnn_model_acceptance_e98_20261024_r1_bundle",
+    "archive_bytes": 60110, "tar_bytes": 266240, "ordinary_files": 24,
+    "archive_sha256": "172be8939e3b3934313b52d85b1db9a43735a6c80c0d659ed22e70395bad6b62",
+    "manifest_sha256": "c6780832d3d0e62d030c4cc74814f2f9550be710ade154f40bf6ec0512bd29ef",
+    "written_and_readback_bytes": 238793,
+    "response_sha256": "21723646f683c8dccababd3a6faea8ea1bbe45fba82203f71bfaf6525fb51dd5",
+    "exit_code": 0, "automatic_retries": 0
+  },
+  "new_job": {
+    "job_id": 394238, "registrations": 1, "held_registration_independently_verified": true,
+    "registration_review_sha256": "ca5b3fe2c7ae82f0820cf580c8320b6bd99d8fd3637857aa68380f0f1be0892b",
+    "pre_resume_review_sha256": "abcf1bfc5639de05f6296b8df7d2e6a6a82de149543957889ecb4b1829dc9e39",
+    "fresh_observation_canonical_sha256": "bc04ec98b8cc1773ce84cbdaf45d6da0fc1e295f836ee3a0c27e8b288b917cb2",
+    "resume_payload_bytes": 45411,
+    "resume_payload_sha256": "32894bcd631094d2ee28477394e7c96f8df162df6cee71c7f0469e0b053818d0",
+    "resume_calls": 1, "resume_acknowledged": true,
+    "resume_response_sha256": "634e4154312833fcfcf09d1a5e827eb0720030b463461f04e459f89ab7e62a6f",
+    "queue_start_lease_seconds": 86400, "automatic_renewal": false,
+    "ram_and_memsw_cap_bytes_each": 536870912, "workers_requested": 1,
+    "worker_wall_seconds": 2700, "per_item_wall_seconds": 600,
+    "actual_job_retries": 0, "tessent_no_pattern_cases_max": 4
+  },
+  "latest_observation": {
+    "phase": "v6_e98_job_observation_2_20261024_r1",
+    "response_sha256": "6300912799649329768776da59fe62e5818411546051cb300fad6bde95e54fd1",
+    "scheduler_state": "PEND", "reason": "Aggregate scheduler reasons: 1 host closed, 4 not requested, 1 slot-limit reached, 2 load unavailable; no per-host assignment inferred",
+    "fixed_files": "ALL_FIVE_MISSING", "worker_start": "NOT_OBSERVED",
+    "kernel_memory_gate": "NOT_OBSERVED", "linux_gate": "NOT_OBSERVED",
+    "tessent_acceptance": "NOT_OBSERVED"
+  },
+  "regression": {"log": "data/manifests/ranking_v6_e98_regression_20261024_r2.log", "sha256": "34675637952ea96a9d4ba86ac81d8dedb424652b801c0df78d1f270c9921dea9", "tests_run": 1657, "passed": 1645, "skipped": 12, "failures": 0, "errors": 0, "exit_code": 0, "seconds": 43.440},
+  "atpg_calls": 0, "training_runs": 0, "blind_release": false,
+  "next_action": "Read-only observe same live job, preserve gate or failure evidence; no second registration, resume, resource increase or automatic retry"
+}

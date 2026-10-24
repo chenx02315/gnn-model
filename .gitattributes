@@ -492,5 +492,19 @@ data/manifests/ranking_v6_e97_* -text whitespace=cr-at-eol
 experiment_overview/entries/E97_authorized_acceptance_job.md -text
 scripts/*acceptance*e97.py -text
 scripts/*acceptance*e97_r2.py -text
+scripts/*acceptance*e98.py -text
+tests/test_prospective_acceptance*e98.py -text
+contracts/prospective_acceptance_authorization_e98_20261024.json -text
+data/manifests/ranking_v6_e98_* -text whitespace=cr-at-eol
+experiment_overview/entries/E98_queue_safe_acceptance.md -text
+# Preserve already-reviewed control-source bytes, including inherited EOF blanks.
+scripts/build_acceptance_bundle_e98.py whitespace=cr-at-eol,-blank-at-eof
+scripts/deploy_acceptance_bundle_e98.py whitespace=cr-at-eol,-blank-at-eof
+scripts/execute_acceptance_deploy_e98.py whitespace=cr-at-eol,-blank-at-eof
+scripts/execute_acceptance_register_e98.py whitespace=cr-at-eol,-blank-at-eof
+tests/test_prospective_acceptance_bundle_e98.py whitespace=cr-at-eol,-blank-at-eof
+tests/test_prospective_acceptance_deploy_controller_e98.py whitespace=cr-at-eol,-blank-at-eof
+tests/test_prospective_acceptance_deploy_e98.py whitespace=cr-at-eol,-blank-at-eof
+tests/test_prospective_acceptance_register_controller_e98.py whitespace=cr-at-eol,-blank-at-eof
 tests/test_prospective_acceptance*e97.py -text
 src/data/prospective_acceptance_registration_e97.py -text

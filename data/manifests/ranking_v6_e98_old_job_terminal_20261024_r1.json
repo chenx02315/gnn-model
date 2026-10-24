@@ -1,0 +1,19 @@
+{
+  "schema": "e98-old-job-terminal-observation-v1",
+  "job_id": 394230,
+  "cancellation_calls_total": 1,
+  "terminal_state": "EXIT",
+  "scheduler_reason": "TERM_OWNER: job killed by owner",
+  "remote_proof_path": "/temp/jiangchuanc/gnn_model_acceptance_e98_20261024_r1_control/retirement_result.json",
+  "remote_proof_bytes": 360,
+  "remote_proof_sha256": "c88cb018b0138096235d62fcc1c86a29aab4349434e219db7903f6d206a98d82",
+  "latest_raw_bjobs_bytes": 1588,
+  "latest_raw_bjobs_sha256": "396519d54ae080d547ffc8a76ca1bf72d0620dc163f15f139fa555e0d8d6a761",
+  "phase": "v6_e98_retire_confirm_20261024_r1",
+  "response_bytes": 2833,
+  "response_sha256": "52c6660c5095ecd5feeb16e23328cf518e78e2a376202954fcaf56e1b446e5f1",
+  "ssh_exit_code": 0,
+  "stderr_bytes": 0,
+  "new_jobs_registered": 0,
+  "tessent_calls": 0, "atpg_calls": 0, "training_runs": 0
+}
