@@ -1,0 +1,40 @@
+{
+  "schema": "prospective-acquisition-protocol-e105-contract-v1",
+  "scope": "LOCAL_SYNTHETIC_INTEGRATION_ONLY",
+  "plan_sha256": "90a94e8ce2ee77be1296d67f17ed953fa92dfbe79c3675ea650149d595cdbbc4",
+  "circuits": ["aes_core", "spi"],
+  "action_count": 18,
+  "task_count": 78,
+  "per_circuit_limits": {"TESSENT_STAGE": 24, "STATUS_TRANSLATION": 15},
+  "global_projected_limits": {"TESSENT_STAGE": 48, "STATUS_TRANSLATION": 30},
+  "legacy_components_modified": false,
+  "budget_request_sha256_semantics": "VERSIONED_INTENT_DIGEST_NOT_DYNAMIC_ACTUAL_REQUEST",
+  "semantic_dependencies": "E86_FULL_PARENT_AND_TRANSLATION_LINEAGE",
+  "debit_owner": "UNCHANGED_E83_BRIDGE_ONLY",
+  "failure_policy": {
+    "known_failure_timeout_or_verified_prelaunch_denial": "STOP_CURRENT_CIRCUIT_KEEP_COST_AND_COUNTS",
+    "unknown_launch_termination_io_or_binding": "POISON_WHOLE_PACKAGE_NO_RESUME",
+    "missing_counts": null,
+    "missing_runtime": null,
+    "automatic_retry_count": 0
+  },
+  "cost_fields": {
+    "task_intervals": "SYNTHETIC_SHARED_CLOCK_SUM",
+    "setup": "SEPARATE_CALLER_OBSERVED_INTERVALS_NOT_AUTHENTICATED",
+    "session": "SYNTHETIC_PRE_HEADER_TO_POST_LAST_TASK_RECEIPT_PRE_SESSION_ACK",
+    "actual_atpg_runtime_ns": null,
+    "full_cost_qualified": false
+  },
+  "resource_limits_enforced": false,
+  "callback_flags_are_a_sandbox": false,
+  "output_authentication_is_physical": false,
+  "semantic_receipt_byte_bound": 4194304,
+  "semantic_receipt_byte_bound_is_global_disk_quota": false,
+  "readonly_replay_proves_historical_fsync_ack": false,
+  "writer_resume_supported": false,
+  "cli_launcher_added": false,
+  "real_backend_added": false,
+  "real_execution_authorized_by_this_contract": false,
+  "training_release": false,
+  "blind_access": false
+}
