@@ -14,7 +14,13 @@ class Tests(unittest.TestCase):
     def authority(self):
         value = prior.Tests().authority()
         value.update(schema='direct-tessent-repair-authorization-e102-v1',
-                     root=m.ROOT, predecessor_log_sha256=m.PREDECESSOR_LOG_SHA)
+                     root=m.ROOT, predecessor_log_sha256=m.PREDECESSOR_LOG_SHA,
+                     package_repair_versions_max=2,
+                     package_additional_launch_attempts_total_max=8,
+                     package_version_index=1, stop_on_first_failure=True,
+                     unchanged_code_retries_allowed=False,
+                     warnings_require_individual_review=True,
+                     blanket_warning_ignore_allowed=False)
         value.pop('predecessor_execution_response_sha256')
         return json.dumps(value).encode('ascii')
 
@@ -53,7 +59,7 @@ class Tests(unittest.TestCase):
             dict(circuit=c, transition=t, target_mode=mode)
             for c, t, mode in m.recipe.ROSTER])
         maker.materialize_item.return_value = dict(cwd=m.ROOT + '/scratch/aes_core_M',
-                                                 argv=['fixed-test-command'])
+                                                 argv=['fixed-test-command'],tcl_bytes=b'read_faults {one}\nread_faults {two} -merge\n')
         stack.enter_context(patch.object(m, 'DirectMaterializer', return_value=maker))
         stack.enter_context(patch.object(m.sys, 'platform', 'linux'))
         stack.enter_context(patch.object(m.platform, 'node', return_value='bupt-vncs2'))

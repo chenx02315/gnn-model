@@ -527,6 +527,21 @@ src/data/direct_observation_journal_e102.py -text
 tests/test_direct_observation_journal_e102.py -text
 src/data/direct_tessent_acceptance_e102.py -text
 tests/test_direct_tessent_acceptance_e102.py -text
+src/data/direct_diagnostic_policy_e102.py -text
+tests/test_direct_diagnostic_policy_e102.py -text
+scripts/run_direct_tessent_e102.py -text
+tests/test_direct_tessent_controller_e102.py -text
+contracts/direct_tessent_repair_authorization_e102_20261025.json -text
+contracts/direct_tessent_startup_exceptions_e102_v1.json -text
+src/data/direct_memory_sample_e103.py -text
+src/data/direct_tessent_acceptance_e103.py -text
+scripts/run_direct_tessent_e103.py -text
+tests/test_direct_memory_sample_e103.py -text
+tests/test_direct_tessent_acceptance_e103.py -text
+tests/test_direct_tessent_controller_e103.py -text
+contracts/direct_tessent_repair_authorization_e103_20261025.json -text
+data/manifests/ranking_v6_e102_execution_response_20261025_r1.json -text
+data/manifests/ranking_v6_e103_execution_response_20261025_r1.json -text
 tests/test_direct_runtime_compatibility_e102.py -text
 contracts/direct_tessent_runtime_repair_e102_proposal_v1.json -text
 data/manifests/ranking_v6_e101_* -text whitespace=cr-at-eol
