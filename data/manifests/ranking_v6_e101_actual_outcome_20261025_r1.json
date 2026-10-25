@@ -1,0 +1,132 @@
+{
+  "acceptance_pass_marker_observed": false,
+  "actual_case_wall_seconds": null,
+  "actual_peak_rss_swap_bytes": null,
+  "actual_subprocess_returncode": null,
+  "authorization_sha256": "09da5b310935b975885e08bf35fd555c8453260808e2a739cb9ccbbc9d575f87",
+  "automatic_retries": 0,
+  "blind_release": false,
+  "cleanup_evidence": "Verified code flow: supervise must pass cleaned before writing log; no separate OS termination attestation",
+  "completed_acceptance_cases": 0,
+  "edt_internal_pattern_generation_phase_text_present": true,
+  "engine_version_observed": "Tessent Shell 2021.2",
+  "execution_passed": false,
+  "explicit_create_patterns_submitted": false,
+  "failure": "SCRATCH_SINGLE_LINK_FILE_REQUIRED",
+  "kernel_memory_cap_enforced": false,
+  "last_command_observed": "add_processors localhost:1",
+  "launch_attempts": 1,
+  "library_and_aes_m_design_read_observed": true,
+  "log": {
+    "bytes": 8863,
+    "sha256": "2b6e78f2267934f8a859aaf8872956b9fed6050df59aa13d5c22c68748f3c54d"
+  },
+  "lsf_used": false,
+  "missing_case_observation_reason": "Final scratch check raised before case receipt publication; do not impute",
+  "new_formal_atpg_runs": 0,
+  "new_training_runs": 0,
+  "payload_sha256": "e2eb6cbc8ea3a937d97becab809d38b4ea967e93f47738b95bc2786d1c3740d9",
+  "readback": {
+    "bytes": 16235,
+    "sha256": "5ac08f01cc71332f938666e7d574d19ed8c464119ebab803b7a72576539d3f20"
+  },
+  "remaining_cases": "NOT_ATTEMPTED_STOP_ON_FIRST_FAILURE",
+  "root": "/temp/jiangchuanc/multimode_ate_direct_e101_20261025_r1",
+  "scan_cells_observed": 530,
+  "scan_chains_observed": 16,
+  "schema": "e101-actual-outcome-diagnosis-v1",
+  "socket_metadata": {
+    "current_uid": 1047,
+    "followed": false,
+    "gid": 1050,
+    "is_socket": true,
+    "nlink": 1,
+    "size": 0,
+    "type_mode": 49152,
+    "uid": 1047,
+    "writes": 0
+  },
+  "socket_readback": {
+    "bytes": 142,
+    "sha256": "e71c7b06c7adbde07056665d9ca45105d2e5d45454ee550e0b8132fb40e50b87"
+  },
+  "status": "AES_DESIGN_READ_OBSERVED_ACCEPTANCE_INTERRUPTED",
+  "synthetic_gate": {
+    "bytes": 361,
+    "cases": [
+      {
+        "cleaned": true,
+        "expected_success": true,
+        "name": "success",
+        "readiness": null
+      },
+      {
+        "cleaned": true,
+        "expected_success": false,
+        "name": "timeout",
+        "readiness": null
+      },
+      {
+        "cleaned": true,
+        "expected_success": false,
+        "name": "setsid_child",
+        "readiness": {
+          "observed_from_own_descendant_tree": true,
+          "pgrp": 62721,
+          "pid": 62721,
+          "session": 62721,
+          "start_ticks": 224954702
+        }
+      }
+    ],
+    "passed": true,
+    "sha256": "f5de66d56d6d6c418fc450c5f2b2001e1a06d92492b2370422a778430cd2d2ae"
+  },
+  "warning_inventory": {
+    "d95_verified": false,
+    "top_level_fault_import_commands_seen": 0,
+    "warning_acceptance_policy_changed": false,
+    "warnings": [
+      {
+        "category": "LIBRARY_ATTRIBUTE_MODELS_UNMATCHED",
+        "line_number": 30,
+        "message_sha256": "27c8821601aef17aa7e0f4d577161850ce604e1525a1d98afdfc064a35ec978e",
+        "phase": "STARTUP_BEFORE_FAULT_IMPORT",
+        "reported_number": null,
+        "reviewed_for_acceptance": false
+      },
+      {
+        "category": "FN1",
+        "line_number": 59,
+        "message_sha256": "91a6666f1b867f473910a0cce255f3dbebeb4d788db7b0f8dff1bda0510c5644",
+        "phase": "STARTUP_BEFORE_FAULT_IMPORT",
+        "reported_number": 6,
+        "reviewed_for_acceptance": false
+      },
+      {
+        "category": "FN4",
+        "line_number": 60,
+        "message_sha256": "44472cc1409461aa884c7e378cd6226ed44969b45376ab2e9bd580f51c697bfb",
+        "phase": "STARTUP_BEFORE_FAULT_IMPORT",
+        "reported_number": 637,
+        "reviewed_for_acceptance": false
+      },
+      {
+        "category": "D7_STABLE_HIGH_CLOCK_PORTS",
+        "line_number": 98,
+        "message_sha256": "0fb66c6462a6727ea36de725f867e303998c33adc7e6014efe36582207719f6c",
+        "phase": "STARTUP_BEFORE_FAULT_IMPORT",
+        "reported_number": 16,
+        "reviewed_for_acceptance": false
+      },
+      {
+        "category": "EDT_INITIALIZATION_OVERHEAD_PERCENT",
+        "line_number": 104,
+        "message_sha256": "a8f98d63a5b55e55920548d6c3d49c2fbc711206fd04bef4ab9443872e5e6765",
+        "phase": "STARTUP_BEFORE_FAULT_IMPORT",
+        "reported_number": 26,
+        "reviewed_for_acceptance": false
+      }
+    ]
+  }
+}
