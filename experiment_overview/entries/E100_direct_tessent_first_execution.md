@@ -31,3 +31,11 @@
 最小修复单独在 `src/data/direct_memory_sample_e101.py`，不改E100已执行源码：绑定expected startticks，结合前/后stat与status识别退出；退出测量为None，不伪造活进程内存0；短暂缺字段仅请求5ms后再读一次，持续live缺失仍拒绝，PID复用拒绝。5ms不是实际墙钟上限。新增8项与原15项合计23项本地测试及AST通过，独立小helper复核PASS；尚未集成、没有物理Linux验证或新Tessent调用。
 
 已一次询问是否授权修复复核后在新目录完整执行固定四项，最多新增四次启动尝试、首失败停止、零自动重试。未答复前不自动重跑。目标未完成，也未证明D95或模型加速。
+
+## 后续本地集成（仍未重跑）
+
+`direct_tessent_acceptance_e101.py` 将已审sampler接入固定新ROOT `/temp/jiangchuanc/multimode_ate_direct_e101_20261025_r1`。复用E100不可变的进程/物化逻辑，只在新隔离进程内临时绑定新ROOT、修复后的Descendants、原生新授权校验器及repair_binding发布；异常后六项globals完整恢复。E100磁盘源码、授权、旧ROOT和失败结果不修改。
+
+E101显式拒绝旧E100授权及 `contracts/direct_tessent_repair_e101_proposal_v1.json`，后者user_authorization_received=false，不是执行放行。真正的新授权必须来自已发问题的明确用户答复；字段形状和source属性本身不认证人类同意，未来控制器仍需绑定实际答复、源码字节和精确payload。summary格式沿用E100格式族，新ROOT和repair_binding区分E101，不重命名旧结果。
+
+30项相关本地测试及Python3.6 AST通过，独立限定复核PASS。E101 source SHA `e01c19f2025df4a962314c0c7a4cca50ee0b108a460e386861d92518535bb72c`；test SHA `61ca044297313bb3dae68ad1a4c0e116ea1a212f01a83ffdaaca2c72438d34fa`。E100仍92f991…、sampler仍8a4e81…；没有新的controller、远端部署、物理Linux验证或启动尝试，不将本地集成PASS称为实验PASS。

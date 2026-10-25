@@ -1,0 +1,21 @@
+{
+  "schema": "direct-tessent-repair-e101-proposal-v1",
+  "user_authorization_received": false,
+  "execution_ready": false,
+  "purpose": "Integrate the independently reviewed exit-race-aware memory sampler without changing the E100 failure evidence",
+  "root": "/temp/jiangchuanc/multimode_ate_direct_e101_20261025_r1",
+  "proposed_additional_launch_attempts_max": 4,
+  "automatic_retries": 0,
+  "lsf_allowed": false,
+  "kernel_memory_cap_required": false,
+  "sampled_rss_plus_swap_stop_bytes": 536870912,
+  "per_case_seconds_including_cleanup": 600,
+  "session_seconds": 2700,
+  "combined_output_bytes": 16777216,
+  "process_count_stop_threshold": 64,
+  "scratch_stop_threshold_bytes": 134217728,
+  "training_allowed": false,
+  "blind_allowed": false,
+  "predecessor_execution_response_sha256": "c76e1db86563019eacb27e0b96f90a9375a252aba187369f5e97e3389f564953",
+  "gate": "Explicit user reply to the already-issued additional-run question, integrated code review, exact payload freeze and fresh new-root check. This proposal is not authority to execute."
+}

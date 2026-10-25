@@ -514,5 +514,8 @@ contracts/direct_tessent_authorization_e100_20261025.json -text
 tests/test_direct_tessent_acceptance_e100.py -text
 src/data/direct_memory_sample_e101.py -text
 tests/test_direct_memory_sample_e101.py -text
+src/data/direct_tessent_acceptance_e101.py -text
+tests/test_direct_tessent_acceptance_e101.py -text
+contracts/direct_tessent_repair_e101_proposal_v1.json -text
 data/manifests/ranking_v6_e100_* -text whitespace=cr-at-eol
 experiment_overview/entries/E100_direct_tessent_first_execution.md -text
