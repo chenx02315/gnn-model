@@ -1,0 +1,22 @@
+{
+  "schema": "direct-tessent-authorization-e100-v1",
+  "user_instruction": "撤掉保护吧",
+  "interpretation": "Remove the previously proposed 512MiB kernel RAM+swap admission requirement; run Tessent directly without LSF. Retain sampled memory monitoring, timeout, logs, single worker and cleanup.",
+  "kernel_memory_cap_required": false,
+  "sampled_rss_plus_swap_stop_bytes": 536870912,
+  "sampling_is_hard_memory_guarantee": false,
+  "lsf_allowed": false,
+  "workers": 1,
+  "cases_max": 4,
+  "automatic_retries": 0,
+  "per_case_seconds_including_cleanup": 600,
+  "session_seconds": 2700,
+  "combined_output_bytes": 16777216,
+  "process_count_stop_threshold": 64,
+  "scratch_stop_threshold_bytes": 134217728,
+  "root": "/temp/jiangchuanc/multimode_ate_direct_e100_20261025_r1",
+  "scope": "FOUR_TRANSLATED_STATUS_ACCEPTANCE_NO_PATTERN_GENERATION",
+  "atpg_generation_allowed": false,
+  "training_allowed": false,
+  "blind_allowed": false
+}
