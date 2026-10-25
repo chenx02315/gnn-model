@@ -12,10 +12,11 @@ AUTH_SHA = 'da27486a2ed20d55c8b8de7071882364c9648ab49054d2a319d07cb2a73076f5'
 TRANSPORT = ROOT / 'scripts/run_prospective_metadata_v1.py'
 TRANSPORT_SHA = 'e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434'
 STAGING = ROOT.parent / 'runtime_training_staging_20260928'
+MAX_JOB_OBSERVATIONS = 48  # Local receipt slots only; never a job or retry budget.
 OPERATIONS = frozenset(('retire_observe','retire_execute','retire_confirm',
     'deployment','registration','registration_review','pre_resume_observation','resume',
     'host_queue_observation') +
-    tuple('job_observation_' + str(n) for n in range(1, 17)))
+    tuple('job_observation_' + str(n) for n in range(1, MAX_JOB_OBSERVATIONS + 1)))
 
 
 def sha(raw):

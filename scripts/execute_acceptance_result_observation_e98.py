@@ -6,7 +6,7 @@ from scripts import inspect_acceptance_job_result_e98 as inspector
 
 
 def main():
-    if len(sys.argv)!=4 or sys.argv[3] not in tuple(str(n) for n in range(1,17)):
+    if len(sys.argv)!=4 or sys.argv[3] not in tuple(str(n) for n in range(1,control.MAX_JOB_OBSERVATIONS+1)):
         raise ValueError('REVIEWED_HELPER_PAYLOAD_SHA_FIXED_OBSERVATION_INDEX_REQUIRED')
     helper_sha,payload_sha,index=sys.argv[1:]
     prepared=inspector.prepare_payload(helper_sha)

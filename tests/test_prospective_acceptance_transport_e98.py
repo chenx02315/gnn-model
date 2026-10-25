@@ -8,6 +8,13 @@ from scripts import acceptance_transport_e98 as m
 
 
 class Tests(unittest.TestCase):
+    def test_receipt_extension_is_bounded_and_not_a_job_operation(self):
+        self.assertEqual(m.MAX_JOB_OBSERVATIONS,48)
+        for index in range(1,49):
+            self.assertIn('job_observation_'+str(index),m.OPERATIONS)
+        for invalid in ('job_observation_0','job_observation_49','job_observation_01','resume_2','registration_2'):
+            self.assertNotIn(invalid,m.OPERATIONS)
+
     def test_bad_pin_or_operation_never_loads(self):
         with patch.object(m,'load_transport') as load:
             for operation,pin in (('bad','0'*64),('retire_observe','0'*64)):

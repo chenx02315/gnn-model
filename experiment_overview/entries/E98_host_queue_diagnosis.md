@@ -39,3 +39,15 @@ slots = 0
 | helper | fd0aa4416f1b83d629f228d967e8edde3ef7ca018b24c27ab2a646ad687901f4 |
 | controller | 0ea2a0c9393a4beac1cf6a27d0217e060f4757d080e3e6d1b7f2e8b0f3527fce |
 | 精确 payload（24,441 字节） | 6c0b4b867992e50fc142060165637e70a90b6af13ffe623fd00065698cc5ad0c |
+
+## 2026-10-25：保留排队后的监控维护
+
+用户要求继续保留原作业排队。最初本地查询器预设的 16 个回执序号已用完；只把本地回执容量扩至 48 个，并让 controller 与 transport 使用同一常量。每个序号仍独占创建，不能覆盖旧回执；不增加作业、恢复次数、自动重试或 24 小时启动许可，也不修改远端部署。
+
+远端 reader 完全未变：source SHA `ece65fa856dd35bea25b6ade86dda74c14862eba60edc76982a0e892113a5353`，精确 payload SHA `151898a7bf34b5cbacf367683e40e64622ea9993bf99ea9e043297f76f7bac64`；仍固定 Job 394238、五个执行文件及每次输出/时间限制。reader 中“1..16”的文档注释描述最初本地范围，不是远端执行门禁；本次不为改注释而改变已审 payload。
+
+20 项相关监控测试通过；prospective 测试组 734 项、6 条件跳过、零失败错误、5.646 秒，进程退出 0。它不是全部 3,391 项历史测试的再次全跑，更不是真实 Linux/内存/Tessent 门禁通过。日志：`C:/Users/86155/Desktop/new lab/runtime_training_staging_20260928/v6_e98_observation_extension_regression_20261025_r1.log`，SHA `2301181378836ad9c3c4659328424fb89b034f04566416683ef7399e0fff7c13`。
+
+这只是保持已授权只读监控可用，不构成完成模型收敛目标或新增采集/训练授权。
+
+限定差量独立复核 PASS：transport SHA `12f5b774837b31d934661a62a352f774cfc8e76714fb4fd3cabea4579e5c9bba`，controller SHA `2e8744ef2f9247024a88663e7628e068547c73df3e9f0ebecee1e721361b426b`。第 17 次实际只读观察仍为 PEND，五个文件 MISSING，无 worker 启动证据；没有重提、重新恢复或新工具调用。
