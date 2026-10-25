@@ -1,0 +1,23 @@
+{
+  "schema": "e107-synthetic-artifact-lifecycle-integration-review-v1",
+  "reviewer": "/root/e96_materializer_review",
+  "status": "PASS_SYNTHETIC_INTEGRATION_ONLY",
+  "test": "tests/test_prospective_acquisition_result_integration_e107.py",
+  "test_sha256": "dbc78c1c7903f3312b0c5a7922492795079a341fa80f5b959eed2bab5e08690d",
+  "production_code_changed": false,
+  "root_tests": {"focused": 2, "combined_regression": 117, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "independent_tests": {"focused": 2, "skipped": 0, "failures": 0, "errors": 0, "exit_code": 0},
+  "synthetic_success_path": {"tasks": 78, "actions": 18, "TESSENT_STAGE": 48, "STATUS_TRANSLATION": 30, "unique_process_identities": 78, "known_task_interval_sum_ns": 780},
+  "failure_case": {"reason": "SOURCE_EXTRA_OR_WRONG_MODE", "TESSENT_STAGE_debits": 1, "STATUS_TRANSLATION_debits": 1, "known_task_interval_sum_ns": 20, "entire_package_poisoned": true, "automatic_retries": 0},
+  "runtime_values_from_fake_clock": true,
+  "physical_process_attempt_join_authenticated": false,
+  "historical_fsync_ack_proven": false,
+  "tool_translation_consumption_proven": false,
+  "d95_verified": false,
+  "real_atpg_runtime_ns": null,
+  "real_remote_sessions": 0,
+  "real_processes_launched": 0,
+  "new_training_labels": 0,
+  "execution_ready": false,
+  "training_release": false
+}

@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：E107端到端合成连接
+
+未新增生产门禁，仅用原E93/E105/E106完成78任务/18动作集成：结果引用、请求/配方、两类父引用、持久intent/result和唯一生命周期attempt逐项对照；错命名空间反例保留已发生的两笔扣账/费用后停止。没有真实ATPG、远端访问或训练标签。见 [E107集成记录](entries/E107_artifact_lifecycle_integration.md)。下一步为真实执行器离线接线，仍不自动放行正式采集。
+
 ## 最新结果检查：E106共同故障并集
 
 本地新增结果检查器复用E81/E93，按冻结动作顺序核对小manifest父引用，并用canonical故障键取DS/DI跨阶段并集，拒绝按阶段数相加造达标。11项专项及49项相关测试通过；独立复核记录另存manifest。算术达标不等于物理D95认证，组合cycles资格false、正式wall time/正例保持null，没有新增真实ATPG/训练。见 [E106](entries/E106_common_fault_union_checks.md)。下方为此前快照。
