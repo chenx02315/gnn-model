@@ -10,6 +10,8 @@ E101现场、授权、源码及失败保留。没有case receipt，returncode/�
 
 已一次性请求有界整体修复包（最多两个新修复版本、最多新增8次启动、每版本首失败停止、禁止原样重试，不用LSF、不恢复内核硬内存门禁、不做正式ATPG/训练/BLIND，告警逐项审核）。尚未答复，不把心跳当授权。见 [E101实际读取与socket问题](entries/E101_actual_read_and_socket_monitor_failure.md) 和 `data/manifests/ranking_v6_e101_actual_outcome_20261025_r1.json`。
 
+后续本地准备：新monitor已独立限定复核PASS；新增 observation→log→final sample 的封存组件，确保最终采样失败前已保留监督器返回的观察，不补造E101缺失数据。66项相关测试通过；封存组件独立8项测试及实现复核PASS，均非远端验证或执行放行。见 [E102回执准备](entries/E102_observation_journal_preparation.md)。
+
 ## 历史快照：E100及E101离线准备（不覆盖上述实际结果）
 
 用户已要求取消排队并直接使用Tessent，随后明确撤掉此前的512MiB内核内存门禁。Job394238已一次取消并独立回读确认为EXIT/TERM_OWNER，不再排队、不再提交或恢复LSF。E99记录方向切换，E100新授权明确采用采样监控而非内核硬隔离；下方旧E98“继续等待”与旧内存前置条件均为历史快照，不再代表当前安排。
