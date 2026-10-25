@@ -1,0 +1,29 @@
+{
+  "schema": "prospective-generation-recipe-e108-contract-v1",
+  "scope": "OFFLINE_EFFECTIVE_EXECUTION_ENVELOPE_NOT_RUNNER",
+  "future_root": "/temp/jiangchuanc/multimode_ate_prospective_e108_20261025_r1",
+  "future_root_created": false,
+  "legacy_e81_e86_intent_mutated": false,
+  "source_change": "EXACT_SINGLE_ADD_PROCESSORS_LOCALHOST_1_LINE_REMOVAL",
+  "sources": {
+    "common": {"base_bytes": 3096, "base_sha256": "dd26a13d1542052ca6664b4b1f8ef23afb76a9d0dfc8c6ea23b40a98d057ae8a", "derived_bytes": 3069, "derived_sha256": "9b78e5c874fd2d4eb8987ac534d9c5414606184f8aea0012971130891ad1d92f"},
+    "incremental": {"base_bytes": 4134, "base_sha256": "4f95afb6d693f43f4747dfa06db2e3735ecca8506391ac0a00a24d3d23f1aaa3", "derived_bytes": 4107, "derived_sha256": "1a9d4435551919b34c5beb4a142120df0322fcf209ebd493cfe2e70d92e42967"}
+  },
+  "argv_env_and_result_paths": "DERIVED_FROM_EXACT_FIXED_E84_REQUEST_AND_E81_BASE_RECIPE_WITH_EXPLICIT_ROOT_RELOCATION_AND_PINNED_LAUNCHER",
+  "inherited_environment_may_be_used": false,
+  "translation_tasks_count_as_tessent_launches": false,
+  "binding_is_caller_authenticated": false,
+  "lineage_sha_claims_format_checked_and_preserved": true,
+  "lineage_sha_claims_authenticated": false,
+  "translation_reference_is_native_mtfi_hash": false,
+  "resource_budget": null,
+  "low_memory_generation_verified": false,
+  "real_process_monitor_connected": false,
+  "inputs_deployed_and_authenticated": false,
+  "actual_tcl_deployed_and_accepted": false,
+  "new_remote_sessions": 0,
+  "new_atpg_calls": 0,
+  "execution_authorized": false,
+  "execution_ready": false,
+  "training_release": false
+}

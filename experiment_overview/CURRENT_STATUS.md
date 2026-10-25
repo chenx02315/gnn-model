@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：E108离线生成配方
+
+新增精确execution envelope，复用两份已核验Tcl，仅删除各一条add_processors，明确base意图与实际派生源码的不同摘要、新根路径和固定launcher。48阶段编译验证、8项专项及131项最终相关回归通过，lineage摘要格式/control类型反例已补；这是离线配方，不是真实执行器或生成内存验证。旧监督器会继承环境，下一接线需处理；资源预算null，未创建A目录/进程，未新增ATPG或训练。见 [E108](entries/E108_effective_generation_recipe.md)。不把合成backend改名当真实后端。
+
 ## 最新：E107端到端合成连接
 
 未新增生产门禁，仅用原E93/E105/E106完成78任务/18动作集成：结果引用、请求/配方、两类父引用、持久intent/result和唯一生命周期attempt逐项对照；错命名空间反例保留已发生的两笔扣账/费用后停止。没有真实ATPG、远端访问或训练标签。见 [E107集成记录](entries/E107_artifact_lifecycle_integration.md)。下一步为真实执行器离线接线，仍不自动放行正式采集。

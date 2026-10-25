@@ -557,3 +557,7 @@ data/manifests/ranking_v6_e101_* -text whitespace=cr-at-eol
 experiment_overview/entries/E101_actual_read_and_socket_monitor_failure.md -text
 data/manifests/ranking_v6_e100_* -text whitespace=cr-at-eol
 experiment_overview/entries/E100_direct_tessent_first_execution.md -text
+src/data/templates/e108_common_base.tcl -text
+src/data/templates/e108_incremental_base.tcl -text
+src/data/prospective_generation_recipe_e108.py -text
+tests/test_prospective_generation_recipe_e108.py -text
