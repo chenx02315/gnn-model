@@ -525,6 +525,8 @@ src/data/direct_scratch_monitor_e102.py -text
 tests/test_direct_scratch_monitor_e102.py -text
 src/data/direct_observation_journal_e102.py -text
 tests/test_direct_observation_journal_e102.py -text
+src/data/direct_tessent_acceptance_e102.py -text
+tests/test_direct_tessent_acceptance_e102.py -text
 tests/test_direct_runtime_compatibility_e102.py -text
 contracts/direct_tessent_runtime_repair_e102_proposal_v1.json -text
 data/manifests/ranking_v6_e101_* -text whitespace=cr-at-eol
