@@ -1,0 +1,103 @@
+{
+  "files": [
+    {
+      "bytes": 7870,
+      "name": "summary.json",
+      "sha256": "842c8688ac493e4d1a9de90de3a0aea63322b9583f61511dedc1d6753bcf6ce3"
+    },
+    {
+      "bytes": 364,
+      "name": "synthetic_gate.json",
+      "sha256": "7fc67f844143d7e349392a6c13baabc2a4729b78f272496c578365e647a3ac96"
+    },
+    {
+      "bytes": 3718,
+      "name": "repair_binding.json",
+      "sha256": "f5906327b672a6486f366264d6e379d42294a50f1f7106616207b1a7b5fdce87"
+    },
+    {
+      "bytes": 3095,
+      "name": "materialization_header.json",
+      "sha256": "5fd021f014ff9fd44bc3c047f4f737aea07517fd81b3c53684713e23589120fd"
+    },
+    {
+      "bytes": 2550,
+      "name": "result_aes_core_F.json",
+      "sha256": "f4262e73e58cee38a4de80b6f3239e394703b543f3fda9d17d72761c03ca6ad3"
+    },
+    {
+      "bytes": 2133,
+      "name": "observation_aes_core_H_TO_F.json",
+      "sha256": "618e98bbdfa90c132ebc9487f9147cfcb27512a7d2d9a6b6032a5cae7e81e25b"
+    },
+    {
+      "bytes": 1159,
+      "name": "scratch/aes_core_F/accept_translated_status.tcl",
+      "sha256": "25c35efed1fd6fcd014e1de34e6dbc1f6230543d0d19aae6e7950e5e47c9b341"
+    },
+    {
+      "bytes": 6150,
+      "name": "scratch/aes_core_F/direct_tessent.log",
+      "sha256": "19b016c53a93344d3400edb7c8d610b667ecab73b76e79d68a4ebc2fe7d1b667"
+    },
+    {
+      "bytes": 363,
+      "name": "scratch/aes_core_F/materialization_receipt.json",
+      "sha256": "9315c932138afeb5642ff186925f723ef02af2ace8d830150b80838059399be7"
+    },
+    {
+      "bytes": 2516,
+      "name": "result_spi_M.json",
+      "sha256": "cf1167dec67b0ef347dc6198c36e335bd74054a6429e718d94b6706f271ea93e"
+    },
+    {
+      "bytes": 2039,
+      "name": "observation_spi_H_TO_M.json",
+      "sha256": "bf9cac9a0fe64019ff731b733d78f736e7d4148388f2d773066a73305c8522de"
+    },
+    {
+      "bytes": 1150,
+      "name": "scratch/spi_M/accept_translated_status.tcl",
+      "sha256": "4fbdef5c5aa37e358d753af4ac48560d273458a5471286b8fe5e53e02dafe26e"
+    },
+    {
+      "bytes": 9128,
+      "name": "scratch/spi_M/direct_tessent.log",
+      "sha256": "c8a3c3d90d4716cf1478b437edeea34171c1b05985ee5d96b39acf6cac5a2af4"
+    },
+    {
+      "bytes": 358,
+      "name": "scratch/spi_M/materialization_receipt.json",
+      "sha256": "a5cf387acbd7193b4571dea9ca0eaccef43b0fa765a86a46919cd15aac0570ce"
+    },
+    {
+      "bytes": 2212,
+      "name": "result_spi_F.json",
+      "sha256": "55b964a7520c539c41af20ca7d4f5e7481f8d7255ec2f0f6c57733422d44432e"
+    },
+    {
+      "bytes": 1795,
+      "name": "observation_spi_H_TO_F.json",
+      "sha256": "9d7b0debfb350bddbbf5fc1de9c31084b8ef763fea9f556e10ef47d03e0ea02f"
+    },
+    {
+      "bytes": 1110,
+      "name": "scratch/spi_F/accept_translated_status.tcl",
+      "sha256": "812f900645a66653d6dfd42a068dfdfe9cab2dfc87b034dbd79d7a3fd83461cf"
+    },
+    {
+      "bytes": 6411,
+      "name": "scratch/spi_F/direct_tessent.log",
+      "sha256": "927fc681267e1f5f135f640ca6a3b9cfa66ddb657a1df53f4946c61428b310dc"
+    },
+    {
+      "bytes": 358,
+      "name": "scratch/spi_F/materialization_receipt.json",
+      "sha256": "c579935cc5bbd0526fd2761a091e8afaeb336eba3190073a9e77e26ba03ad71f"
+    }
+  ],
+  "readback_bytes": 75680,
+  "readback_sha256": "d1fab60b05890aa3e7d4cffb031dd360a2672fc08ec9e2f500138c9ed7310ae4",
+  "root": "/temp/jiangchuanc/multimode_ate_direct_e104_20261025_r1",
+  "schema": "e104-actual-artifact-index-v1"
+}

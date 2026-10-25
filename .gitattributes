@@ -542,6 +542,15 @@ tests/test_direct_tessent_controller_e103.py -text
 contracts/direct_tessent_repair_authorization_e103_20261025.json -text
 data/manifests/ranking_v6_e102_execution_response_20261025_r1.json -text
 data/manifests/ranking_v6_e103_execution_response_20261025_r1.json -text
+src/data/direct_low_memory_recipe_e104.py -text
+src/data/direct_tessent_acceptance_e104.py -text
+scripts/run_direct_tessent_e104.py -text
+tests/test_direct_low_memory_recipe_e104.py -text
+tests/test_direct_tessent_acceptance_e104.py -text
+tests/test_direct_tessent_controller_e104.py -text
+contracts/direct_tessent_low_memory_authorization_e104_20261025.json -text
+data/manifests/ranking_v6_e104_execution_response_20261025_r1.json -text
+data/manifests/ranking_v6_e104_artifact_index_20261025_r1.json -text
 tests/test_direct_runtime_compatibility_e102.py -text
 contracts/direct_tessent_runtime_repair_e102_proposal_v1.json -text
 data/manifests/ranking_v6_e101_* -text whitespace=cr-at-eol

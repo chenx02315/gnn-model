@@ -1,0 +1,60 @@
+{
+  "schema": "direct-tessent-low-memory-authorization-e104-v1",
+  "recorded_at_utc": "2026-10-25T10:29:07Z",
+  "user_authorization_received": true,
+  "approval_source": "explicit_user_reply",
+  "user_reply": "授权上述低内存整包，复核通过后自动执行",
+  "question_item_id": "[\"request_user_input_async\",\"call_45193f6ef9fb496ab9bfdb3d7638aee4\",0]",
+  "authorized_question": "当前授权的两个版本已用完：AES H→M通过，H→F因内存采样超阈值停止，SPI未启动。是否授权一个新的低内存验证包：只验证剩余三项；移除显式 add_processors 请求，保持512MiB采样停止阈值及其他边界；最多一个新版本、三次启动，首失败停止、零重试；实现及独立复核通过后自动执行，不用LSF、不做正式ATPG或训练？这是待验证的减内存方案，不保证成功。",
+  "root": "/temp/jiangchuanc/multimode_ate_direct_e104_20261025_r1",
+  "predecessor_log_sha256": "06903ffe908c3320f0941833b36fe39a547c951dfc0f44ad9122b44ec2d34fe1",
+  "package_repair_versions_max": 1,
+  "package_additional_launch_attempts_total_max": 3,
+  "package_version_index": 1,
+  "additional_launch_attempts_max": 3,
+  "workers": 1,
+  "automatic_retries": 0,
+  "stop_on_first_failure": true,
+  "unchanged_code_retries_allowed": false,
+  "warnings_require_individual_review": true,
+  "blanket_warning_ignore_allowed": false,
+  "sampled_rss_plus_swap_stop_bytes": 536870912,
+  "per_case_seconds_including_cleanup": 600,
+  "session_seconds": 2700,
+  "combined_output_bytes": 16777216,
+  "process_count_stop_threshold": 64,
+  "scratch_stop_threshold_bytes": 134217728,
+  "lsf_allowed": false,
+  "kernel_memory_cap_required": false,
+  "atpg_generation_allowed": false,
+  "training_allowed": false,
+  "blind_allowed": false,
+  "package_prior_tessent_launch_attempts": 0,
+  "predecessor_root": "/temp/jiangchuanc/multimode_ate_direct_e103_20261025_r1",
+  "predecessor_summary_sha256": "686edd06fc8d9c11e8563986b0d13a24a69a9ba1bcb37be50d2d52a30b8960e4",
+  "predecessor_failure": "SAMPLED_MEMORY_STOP",
+  "record_note": "New explicit low-memory package, not unused E102/E103 attempt balance",
+  "explicit_add_processors_allowed": false,
+  "allowed_roster": [
+    [
+      "aes_core",
+      "H_TO_F",
+      "F"
+    ],
+    [
+      "spi",
+      "H_TO_M",
+      "M"
+    ],
+    [
+      "spi",
+      "H_TO_F",
+      "F"
+    ]
+  ],
+  "skip_previously_passed_case": [
+    "aes_core",
+    "H_TO_M"
+  ],
+  "retained_passed_case_result_sha256": "a205ee9b0fc095b0268f9808f4aad7263e28f124ed22fd1b22645318e45fcc47"
+}
