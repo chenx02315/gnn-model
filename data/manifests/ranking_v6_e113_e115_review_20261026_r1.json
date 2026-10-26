@@ -1,0 +1,48 @@
+{
+  "schema": "e113-e115-independent-review-v1",
+  "status": "PASS_LOCAL_IMPLEMENTATION_ONLY",
+  "reviewer": "/root/e96_materializer_review",
+  "stages": {
+    "E113": {
+      "tests": 21,
+      "joint_with_E109": 34,
+      "source_sha256": "6b1922de253550b3d4091f11186d9447867662c445e46fdc47801f3c340411f6",
+      "test_sha256": "b521cf567754ab76138574d3489a1cdd9205e4da76f65ab6eb15786ee77bdc11",
+      "focused_issue_repaired": "WORKER_IDENTITY_AND_THREADS_CHECK_BEFORE_POPEN"
+    },
+    "E114": {
+      "tests": 6,
+      "source_sha256": "57ad390828e2ce33e2bebd0830c787473e98a7ba1c31843e12b03759ef6a77f1",
+      "test_sha256": "e365db06d36b85144621e06249d8abaf22cd1f4f7309c6f4827dbc10ba67ab44"
+    },
+    "E115": {
+      "tests": 8,
+      "source_sha256": "261b925cf0574712296a82cc679b2f28e01ea5bd1c0bb84c287bf573942cf4c7",
+      "test_sha256": "7b1d1d7d6bba2019404a44ccab65ea6b3fcae5884e076be7e6cfcbd51cc5586b",
+      "real_local_complete_statistics_replays": 2,
+      "real_complete_stil_replays": 0
+    }
+  },
+  "regression": {
+    "testsRun": 148,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 53.175,
+    "log_sha256": "6f2aa0cba9a866c3c665ef48ad39e4815cb17a61c8ae3f2a466d5f1233590e34"
+  },
+  "python36_ast": true,
+  "remote_calls": 0,
+  "real_process_launches": 0,
+  "linux_selftests_used": 0,
+  "atpg_calls": 0,
+  "training_runs": 0,
+  "execution_ready": false,
+  "training_release": false,
+  "unresolved_integration": [
+    "TRUSTED_CONTROLLER_PERSISTENT_INTENT_BUDGET_AND_E112_CLOCK",
+    "FIXED_TRANSLATION_HELPER_AND_RESULT_REFERENCES",
+    "E113_OBSERVATION_FINAL_SEAL",
+    "THREE_REAL_LINUX_PROCESS_SELFTESTS"
+  ]
+}

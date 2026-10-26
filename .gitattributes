@@ -573,3 +573,10 @@ scripts/run_preparation_e112.py -text
 src/data/prospective_runtime_profile_e112.py -text
 tests/test_preparation_probe_e112.py -text
 tests/test_preparation_controller_e112.py -text
+src/data/prospective_generation_process_e113.py -text
+tests/test_prospective_generation_process_e113.py -text
+src/data/prospective_runtime_adapter_e114.py -text
+tests/test_prospective_runtime_adapter_e114.py -text
+src/data/prospective_report_dialect_e115.py -text
+tests/test_prospective_report_dialect_e115.py -text
+data/manifests/ranking_v6_e113_e115_regression_20261026_r1.log -text

@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：E113—E115 按真实证据继续整合
+
+已修复进程启动前 worker/PID/单线程校验顺序，新增实际句柄身份观察、精确 rootless 环境适配、真实 statistics 方言与完整 STIL 流摘要解析。148 项联合回归及独立复核通过；这些是本地实现证据，尚非 Linux 自检或采集 PASS。E112 已真实完成且时钟不可重置；下一步合并为实际 controller 后执行获准3项自检，再进入18动作，不另向用户逐小步请许可。见 [E113—E115](entries/E113_E115_generation_integration_repairs.md)。
+
 ## 最新：E112 真实 A 端只读准备完成
 
 授权内一次 A 核对已成功：17 项冻结输入及 launcher 摘要匹配，6 份指定历史报告完整哈希，返回 226,428B，worker+子进程采样峰值约22.44MiB。没有启动 Tessent、翻译、自检或训练；首次调用已启动不可重置14h计时。发现 STIL 注释/Ann 重复 TesterCycle，不能直接计数；module 环境不含 MGC 根变量，须按绝对 launcher 实际需要复核而非臆造。继续整合实际进程监督与报告解析，不重复请用户批准同一范围。见 [E112](entries/E112_actual_readonly_preparation.md)。下文“尚未访问A”为历史快照。
