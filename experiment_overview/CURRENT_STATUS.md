@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：E110 H/M/F观察封存
+
+新适配先保存观察、日志，再采样并写独立ACK；清理不确定/启动失败保留原状态，不倒填成功。12项专项、156项最终相关回归及独立复核通过，覆盖48个Mock阶段144份记录；不代表真实运行认证。已一次性询问后续A端完整采集包，当前提案PENDING，未新增服务器调用、ATPG或训练。下一步合并可信实际输入/身份/持久intent与回读，不再为本地实现逐项等授权。见 [E110](entries/E110_generation_observation_sealing.md)。
+
 ## 最新：E109显式环境观察原型
 
 新私有监督原语显式传Popen env，拒绝父环境污染，并在清理不确定等失败时返回可先保存的观察，不提前丢弃费用前缀。13项Mock、144项最终相关回归及独立复核通过；不是实际Linux/进程认证或运行放行。旧生产模块未改，尚需可信controller、materializer、真实profile和持久intent接线；未启动Tessent/训练。见 [E109](entries/E109_explicit_environment_observation.md)。
