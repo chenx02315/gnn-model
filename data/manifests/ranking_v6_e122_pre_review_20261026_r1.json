@@ -1,0 +1,36 @@
+{
+  "schema": "e122-independent-failed-output-readback-review-v1",
+  "status": "PASS",
+  "reviewer": "/root/e96_materializer_review",
+  "reviewed": {
+    "payload_sha256": "a2d2a4913c389fba5855508096a08e39305d31a2472d0d02d29509491ee57af2",
+    "controller_sha256": "d6ab6d92c047d682b0a8c6b5106d617f81e1479d143cee728a2c1c2e538aecaf",
+    "source_sha256": {
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "e122_failure_readback": "d6ab6d92c047d682b0a8c6b5106d617f81e1479d143cee728a2c1c2e538aecaf",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2"
+    },
+    "authorization_sha256": "c11a7a29418680a3506f8bc9b7e6f5fcd564887a6c58b436f2e3ec83601b1ba9",
+    "prior_response_sha256": "05ec97c35b0c7558267f45cccaca2b0e68664c5fe5b974f1ba284c61d25122cd",
+    "original_clock_sha256": "aab51a47deb628b5b002d00d2e680c0823a6808c004dd0292f4ca15507c82868"
+  },
+  "testsRun": 13,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "python36_ast": true,
+  "inert_source_load": true,
+  "scope": "ONE_FIXED_OWNED_FAILED_OUTPUT_READBACK_NO_TOOL_RETRY"
+}

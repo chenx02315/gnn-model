@@ -1,0 +1,86 @@
+{
+  "schema": "e123-local-tool-identifier-fix-review-v1",
+  "status": "PASS_LOCAL_TCL_ONLY_NOT_TESSENT",
+  "local_tcl_patchlevel": "8.6.15",
+  "manifest": {
+    "controls_changed": false,
+    "encoding": "r + semantic_uid.encode(ascii).hex()",
+    "execution_authorized": false,
+    "execution_ready": false,
+    "helper_sha256": "6843567c562453fb68f73efbf0adb2b2747e8197e63ce1b4f5d2bca480c099f6",
+    "legacy_markers_changed": false,
+    "manifest_sha256": "ef466fc16005d61ee76f21188b7c98257feef5f32774d5261f949ca6208ac940",
+    "new_package_authorization_required": true,
+    "output_paths_changed": false,
+    "parent_sha_changed": false,
+    "random_or_compaction_policy_changed": false,
+    "roster": {
+      "actual_tessent_task_count": 48,
+      "double_underscore_present": false,
+      "first_and_last_characters_alphanumeric": true,
+      "maximum_context_identifier_characters": 93,
+      "maximum_current_mode_characters": 84,
+      "maximum_tessent_context_identifier_characters": 73,
+      "maximum_tessent_current_mode_characters": 64,
+      "maximum_token_characters": 63,
+      "preview_scope": "ALL_78_TASK_UIDS_INCLUDING_NON_TESSENT_TRANSLATION_UIDS",
+      "semantic_task_uids": 78,
+      "tool_identifiers_alphanumeric_underscore_only": true,
+      "unique_context_names": 78,
+      "unique_tokens": 78,
+      "vendor_length_limit_verified": false
+    },
+    "runtime_run_id_changed": false,
+    "schema": "prospective-tool-identifier-repair-e123-v1",
+    "semantic_uids_changed": false,
+    "source_ds_di_changed": false,
+    "sources": {
+      "common": {
+        "exact_diff_counts": {
+          "current_mode_suffix_replacements": 2,
+          "design_identifier_suffix_replacements": 1,
+          "diagnostic_marker_insertions": 1,
+          "helper_block_insertions": 1,
+          "helper_lines_inserted": 3,
+          "unrelated_line_edits": 0
+        },
+        "post_repair_bytes": 3216,
+        "post_repair_effective_sha256": "1865b49c09203e0255ff5c5d019420a5e2b76f20f7ca8de5f5a3bdbd16eadd5c",
+        "pre_repair_bytes": 3069,
+        "pre_repair_effective_sha256": "9b78e5c874fd2d4eb8987ac534d9c5414606184f8aea0012971130891ad1d92f",
+        "reviewed_base_source_sha256": "dd26a13d1542052ca6664b4b1f8ef23afb76a9d0dfc8c6ea23b40a98d057ae8a"
+      },
+      "incremental": {
+        "exact_diff_counts": {
+          "current_mode_suffix_replacements": 2,
+          "design_identifier_suffix_replacements": 1,
+          "diagnostic_marker_insertions": 1,
+          "helper_block_insertions": 1,
+          "helper_lines_inserted": 3,
+          "unrelated_line_edits": 0
+        },
+        "post_repair_bytes": 4254,
+        "post_repair_effective_sha256": "50982a3c1b9b93b452313ef503bbfe6d17a44f7f3a018334041244807587dafe",
+        "pre_repair_bytes": 4107,
+        "pre_repair_effective_sha256": "1a9d4435551919b34c5beb4a142120df0322fcf209ebd493cfe2e70d92e42967",
+        "reviewed_base_source_sha256": "4f95afb6d693f43f4747dfa06db2e3735ecca8506391ac0a00a24d3d23f1aaa3"
+      }
+    },
+    "tessent_verified": false,
+    "training_release": false,
+    "transformation": "ASCII_UID_HEX_INTERNAL_TOOL_IDENTIFIERS_ONLY",
+    "vendor_length_limit_verified": false
+  },
+  "source_sha256": "0d13a3c8592775df69e61636b30782cce4375cffd4fc9ecbfd9f07f04e09bf4d",
+  "test_sha256": "dbf66f0a8d074c3bdf513a60d6586b06949787e8887139a1217c40d5c9d4c1bd",
+  "independent_reviewer": "/root/e96_materializer_review",
+  "tests": {
+    "testsRun": 10,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "actual_local_Tcl_uid_equivalence_count": 78
+  },
+  "tessent_verified": false,
+  "new_execution_authorized": false
+}

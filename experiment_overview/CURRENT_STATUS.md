@@ -1,5 +1,11 @@
 # 当前实验状态
 
+## 最新：实际首阶段失败已定位，禁止在旧授权下重跑
+
+E121真实执行：3项Linux自检记录通过，1次Tessent启动、0次ATPG搜索、0任务提交。首AES H阶段在common.tcl第25行set_context失败：带冒号的语义UID被直接拼入Tessent design_identifier，违反工具只允许字母/数字/下划线且禁止双下划线的规则。退出码1、清理报告true、采样峰值239.8125MiB，不是内存、SSH或LSF问题。E122已完整回读23/23文件并独立核验。原单版本授权已消费，必须保留失败并停，不得换目录偷偷重试。
+
+E123已完成内部tool_id的纯本地最小修复，语义UID、RUN_ID、路径和旧markers保持一致；本地无窗口Tcl对78个UID逐项等价验证通过，尚未在Tessent验证。新整包接线与真实执行需要新的明确授权，提案见 contracts/prospective_identifier_repair_proposal_e123_v1.json。不是论文完成，也不再采纳下文“即将执行”的旧快照。
+
 ## 最新：实际采集整包入口已通过最终复核
 
 E116—E121 完整执行器已完成，251项最终本地回归通过，独立93项验证及精确33模块 inert 装载通过；最终790,770B payload 的 SHA 为8d93b2db238b69bbad5db4b9ff774d2e80a6403ecd78f62ffd08f33cba737ebf。现授权允许一次A整包，先3项Linux自检、再最多48次Tessent/30次翻译；原时钟不续期，512MiB/8GiB采样、单worker、首失败停止、零重试。此处为入口放行，不代表自检/采集已成功；下一步立即按授权执行。见 [执行器记录](entries/E116_E121_physical_acquisition_controller.md)及 data/manifests/ranking_v6_e121_pre_review_20261026_r1.json。

@@ -600,3 +600,10 @@ data/manifests/ranking_v6_e116_e121_*.log -text
 data/manifests/ranking_v6_e116_e121_*.json -text
 data/manifests/ranking_v6_e119_*.json -text
 data/manifests/ranking_v6_e121_*.json -text
+scripts/read_generation_failure_e122.py -text
+tests/test_generation_failure_readback_e122.py -text
+src/data/prospective_tool_identifiers_e123.py -text
+tests/test_prospective_tool_identifiers_e123.py -text
+contracts/prospective_identifier_repair_proposal_e123_v1.json -text
+data/manifests/ranking_v6_e122_*.json -text
+data/manifests/ranking_v6_e123_*.json -text

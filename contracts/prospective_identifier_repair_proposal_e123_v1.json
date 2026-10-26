@@ -1,0 +1,55 @@
+{
+  "schema": "prospective-identifier-repair-package-proposal-e123-v1",
+  "permission_state": "PENDING_NEW_EXPLICIT_USER_REPLY",
+  "user_authorization_received": false,
+  "proposal_is_authorization": false,
+  "reason": "E121_SINGLE_VERSION_CONSUMED_BY_CONFIRMED_TESSENT_DESIGN_IDENTIFIER_ERROR",
+  "failed_version": {
+    "root": "/temp/jiangchuanc/multimode_ate_prospective_e108_20261025_r1",
+    "response_sha256": "05ec97c35b0c7558267f45cccaca2b0e68664c5fe5b974f1ba284c61d25122cd",
+    "tessent_attempts": 1,
+    "atpg_searches": 0,
+    "committed_tasks": 0,
+    "tool_returncode": 1,
+    "sampled_peak_bytes": 251461632,
+    "cleanup_reported": true
+  },
+  "proposed_scope": {
+    "local_repair_integration_and_independent_review": true,
+    "new_isolated_output_root_required": true,
+    "preserve_failed_version_and_historical_inputs": true,
+    "semantic_UID_RUN_ID_paths_and_legacy_markers_unchanged_except_new_root": true,
+    "internal_tool_identifier_encoding": "r + semantic_uid_ASCII_bytes_hex",
+    "host": "A_ONLY",
+    "circuits": [
+      "aes_core",
+      "spi"
+    ],
+    "role": "TRAIN_DATA_ACQUISITION_ONLY",
+    "actions": 18,
+    "tessent_attempts_max": 48,
+    "translation_attempts_max": 30,
+    "linux_process_selftests_max": 3,
+    "versions_max": 1,
+    "workers": 1,
+    "stop_on_first_failure": true,
+    "automatic_retries": 0,
+    "sampled_memory_stop_bytes": 536870912,
+    "sampled_directory_stop_bytes": 8589934592,
+    "new_package_wall_seconds_max": 50400,
+    "new_timer_start": "FIRST_APPROVED_A_CALL_OF_NEW_PACKAGE_AFTER_LOCAL_GATES",
+    "old_package_clock_or_evidence_must_not_change": true,
+    "new_timer_requires_new_explicit_authority": true,
+    "additional_historical_reports": 0,
+    "LSF_allowed": false,
+    "B_allowed": false,
+    "training_allowed": false,
+    "BLIND_allowed": false
+  },
+  "identifier_fix": {
+    "local_Tcl_equivalence_only": true,
+    "tessent_verified": false,
+    "new_package_integrated": false,
+    "execution_ready": false
+  }
+}
