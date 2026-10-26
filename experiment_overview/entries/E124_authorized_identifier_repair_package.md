@@ -1,0 +1,32 @@
+# E124：已批准的新命名修复采集包
+
+## 目的与证据边界
+
+修复E121在读取电路前发生的Tessent内部名称非法问题，继续取得AES/SPI固定18动作的实际采集证据。语义任务编号、RUN_ID、结果关联不改变，仅内部工具名称编码和新隔离根路径改变。E123本地Tcl验证不冒充Tessent成功；E121实际失败和消耗保持原样。
+
+## 新授权
+
+2026-10-27用户明确批准E123新整包提案，答复记录：contracts/prospective_identifier_repair_authorization_e124_20261027.json，SHA-256 b9fb213ad18081dd0970ab765cf869e9591621c0dabf5c9184f629e98e4317b0。原提案SHA-256 a6eca925c4df7ab378cb072ee8e8c0df8960bf81e91786560052a06c17751e97，不回填为授权。
+
+新目录 /temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1。首次获准A调用启动新14小时预算，不能重连刷新；旧E112仅作输入/环境快照，旧包时钟不改变。
+
+## 连续执行清单
+
+1. 新执行上下文、精确白名单源码派生、一次性runner/worker本地集成；逐项记录原SHA、派生SHA及精确替换次数。
+2. 本地反例、惰性载入及完整Mock任务流测试，再进行独立只读复核；任何不通过都不调用A。
+3. 门禁通过后，在新目录一次执行3项实际Linux进程自检；全部接受后进入18动作，最多48次Tessent和30次翻译。
+4. 保存实际观察和退出证据，再进行有界独立核验、更新总览与版本同步；不因某一步完成而另等同一范围授权。
+
+## 固定停止边界
+
+一个版本、一个worker、首失败停止、零自动重试；worker及子进程RSS+swap采样512MiB，目录及sidecar采样8GiB，整包最长14小时。不是内核硬内存上限。额外历史报告0，不访问B/BLIND，不使用LSF、不训练、不改历史输入。
+
+## 当前结果
+
+新上下文独立6项本地测试通过，源SHA ca79fdf70780596b0892be9f07dbbd315e9950ec9d48fa87f1489571abe2fe32。完整集成182项回归通过（0跳过/失败/错误，退出0），原始小日志保存在 runtime_training_staging_20260928/v6_e124_local_gates_20261027_r1/integrated_regression_r1.log，SHA-256 2808dec97b83dac6c6dc71739e385d9249916899f7c33125bc3f5296270de011。
+
+精确执行复核请求保存于 data/manifests/ranking_v6_e124_review_request_20261027_r1.json；候选payload 856718B，SHA-256 e04ccf26b3da1395b9909d7c6aa069c7bb6acdeb435d536fd7d1b98c8134e57d。35个装载源来自33个旧源逐字节核验后的固定名单（旧worker不装入，新增context、tool-id模块、新worker），仅白名单5个旧模块派生，不修改原文件/原模块全局。完整78任务Mock使用新授权及派生Tcl，run_uid仍为e116-circuit，RUN_ID仍为原始任务UID；仅结果ROOT迁移。Mock不是实际Tessent或D95证明。
+
+最终整包独立复核已PASS：独立251项测试零跳过/失败/错误，35模块实际惰性装载及AST3.6通过，fresh prepare与请求和7文件SHA完全一致。精确放行回执为 data/manifests/ranking_v6_e124_pre_review_20261027_r1.json；只授权本包唯一一次A执行，不释放训练/D95资格。另69项支持回归日志SHA为 c639eb9fd397c465fac5fa780e0fc811b56e69efe4b2c595afa5274ea1023867。
+
+接下来自动执行新包。此处封存时尚无本包新增A调用、自检、Tessent、ATPG或训练结果；真实结果必须另行追加，不预填PASS。SSH超时不代表独立证明远端已停止；本地50400秒传输门禁和远端首次bootstrap单调时钟50400秒门禁是两层约束，不能宣称两个截止时刻完全相同。
