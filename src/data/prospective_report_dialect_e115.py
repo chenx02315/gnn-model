@@ -22,9 +22,10 @@ def require(condition, code):
         raise ValueError(code)
 
 
-def parse_statistics(raw, expected_common_count):
+def parse_statistics(raw, expected_common_count, patterns_required=True):
     require(type(raw) is bytes and 0 < len(raw) <= 65536, 'FULL_STATISTICS_BYTES_BOUND')
     require(type(expected_common_count) is int and 0 < expected_common_count <= MAX_COUNT, 'COMMON_COUNT')
+    require(type(patterns_required) is bool, 'PATTERN_REQUIREMENT_TYPE')
     text = raw.decode('ascii')
     require('\x00' not in text, 'STATISTICS_NUL')
     classes, patterns = {}, None
@@ -55,7 +56,7 @@ def parse_statistics(raw, expected_common_count):
             require(match is not None and patterns is None, 'PATTERN_ROW')
             patterns = int(match.group(1))
             require(patterns <= MAX_COUNT, 'PATTERN_COUNT_BOUND')
-    require(top_table and complete and patterns is not None and
+    require(top_table and complete and (not patterns_required or patterns is not None) and
             {'FU', 'DS', 'DI'} <= set(classes), 'REQUIRED_STATISTICS_FIELDS')
     require(classes['FU'] == expected_common_count and
             sum(value for key, value in classes.items() if key != 'FU') == expected_common_count,

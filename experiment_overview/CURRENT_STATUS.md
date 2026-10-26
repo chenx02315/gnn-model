@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：实际采集整包入口已通过最终复核
+
+E116—E121 完整执行器已完成，251项最终本地回归通过，独立93项验证及精确33模块 inert 装载通过；最终790,770B payload 的 SHA 为8d93b2db238b69bbad5db4b9ff774d2e80a6403ecd78f62ffd08f33cba737ebf。现授权允许一次A整包，先3项Linux自检、再最多48次Tessent/30次翻译；原时钟不续期，512MiB/8GiB采样、单worker、首失败停止、零重试。此处为入口放行，不代表自检/采集已成功；下一步立即按授权执行。见 [执行器记录](entries/E116_E121_physical_acquisition_controller.md)及 data/manifests/ranking_v6_e121_pre_review_20261026_r1.json。
+
 ## 最新：E113—E115 按真实证据继续整合
 
 已修复进程启动前 worker/PID/单线程校验顺序，新增实际句柄身份观察、精确 rootless 环境适配、真实 statistics 方言与完整 STIL 流摘要解析。148 项联合回归及独立复核通过；这些是本地实现证据，尚非 Linux 自检或采集 PASS。E112 已真实完成且时钟不可重置；下一步合并为实际 controller 后执行获准3项自检，再进入18动作，不另向用户逐小步请许可。见 [E113—E115](entries/E113_E115_generation_integration_repairs.md)。

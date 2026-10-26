@@ -1,0 +1,59 @@
+{
+  "schema": "e119-additional-fixed-warning-evidence-index-v1",
+  "status": "PASS_TWO_COMPLETE_READONLY_CAPTURES_NOT_WARNING_QUALIFICATION",
+  "staging": "runtime_training_staging_20260928/v6_e119_warning_metadata_20261026_r1",
+  "authorization_sha256": "c11a7a29418680a3506f8bc9b7e6f5fcd564887a6c58b436f2e3ec83601b1ba9",
+  "artifacts": [
+    {
+      "name": "start.json",
+      "bytes": 2547,
+      "sha256": "afcc9ecf5338d00122d3c66dd7958280156cf0e8c81390be8afd10a72725128b"
+    },
+    {
+      "name": "stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "stdout.json",
+      "bytes": 75526,
+      "sha256": "d3df00f39060030cb77d2f5462a725c8d96eeda155c682a8b614b28271b4a69b"
+    },
+    {
+      "name": "transport.json",
+      "bytes": 378,
+      "sha256": "214f2b0c110648a0cb65c7ef4fbb9f0f9bffa1f7ca3bf91b82c2965cff96d614"
+    },
+    {
+      "name": "validated.json",
+      "bytes": 140,
+      "sha256": "6da0a58d6f8682f434f3b5bafcb919fecd8120b69c2b2e4c3f2c3aea9a9f6d6d"
+    }
+  ],
+  "reports": [
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/logs/H_aes_core_H_full_phase4_v2.driver.log",
+      "bytes": 29121,
+      "sha256": "8f0a0fe2f986cb995ceecc2549e194c7436ae6ed639ae09f60f05b7b8582dfbc",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/logs/H_spi_H_full_phase4_v2.driver.log",
+      "bytes": 26622,
+      "sha256": "f3f177b47806c07a1f5e80393434d13eb2d9e9bdc2b52cb0d78ec631a4e501fa",
+      "whole_file_hashed": true
+    }
+  ],
+  "body_bytes_hashed": 55743,
+  "sampled_peak_rss_swap_bytes": 12095488,
+  "elapsed_seconds": 0.10469565819948912,
+  "original_deadline_monotonic": 2382888.679409259,
+  "prior_historical_reports": 6,
+  "total_historical_reports_consumed": 8,
+  "historical_report_budget_exhausted": true,
+  "original_clock_reset": false,
+  "atpg_launches": 0,
+  "training_runs": 0,
+  "execution_ready": false,
+  "training_release": false
+}

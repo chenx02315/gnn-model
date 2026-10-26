@@ -34,6 +34,14 @@ class Reports(unittest.TestCase):
         self.assertIsNone(result['actual_atpg_runtime_ns'])
         self.assertFalse(result['d95_verified'])
 
+    def test_pre_atpg_statistics_need_not_have_generated_patterns(self):
+        raw = STATS.replace(b'#test_patterns 4\n', b'')
+        result = m.parse_statistics(raw, 10, patterns_required=False)
+        self.assertIsNone(result['generated_patterns'])
+        self.assertEqual(result['detected_common_faults'], 8)
+        with self.assertRaises(ValueError):
+            m.parse_statistics(raw, 10)
+
     def test_statistics_rejects_truncated_missing_duplicate_unknown_or_mismatch(self):
         for raw in (STATS.split(b'Coverage')[0], STATS.replace(b'FU (full) 10', b'FU (full) 11'),
                     STATS.replace(b'DS (det_simulation)', b'DS (unknown)'),
