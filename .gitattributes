@@ -561,3 +561,5 @@ src/data/templates/e108_common_base.tcl -text
 src/data/templates/e108_incremental_base.tcl -text
 src/data/prospective_generation_recipe_e108.py -text
 tests/test_prospective_generation_recipe_e108.py -text
+src/data/prospective_generation_supervision_e109.py -text
+tests/test_prospective_generation_supervision_e109.py -text

@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：E109显式环境观察原型
+
+新私有监督原语显式传Popen env，拒绝父环境污染，并在清理不确定等失败时返回可先保存的观察，不提前丢弃费用前缀。13项Mock、144项最终相关回归及独立复核通过；不是实际Linux/进程认证或运行放行。旧生产模块未改，尚需可信controller、materializer、真实profile和持久intent接线；未启动Tessent/训练。见 [E109](entries/E109_explicit_environment_observation.md)。
+
 ## 最新：E108离线生成配方
 
 新增精确execution envelope，复用两份已核验Tcl，仅删除各一条add_processors，明确base意图与实际派生源码的不同摘要、新根路径和固定launcher。48阶段编译验证、8项专项及131项最终相关回归通过，lineage摘要格式/control类型反例已补；这是离线配方，不是真实执行器或生成内存验证。旧监督器会继承环境，下一接线需处理；资源预算null，未创建A目录/进程，未新增ATPG或训练。见 [E108](entries/E108_effective_generation_recipe.md)。不把合成backend改名当真实后端。
