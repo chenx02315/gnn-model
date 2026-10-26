@@ -568,3 +568,8 @@ tests/test_prospective_generation_observation_e110.py -text
 src/data/prospective_generation_materializer_e111.py -text
 tests/test_prospective_generation_materializer_e111.py -text
 contracts/prospective_acquisition_authorization_e111_20261026.json -text
+scripts/probe_preparation_e112.py -text
+scripts/run_preparation_e112.py -text
+src/data/prospective_runtime_profile_e112.py -text
+tests/test_preparation_probe_e112.py -text
+tests/test_preparation_controller_e112.py -text

@@ -1,5 +1,9 @@
 # 当前实验状态
 
+## 最新：E112 真实 A 端只读准备完成
+
+授权内一次 A 核对已成功：17 项冻结输入及 launcher 摘要匹配，6 份指定历史报告完整哈希，返回 226,428B，worker+子进程采样峰值约22.44MiB。没有启动 Tessent、翻译、自检或训练；首次调用已启动不可重置14h计时。发现 STIL 注释/Ann 重复 TesterCycle，不能直接计数；module 环境不含 MGC 根变量，须按绝对 launcher 实际需要复核而非臆造。继续整合实际进程监督与报告解析，不重复请用户批准同一范围。见 [E112](entries/E112_actual_readonly_preparation.md)。下文“尚未访问A”为历史快照。
+
 ## 最新权限：A端整包已获明确答复
 
 用户已批准“授权上述整包，全部门禁通过后自动执行”。实际授权另存contracts/prospective_acquisition_authorization_e111_20261026.json：只读准备、独立门禁与3项Linux自检后，固定18动作/最多48次Tessent＋30次翻译，单版本、单worker、首失败停止、零重试，完整监控树512MiB/目录8GiB采样与14小时上限。不LSF、不B端、不训练、不BLIND、不改历史输入。尚未访问A，计时/调用额度未启动；接下来完成整合与复核后自动衔接，不重复询问该许可。下文PENDING为此前快照。

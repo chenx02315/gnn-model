@@ -1,0 +1,144 @@
+{
+  "schema": "e112-readonly-preparation-artifact-index-v1",
+  "status": "PASS_FIXED_CAPTURE_ONLY_NOT_EXECUTION_GATE",
+  "staging": "runtime_training_staging_20260928/v6_e112_preparation_20261026_r1",
+  "authorization_sha256": "c11a7a29418680a3506f8bc9b7e6f5fcd564887a6c58b436f2e3ec83601b1ba9",
+  "files": [
+    {
+      "name": "package_clock_intent.json",
+      "bytes": 389,
+      "sha256": "d50506f5da014bc429f8484694d38e7e9de42680b511087cf319a950bec6d6ea"
+    },
+    {
+      "name": "package_clock.json",
+      "bytes": 289,
+      "sha256": "aab51a47deb628b5b002d00d2e680c0823a6808c004dd0292f4ca15507c82868"
+    },
+    {
+      "name": "start.json",
+      "bytes": 2322,
+      "sha256": "8360860cbafa293de0149f6a2ccbc62eac0d6965315590caf50013e4f84a0495"
+    },
+    {
+      "name": "stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "stdout.json",
+      "bytes": 226428,
+      "sha256": "fd09999da5355c8b66fb0bbae0e6f495544bbf578df8894b01ac5fc8685864ae"
+    },
+    {
+      "name": "transport.json",
+      "bytes": 379,
+      "sha256": "4b5bd9f0cb0d89330f4928c6d633a7974e218408a9cd76df3d9bf1b1aa08a828"
+    }
+  ],
+  "capture_complete": true,
+  "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+  "remote_start_monotonic": 2332488.679409259,
+  "remote_end_monotonic": 2332490.840447299,
+  "body_bytes_hashed": 30242187,
+  "sampled_peak_rss_swap_bytes": 23527424,
+  "runtime_profile": {
+    "environment_authenticated": false,
+    "keys": [
+      "LD_LIBRARY_PATH",
+      "LM_LICENSE_FILE",
+      "MGLS_LICENSE_FILE",
+      "PATH"
+    ],
+    "license_present": true,
+    "missing_required_keys": [],
+    "normalization": {
+      "LD_LIBRARY_PATH": {
+        "compatible": true,
+        "empty_search_items_removed": 0,
+        "trailing_slashes_removed": 0
+      },
+      "LM_LICENSE_FILE": {
+        "compatible": true,
+        "empty_search_items_removed": 0,
+        "trailing_slashes_removed": 0
+      },
+      "MGLS_LICENSE_FILE": {
+        "compatible": true,
+        "empty_search_items_removed": 0,
+        "trailing_slashes_removed": 0
+      },
+      "PATH": {
+        "compatible": true,
+        "empty_search_items_removed": 0,
+        "trailing_slashes_removed": 0
+      }
+    },
+    "normalized_sha256": "b9b54844adcc9b753af0108c96a2292e938fec525fa8f87a3c91ab2593015256",
+    "raw_sha256": "b9b54844adcc9b753af0108c96a2292e938fec525fa8f87a3c91ab2593015256",
+    "schema": "e112-runtime-profile-v1",
+    "strict_compatible": false,
+    "values_disclosed": false,
+    "vendor_key_names": [],
+    "vendor_root_present": false
+  },
+  "reports": [
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/04_single_mode/H_aes_core_H_full_phase4_v2/statistics.rpt",
+      "bytes": 2480,
+      "sha256": "5b4dce81a77596409cd48d5ada6310467d02d3a99ef10d73affdfe2f3a1c3bd4",
+      "whole_file_hashed": true,
+      "prefix_bytes": 2480,
+      "raw_marker_count": null
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/04_single_mode/H_aes_core_H_full_phase4_v2/patterns.rpt",
+      "bytes": 70054,
+      "sha256": "7ff89cdfbefa6be1b39bc5b23a3baaf52e97660e4a5184dba2d7f76c9b0275a1",
+      "whole_file_hashed": true,
+      "prefix_bytes": 32768,
+      "raw_marker_count": null
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/aes_core/04_single_mode/H_aes_core_H_full_phase4_v2/tester.stil",
+      "bytes": 2020035,
+      "sha256": "563f0c3848eed7b93e1e5f2eda126a1600be13d55acd202a1c8ddbb598d1b4af",
+      "whole_file_hashed": true,
+      "prefix_bytes": 32768,
+      "raw_marker_count": 1638
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/04_single_mode/H_spi_H_full_phase4_v2/statistics.rpt",
+      "bytes": 5290,
+      "sha256": "d560ea45e15360e92bb7eccc91ede01b946bb7222a1500c82ecc30ae94b30d3d",
+      "whole_file_hashed": true,
+      "prefix_bytes": 5290,
+      "raw_marker_count": null
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/04_single_mode/H_spi_H_full_phase4_v2/patterns.rpt",
+      "bytes": 20862,
+      "sha256": "423fbff0f9123cb2bf09dd96c433e9fba92b35baeebff688aa36d7bbcf5f0757",
+      "whole_file_hashed": true,
+      "prefix_bytes": 20862,
+      "raw_marker_count": null
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_phase4_20260825_A/10_circuits/spi/04_single_mode/H_spi_H_full_phase4_v2/tester.stil",
+      "bytes": 466022,
+      "sha256": "1d0dea74be05dff95c4e9614899b5d1526ff04ad37832fc895cc47f27f9ca74c",
+      "whole_file_hashed": true,
+      "prefix_bytes": 32768,
+      "raw_marker_count": 526
+    }
+  ],
+  "frozen_inputs_matched": 17,
+  "launcher_pin_matched": true,
+  "new_tessent_launches": 0,
+  "new_translation_attempts": 0,
+  "linux_process_selftests_used": 0,
+  "training_runs": 0,
+  "blind_access": false,
+  "B_access": false,
+  "execution_ready": false,
+  "qualification": false
+}

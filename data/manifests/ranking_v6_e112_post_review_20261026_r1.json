@@ -1,0 +1,19 @@
+{
+  "schema": "e112-independent-result-review-v1",
+  "status": "PASS_CAPTURE_FACTS_ONLY_NO_EXECUTION_RELEASE",
+  "reviewer": "/root/e96_materializer_review",
+  "stdout_sha256": "fd09999da5355c8b66fb0bbae0e6f495544bbf578df8894b01ac5fc8685864ae",
+  "stdout_bytes": 226428,
+  "transport_exit_code": 0,
+  "frozen_input_pins_matched": 17,
+  "launcher_pin_matched": true,
+  "reports_complete_sha256": 6,
+  "elapsed_seconds": 2.16103804,
+  "sampled_peak_rss_swap_bytes": 23527424,
+  "clock_intent_and_boot_anchor_consistent": true,
+  "clock_must_not_reset": true,
+  "profile_interpretation": "MGC_ROOT_MISSING_IS_LOCAL_PROFILE_ASSUMPTION_NOT_MODULE_FAILURE",
+  "runtime_values_disclosed": false,
+  "stage_generation_released": false,
+  "training_release": false
+}
