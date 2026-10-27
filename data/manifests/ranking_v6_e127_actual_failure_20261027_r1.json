@@ -1,0 +1,123 @@
+{
+  "schema": "e127-actual-first-failure-v1",
+  "source_commit": "feb49eb6f7605f8a9183cf177105eba7f93f6301",
+  "response_sha256": "fe39d58b6d30379e268f7f77db084c0d7e942f719f118958ff38797cc2586dbd",
+  "response_bytes": 2846,
+  "worker": {
+    "bootstrap": {
+      "bytes": 1915,
+      "cleaned": true,
+      "launch_attempted": true,
+      "returncode": 0,
+      "sha256": "2a02913eb9b7366152b5ab6569c94741cd2ca5b8f9ea1df47a89be02a808c1f8",
+      "values_disclosed": false
+    },
+    "clock": {
+      "authorization_sha256": "106c9d5c874b79a2400ca11b17c08708c285cfcdd8147c226af10d81a9c73e52",
+      "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+      "cohort_snapshot_is_clock": false,
+      "deadline_monotonic": 2459447.850488485,
+      "new_authorized_package_clock": true,
+      "root": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1",
+      "start_monotonic": 2409047.850488485
+    },
+    "execution_ready": false,
+    "runtime_values_disclosed": false,
+    "schema": "prospective-pt-label-worker-e127-v1",
+    "status": "STOPPED_FIRST_FAILURE",
+    "summary": {
+      "actual_atpg_runtime_ns": null,
+      "automatic_retries": 0,
+      "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+      "completed_tasks": [
+        {
+          "binding_sha256": "1c3d3504a472cb93e83d5a12b4113de66a81b4402d911176057d46318ac26397",
+          "output_sha256": "4028e89bc764337a1738c2991e0683b4cd12dc29c705fcfb8e3b74f1efec3349",
+          "task_uid": "aes_core:HF:h1:H"
+        },
+        {
+          "binding_sha256": "dc747e4a156e34b89eb76d85c824f9ed099228fc43309bf2dbb4ff35e20b2872",
+          "output_sha256": "6a12896bb2c7e142594e29282d55c9fb076ced97d94a582a695fb5829000807a",
+          "task_uid": "aes_core:HF:h1:F:translate"
+        }
+      ],
+      "controller_end_monotonic": 2409089.922713888,
+      "controller_start_monotonic": 2409048.662827938,
+      "counts": {
+        "committed_tasks": 2,
+        "selftest_cases_accepted": 3,
+        "selftest_cases_reserved": 3,
+        "tessent_debited": 2,
+        "translation_debited": 1
+      },
+      "directory_sampling_is_quota": false,
+      "error": {
+        "code": "UNKNOWN_SOURCE_CLASS",
+        "type": "ValueError"
+      },
+      "execution_ready": false,
+      "failed_operation_events": [
+        {
+          "monotonic": 2409073.061799065,
+          "phase": "task_start_before_intent"
+        },
+        {
+          "monotonic": 2409073.070020418,
+          "phase": "intent_persisted"
+        },
+        {
+          "monotonic": 2409073.073444372,
+          "phase": "preparation_start"
+        },
+        {
+          "monotonic": 2409073.617718339,
+          "phase": "preparation_end"
+        },
+        {
+          "monotonic": 2409073.651349064,
+          "phase": "observer_start"
+        },
+        {
+          "monotonic": 2409087.274846211,
+          "phase": "observer_end"
+        },
+        {
+          "monotonic": 2409087.302160281,
+          "phase": "artifact_read_start"
+        }
+      ],
+      "failed_task_uid": "aes_core:HF:h1:F",
+      "full_session_cost_qualified": false,
+      "initialization_end_monotonic": 2409049.501198607,
+      "initialization_start_monotonic": 2409048.662827938,
+      "lsf_used": false,
+      "memory_sampling_is_hard_guarantee": false,
+      "original_package_deadline": 2459447.850488485,
+      "original_package_start": 2409047.850488485,
+      "package_elapsed_seconds": 42.07222540304065,
+      "root": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1",
+      "schema": "prospective-pt-label-controller-e127-v1",
+      "sidecar": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1.initial_intent.json",
+      "status": "STOPPED_FIRST_FAILURE",
+      "training_release": false,
+      "training_runs": 0
+    },
+    "training_release": false
+  },
+  "transport": {
+    "exit_code": 0,
+    "overflow": false,
+    "remote_termination_verified": false,
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 2846,
+    "stdout_sha256": "fe39d58b6d30379e268f7f77db084c0d7e942f719f118958ff38797cc2586dbd",
+    "threads_incomplete": false,
+    "timeout": false,
+    "write_failed": false
+  },
+  "tool_retries": 0,
+  "readback_pending": true,
+  "d95_verified": false,
+  "training_release": false
+}

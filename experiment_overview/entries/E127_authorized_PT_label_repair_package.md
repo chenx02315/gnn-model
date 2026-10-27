@@ -1,5 +1,15 @@
 # E127：已批准的PT标签修复新采集包
 
+## 最新实际结果：先前PT阻断已越过，F类别未知后首失败停止
+
+精确复核和提交feb49eb后，按授权唯一执行一次新A包。3项实际Linux自检接受通过；H与H→F翻译两个任务已获controller提交，分别引用SHA 4028e89bc764337a1738c2991e0683b4cd12dc29c705fcfb8e3b74f1efec3349 和 6a12896bb2c7e142594e29282d55c9fb076ced97d94a582a695fb5829000807a。随后F阶段在artifact_read_start后报UNKNOWN_SOURCE_CLASS，未知具体类尚未回读定位。
+
+实际counts：Tessent2、translation1、committed_tasks2，未完成一个完整HF/HMF动作。单版本按首失败停止，没有重试。transport rc0、stderr0、无timeout/overflow/write_failed/threads_incomplete；worker summary为STOPPED_FIRST_FAILURE，不是采集通过。
+
+实际响应2846B，SHA-256 fe39d58b6d30379e268f7f77db084c0d7e942f719f118958ff38797cc2586dbd；新clock2409047.850488485→2459447.850488485，summary包经过约42.072秒，非ATPG kernel wall time。完整失败原响应保存于staging，小型索引 data/manifests/ranking_v6_e127_actual_failure_20261027_r1.json 保留原状态。
+
+下一步只读本包自有F statistics、MTFI类库存及对应回执，不启动工具或增加历史报告；MTFI只在8MiB上限内流式全哈希/计数、仅导出有限摘要，不把未知类别当检出，不传输整套故障文件。该读回仍须独立精确包复核。
+
 ## 目标与授权
 
 用户于2026-10-27明确批准“批准 E127 新整包”。实际答复独立保存在 contracts/prospective_pt_label_repair_authorization_e127_20261027.json，SHA-256 106c9d5c874b79a2400ca11b17c08708c285cfcdd8147c226af10d81a9c73e52；所批准提案SHA-256 fa9ae57624c89835d152236ebccffb1ee6990604fbccf3ec63209e7c059ec715。原提案作为提案快照保留，不回填为授权。

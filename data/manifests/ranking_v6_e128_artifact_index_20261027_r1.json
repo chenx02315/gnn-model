@@ -1,0 +1,405 @@
+{
+  "schema": "e128-owned-artifact-index-v1",
+  "status": "INDEPENDENT_BODY_AND_LINEAGE_REVIEW_PASS_WITHOUT_D95_OR_STAGE_RELEASE",
+  "result_reviewer": "/root/e96_materializer_review",
+  "independent_review": {
+    "full_body_files_recomputed": 39,
+    "mtfi_inventory_and_samples_checked": true,
+    "mtfi_full_body_locally_recomputed": false,
+    "binder_parent_reference_ack_chain_verified": true,
+    "source_tcl_clock_and_selftest_records_match": true,
+    "f_driver_warning_records": 6,
+    "h_driver_warning_records": 7,
+    "unreviewed_driver_warnings": 0,
+    "package_still_failed": true
+  },
+  "response_sha256": "d70818980f52ad17e9a1d7eb917d9618d1bf203d4ec29b7e780430529528189e",
+  "response_bytes": 163450,
+  "body_files": [
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1.initial_intent.json",
+      "bytes": 729,
+      "sha256": "8185c32c7a66a20fa9572c638a54493077cf10bf3e5930163d08c1e4c4f8a054",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/code/common.tcl",
+      "bytes": 3216,
+      "sha256": "1865b49c09203e0255ff5c5d019420a5e2b76f20f7ca8de5f5a3bdbd16eadd5c",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/code/incremental.tcl",
+      "bytes": 4254,
+      "sha256": "50982a3c1b9b93b452313ef503bbfe6d17a44f7f3a018334041244807587dafe",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/package_summary.json",
+      "bytes": 1983,
+      "sha256": "30317852e61d44e48997288ab153bb7a0ecf2f81afded9ae213d954f37575cd6",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/initialization.json",
+      "bytes": 1067,
+      "sha256": "f0a64e767d6d2be10e01cb086a4eba8603f6dc116fc83e2067fb864602494180",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_intent.json",
+      "bytes": 226,
+      "sha256": "bff57a11aaf37993e7cf225bef91daee4b5cfef31787925cd8048c7b9a70925f",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_observation.json",
+      "bytes": 570,
+      "sha256": "0c879ef31fb10deedfa9f96dfab299bba675a4006f22b89ff087106bf97edd81",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_bootstrap_metadata.json",
+      "bytes": 170,
+      "sha256": "c184be4ef0f7e2919aad8950bd8d47b126f9cc6530202f3e543c95460a96fdde",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_success_observation.json",
+      "bytes": 354,
+      "sha256": "8a15995b0ef7f12291bcefb8390623ce1bd5d392e8a13e91dd83d2d26154e4d1",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_success_receipt.json",
+      "bytes": 150,
+      "sha256": "8b400c4a5c7fe8e90ea611a1ed4896a9fb2487a189065cd60e566a726205e92b",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_success_output.log",
+      "bytes": 20,
+      "sha256": "d1ffd1343dff7cb0773349f44b527cb8e8a83f1a30c657481fb63a6aea2a7b88",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_timeout_observation.json",
+      "bytes": 364,
+      "sha256": "faa3e28e8cff288e8a32009fa5112282fe7f090d4d0e58349ccaed1711a043af",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_timeout_receipt.json",
+      "bytes": 150,
+      "sha256": "db1b09d364590762e2446963d416fe43d419367e95aaf6e78273f59084d8eb1d",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_timeout_output.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_setsid_child_observation.json",
+      "bytes": 473,
+      "sha256": "3f2d4efbf3c0979398f92f99181086474e7bd24c7f829eaac459e0dbe57edee2",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_setsid_child_receipt.json",
+      "bytes": 258,
+      "sha256": "c30529fb683027ddf995a9f0fcc4c5922b08a2f5cdb391415185eb15eeb7c157",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/selftest_callback_setsid_child_output.log",
+      "bytes": 26,
+      "sha256": "42245fa19c2361ed6c101b0bd209fc194c29aaffa279d2c8b70ad22ffffe6ca8",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_intent.json",
+      "bytes": 3302,
+      "sha256": "4e3fb2547aa0b7b4a33dd4342d79937b6ca7fcb6b4177a75f4aedd8a6b698294",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_preparation.json",
+      "bytes": 2482,
+      "sha256": "dec314a69e2dab3f5681d220120099ebef7c29777b5e80503dc9071c6c395804",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_spawn_identity.json",
+      "bytes": 821,
+      "sha256": "fbe70ca15ccb0e533d72368d33cafb993f720a742ee736f7c1c6f6ac862575c3",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_observation.json",
+      "bytes": 2887,
+      "sha256": "af608889ef055fbb338f87faff0599da285c2bdda4526b9dc8f4132524505195",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_stdout.log",
+      "bytes": 24556,
+      "sha256": "0f7bb27c5f45b8eddfb5cd89ff2904deab7914aaa917bbddeafeefd2df23605b",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_stdout_ack.json",
+      "bytes": 473,
+      "sha256": "41208bec39eae151f3bdafc2987d211b34e08883ab09a0011fb77b02a1a87a10",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_reference.json",
+      "bytes": 9278,
+      "sha256": "4028e89bc764337a1738c2991e0683b4cd12dc29c705fcfb8e3b74f1efec3349",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_artifact_metadata.json",
+      "bytes": 307,
+      "sha256": "5e5d25ad5b53522ba446eac24c85bbdab9c984eff5265481ffce08410ec4d294",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_000_ack.json",
+      "bytes": 1176,
+      "sha256": "bd473bc6f2ebf18d6b5560ba63b075916e5c9f0c879bea5e15cf199a23e306f8",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_001_intent.json",
+      "bytes": 1405,
+      "sha256": "693c84ef2862809e7b1c7b6814e56adc9f0ce40203c82ba5251ecc062aca1c96",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_001_translation_observation.json",
+      "bytes": 811,
+      "sha256": "5e3d509deb9ad1c1f820032c5d4c4c9fb736a394838fc951672625a2e9e42719",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_001_reference.json",
+      "bytes": 1877,
+      "sha256": "6a12896bb2c7e142594e29282d55c9fb076ced97d94a582a695fb5829000807a",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_001_artifact_metadata.json",
+      "bytes": 307,
+      "sha256": "c1467b1d14749b6c286e2f9129407961ce2ca6202ef5ab82f72ada0627180432",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_001_ack.json",
+      "bytes": 1103,
+      "sha256": "76d2ec728c579b938821785257d724ac9f1e5c835f0c10af6270f087befb83b6",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_002_intent.json",
+      "bytes": 4815,
+      "sha256": "3e9c3d1a764e231cbb5be2fe5bb729f9ac92680b23d973b5d9209f0d3243627b",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_002_preparation.json",
+      "bytes": 2486,
+      "sha256": "44c37d3d304548ba22d887454b72c4bc4a536aacd5ab1c4cc448b2ea8fe1a446",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_002_spawn_identity.json",
+      "bytes": 821,
+      "sha256": "79fdceefac73b5986ee7b7aced9c171b9ee3686dd7cbf9e3f70b7d583a38538d",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_002_observation.json",
+      "bytes": 2938,
+      "sha256": "f4a88b2fd6c029c30e7e3a52f941fe954c24dcbe01f96e7755ea6eb330058020",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_002_stdout.log",
+      "bytes": 17117,
+      "sha256": "4c089a2410fcaebc6aed3167a8b4b14015cf8afad5d8e7a019078679d78d7d94",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/journal/task_002_stdout_ack.json",
+      "bytes": 473,
+      "sha256": "c92a1daa1dea6232c99d37a081f49193b17323460ea81304eb2cc6815e6c2b1b",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/statistics.rpt",
+      "bytes": 1576,
+      "sha256": "629b433cd87ad7e471834decf9cce0f47735268da7028215b0eed68f8c60fff4",
+      "local_body_hash_recomputed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/logs/F_aes_core:HF:h1:F.log",
+      "bytes": 17117,
+      "sha256": "4c089a2410fcaebc6aed3167a8b4b14015cf8afad5d8e7a019078679d78d7d94",
+      "local_body_hash_recomputed": true
+    }
+  ],
+  "mtfi_inventory": {
+    "bytes": 2520140,
+    "class_counts": {
+      "AU.SEQ": 3,
+      "AU.TC": 12,
+      "DI.CLK": 1062,
+      "DI.SCAN": 2120,
+      "DI.SEN": 531,
+      "DS": 40418,
+      "EQ": 25657,
+      "UC": 19,
+      "UO": 1392,
+      "UU": 2
+    },
+    "class_examples": [
+      {
+        "fault_class": "AU.SEQ",
+        "known_to_frozen_parser": false,
+        "line_base64": "ICAgICAgMCwgIEFVLlNFUSwgICAgIi9panRhZ190Y2siOwo=",
+        "line_bytes": 35,
+        "line_number": 1042
+      },
+      {
+        "fault_class": "AU.TC",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIEFVLlRDLCAgICAgIi9panRhZ19yZXNldCI7Cg==",
+        "line_bytes": 37,
+        "line_number": 1044
+      },
+      {
+        "fault_class": "DI.CLK",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIERJLkNMSywgICAgIi9jbGsiOwo=",
+        "line_bytes": 29,
+        "line_number": 8
+      },
+      {
+        "fault_class": "DI.SCAN",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIERJLlNDQU4sICAgIi9cdGV4dF9pbl9yX3JlZ1swXSAvUSI7Cg==",
+        "line_bytes": 46,
+        "line_number": 1376
+      },
+      {
+        "fault_class": "DI.SEN",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIERJLlNFTiwgICAgIi9zY2FuX2VuIjsK",
+        "line_bytes": 33,
+        "line_number": 1040
+      },
+      {
+        "fault_class": "DS",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIERTLCAgICAgICAgIi9yc3QiOwo=",
+        "line_bytes": 29,
+        "line_number": 10
+      },
+      {
+        "fault_class": "EQ",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIEVRLCAgICAgICAgIi9VODU5OC9JMCI7Cg==",
+        "line_bytes": 34,
+        "line_number": 15
+      },
+      {
+        "fault_class": "UC",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIFVDLCAgICAgICAgIi9VOTkxMC9aTiI7Cg==",
+        "line_bytes": 34,
+        "line_number": 14316
+      },
+      {
+        "fault_class": "UO",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMSwgIFVPLCAgICAgICAgIi9VMTczMy9BMiI7Cg==",
+        "line_bytes": 34,
+        "line_number": 1071
+      },
+      {
+        "fault_class": "UU",
+        "known_to_frozen_parser": true,
+        "line_base64": "ICAgICAgMCwgIFVVLCAgICAgICAgIi9sdGVzdF9lbiI7Cg==",
+        "line_bytes": 34,
+        "line_number": 1038
+      }
+    ],
+    "detected_count_inferred": false,
+    "expected_row_count": 71216,
+    "full_envelope_verified": true,
+    "namespace_or_unique_fault_set_verified": false,
+    "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/faults.mtfi",
+    "row_count": 71216,
+    "sha256": "55f6850eee753e3aff90b7b2199a366cb635a7b6a00adae84b1f20fc049ded5f",
+    "status": "MTFI_INVENTORY",
+    "strict_fault_row_syntax_verified": true,
+    "unknown_examples": [
+      {
+        "fault_class": "AU.SEQ",
+        "known_to_frozen_parser": false,
+        "line_base64": "ICAgICAgMCwgIEFVLlNFUSwgICAgIi9panRhZ190Y2siOwo=",
+        "line_bytes": 35,
+        "line_number": 1042
+      }
+    ],
+    "unknown_labels": [
+      "AU.SEQ"
+    ],
+    "whole_file_hashed": true
+  },
+  "mtfi_hash_locally_recomputed": false,
+  "readback": {
+    "capture_complete": true,
+    "error": null,
+    "body_bytes_hashed": 112138,
+    "mtfi_bytes_hashed": 2520140,
+    "sampled_peak_rss_swap_bytes": 13320192,
+    "remote_start_monotonic": 2409662.420714831,
+    "remote_end_monotonic": 2409663.30966626,
+    "child_launches": 0,
+    "explicit_filesystem_writes": 0,
+    "atpg_launches": 0,
+    "additional_historical_reports": 0
+  },
+  "stage_observations": {
+    "task_000": {
+      "returncode": 0,
+      "failure": null,
+      "cleaned": true,
+      "sampled_peak_rss_swap_bytes": 393433088,
+      "observed_wrapper_interval_seconds": 12.314205151982605
+    },
+    "task_002": {
+      "returncode": 0,
+      "failure": null,
+      "cleaned": true,
+      "sampled_peak_rss_swap_bytes": 413106176,
+      "observed_wrapper_interval_seconds": 13.620392705313861
+    }
+  },
+  "qualification_gap": {
+    "native_f_reported_ds_di": 69062,
+    "f_explicit_known_detection_class_rows": 44131,
+    "h_explicit_conservative_union_count": 10396,
+    "explicit_union_upper_bound": 54527,
+    "d95_threshold": 67656,
+    "eq_inferred_detected": false,
+    "native_report_is_not_canonical_common_d95_certificate": true
+  },
+  "new_tool_retries": 0,
+  "d95_verified": false,
+  "training_release": false
+}
