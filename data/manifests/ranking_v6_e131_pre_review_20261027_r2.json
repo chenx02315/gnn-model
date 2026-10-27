@@ -1,0 +1,50 @@
+{
+  "schema": "e131-independent-fixed-protocol-review-v1",
+  "status": "PASS",
+  "reviewer": "/root/e96_materializer_review",
+  "protocol_reviewed": {
+    "source_sha256": {
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "e131_docs_probe": "bcbc66b54c171ca1cb3b955b189aa85f91c1e77c4b44e61a5539d976d66a168e"
+    },
+    "controller_sha256": "bcbc66b54c171ca1cb3b955b189aa85f91c1e77c4b44e61a5539d976d66a168e",
+    "authorization_sha256": "f50274633de10dc743808dcfa7f87a473d30a4c4b8614cffe55770182ba0aa59",
+    "proposal_sha256": "3d1d88125bcc9256be70a18c893d5e4070da025fdd9dd379e50e2709553bff5e",
+    "protocol_sha256": "72099f3493124f0322e4ff1e17c47a64d51662efb0bbb4a8c0bf88441b1cf2c4"
+  },
+  "metadata_payload_sha256": "086a1ceb82e54e9417cd91fb3e208796250891370e0e139bc25a736630589bfd",
+  "metadata_payload_bytes": 225455,
+  "future_selection_not_yet_reviewed": true,
+  "tests": {
+    "testsRun": 14,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "parent_joint_regression": {
+    "testsRun": 180,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "python36_ast_pass": true,
+  "inert_module_loading_both_modes": 15,
+  "review_scope": "EXACT_METADATA_PACKET_AND_FIXED_EXPORT_PROTOCOL_ONLY",
+  "export_requires_same_process_parent_exact_post_metadata_selection": true,
+  "manual_version_proven": false,
+  "coverage_semantics_proven": false,
+  "training_release": false
+}

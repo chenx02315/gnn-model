@@ -1,0 +1,31 @@
+{
+  "schema": "e132-local-compatibility-review-v1",
+  "status": "PASS_LOCAL_IMPLEMENTATION_ONLY",
+  "reviewer": "/root/e96_materializer_review",
+  "source_sha256": "fb944116ac17da709bda9f6d4a5aa4b0aa4699f3b48c0829bca9ece362f99d11",
+  "tests_sha256": "db3f0e44d0afb7341614b663ffddb51531287ad84d567d59dfca1a47b590967c",
+  "old_executed_e131_source_unchanged": "bcbc66b54c171ca1cb3b955b189aa85f91c1e77c4b44e61a5539d976d66a168e",
+  "independent_tests": {
+    "testsRun": 10,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "parent_joint_regression": {
+    "testsRun": 190,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 9.435,
+    "exit_code": 0
+  },
+  "python36_ast_pass": true,
+  "simulated_python36_api_only": true,
+  "actual_linux_proc_execution": false,
+  "root_authentication_and_global_entry_budget_are_caller_responsibility": true,
+  "new_executor_integrated": false,
+  "new_remote_authority": false,
+  "new_remote_calls": 0,
+  "coverage_semantics_proven": false,
+  "training_release": false
+}

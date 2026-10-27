@@ -1,0 +1,110 @@
+{
+  "schema": "e131-actual-documentation-probe-v1",
+  "status": "ACTUAL_METADATA_INCOMPLETE_NO_EXPORT_NO_RETRY",
+  "result_review": "INDEPENDENT_FAILURE_EVIDENCE_ACCEPTED_NOT_METADATA_PASS",
+  "result_reviewer": "/root/e96_materializer_review",
+  "response": {
+    "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+    "capture_complete": false,
+    "child_launches": 0,
+    "coverage_semantics_proven": false,
+    "environment_reads": 0,
+    "error": {
+      "code": "DOCUMENT_PROBE_FAILED",
+      "type": "TypeError"
+    },
+    "exports": [],
+    "filesystem_writes": 0,
+    "hostname": "bupt-vncs2",
+    "mode": "metadata",
+    "old_experiment_clock_changed": false,
+    "probe_deadline_monotonic": 2437641.133096919,
+    "probe_start_monotonic": 2437341.133096919,
+    "remote_end_monotonic": 2437341.240865022,
+    "remote_start_monotonic": 2437341.133096919,
+    "root": {
+      "identity": {
+        "st_ctime_ns": 1765181183700321500,
+        "st_dev": 43,
+        "st_ino": 25444416,
+        "st_mode": 16893,
+        "st_mtime_ns": 1765181183700321500,
+        "st_nlink": 9,
+        "st_size": 4096,
+        "st_uid": 0
+      },
+      "logical": "/cad/mentor/tessent2021_2",
+      "resolved": "/cad/mentor/tessent2021_2"
+    },
+    "sampled_peak_rss_swap_bytes": 13197312,
+    "scan": null,
+    "schema": "tessent-documentation-probe-e131-v1",
+    "tessent_launches": 0,
+    "training_release": false,
+    "training_runs": 0,
+    "uid": 1047
+  },
+  "response_bytes": 989,
+  "response_sha256": "6d16731f4e125fdd43949c93f6a2efbb58216e5f03b114bff4ed98310708b8ba",
+  "transport": {
+    "exit_code": 0,
+    "overflow": false,
+    "remote_termination_verified": false,
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 989,
+    "stdout_sha256": "6d16731f4e125fdd43949c93f6a2efbb58216e5f03b114bff4ed98310708b8ba",
+    "threads_incomplete": false,
+    "timeout": false,
+    "write_failed": false
+  },
+  "start": {
+    "authorization_sha256": "f50274633de10dc743808dcfa7f87a473d30a4c4b8614cffe55770182ba0aa59",
+    "automatic_retries": 0,
+    "calls_max": 2,
+    "host_fingerprint": "SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM",
+    "local_clock_domain": {
+      "host": "陈陈陈",
+      "monotonic_implementation": "QueryPerformanceCounter()",
+      "pid": 31032
+    },
+    "local_monotonic_deadline": 249020.4024985,
+    "local_monotonic_start": 248720.4024985,
+    "local_utc_deadline": "2026-10-27T10:42:10.535551+00:00",
+    "local_utc_start": "2026-10-27T10:37:10.535551+00:00",
+    "metadata_attempt_consumed": true,
+    "old_experiment_clock_changed": false,
+    "protocol_sha256": "72099f3493124f0322e4ff1e17c47a64d51662efb0bbb4a8c0bf88441b1cf2c4",
+    "source_sha256": {
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "e131_docs_probe": "bcbc66b54c171ca1cb3b955b189aa85f91c1e77c4b44e61a5539d976d66a168e",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2"
+    }
+  },
+  "actual_calls": 1,
+  "export_calls": 0,
+  "documentation_bodies_exported": 0,
+  "precise_exception_line_known": false,
+  "compatibility_hypothesis": {
+    "candidate": "os.scandir(integer_fd) requires Python3.7+ on Unix",
+    "basis": "Source calls os.scandir(fd); Python official version-change documentation; root snapshot returned before scan failed",
+    "not_proven_actual_traceback": true,
+    "source": "https://docs.python.org/3/library/os.html#os.scandir"
+  },
+  "no_further_remote_calls_under_this_package": true,
+  "coverage_semantics_proven": false,
+  "frozen_contract_d95_pass": false,
+  "training_release": false
+}

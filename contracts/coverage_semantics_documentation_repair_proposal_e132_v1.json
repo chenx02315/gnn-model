@@ -1,0 +1,52 @@
+{
+  "schema": "coverage-semantics-documentation-repair-proposal-e132-v1",
+  "status": "PENDING_EXPLICIT_AUTHORIZATION",
+  "user_authorization_received": false,
+  "reason": "E131_ACTUAL_METADATA_TYPEERROR_AND_UNTESTED_PYTHON36_FD_SCANDIR_COMPATIBILITY",
+  "preserve_executed_e131_sources_and_receipts": true,
+  "approved_scope_if_granted": {
+    "host": "A_ONLY",
+    "installation_root": "/cad/mentor/tessent2021_2",
+    "documentation_directories_only": [
+      "doc",
+      "docs",
+      "help",
+      "share/doc",
+      "share/help"
+    ],
+    "directory_depth_max": 2,
+    "directory_entries_max": 200,
+    "metadata_response_bytes_max": 65536,
+    "documentation_files_export_max": 3,
+    "documentation_file_body_bytes_total_max": 33554432,
+    "read_only_ssh_calls_max": 2,
+    "metadata_attempts_max": 1,
+    "export_attempts_max": 1,
+    "new_versions_max": 1,
+    "automatic_retries": 0,
+    "seconds_per_call_max": 60,
+    "total_wall_seconds_max": 300,
+    "sampled_memory_bytes_max": 536870912,
+    "streamed_directory_alias": "ONLY /proc/self/fd/<already-owned-and-verified-document-directory-fd>; no general /proc traversal",
+    "runtime_metadata": "Python version, fixed stage/error code and capability diagnostics only",
+    "exact_metadata_selection_review_before_export": true,
+    "whole_file_sha256_before_content_analysis": true,
+    "root_and_clock_are_new_e132_only_no_e131_renewal": true,
+    "tessent_processes_allowed": false,
+    "atpg_allowed": false,
+    "LSF_allowed": false,
+    "B_allowed": false,
+    "BLIND_allowed": false,
+    "training_allowed": false,
+    "changes_to_old_D95_contract_allowed": false,
+    "additional_historical_experiment_reports": 0
+  },
+  "required_before_first_call": [
+    "NEW_EXPLICIT_REPLY_RECORD_BOUND_TO_THIS_PROPOSAL",
+    "LOCAL_COMPATIBILITY_AND_NEGATIVE_PATH_TESTS",
+    "FROZEN_NEW_EXECUTOR_AND_EXACT_METADATA_PACKET_INDEPENDENT_REVIEW",
+    "OLD_E131_SOURCE_SHA_UNCHANGED"
+  ],
+  "execution_ready": false,
+  "training_release": false
+}

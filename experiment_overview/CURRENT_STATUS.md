@@ -1,5 +1,19 @@
 # 当前实验状态
 
+## 最新真实结果：E131盘点读取器报TypeError，未取得手册，未重试
+
+修复版已通过180项联合测试及独立14项/两种包的inert装载复核，随后唯一metadata调用真实连接A并核对安装根，但扫描过程返回TypeError、capture_complete=false。原始响应989B，SHA-256 6d16731f4e125fdd43949c93f6a2efbb58216e5f03b114bff4ed98310708b8ba；远端约0.108秒、采样峰值12.59MiB，文档正文0、Tessent/ATPG/LSF/训练0。
+
+已保留失败并关闭本地交互会话，第二次export不得改作metadata重试。官方Python文档显示os.scandir的Unix整数fd支持从3.7才加入，与当前源码的兼容性风险一致；但本次响应未保存精确异常行，因此它仍是高可信候选原因，不是假称已取得实际traceback。新E132本地兼容组件已通过190项联合测试及独立10项复核，仅本地实现PASS；尚未接入执行器，也未实测Linux/proc。新远端执行需批准contracts/coverage_semantics_documentation_repair_proposal_e132_v1.json中的新有界包，E131原时钟/次数不续期。D95语义仍未核实。详见[E131记录](entries/E131_authorized_documentation_verification.md)与[E132补救](entries/E132_local_document_directory_compatibility.md)。以下“尚未访问”为此前快照。
+
+## 当前授权：E131文档核验包已获明确批准，尚未访问文档目录
+
+用户在唯一待批准E131文档核验包的上下文明确回复“授权”。实际答复独立保存 contracts/coverage_semantics_documentation_authorization_e131_20261027.json（SHA f50274633de10dc743808dcfa7f87a473d30a4c4b8614cffe55770182ba0aa59），原提案PENDING状态保持历史快照。
+
+仅允许A端Tessent2021.2安装根内指定文档目录的有界只读盘点/导出，最多2次访问、200条目/深度2、最多3份文档共32MiB、首次调用起300秒包时限。协议和测试先完成独立复核；真实目录返回后由主代理复核exact候选ID、路径及完整metadata SHA，再导出，不能假称独立复核者已提前审查尚不存在的selection。当前没有文档目录调用。
+
+不启动Tessent/LSF/ATPG、不读用户/设计/BLIND、不训练、不修改D95合同或旧实验时钟。文档来源/版本未核实前，仍不能把报告96.98%改称共同故障D95通过。详见 [E131文档核验](entries/E131_authorized_documentation_verification.md)。
+
 ## 当前权威：E130完整集合核验通过，D95语义仍未闭合；未再跑ATPG
 
 已在原E127窗口内完成固定9文件只读审计：H/F各71216个完整native故障键与冻结canonical共同集合一一对应，无缺失/重复/模式外项；E129的F完整解析在A端真实通过。读15.17MB、采样峰值约81.53MiB，无工具/子进程/训练启动。
