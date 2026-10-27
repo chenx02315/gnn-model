@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "reviewer_role": "PARENT_EXACT_POST_METADATA_SELECTION",
+  "selected_ids": [
+    "4cb7d568d258738cecee97232f90b243582c84489e60e49daf2e9bf5b3f9e0ea",
+    "fc4f7391cade920c02663be09d0cee22fe61cd6bff9590b0ac91ed48aa84d57e",
+    "dad97bea6a41abe5acc0ae0a2c908ccce76e1907f637e30bfadac71a5fe6e3e0"
+  ],
+  "selection_reviewed": {
+    "metadata_sha256": "5fa50fee0cdf127cc1c5594f63eff367c8c6ae36f8b5cb5f51e9aaaba0e40c08",
+    "selected_ids": [
+      "4cb7d568d258738cecee97232f90b243582c84489e60e49daf2e9bf5b3f9e0ea",
+      "fc4f7391cade920c02663be09d0cee22fe61cd6bff9590b0ac91ed48aa84d57e",
+      "dad97bea6a41abe5acc0ae0a2c908ccce76e1907f637e30bfadac71a5fe6e3e0"
+    ],
+    "selected_metadata": [
+      {
+        "candidate_id": "4cb7d568d258738cecee97232f90b243582c84489e60e49daf2e9bf5b3f9e0ea",
+        "identity": {
+          "st_ctime_ns": 1764660862587419000,
+          "st_dev": 43,
+          "st_ino": 25468889,
+          "st_mode": 33133,
+          "st_mtime_ns": 1622265644000000000,
+          "st_nlink": 1,
+          "st_size": 12762695,
+          "st_uid": 0
+        },
+        "logical_relative": "doc/pdfdocs/atpg_gd.pdf",
+        "resolved_relative": "doc/pdfdocs/atpg_gd.pdf"
+      },
+      {
+        "candidate_id": "fc4f7391cade920c02663be09d0cee22fe61cd6bff9590b0ac91ed48aa84d57e",
+        "identity": {
+          "st_ctime_ns": 1764660861458451500,
+          "st_dev": 43,
+          "st_ino": 25468878,
+          "st_mode": 33133,
+          "st_mtime_ns": 1622274917000000000,
+          "st_nlink": 1,
+          "st_size": 10594982,
+          "st_uid": 0
+        },
+        "logical_relative": "doc/pdfdocs/tshell_user.pdf",
+        "resolved_relative": "doc/pdfdocs/tshell_user.pdf"
+      },
+      {
+        "candidate_id": "dad97bea6a41abe5acc0ae0a2c908ccce76e1907f637e30bfadac71a5fe6e3e0",
+        "identity": {
+          "st_ctime_ns": 1764660864587360800,
+          "st_dev": 43,
+          "st_ino": 25468911,
+          "st_mode": 33133,
+          "st_mtime_ns": 1622277162000000000,
+          "st_nlink": 1,
+          "st_size": 676354,
+          "st_uid": 0
+        },
+        "logical_relative": "doc/pdfdocs/tessent_glossary.pdf",
+        "resolved_relative": "doc/pdfdocs/tessent_glossary.pdf"
+      }
+    ]
+  },
+  "export_payload_sha256": "ee6f2b3a7903509f6577ac2132013940be5e9fe67862025b05d5fc383401f969",
+  "selection_manifest_sha256": "4b86c35bd462b94569137a16c04707b7fd38c550dc153f169a16294ad5b09c87",
+  "independent_future_selection_claim": false,
+  "reason": "ATPG guide, shell user manual and glossary; exact regular docs-only paths reviewed; total24034031B within32MiB"
+}

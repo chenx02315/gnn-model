@@ -1,0 +1,63 @@
+{
+  "schema": "e132-document-rule-evidence-v1",
+  "status": "PARENT_REVIEW_COMPLETE_INDEPENDENT_FINAL_REVIEW_PENDING_QUOTA",
+  "primary_document": {
+    "logical_relative": "doc/pdfdocs/atpg_gd.pdf",
+    "sha256": "633932e0eb455a5d7e4a197b870348d8227b26f66fe48085562b8841eae97ee0",
+    "bytes": 12762695,
+    "pages": 780,
+    "software_version": "2021.2",
+    "document_revision": 21,
+    "cover_page_text_and_png_checked": true,
+    "actual_executable_hotfix_bound": false
+  },
+  "rule_pages": {
+    "fault_collapsing": 50,
+    "detected_classes": [
+      79,
+      80,
+      81
+    ],
+    "uncollapsed_reporting_groups": 88,
+    "testability_denominators": [
+      88,
+      89
+    ],
+    "default_and_configurable_fault_mode": 341,
+    "mtfi_scope_cautions": [
+      671,
+      673,
+      674
+    ]
+  },
+  "rendered_and_visually_inspected_pdf_pages": [
+    1,
+    50,
+    79,
+    88,
+    89,
+    341,
+    673
+  ],
+  "render_warning": "Missing Symbol/ArialUnicode display fonts reported; inspected critical rule text/formulas readable; not warning-free",
+  "independent_semantic_preliminary_observations_received_from": "/root/generation_materializer_e111",
+  "independent_semantic_turn_terminal": "USAGE_LIMIT_ERROR_NOT_FORMAL_FINAL_PASS",
+  "independent_technical_result_turn_terminal": "/root/e96_materializer_review USAGE_LIMIT_ERROR",
+  "established": {
+    "target_version_family_manual_obtained": true,
+    "report_faults_uncollapsed_representative_before_EQ_members": true,
+    "all_EQ_detected_rule_supported": false,
+    "arbitrary_MTFI_adjacency_inheritance_supported": false,
+    "default_fault_mode_proves_actual_mode": false,
+    "DS_DI_only_PT_excluded_definition_unchanged": true
+  },
+  "not_established": [
+    "ACTUAL_REPORT_GROUP_TO_EQ_COMPLETE_MAPPING",
+    "FROZEN_CONTRACT_D95_PASS",
+    "TRAINING_RELEASE"
+  ],
+  "coverage_semantics_proven": false,
+  "frozen_contract_d95_pass": false,
+  "training_release": false,
+  "raw_licensed_PDF_or_text_to_Git": false
+}

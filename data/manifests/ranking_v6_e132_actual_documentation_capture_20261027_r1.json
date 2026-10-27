@@ -1,0 +1,157 @@
+{
+  "schema": "e132-actual-documentation-probe-v1",
+  "status": "CAPTURE_AND_WHOLE_FILE_SHA_PASS_RESULT_REVIEW_PENDING",
+  "authorization_sha256": "a093e056d09c91796ae4cebd0403288a49618ee6afc6a5eef6de6ad762159f8d",
+  "source_sha256": {
+    "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+    "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+    "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+    "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+    "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+    "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+    "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+    "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+    "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+    "documentation_scandir_compat_e132": "fb944116ac17da709bda9f6d4a5aa4b0aa4699f3b48c0829bca9ece362f99d11",
+    "e132_docs_probe": "4282dd07429eb87953975c722eef098421c4f4be5f7ab038aceb56e4054f3d64",
+    "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+    "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+    "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+    "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+    "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2"
+  },
+  "protocol_sha256": "458b1735c960fde5eba20f45c5566d6860d1f1617ba798712ca692e24b3dee03",
+  "host_fingerprint": "SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM",
+  "local_utc_start": "2026-10-27T10:50:40.157952+00:00",
+  "local_utc_deadline": "2026-10-27T10:55:40.157952+00:00",
+  "actual_read_only_calls": 2,
+  "automatic_retries": 0,
+  "metadata": {
+    "hostname": "bupt-vncs2",
+    "uid": 1047,
+    "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+    "python_version": [
+      3,
+      6,
+      8
+    ],
+    "stage": "COMPLETE",
+    "capture_complete": true,
+    "error": null,
+    "remote_start_monotonic": 2438150.626292902,
+    "remote_end_monotonic": 2438151.343753363,
+    "probe_start_monotonic": 2438150.626292902,
+    "probe_deadline_monotonic": 2438450.626292902,
+    "sampled_peak_rss_swap_bytes": 13012992,
+    "filesystem_writes": 0,
+    "child_launches": 0,
+    "environment_reads": 0,
+    "tessent_launches": 0,
+    "training_runs": 0,
+    "response_bytes": 31083,
+    "response_sha256": "5fa50fee0cdf127cc1c5594f63eff367c8c6ae36f8b5cb5f51e9aaaba0e40c08",
+    "scan": {
+      "depth_limited": true,
+      "fixed_document_roots": [
+        "doc",
+        "docs",
+        "help",
+        "share/doc",
+        "share/help"
+      ],
+      "no_candidates_does_not_prove_installation_document_absence": true,
+      "rejected_entries": 61,
+      "scan_complete_within_fixed_scope": false,
+      "scanned_directories": 9,
+      "scanned_entries": 200,
+      "truncated": true
+    },
+    "candidate_count": 76,
+    "transport": {
+      "exit_code": 0,
+      "overflow": false,
+      "remote_termination_verified": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 31083,
+      "stdout_sha256": "5fa50fee0cdf127cc1c5594f63eff367c8c6ae36f8b5cb5f51e9aaaba0e40c08",
+      "threads_incomplete": false,
+      "timeout": false,
+      "write_failed": false
+    }
+  },
+  "export": {
+    "hostname": "bupt-vncs2",
+    "uid": 1047,
+    "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+    "python_version": [
+      3,
+      6,
+      8
+    ],
+    "stage": "COMPLETE",
+    "capture_complete": true,
+    "error": null,
+    "remote_start_monotonic": 2438217.700068072,
+    "remote_end_monotonic": 2438218.382896962,
+    "probe_start_monotonic": 2438150.626292902,
+    "probe_deadline_monotonic": 2438450.626292902,
+    "sampled_peak_rss_swap_bytes": 41684992,
+    "filesystem_writes": 0,
+    "child_launches": 0,
+    "environment_reads": 0,
+    "tessent_launches": 0,
+    "training_runs": 0,
+    "response_bytes": 32047049,
+    "response_sha256": "a9c938f449556b2bd0049ceae99268c8234104b61a56f29e17526fa281a26b77",
+    "transport": {
+      "exit_code": 0,
+      "overflow": false,
+      "remote_termination_verified": false,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 32047049,
+      "stdout_sha256": "a9c938f449556b2bd0049ceae99268c8234104b61a56f29e17526fa281a26b77",
+      "threads_incomplete": false,
+      "timeout": false,
+      "write_failed": false
+    },
+    "validated": {
+      "all_whole_file_hashes_verified": true,
+      "coverage_semantics_proven": false,
+      "documents": [
+        {
+          "bytes": 12762695,
+          "candidate_id": "4cb7d568d258738cecee97232f90b243582c84489e60e49daf2e9bf5b3f9e0ea",
+          "file": "4cb7d568d258738cecee97232f90b243582c84489e60e49daf2e9bf5b3f9e0ea.pdf",
+          "logical_relative": "doc/pdfdocs/atpg_gd.pdf",
+          "resolved_relative": "doc/pdfdocs/atpg_gd.pdf",
+          "sha256": "633932e0eb455a5d7e4a197b870348d8227b26f66fe48085562b8841eae97ee0"
+        },
+        {
+          "bytes": 10594982,
+          "candidate_id": "fc4f7391cade920c02663be09d0cee22fe61cd6bff9590b0ac91ed48aa84d57e",
+          "file": "fc4f7391cade920c02663be09d0cee22fe61cd6bff9590b0ac91ed48aa84d57e.pdf",
+          "logical_relative": "doc/pdfdocs/tshell_user.pdf",
+          "resolved_relative": "doc/pdfdocs/tshell_user.pdf",
+          "sha256": "41362532b82ff394755ebe5b6544cf98b6e8c63d824e5b0c08aae8b69b7e73c6"
+        },
+        {
+          "bytes": 676354,
+          "candidate_id": "dad97bea6a41abe5acc0ae0a2c908ccce76e1907f637e30bfadac71a5fe6e3e0",
+          "file": "dad97bea6a41abe5acc0ae0a2c908ccce76e1907f637e30bfadac71a5fe6e3e0.pdf",
+          "logical_relative": "doc/pdfdocs/tessent_glossary.pdf",
+          "resolved_relative": "doc/pdfdocs/tessent_glossary.pdf",
+          "sha256": "c4668a9d9ed5ae1053747c939b684baa00f03831f6795c03c0275a85fd154581"
+        }
+      ],
+      "version_semantics_not_yet_interpreted": true
+    }
+  },
+  "documentation_body_bytes_total": 24034031,
+  "selection_review": "ranking_v6_e132_parent_selection_review_20261027_r2.json",
+  "local_r1_selection_precision_rejection_before_export_intent": true,
+  "coverage_semantics_proven": false,
+  "frozen_contract_d95_pass": false,
+  "training_release": false
+}
