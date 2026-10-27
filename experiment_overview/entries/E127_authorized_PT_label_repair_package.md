@@ -1,0 +1,28 @@
+# E127：已批准的PT标签修复新采集包
+
+## 目标与授权
+
+用户于2026-10-27明确批准“批准 E127 新整包”。实际答复独立保存在 contracts/prospective_pt_label_repair_authorization_e127_20261027.json，SHA-256 106c9d5c874b79a2400ca11b17c08708c285cfcdd8147c226af10d81a9c73e52；所批准提案SHA-256 fa9ae57624c89835d152236ebccffb1ee6990604fbccf3ec63209e7c059ec715。原提案作为提案快照保留，不回填为授权。
+
+首次本地授权草稿经PowerShell输出时中文user_reply损坏，独立复核在任何A调用前发现；已从实际用户答复修正，并增加Unicode码点及禁止U+FFFD测试，重新固定全部下游摘要。此为本地记录修复，不是重新请求用户批准或执行第二版本。
+
+目标仍是完成AES/SPI固定18动作的真实采集；修复的是自写解析器标签，不降低共同故障/D95或产物资格要求。E126仅支持本次实际观察的PT(posdet_testable)，PT不算DS/DI已检出。
+
+## 实施清单
+
+1. 新执行上下文核验实际授权、指定解析器、新ROOT及不可续期14小时预算，本地导入不产生运行许可。
+2. 从精确审核的E124源码输出派生新包，保留原Tcl字节、E123内部tool_id和语义UID/RUN_ID；只更新新根、上下文及E117到E126解析器的依赖。新包预计36源，逐份记录前后SHA和固定替换。
+3. 本地完整78任务Mock、48个Tessent envelope、真实统计重放、负例、惰性载入和相关回归，再由独立只读复核精确payload。
+4. 所有门禁通过后自动在新目录执行唯一一次A整包，先3项实际Linux自检，接受后进入18动作。保存真实观察，再作有界结果核验和版本同步。
+
+## 固定边界
+
+新ROOT /temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1。1版本、1worker、最多48次Tessent＋30次翻译、首失败停止、零自动重试。worker及子进程RSS+swap采样512MiB、ROOT及sidecar采样8GiB；非内核硬保证。新14小时预算从全部本地门禁后的首次新A调用开始，旧时钟和证据不改。不访问B/BLIND、LSF、训练或额外历史报告。
+
+## 当前证据边界
+
+新context完成7项独立复核测试，完整接线已完成：核对旧E124全部35源后生成新36源，只更新ROOT/context和E117解析依赖；实际E125报告经E126解析、PT不计DS/DI。新旧306项联合回归全部通过（0跳过/失败/错误，退出0），日志SHA 44fb0d735199041faaed703dc4a7b3f88c35cd947e76474fd64523b438c25fcf。
+
+精确复核请求为 data/manifests/ranking_v6_e127_review_request_20261027_r1.json，payload853843B，SHA-256 283e866d817f69c434e3a2ff76f468dad3214f982641e18cd9232e9efba543da；所有生产文件已冻结，当前最终独立复核进行中。尚未新增A调用、Linux自检、Tessent或采集结果；新授权不代表执行成功，不回填E124失败为通过。
+
+最终独立精确包复核已PASS：305项选定独立回归零跳过/失败/错误，36模块真实惰性装载、78任务Mock、48执行配方及E126实际统计路由通过，fresh prepare与请求/7文件摘要全相同。root联合回归为306项，两者测试范围分别记录，不混称。回执 data/manifests/ranking_v6_e127_pre_review_20261027_r1.json 的精确REVIEW_KEYS投影SHA为 c7b9bcbd8d49a77ee4822ca8708437c1b64adec3664afc90402e9a163cc7dc39。接下来按授权自动执行唯一新A包，本段封存时尚无实际新包结果。

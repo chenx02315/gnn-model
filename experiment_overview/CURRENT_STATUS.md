@@ -1,5 +1,11 @@
 # 当前实验状态
 
+## 当前授权：2026-10-27已批准E127新整包，正在本地接线
+
+用户明确答复“批准 E127 新整包”。实际授权单独保存 contracts/prospective_pt_label_repair_authorization_e127_20261027.json（SHA 106c9d5c874b79a2400ca11b17c08708c285cfcdd8147c226af10d81a9c73e52），原提案PENDING快照、E124失败、E125回读及E126修复证据不改写。新ROOT /temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1；新14小时预算在全部本地门禁后的首次新A调用启动，尚未开始。
+
+新上下文7项独立复核通过，E126报告依赖、36源精确派生及一次性入口已接入；306项联合回归全通过，当前精确payload853843B（SHA 283e866d817f69c434e3a2ff76f468dad3214f982641e18cd9232e9efba543da）正在最终独立复核。通过后自动执行3项Linux自检和18动作（48次Tessent/30次翻译上限），保持1版本/1worker/首失败停止/零重试、512MiB及8GiB采样边界，不LSF/B/BLIND/训练/额外历史报告。本包尚无A调用或采集结果；下方“尚未授权”是之前时点。
+
 ## 当前结论：E125已回读定位，E126标签修复已独立通过；新采集尚未授权
 
 额度恢复后已完成E125独立复核及原时钟内一次实际只读回读，24/24自有文件完整核验通过。Tessent首H确实执行create_patterns并正常退出，错误唯一定位为统计第13行PT (posdet_testable) 64与旧E115所要求possibly_testable不同；不是重复类别或内存越限。原始数据/失败状态不改写。
