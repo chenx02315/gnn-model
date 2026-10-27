@@ -1,0 +1,190 @@
+{
+  "schema": "e125-owned-artifact-index-v1",
+  "status": "WHOLE_BYTES_AND_LINEAGE_INDEPENDENTLY_REVIEWED_PASS_WITHOUT_STAGE_RELEASE",
+  "result_reviewer": "/root/e96_materializer_review",
+  "review_findings": {
+    "all_24_whole_byte_hashes_match": true,
+    "observation_stdout_ack_spawn_preparation_lineage_matches": true,
+    "remote_and_original_local_summary_match": true,
+    "repaired_tcl_bytes_match_e123": true,
+    "unique_tool_token_mode_semantic_uid_and_tail_pass_markers": true,
+    "three_real_linux_selftest_receipts_match": true,
+    "tessent_create_patterns_observed": true,
+    "requested_one_pattern_limit_observed": true,
+    "e124_package_still_failed": true,
+    "complete_stage_release": false
+  },
+  "response_sha256": "b5765db14b6f9ae3ab0a0d19791723badc693e113d6c1af4ed0817c72a2fdbac",
+  "response_bytes": 107735,
+  "files": [
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1.initial_intent.json",
+      "bytes": 735,
+      "sha256": "f134001283f3cd0e6dc8033881da35c2a279da679cb9a014ff954110edf723b2",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/code/common.tcl",
+      "bytes": 3216,
+      "sha256": "1865b49c09203e0255ff5c5d019420a5e2b76f20f7ca8de5f5a3bdbd16eadd5c",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/code/incremental.tcl",
+      "bytes": 4254,
+      "sha256": "50982a3c1b9b93b452313ef503bbfe6d17a44f7f3a018334041244807587dafe",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/package_summary.json",
+      "bytes": 1586,
+      "sha256": "c750a3d72035deb4456f0e9007d37aa12c586d2ea28a1862933a134216fabd6f",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/task_000_observation.json",
+      "bytes": 2895,
+      "sha256": "7a6dca0937e5b792e55d55c1a3b78ffe6711f2b6c93bd63a48c595ad6a366d2e",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/task_000_stdout.log",
+      "bytes": 24566,
+      "sha256": "9dbf49ab6f65bead2d2b9ca63142a49207aba20b313c1a32ecd2c65a56ecf096",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/task_000_stdout_ack.json",
+      "bytes": 477,
+      "sha256": "50f6f36132a7cb096d39ecd968cb741c9bfa116c71427c1414b594f9690bcb14",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/task_000_spawn_identity.json",
+      "bytes": 826,
+      "sha256": "957a15f71554217ec8deeea03720f22d4622ead45a7a0838aa2e38dddb383be7",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/task_000_preparation.json",
+      "bytes": 2494,
+      "sha256": "4e4df01802fcccec9e6b1cfc51dfa95380f5b199e3ddcac8a30d6cecea407236",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/task_000_intent.json",
+      "bytes": 3304,
+      "sha256": "dad69018955378a0051639034d7cd52f479003a68f571c69f41a7a04e7173f34",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/initialization.json",
+      "bytes": 1069,
+      "sha256": "85cdc9394de9e4abd3c6a86efea75132e3a7dc9af4d6726f2b0e03bfbdda8bf8",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_intent.json",
+      "bytes": 226,
+      "sha256": "1f895b0a6a39bc8be5d9973cfbcfc4729dce8ee4b401f3cedb954c3ef91ebff2",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_observation.json",
+      "bytes": 573,
+      "sha256": "f45a43b9c1934f68993e3d006c1a98c8ee14a2f69754bc888220e6642ffd748a",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_success_observation.json",
+      "bytes": 354,
+      "sha256": "8a15995b0ef7f12291bcefb8390623ce1bd5d392e8a13e91dd83d2d26154e4d1",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_success_receipt.json",
+      "bytes": 150,
+      "sha256": "8b400c4a5c7fe8e90ea611a1ed4896a9fb2487a189065cd60e566a726205e92b",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_success_output.log",
+      "bytes": 20,
+      "sha256": "d1ffd1343dff7cb0773349f44b527cb8e8a83f1a30c657481fb63a6aea2a7b88",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_timeout_observation.json",
+      "bytes": 364,
+      "sha256": "3efdd0f6b1d8041af42591911ad344167369d67d09bd7def7508cc00273ab891",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_timeout_receipt.json",
+      "bytes": 150,
+      "sha256": "db1b09d364590762e2446963d416fe43d419367e95aaf6e78273f59084d8eb1d",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_timeout_output.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_setsid_child_observation.json",
+      "bytes": 476,
+      "sha256": "57f0f6c59e56a6596d9f2fe42af807ff5195daec86e7724f3326ecc9085ac48c",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_setsid_child_receipt.json",
+      "bytes": 261,
+      "sha256": "30c28b23c8f9657864da983ebbdb8312fc4779acb39ea61050facbd73b59d693",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/journal/selftest_callback_setsid_child_output.log",
+      "bytes": 27,
+      "sha256": "5256439215883509b1419b5b7ea3c235bdd1780443f52b4a0ab53e6f1d8a3c14",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/aes_core/runs/e116-aes_core/logs/H_aes_core:HF:h1:H.log",
+      "bytes": 24566,
+      "sha256": "9dbf49ab6f65bead2d2b9ca63142a49207aba20b313c1a32ecd2c65a56ecf096",
+      "whole_file_hashed": true
+    },
+    {
+      "path": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/statistics.rpt",
+      "bytes": 2681,
+      "sha256": "6a2c43dda14dc5c383ef50312b1af4682908db9649b1a5a13a29016e0094903d",
+      "whole_file_hashed": true
+    }
+  ],
+  "readback": {
+    "capture_complete": true,
+    "error": null,
+    "body_bytes_hashed": 75270,
+    "sampled_peak_rss_swap_bytes": 13107200,
+    "remote_start_monotonic": 2407945.166255342,
+    "remote_end_monotonic": 2407945.561140398,
+    "child_launches": 0,
+    "explicit_filesystem_writes": 0,
+    "atpg_launches": 0,
+    "additional_historical_reports": 0
+  },
+  "finding": {
+    "code": "EXACT_PT_LABEL_MISMATCH",
+    "statistics_line": 13,
+    "actual_label": "posdet_testable",
+    "legacy_parser_expected_label": "possibly_testable",
+    "statistics_sha256": "6a2c43dda14dc5c383ef50312b1af4682908db9649b1a5a13a29016e0094903d",
+    "reported_detected_ds_di": 18323,
+    "reported_pt": 64,
+    "pt_is_not_counted_as_detected": true
+  },
+  "new_tool_retries": 0,
+  "d95_verified": false,
+  "training_release": false
+}

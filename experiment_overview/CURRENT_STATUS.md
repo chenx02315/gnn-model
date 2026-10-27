@@ -1,5 +1,13 @@
 # 当前实验状态
 
+## 当前结论：E125已回读定位，E126标签修复已独立通过；新采集尚未授权
+
+额度恢复后已完成E125独立复核及原时钟内一次实际只读回读，24/24自有文件完整核验通过。Tessent首H确实执行create_patterns并正常退出，错误唯一定位为统计第13行PT (posdet_testable) 64与旧E115所要求possibly_testable不同；不是重复类别或内存越限。原始数据/失败状态不改写。
+
+新E126纯解析器只修正精确PT标签，PT64不计入DS+DI=18323；原raw SHA、旧E115及原校验保留。独立18项专项与277项联合回归通过，均非完整stage/MTFI/并集/D95或训练通过。本轮没有新增Tessent重试，累计仍1次启动/0翻译/0任务提交。
+
+结果见 [E125回读](entries/E125_owned_readback_PT_label_diagnosis.md)、[E126修复](entries/E126_local_PT_parser_repair.md)。下一整包提案为 contracts/prospective_pt_label_repair_proposal_e127_v1.json，仍PENDING新明确授权；一个版本限制不因剩余启动数或目标继续而解除。下方额度受限/未回读均为旧快照。
+
 ## 最新真实结果：E124首H产物解析失败，已停止且不重试
 
 新包已唯一执行：3项Linux自检接受通过，1次Tessent启动扣账、0次翻译、0任务提交。失败任务 aes_core:HF:h1:H；在进程观察返回后进入产物解析，报 CLASS_LABEL_OR_DUPLICATE。尚未核对本次statistics全文，不能断言具体未知标签或重复类别，更不能宣称D95/采集成功。transport退出0、无超时/溢出/写入失败，worker按约定停止；没有原样重跑。实际响应SHA e2448a65c2e18c10bf13ae4ad435610ba823b13a1c27368642a4a494e3a3e0b0。

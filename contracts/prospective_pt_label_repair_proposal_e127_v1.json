@@ -1,0 +1,68 @@
+{
+  "schema": "prospective-pt-label-repair-proposal-e127-v1",
+  "permission_state": "PENDING_NEW_EXPLICIT_USER_REPLY",
+  "user_authorization_received": false,
+  "proposal_is_authorization": false,
+  "reason": "E124_ONE_VERSION_CONSUMED_STATISTICS_PT_LABEL_MISMATCH_CONFIRMED",
+  "failed_package": {
+    "root": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1",
+    "response_sha256": "e2448a65c2e18c10bf13ae4ad435610ba823b13a1c27368642a4a494e3a3e0b0",
+    "tessent_debited": 1,
+    "translation_debited": 0,
+    "committed_tasks": 0,
+    "tool_returncode": 0,
+    "parser_error": "CLASS_LABEL_OR_DUPLICATE"
+  },
+  "proposed_scope": {
+    "local_repair_integration_and_independent_review": true,
+    "new_isolated_output_root_required": true,
+    "preserve_failed_version_and_historical_inputs": true,
+    "semantic_UID_RUN_ID_paths_and_legacy_markers_unchanged_except_new_root": true,
+    "internal_tool_identifier_encoding": "r + semantic_uid_ASCII_bytes_hex",
+    "host": "A_ONLY",
+    "circuits": [
+      "aes_core",
+      "spi"
+    ],
+    "role": "TRAIN_DATA_ACQUISITION_ONLY",
+    "actions": 18,
+    "tessent_attempts_max": 48,
+    "translation_attempts_max": 30,
+    "linux_process_selftests_max": 3,
+    "versions_max": 1,
+    "workers": 1,
+    "stop_on_first_failure": true,
+    "automatic_retries": 0,
+    "sampled_memory_stop_bytes": 536870912,
+    "sampled_directory_stop_bytes": 8589934592,
+    "new_package_wall_seconds_max": 50400,
+    "new_timer_start": "FIRST_APPROVED_A_CALL_OF_NEW_PACKAGE_AFTER_LOCAL_GATES",
+    "old_package_clock_or_evidence_must_not_change": true,
+    "new_timer_requires_new_explicit_authority": true,
+    "additional_historical_reports": 0,
+    "LSF_allowed": false,
+    "B_allowed": false,
+    "training_allowed": false,
+    "BLIND_allowed": false,
+    "report_parser": "src.data.prospective_report_dialect_e126"
+  },
+  "proposed_new_output_root": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1",
+  "required_changes": [
+    "NEW_EXPLICIT_AUTHORITY_PIN_AND_NEW_EXCLUSIVE_ROOT",
+    "FRESH_CLOCK_AFTER_LOCAL_GATES_NO_OLD_CLOCK_MUTATION",
+    "EXACT_REPORT_DEPENDENCY_BINDING_TO_REVIEWED_E126",
+    "PRESERVE_E123_TOOL_IDENTIFIER_FIX_AND_SEMANTIC_UID_RUN_ID",
+    "FULL_INERT_AND_78_TASK_MOCK_REGRESSION_AND_INDEPENDENT_EXACT_PACKET_REVIEW"
+  ],
+  "repair_evidence": {
+    "source_sha256": "12fdb3e3cb7b52c32465f461fa63a6598f6bac555669d63540ac18e0bd3174a0",
+    "independent_parser_review": "PASS_LOCAL_PARSER_REPAIR_ONLY",
+    "actual_statistics_replay_pass": true,
+    "pt_excluded_from_detected": true,
+    "integrated_new_execution_packet": false
+  },
+  "no_resume_of_failed_package": true,
+  "automatic_execution_before_new_authority": false,
+  "training_release": false,
+  "execution_ready": false
+}
