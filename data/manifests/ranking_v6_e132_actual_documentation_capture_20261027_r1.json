@@ -1,6 +1,7 @@
 {
   "schema": "e132-actual-documentation-probe-v1",
-  "status": "CAPTURE_AND_WHOLE_FILE_SHA_PASS_RESULT_REVIEW_PENDING",
+  "status": "INDEPENDENT_RESTRICTED_CAPTURE_AND_WHOLE_FILE_SHA_PASS",
+  "final_review_receipt": "ranking_v6_e132_final_result_review_20261027_r1.json",
   "authorization_sha256": "a093e056d09c91796ae4cebd0403288a49618ee6afc6a5eef6de6ad762159f8d",
   "source_sha256": {
     "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",

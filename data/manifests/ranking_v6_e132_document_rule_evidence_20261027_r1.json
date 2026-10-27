@@ -1,6 +1,7 @@
 {
   "schema": "e132-document-rule-evidence-v1",
-  "status": "PARENT_REVIEW_COMPLETE_INDEPENDENT_FINAL_REVIEW_PENDING_QUOTA",
+  "status": "INDEPENDENT_QUALIFIED_DOCUMENT_RULE_REVIEW_PASS_NOT_DATA_CERTIFICATE",
+  "final_review_receipt": "ranking_v6_e132_final_result_review_20261027_r1.json",
   "primary_document": {
     "logical_relative": "doc/pdfdocs/atpg_gd.pdf",
     "sha256": "633932e0eb455a5d7e4a197b870348d8227b26f66fe48085562b8841eae97ee0",
@@ -41,8 +42,8 @@
   ],
   "render_warning": "Missing Symbol/ArialUnicode display fonts reported; inspected critical rule text/formulas readable; not warning-free",
   "independent_semantic_preliminary_observations_received_from": "/root/generation_materializer_e111",
-  "independent_semantic_turn_terminal": "USAGE_LIMIT_ERROR_NOT_FORMAL_FINAL_PASS",
-  "independent_technical_result_turn_terminal": "/root/e96_materializer_review USAGE_LIMIT_ERROR",
+  "prior_independent_semantic_turn_terminal": "USAGE_LIMIT_ERROR_NOT_FORMAL_FINAL_PASS",
+  "prior_independent_technical_result_turn_terminal": "/root/e96_materializer_review USAGE_LIMIT_ERROR",
   "established": {
     "target_version_family_manual_obtained": true,
     "report_faults_uncollapsed_representative_before_EQ_members": true,

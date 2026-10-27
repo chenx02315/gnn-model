@@ -1,0 +1,35 @@
+{
+  "schema": "e132-final-independent-result-review-v1",
+  "status": "PASS_DOCUMENT_CAPTURE_AND_LIMITED_RULE_REVIEW_ONLY",
+  "technical_review": {
+    "reviewer": "/root/e96_materializer_review",
+    "status": "PASS_RESTRICTED_CAPTURE_AND_WHOLE_FILE_BYTES",
+    "reviewed_head": "c96b9cae6a1ae4522feac688181d20db8deb6e4a",
+    "metadata_response_sha256": "5fa50fee0cdf127cc1c5594f63eff367c8c6ae36f8b5cb5f51e9aaaba0e40c08",
+    "export_response_sha256": "a9c938f449556b2bd0049ceae99268c8234104b61a56f29e17526fa281a26b77",
+    "exactly_two_remote_intents": true,
+    "clock_not_renewed": true,
+    "selected_body_bytes": 24034031,
+    "all_three_raw_and_local_PDF_hashes_recomputed": true,
+    "selection_r1_rejected_before_transport": true,
+    "selection_r2_exact_integer_match": true,
+    "truncated_inventory_not_exhaustive": true,
+    "new_remote_calls_during_review": 0
+  },
+  "semantic_review": {
+    "reviewer": "/root/generation_materializer_e111",
+    "status": "PASS_QUALIFIED_RULE_SCOPE_ONLY",
+    "primary_PDF_sha256": "633932e0eb455a5d7e4a197b870348d8227b26f66fe48085562b8841eae97ee0",
+    "reviewed_report_sha256": "e26faf2e2c0b613b7b2502e8b18c2dbae3658cee0abb22ce239e4a55c9224600",
+    "finding": "Report previously stated actual EQ attribution from UC/UO count deltas",
+    "finding_resolved": "Both wording corrections fresh-read: only arithmetic compatibility, no proven per-EQ attribution",
+    "specified_semantic_checks_passed": true,
+    "actual_executable_hotfix_or_configuration_certified": false,
+    "actual_complete_EQ_group_mapping_certified": false
+  },
+  "previous_quota_errors_are_history_not_final_pass": true,
+  "old_D95_contract_changed": false,
+  "frozen_contract_d95_pass": false,
+  "training_release": false,
+  "thesis_goal_complete": false
+}
