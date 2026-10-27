@@ -1,5 +1,11 @@
 # 当前实验状态
 
+## 最新真实结果：E124首H产物解析失败，已停止且不重试
+
+新包已唯一执行：3项Linux自检接受通过，1次Tessent启动扣账、0次翻译、0任务提交。失败任务 aes_core:HF:h1:H；在进程观察返回后进入产物解析，报 CLASS_LABEL_OR_DUPLICATE。尚未核对本次statistics全文，不能断言具体未知标签或重复类别，更不能宣称D95/采集成功。transport退出0、无超时/溢出/写入失败，worker按约定停止；没有原样重跑。实际响应SHA e2448a65c2e18c10bf13ae4ad435610ba823b13a1c27368642a4a494e3a3e0b0。
+
+E125固定24项自有文件只读核验草稿已完成本地16项测试，但独立复核代理遇额度限制，尚未获得审核回执，因此未新增A回读。恢复时先按 data/manifests/ranking_v6_e125_review_request_20261027_r1.json 重新核对真实源码并复核，在原E124截止时间仍有效时才允许一次只读回读；不得续期或启动工具。原单版本已消耗，下一次采集不得借剩余启动数自动重试。真实失败与此前实现PASS分开记录，详情见E124总览条目及 data/manifests/ranking_v6_e124_actual_failure_20261027_r1.json。下文“即将执行”为先前快照。
+
 ## 当前权威：2026-10-27 E123新整包已获批准，E124接线中
 
 用户明确答复“批准 E123 新整包提案”。实际答复独立保存于 contracts/prospective_identifier_repair_authorization_e124_20261027.json；原提案和E121失败证据不改写。新目录固定为 /temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1；新14小时预算仅在本地门禁及独立复核通过后的首次A调用开始，不能刷新旧包时钟或重复启动。

@@ -1,5 +1,19 @@
 # E124：已批准的新命名修复采集包
 
+## 最新真实运行：首H产物解析失败，停止无重试
+
+源码提交2e0322849febbd0a1daa3d4f6e20b54a13ab365f经精确复核后执行唯一一次新包。3项实际Linux进程自检接受通过；首个aes_core:HF:h1:H耗费1次Tessent启动扣账，进入artifact_read_start后报CLASS_LABEL_OR_DUPLICATE，0翻译/0任务提交。没有重跑，剩余47次启动额度不是第二版本授权。该错误是解析器拒绝，具体未知类别标签或重复行须核对本次statistics后才能判断。
+
+实际响应2442B，SHA-256 e2448a65c2e18c10bf13ae4ad435610ba823b13a1c27368642a4a494e3a3e0b0。transport退出0、stderr0，无timeout/overflow/write_failed/threads_incomplete；SSH仍不作为独立远端终止认证。worker返回停止summary，新clock start2372217.531936861/end2422617.531936861，包到summary耗时约19.706秒；不等同ATPG搜索wall time。环境bootstrap返回rc0/cleaned=true，但环境值未披露。
+
+本包日志、回执、代码和首H统计的固定有界只读核验正在准备。尚无任务接受、D95、可释放训练样本或模型收益。失败原响应另存 data/manifests/ranking_v6_e124_actual_failure_20261027_r1.json，完整原数据仍在staging/A新目录，不上传Git。
+
+### E125恢复检查点（未回读）
+
+新reader scripts/read_identifier_failure_e125.py及tests/test_identifier_failure_readback_e125.py已完成本地16项测试，prepare纯离线成功；固定读取原23项自有证据及首H统计一项，总24路径，统计≤64KiB、日志单份≤2MiB、全部body≤5MiB、响应≤8MiB、30秒且不晚于原E124截止，禁止扫描和启动子进程。派生路径从实际已审核E124源码生成，run_uid仍e116-aes_core。
+
+独立复核代理因额度限制终止，未返回E125审核PASS，因此没有执行A回读。精确草稿请求 data/manifests/ranking_v6_e125_review_request_20261027_r1.json 保持PENDING；不以本地测试冒充独立审核。额度恢复后先重新核对文件、完成独立复核，只有原截止时间仍有效才执行一次只读核验；超期不能改clock绕过。采集重跑仍未授权。
+
 ## 目的与证据边界
 
 修复E121在读取电路前发生的Tessent内部名称非法问题，继续取得AES/SPI固定18动作的实际采集证据。语义任务编号、RUN_ID、结果关联不改变，仅内部工具名称编码和新隔离根路径改变。E123本地Tcl验证不冒充Tessent成功；E121实际失败和消耗保持原样。

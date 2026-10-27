@@ -1,0 +1,112 @@
+{
+  "schema": "e124-actual-first-failure-v1",
+  "source_commit": "2e0322849febbd0a1daa3d4f6e20b54a13ab365f",
+  "response_sha256": "e2448a65c2e18c10bf13ae4ad435610ba823b13a1c27368642a4a494e3a3e0b0",
+  "response_bytes": 2442,
+  "worker": {
+    "bootstrap": {
+      "bytes": 1915,
+      "cleaned": true,
+      "launch_attempted": true,
+      "returncode": 0,
+      "sha256": "2fa1be20d382109ed96f07f2a8793c4e2bbd54b4a31e14f9058b39a52a3c8172",
+      "values_disclosed": false
+    },
+    "clock": {
+      "authorization_sha256": "b9fb213ad18081dd0970ab765cf869e9591621c0dabf5c9184f629e98e4317b0",
+      "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+      "cohort_snapshot_is_clock": false,
+      "deadline_monotonic": 2422617.531936861,
+      "new_authorized_package_clock": true,
+      "root": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1",
+      "start_monotonic": 2372217.531936861
+    },
+    "execution_ready": false,
+    "runtime_values_disclosed": false,
+    "schema": "prospective-identifier-worker-e124-v1",
+    "status": "STOPPED_FIRST_FAILURE",
+    "summary": {
+      "actual_atpg_runtime_ns": null,
+      "automatic_retries": 0,
+      "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+      "completed_tasks": [],
+      "controller_end_monotonic": 2372237.237575249,
+      "controller_start_monotonic": 2372218.375544242,
+      "counts": {
+        "committed_tasks": 0,
+        "selftest_cases_accepted": 3,
+        "selftest_cases_reserved": 3,
+        "tessent_debited": 1,
+        "translation_debited": 0
+      },
+      "directory_sampling_is_quota": false,
+      "error": {
+        "code": "CLASS_LABEL_OR_DUPLICATE",
+        "type": "ValueError"
+      },
+      "execution_ready": false,
+      "failed_operation_events": [
+        {
+          "monotonic": 2372223.430533214,
+          "phase": "task_start_before_intent"
+        },
+        {
+          "monotonic": 2372223.436572572,
+          "phase": "intent_persisted"
+        },
+        {
+          "monotonic": 2372223.439137676,
+          "phase": "preparation_start"
+        },
+        {
+          "monotonic": 2372224.172177527,
+          "phase": "preparation_end"
+        },
+        {
+          "monotonic": 2372224.209289118,
+          "phase": "observer_start"
+        },
+        {
+          "monotonic": 2372236.088193258,
+          "phase": "observer_end"
+        },
+        {
+          "monotonic": 2372236.119943732,
+          "phase": "artifact_read_start"
+        }
+      ],
+      "failed_task_uid": "aes_core:HF:h1:H",
+      "full_session_cost_qualified": false,
+      "initialization_end_monotonic": 2372219.437199154,
+      "initialization_start_monotonic": 2372218.375544242,
+      "lsf_used": false,
+      "memory_sampling_is_hard_guarantee": false,
+      "original_package_deadline": 2422617.531936861,
+      "original_package_start": 2372217.531936861,
+      "package_elapsed_seconds": 19.70563838770613,
+      "root": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1",
+      "schema": "prospective-identifier-controller-e124-v1",
+      "sidecar": "/temp/jiangchuanc/multimode_ate_identifier_repair_e124_20261027_r1.initial_intent.json",
+      "status": "STOPPED_FIRST_FAILURE",
+      "training_release": false,
+      "training_runs": 0
+    },
+    "training_release": false
+  },
+  "transport": {
+    "exit_code": 0,
+    "overflow": false,
+    "remote_termination_verified": false,
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 2442,
+    "stdout_sha256": "e2448a65c2e18c10bf13ae4ad435610ba823b13a1c27368642a4a494e3a3e0b0",
+    "threads_incomplete": false,
+    "timeout": false,
+    "write_failed": false
+  },
+  "tool_retries": 0,
+  "readback_pending": true,
+  "atpg_search_completion_verified": false,
+  "training_release": false
+}
