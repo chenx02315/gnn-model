@@ -1,0 +1,61 @@
+{
+  "schema": "physical-pattern-replay-local-plan-e135-v1",
+  "status": "LOCAL_PREPARATION_ONLY_NEW_REMOTE_AUTHORIZATION_REQUIRED",
+  "e128_response_sha256": "d70818980f52ad17e9a1d7eb917d9618d1bf203d4ec29b7e780430529528189e",
+  "e134_audit_sha256": "5a398e911d13f8a5c73032b6caeb73a0f50531d50faab080158b1fb9f308c831",
+  "source_tcl_sha256": "50982a3c1b9b93b452313ef503bbfe6d17a44f7f3a018334041244807587dafe",
+  "source_driver_sha256": "4c089a2410fcaebc6aed3167a8b4b14015cf8afad5d8e7a019078679d78d7d94",
+  "circuit": "aes_core",
+  "mode": "F",
+  "action_uid": "aes_core:HF:h1",
+  "common_count": 71216,
+  "d95_integer_threshold": 67656,
+  "H_proven_DT_count": 18323,
+  "H_proven_DT_set_sha256": "a844b4a8b500ea95a70e5487cb941be77990f60c69cef4fcd79a7beab86bbb00",
+  "candidate_pattern": {
+    "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/tester.stil",
+    "export_declared_in_frozen_source": true,
+    "export_command_observed": true,
+    "file_exists_verified": false,
+    "bytes": null,
+    "sha256": null,
+    "imported_pattern_count_verified": false,
+    "original_generated_report_count": 256
+  },
+  "proposed_stages": [
+    "Bounded exact-path stat/full hash of existing STIL and source-input identity verification",
+    "Freeze one fresh isolated F4 simulation recipe and exact packet; independent review",
+    "Fresh F state with complete baseline-only common faults and no H/F post-state merge",
+    "Read the authenticated existing external F patterns; fault simulate only",
+    "Export complete pre/post native faults, group reports, statistics and pattern import counts",
+    "Canonical H-proven union fresh F-simulated hard detections; independent set recomputation"
+  ],
+  "simulation_command_family": [
+    "read_patterns",
+    "simulate_patterns -source external"
+  ],
+  "exact_Stuck_STIL_command_options_verified": false,
+  "independent_final_recipe_reviewed": false,
+  "required_stop_gates": [
+    "Pattern absent, oversized, changed or not provenance-bound",
+    "Exact same F design, library, scan mode or constraints not verified",
+    "Unreviewed command options, unsupported STIL import, skipped/zero/mismatched patterns",
+    "Foreign detected-status import, retained old patterns, or non-baseline pre-state credit",
+    "Missing/duplicate/mode-outside fault keys or unsupported PT/PD detection credit",
+    "First failure, uncertain process cleanup, resource or time budget exceeded"
+  ],
+  "old_artifacts_may_be_modified": false,
+  "LSF_allowed": false,
+  "proposed_ATPG_generations": 0,
+  "proposed_new_pattern_generations": 0,
+  "measured_ATPG_speedup": false,
+  "runtime_label_qualified": false,
+  "user_authorization_received": false,
+  "remote_calls_authorized": 0,
+  "Tessent_launches_authorized": 0,
+  "execution_ready": false,
+  "physical_HF_D95_verified": false,
+  "certificate_sealed": false,
+  "training_release": false,
+  "plan_sha256": "9bd5b53bc89114cf82c5ffd0dcc8709f8aafae95ec5c8671bb9e407ec3d1c6fc"
+}

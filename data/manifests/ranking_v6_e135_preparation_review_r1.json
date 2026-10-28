@@ -1,0 +1,43 @@
+{
+  "schema": "e135-independent-local-preparation-review-v1",
+  "status": "PASS_LOCAL_PREPARATION_ONLY_NEW_AUTHORIZATION_REQUIRED",
+  "reviewer": "/root/e96_materializer_review",
+  "scientific_design_reviewer": "/root/e134_physical_reasoning",
+  "reviewed_sha256": {
+    "src/data/physical_pattern_replay_plan_e135.py": "c67b46628bcba20641b395f9e6146a61c27641907985d9e67b6d6714df9de3f8",
+    "tests/test_physical_pattern_replay_plan_e135.py": "612d05e9088695dc4f1331b473dc8fc29aa2c54ede291a64ae388a2855b967eb",
+    "contracts/physical_f_pattern_replay_proposal_e135_v1.json": "0a9300f556d4b48cbebb7c83f4bac1ffa9c6875198e4a9b3ed2df21d67609767",
+    "data/manifests/ranking_v6_e135_existing_pattern_lead_r1.json": "8e7ee0a5a84069bd2495652cf212a07c1884e9d92889c0e8eb42416ab91b98d2",
+    "experiment_overview/entries/E135_existing_F_pattern_replay_preparation.md": "fcba605e1f0f2910ce9c500c6aa9f7cade575ebb6943b238cbf7f8928a5bfcc1",
+    "experiment_overview/CURRENT_STATUS.md": "4df001d68fba6f67935fa890695912dca6f994a5f0d85a89fa177b27285f88d1",
+    "experiment_overview/NEXT_TASKS.md": "ce0beddcf5fce65424fb110163d5bd410ef3e7d3d62d33245041cd4bac008bd2"
+  },
+  "canonical_plan_sha256": "9bd5b53bc89114cf82c5ffd0dcc8709f8aafae95ec5c8671bb9e407ec3d1c6fc",
+  "independent_tests": {
+    "testsRun": 7,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "parent_selected_regression": {
+    "testsRun": 227,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 4.381,
+    "scope": "19 selected related local modules; not entire repository"
+  },
+  "python36_ast": true,
+  "existing_export_command_and_driver_verified": true,
+  "lead_fresh_build_matches_saved_all_fields": true,
+  "scientific_route": "Fresh F-only external-pattern fault simulation without foreign detection seeds can establish an independently justified set for union with E134 H, conditional on full evidence gates",
+  "exact_Stuck_STIL_options_verified": false,
+  "candidate_pattern_file_exists_verified": false,
+  "candidate_pattern_hash_verified": false,
+  "remote_calls": 0,
+  "Tessent_launches": 0,
+  "user_authorization_received": false,
+  "execution_ready": false,
+  "physical_HF_D95_verified": false,
+  "training_release": false
+}
