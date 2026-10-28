@@ -1,0 +1,17 @@
+{
+  "schema": "physical-f-replay-recipe-r2-focused-fix-request-v1",
+  "status": "FOCUSED_FIX_TESTED_INDEPENDENT_REREVIEW_PENDING",
+  "parent_request": "data/manifests/ranking_v6_e135_recipe_r2_review_request.json",
+  "finding": "Independent reviewer found the rebased main Tcl sourced a helper whose F.basic path and digest still bound the old root. Initial seven tests did not inspect helper bytes.",
+  "fix": "Return the actual rebased baseline helper bytes and their SHA; bind parent helper digest separately; require exact helper path anchor; add helper isolation, digest and drift tests.",
+  "source_sha256": "63ab7aba869d9d755488cb8aaa4e5629b595d9e1672b1db35458e565771a62d2",
+  "tests_sha256": "b21eab500231482210dc7e643da28a18b49a01085c89d58e4768846fada8987a",
+  "new_module_tests": 9,
+  "combined_tests": 27,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 0.859,
+  "independent_review_pass": false,
+  "execution_authorized": false,
+  "physical_d95_verified": false
+}

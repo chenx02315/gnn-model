@@ -1,0 +1,34 @@
+{
+  "schema": "physical-f-replay-independent-semantic-review-v1",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "reviewed_commit": "b41c023fc7cc1164b04de1098a88bc915dbf94cc",
+  "status": "SEMANTICS_CONFIRMED_RECIPE_P1_FOUND_PHYSICAL_D95_UNPROVEN",
+  "reference_sha256": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0",
+  "full_chapters_read": {
+    "read_faults": [1417, 1427],
+    "read_patterns": [1440, 1451],
+    "report_faults": [1741, 1756],
+    "report_patterns": [1906, 1916],
+    "reset_au_faults": [2086, 2088],
+    "set_fault_mode": [2396, 2397],
+    "simulate_patterns": [2805, 2807]
+  },
+  "confirmed": [
+    "External reports must explicitly use -external; default is internal",
+    "simulate_patterns -source external -store_patterns none is documented; actual fault list required for fault simulation",
+    "Chain patterns do not contribute coverage; warning-only incompatibilities need explicit audit",
+    "reset_au_faults does not clear existing DS/DI credit",
+    "Merge documentation does not prove arbitrary cross-mode physical fault mapping or stable EQ partition"
+  ],
+  "initial_finding": {
+    "severity": "P1",
+    "description": "Main Tcl rebased to new root but exact baseline helper and digest still bound old-root F.basic; seven tests inspected main body only",
+    "initial_preparation_pass": false,
+    "focused_fix_request": "data/manifests/ranking_v6_e135_recipe_r2_focused_fix_review_request.json"
+  },
+  "independent_initial_tests": {"tests": 7, "failures": 0, "errors": 0, "seconds": 0.004},
+  "physical_d95_verified": false,
+  "execution_authorized": false,
+  "remote_access": false,
+  "note": "Parent transcription of actual reviewer response. Focused fix was not covered by this initial verdict."
+}

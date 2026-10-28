@@ -59,6 +59,27 @@ class Tests(unittest.TestCase):
         self.assertIsNone(recipe.EXECUTION_AUTHORIZATION)
         self.assertFalse(hasattr(recipe, 'worker'))
 
+    def test_helper_bytes_and_digest_bind_new_root_not_parent(self):
+        result = self.candidate()
+        helper = result['baseline_expectations_body']
+        self.assertIn(('[open '+recipe.ROOT+'/inputs/F.basic r]').encode('ascii'), helper)
+        self.assertNotIn(recipe.legacy.ROOT.encode('ascii'), helper)
+        self.assertEqual(result['baseline_expectations_sha256'], recipe.legacy.sha(helper))
+        self.assertEqual(result['parent_baseline_expectations_sha256'],
+                         recipe.legacy.sha(self.expected))
+        self.assertNotEqual(result['baseline_expectations_sha256'],
+                            result['parent_baseline_expectations_sha256'])
+        self.assertIn(('source '+recipe.ROOT+'/code/expected_baseline.tcl\n').encode('ascii'),
+                      result['body'])
+        for content in (helper, result['body']):
+            self.assertNotIn(recipe.legacy.ROOT.encode('ascii'), content)
+
+    def test_helper_drift_fails_closed(self):
+        changed = recipe.legacy.EXPECTED_INIT.replace('[open ', '[changed ')
+        with mock.patch.object(recipe.legacy, 'EXPECTED_INIT', changed):
+            with self.assertRaisesRegex(ValueError, 'LEGACY_HELPER_ANCHOR_DRIFT'):
+                recipe.build_candidate(self.tcl, changed.encode('ascii'))
+
     def test_rejects_wrong_inputs(self):
         with self.assertRaisesRegex(ValueError, 'PINNED_F4_TCL'):
             recipe.build_candidate(self.tcl+b' ', self.expected)

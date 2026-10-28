@@ -35,8 +35,18 @@ def build_candidate(incremental, expectation_bytes):
     legacy.require(legacy.ROOT not in text and text.count('report_patterns -external > ') == 2,
                    'ISOLATED_EXTERNAL_REPORTS_REQUIRED')
     raw = text.encode('ascii')
+    # The sourced helper is a second artifact, not part of the main Tcl body.
+    # Bind the actual rebased bytes, never the parent helper's old-root digest.
+    helper = expectation_bytes.decode('ascii')
+    helper_anchor = '[open '+legacy.ROOT+'/inputs/F.basic r]'
+    legacy.require(helper.count(helper_anchor) == 1, 'LEGACY_HELPER_ANCHOR_DRIFT')
+    helper_bytes = helper.replace(legacy.ROOT, ROOT).encode('ascii')
+    legacy.require(legacy.ROOT.encode('ascii') not in helper_bytes,
+                   'ISOLATED_BASELINE_HELPER_REQUIRED')
     return dict(schema=SCHEMA, body=raw, sha256=legacy.sha(raw),
                 parent_recipe_sha256=old['sha256'], reference_sha256=REFERENCE_SHA256,
-                baseline_expectations_sha256=legacy.sha(expectation_bytes),
+                baseline_expectations_body=helper_bytes,
+                baseline_expectations_sha256=legacy.sha(helper_bytes),
+                parent_baseline_expectations_sha256=legacy.sha(expectation_bytes),
                 independent_review_pass=False, execution_authorized=False,
                 physical_d95_verified=False)

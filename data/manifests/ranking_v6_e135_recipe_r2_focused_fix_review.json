@@ -1,0 +1,22 @@
+{
+  "schema": "physical-f-replay-recipe-r2-focused-review-v1",
+  "status": "PASS_PURE_LOCAL_RECIPE_PREPARATION_ONLY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "source_sha256": "63ab7aba869d9d755488cb8aaa4e5629b595d9e1672b1db35458e565771a62d2",
+  "tests_sha256": "b21eab500231482210dc7e643da28a18b49a01085c89d58e4768846fada8987a",
+  "finding_closed": "P1 old-root auxiliary Tcl path and digest binding",
+  "verified": [
+    "Returned helper bytes use new-root F.basic path",
+    "Actual helper SHA binds returned helper bytes; parent SHA preserved separately",
+    "Main Tcl source path matches helper deployment path",
+    "Exact helper anchor drift rejects construction",
+    "Tests inspect both actual executable artifacts and digests"
+  ],
+  "independent_tests": {"r2": 9, "legacy": 15, "failure_record": 3, "total": 27, "failures": 0, "errors": 0, "seconds": 0.863},
+  "initial_finding_record": "data/manifests/ranking_v6_e135_reference_semantic_review_r2.json",
+  "execution_authorized": false,
+  "physical_d95_verified": false,
+  "e135_reopened": false,
+  "training_released": false,
+  "future_requirement": "New execution package must deploy and bind both actual returned Tcl byte artifacts and independently review the runtime closure"
+}

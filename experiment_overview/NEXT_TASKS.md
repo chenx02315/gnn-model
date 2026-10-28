@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新节点：语义复核恢复完成，r2辅助脚本旧目录P1已修复并独立复查通过（27测试，0失败/错误，0.863秒）。回执data/manifests/ranking_v6_e135_recipe_r2_focused_fix_review.json。不得重复做已完成的资料读取/配方复核。下一步定义新执行闭包并取得真实工具运行范围：部署两份实际配方字节、完整输入和前态绑定、只做一次干净F故障仿真、逐故障后态独立审核。该运行不在已关闭E135或已消耗的PDF例外预算内；物理D95及训练仍不放行。
+
 r2纯配方候选与25项本地联合测试已完成；下一依赖是独立复核data/manifests/ranking_v6_e135_recipe_r2_review_request.json及原版命令章节。复核不可用时不重复发起额度失败请求，也不运行旧E135或新候选，不把本地测试转称物理PASS。
 
 本地主代理已完成[命令语义初审](entries/E135_reference_semantics_local_review.md)：发现report_patterns默认内部集合，未来外部向量重放必须显式-external；reset_au_faults不能替代清除检测信用，simulate_patterns须有真实当前故障列表才执行故障仿真。已记录后续执行验收要求；未改冻结原型或启动工具，独立语义复核仍待完成。

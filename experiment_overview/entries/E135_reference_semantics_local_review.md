@@ -46,3 +46,11 @@
 已新增src/data/physical_f_replay_recipe_e135_r2.py，不覆盖旧执行原型。它只构造供复核的Tcl字节：保留旧F4设置和前态集合检查，显式报告加载后的external向量及仿真后的external向量，显式-store_patterns none，并使用新的候选目录。没有worker入口，不读取授权或启动进程；独立审核/执行/物理D95标志始终为false。
 
 7项新测试与旧原型/失败记录测试合计25项通过（0.877秒）；覆盖报告对象、前后顺序、禁止生成/合并、旧模块不变、确定性、错误输入及旧配方锚点漂移。属于纯本地验证，不是Tessent执行证据。独立复核请求为data/manifests/ranking_v6_e135_recipe_r2_review_request.json；尚未复核或放行。
+
+## 更新：独立复核恢复并发现P1，聚焦修复待复查
+
+原独立复核代理恢复后，完整核对上述命令章节及report_faults章节，确认外部报告、仿真和故障分类的本地解释；文档仍不构成物理D95证明。复核实际运行原7项测试通过，但指出主脚本虽改到新目录，辅助expected_baseline.tcl仍绑定旧目录F.basic：原测试只查主脚本，漏掉辅助文件。原候选不予完整preparation PASS，回执为data/manifests/ranking_v6_e135_reference_semantic_review_r2.json。
+
+已针对该P1修复：返回新根目录辅助脚本的实际字节与摘要，旧辅助摘要单独记录；补辅助路径、双工件摘要和锚点漂移测试。9项新测试与旧测试合计27项通过（0.859秒），再次提交同一代理复查。未修改legacy原型、无远端动作、仍不放行执行。早先额度阻塞记录是历史状态，不再用作当前复核不可用的证明。
+
+同一代理已完成聚焦复查：精确源码SHA63ab7aba869d9d755488cb8aaa4e5629b595d9e1672b1db35458e565771a62d2、测试SHAb21eab500231482210dc7e643da28a18b49a01085c89d58e4768846fada8987a，独立27项测试通过（0.863秒）。原P1关闭，结论PASS_PURE_LOCAL_RECIPE_PREPARATION_ONLY，详见ranking_v6_e135_recipe_r2_focused_fix_review.json。不能将本结论解释为Tessent已验证、E135已恢复或物理D95已通过。
