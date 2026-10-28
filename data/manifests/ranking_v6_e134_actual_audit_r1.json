@@ -1,0 +1,300 @@
+{
+  "schema": "physical-hf-detection-credit-audit-e134-v1",
+  "semantic_spec_sha256": "20aa71485e5c1911808ac8d8993c7c448614bf2ddc00fe12d4742b8ffebf2a4d",
+  "unproven_does_not_mean_physical_failure": true,
+  "status": "UNPROVEN",
+  "scope": "AES_CORE_HF_H1_RETAINED_H_PLUS_F_PHYSICAL_CREDIT_AUDIT",
+  "synthetic_only": false,
+  "common_count": 71216,
+  "d95_integer_threshold": 67656,
+  "possible_detection_credit": 0,
+  "H_observed_DT_count": 18323,
+  "H_physical_DT_count": 18323,
+  "H_physical_DT_set_sha256": "a844b4a8b500ea95a70e5487cb941be77990f60c69cef4fcd79a7beab86bbb00",
+  "H_baseline_non_DI_detected_count": 0,
+  "frozen_v2_translation_exact_bytes_reproduced": true,
+  "E129_status_bytes_crosscheck": true,
+  "imported_explicit_key_count": 10396,
+  "imported_explicit_key_set_sha256": "027ca56b213866b51af574654c10421d3dc5f5fa37ac16fd9ecbddc609c7b16e",
+  "translated_explicit_minimum_pre_DT": 10396,
+  "observed_F_pre_statistics_DT": 18207,
+  "F_pre_count_at_least_explicit_minimum": true,
+  "pre_DT_matches_hypothetical_post_rep_seeded_expansion": false,
+  "pre_DT_count_alignment_proves_partition_or_physical_origins": false,
+  "state_candidate_e133_sha256": "6df811677dafdd77bb625a2a62e5d02ac94389c86d70fcc5f71e113f2c4ca990",
+  "H_input_receipts": {
+    "H_basic": {
+      "bytes": 2245676,
+      "sha256": "6c1287af9af0b2c64a917f712d4eeaa88fdd510e3b3e878b95e856c0e22c7d0b"
+    },
+    "H_mtfi": {
+      "bytes": 2520150,
+      "sha256": "105d53bb6fc918f57fa7ee101a804ff203df5ef4eb6cd1b663a9e531b91936f2"
+    },
+    "H_faults_report": {
+      "bytes": 2247887,
+      "sha256": "d510371972350c7117f246d0bc95505d03d9351e03fcc644ffea7e007a973f38"
+    },
+    "H_statistics": {
+      "bytes": 2681,
+      "sha256": "874d865738afc4cbc122c50b4a0f05a924c3cbe1a02a856af7cf66d5c9571fc0"
+    },
+    "translation_status": {
+      "bytes": 303747,
+      "sha256": "9852b09305259ff52972c237003f2cd4d2253294aebde307beccc77591cb2dcf"
+    },
+    "translation_manifest": {
+      "bytes": 1285,
+      "sha256": "cdb56ddeb07a5ad89a95d62dc73102416da5c049d1c0d37f256387ba9d650010"
+    }
+  },
+  "F_input_receipts": {
+    "manifest": {
+      "bytes": 1554,
+      "sha256": "c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f"
+    },
+    "mapping": {
+      "bytes": 3385680,
+      "sha256": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8"
+    },
+    "F_basic": {
+      "bytes": 2245666,
+      "sha256": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566"
+    },
+    "F_mtfi": {
+      "bytes": 2520140,
+      "sha256": "55f6850eee753e3aff90b7b2199a366cb635a7b6a00adae84b1f20fc049ded5f"
+    },
+    "F_statistics": {
+      "bytes": 1576,
+      "sha256": "629b433cd87ad7e471834decf9cce0f47735268da7028215b0eed68f8c60fff4"
+    },
+    "F_pre_statistics": {
+      "bytes": 1531,
+      "sha256": "35de9953800c5be1c792c2026040a2c53b0e88984b40cc9e32a6f4a2e9014911"
+    },
+    "F_faults_report": {
+      "bytes": 2247877,
+      "sha256": "7f02656b2f78d818c2da4d2f58448fb48d202d167f8cd60a84155ee15a1e02d3"
+    }
+  },
+  "provenance": {
+    "H_tcl_sha256": "1865b49c09203e0255ff5c5d019420a5e2b76f20f7ca8de5f5a3bdbd16eadd5c",
+    "H_driver_sha256": "0f7bb27c5f45b8eddfb5cd89ff2904deab7914aaa917bbddeafeefd2df23605b",
+    "H_reference_sha256": "4028e89bc764337a1738c2991e0683b4cd12dc29c705fcfb8e3b74f1efec3349",
+    "translation_reference_sha256": "6a12896bb2c7e142594e29282d55c9fb076ced97d94a582a695fb5829000807a",
+    "H_has_single_source_read_and_no_foreign_merge": true,
+    "H_same_state_exports_verified": true,
+    "F_reset_AU_reclassify_observed_between_merge_and_pre_statistics": true,
+    "F_reclassification_does_not_prove_partition_or_origins": true,
+    "F_lineage": {
+      "e128_response_sha256": "d70818980f52ad17e9a1d7eb917d9618d1bf203d4ec29b7e780430529528189e",
+      "tcl_sha256": "50982a3c1b9b93b452313ef503bbfe6d17a44f7f3a018334041244807587dafe",
+      "driver_sha256": "4c089a2410fcaebc6aed3167a8b4b14015cf8afad5d8e7a019078679d78d7d94",
+      "report_command": "report_faults",
+      "same_fault_state_command_sequence_verified": true,
+      "actual_fault_mode_setting_observed": false,
+      "proof_does_not_use_default_mode": true
+    }
+  },
+  "reasons_unproven": [
+    "NEW_F_PHYSICAL_ORIGINS_AND_PRE_POST_PARTITION_UNPROVEN",
+    "IMPORTED_LABELS_EXPAND_TO_MEMBERS_NOT_H_PHYSICALLY_PROVEN",
+    "PROVEN_CONSERVATIVE_PHYSICAL_LOWER_BOUND_BELOW_D95"
+  ],
+  "conservative_lower_bound_meets_d95_math": false,
+  "physical_HF_D95_verified": false,
+  "exact_physical_HF_union_proven": false,
+  "independent_final_reviewed": false,
+  "certificate_sealed": false,
+  "frozen_contract_d95_pass": false,
+  "complete_stage_or_action_acceptance": false,
+  "actual_atpg_runtime_ns": null,
+  "training_release": false,
+  "execution_ready": false,
+  "F_state_DT_count": 69062,
+  "F_state_DT_set_sha256": "d7a2652d84538287d2541e1664dc4c5b09f0464c7179b2fc86440b7e29dd0a07",
+  "imported_explicit_all_H_physically_proven": true,
+  "imported_expansion_unproven_count": 286,
+  "imported_expansion_unproven_sha256": "35763a5d51f71e586fc50fc778d3ffd72807755ae9cfc5c5c8922e83f850aabf",
+  "imported_expansion_counterexamples": [
+    {
+      "representative": [
+        "1",
+        "/U1190/ZN"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "0",
+          "/U1190/A2"
+        ],
+        [
+          "1",
+          "/U1190/ZN"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "0",
+          "/U1190/A1"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "0",
+        "/U1197/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "0",
+          "/U1197/Z"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "0",
+          "/\\text_in_r_reg[127] /D"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "1",
+        "/U1197/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "1",
+          "/\\text_in_r_reg[127] /D"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "1",
+          "/U1197/Z"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "1",
+        "/U1198/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "1",
+          "/U1198/Z"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "1",
+          "/\\text_in_r_reg[126] /D"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "1",
+        "/U1200/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "1",
+          "/U1200/Z"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "1",
+          "/\\text_in_r_reg[124] /D"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "0",
+        "/U1202/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "0",
+          "/U1202/Z"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "0",
+          "/\\text_in_r_reg[122] /D"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "1",
+        "/U1203/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "1",
+          "/U1203/Z"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "1",
+          "/\\text_in_r_reg[121] /D"
+        ]
+      ],
+      "unproven_member_count": 1
+    },
+    {
+      "representative": [
+        "0",
+        "/U1206/Z"
+      ],
+      "fault_class": "DS",
+      "imported_members": [
+        [
+          "0",
+          "/U1206/Z"
+        ]
+      ],
+      "unproven_members": [
+        [
+          "0",
+          "/\\text_in_r_reg[118] /D"
+        ]
+      ],
+      "unproven_member_count": 1
+    }
+  ],
+  "imported_expansion_credit_preserved": false,
+  "hypothetical_post_rep_seeded_expansion_count": 18001,
+  "hypothetical_post_any_seeded_expansion_count": 18207,
+  "hypothetical_counts_do_not_prove_partition_stability": true,
+  "F_state_DT_not_H_proven_count": 50757,
+  "F_state_DT_not_H_proven_sha256": "cdc121e2349773cb52d2854b52f0e97e207e7f377cd3c8a8a72353876450f5c2",
+  "independent_new_F_physical_DT_count": 0,
+  "F_pre_post_partition_stability_proven": false,
+  "F_new_detection_origins_proven": false,
+  "conservative_physical_union_count": 18323,
+  "conservative_physical_union_sha256": "a844b4a8b500ea95a70e5487cb941be77990f60c69cef4fcd79a7beab86bbb00",
+  "conservative_union_definition": "H_PROVEN_DT_UNION_EMPTY_INDEPENDENT_NEW_F_SET",
+  "all_F_state_credit_already_justified_by_H": false,
+  "audit_sha256": "5a398e911d13f8a5c73032b6caeb73a0f50531d50faab080158b1fb9f308c831"
+}

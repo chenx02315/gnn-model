@@ -1,0 +1,80 @@
+{
+  "schema": "e134-small-artifact-sha256-index-v1",
+  "scope": "Repository code, contracts, small audit/review records and overview only; raw file bodies/PDFs stay outside Git",
+  "files": {
+    "contracts/physical_hf_detection_credit_authorization_e134.json": {
+      "bytes": 4739,
+      "sha256": "7c13d65bfa9aa1988e95ba5702f783bfa8df94c1cb25a8cfc6e11627bb1fb3a7"
+    },
+    "contracts/physical_hf_detection_credit_spec_e134_v1.json": {
+      "bytes": 2544,
+      "sha256": "20aa71485e5c1911808ac8d8993c7c448614bf2ddc00fe12d4742b8ffebf2a4d"
+    },
+    "data/manifests/ranking_v6_e134_actual_audit_r1.json": {
+      "bytes": 8820,
+      "sha256": "0469bb1c0c18404c790efb3f0eeae89148d505549e1bf4b0809a0443b1e16e3a"
+    },
+    "data/manifests/ranking_v6_e134_actual_capture_r1.json": {
+      "bytes": 4419,
+      "sha256": "056bd226795f1083a5b0039eecbb8f6938bdacfe99c99929de9960acd47e5de4"
+    },
+    "data/manifests/ranking_v6_e134_complete_pre_review_r1.json": {
+      "bytes": 3720,
+      "sha256": "9b6465f0b086df32601105216c4bf9db575c9e41eca98c42102899182ca60665"
+    },
+    "data/manifests/ranking_v6_e134_complete_pre_review_request_r1.json": {
+      "bytes": 1521,
+      "sha256": "3c440c28d5194e80bf4ba5265a5186821b4a897e19477ea9876bcf01cee04f7f"
+    },
+    "data/manifests/ranking_v6_e134_final_review_r1.json": {
+      "bytes": 3421,
+      "sha256": "c4b14bde5c66944598e98fddbadce405e667e588385340e5fdbe27ed96fcb802"
+    },
+    "data/manifests/ranking_v6_e134_final_review_request_r1.json": {
+      "bytes": 1389,
+      "sha256": "48512a93f1ab9267f31f9c20ab5b0edd45f5c39ad72af57c8ee3af6c26616a27"
+    },
+    "data/manifests/ranking_v6_e134_reader_review_request_r1.json": {
+      "bytes": 2505,
+      "sha256": "8a5e3427d9fc0b9036837b4ecc4df3887bdbd4029d9efb2ace0749413ea8337c"
+    },
+    "data/manifests/ranking_v6_e134_scientific_design_review_r1.json": {
+      "bytes": 2043,
+      "sha256": "dca252db955e020a2b1d01e3223ab87557a6dcb89185fb803ef24d296729c816"
+    },
+    "experiment_overview/CURRENT_STATUS.md": {
+      "bytes": 63882,
+      "sha256": "0756a099dc5453af9235bad578f6cc80a4001aca367dc0bf9180d446d087c0df"
+    },
+    "experiment_overview/NEXT_TASKS.md": {
+      "bytes": 47071,
+      "sha256": "9a22bdc209126e5b00ce8d331079aef3eede2b3cd518a03d46e25e331510fae2"
+    },
+    "experiment_overview/README.md": {
+      "bytes": 9967,
+      "sha256": "4e617c997b53be725e9a2bd28cfa3985b2212536b08904d8145a3ed50df3ec83"
+    },
+    "experiment_overview/entries/E134_physical_HF_detection_credit.md": {
+      "bytes": 5379,
+      "sha256": "a4fe6760236df9381742b9b79cddfd0a81e909b51ce78f7f6b2cb3ca37414d0a"
+    },
+    "scripts/read_hf_credit_artifacts_e134.py": {
+      "bytes": 19681,
+      "sha256": "2014f1d949d47e2860dab725e9ac2a693e2bcf247bc2d197b05b77320b1495c3"
+    },
+    "src/data/hf_detection_credit_e134.py": {
+      "bytes": 17439,
+      "sha256": "35f791450023eef30dd68dcd3e59bc58387735a668917ec9f6ee73db19c3b4ac"
+    },
+    "tests/test_hf_credit_artifact_reader_e134.py": {
+      "bytes": 15514,
+      "sha256": "9e85ebccc12f9309ff8f5d3010054c4eafb08d5dc84ad6a040a5e4b8a604e096"
+    },
+    "tests/test_hf_detection_credit_e134.py": {
+      "bytes": 6934,
+      "sha256": "7235ed73a25ec23e1dfeae67d43c4178ae67c1cf794983fb2542c5c54cab7fe0"
+    }
+  },
+  "physical_certificate_sealed": false,
+  "training_release": false
+}

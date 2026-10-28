@@ -1,0 +1,22 @@
+{
+  "schema": "e134-independent-final-review-request-v1",
+  "status": "REQUESTED",
+  "reviewer": "/root/e96_materializer_review",
+  "artifact_pins": {
+    "data/manifests/ranking_v6_e134_actual_audit_r1.json": "0469bb1c0c18404c790efb3f0eeae89148d505549e1bf4b0809a0443b1e16e3a",
+    "data/manifests/ranking_v6_e134_actual_capture_r1.json": "056bd226795f1083a5b0039eecbb8f6938bdacfe99c99929de9960acd47e5de4",
+    "data/manifests/ranking_v6_e134_complete_pre_review_r1.json": "9b6465f0b086df32601105216c4bf9db575c9e41eca98c42102899182ca60665"
+  },
+  "audit_sha256": "5a398e911d13f8a5c73032b6caeb73a0f50531d50faab080158b1fb9f308c831",
+  "raw_response_sha256": "485bf60abd722b8336149330c40ababcd50ff27193809cae5087b5981617f12d",
+  "scope": "Exact one-read capture and conservative scientific diagnostic; not a physical HF D95 certificate",
+  "required": [
+    "Independent full capture and six body hash/identity/budget/deadline checks",
+    "Independent H complete group/key/class/statistics and provenance recomputation",
+    "Original frozen v2 translation byte replay, including original manifest",
+    "Independent per-member carryover difference and set hashes, not auditor invocation alone",
+    "Keep UNPROVEN distinct from observed physical failure; no physical certificate or training release"
+  ],
+  "additional_A_calls_allowed": 0,
+  "B_BLIND_Tessent_LSF_training_allowed": false
+}

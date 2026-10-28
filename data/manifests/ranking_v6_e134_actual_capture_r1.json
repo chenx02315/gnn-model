@@ -1,0 +1,104 @@
+{
+  "schema": "e134-actual-capture-manifest-v1",
+  "status": "ONE_READ_COMPLETE_ALL_SIX_PINS_VERIFIED",
+  "phase": "../runtime_training_staging_20260928/v6_e134_hf_credit_readback_r1",
+  "raw_response_bytes": 9765711,
+  "raw_response_sha256": "485bf60abd722b8336149330c40ababcd50ff27193809cae5087b5981617f12d",
+  "files": [
+    {
+      "bytes": 2245676,
+      "file": "6c1287af9af0b2c64a917f712d4eeaa88fdd510e3b3e878b95e856c0e22c7d0b",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/H_common_initial_faults.basic",
+      "role": "H_basic",
+      "sha256": "6c1287af9af0b2c64a917f712d4eeaa88fdd510e3b3e878b95e856c0e22c7d0b"
+    },
+    {
+      "bytes": 2520150,
+      "file": "105d53bb6fc918f57fa7ee101a804ff203df5ef4eb6cd1b663a9e531b91936f2",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/faults.mtfi",
+      "role": "H_mtfi",
+      "sha256": "105d53bb6fc918f57fa7ee101a804ff203df5ef4eb6cd1b663a9e531b91936f2"
+    },
+    {
+      "bytes": 2247887,
+      "file": "d510371972350c7117f246d0bc95505d03d9351e03fcc644ffea7e007a973f38",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/faults.rpt",
+      "role": "H_faults_report",
+      "sha256": "d510371972350c7117f246d0bc95505d03d9351e03fcc644ffea7e007a973f38"
+    },
+    {
+      "bytes": 2681,
+      "file": "874d865738afc4cbc122c50b4a0f05a924c3cbe1a02a856af7cf66d5c9571fc0",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/statistics.rpt",
+      "role": "H_statistics",
+      "sha256": "874d865738afc4cbc122c50b4a0f05a924c3cbe1a02a856af7cf66d5c9571fc0"
+    },
+    {
+      "bytes": 303747,
+      "file": "9852b09305259ff52972c237003f2cd4d2253294aebde307beccc77591cb2dcf",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/_prereq/aes_core:HF:h1:F/translated_status.mtfi",
+      "role": "translation_status",
+      "sha256": "9852b09305259ff52972c237003f2cd4d2253294aebde307beccc77591cb2dcf"
+    },
+    {
+      "bytes": 1285,
+      "file": "cdb56ddeb07a5ad89a95d62dc73102416da5c049d1c0d37f256387ba9d650010",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/_prereq/aes_core:HF:h1:F/translation_manifest.json",
+      "role": "translation_manifest",
+      "sha256": "cdb56ddeb07a5ad89a95d62dc73102416da5c049d1c0d37f256387ba9d650010"
+    }
+  ],
+  "call_count": 1,
+  "attempt_count": 1,
+  "automatic_retries": 0,
+  "body_bytes": 7321426,
+  "remote_seconds": 0.20937363989651203,
+  "sampled_peak_rss_swap_bytes": 12808192,
+  "resource_note": "Sampled peak only; short call is not a continuous hard-limit guarantee",
+  "capture_metadata": {
+    "atpg_launches": 0,
+    "body_bytes_hashed": 7321426,
+    "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+    "capture_complete": true,
+    "capture_deadline_monotonic": 2497668.061411473,
+    "child_launches": 0,
+    "coverage_semantics_proven": false,
+    "environment_reads": 0,
+    "error": null,
+    "filesystem_writes": 0,
+    "frozen_contract_d95_pass": false,
+    "hostname": "bupt-vncs2",
+    "old_experiment_clock_changed": false,
+    "parse_or_analysis_performed": false,
+    "python_version": [
+      3,
+      6,
+      8
+    ],
+    "remote_end_monotonic": 2497368.270785113,
+    "remote_start_monotonic": 2497368.061411473,
+    "sampled_peak_rss_swap_bytes": 12808192,
+    "schema": "hf-credit-owned-artifact-readback-e134-v1",
+    "stage": "COMPLETE",
+    "tessent_launches": 0,
+    "training_release": false,
+    "training_runs": 0,
+    "uid": 1047
+  },
+  "transport": {
+    "exit_code": 0,
+    "overflow": false,
+    "remote_termination_verified": false,
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 9765711,
+    "stdout_sha256": "485bf60abd722b8336149330c40ababcd50ff27193809cae5087b5981617f12d",
+    "threads_incomplete": false,
+    "timeout": false,
+    "write_failed": false
+  },
+  "start_utc": "2026-10-28T03:17:37.825330+00:00",
+  "deadline_utc": "2026-10-28T03:22:37.825330+00:00",
+  "physical_HF_D95_verified": false,
+  "training_release": false
+}

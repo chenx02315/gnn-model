@@ -1,0 +1,60 @@
+{
+  "schema": "e134-independent-complete-precapture-review-v1",
+  "status": "PASS",
+  "reviewer": "/root/e96_materializer_review",
+  "reviewed": {
+    "payload_sha256": "5bf39a6aad98499c70fff71d2e2b9da80eb4bf9a6b0832eec6358aff08bacdce",
+    "controller_sha256": "2014f1d949d47e2860dab725e9ac2a693e2bcf247bc2d197b05b77320b1495c3",
+    "source_sha256": {
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "e134_hf_credit_reader": "2014f1d949d47e2860dab725e9ac2a693e2bcf247bc2d197b05b77320b1495c3"
+    },
+    "authorization_sha256": "7c13d65bfa9aa1988e95ba5702f783bfa8df94c1cb25a8cfc6e11627bb1fb3a7",
+    "proposal_sha256": "aca23cf901f736255ddd32ee30b0ab540b84b5b2a3717f13fa05ba18bb98da9b",
+    "plan_sha256": "f9ce37455574421927f2e14043db5e36ec6a377824be4491228f63fca0ba3d4c"
+  },
+  "complete_request_sha256": "3c440c28d5194e80bf4ba5265a5186821b4a897e19477ea9876bcf01cee04f7f",
+  "auditor_and_spec_pins": {
+    "src/data/hf_detection_credit_e134.py": "35f791450023eef30dd68dcd3e59bc58387735a668917ec9f6ee73db19c3b4ac",
+    "tests/test_hf_detection_credit_e134.py": "7235ed73a25ec23e1dfeae67d43c4178ae67c1cf794983fb2542c5c54cab7fe0",
+    "contracts/physical_hf_detection_credit_spec_e134_v1.json": "20aa71485e5c1911808ac8d8993c7c448614bf2ddc00fe12d4742b8ffebf2a4d",
+    "src/data/eq_group_coverage_e133_r2.py": "879b0d244e4d649c4a6be5a673bb1b566000cce69194d555634ad3d8037fc37e",
+    "src/data/prospective_fault_translation_v2.py": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961"
+  },
+  "both_components_and_spec_pass": true,
+  "scope": "Safe diagnostic implementation and exact one-call packet, not a guaranteed physical certificate",
+  "independent_regression": {
+    "testsRun": 50,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.296,
+    "exit_code": 0
+  },
+  "extra_adversarial_check": "Imported seed in non-representative group position still yields unsupported member and zero new F physical credit",
+  "parent_joint_regression": {
+    "testsRun": 220,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "python36_ast": true,
+  "inert_remote_modules": 15,
+  "six_new_bodies_not_yet_acquired": true,
+  "physical_HF_D95_verified": false,
+  "training_release": false
+}

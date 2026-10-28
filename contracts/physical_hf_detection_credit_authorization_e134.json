@@ -1,0 +1,91 @@
+{
+  "schema": "physical-hf-detection-credit-authorization-e134-v1",
+  "approval_source": "explicit_user_reply",
+  "user_reply": "\u6279\u51c6 E134 \u6574\u5305",
+  "approval_context": "E134_PHYSICAL_HF_DETECTION_CREDIT_AUDIT_WHOLE_PACKAGE",
+  "user_authorization_received": true,
+  "proposal_file": "contracts/physical_hf_detection_credit_audit_proposal_e134_v1.json",
+  "proposal_sha256": "aca23cf901f736255ddd32ee30b0ab540b84b5b2a3717f13fa05ba18bb98da9b",
+  "approved_scope": {
+    "local_work": "Isolated transfer-credit and conservative union auditor, adversarial counterexample tests, independent pre-review and final proof review",
+    "A_read_only_calls_max": 1,
+    "A_read_attempts_max": 1,
+    "remote_reader_versions_max": 1,
+    "automatic_retries": 0,
+    "seconds_per_call_max": 60,
+    "capture_wall_seconds_max": 300,
+    "sampled_memory_bytes_max": 536870912,
+    "single_file_bytes_max": 8388608,
+    "total_body_bytes_max": 16777216,
+    "response_bytes_max": 25165824,
+    "fixed_file_count": 6,
+    "fixed_files": [
+      {
+        "role": "H_basic",
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/H_common_initial_faults.basic",
+        "bytes": 2245676,
+        "sha256": "6c1287af9af0b2c64a917f712d4eeaa88fdd510e3b3e878b95e856c0e22c7d0b"
+      },
+      {
+        "role": "H_mtfi",
+        "bytes": 2520150,
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/faults.mtfi",
+        "sha256": "105d53bb6fc918f57fa7ee101a804ff203df5ef4eb6cd1b663a9e531b91936f2"
+      },
+      {
+        "role": "H_faults_report",
+        "bytes": 2247887,
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/faults.rpt",
+        "sha256": "d510371972350c7117f246d0bc95505d03d9351e03fcc644ffea7e007a973f38"
+      },
+      {
+        "role": "H_statistics",
+        "bytes": 2681,
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/H_aes_core:HF:h1:H/statistics.rpt",
+        "sha256": "874d865738afc4cbc122c50b4a0f05a924c3cbe1a02a856af7cf66d5c9571fc0"
+      },
+      {
+        "role": "translation_status",
+        "bytes": 303747,
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/_prereq/aes_core:HF:h1:F/translated_status.mtfi",
+        "sha256": "9852b09305259ff52972c237003f2cd4d2253294aebde307beccc77591cb2dcf"
+      },
+      {
+        "role": "translation_manifest",
+        "bytes": 1285,
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/_prereq/aes_core:HF:h1:F/translation_manifest.json",
+        "sha256": "cdb56ddeb07a5ad89a95d62dc73102416da5c049d1c0d37f256387ba9d650010"
+      }
+    ],
+    "previously_observed_body_total": 7321426,
+    "existing_local_E128_E130_E132_E133_evidence_may_be_reused": true,
+    "new_clock_no_previous_window_reuse": true,
+    "allow_separate_physical_coverage_certificate_only_if_actual_union_is_proven": true,
+    "old_contract_or_history_modification": false,
+    "Tessent_launches": 0,
+    "ATPG_launches": 0,
+    "LSF_jobs": 0,
+    "B_access": false,
+    "BLIND_access": false,
+    "training": false,
+    "candidate_join_or_training_release": false
+  },
+  "required_gates": [
+    "EXPLICIT_NEW_REPLY_AND_INDEPENDENT_FROZEN_CODE_PACKET_REVIEW_BEFORE_READ",
+    "ALL_SIX_COMPLETE_FILE_PINS_MATCH_BEFORE_CONTENT_ANALYSIS",
+    "COMPLETE_H_REPORT_NATIVE_BASIC_AND_CANONICAL_KEYSETS_AND_SAME_STATE_PROVENANCE",
+    "H_FIRST_STAGE_HAS_NO_FOREIGN_MODE_DETECTION_IMPORT_AND_ACCEPTED_BASELINE_DI_ONLY",
+    "REPRODUCE_PINNED_H_TO_F_STATUS_WITH_FROZEN_TRANSLATION_AND_FULL_SOURCE_KEYS",
+    "DISTINGUISH_H_PROVEN_DETECTIONS_F_OWN_DETECTIONS_AND_IMPORTED_CLASSIFICATION_CREDIT",
+    "CHECK_TRANSFERRED_DETECTION_CREDIT_PRESERVATION_FOR_ALL_RELEVANT_F_EQ_MEMBERS_NOT_JUST_COUNTS",
+    "ANY_CLEAN_NEW_F_DETECTION_ARGUMENT_MUST_JUSTIFY_PARTITION_AND_PRE_POST_STATE_STABILITY",
+    "IF_CREDIT_PRESERVATION_FAILS_ONLY_USE_INDEPENDENTLY_JUSTIFIED_CONSERVATIVE_PHYSICAL_UNION",
+    "KEEP_N71216_AND_INTEGER_THRESHOLD67656_AND_ZERO_PD_PT_CREDIT",
+    "COUNTEREXAMPLE_H_DETECTS_A_F_EQ_B_MUST_NOT_AUTOMATICALLY_CREDIT_B",
+    "IF_STATE_PROVENANCE_OR_PHYSICAL_ATTRIBUTION_CANNOT_BE_PROVEN_LEAVE_UNPROVEN_NOT_PASS",
+    "INDEPENDENT_FINAL_PHYSICAL_REASONING_AND_SET_RECOMPUTATION_BEFORE_ANY_NEW_CERTIFICATE"
+  ],
+  "does_not_authorize_new_Tessent_ATPG_simulation_or_training": true,
+  "preserve_old_contract_and_history": true,
+  "training_release": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "e134-scientific-design-adjudication-v1",
+  "status": "PASS_CONSERVATIVE_DIAGNOSTIC_DESIGN_NOT_PHYSICAL_CERTIFICATE",
+  "reviewers": ["/root/e96_materializer_review", "/root/e134_physical_reasoning"],
+  "review_scope": "Physical credit inference only; not complete execution readiness",
+  "decision": "H-only conservative default is safe when H provenance and groups pass; no independently justified F-new credit yet",
+  "F_pre_full_partition": "Sufficient but not logically indispensable; documented provenance-bound no-cross-post-group status propagation could substitute",
+  "insufficient_evidence": [
+    "Post-F classified DT count",
+    "Matching aggregate pre statistics and hypothetical post-group seed expansion",
+    "Representative not imported without checking every member",
+    "Immutable external Tcl plus general structural collapsing description without merge/reset semantics"
+  ],
+  "actual_pinned_F_sequence_includes": [
+    "Read complete F baseline",
+    "Read translated H status with merge",
+    "reset_au_faults -reclassify",
+    "Pre statistics",
+    "create_patterns",
+    "Post reports and fault export"
+  ],
+  "hypothetical_counterexample": "If an implementation propagates A's imported status inside an old group {A,B}, then internally regroups B with C while preserving status, a seed-free post group {B,C} would not prove fresh F physical detection. This is an epistemic counterexample, not observed Tessent behavior.",
+  "conditional_clean_F_algorithm": "Contaminate every post group intersecting any imported or baseline detected seed. Only credit remaining DS groups if a documented run-bound invariant excludes cross-group carryover and other detection sources. Handle qualified DI separately.",
+  "bounded_capture_may_proceed_after_complete_code_spec_packet_review": true,
+  "UNPROVEN_is_valid_diagnostic_outcome": true,
+  "unsupported_carryover_is_not_proof_of_actual_nondetection": true,
+  "physical_HF_D95_verified": false,
+  "training_release": false,
+  "remote_calls_in_this_review": 0
+}

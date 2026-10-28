@@ -1,0 +1,30 @@
+{
+  "schema": "e134-complete-precapture-review-request-v1",
+  "status": "REQUESTED_BEFORE_UNIQUE_A_CAPTURE",
+  "reader_request": "data/manifests/ranking_v6_e134_reader_review_request_r1.json",
+  "auditor_and_spec_pins": {
+    "src/data/hf_detection_credit_e134.py": "35f791450023eef30dd68dcd3e59bc58387735a668917ec9f6ee73db19c3b4ac",
+    "tests/test_hf_detection_credit_e134.py": "7235ed73a25ec23e1dfeae67d43c4178ae67c1cf794983fb2542c5c54cab7fe0",
+    "contracts/physical_hf_detection_credit_spec_e134_v1.json": "20aa71485e5c1911808ac8d8993c7c448614bf2ddc00fe12d4742b8ffebf2a4d",
+    "src/data/eq_group_coverage_e133_r2.py": "879b0d244e4d649c4a6be5a673bb1b566000cce69194d555634ad3d8037fc37e",
+    "src/data/prospective_fault_translation_v2.py": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961"
+  },
+  "parent_joint_regression": {
+    "testsRun": 220,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 4.530,
+    "exit_code": 0,
+    "scope": "18 selected local test modules including E134 reader/auditor and E122-E133 dependencies; not entire repository suite"
+  },
+  "scientific_design_review": "data/manifests/ranking_v6_e134_scientific_design_review_r1.json",
+  "reader_component_previously_independently_passed": true,
+  "UNPROVEN_is_acceptable_diagnostic_outcome": true,
+  "six_new_real_bodies_not_yet_acquired": true,
+  "remote_calls": 0,
+  "clock_started": false,
+  "physical_HF_D95_verified": false,
+  "training_release": false,
+  "reviewer": "/root/e96_materializer_review"
+}

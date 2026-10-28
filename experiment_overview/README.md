@@ -6,6 +6,8 @@
 
 ## 阅读入口
 
+- [当前权威状态](CURRENT_STATUS.md)与[E134真实检测信用审计](entries/E134_physical_HF_detection_credit.md)：最新结果优先看这里。六工件一次读取完成，发现286个F等价组扩展成员不能仅由H证据支持；真实联合D95仍未证明，不是已经确认覆盖失败，也不是新模型训练结果。以下旧条目保留当时状态。
+
 - [E49限定定位与缺失元数据请求](entries/E49_bounded_named_metadata_search.md)：72根、94白名单目录、883名称条目实际检查完毕，仅命中两份package manifest；需候选receipt及逐源清单的可读投影/备份位置。不是连接阻塞，也不代表全B端不存在；训练仍关闭。
 - [E48根目录独立元数据备份名](entries/E48_metadata_backup_names.md)：一次名称/stat检查为空，未读归档header或解压；后续E49补充目录覆盖，不夸大为空间全局缺失。
 - [E47正式package哈希读回](entries/E47_package_hash_projection.md)：已恢复可信B连接并核对2374B完整manifest SHA，实际取得正式candidate receipt绑定；两份下游来源元数据仍待恢复，不训练。

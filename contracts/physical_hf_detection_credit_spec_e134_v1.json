@@ -1,0 +1,44 @@
+{
+  "schema": "physical-hf-detection-credit-spec-e134-v1",
+  "scope": "Existing AES HF:h1 H-to-F artifacts only; local diagnostic audit, not a new run",
+  "authority": "contracts/physical_hf_detection_credit_authorization_e134.json",
+  "universe_size": 71216,
+  "d95_integer_threshold": 67656,
+  "accepted_detected_classes": "Frozen v2 DS and qualified DI only; no PT/PD credit",
+  "required_checks": [
+    "Hash every complete E134 body against the six authorized pins before parsing",
+    "Revalidate existing E133 F candidate and E128 provenance from their complete pinned sources",
+    "Validate complete H basic/native/report canonical keysets, report groups and class-expanded statistics",
+    "Bind H to the first fresh stage, no foreign merge, accepted baseline DI only",
+    "Reproduce the original frozen v2 H-to-F status and translation manifest byte-for-byte",
+    "Keep explicit transferred seeds separate from expanded pre-F tool DT statistics",
+    "Find every post-F detected group touched by an imported detected seed and test every credited member against the H-proven detected set",
+    "Record unsupported carry-over members and bounded counterexamples without automatically crediting them",
+    "Require independently justified pre/post partition stability and origin attribution before crediting clean-new-F detections"
+  ],
+  "conservative_policy": {
+    "H_proven_detection_set_may_be_used_after_all_H_gates": true,
+    "F_new_detection_set_without_independent_origin_proof": "empty",
+    "post_F_group_expansion_is_not_physical_union_proof": true,
+    "matching_aggregate_pre_counts_is_not_partition_stability_proof": true,
+    "all_EQ_detected_is_forbidden": true,
+    "counterexample_H_detects_A_F_equates_B_cannot_credit_B": true,
+    "insufficient_evidence_status": "UNPROVEN_NOT_PHYSICAL_FAILURE",
+    "small_synthetic_examples_are_not_real_certificates": true
+  },
+  "documentation_boundary": {
+    "structural_collapsing_context_does_not_alone_prove_merge_origin": true,
+    "no_caller_boolean_may_establish_partition_stability": true
+  },
+  "physical_certificate_requires": [
+    "Complete artifact and provenance checks",
+    "Canonical per-fault independently justified physical detection union",
+    "At least 67656 of 71216 eligible faults",
+    "Independent final scientific reasoning and set recomputation"
+  ],
+  "new_Tessent_ATPG_fault_simulation_or_LSF": false,
+  "B_or_BLIND_access": false,
+  "old_contract_or_history_modification": false,
+  "training_release": false,
+  "full_stage_release": false
+}
