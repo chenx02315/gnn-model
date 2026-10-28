@@ -1,0 +1,87 @@
+{
+  "schema": "eq-group-coverage-candidate-e133-r2-v1",
+  "status": "CANDIDATE_ONLY_PENDING_INDEPENDENT_FINAL_REVIEW",
+  "policy_id": "DOCUMENTED_UNCOLLAPSED_REPORT_GROUPS_POST_HF_PREFIX_V1",
+  "parse_version": "E133_R2_BALANCED_OUTER_QUOTES_ONLY",
+  "origin_r1_source_sha256": "393e919ab4e28ae8c782e29be6b98ce61b49e63ebba73bff94bae417f9e8f68a",
+  "certificate_spec_sha256": "047d021700608a2b05f50bbb3a5ef490b1268c910e6b05c246100f7b51a7e3e9",
+  "scope": "OBSERVED_AES_CORE_HF_H1_TERMINAL_POST_H_TO_F_PREFIX_NOT_F_STANDALONE",
+  "synthetic_only": false,
+  "common_count": 71216,
+  "d95_integer_threshold": 67656,
+  "percent_floor": 95,
+  "possible_detection_credit": 0,
+  "input_receipts": {
+    "manifest": {
+      "bytes": 1554,
+      "sha256": "c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f"
+    },
+    "mapping": {
+      "bytes": 3385680,
+      "sha256": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8"
+    },
+    "F_basic": {
+      "bytes": 2245666,
+      "sha256": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566"
+    },
+    "F_mtfi": {
+      "bytes": 2520140,
+      "sha256": "55f6850eee753e3aff90b7b2199a366cb635a7b6a00adae84b1f20fc049ded5f"
+    },
+    "F_statistics": {
+      "bytes": 1576,
+      "sha256": "629b433cd87ad7e471834decf9cce0f47735268da7028215b0eed68f8c60fff4"
+    },
+    "F_pre_statistics": {
+      "bytes": 1531,
+      "sha256": "35de9953800c5be1c792c2026040a2c53b0e88984b40cc9e32a6f4a2e9014911"
+    },
+    "F_faults_report": {
+      "bytes": 2247877,
+      "sha256": "7f02656b2f78d818c2da4d2f58448fb48d202d167f8cd60a84155ee15a1e02d3"
+    }
+  },
+  "provenance": {
+    "e128_response_sha256": "d70818980f52ad17e9a1d7eb917d9618d1bf203d4ec29b7e780430529528189e",
+    "tcl_sha256": "50982a3c1b9b93b452313ef503bbfe6d17a44f7f3a018334041244807587dafe",
+    "driver_sha256": "4c089a2410fcaebc6aed3167a8b4b14015cf8afad5d8e7a019078679d78d7d94",
+    "report_command": "report_faults",
+    "same_fault_state_command_sequence_verified": true,
+    "actual_fault_mode_setting_observed": false,
+    "proof_does_not_use_default_mode": true
+  },
+  "report_group_count": 45559,
+  "report_EQ_members": 25657,
+  "expanded_top_class_counts": {
+    "DI": 3713,
+    "DS": 65349,
+    "UU": 2,
+    "AU": 15,
+    "UO": 2092,
+    "UC": 45
+  },
+  "detected_count": 69062,
+  "detected_definition": "QUALIFIED_DS_DI_GROUPS_ONLY_PT_PD_AU_UC_UO_EXCLUDED",
+  "detected_set_sha256": "d7a2652d84538287d2541e1664dc4c5b09f0464c7179b2fc86440b7e29dd0a07",
+  "detected_set_hash_format": "SORTED_CANONICAL_STUCK_PATH_JSON",
+  "canonical_full_set_sha256": "faad8f3858b4af4384464fdc5e7f83bf4492faf3a3d2958141760e3e8d838978",
+  "complete_group_mapping_sha256": "050bbf119954293b86fb2e9c142b0afeebc34453f82bff5908ca17f22ca3cf6b",
+  "candidate_meets_d95_math": true,
+  "observed_report_uncollapsed_enumeration_verified": true,
+  "actual_fault_mode_setting_observed": false,
+  "report_native_basic_canonical_keysets_equal": true,
+  "non_EQ_native_classes_reconciled": true,
+  "group_source": "PROVENANCE_BOUND_REPORT_FAULTS_NOT_MTFI_ADJACENCY",
+  "group_polarity_matching_assumed": false,
+  "per_class_statistics_reconciled": true,
+  "rule_document_sha256": "633932e0eb455a5d7e4a197b870348d8227b26f66fe48085562b8841eae97ee0",
+  "rule_document_page": 88,
+  "independent_final_reviewed": false,
+  "separate_coverage_only_certificate_sealed": false,
+  "frozen_contract_d95_pass": false,
+  "complete_stage_or_action_acceptance": false,
+  "actual_atpg_runtime_ns": null,
+  "training_release": false,
+  "execution_ready": false,
+  "candidate_sha256": "6df811677dafdd77bb625a2a62e5d02ac94389c86d70fcc5f71e113f2c4ca990"
+}

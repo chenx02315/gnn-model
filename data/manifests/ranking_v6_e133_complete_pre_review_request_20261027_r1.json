@@ -1,0 +1,32 @@
+{
+  "schema": "e133-complete-precapture-review-request-v1",
+  "status": "REQUESTED_BEFORE_UNIQUE_A_CAPTURE",
+  "reader_request": "ranking_v6_e133_reader_review_request_20261027_r1.json",
+  "parser_and_spec_pins": {
+    "src/data/eq_group_coverage_e133.py": "393e919ab4e28ae8c782e29be6b98ce61b49e63ebba73bff94bae417f9e8f68a",
+    "tests/test_eq_group_coverage_e133.py": "aaca336ecee9a94be359e4b2b36faffea74b9766ad16e07f90ab9129ac20a3f3",
+    "contracts/eq_group_coverage_certificate_spec_e133_v1.json": "047d021700608a2b05f50bbb3a5ef490b1268c910e6b05c246100f7b51a7e3e9",
+    "src/data/prospective_fault_translation_e129.py": "f659ca52bc6c48645736162223d1f6a931c343d4dd6cafac690aaeff90a2c681",
+    "src/data/prospective_report_dialect_e126.py": "12fdb3e3cb7b52c32465f461fa63a6598f6bac555669d63540ac18e0bd3174a0",
+    "src/data/prospective_report_dialect_e115.py": "102ed449c9f12f46edebd5ab31bb99b8e14c3f465b0ac70b5121606ad3617b0d"
+  },
+  "parser_tests": {
+    "testsRun": 12,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "requires_existing_local_E128_fixture": true
+  },
+  "parent_joint_regression": {
+    "testsRun": 229,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 6.984,
+    "exit_code": 0
+  },
+  "parent_pinned_E128_actual_provenance_verified": true,
+  "remote_calls": 0,
+  "clock_started": false,
+  "reviewer": "/root/e96_materializer_review"
+}

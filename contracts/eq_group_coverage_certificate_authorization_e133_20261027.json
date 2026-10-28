@@ -1,0 +1,89 @@
+{
+  "schema": "eq-group-coverage-certificate-authorization-e133-v1",
+  "approval_source": "explicit_user_reply",
+  "user_reply": "\u6279\u51c6 E133 \u6574\u5305",
+  "approval_context": "E133_COMPLETE_EQ_GROUP_COVERAGE_CERTIFICATE_PACKAGE",
+  "user_authorization_received": true,
+  "client_authorization_date": "2026-10-27",
+  "proposal_file": "contracts/eq_group_coverage_certificate_proposal_e133_v1.json",
+  "proposal_sha256": "91c75adfdfb933be12cacf0ebb17346a97ba7bf549ace9e75e4082573de333c7",
+  "approved_scope": {
+    "local_work": "Implement one isolated candidate group parser/certificate specification, focused/full tests, independent pre-review and final review; preserve existing D95 contract and failed E127 state",
+    "A_read_only_calls_max": 1,
+    "A_read_attempts_max": 1,
+    "remote_reader_versions_max": 1,
+    "automatic_retries": 0,
+    "seconds_per_call_max": 60,
+    "capture_wall_seconds_max": 300,
+    "sampled_memory_bytes_max": 536870912,
+    "single_file_bytes_max": 8388608,
+    "total_body_bytes_max": 16777216,
+    "response_bytes_max": 25165824,
+    "fixed_file_count": 7,
+    "fixed_files": [
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/manifest.json",
+        "bytes": 1554,
+        "sha256": "c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f"
+      },
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/canonical_fault_mapping.tsv",
+        "bytes": 3385680,
+        "sha256": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8"
+      },
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/F_common_initial_faults.basic",
+        "bytes": 2245666,
+        "sha256": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566"
+      },
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/faults.mtfi",
+        "bytes": 2520140,
+        "sha256": "55f6850eee753e3aff90b7b2199a366cb635a7b6a00adae84b1f20fc049ded5f"
+      },
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/statistics.rpt",
+        "bytes": 1576,
+        "sha256": "629b433cd87ad7e471834decf9cce0f47735268da7028215b0eed68f8c60fff4"
+      },
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/pre_atpg_statistics.rpt",
+        "bytes": 1531,
+        "sha256": "35de9953800c5be1c792c2026040a2c53b0e88984b40cc9e32a6f4a2e9014911"
+      },
+      {
+        "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/faults.rpt",
+        "bytes": 2247877,
+        "sha256": "7f02656b2f78d818c2da4d2f58448fb48d202d167f8cd60a84155ee15a1e02d3"
+      }
+    ],
+    "previously_observed_body_total": 10404024,
+    "existing_local_E128_E130_E132_evidence_may_be_reused": true,
+    "new_A_clock_required_no_old_window_reuse": true,
+    "allow_new_separate_coverage_only_certificate_if_all_gates_pass": true,
+    "old_D95_contract_or_history_modification": false,
+    "Tessent_launches": 0,
+    "ATPG_launches": 0,
+    "LSF_jobs": 0,
+    "B_access": false,
+    "BLIND_access": false,
+    "training": false,
+    "candidate_join_or_training_release": false
+  },
+  "required_gates": [
+    "EXACT_NEW_REPLY_RECORD_AND_FROZEN_REQUEST_INDEPENDENTLY_REVIEWED_BEFORE_A_READ",
+    "ALL_SEVEN_FILE_SHA256_MATCH_PREVIOUS_E130_EVIDENCE_BEFORE_CONTENT_USE",
+    "ACTUAL_UNCOLLAPSED_REPORT_FORMAT_AND_SAME_FAULT_STATE_PROVEN_NOT_ASSUMED_FROM_DEFAULT",
+    "CANONICAL_COMMON_UNIVERSE_N71216_AND_INTEGER_D95_THRESHOLD67656_UNCHANGED",
+    "FULL_REPORT_NATIVE_MTFI_AND_CANONICAL_KEYSETS_MATCH_WITHOUT_MISSING_DUPLICATE_OR_OUTSIDE_KEYS",
+    "REPRESENTATIVE_EQ_GROUPS_COMPLETE_NO_ORPHAN_EQ_NO_UNKNOWN_CLASSES",
+    "NON_EQ_REPRESENTATIVES_RECONCILE_WITH_NATIVE_CLASS_INFORMATION",
+    "ONLY_QUALIFIED_DS_DI_GROUPS_RECEIVE_DETECTION_CREDIT_PT_PD_AU_UC_UO_DO_NOT",
+    "PER_CLASS_GROUP_EXPANSION_COUNTS_RECONCILE_WITH_FULL_STATISTICS_NOT_ONLY_GRAND_TOTAL",
+    "DO_NOT_INFER_EQ_GROUPS_FROM_ARBITRARY_MTFI_ORDER_OR_SAME_POLARITY_ASSUMPTIONS",
+    "CERTIFY_ONLY_OBSERVED_POST_H_TO_F_PREFIX_STATE_NOT_F_STANDALONE_OR_ALL_18_ACTIONS",
+    "INDEPENDENT_FINAL_REVIEW_BEFORE_SEPARATE_COVERAGE_ONLY_CERTIFICATE_SEAL"
+  ],
+  "preserve_old_D95_contract_and_E127_failure": true,
+  "training_release": false
+}

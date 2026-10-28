@@ -1,0 +1,17 @@
+{
+  "schema": "e133-local-analysis-failure-v1",
+  "status": "LOCAL_R1_REPORT_NATIVE_PATH_REJECTION_NOT_A_CAPTURE_FAILURE",
+  "parser_source_sha256": "393e919ab4e28ae8c782e29be6b98ce61b49e63ebba73bff94bae417f9e8f68a",
+  "parser_test_sha256": "aaca336ecee9a94be359e4b2b36faffea74b9766ad16e07f90ab9129ac20a3f3",
+  "error": "REPORT_NATIVE_PATH",
+  "first_affected_report_line": 1372,
+  "quoted_report_rows": 5280,
+  "exact_native_key_and_class_matches_after_outer_quote_only_diagnostic": 5280,
+  "diagnostic_is_not_group_mapping_or_D95_proof": true,
+  "focus_repair": "Balanced outer double-quote grammar only; opaque internal spaces and backslashes unchanged",
+  "original_source_and_failed_state_preserved": true,
+  "new_A_calls_or_remote_retries": 0,
+  "new_reader_version": false,
+  "new_clock": false,
+  "training_release": false
+}

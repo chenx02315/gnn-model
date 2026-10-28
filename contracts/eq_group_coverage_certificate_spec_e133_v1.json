@@ -1,0 +1,60 @@
+{
+  "schema": "eq-group-coverage-certificate-spec-e133-v1",
+  "status": "CANDIDATE_SPEC_REQUIRES_PRECAPTURE_AND_FINAL_INDEPENDENT_REVIEW",
+  "policy_id": "DOCUMENTED_UNCOLLAPSED_REPORT_GROUPS_POST_HF_PREFIX_V1",
+  "rule_basis": {
+    "document_sha256": "633932e0eb455a5d7e4a197b870348d8227b26f66fe48085562b8841eae97ee0",
+    "software_version": "2021.2",
+    "group_reporting_page": 88,
+    "detected_class_pages": [
+      79,
+      80,
+      81
+    ],
+    "denominator_pages": [
+      88,
+      89
+    ],
+    "document_review": "data/manifests/ranking_v6_e132_final_result_review_20261027_r1.json"
+  },
+  "scope": {
+    "circuit": "aes_core",
+    "action": "HF:h1",
+    "observed_stage": "post_H_to_F_prefix",
+    "native_output_mode": "F",
+    "F_standalone_claim": false,
+    "all_actions_claim": false,
+    "complete_stage_acceptance_claim": false
+  },
+  "denominator": {
+    "canonical_fault_universe": 71216,
+    "percent_floor": 95,
+    "integer_threshold": 67656,
+    "possible_detection_credit": 0,
+    "unknown_or_unmapped_allowed": 0
+  },
+  "rules": [
+    "Read and authenticate all seven pinned complete bodies before parsing",
+    "Use report_faults group order only after proving observed full uncollapsed enumeration and pinned same-state provenance",
+    "Match complete report/native/basic/canonical keysets and every native class; reject duplicates and unknown/orphan EQ",
+    "Do not require representative and equivalent members to share polarity",
+    "Accept only frozen strict DS/DI detector classes; exclude PD/PT, AU, UC, UO, UU and all non-detected groups",
+    "Reconcile every expanded top class with statistics, not only DS+DI or grand total",
+    "Map detected members to canonical keys and produce deterministic full-set and group-relation hashes",
+    "Keep actual fault_mode setting unobserved unless explicitly evidenced; no default assumption",
+    "No EQ grouping inferred from arbitrary MTFI adjacency or cross-Instance order"
+  ],
+  "states": {
+    "pure_parser_output": "CANDIDATE_NOT_INDEPENDENTLY_SEALED",
+    "final_if_all_gates_pass": "SEPARATE_COVERAGE_ONLY_CERTIFICATE",
+    "frozen_old_contract_d95_pass": false,
+    "old_E127_failure_unchanged": true,
+    "training_release": false
+  },
+  "final_seal_requires": [
+    "Whole-file pin evidence",
+    "Independent complete group/count/provenance revalidation",
+    "Observed prefix-only scope",
+    "No runtime/cycles/model acceleration claims from this coverage proof"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "e133-independent-final-result-review-request-v1",
+  "status": "REQUESTED",
+  "capture_manifest": "data/manifests/ranking_v6_e133_actual_capture_20261027_r1.json",
+  "raw_response_sha256": "07bcc39f355d2fe007a981f39a33161bc40dd27000c3af7ca9856fe699d65d9a",
+  "phase": "../runtime_training_staging_20260928/v6_e133_eq_group_readback_20261027_r1",
+  "r1_failure_manifest": "data/manifests/ranking_v6_e133_local_r1_failure_20261027_r1.json",
+  "candidate": "data/manifests/ranking_v6_e133_actual_candidate_20261027_r2.json",
+  "candidate_sha256": "6df811677dafdd77bb625a2a62e5d02ac94389c86d70fcc5f71e113f2c4ca990",
+  "r2_source_sha256": "879b0d244e4d649c4a6be5a673bb1b566000cce69194d555634ad3d8037fc37e",
+  "r2_test_sha256": "66cdbb568abfb6657efd7916781f11c02668a2259bcd52673bdbacf43ebca119",
+  "r1_source_preserved_sha256": "393e919ab4e28ae8c782e29be6b98ce61b49e63ebba73bff94bae417f9e8f68a",
+  "spec_sha256": "047d021700608a2b05f50bbb3a5ef490b1268c910e6b05c246100f7b51a7e3e9",
+  "parent_joint_regression": {
+    "testsRun": 246,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 6.407,
+    "exit_code": 0
+  },
+  "requires": [
+    "Independent capture/bodies/pins/one-call/window audit",
+    "Review narrow r2 quote fix and complete positive/negative tests",
+    "Independent actual group/key/class/provenance and per-class recomputation",
+    "Canonical detected/full-set/group hash match",
+    "Only separate observed-HF-prefix coverage certificate if all gates pass"
+  ],
+  "forbidden": [
+    "Additional A or B access",
+    "Old D95 contract or E127 failure changes",
+    "F standalone/general action or runtime/training claims"
+  ],
+  "reviewer": "/root/e96_materializer_review",
+  "separate_coverage_only_certificate_sealed": false,
+  "training_release": false
+}

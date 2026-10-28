@@ -1,0 +1,139 @@
+{
+  "schema": "e133-actual-readback-capture-v1",
+  "status": "INDEPENDENT_CAPTURE_AND_ALL_WHOLE_FILE_SHA_PASS_NOT_PHYSICAL_D95",
+  "final_review_receipt": "ranking_v6_e133_final_review_20261027_r2.json",
+  "response_bytes": 13876133,
+  "response_sha256": "07bcc39f355d2fe007a981f39a33161bc40dd27000c3af7ca9856fe699d65d9a",
+  "actual_A_calls": 1,
+  "automatic_retries": 0,
+  "start": {
+    "attempt_consumed": true,
+    "authorization_sha256": "cdfd9f7eca7f7c0eee875c486db091a1b93832c73092aa2e92810c94afddced2",
+    "automatic_retries": 0,
+    "call_index": 1,
+    "calls_max": 1,
+    "controller_sha256": "d500d7beecf8960f6b3232cd3874f1861358851917c3de29712855d732061238",
+    "host_fingerprint": "SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM",
+    "local_clock_domain": {
+      "clock": "QueryPerformanceCounter()",
+      "host": "\u9648\u9648\u9648",
+      "pid": 16940
+    },
+    "local_monotonic_deadline": 264477.6113189,
+    "local_monotonic_start": 264177.6113189,
+    "local_utc_deadline": "2026-10-27T14:59:47.744372+00:00",
+    "local_utc_start": "2026-10-27T14:54:47.744372+00:00",
+    "old_experiment_clock_changed": false,
+    "payload_sha256": "cd140b6a86c0d7adc442d934fe97707f1cf6012b52db0ab4c159499351b4b5bd",
+    "plan_sha256": "6ecb6e0ecd5d9e675be4557cbd8c5845ef7d3b05e027313ed948cc8d8a3ad1ba",
+    "proposal_sha256": "91c75adfdfb933be12cacf0ebb17346a97ba7bf549ace9e75e4082573de333c7",
+    "source_sha256": {
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "e133_artifact_reader": "d500d7beecf8960f6b3232cd3874f1861358851917c3de29712855d732061238",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2"
+    }
+  },
+  "transport": {
+    "exit_code": 0,
+    "overflow": false,
+    "remote_termination_verified": false,
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 13876133,
+    "stdout_sha256": "07bcc39f355d2fe007a981f39a33161bc40dd27000c3af7ca9856fe699d65d9a",
+    "threads_incomplete": false,
+    "timeout": false,
+    "write_failed": false
+  },
+  "remote_metadata": {
+    "atpg_launches": 0,
+    "body_bytes_hashed": 10404024,
+    "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+    "capture_complete": true,
+    "capture_deadline_monotonic": 2453098.346796818,
+    "child_launches": 0,
+    "coverage_semantics_proven": false,
+    "environment_reads": 0,
+    "error": null,
+    "filesystem_writes": 0,
+    "frozen_contract_d95_pass": false,
+    "hostname": "bupt-vncs2",
+    "old_experiment_clock_changed": false,
+    "parse_or_analysis_performed": false,
+    "python_version": [
+      3,
+      6,
+      8
+    ],
+    "remote_end_monotonic": 2452798.593033322,
+    "remote_start_monotonic": 2452798.346796818,
+    "sampled_peak_rss_swap_bytes": 12787712,
+    "schema": "eq-group-owned-artifact-readback-e133-v1",
+    "stage": "COMPLETE",
+    "tessent_launches": 0,
+    "training_release": false,
+    "training_runs": 0,
+    "uid": 1047
+  },
+  "files": [
+    {
+      "bytes": 1554,
+      "file": "c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/manifest.json",
+      "sha256": "c1239fb3ff04b6db8ef49265bf5902cfbaf058b229ad84214c4c8d21748a1f2f"
+    },
+    {
+      "bytes": 3385680,
+      "file": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/canonical_fault_mapping.tsv",
+      "sha256": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8"
+    },
+    {
+      "bytes": 2245666,
+      "file": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/03_fault_universe/common_frozen/F_common_initial_faults.basic",
+      "sha256": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566"
+    },
+    {
+      "bytes": 2520140,
+      "file": "55f6850eee753e3aff90b7b2199a366cb635a7b6a00adae84b1f20fc049ded5f",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/faults.mtfi",
+      "sha256": "55f6850eee753e3aff90b7b2199a366cb635a7b6a00adae84b1f20fc049ded5f"
+    },
+    {
+      "bytes": 1576,
+      "file": "629b433cd87ad7e471834decf9cce0f47735268da7028215b0eed68f8c60fff4",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/statistics.rpt",
+      "sha256": "629b433cd87ad7e471834decf9cce0f47735268da7028215b0eed68f8c60fff4"
+    },
+    {
+      "bytes": 1531,
+      "file": "35de9953800c5be1c792c2026040a2c53b0e88984b40cc9e32a6f4a2e9014911",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/pre_atpg_statistics.rpt",
+      "sha256": "35de9953800c5be1c792c2026040a2c53b0e88984b40cc9e32a6f4a2e9014911"
+    },
+    {
+      "bytes": 2247877,
+      "file": "7f02656b2f78d818c2da4d2f58448fb48d202d167f8cd60a84155ee15a1e02d3",
+      "path": "/temp/jiangchuanc/multimode_ate_pt_label_repair_e127_20261027_r1/aes_core/runs/e116-aes_core/attempts/F_aes_core:HF:h1:F/faults.rpt",
+      "sha256": "7f02656b2f78d818c2da4d2f58448fb48d202d167f8cd60a84155ee15a1e02d3"
+    }
+  ],
+  "all_seven_hashes_locally_recomputed": true,
+  "old_E127_failure_unchanged": true,
+  "coverage_only_certificate_sealed": false,
+  "frozen_contract_d95_pass": false,
+  "training_release": false
+}
