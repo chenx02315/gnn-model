@@ -1,0 +1,30 @@
+{
+  "schema": "reference-stream-r2-final-review-v1",
+  "status": "PASS_REFERENCE_FILE_CAPTURE_ONLY",
+  "reviewer": "/root/e96_materializer_review",
+  "basis": "Independent review delivered before this receipt was recorded; this is a transcription of that review, not a new execution.",
+  "bytes": 34384771,
+  "sha256": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0",
+  "verified": [
+    "Independent chunked full-file disk SHA and byte length",
+    "Header and footer framing, exact EOF, and eight stable remote source identity fields",
+    "Exact integer identity preservation in actual receipt",
+    "Final file link count one and no remaining partial file",
+    "Frozen preparation and capture metadata binding",
+    "Old E135 failure evidence and old reader unchanged"
+  ],
+  "artifact_sha256": {
+    "header.frame": "6ce7cd6b749b1562d2ce265bc70f3de4287e737a073635edc825c70664a040fe",
+    "footer.frame": "00af93aafeb944d6692d54db1cb5986f338dbec9b7624ae8451df002a2d7ff1d",
+    "start.json": "536c04406fdac5c8e6b31d96dcbc15d3a2f35718c5e8e031d845c484c57ec460",
+    "transport.json": "ac5d0bdef548770e48b5cbb0c0bf2447d303432f4ca1f86b83c462b51bbeb11d",
+    "validated.json": "88412ebff10d2a9d2a038fc3dca314a1dda2e87f4b4968c7f1ad7627155cade6"
+  },
+  "exception_consumed": true,
+  "semantic_review_pass": false,
+  "physical_d95_verified": false,
+  "e135_reopened": false,
+  "e136_authorized": false,
+  "tessent_started": false,
+  "training_released": false
+}

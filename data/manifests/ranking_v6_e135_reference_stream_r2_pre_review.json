@@ -1,0 +1,54 @@
+{
+  "reviewed": {
+    "payload_sha256": "b01c5eccc4ccfc32148f4e664c425b991c6ddf1b882ee75a70cb709dffabf2d2",
+    "controller_sha256": "b35765cfc03a11245b64eaab3793203d9f06e1d360ce68701805f24fb2e3a427",
+    "source_sha256": {
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "physical_replay_source_reader_e135": "6d6f86341eca23d5b473f8e323a0440d50ea44d177032576f196b9b417690818",
+      "reference_stream_e135_r2": "95e3444d92d50359b5e6092a45d9ba06b2e6643e0e2a213cbccbf78bc91bce97"
+    },
+    "authorization_sha256": "e349356f0c58ec99935097c3a0daf65bfd837f6bc601c7e4ad7eadc803b07494",
+    "protocol_sha256": "9648954be7cba287ccff916b67be797d8349fc42a0cbceb6e52bec2ba2b46124"
+  },
+  "request_sha256": "732a5e165b7fdf646bec9af527c80ecf700c02fede8a5aa15bdb95fd09d3c812",
+  "schema": "reference-stream-r2-independent-pre-read-review-v1",
+  "status": "PASS",
+  "reviewer": "/root/e96_materializer_review",
+  "scope": "ONE_FIXED_REFERENCE_READ_ONLY_TEMPORARY_FILE_SIZE_EXCEPTION",
+  "independent_tests": {
+    "testsRun": 19,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.638
+  },
+  "parent_selected_regression": {
+    "testsRun": 296,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 22.837,
+    "scope": "28 related modules, not whole repository"
+  },
+  "python36_ast": true,
+  "inert_remote_modules": 16,
+  "old_E135_core_unchanged": true,
+  "source_file_size_policy_cap": null,
+  "whole_PDF_RAM_or_base64": false,
+  "old_E135_reopened": false,
+  "Tessent_launches_permitted": 0,
+  "training_release": false
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "reference-stream-r2-actual-capture-v1",
+  "status": "COMPLETE_STREAM_AND_DISK_SHA_VERIFIED",
+  "phase": "../runtime_training_staging_20260928/v6_e135_reference_stream_r2",
+  "bytes": 34384771,
+  "sha256": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0",
+  "file": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0.pdf",
+  "source_identity": {
+    "st_ctime_ns": 1764660863769384462,
+    "st_dev": 43,
+    "st_ino": 25468900,
+    "st_mode": 33133,
+    "st_mtime_ns": 1622268601000000000,
+    "st_nlink": 1,
+    "st_size": 34384771,
+    "st_uid": 0
+  },
+  "runtime": {
+    "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+    "child_launches": 0,
+    "environment_reads": 0,
+    "hostname": "bupt-vncs2",
+    "python_version": [
+      3,
+      6,
+      8
+    ],
+    "remote_start_monotonic": 2514311.160084729,
+    "sampled_peak_rss_swap_bytes": 12296192,
+    "source_writes": 0,
+    "tessent_launches": 0,
+    "training_release": false,
+    "uid": 1047
+  },
+  "footer": {
+    "body_bytes": 34384771,
+    "file_identity_stable": true,
+    "identity": {
+      "st_ctime_ns": 1764660863769384462,
+      "st_dev": 43,
+      "st_ino": 25468900,
+      "st_mode": 33133,
+      "st_mtime_ns": 1622268601000000000,
+      "st_nlink": 1,
+      "st_size": 34384771,
+      "st_uid": 0
+    },
+    "kind": "FOOTER",
+    "parent_anchor_stable": true,
+    "parent_identity": {
+      "st_ctime_ns": 1764660864815354090,
+      "st_dev": 43,
+      "st_ino": 25469048,
+      "st_mode": 16749,
+      "st_mtime_ns": 1622045291000000000,
+      "st_nlink": 3,
+      "st_size": 4096,
+      "st_uid": 0
+    },
+    "remote_end_monotonic": 2514313.360084738,
+    "sampled_peak_rss_swap_bytes": 12423168,
+    "schema": "reference-binary-stream-e135-r2-v1",
+    "sha256": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0",
+    "status": "COMPLETE",
+    "whole_file_hashed": true
+  },
+  "transport": {
+    "error": null,
+    "exit_code": 0,
+    "local_ssh_cleanup_verified": true,
+    "partial_bytes": 34384771,
+    "raw_evidence": {
+      "footer.frame": {
+        "bytes": 689,
+        "sha256": "00af93aafeb944d6692d54db1cb5986f338dbec9b7624ae8451df002a2d7ff1d"
+      },
+      "header.frame": {
+        "bytes": 743,
+        "sha256": "6ce7cd6b749b1562d2ce265bc70f3de4287e737a073635edc825c70664a040fe"
+      },
+      "stderr.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "remote_termination_verified": false,
+    "stderr_overflow": false,
+    "threads_incomplete": false,
+    "timeout": false,
+    "validation": {
+      "boot_id": "3ebeb9bb-410c-476c-a000-5c625f590473",
+      "bytes": 34384771,
+      "partial_identity": {
+        "st_dev": 6230746476076517161,
+        "st_ino": 12384898975634888,
+        "st_mode": 33206,
+        "st_mtime_ns": 1793174404776199400,
+        "st_nlink": 1,
+        "st_size": 34384771,
+        "st_uid": 0
+      },
+      "sha256": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0",
+      "source_identity": {
+        "st_ctime_ns": 1764660863769384462,
+        "st_dev": 43,
+        "st_ino": 25468900,
+        "st_mode": 33133,
+        "st_mtime_ns": 1622268601000000000,
+        "st_nlink": 1,
+        "st_size": 34384771,
+        "st_uid": 0
+      },
+      "whole_disk_rehashed": true
+    },
+    "write_failed": false
+  },
+  "publication_method": "EXCLUSIVE_HARDLINK_THEN_UNLINK_OWNED_PARTIAL",
+  "source_file_size_cap": null,
+  "temporary_exception_consumed": true,
+  "old_E135_reopened": false,
+  "Tessent_launches": 0,
+  "training_release": false
+}

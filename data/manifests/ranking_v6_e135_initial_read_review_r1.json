@@ -1,0 +1,65 @@
+{
+  "reviewed": {
+    "payload_sha256": "d87a6575d035c53bd71dd08ac90c8cae37c0567aded822976ef2417e3d05cd13",
+    "controller_sha256": "3d4793e89235fa5d8021689997ddaa9bddb6d6e9ea8d4af9a084dd3727f37627",
+    "source_sha256": {
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "physical_replay_source_reader_e135": "6d6f86341eca23d5b473f8e323a0440d50ea44d177032576f196b9b417690818",
+      "physical_replay_source_inventory_e135": "9467ee407dec9fd9bccad3ffdc517a508789c38b404fe9ac7d9d499fbd1be48d",
+      "e135_source_capture": "3d4793e89235fa5d8021689997ddaa9bddb6d6e9ea8d4af9a084dd3727f37627"
+    },
+    "input_sha256": {
+      "e128": "d70818980f52ad17e9a1d7eb917d9618d1bf203d4ec29b7e780430529528189e",
+      "e85": "702968b299d36f7d85bdfa3f2b6c9a23fb99cd8f5094ed0ed37fa6e002794e74",
+      "e88": "f46ed9fea9f5fecaea146ae75807db06fbd75887fc21a995a8da44ebe65b09c8",
+      "preparation": "44c37d3d304548ba22d887454b72c4bc4a536aacd5ab1c4cc448b2ea8fe1a446",
+      "execution_proof": "7e8933e030fc861449b2876d19dc49f2c937d29748e6fc1fb98652feca0fb8f9",
+      "envelope": "bfb4d1c945b9657804a9e54214a6864bb72165923ec7c5fcb2d59e5e9045a74d",
+      "local_e128_deriver": "97a4335e0d52d685d6a400b2670b91540f62b8e5a37cd8cb4ab982e896e8c7b7",
+      "local_e130_deriver": "6fcd931f6680a05a2e3891be4544d29001508b861f889829784591eb3f3d72e7"
+    },
+    "authorization_sha256": "03f0da9fec34c21433737fe51ee79e69aea7d2e8c7df94e333a78ca9be3d69b3",
+    "proposal_sha256": "0a9300f556d4b48cbebb7c83f4bac1ffa9c6875198e4a9b3ed2df21d67609767",
+    "plan_sha256": "178383d0bef4d9f32b5df9774c8c2d8a6de1504f04b7f71ce88b36c3de97d523"
+  },
+  "request_sha256": "1f0899b3b9f1b2ea68cae7fe706dee91d229e9a2de45b38ef04b3c9bbab81b8c",
+  "schema": "e135-initial-read-independent-review-v1",
+  "status": "PASS",
+  "scope": "INITIAL_READ_ONLY_NOT_SIMULATION_RELEASE",
+  "reviewer": "/root/e96_materializer_review",
+  "independent_tests": {
+    "testsRun": 25,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 1.116
+  },
+  "parent_focused_tests": {
+    "testsRun": 56,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0
+  },
+  "python36_ast": true,
+  "inert_remote_modules": 17,
+  "actual_E135_user_reply_and_scope_verified": true,
+  "old_core_preserved": true,
+  "payload_bytes": 241349,
+  "clock_starts_on_first_A_call_only": true,
+  "Tessent_launches_permitted_by_this_review": 0,
+  "physical_HF_D95_verified": false,
+  "training_release": false
+}

@@ -1,5 +1,25 @@
 # E135准备：重放已有F向量，直接证明F自身检测
 
+## 最新实际结果：首读失败，整包按约定关闭
+
+唯一实际A调用正常连接并通过主机、UID和boot核验，远端运行约0.1116秒，采样峰值12832768字节。SSH返回码为0；失败不是无法登录服务器，而是读取协议返回capture_complete=false。
+
+已取得旧F tester.stil的hash-only回执：443378字节，SHA-256 333d9f9bd359cf9066501a41e748b2182f5c787ffd46e112c7b5c5c2c6c5eae2。文件为UID1047、普通文件、单链接；实际reader完成流式哈希及身份复核，但没有导出STIL正文，不能冒称本地独立重算、历史字节身份或256个pattern已核验。
+
+随后在READ_REFERENCE阶段触发PREOPEN_SIZE_CAP。源码的尺寸条件是非零且不超过32MiB，检查位于参考文件os.open之前；响应没有返回具体尺寸，所以只能说大小条件失败，不能断言必定超过32MiB或写出猜测尺寸。PDF正文未打开，库、Fbasic和TSDB的本次核验也未进行。
+
+原始响应1471字节，SHA-256 fe9ae9a634558d0a9ee8e5a6f349bfc34d2521469c60cf36ec2f543a101d53e0。其后本地validate_response正确拒绝COMPLETE_A_CAPTURE_REQUIRED，原始回执已先保存。独立失败证据复核为PASS_FAILURE_EVIDENCE_AUDIT_NOT_EXPERIMENT_PASS，见data/manifests/ranking_v6_e135_failure_review_r1.json；实际失败清单为ranking_v6_e135_initial_read_failure_r1.json。
+
+已创建本地closed.json并保留初始时钟/原回执。按用户批准的首失败停止和零重试，E135整包到此关闭：只消耗1次A连接，Tessent、自检、ATPG、训练全部为0；不能使用剩余2次连接去补读或自动抬高文件上限。本地仿真worker虽完成14项模拟测试，仍缺手册/时钟/运行规格冻结，未实际运行，也不是物理覆盖证据。
+
+下一方案会针对“命令资料获取”本身收敛，优先避免整份大PDF驻留内存；新的实际访问或工具运行需单独有界授权。旧E127/E133/E134结果和E135失败均保留，下方准备和待执行描述为此前快照。
+
+## 最新状态：已获整包授权，真实入口开发与预审中
+
+用户明确回复“批准 E135 整包”，实际授权为contracts/physical_f_pattern_replay_authorization_e135.json（SHA-256 03f0da9fec34c21433737fe51ee79e69aea7d2e8c7df94e333a78ca9be3d69b3）。旧提案、未授权核心及旧审核回执保留历史，不改成事后已批准。新包装层独立检查本次授权，并复用被冻结的只读核心；不改旧核心AUTH_SHA=None。
+
+源身份/手册读取包装层与单会话F仿真worker正在并行完成。全部本地门禁和独立预审后才开始首次A调用；当前没有新服务器读取或Tessent启动。授权覆盖的后续步骤会自动衔接，不再逐小步等确认。下方“尚未授权”描述的是此前快照。
+
 ## 为什么下一步改用这条路径
 
 E134已经把来源缺口定位清楚，不再重复其六文件读取或汇总数字对账。继续核对本地已封存的E128脚本和真实F日志后发现：旧F运行在导出faults.mtfi之后，还执行了导出tester.stil的命令，并正常到达PASS和exit。最后的工具报告记有256个test patterns。
