@@ -1,0 +1,56 @@
+{
+  "schema": "e135-source-core-and-measurement-local-review-v1",
+  "status": "PASS_LOCAL_CORE_AND_MEASUREMENT_SPEC_ONLY",
+  "reviewer": "/root/e96_materializer_review",
+  "reviewed_sha256": {
+    "src/data/physical_replay_source_reader_e135.py": "6d6f86341eca23d5b473f8e323a0440d50ea44d177032576f196b9b417690818",
+    "tests/test_physical_replay_source_reader_e135.py": "0e71ee0f3ffacac8d3cee74a3346b8acab4f4dba9ada6fafb878a0196bcb4310",
+    "contracts/physical_f_replay_measurement_spec_e135_v1.json": "4e2e1c213e54374f431f96807c4d31badad1a893746a35fb55d9653446a1e286",
+    "tests/test_physical_replay_measurement_spec_e135.py": "987f0cd691af4f5ade3d6461b40a3b0aaca39af9ee906fa9c75713dcbd172ace",
+    "experiment_overview/entries/E135_existing_F_pattern_replay_preparation.md": "f66463e4584bea238572defdabeef32e3bbb1879704b41b6940a5146e8be3daf",
+    "experiment_overview/CURRENT_STATUS.md": "c3b63e8fc587bcb8ef2fcb454d47957b79a34f51548d55a0a6e871694656c547",
+    "experiment_overview/NEXT_TASKS.md": "ae6489b275c9dca1e26b420c30b94aad1acf005885ebfa6a95837f39e7902bad"
+  },
+  "proposal_sha256": "0a9300f556d4b48cbebb7c83f4bac1ffa9c6875198e4a9b3ed2df21d67609767",
+  "independent_tests": {
+    "testsRun": 22,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.923
+  },
+  "parent_selected_regression": {
+    "testsRun": 242,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 5.353,
+    "scope": "21 selected related local modules; not whole repository"
+  },
+  "python36_ast": true,
+  "default_authority_denial_before_IO": true,
+  "AUTH_SHA": null,
+  "initial_call_ready": false,
+  "transport_controller_and_payload_implemented": false,
+  "host_clock_resource_guard_requires_future_wrapper": true,
+  "independent_baseline_method": "Separate TSV/regex parser over pinned full F_basic and mapping, not production _basic_classes",
+  "frozen_baseline_DI": {
+    "count": 3713,
+    "subclasses": {
+      "DI.CLK": 1062,
+      "DI.SCAN": 2120,
+      "DI.SEN": 531
+    },
+    "canonical_set_sha256": "bbbf25513062cb7b6a0eccb23e9dc017529b84ff0080368701829d0fbab8bd74",
+    "DS_count": 0,
+    "is_new_session_observation": false
+  },
+  "snapshot_stages": 3,
+  "new_A_connections": 0,
+  "new_Tessent_launches": 0,
+  "user_authorization_received": false,
+  "execution_ready": false,
+  "physical_HF_D95_verified": false,
+  "training_release": false,
+  "permission_blocker": "New E135 remote read and single fresh fault-simulation authority has not been received; automatic goal continuation is not that explicit grant"
+}

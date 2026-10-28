@@ -1,0 +1,81 @@
+{
+  "schema": "physical-f-replay-measurement-spec-e135-v1",
+  "scope": "Measurement requirements for the pending E135 single external-pattern F replay; not execution authority",
+  "proposal_sha256": "0a9300f556d4b48cbebb7c83f4bac1ffa9c6875198e4a9b3ed2df21d67609767",
+  "common_universe": {
+    "count": 71216,
+    "d95_integer_threshold": 67656,
+    "canonical_set_sha256": "faad8f3858b4af4384464fdc5e7f83bf4492faf3a3d2958141760e3e8d838978",
+    "mapping_sha256": "b81d0cd552645ef9ceae251a066e1483d098870c22a0e111ea0abbf4ed7867f8",
+    "F_basic_sha256": "70b549870374c4b31f342d5a6fbd10db5d5d8f5eb3844c3eb8d28d45767fb566"
+  },
+  "H_union_operand": {
+    "source": "E134 sealed H-proven canonical detection set, reconstructed from its pinned full sources",
+    "count": 18323,
+    "canonical_detected_set_sha256": "a844b4a8b500ea95a70e5487cb941be77990f60c69cef4fcd79a7beab86bbb00"
+  },
+  "baseline_before_any_external_pattern": {
+    "allowed_detected_class": "Frozen qualified DI only",
+    "allowed_detected_count": 3713,
+    "allowed_canonical_detected_set_sha256": "bbbf25513062cb7b6a0eccb23e9dc017529b84ff0080368701829d0fbab8bd74",
+    "DS_count_must_be_zero": true,
+    "new_or_foreign_DT_outside_allowed_set_is_rejected": true,
+    "basis": "Complete existing F_basic and canonical mapping recomputed locally; not an observed new pre-state"
+  },
+  "required_snapshot_stages": [
+    "Fresh complete baseline after fault-list setup, before read_patterns",
+    "After read_patterns but before simulate_patterns; detect unexpected preload or implicit simulation",
+    "After complete external fault simulation and before any fault-list/configuration change"
+  ],
+  "each_snapshot_requires": [
+    "Full native fault export",
+    "Full uncollapsed group report with representative and every EQ member",
+    "Detailed class statistics and complete canonical universe validation"
+  ],
+  "post_import_pre_simulation_policy": {
+    "no_imported_detected_labels_or_retained_internal_patterns": true,
+    "same_baseline_DI_only_set_required": true,
+    "unexpected_DS_or_new_DI_is_not_silently_accepted": true,
+    "if_documented_import_itself_simulates_patterns": "Stop this unreviewed recipe; do not relabel pre-state after the fact"
+  },
+  "pattern_identity_and_completion": {
+    "initial_full_hash_is_a_current_file_observation_not_a_historic_hash": true,
+    "current_file_regular_owned_stable_complete_hash_required": true,
+    "prior_export_command_does_not_alone_prove_file_content": true,
+    "same_design_scan_mode_constraints_and_STIL_dependencies_required": true,
+    "original_generated_test_pattern_count_reference": 256,
+    "F4_means_four_chain_mode_not_four_patterns": true,
+    "all_test_patterns_must_be_reconciled": true,
+    "setup_flush_and_test_sequence_counts_are_distinct": true,
+    "zero_skipped_truncated_or_unresolved_count_mismatch_rejected": true,
+    "no_random_new_or_ATPG_generated_patterns": true
+  },
+  "detection_credit": {
+    "accepted": "DS plus the frozen strict qualified-DI whitelist",
+    "PT_PD_credit": 0,
+    "all_EQ_as_detected_is_forbidden": true,
+    "only_same_state_detected_representative_groups_may_expand": true,
+    "H_or_old_F_status_merge_is_forbidden": true,
+    "F_new_D95_standalone_is_not_required": true,
+    "acceptance_union": "Canonical H-proven set union independently replay-justified F detected set, deduplicated",
+    "D95_requires_independent_actual_union_count_at_least": 67656
+  },
+  "outcome_boundaries": {
+    "no_fresh_simulation_observed_yet": true,
+    "below_threshold_only_limits_this_authenticated_replay": true,
+    "no_external_replay_coverage_drop_waiver": true,
+    "no_original_ATPG_runtime_or_speedup_claim": true,
+    "no_retroactive_original_pattern_byte_identity_without_evidence": true,
+    "no_old_candidate_cycles_or_full_action_acceptance_release": true,
+    "no_all_18_action_or_training_release": true
+  },
+  "within_existing_proposal_limits": {
+    "result_body_bytes_total_max": 16777216,
+    "result_response_bytes_max": 25165824,
+    "extra_snapshots_do_not_authorize_extra_connections_or_tool_launches": true,
+    "first_failure_stops_no_automatic_retry": true
+  },
+  "execution_ready": false,
+  "physical_HF_D95_verified": false,
+  "training_release": false
+}

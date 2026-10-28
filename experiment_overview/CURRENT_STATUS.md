@@ -2,6 +2,8 @@
 
 ## 下一实质路径已收敛：E135复用旧F向量做独立仿真，不重跑ATPG
 
+本地追加准备已完成限定独立复核：固定两文件读取核心默认拒绝I/O（AUTH_SHA=None），三份完整前后状态快照及3713个baseline DI集合已固定；主代理242项相关回归、独立22项测试通过。它不是实际reader/controller或仿真ready，没有新SSH、STIL读取或Tessent启动。下一服务器动作仍需要此前提出的E135整包明确授权，不能把自动目标续行当成新授权。
+
 从现有E128完整脚本和真实日志确认，旧F运行执行过write_patterns导出tester.stil；报告记有256个test patterns。文件当前存在性/完整SHA仍未核实，不能凭命令成功假称已取得向量。已补纯本地线索计划及整包草案：先固定文件和命令身份，随后在干净F4会话中仅仿真已有向量，不导入H状态、不调用create_patterns，再与E134的H集合取并集。
 
 E135尚待新整包明确授权：最多3个A连接、1次仿真、512MiB采样、首失败停止零重试，不用LSF/B/BLIND/训练、不改历史。本次只有本地准备，没有新远端访问。详见[E135准备](entries/E135_existing_F_pattern_replay_preparation.md)。下方E134最终结论保持不变。
