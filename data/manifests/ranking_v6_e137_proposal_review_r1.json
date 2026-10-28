@@ -1,0 +1,19 @@
+{
+  "schema": "physical-f-clean-replay-e137-proposal-review-v1",
+  "status": "PASS_PROPOSAL_CONSISTENCY_ONLY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "proposal": "contracts/physical_f_clean_replay_proposal_e137_v1.json",
+  "proposal_sha256": "f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9",
+  "initial_proposal_sha256": "22bab82d4a868d485f7f3ad2b11d47500e4e0ae767293e42747e8c3109fc59b1",
+  "findings_closed": [
+    {"severity": "P1", "finding": "Historical action attribution missing explicit vector provenance gate", "resolution": "Current fixed-SHA combination only; original HF:h1 attribution requires separate contemporaneous evidence"},
+    {"severity": "P2", "finding": "First-failure stop versus third-connection failure readback ambiguous", "resolution": "No new science after failure; only remaining bounded owned-root evidence recovery allowed within original connection/time budgets"},
+    {"severity": "P2", "finding": "Dependency scope could be interpreted as allowing scope-root search", "resolution": "Only three pinned files plus exact hashed tree members; unlisted dependencies terminate without search or expansion"}
+  ],
+  "runtime_closure_ready": false,
+  "user_authorization_received": false,
+  "first_A_connection_allowed": false,
+  "physical_d95_verified": false,
+  "training_released": false,
+  "note": "Parent transcription of actual independent review and focused rereview; no runtime or scientific PASS"
+}
