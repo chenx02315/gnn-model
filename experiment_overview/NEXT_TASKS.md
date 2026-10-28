@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+r2纯配方候选与25项本地联合测试已完成；下一依赖是独立复核data/manifests/ranking_v6_e135_recipe_r2_review_request.json及原版命令章节。复核不可用时不重复发起额度失败请求，也不运行旧E135或新候选，不把本地测试转称物理PASS。
+
 本地主代理已完成[命令语义初审](entries/E135_reference_semantics_local_review.md)：发现report_patterns默认内部集合，未来外部向量重放必须显式-external；reset_au_faults不能替代清除检测信用，simulate_patterns须有真实当前故障列表才执行故障仿真。已记录后续执行验收要求；未改冻结原型或启动工具，独立语义复核仍待完成。
 
 最新结果：r2唯一流式读取及独立捕获终审已成功，参考手册32.79MiB完整SHA核验通过，临时大小例外已结束。下一节点是现有本地手册的命令语义独立复核；复核代理额度不可用，尚无该项PASS。禁止重复读取、重开E135或把本次例外当成工具执行许可。E136帮助会话分支因手册已取回而暂缓，不运行。详见[E135 r2](entries/E135_reference_size_exception_r2.md)。

@@ -1,0 +1,33 @@
+{
+  "schema": "physical-f-replay-recipe-r2-review-request-v1",
+  "status": "LOCAL_TESTS_PASS_INDEPENDENT_REVIEW_PENDING",
+  "scope": "Pure local Tcl recipe construction only; no remote execution entry",
+  "source_sha256": "de1ede4dbdc1fe347f9cd868a5022d61da9b4230f6703882b2dfe3e04f5ed0c9",
+  "tests_sha256": "e88d9d9fdb692211adc28d9d9945095d0394215ae11c7ba93cd8f9ccd9f70430",
+  "source": "src/data/physical_f_replay_recipe_e135_r2.py",
+  "tests": "tests/test_physical_f_replay_recipe_e135_r2.py",
+  "parent_source": "src/data/physical_f_replay_execution_e135.py",
+  "reference_sha256": "26dab6d35d24ce518e8d2d2256f92276a5337348d789c551b248d47c51fd9ab0",
+  "validation": {
+    "new_tests": 7,
+    "combined_tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 0.877,
+    "python36_source_ast": true,
+    "parent_source_diff_empty": true
+  },
+  "review_required": [
+    "Read complete manual command sections; verify external pattern semantics",
+    "Verify fixed exact legacy anchors, isolated new paths and deterministic bytes",
+    "Verify both external reports and explicit no-store fault simulation",
+    "Verify baseline population checks remain before loading and simulation",
+    "Verify no caller command injection, worker entry, new I/O or old-module mutation",
+    "Do not mistake pure recipe tests for Tessent or physical D95 evidence"
+  ],
+  "reviewer_access": "read-only local repository and exact recovered PDF",
+  "independent_review_pass": false,
+  "remote_execution_authorized": false,
+  "e135_reopened": false,
+  "physical_d95_verified": false
+}
