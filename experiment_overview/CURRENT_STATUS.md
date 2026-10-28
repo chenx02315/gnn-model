@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新本地推进：E137默认禁用的运行适配器已通过独立限定审核；父目录换位P2经修复复查关闭。独立35项、主代理70项相关本地测试通过，旧模块/证据未改。尚缺新整包授权及完整controller/deployer/source loader/真实STIL验证器/固定结果导出和科学审计闭包；所有运行冻结值仍未设置，没有A连接、Tessent或训练。本轮实现PASS不是服务器运行ready，详见[E137记录](entries/E137_clean_F_replay_package.md)。
+
 E137本地追加：默认禁用的固定来源捕获核心已实现并独立审核通过（独立27项、主代理54项相关本地测试通过）。核心无网络/工具入口，AUTH_SHA=None；未取得新整包授权、实际controller/worker/exporter闭包尚未就绪，仍无新增A连接或Tessent。可按[E137完整方案](entries/E137_clean_F_replay_package.md)一次批准剩余整包，而非每个小步骤单独审批。
 
 最新推进：E137新整包提案已通过独立一致性审查（提案SHA f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9）。最多3个A连接/1次旧F向量仿真/3个Python自检，512MiB与8GiB采样阈值、3600秒、零重试；不新生成ATPG、不接B/BLIND/LSF/训练。历史向量身份不冒认，额外依赖停止，失败只允许原预算内固定证据回收。尚待整包明确授权，运行闭包尚未就绪；本地只读捕获核心正在实现，不因此允许首次A连接。详见[E137整包](entries/E137_clean_F_replay_package.md)。

@@ -1,0 +1,29 @@
+{
+  "schema": "physical-f-clean-replay-e137-runtime-focused-review-v1",
+  "status": "PASS_DEFAULT_DISABLED_RUNTIME_SLICE_ONLY",
+  "reviewer": "/root/e96_materializer_review",
+  "source_sha256": "25af7d90c1b3f3bd6e25de43578a34c81d407d17f2269ffb624b9f7959668951",
+  "tests_sha256": "4459b3ba0d3a0759b744eb4250878e279eb1a626e3d0a3888696a99b2504577b",
+  "initial_finding_record": "data/manifests/ranking_v6_e137_runtime_initial_review_r1.json",
+  "P2_parent_anchor_closed": true,
+  "closure_evidence": "Held parent full eight fields recorded before hash and stable after; fresh anchored parent path matches before; held descriptor checked again; all descriptors finally closed. Parent path replacement and held ctime drift reject; ordinary streamed hash positive case preserved.",
+  "independent_tests": {"runtime": 16, "capture": 10, "recipe": 9, "total": 35, "failures": 0, "errors": 0, "skipped": 0, "seconds": 0.086},
+  "parent_combined_tests": {"total": 70, "failures": 0, "errors": 0, "seconds": 1.067},
+  "source_pins_independently_rehashed": true,
+  "python36_ast_inert_import_private_namespace_tests": true,
+  "default_authority_spec_clock_engine_and_dependency_freezes_absent": true,
+  "real_dependency_validator_absent_and_required_before_runtime_io": true,
+  "remaining_scope": [
+    "Explicit new E137 whole-package user authorization",
+    "Actual controller/deployer and complete transitive verified source loader",
+    "Real STIL dependency validator, not a caller boolean",
+    "Actual first capture, new clock and engine/environment identity binding",
+    "Fixed artifact exporter and independent scientific audit",
+    "Precise complete packet independent review before first A connection"
+  ],
+  "runtime_packet_ready": false,
+  "new_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false,
+  "training_released": false
+}
