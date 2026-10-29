@@ -124,7 +124,7 @@ def check_spec(spec):
     for item in closure:
         require(type(item) is dict and set(item) == {'path','bytes','sha256','identity'} and
             legacy.launch_base._absolute(item['path']) and item['path'].startswith('/cad/mentor/tessent2021_2/') and
-            item['path'] not in paths and type(item['bytes']) is int and 0 < item['bytes'] <= 134217728 and
+            item['path'] not in paths and type(item['bytes']) is int and 0 < item['bytes'] <= 2147483648 and
             type(item['sha256']) is str and re.fullmatch('[0-9a-f]{64}',item['sha256']) is not None,'E137_FIXED_ENGINE_CLOSURE_RECORD')
         paths.add(item['path'])
         info = item['identity']
@@ -133,6 +133,7 @@ def check_spec(spec):
             stat.S_ISREG(info['st_mode']) and info['st_nlink'] == 1,
             'E137_ENGINE_INITIAL_IDENTITY')
     require(spec['launch']['argv'][0] in paths,'E137_LAUNCHER_IN_FROZEN_CLOSURE')
+    require(sum(item['bytes'] for item in closure) <= 4294967296,'E137_EXECUTION_CLOSURE_TOTAL_BYTES')
     modules = (legacy,recipe,capture,legacy.storage,process,io,direct)
     require(all(getattr(module,'__source_sha256__',None) == SOURCE_PINS[module.__name__.rsplit('.',1)[1]]
         for module in modules),'E137_VERIFIED_SOURCE_LOADER_REQUIRED')
@@ -172,7 +173,9 @@ def _closure_recheck(items,services,tick):
             require(capture.source.identity(named) == item['identity'] and stat.S_ISREG(named.st_mode) and
                 named.st_nlink == 1,'E137_ENGINE_BEFORE_IDENTITY')
             sink = os.open('/dev/null',os.O_WRONLY)
-            result = services._stream_io(tick)['_read_at'](fd,name,[0],sink,expected_bytes=item['bytes'],max_bytes=134217728)
+            stream = services._stream_io(tick)
+            stream['MAX_FILE'] = 2147483648  # Private helper namespace; streaming sink, not RAM body.
+            result = stream['_read_at'](fd,name,[0],sink,expected_bytes=item['bytes'],max_bytes=2147483648)
             require(result[2] == item['sha256'] and capture.source.identity(os.stat(name,dir_fd=fd,follow_symlinks=False)) ==
                 item['identity'],'E137_ENGINE_FRESH_HASH_IDENTITY')
             os.close(sink)

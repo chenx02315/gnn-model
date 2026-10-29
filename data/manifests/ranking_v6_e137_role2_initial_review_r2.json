@@ -1,0 +1,21 @@
+{
+  "schema": "e137-role2-initial-review-v2",
+  "status": "P1_SOURCE_BUNDLE_NAMESPACE_ISOLATION_OPEN",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "source_sha256": "627302f6f6b2548e56ee8a7ea2848e463fd905b9dec0485615adb00a2c95dca7",
+  "tests_sha256": "23c0ac557f77e10885b567a611f349f9e89e7230aa7a5b3cbdcb193c897a5f92",
+  "independent_tests": {"total": 10, "failures": 0, "errors": 0, "seconds": 0.164},
+  "finding": "inert_source_bundle saved but did not remove existing src.* children before loading. A forward dependency could bind an old module even though the fixed name was later overwritten.",
+  "required_fix": "Within try remove every saved src/src.* module before loading, fail missing forward dependencies, test old sentinel module with wrong order and restore original objects on exception.",
+  "other_limits": [
+    "External trusted manifest source is a caller responsibility",
+    "Initial capture/clock join is not transport authenticity or current boot proof",
+    "Frame reader persists prefix and complete frame but does not prove EOF after one frame",
+    "Tick cannot interrupt blocking read/write; supervised transport must enforce deadlines",
+    "Assembler must itself guarantee no sensitive environment leaks in redacted evidence"
+  ],
+  "actual_transport_ready": false,
+  "new_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false
+}

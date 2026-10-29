@@ -1,0 +1,32 @@
+{
+  "schema": "e137-local-protocol-components-review-v1",
+  "status": "PARTIAL_COMPONENTS_ONLY_NOT_EXECUTION_READY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "ack": {
+    "source_sha256": "5132a0f5a611d21507d3cc7df0173bb7fbb46ef3e9d4a69d6c77bc2e29ecabb6",
+    "tests_sha256": "87acbd12458d25302ed1e95618bba7404e06dfb572ff635bf5c082b9e147641b",
+    "independent_tests": 7,
+    "status": "PASS_PURE_BINDING_ONLY",
+    "limitations": "Does not authenticate reviewer identity, enforce cross-process single use, persist raw transport or enforce deadlines; externally trusted review SHA is a trust input. Equivalent noncanonical JSON may parse; raw-byte digest binding remains required."
+  },
+  "selector": {
+    "source_sha256": "efcf80e98b4a26051d057320e4dc75882929545fbd42be41be4336a2586d5d73",
+    "tests_sha256": "dc5ff5637d368de321ea736c0774a626ca36d2f129528e711bffb603b9dd074d",
+    "independent_tests": 14,
+    "status": "PASS_REDACTED_CONDITIONAL_SELECTOR_ONLY",
+    "historical_P2": "Earlier private plan contained raw LD_LIBRARY_PATH but was insufficiently labelled; fixed by SENSITIVE_RAM_ONLY and explicit fixed-field redaction. Integration must not serialize private plans or exception debug dumps."
+  },
+  "binder": {
+    "source_sha256": "9a1dd47e23d3ba54c2598d576a32444e6559e77a2fafe4a4ecf47e44482a675c",
+    "tests_sha256": "2c4792b4c61f0e93cff331ef7deabd73b793ab813a353c5979bec6e146a57a41",
+    "independent_tests": 5,
+    "status": "PASS_PURE_CANDIDATE_ONLY",
+    "limitations": "Caller metadata/time/boot are not automatically authentic. Source pins require trusted bootstrap; mutable public candidate must be rehashed at ACK; evidence verifier, LDD verifier and release remain absent."
+  },
+  "tests_are_synthetic": true,
+  "execution_ready": false,
+  "engine_identity_authenticated": false,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false
+}

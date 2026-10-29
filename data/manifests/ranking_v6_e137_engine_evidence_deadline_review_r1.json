@@ -1,0 +1,15 @@
+{
+  "schema": "e137-engine-evidence-deadline-review-v1",
+  "status": "PASS_DEFAULT_DISABLED_SAMPLER_AND_DEADLINE_ONLY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "initial_sampler_source_sha256": "754107f4f590c821446c4e096c0729e5c48ac60c4d3ee7c7d0c8d9fd74fbd2fb",
+  "source_sha256": "b1ed9394047575d4066459b091d2b7bcb542342711152530c1a22506db0f3df2",
+  "tests_sha256": "00ae5576c645bcdee46339c9e40ff1a885314ba7536fe402f0afdf42def915da",
+  "runtime_cap_source_sha256": "7a02a84f6a3e4ac5dc9d3fb6ff6ba648aba96911e0ffdfbb2e87c3f8bdfcfafd",
+  "runtime_tests_sha256": "b52c18ce04f7c3585870ac1f0ff3f7b3ade99d230a3ccdd71eeccbd1009c8293",
+  "reviewed": "Exact fixed candidates, nofollow stable anchors, streamed 64KiB hash, 2GiB/file and 4GiB aggregate, no unapproved role2 60s cap, original package/connection/UTC deadlines remain; default trust pins unset.",
+  "limits": "Synthetic large metadata is not real large-file performance; sampling all present candidates can consume time; final selected chain requires rehash after ACK; physical source and time trust remains external.",
+  "execution_ready": false,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0
+}

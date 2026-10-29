@@ -1,0 +1,15 @@
+{
+  "schema": "e137-clean-union-focused-review-v1",
+  "status": "PASS_NUMERIC_CANDIDATE_AND_CURRENT_INTERFACE_ONLY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "initial_review": "data/manifests/ranking_v6_e137_clean_union_initial_review_r1.json",
+  "source_sha256": "166a84f1da4b5ac87592936fea2ec64e976c887da0d786b296f25845d6212d85",
+  "tests_sha256": "cfe41fae119dc68cb04807bc19a6875dae747295b5e89641ea542893abae4ab7",
+  "closed": ["P1 journal artifact paths now match worker and controller", "P2 current exact four-key readback and ordered 35-row roster validated without trusting caller capture_complete boolean"],
+  "independent_tests": {"auditor": 18, "runtime": 17, "total": 35, "failures": 0, "errors": 0, "seconds": 0.100},
+  "verified_science_scope": "Pinned H provenance and baseline DI whitelist, 71216 common keys, three complete snapshot reconciliations, exclude unqualified DI, candidate union integer threshold",
+  "not_verified": ["final exporter protocol", "original clock and root ownership", "transport provenance", "256 external patterns actually applied", "post-simulation DS physical origins", "physical D95"],
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "training_released": false
+}

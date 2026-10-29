@@ -2,6 +2,8 @@ import ast
 import io
 from pathlib import Path
 import struct
+import base64
+import sys
 import unittest
 from unittest import mock
 from src.data import physical_e137_role2_protocol as m
@@ -63,3 +65,68 @@ class Tests(unittest.TestCase):
         with mock.patch('builtins.open') as opened:
             scope=dict(__package__='src.data');exec(compile(raw,'<inert-role2>','exec'),scope)
         opened.assert_not_called();self.assertIsNone(scope['INSTANCE_ASSEMBLER'])
+
+    def test_actual_fixed_bundle_hashes_inert_and_restore(self):
+        from scripts import run_physical_f_clean_replay_e137 as controller
+        repo=Path(__file__).resolve().parents[1]
+        order=controller.SOURCES+('physical_engine_ack_e137','physical_engine_selector_e137',
+            'physical_stil_dependencies_e137','physical_e137_role2_protocol')
+        rows=[]
+        for name in order:
+            raw=(repo/'src/data'/(name+'.py')).read_bytes()
+            rows.append(dict(name=name,sha256=m.sha(raw),body=base64.b64encode(raw).decode('ascii')))
+        manifest=m.sha(m.canonical([{k:r[k] for k in ('name','sha256')} for r in rows]))
+        original=sys.modules['src.data']
+        with self.assertRaisesRegex(ValueError,'ROLE2_TRUSTED_BUNDLE_REVIEW_REQUIRED'):
+            with m.inert_source_bundle(rows):pass
+        with mock.patch('builtins.open') as opened:
+            with m.inert_source_bundle(rows,manifest) as modules:
+                self.assertEqual(set(modules),m.BUNDLE_NAMES)
+                self.assertIsNone(modules['physical_f_replay_execution_e137'].AUTH_SHA)
+                self.assertEqual(modules['physical_engine_selector_e137'].__source_sha256__,m.SELECTOR_SHA256)
+        opened.assert_not_called();self.assertIs(sys.modules['src.data'],original)
+        bad=list(rows);bad[-1]=dict(rows[-1],body=base64.b64encode(b'changed').decode('ascii'))
+        with self.assertRaisesRegex(ValueError,'ROLE2_SOURCE_BYTES'):
+            with m.inert_source_bundle(bad,manifest):pass
+        self.assertIs(sys.modules['src.data'],original)
+
+    def test_first_call_requires_external_context_before_parsing_or_io(self):
+        with self.assertRaisesRegex(ValueError,'ROLE2_TRUSTED_FIRST_CALL_REVIEW_REQUIRED'):
+            m.verify_first_call({}, {})
+        context=dict(authorization_sha256='0'*64,proposal_sha256='1'*64,role1_stdout_sha256='2'*64,
+            clock_sha256='3'*64,role2_payload_sha256='4'*64,nonce='5'*64)
+        with self.assertRaisesRegex(ValueError,'ROLE2_EXACT_FIRST_CALL_CONTEXT'):
+            m.verify_first_call({},context,m.sha(m.canonical(context)))
+        context['authorization_sha256']='49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969'
+        from src.data import physical_replay_capture_e137 as capture
+        context['proposal_sha256']=capture.PROPOSAL_SHA
+        with self.assertRaisesRegex(ValueError,'ROLE2_FIRST_CALL_RAW_HASHES'):
+            m.verify_first_call(dict(role1_stdout=b'fake',package_clock=b'fake'),context,m.sha(m.canonical(context)))
+
+    def test_forward_import_cannot_resolve_old_cached_child_and_restores(self):
+        import types
+        names=frozenset(('old_dependency','forward_user'))
+        old=types.ModuleType('src.data.old_dependency');old.SENTINEL='OLD_CACHE'
+        previous=sys.modules.get('src.data.old_dependency')
+        sys.modules['src.data.old_dependency']=old
+        parent=sys.modules['src.data']
+        rows=[]
+        for name,raw in [('forward_user',b'from .old_dependency import SENTINEL\n'),
+                ('old_dependency',b'SENTINEL="NEW_PRIVATE"\n')]:
+            rows.append(dict(name=name,sha256=m.sha(raw),body=base64.b64encode(raw).decode('ascii')))
+        manifest=m.sha(m.canonical([{k:r[k] for k in ('name','sha256')} for r in rows]))
+        try:
+            with mock.patch.object(m,'BUNDLE_NAMES',names):
+                with self.assertRaises(ModuleNotFoundError):
+                    with m.inert_source_bundle(rows,manifest):self.fail('Forward import used cached source')
+                self.assertIs(sys.modules['src.data.old_dependency'],old)
+                self.assertIs(sys.modules['src.data'],parent)
+                ordered=list(reversed(rows))
+                digest=m.sha(m.canonical([{k:r[k] for k in ('name','sha256')} for r in ordered]))
+                with m.inert_source_bundle(ordered,digest) as modules:
+                    self.assertEqual(modules['forward_user'].SENTINEL,'NEW_PRIVATE')
+                    self.assertIsNot(sys.modules['src.data.old_dependency'],old)
+                self.assertIs(sys.modules['src.data.old_dependency'],old)
+        finally:
+            if previous is None:sys.modules.pop('src.data.old_dependency',None)
+            else:sys.modules['src.data.old_dependency']=previous

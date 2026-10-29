@@ -1,0 +1,22 @@
+{
+  "schema": "e137-clean-union-initial-independent-review-v1",
+  "status": "NUMERIC_LOGIC_REVIEWED_ENDPOINT_INTERFACES_NOT_CLOSED",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "source_sha256": "c2f8851497be16fbc7a03737cd8925f5eb02d09497c1746e1240679173f0b921",
+  "tests_sha256": "f154e378c3771172d9f81b05311c2ae2a7d26c795becb32233b4e3a0ce6d3cc3",
+  "independent_tests": {"total": 39, "failures": 0, "errors": 0, "seconds": 0.082},
+  "findings": [
+    {"severity": "P1", "issue": "Auditor expects stdout.log, observation.json and stdout_ack.json at ROOT but worker and exporter publish them under ROOT/journal; real capture would fail join"},
+    {"severity": "P2", "issue": "Auditor requires capture_complete but current exporter schema does not contain it; final completeness must derive from authenticated exact artifact roster and transport rather than caller boolean"}
+  ],
+  "confirmed_scientific_limits": [
+    "Actual N71216/offset1, H and baseline DI pinned sets verified",
+    "Three complete snapshot group/statistics reconciliation, no preload DS or extra DI",
+    "Post DI outside qualified baseline excluded; DS-origin uncertainty explicitly retained",
+    "Numeric candidate integer threshold and overall UNPROVEN remain separate",
+    "No synthetic or count text can certify external pattern application"
+  ],
+  "execution_ready": false,
+  "physical_D95_verified": false,
+  "Tessent_launches": 0
+}

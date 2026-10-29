@@ -1,0 +1,16 @@
+{
+  "schema": "e137-role2-loader-focused-review-v2",
+  "status": "PASS_SOURCE_NAMESPACE_ISOLATION_ONLY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "initial_finding": "data/manifests/ranking_v6_e137_role2_initial_review_r2.json",
+  "source_sha256": "ec4b89330c21336945bae572415a048e3197166943641784ec8c7cacaf95e887",
+  "tests_sha256": "7f08b0fea461ebec32de397c94013272515364d2c7d953fdcfd725bdf94897f8",
+  "P1_old_module_reference_closed": true,
+  "verification": "All saved src/src.* entries removed inside try before private source loading; wrong-order sentinel cannot resolve cached old dependency; original objects restored on success and exception; current real local 39-module order loaded in synthetic manifest test.",
+  "independent_tests": {"total": 11, "failures": 0, "errors": 0, "seconds": 0.160},
+  "limitations": "Synthetic manifest trust is not actual packet review; no bootstrap, engine authentication, supervised SSH, instance assembly or physical coverage proof.",
+  "execution_ready": false,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false
+}

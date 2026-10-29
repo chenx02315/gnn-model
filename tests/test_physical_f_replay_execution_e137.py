@@ -139,12 +139,13 @@ class PureTests(unittest.TestCase):
 
     def test_execution_closure_hash_uses_devnull_stream_not_resident_body(self):
         info = SimpleNamespace(st_dev=1,st_ino=2,st_mode=stat.S_IFREG|0o755,st_nlink=1,st_uid=0,
-            st_size=134217728,st_mtime_ns=1,st_ctime_ns=1)
+            st_size=134217729,st_mtime_ns=1,st_ctime_ns=1)
         item = dict(path='/cad/mentor/tessent2021_2/bin/SYNTHETIC_ENGINE',bytes=info.st_size,sha256='0'*64,
             identity=m.capture.source.identity(info))
         def reader(fd,name,budget,sink,**bounds):
             self.assertEqual(sink,2002)
-            self.assertEqual(bounds['expected_bytes'],134217728)
+            self.assertEqual(bounds['expected_bytes'],134217729)
+            self.assertEqual(bounds['max_bytes'],2147483648)
             return None,item['bytes'],item['sha256']
         read = mock.Mock(side_effect=reader)
         services = SimpleNamespace(_stream_io=mock.Mock(return_value={'_read_at':read}))
@@ -272,6 +273,22 @@ class SpecTests(unittest.TestCase):
             change(changed)
             with self.assertRaises(ValueError):
                 self.validate(changed)
+
+    def test_installed_engine_metadata_above128mib_accepted_but_2gib_4gib_bounded(self):
+        # Metadata-only test: no engine file or large allocation is read here.
+        spec=copy.deepcopy(self.spec)
+        spec['execution_closure'][0]['bytes']=134217729
+        spec['execution_closure'][0]['identity']['st_size']=134217729
+        self.assertEqual(self.validate(spec)['closure'][0]['bytes'],134217729)
+        spec['execution_closure'][0]['bytes']=2147483649
+        spec['execution_closure'][0]['identity']['st_size']=2147483649
+        with self.assertRaisesRegex(ValueError,'E137_FIXED_ENGINE_CLOSURE_RECORD'):self.validate(spec)
+        spec=copy.deepcopy(self.spec)
+        third=copy.deepcopy(spec['execution_closure'][1]);third['path']+='_third'
+        spec['execution_closure'].append(third)
+        for item in spec['execution_closure']:
+            item['bytes']=2147483648;item['identity']['st_size']=2147483648
+        with self.assertRaisesRegex(ValueError,'E137_EXECUTION_CLOSURE_TOTAL_BYTES'):self.validate(spec)
 
 
 class FlowTests(unittest.TestCase):
