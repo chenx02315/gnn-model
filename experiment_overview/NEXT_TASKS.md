@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+额度恢复后优先从bootstrap/export新文件的精确哈希和22项测试恢复，完成独立审核再接通真实双向SSH及实例/归属协议；恢复点ranking_v6_e137_bootstrap_export_quota_checkpoint_r1.json。不要重新读取已取回helper，也不要重复申请E137原授权；不将当前未审核局部代码发送服务器。
+
 已完成本地source namespace P1修复、engine采样期限修复及clean union审计接口修复/独立复核；不要重复这些。当前推进实际bootstrap、role2 ACK实例冻结、role3归属/时钟与固定导出、真实STIL应用证据及完整包独立复核。原E137授权有效，首次仿真连接仍未使用。
 
 E137安装脚本只读补充已经完成，不重复读取；角色2原型以ranking_v6_e137_role2_quota_checkpoint_r1.json保存，尚未完成/复核，等待原实现代理额度恢复后从这些真实文件继续。单次E137仿真授权仍有效；接通并独立审核全部真实运输、实例和来源绑定后才开始首次仿真连接，不再次申请同一授权。

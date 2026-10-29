@@ -1,0 +1,32 @@
+{
+  "schema": "e137-bootstrap-export-quota-checkpoint-v1",
+  "status": "NEW_LOCAL_IMPLEMENTATIONS_UNREVIEWED_USAGE_LIMIT",
+  "cause": "Both assigned builders stopped with account usage-limit errors before final independent review",
+  "bootstrap": {
+    "source": "src/data/physical_runtime_bootstrap_e137.py",
+    "source_sha256": "d59531d92a2f3cd7080497d7a77eb51c61e543aecbeeb6304d21aae6ef07990d",
+    "tests": "tests/test_physical_runtime_bootstrap_e137.py",
+    "tests_sha256": "2ce598987acf15068f9c16dc406d0d3b64fa06eb660447206f5f9c0d507a4b4e"
+  },
+  "role3": {
+    "source": "src/data/physical_e137_role3_export.py",
+    "source_sha256": "ac19d9847478ec76089c2c8a3bd3ff833b7d7f376892467b4cac7bbc9e5ca9da",
+    "tests": "tests/test_physical_e137_role3_export.py",
+    "tests_sha256": "9425336491029f2fa184b55078cf0047da8bf7a9e2e8ebc36ae59ae5fae297cf"
+  },
+  "parent_local_tests": {"total": 22, "failures": 0, "errors": 0, "seconds": 0.261},
+  "default_release_gates_unset": true,
+  "remaining": [
+    "Independent review of exact new bootstrap and exporter source",
+    "Actual role2 source-bound instance assembler and owned-root emitter/authenticator",
+    "New supervised duplex SSH transport with length-framed source bootstrap, live bounded pipe handling, original deadline and cleanup",
+    "Full pipeline and packet integration review before first E137 connection"
+  ],
+  "supplement_already_successfully_consumed": true,
+  "E137_authorization_still_valid": true,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "E137_clock_started": false,
+  "physical_D95_verified": false,
+  "training_released": false
+}
