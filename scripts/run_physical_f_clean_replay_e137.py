@@ -10,6 +10,7 @@ import math
 import os
 from pathlib import Path
 import platform
+import re
 import time
 
 from src.data import physical_replay_capture_e137 as capture
@@ -22,6 +23,7 @@ PROPOSAL = 'contracts/physical_f_clean_replay_proposal_e137_v1.json'
 PHASE = 'v6_e137_clean_F_replay_r1'
 RUNTIME_BINDER_SOURCE_SHA256 = DEPENDENCY_VALIDATOR_SHA256 = None
 ENGINE_PATH_ALLOWLIST = None
+OWNED_ROOT_EMITTER_SHA256 = None  # No reviewed role2 receipt emitter exists yet.
 ROLES = ('capture','execution','readback')
 REVIEW_KEYS = ('payload_sha256','controller_sha256','source_sha256','authorization_sha256','proposal_sha256','protocol_sha256')
 SOURCES = (
@@ -103,6 +105,9 @@ def prepare(role='capture'):
 
 
 def remaining(first):
+    require(type(first) is dict and set(first) == {'authorization_sha256','start','end','utc_start','utc_end','domain'} and
+        all(type(first[k]) in (int,float) and math.isfinite(first[k]) and first[k] >= 0 for k in ('start','end')) and
+        all(type(first[k]) is str for k in ('authorization_sha256','utc_start','utc_end')),'EXACT_ORIGINAL_CLOCK_FIELDS')
     require(first['authorization_sha256'] == AUTH_SHA and first['domain'] ==
         dict(host=platform.node(),clock=time.get_clock_info('monotonic').implementation),'ORIGINAL_LOCAL_CLOCK_DOMAIN')
     now = time.monotonic()
@@ -114,6 +119,77 @@ def remaining(first):
     seconds = min(first['end']-now,(end-utc).total_seconds())
     require(seconds > 10,'ORIGINAL_PACKAGE_EXPIRED')
     return seconds
+
+
+def validate_intent(value,role,payload_sha=None):
+    require(role in ROLES and type(value) is dict and set(value) == {'role','attempt_consumed','role_index',
+        'connections_max','automatic_retries','payload_sha256'} and value['role'] == role and
+        value['attempt_consumed'] is True and all(type(value[k]) is int for k in ('role_index','connections_max','automatic_retries')) and
+        value['role_index'] == ROLES.index(role)+1 and value['connections_max'] == 3 and value['automatic_retries'] == 0 and
+        type(value['payload_sha256']) is str and re.fullmatch('[0-9a-f]{64}',value['payload_sha256']) is not None and
+        (payload_sha is None or value['payload_sha256'] == payload_sha),'EXACT_ROLE_DEBIT_AND_PAYLOAD')
+    return value
+
+
+def validate_owned_root(receipt,clock_raw,role2_intent):
+    """No caller-owned bool is accepted as an ownership attestation."""
+    require(OWNED_ROOT_EMITTER_SHA256 is not None,'ROLE2_OWNED_ROOT_EMITTER_NOT_FROZEN')
+    require(type(clock_raw) is bytes and decode(clock_raw)['authorization_sha256'] == AUTH_SHA,'ROOT_PROOF_ORIGINAL_GRANT')
+    remaining(decode(clock_raw))
+    require(type(receipt) is dict and receipt.get('root') == ROOT and receipt.get('authorization_sha256') == AUTH_SHA and
+        receipt.get('clock_sha256') == sha(clock_raw) and receipt.get('payload_sha256') == role2_intent.get('payload_sha256') and
+        role2_intent.get('role') == 'execution' and role2_intent.get('attempt_consumed') is True,'ROOT_PROOF_EXACT_INSTANCE')
+    # A future emitter needs a reviewed authenticity contract, not a boolean.
+    raise ValueError('ROLE2_ROOT_ATTESTATION_PROTOCOL_UNIMPLEMENTED')
+
+
+def validate_cached_role(record,role,clock_raw,intent,stdout,stderr,transport):
+    """Authenticate cache joins; role-specific scientific validation stays separate."""
+    expected = dict(schema='e137-local-role-validation-v1',role=role,authorization_sha256=AUTH_SHA,
+        clock_sha256=sha(clock_raw),payload_sha256=intent.get('payload_sha256'),stdout_sha256=sha(stdout),
+        stderr_sha256=sha(stderr),transport_sha256=sha(canonical(transport)))
+    require(type(record) is dict and record == expected,'ROLE_VALIDATED_CONTENT_BINDING')
+    validate_intent(intent,role)
+    require(transport.get('stdout_sha256') == sha(stdout) and transport.get('stderr_sha256') == sha(stderr) and
+        type(transport.get('exit_code')) is int and transport['exit_code'] == 0 and all(transport.get(k) is False for k in
+        ('timeout','overflow','write_failed','threads_incomplete')),'ROLE_RAW_TRANSPORT_BINDING')
+    remaining(decode(clock_raw))
+    value = decode(stdout)
+    require(type(value) is dict and value.get('role') == role and value.get('execution_ready') is False,'ROLE_RAW_SCHEMA')
+    if role == 'capture':
+        import types
+        namespace = dict(vars(capture),AUTH_SHA=AUTH_SHA)
+        types.FunctionType(capture.validate_receipt.__code__,namespace)(canonical(value['capture']))
+    elif role == 'execution':
+        validate_owned_root(value.get('owned_root'),clock_raw,intent)
+    return value
+
+
+def open_output_parent(path,expected_root):
+    """Missing owned subdirectories are absent, but missing/replaced root is fatal."""
+    require(path in OUTPUTS,'FIXED_OUTPUT_ONLY')
+    root = execution.io._directory(ROOT)
+    child = None
+    try:
+        require(capture.source.identity(os.fstat(root)) == expected_root,'OWNED_EXPORT_ROOT_CHANGED')
+        parent = path.rsplit('/',1)[0]
+        try:
+            child = execution.io._directory(parent)
+        except FileNotFoundError:
+            pass
+        fresh = execution.io._directory(ROOT)
+        try:
+            require(capture.source.identity(os.fstat(fresh)) == expected_root == capture.source.identity(os.fstat(root)),
+                'OWNED_EXPORT_ROOT_CHANGED')
+        finally:
+            os.close(fresh)
+        return child
+    except BaseException:
+        if child is not None:
+            os.close(child)
+        raise
+    finally:
+        os.close(root)
 
 
 def execute(role,review_path,payload_sha):
@@ -158,6 +234,7 @@ class RoleLedger(object):
                 raise ValueError('FAILURE_EVIDENCE_ROOT_RECEIPT_AUTHENTICATOR_UNAVAILABLE')
             previous = ROLES[ROLES.index(role)-1]
             require((self.phase/previous/'validated.json').is_file(),'PREVIOUS_ROLE_NOT_VALIDATED')
+            self.validate_cached(previous)
             first = decode((self.phase/'start.json').read_bytes())
         remaining(first)
         directory = self.phase/role
@@ -165,6 +242,35 @@ class RoleLedger(object):
         control.write_new(directory/'intent.json',control.encode(dict(role=role,attempt_consumed=True,
             role_index=ROLES.index(role)+1,connections_max=3,automatic_retries=0,payload_sha256=payload_sha)))
         return directory
+
+    def validate_cached(self,role):
+        directory = self.phase/role
+        return validate_cached_role(decode((directory/'validated.json').read_bytes()),role,
+            (self.phase/'start.json').read_bytes(),decode((directory/'intent.json').read_bytes()),
+            (directory/'stdout.json').read_bytes(),(directory/'stderr.log').read_bytes(),
+            decode((directory/'transport.json').read_bytes()))
+
+    def capture_transport(self,role,helper,payload,cap,validator):
+        """Actual one-use transport primitive, not a release for execute()."""
+        require(role in ROLES and type(payload) is bytes and callable(validator),'ROLE_TRANSPORT_ARGUMENTS')
+        require(not (self.phase/'closed.json').exists(),'FIRST_FAILURE_CLOSED_PACKAGE')
+        directory = self.phase/role
+        require((directory/'intent.json').is_file(),'DEBIT_BEFORE_TRANSPORT')
+        validate_intent(decode((directory/'intent.json').read_bytes()),role,sha(payload))
+        from scripts import acceptance_transport_e98 as control
+        control.write_new(directory/'transport_consumed.json',control.encode(dict(attempt_consumed=True)))
+        first = decode((self.phase/'start.json').read_bytes())
+        helper.TIMEOUT = min(50,int(remaining(first)))
+        try:
+            observed = helper.transport(helper.command('A'),payload,cap)
+            self.save_raw(role,observed['stdout'],observed['stderr'],{k:v for k,v in observed.items() if k not in ('stdout','stderr')})
+            remaining(first)
+            require(type(observed['exit_code']) is int and observed['exit_code'] == 0 and all(observed[k] is False for k in
+                ('timeout','overflow','write_failed','threads_incomplete')),'ROLE_TRANSPORT_FAILED')
+            return validator(observed['stdout'])
+        except BaseException:
+            self.close_failure(role,'ROLE_FAILED_RAW_MAY_BE_PARTIAL_NO_RETRY')
+            raise
 
     def save_raw(self,role,stdout,stderr,transport):
         from scripts import acceptance_transport_e98 as control
@@ -190,6 +296,9 @@ def remote(spec,started):
     proposal = base64.b64decode(spec['proposal'],validate=True)
     _authority(authority,proposal)
     require(spec['role'] in ('capture','readback'),'NO_UNREVIEWED_EXECUTION_ROLE')
+    if spec['role'] == 'readback':
+        validate_owned_root(spec.get('owned_root'),
+            base64.b64decode(spec.get('clock_base64',''),validate=True),spec.get('role2_intent',{}))
     require(platform.node() == 'bupt-vncs2' and os.getuid() == 1047 and os.sys.platform.startswith('linux'),'FIXED_A')
     require(type(started) in (int,float) and math.isfinite(started) and started >= 0,'BOOTSTRAP_CLOCK')
     boot = execution.process._boot_id()
@@ -208,10 +317,14 @@ def remote(spec,started):
             remote_sample_monotonic=time.monotonic(),remote_utc_sample=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='microseconds'),
             execution_ready=False)
     rows,budget = [],[0]
+    # No readback IO until the original clock and actual role2 root attestation join.
     for path in OUTPUTS:
         tick()
         parent,name = path.rsplit('/',1)
-        fd = execution.io._directory(parent)
+        fd = open_output_parent(path,spec['owned_root']['identity'])
+        if fd is None:
+            rows.append(dict(path=path,missing=True,reason='FIXED_PARENT_ABSENT'))
+            continue
         try:
             parent_id = capture.source.identity(os.fstat(fd))
             try:

@@ -1,0 +1,17 @@
+{
+  "schema": "e137-role2-quota-checkpoint-v1",
+  "status": "LOCAL_PARTIAL_CODE_SAVED_INDEPENDENT_REVIEW_PENDING",
+  "cause": "Implementation agent terminated on account usage limit during role2 integration",
+  "supplement_capture": "data/manifests/ranking_v6_e137_engine_source_supplement_actual_r1.json",
+  "actual_user_authority": "contracts/physical_f_clean_replay_authorization_e137.json",
+  "known_files": ["scripts/run_e137_role2_interactive.py", "src/data/physical_e137_role2_protocol.py", "tests/test_run_e137_role2_interactive.py", "tests/test_physical_e137_role2_protocol.py", "src/data/physical_engine_ack_e137.py", "tests/test_physical_engine_ack_e137.py", "src/data/physical_engine_selector_e137.py", "tests/test_physical_engine_selector_e137.py"],
+  "parent_local_tests": {"total": 80, "failures": 0, "errors": 0, "seconds": 0.919},
+  "remaining": ["Independent review of exact role2 protocol and controller integration", "Actual source bundle loader and first-call verifier", "Actual instance assembler and independent review authentication", "Actual engine metadata/profile bootstrap and supervised same-SSH transport", "Fixed result exporter and scientific union audit"],
+  "important": "Role2 primitives are incomplete and disabled; local tests do not demonstrate actual transport, trusted reviewer authentication, complete source closure, engine identity or Tessent execution.",
+  "supplement_attempts_consumed": 1,
+  "E137_simulation_connections_consumed": 0,
+  "E137_clock_started": false,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false,
+  "training_released": false
+}
