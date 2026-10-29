@@ -1,0 +1,43 @@
+{
+  "schema": "physical-engine-source-discovery-supplement-e137-v1",
+  "status": "PENDING_DISTINCT_SOURCE_READ_AUTHORIZATION",
+  "user_authorization_received": false,
+  "purpose": "Read two exact vendor helper script candidates to establish actual engine selection logic; this is installation source discovery, not a Tessent simulation attempt",
+  "reason": "Existing pinned launcher points to helper names, but existing receipts and recovered reference do not contain their bodies or actual engine selection path. E137 simulation grant is already valid; this missing discovery stage was omitted from the earlier executable plan.",
+  "candidate_paths": [
+    "/cad/mentor/tessent2021_2/lib/scripts/tessent_functions",
+    "/cad/mentor/tessent2021_2/lib/scripts/tessent_shell"
+  ],
+  "candidate_existence_or_identity_not_yet_verified": true,
+  "scope_if_granted": {
+    "A_connections_max": 1,
+    "seconds_max": 60,
+    "files_max": 2,
+    "bytes_each_max": 2097152,
+    "body_bytes_total_max": 4194304,
+    "response_bytes_max": 6291456,
+    "stream_chunk_bytes_max": 65536,
+    "sampled_reader_rss_swap_bytes_max": 536870912,
+    "uid_required": 0,
+    "regular_single_link_stable_eight_field_identity": true,
+    "held_and_reopened_parent_anchor_verified": true,
+    "no_symlink_following_or_alternative_path_search": true,
+    "full_file_sha256_and_local_disk_rehash": true,
+    "body_export_only_private_local_staging_not_Git": true,
+    "independent_source_packet_review_before_connection": true,
+    "first_failure_stops": true,
+    "automatic_retries": 0,
+    "source_writes": 0,
+    "child_launches": 0,
+    "environment_reads": 0,
+    "Tessent_launches": 0,
+    "LSF_jobs": 0,
+    "B_access": false,
+    "BLIND_access": false,
+    "training": false
+  },
+  "E137_simulation_budget_consumed_by_this_supplement": false,
+  "after_read": "Analyze helper logic locally; any additional file needed remains unapproved. Resume E137 only after an actually viable fixed engine chain and complete code/packet independent review exist.",
+  "execution_ready": false,
+  "physical_D95_verified": false
+}

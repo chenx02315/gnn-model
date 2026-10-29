@@ -1,0 +1,40 @@
+{
+  "schema": "physical-f-clean-replay-e137-local-review-checkpoint-v2",
+  "status": "PARTIAL_IMPLEMENTATIONS_REVIEWED_ENGINE_DISCOVERY_NOT_AUTHORIZED",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "authorization_binding": {"status": "PASS_IMPLEMENTATION_ONLY", "independent_tests": 26, "seconds": 0.084, "actual_grant_sha256": "49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969"},
+  "controller": {
+    "source_sha256": "ea4b949f5ab240eb4294e8f218b9fee6c45e56abb55f3dbf70d6650076175246",
+    "tests_sha256": "4a5ffdc17c056f1ed51bc6448d66a85833108940f94eb8170a1c9c8dfdf463bc",
+    "status": "PASS_NONEXECUTABLE_PROTOTYPE_ONLY",
+    "independent_tests": 7,
+    "seconds": 0.376,
+    "open_integration_gaps": [
+      "Normal role validation currently trusts validated.json existence rather than authenticated content",
+      "Readback primitive not yet joined to original clock and role2 root ownership",
+      "Missing parent directories currently abort export rather than record fixed missing artifacts",
+      "Raw-before-validation primitive exists but actual complete transport orchestration is not implemented"
+    ]
+  },
+  "dependency_verifier": {
+    "source_sha256": "0ea8dcc1454306084d12a9f4ac439c6d19c8eed9e036aac85b0eac510caacc3d",
+    "tests_sha256": "7e86a96a9e4ce8c39927047c417121482e54a82241ea6e7b0775d5f0665695a1",
+    "status": "PASS_RESTRICTED_SYNTAX_IMPLEMENTATION_ONLY",
+    "independent_new_tests": 12,
+    "independent_combined_tests": 28,
+    "seconds": 0.215,
+    "actual_STIL_compatibility_verified": false,
+    "limitations": "Exact absolute Include only; relative paths, IfNeed, ambiguous escapes and unsupported extensions reject; no rewriting or search"
+  },
+  "parent_combined_tests": {"total": 89, "failures": 0, "errors": 0, "seconds": 1.599},
+  "engine_discovery_boundary": "Known-unstartable installation source discovery cannot be presented as an authorized complete simulation attempt; vendor helper body export requires distinct explicit permission",
+  "supplement_proposal": "contracts/physical_engine_source_discovery_supplement_e137_v1.json",
+  "supplement_authorized": false,
+  "E137_already_authorized": true,
+  "new_A_connections": 0,
+  "Tessent_launches": 0,
+  "package_clock_started": false,
+  "execution_ready": false,
+  "physical_D95_verified": false,
+  "training_released": false
+}
