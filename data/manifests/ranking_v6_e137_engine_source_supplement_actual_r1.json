@@ -1,0 +1,28 @@
+{
+  "schema": "engine-source-discovery-e137-actual-audit-v1",
+  "status": "PASS_TWO_FILE_CAPTURE_ONLY",
+  "authorization_sha256": "af9efa1b960e06f60f35258b4a42a236644f617fe02fc9e806ae305a2c92755d",
+  "reviewer": "/root/e96_materializer_review",
+  "phase": "../runtime_training_staging_20260928/v6_e137_engine_source_supplement_r1",
+  "files": [
+    {"name": "tessent_functions", "bytes": 12306, "sha256": "00dd479b93c31ddee02231887f417e4636dd7abbe765965eba1779da1df5181f"},
+    {"name": "tessent_shell", "bytes": 49725, "sha256": "75933bcaa3831bf3635bb305d3e721f011ba9abf4c226045aa6d1d1863e4ca6d"}
+  ],
+  "stdout_bytes": 83583,
+  "stdout_sha256": "61c6ff8d8c2d2712c51e88ef7382b97c33fbb52d1ebd75441570067eab9a18a7",
+  "transport_exit_code": 0,
+  "transport_error_flags": false,
+  "stderr_empty": true,
+  "independent_disk_and_raw_hash_verified": true,
+  "eight_field_identities_match_raw": true,
+  "supplement_attempts_consumed": 1,
+  "supplement_retries": 0,
+  "remote_termination_verified": false,
+  "remote_measured_peak_and_duration_available": false,
+  "E137_simulation_budget_changed": false,
+  "E137_simulation_clock_started": false,
+  "Tessent_launches": 0,
+  "execution_ready": false,
+  "physical_D95_verified": false,
+  "training_released": false
+}

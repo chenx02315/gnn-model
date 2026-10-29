@@ -1,0 +1,25 @@
+{
+  "schema": "e137-engine-source-semantic-review-v1",
+  "status": "CONDITIONAL_ENGINE_CANDIDATES_ONLY_NOT_RUNTIME_AUTHENTICATION",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "functions_sha256": "00dd479b93c31ddee02231887f417e4636dd7abbe765965eba1779da1df5181f",
+  "shell_sha256": "75933bcaa3831bf3635bb305d3e721f011ba9abf4c226045aa6d1d1863e4ca6d",
+  "conditional_assumptions": ["Linux x86_64", "fixed installation root", "whoami tessent_shell", "reviewed argument and environment constraints"],
+  "conditional_engine_candidates": [
+    "/cad/mentor/tessent2021_2/lnx-x86/bin64/tessent_shell.exe",
+    "/cad/mentor/tessent2021_2/lnx-x86/bin32/tessent_shell.exe"
+  ],
+  "candidate_existence_or_selected_identity_observed": false,
+  "important_branches": [
+    "TESSENT_PATH order and width fallback affect selection",
+    "MGC_DFT_EXTRA_ARG can inject argument handling and must be controlled",
+    "Debug options may cause prologue execution and must be rejected",
+    "mgls_asynch lookup can affect home, width and library paths",
+    "Tcl width selection precedes final engine selection",
+    "Launcher may rewrite LD_LIBRARY_PATH and insert cwd into PATH"
+  ],
+  "full_OS_dynamic_library_closure_authenticated": false,
+  "actual_engine_or_environment_authenticated": false,
+  "execution_ready": false,
+  "Tessent_launched": false
+}

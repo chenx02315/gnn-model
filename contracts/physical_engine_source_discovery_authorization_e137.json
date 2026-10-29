@@ -1,0 +1,39 @@
+{
+  "schema": "physical-engine-source-discovery-authorization-e137-v1",
+  "approval_source": "explicit_user_reply",
+  "user_authorization_received": true,
+  "user_reply": "\u5141\u8bb8\u8865\u5145\u8bfb\u53d6",
+  "proposal_sha256": "48ee68232e37b39844221166e567118ee4e0f5c68da7d9abbc086bbf072c7f2b",
+  "candidate_paths": [
+    "/cad/mentor/tessent2021_2/lib/scripts/tessent_functions",
+    "/cad/mentor/tessent2021_2/lib/scripts/tessent_shell"
+  ],
+  "approved_scope": {
+    "A_connections_max": 1,
+    "seconds_max": 60,
+    "files_max": 2,
+    "bytes_each_max": 2097152,
+    "body_bytes_total_max": 4194304,
+    "response_bytes_max": 6291456,
+    "stream_chunk_bytes_max": 65536,
+    "sampled_reader_rss_swap_bytes_max": 536870912,
+    "uid_required": 0,
+    "regular_single_link_stable_eight_field_identity": true,
+    "held_and_reopened_parent_anchor_verified": true,
+    "no_symlink_following_or_alternative_path_search": true,
+    "full_file_sha256_and_local_disk_rehash": true,
+    "body_export_only_private_local_staging_not_Git": true,
+    "independent_source_packet_review_before_connection": true,
+    "first_failure_stops": true,
+    "automatic_retries": 0,
+    "source_writes": 0,
+    "child_launches": 0,
+    "environment_reads": 0,
+    "Tessent_launches": 0,
+    "LSF_jobs": 0,
+    "B_access": false,
+    "BLIND_access": false,
+    "training": false
+  },
+  "E137_simulation_budget_consumed": false
+}
