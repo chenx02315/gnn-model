@@ -1,0 +1,45 @@
+{
+  "schema": "physical-f-clean-replay-e137-authorization-resume-checkpoint-v1",
+  "status": "AUTHORIZED_LOCAL_PREPARATION_INCOMPLETE_AGENT_USAGE_LIMIT",
+  "actual_user_reply": "\u90a3\u5c31\u6279\u51c6",
+  "authorization_sha256": "49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969",
+  "proposal_sha256": "f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9",
+  "completed": [
+    "Actual direct user reply preserved with explicit approved_package E137",
+    "Capture authorization check and runtime dependency pin adapted to actual reply; runtime release constants remain None",
+    "Parent repaired one stale synthetic authorization fixture without weakening authority check",
+    "Parent reran 70 related local tests: zero failures and errors, 1.392 seconds"
+  ],
+  "account_failure": "Both assigned implementation agents terminated with account usage-limit errors; no replacement-model quota workaround attempted",
+  "files_not_present_on_revalidation": [
+    "scripts/run_physical_f_clean_replay_e137.py",
+    "tests/test_run_physical_f_clean_replay_e137.py",
+    "src/data/physical_stil_dependencies_e137.py",
+    "tests/test_physical_stil_dependencies_e137.py"
+  ],
+  "arbitration": {
+    "reviewer": "/root/reference_semantic_review_r2",
+    "decision": "Existing E137 role2 can implement pre-reviewed exact-path engine evidence capture, private environment bootstrap and same-connection evidence ACK before exact runtime instance freeze; no new user authorization required",
+    "conditions": [
+      "Freeze full code and exact engine path allowlist before first A connection; no cad scan or runtime path expansion",
+      "Role1 remains exact three source files and single TSDB metadata only",
+      "Role2 environment bootstrap at most once, supervised 30 seconds and 64KiB, separately counted, raw values stay A RAM",
+      "Return redacted fresh evidence and instance digest; ACK binds only nonce, instance digest, original clock and role, not code or new paths",
+      "Revalidate exact identities and hashes before three selfchecks and at most one Tessent",
+      "All waiting and review remain inside original connection and package deadlines",
+      "Unknown engine branch or unlisted path stops; do not claim full operating-system dynamic-library authentication"
+    ]
+  },
+  "remaining": [
+    "Resolve pre-review exact installed vendor engine selection chain from already permitted evidence; do not invent current hashes",
+    "Implement real bounded STIL dependency verifier and complete role controller/source loader/fixed exporter",
+    "Independent source and exact packet review, including changes since last qualified implementation review",
+    "Then automatically execute approved package only if every prerequisite passes"
+  ],
+  "new_A_connections": 0,
+  "Tessent_launches": 0,
+  "package_clock_started": false,
+  "execution_ready": false,
+  "physical_D95_verified": false,
+  "training_released": false
+}

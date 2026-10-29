@@ -208,7 +208,7 @@ class SpecTests(unittest.TestCase):
     def setUp(self):
         proposal = (REPO/'contracts/physical_f_clean_replay_proposal_e137_v1.json').read_bytes()
         auth = m.canonical(dict(schema='physical-f-clean-replay-authorization-e137-v1',approval_source='explicit_user_reply',
-            user_reply='\u6279\u51c6 E137 \u6574\u5305',user_authorization_received=True,
+            user_reply='\u90a3\u5c31\u6279\u51c6',approved_package='E137',user_authorization_received=True,
             proposal_sha256=m.capture.PROPOSAL_SHA,approved_scope=m.decode(proposal)['scope_if_granted']))
         self.authority_sha = m.sha(auth)
         prior = m.decode((REPO.parent/'runtime_training_staging_20260928/v6_e128_failure_readback_20261027_r1/stdout.json').read_bytes())

@@ -156,7 +156,7 @@ class PinTests(unittest.TestCase):
         proposal = (repo/'contracts/physical_f_clean_replay_proposal_e137_v1.json').read_bytes()
         self.assertEqual(m.sha(proposal),m.PROPOSAL_SHA)
         auth = dict(schema='physical-f-clean-replay-authorization-e137-v1',approval_source='explicit_user_reply',
-            user_reply='\u6279\u51c6 E137 \u6574\u5305',user_authorization_received=True,
+            user_reply='\u90a3\u5c31\u6279\u51c6',approved_package='E137',user_authorization_received=True,
             proposal_sha256=m.PROPOSAL_SHA,approved_scope=m.decode(proposal)['scope_if_granted'])
         raw = m.canonical(auth)
         self.assertIsNone(m.AUTH_SHA)
@@ -166,11 +166,17 @@ class PinTests(unittest.TestCase):
                 m.check_authority(raw+b' ',proposal)
             with self.assertRaises(ValueError):
                 m.check_authority(raw,proposal+b' ')
-        for key,bad in [('user_reply','old grant'),('schema','old'),('approved_scope',{}),('user_authorization_received',False)]:
+        for key,bad in [('user_reply','\u6279\u51c6 E137 \u6574\u5305'),('approved_package','E135'),('schema','old'),('approved_scope',{}),('user_authorization_received',False)]:
             raw = m.canonical(dict(auth,**{key:bad}))
             with mock.patch.object(m,'AUTH_SHA',m.sha(raw)):
                 with self.assertRaises(ValueError):
                     m.check_authority(raw,proposal)
+        actual = (repo/'contracts/physical_f_clean_replay_authorization_e137.json').read_bytes()
+        self.assertEqual(m.sha(actual),'49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969')
+        self.assertEqual(m.decode(actual)['user_reply'],'\u90a3\u5c31\u6279\u51c6')
+        self.assertNotIn('\ufffd',m.decode(actual)['user_reply'])
+        with mock.patch.object(m,'AUTH_SHA',m.sha(actual)):
+            m.check_authority(actual,proposal)
 
     def test_inert_ast36_dependency_pins_and_inherited_bounds(self):
         repo = Path(__file__).resolve().parents[1]

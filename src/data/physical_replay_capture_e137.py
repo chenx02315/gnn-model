@@ -30,7 +30,8 @@ def check_authority(authority,proposal):
     require(auth.get('schema') == 'physical-f-clean-replay-authorization-e137-v1' and
         plan.get('schema') == 'physical-f-clean-replay-proposal-e137-v1' and
         auth.get('approval_source') == 'explicit_user_reply' and auth.get('user_authorization_received') is True and
-        auth.get('user_reply') == '\u6279\u51c6 E137 \u6574\u5305' and auth.get('proposal_sha256') == PROPOSAL_SHA and
+        auth.get('user_reply') == '\u90a3\u5c31\u6279\u51c6' and auth.get('approved_package') == 'E137' and
+        auth.get('proposal_sha256') == PROPOSAL_SHA and
         type(auth.get('approved_scope')) is dict and
         canonical(auth['approved_scope']) == canonical(plan.get('scope_if_granted')),'EXACT_E137_WHOLE_PACKAGE_SCOPE')
     scope,fixed = auth['approved_scope'],plan['fixed_source_scope']

@@ -1,5 +1,9 @@
 # 当前实验状态
 
+最新核验：E137已授权，无需重复批准；两名实现代理因账户额度中断。实际落盘只有授权文本适配，三角色controller和真实STIL验证器文件尚不存在，不能声称已实现。主代理修正陈旧的合成授权样例后70项相关测试通过（1.392秒），修改待新独立复核。0个A连接、0次Tessent，整包时钟未启动。恢复点：data/manifests/ranking_v6_e137_authorization_resume_checkpoint_r1.json；额度恢复后按记录继续，不再误报缺授权或尝试旧E135。
+
+最新用户决定：已在直接回应E137整包说明时回复“那就批准”。实际授权记录contracts/physical_f_clean_replay_authorization_e137.json，SHA49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969，绑定原提案f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9。批准范围不扩大；旧PENDING提案保留为历史快照，不能再把它当成当前未授权。正在接通真实依赖验证器、三角色controller和精确包审核；无A调用，新3600秒时钟尚未开始。当前发现旧回执仅保存环境摘要而未导出实际值，正在核对既有受控bootstrap与工具源闭包，不编造环境/引擎身份，不因授权跳过审核。
+
 最新本地推进：E137默认禁用的运行适配器已通过独立限定审核；父目录换位P2经修复复查关闭。独立35项、主代理70项相关本地测试通过，旧模块/证据未改。尚缺新整包授权及完整controller/deployer/source loader/真实STIL验证器/固定结果导出和科学审计闭包；所有运行冻结值仍未设置，没有A连接、Tessent或训练。本轮实现PASS不是服务器运行ready，详见[E137记录](entries/E137_clean_F_replay_package.md)。
 
 E137本地追加：默认禁用的固定来源捕获核心已实现并独立审核通过（独立27项、主代理54项相关本地测试通过）。核心无网络/工具入口，AUTH_SHA=None；未取得新整包授权、实际controller/worker/exporter闭包尚未就绪，仍无新增A连接或Tessent。可按[E137完整方案](entries/E137_clean_F_replay_package.md)一次批准剩余整包，而非每个小步骤单独审批。
