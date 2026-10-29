@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+Bootstrap/export局部独立审核已通过（22mocktests），无需重复审核相同字节。下一项实际实现为scripts/e137_duplex_transport.py及测试：固定长度源码bootstrap保留stdin、stdout/stderr并发排空、有界帧/ACK、原始deadline及清理；当前由原builder恢复实现，不启动真实SSH。然后整合role2实例与导出时刻root归属证明，完整packet独立审核后才用原授权执行。
+
 额度恢复后优先从bootstrap/export新文件的精确哈希和22项测试恢复，完成独立审核再接通真实双向SSH及实例/归属协议；恢复点ranking_v6_e137_bootstrap_export_quota_checkpoint_r1.json。不要重新读取已取回helper，也不要重复申请E137原授权；不将当前未审核局部代码发送服务器。
 
 已完成本地source namespace P1修复、engine采样期限修复及clean union审计接口修复/独立复核；不要重复这些。当前推进实际bootstrap、role2 ACK实例冻结、role3归属/时钟与固定导出、真实STIL应用证据及完整包独立复核。原E137授权有效，首次仿真连接仍未使用。
