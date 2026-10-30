@@ -1,0 +1,42 @@
+{
+  "schema": "e137-terminal-role2-failure-audit-v1",
+  "status": "STOPPED_FIRST_FAILURE_NO_RETRY",
+  "reviewer": "reference_semantic_review_r2",
+  "capture": {
+    "exit_code": 0,
+    "stdout_bytes": 14782,
+    "stdout_sha256": "311923f18c518ec4aa8c62cbff0ca54db4bf9d12530259beb00cfb2f31c5678f"
+  },
+  "execution": {
+    "payload_sha256": "b4ea6e421d2cfdcbec50a2ebc1253e65893837de98b70fc31047538bd503c488",
+    "exit_code": 0,
+    "stdout_bytes": 220,
+    "stdout_sha256": "60788c843237ae8c93d5b80d7433019e36dfb29fec642f6fae87bcd748a45df8",
+    "stderr_bytes": 0,
+    "timeout": false,
+    "overflow": false,
+    "write_failed": false,
+    "threads_incomplete": false,
+    "error_type": "ValueError",
+    "launch_debit": 0,
+    "owned_root": null,
+    "instance_sha256": null,
+    "remote_termination_verified": false
+  },
+  "observed_e137_connections": 2,
+  "tessent_observer_reached": false,
+  "role3_allowed": false,
+  "retry_allowed": false,
+  "cause": "UNRESOLVED_STAGE_AND_ERROR_CODE_NOT_EXPORTED",
+  "independent_findings": [
+    "Pure admission returned; outer handler caught pre-tool/deployment-path failure",
+    "No Tessent observer call on frozen failure path",
+    "Null instance hash does not prove no private RAM instance or no side effects",
+    "Bootstrap child/engine read/initial sidecar may have been attempted; exact reached stage unknown",
+    "No owned-clean receipt; leftover connection is not diagnostic authority",
+    "No execution validated/source-policy/owned-root receipt and no readback directory"
+  ],
+  "physical_d95_verified": false,
+  "training_release": false,
+  "next": "Preserve E137; design new version with bounded stage and whitelisted failure-code diagnostics, test locally and independently review; any new A attempt requires new explicit package authorization"
+}
