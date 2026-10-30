@@ -1,0 +1,24 @@
+{
+  "schema": "e137-library-policy-arbitration-v1",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "status": "ORIGINAL_CONTRACT_PERMITS_UNCHANGED_PINNED_VENDOR_STARTUP_POLICY",
+  "proposal_sha256": "f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9",
+  "functions_sha256": "00dd479b93c31ddee02231887f417e4636dd7abbe765965eba1779da1df5181f",
+  "decision": "Separate prelaunch ldd probe, mandatory LDD_VERIFIER callback and full OS-library authentication are not original E137 requirements. Replace the self-imposed gate with an independently reviewed deterministic startup policy, not a synthetic PASS.",
+  "source_fact": "Pinned helper may prepend a width-specific vendor library path or replace LD_LIBRARY_PATH by that directory. Persistent LDD diagnostic prints an error but does not itself stop engine invocation.",
+  "policy": [
+    "Exact pinned source chain and observed finite selected-engine metadata, fixed root/platform/arguments and controlled initial profile",
+    "Reject injection, debug, prologue and unknown paths or behavior",
+    "Permit only source-derived vendor-width prefix or single-vendor-directory replacement",
+    "Invoke unchanged vendor launcher at most once under original resource/process supervision; no extra exploratory LDD or tool probe",
+    "Preserve and reject startup errors, unresolved warnings or observation loss as terminal scientific failure; no retry",
+    "Do not promise zero engine invocation after a vendor diagnostic or claim final environment observed without evidence"
+  ],
+  "final_environment_observed": false,
+  "ldd_behavior_verified": false,
+  "full_OS_library_authentication": false,
+  "execution_ready": false,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false
+}

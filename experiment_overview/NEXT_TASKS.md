@@ -1,5 +1,9 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新（2026-10-30）：按ranking_v6_e137_capture_packet_request_r1.json完成完整包与精确capture载荷独立审核；审核通过后才消耗原E137第1连接。随后以原时钟保存capture原始结果，构造并独立审核动态role2精确包，再至多一次干净F仿真及有合格归属/清理证明的固定role3取证、逐故障科学审计。现有授权有效；不重读补充、不启动optional duplex、不将196项本地测试算作物理结果。
+
+优先完成实际批量role2确定性准入/私有实例组装与root归属/role3整合。不要继续把可选外部ACK、duplex作为原合同强制前提；独立架构复审已确认无需新用户授权即可简化。运行实例SHA只证明一致性，不替代授权或独立科学结果审核。完整包未审核前仍不访问A。
+
 Bootstrap/export局部独立审核已通过（22mocktests），无需重复审核相同字节。下一项实际实现为scripts/e137_duplex_transport.py及测试：固定长度源码bootstrap保留stdin、stdout/stderr并发排空、有界帧/ACK、原始deadline及清理；当前由原builder恢复实现，不启动真实SSH。然后整合role2实例与导出时刻root归属证明，完整packet独立审核后才用原授权执行。
 
 额度恢复后优先从bootstrap/export新文件的精确哈希和22项测试恢复，完成独立审核再接通真实双向SSH及实例/归属协议；恢复点ranking_v6_e137_bootstrap_export_quota_checkpoint_r1.json。不要重新读取已取回helper，也不要重复申请E137原授权；不将当前未审核局部代码发送服务器。

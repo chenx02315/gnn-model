@@ -1,0 +1,90 @@
+{
+  "schema": "e137-exact-capture-packet-review-v1",
+  "status": "PASS",
+  "reviewer": "reference_semantic_review_r2",
+  "scope": "Reviewed whole-package implementation and exact role1 capture only; dynamic role2 and role3 require fresh exact review",
+  "reviewed": {
+    "authorization_sha256": "49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969",
+    "controller_sha256": "abdfa293c5e1f2ace5baf691d1378f3253f2e137f9ade23ea4892633da896466",
+    "input_sha256": {
+      "authority": "49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969",
+      "proposal": "f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9"
+    },
+    "invocation_sha256": "c15150be2a18062cb764207d10a7fceeea45c824b6a914005eef3ffbaeca626e",
+    "package_source_sha256": {
+      "scripts/run_e137_role3_readback.py": "89a689853fecad80c8a5597c9d5eedee18e1ef78d3a3c5f7a8106013f96c75be",
+      "src/data/physical_e137_role3_binding.py": "61e0e6fec774acf767cfd25bf91c6a79646e280703ffbde6439c9efbea1e7d04",
+      "src/data/physical_e137_role3_export.py": "ac19d9847478ec76089c2c8a3bd3ff833b7d7f376892467b4cac7bbc9e5ca9da"
+    },
+    "payload_sha256": "e1eb974f7d1275a874a1e1fbaa5fc166dabb3be95554e4c2711450ba54326cd5",
+    "policy_sha256": "97ffb47f27428e9061f841b1f57c44077a4e5a886a2eb409dc5488bb4e5cc492",
+    "proposal_sha256": "f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9",
+    "protocol_sha256": "4fa70f94fffe49e25da8f2600826ad5510523c8f2d282f409ebb4124f558d3d8",
+    "source_sha256": {
+      "direct_diagnostic_policy_e102": "67dbbd601cdcd667c06bc8b0c238016da2c6689a9549f0601b5f6a0fc7010ff0",
+      "direct_low_memory_recipe_e104": "66843a6ae2a2660c85044835bda387221c779507b69fa4a5499de8149bd3ebbd",
+      "direct_memory_sample_e101": "8a4e81fb3ef50cb3ad7fcd720d7f205ba7df6228b2af34dd87c0986968a22009",
+      "direct_memory_sample_e103": "17e4522849a386a268f7135f870e8d49bb190c032b819cf69f037fd27ee13cbb",
+      "direct_observation_journal_e102": "e53e1d3b32f237519adf52b8d1005f7c592b428150e8b8e91bbe46878437c027",
+      "direct_runtime_compatibility_e102": "2ec8387acec97e38604141ea5e108149dbc310823c23684da1d7fb194f8d71c1",
+      "direct_scratch_monitor_e102": "8ef6652bcf18867f3a5db44aad103f3734ff7b886a3d04912274c5ed150b4174",
+      "direct_tessent_acceptance_e100": "92f9915bc431483ba73cc38829356ca315a16ae39713b021b2025d0ce744fb58",
+      "direct_tessent_acceptance_e104": "6b7961e8238b2676a9c90a69a1c554be7238daa789de2e41a1e820044e17b190",
+      "eq_group_coverage_e133_r2": "879b0d244e4d649c4a6be5a673bb1b566000cce69194d555634ad3d8037fc37e",
+      "physical_e137_batch_execution": "3cfd702439c439c54aa654e4c8f064c33ec2d274e77329f93701e6eb53972ed9",
+      "physical_e137_root_receipt": "f71bacfe5ab935dc2e02f6890a8c994ce625759b8dd7ff2c1a89e68b64bf815c",
+      "physical_engine_evidence_e137": "b1ed9394047575d4066459b091d2b7bcb542342711152530c1a22506db0f3df2",
+      "physical_engine_selector_e137": "efcf80e98b4a26051d057320e4dc75882929545fbd42be41be4336a2586d5d73",
+      "physical_f_replay_execution_e135": "83fa927774b59d43ad838d09333f6ad787edfed27cd52043f9fcda4dc4b9f85f",
+      "physical_f_replay_execution_e137": "7a02a84f6a3e4ac5dc9d3fb6ff6ba648aba96911e0ffdfbb2e87c3f8bdfcfafd",
+      "physical_f_replay_recipe_e135_r2": "63ab7aba869d9d755488cb8aaa4e5629b595d9e1672b1db35458e565771a62d2",
+      "physical_replay_capture_e137": "5d911a9df834b1e155f1bd200261ffb078be98bd0420b31b39d71140ef500e76",
+      "physical_replay_source_inventory_e135": "9467ee407dec9fd9bccad3ffdc517a508789c38b404fe9ac7d9d499fbd1be48d",
+      "physical_replay_source_reader_e135": "6d6f86341eca23d5b473f8e323a0440d50ea44d177032576f196b9b417690818",
+      "physical_runtime_bootstrap_e137": "d59531d92a2f3cd7080497d7a77eb51c61e543aecbeeb6304d21aae6ef07990d",
+      "physical_stil_dependencies_e137": "0ea8dcc1454306084d12a9f4ac439c6d19c8eed9e036aac85b0eac510caacc3d",
+      "prospective_acceptance_materializer_v1": "a04127c07227814e331ede4268c6f8d5df4def4d7041c0c69ec048378216cab9",
+      "prospective_acceptance_scratch_v1": "ddf332e6d78a81cf2369bdcdee9e60c1ee3b9b1c22008bf7a77beaedee39cb86",
+      "prospective_acquisition_binding_v1": "29804349ff853bd5ee2765f162e91037602affd3ef60ba0411cf4109254fe3bf",
+      "prospective_acquisition_pilot_v1": "be5c338ac9429920f08ccfd03cae7087e5114f90e05b51883408f7e0228e90f3",
+      "prospective_acquisition_request_v1": "2cbd2fd1e0689d12e19c22ca8536a789cf7241ce11c5fc68f2d23a0ae85cebcf",
+      "prospective_fault_translation_e129": "f659ca52bc6c48645736162223d1f6a931c343d4dd6cafac690aaeff90a2c681",
+      "prospective_fault_translation_v2": "2488abc20cf6e55aabb5d80317615645ed9bbaf80eb97d75f05920befd8b1961",
+      "prospective_generation_process_e113": "6b1922de253550b3d4091f11186d9447867662c445e46fdc47801f3c340411f6",
+      "prospective_generation_recipe_e108": "c690a8de88b1b9c10b0f730d62391cc1b82aee31871e780af0044b441eaa7f31",
+      "prospective_generation_storage_e118": "0045cb1c6ba4b81cf4f1d2d6c8723c44d69bb48d3b357c8c95e8a217c14597bb",
+      "prospective_generation_supervision_e109": "6bc12ff0843316e4fdd96cb99016af1f271459547869537133f68e060e245f17",
+      "prospective_input_binding_v1": "1acfed165d9cdfeedb6abd886ff028be221d840fe39c2894ca4070fd81ab5e32",
+      "prospective_lsf_memory_preflight_v1": "c63e8d9dea1aefef2061de2c3147c574f9dc2881e9b97dd89d585bfaf4fa46dd",
+      "prospective_report_dialect_e115": "102ed449c9f12f46edebd5ab31bb99b8e14c3f465b0ac70b5121606ad3617b0d",
+      "prospective_report_dialect_e126": "12fdb3e3cb7b52c32465f461fa63a6598f6bac555669d63540ac18e0bd3174a0",
+      "prospective_request_features_v1": "a592fb99a06c4f084ef10043ec6c215f0d72208c0dfe6ce608971653d56a6fd5",
+      "prospective_runtime_adapter_e114": "57ad390828e2ce33e2bebd0830c787473e98a7ba1c31843e12b03759ef6a77f1",
+      "prospective_runtime_profile_e112": "b7f096782faefe9abcd9e3e748176ffcf3c2944c72cb1d39b32b0d196d1a2e3a",
+      "prospective_stage_observation_v1": "4f87639fc8928b4f098f4d00510e7cc0e2d7d1115c33ca65c93c6494537f086b",
+      "prospective_tessent_acceptance_v1": "6d4b45d303a4be34f03914b8f9cb4aad2d9fe73c41c666a6c12058c43ef5aac2",
+      "prospective_tessent_stage_v1": "f40abcd0162e4b698542a91288e26263b467789591bec125046f2c5f12c3b110"
+    },
+    "worker_sha256": "8a27273a84cc228e1fa2e20e57b9795a418e16603ed594248914d2a4f12ed228"
+  },
+  "canonical_projection_sha256": "913fab9e5988f02a8d3fd2a2c3fef44cc88965af5fccf95c41988a454be5d7a0",
+  "independent_tests": {
+    "tests": 25,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 0.836
+  },
+  "root_regression": {
+    "tests": 338,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 4.925
+  },
+  "python36_runtime_measured": false,
+  "physical_d95_verified": false,
+  "scope_limits": [
+    "No role2 or role3 packet preapproval",
+    "Original 3600-second clock must not be reset",
+    "Failure stops with zero retries"
+  ]
+}

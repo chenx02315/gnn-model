@@ -1,0 +1,24 @@
+{
+  "schema": "e137-batch-architecture-arbitration-v1",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "status": "ORIGINAL_CONTRACT_PERMITS_DETERMINISTIC_BATCH_ROLE2",
+  "authorization_sha256": "49f000fe45de6cfc029ad8a9c1ead5e09edd24321de6062039d638436cce4969",
+  "proposal_sha256": "f9b7da390b21c5c3280a7d4688494a3c3315b45091c7657db197b633cfcc4cd9",
+  "decision": "External per-instance ACK was an advisory architecture choice, not a mandatory original user contract clause. Independently reviewing the whole deterministic admission policy and payload before A, then privately assembling an exact runtime instance from verified observations inside one batch SSH, is allowed without new authorization.",
+  "preserved": [
+    "Actual user grant and approved code/policy/payload pins before first A",
+    "Independent complete controller/worker/exporter review",
+    "Exact input and cloned-source recheck, known F4 settings and clean baseline",
+    "Three selfchecks, at most one Tessent, original connection/time/memory/storage budgets",
+    "One-use role and launch debit, first failure stop, zero retry",
+    "Private environment and bounded redacted output",
+    "Independent scientific result audit before any physical certificate"
+  ],
+  "digest_semantics": "Pre-review digests bind authorized source, policy and payload. Runtime instance digest binds actual checked data for consistency only; it is not user authorization, external instance approval or vendor authenticity proof.",
+  "optional_duplex_work": "Preserved as unreleased historical implementation, no longer required for E137",
+  "still_required": ["Real supervision", "Private trusted instance assembler", "Source-derived engine and LDD/library behavior admission", "Actual owned-root proof and result collection", "Full packet review"],
+  "execution_ready": false,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false
+}

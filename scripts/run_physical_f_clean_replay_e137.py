@@ -1,7 +1,7 @@
-"""Offline E137 role packets and one-use ledger. Engine closure still unresolved.
+"""Reviewed E137 capture/batch packets, original clock and one-use local ledger.
 
-No connection may start until the complete binder/validator protocol is frozen.
-This module does not guess installed engine paths or reopen earlier packages.
+Only execute() can connect, after exact independent whole-package review.
+Raw records precede validation; runtime instance hashes are consistency only.
 """
 import ast
 import base64
@@ -11,10 +11,13 @@ import os
 from pathlib import Path
 import platform
 import re
+import shlex
 import time
 
 from src.data import physical_replay_capture_e137 as capture
 from src.data import physical_f_replay_execution_e137 as execution
+from src.data import physical_e137_batch_execution as batch
+from src.data import physical_runtime_bootstrap_e137 as bootstrap
 
 require,sha,canonical,decode = capture.require,capture.sha,capture.canonical,capture.decode
 AUTH = 'contracts/physical_f_clean_replay_authorization_e137.json'
@@ -23,9 +26,9 @@ PROPOSAL = 'contracts/physical_f_clean_replay_proposal_e137_v1.json'
 PHASE = 'v6_e137_clean_F_replay_r1'
 RUNTIME_BINDER_SOURCE_SHA256 = DEPENDENCY_VALIDATOR_SHA256 = None
 ENGINE_PATH_ALLOWLIST = None
-OWNED_ROOT_EMITTER_SHA256 = None  # No reviewed role2 receipt emitter exists yet.
 ROLES = ('capture','execution','readback')
-REVIEW_KEYS = ('payload_sha256','controller_sha256','source_sha256','authorization_sha256','proposal_sha256','protocol_sha256')
+REVIEW_KEYS = ('payload_sha256','controller_sha256','worker_sha256','source_sha256','input_sha256',
+    'authorization_sha256','proposal_sha256','protocol_sha256','policy_sha256','invocation_sha256','package_source_sha256')
 SOURCES = (
     'direct_runtime_compatibility_e102','direct_diagnostic_policy_e102','prospective_tessent_acceptance_v1',
     'direct_low_memory_recipe_e104','direct_memory_sample_e101','direct_memory_sample_e103',
@@ -51,10 +54,15 @@ OUTPUTS = (ROOT+'.initial_intent.json',ROOT+'/code/replay.tcl',ROOT+'/code/expec
 
 
 def readiness():
-    return dict(ready=False,blockers=[
-        'EXACT_INSTALLED_ENGINE_PATH_SELECTION_CHAIN_UNKNOWN',
-        'SAME_CONNECTION_RUNTIME_BINDER_NOT_IMPLEMENTED_OR_FROZEN',
-        'STIL_DEPENDENCY_VALIDATOR_NOT_BOUND'],new_connections=0,execution_ready=False)
+    return dict(ready=False,implementation_available=True,mode='BATCH_IMPLEMENTED_PACKET_REVIEW_PENDING',
+        independent_packet_review_required=True,new_connections=0,execution_ready=False)
+
+
+def transport_timeout(first,seconds):
+    require(type(seconds) is int and seconds in (60,2400),'FIXED_ROLE_TIMEOUT')
+    active=min(seconds-10,int(remaining(first))-10)
+    require(active>=1,'INSUFFICIENT_ORIGINAL_CLEANUP_RESERVE')
+    return active
 
 
 def _authority(raw,proposal):
@@ -66,9 +74,54 @@ def _authority(raw,proposal):
     check(raw,proposal)
 
 
-def prepare(role='capture'):
-    require(role in ROLES,'FIXED_ROLE')
-    require(role != 'execution','ENGINE_SELECTION_AND_ACK_PROTOCOL_UNRESOLVED')
+BOOTSTRAP = ('import time\n__connection_start__=time.monotonic()\n'
+    'import sys,base64,hashlib,json\n'
+    'raw=sys.stdin.buffer.read(4194305)\n'
+    'if len(raw)>4194304 or len(sys.argv)!=2:raise ValueError("PACKET_BOUND")\n'
+    '__payload_sha256__=hashlib.sha256(raw).hexdigest()\n'
+    'arg=base64.b64decode(sys.argv[1],validate=True)\n'
+    '__role_intent__=json.loads(arg.decode("ascii"))\n'
+    'if (json.dumps(__role_intent__,sort_keys=True,separators=(",",":"),ensure_ascii=True,allow_nan=False)).encode("ascii")!=arg:raise ValueError("CANONICAL_INTENT")\n'
+    'exec(compile(raw,"<e137-reviewed-payload>","exec"),globals())\n')
+
+
+def intent_value(role,payload_sha):
+    return dict(role=role,attempt_consumed=True,role_index=ROLES.index(role)+1,connections_max=3,
+        automatic_retries=0,payload_sha256=payload_sha)
+
+
+def remote_command(role,payload_sha):
+    argument=base64.b64encode(canonical(intent_value(role,payload_sha))).decode('ascii')
+    return '/usr/bin/python3 -I -S -B -c '+shlex.quote(BOOTSTRAP)+' '+shlex.quote(argument)
+
+
+def _execution_inputs(repo,ledger):
+    from scripts import acceptance_transport_e98 as control
+    first=ledger.phase/'capture/stdout.json'
+    raw=(control.STAGING/'v6_e128_failure_readback_20261027_r1/stdout.json').read_bytes()
+    require(sha(raw)=='d70818980f52ad17e9a1d7eb917d9618d1bf203d4ec29b7e780430529528189e','E128_FIXED_LOCAL_PROOF')
+    tcl=base64.b64decode(next(r['body_base64'] for r in decode(raw)['files'] if r.get('sha256')==execution.legacy.BASE_TCL_SHA256),validate=True)
+    require(sha(tcl)==execution.legacy.BASE_TCL_SHA256,'EXACT_FROZEN_INCREMENTAL_TCL')
+    supplement=control.STAGING/'v6_e137_engine_source_supplement_r1/files'
+    inputs=dict(original_clock=(ledger.phase/'package_clock.json').read_bytes(),role1_response=first.read_bytes(),
+        policy=canonical(batch.POLICY),functions=(supplement/batch.selector.FUNCTIONS_SHA).read_bytes(),
+        shell=(supplement/batch.selector.SHELL_SHA).read_bytes(),
+        e112=(control.STAGING/'v6_e112_preparation_20261026_r1/stdout.json').read_bytes(),
+        parent_worker_source=(repo/'scripts/worker_pt_label_generation_e127.py').read_bytes(),
+        profile_source=(repo/'src/data/prospective_runtime_profile_e112.py').read_bytes(),incremental=tcl,
+        parent_helper=execution.legacy.EXPECTED_INIT.encode('ascii'))
+    for name,key in (('physical_f_replay_execution_e135','runtime_source'),('physical_f_replay_execution_e137','worker_source'),
+            ('physical_runtime_bootstrap_e137','bootstrap_source'),('physical_engine_evidence_e137','collector_source'),
+            ('physical_e137_root_receipt','root_receipt_source')):
+        inputs[key]=(repo/'src/data'/(name+'.py')).read_bytes()
+    require(sha(inputs['functions'])==batch.selector.FUNCTIONS_SHA and sha(inputs['shell'])==batch.selector.SHELL_SHA and
+        sha(inputs['e112'])==bootstrap.E112_SHA256 and sha(inputs['parent_worker_source'])==bootstrap.WORKER_SHA256 and
+        sha(inputs['profile_source'])==bootstrap.PROFILE_SHA256,'LOCAL_FROZEN_HELPER_PROFILE_BYTES')
+    return inputs
+
+
+def prepare(role='capture',staging=None):
+    require(role in ('capture','execution'),'ROLE3_USE_REVIEWED_DEDICATED_WRAPPER')
     from scripts.run_direct_tessent_e104 import PINS
     repo = Path(__file__).resolve().parents[1]
     authority,proposal = (repo/AUTH).read_bytes(),(repo/PROPOSAL).read_bytes()
@@ -77,29 +130,42 @@ def prepare(role='capture'):
     pins.update(execution.SOURCE_PINS)
     pins.update(capture.DEPENDENCY_SHA256)
     rows = []
-    for name in SOURCES+('_e137_controller',):
-        raw = (Path(__file__) if name == '_e137_controller' else repo/'src/data'/(name+'.py')).read_bytes()
+    names=SOURCES+('prospective_runtime_profile_e112','prospective_runtime_adapter_e114',
+        'physical_engine_selector_e137','physical_stil_dependencies_e137','physical_runtime_bootstrap_e137',
+        'physical_engine_evidence_e137','physical_e137_root_receipt','physical_e137_batch_execution')
+    pins.update(bootstrap.SOURCE_PINS)
+    for name in names:
+        raw = (repo/'src/data'/(name+'.py')).read_bytes()
         require(name not in pins or sha(raw) == pins[name],'FROZEN_SOURCE_DRIFT')
         ast.parse(raw.decode('utf-8'),feature_version=(3,6))
         rows.append(dict(name=name,sha256=sha(raw),body=base64.b64encode(raw).decode('ascii')))
-    spec = dict(role=role,authority=base64.b64encode(authority).decode('ascii'),proposal=base64.b64encode(proposal).decode('ascii'))
-    wire = canonical(dict(sources=rows,spec=spec)).decode('ascii')
-    payload = ('import time\nstarted=time.monotonic()\nimport base64,hashlib,json,types,sys\np=json.loads('+repr(wire)+')\n'
-        'for name in ("src","src.data"):\n'
-        ' m=types.ModuleType(name);m.__path__=[];sys.modules[name]=m\n'
-        ' if name=="src.data":sys.modules["src"].data=m\n'
-        'for row in p["sources"]:\n'
-        ' raw=base64.b64decode(row["body"],validate=True)\n'
-        ' if hashlib.sha256(raw).hexdigest()!=row["sha256"]:raise ValueError("SOURCE_SHA")\n'
-        ' name="src.data."+row["name"];m=types.ModuleType(name);m.__package__="src.data";sys.modules[name]=m\n'
-        ' setattr(sys.modules["src.data"],row["name"],m);exec(compile(raw,"<e137-"+row["name"]+">","exec"),m.__dict__)\n'
-        ' m.__source_sha256__=row["sha256"]\n'
-        'result=sys.modules["src.data._e137_controller"].remote(p["spec"],started)\n'
+    inputs=dict(authority=authority,proposal=proposal)
+    if role=='execution':
+        from scripts import acceptance_transport_e98 as control
+        ledger=RoleLedger(control.STAGING if staging is None else staging)
+        ledger.validate_cached('capture')
+        inputs.update(_execution_inputs(repo,ledger))
+    worker=(repo/'scripts/worker_e137_batch.py').read_bytes()
+    packet=dict(role=role,sources=rows,source_sha256={r['name']:r['sha256'] for r in rows},
+        authorization_sha256=AUTH_SHA,input_sha256={k:sha(v) for k,v in inputs.items()},
+        inputs={k:base64.b64encode(v).decode('ascii') for k,v in inputs.items()})
+    wire=canonical(packet).decode('ascii')
+    payload=('import base64,json\nworker=base64.b64decode('+repr(base64.b64encode(worker).decode('ascii'))+',validate=True)\n'
+        'if __import__("hashlib").sha256(worker).hexdigest()!='+repr(sha(worker))+':raise ValueError("WORKER_SHA")\n'
+        'ns={};exec(compile(worker,"<e137-worker>","exec"),ns)\n'
+        'packet=json.loads('+repr(wire)+')\n'
+        'result=ns["dispatch"](packet,__role_intent__,__payload_sha256__,__connection_start__)\n'
         'print(json.dumps(result,sort_keys=True,allow_nan=False),flush=True)\n').encode('ascii')
     ast.parse(payload.decode('ascii'),feature_version=(3,6))
+    command=remote_command(role,sha(payload))
+    whole={name:sha((repo/name).read_bytes()) for name in ('src/data/physical_e137_role3_binding.py',
+        'src/data/physical_e137_role3_export.py','scripts/run_e137_role3_readback.py')}
     protocol = dict(role=role,outputs=list(OUTPUTS),roles=ROLES,seconds=3600,first_failure_stops=True,
-        runtime_binder=RUNTIME_BINDER_SOURCE_SHA256,validator=DEPENDENCY_VALIDATOR_SHA256,engine_paths=ENGINE_PATH_ALLOWLIST)
+        policy=batch.POLICY,command=command,source_order=[r['name'] for r in rows])
     return dict(payload=payload,payload_sha256=sha(payload),controller_sha256=sha(Path(__file__).read_bytes()),
+        worker_sha256=sha(worker),input_sha256=packet['input_sha256'],policy_sha256=sha(canonical(batch.POLICY)),
+        invocation_sha256=sha(canonical(dict(remote_command=command,payload_sha256=sha(payload)))),
+        package_source_sha256=whole,
         source_sha256={r['name']:r['sha256'] for r in rows},authorization_sha256=AUTH_SHA,
         proposal_sha256=capture.PROPOSAL_SHA,protocol_sha256=sha(canonical(protocol)),readiness=readiness())
 
@@ -192,15 +258,137 @@ def open_output_parent(path,expected_root):
         os.close(root)
 
 
-def execute(role,review_path,payload_sha):
-    """Intentionally denies first connection until the missing full closure exists."""
-    plan = prepare(role)
-    review = decode(Path(review_path).read_bytes())
+def execute(role,review_path,payload_sha,staging=None):
+    """Parent-only actual one-use entry, conditional on exact independent review."""
+    from scripts import acceptance_transport_e98 as control
+    plan = prepare(role,staging)
+    review_raw=Path(review_path).read_bytes();review = decode(review_raw)
     require(review.get('status') == 'PASS' and review.get('reviewed') == {k:plan[k] for k in REVIEW_KEYS} and
         payload_sha == plan['payload_sha256'],'EXACT_ROLE_PACKET_REVIEW')
-    require(plan['readiness']['ready'] is True,'WHOLE_PACKAGE_ENGINE_BINDER_VALIDATOR_UNRESOLVED')
-    # No reachable transport until a future reviewed implementation closes this gate.
-    raise ValueError('ROLE_TRANSPORT_NOT_RELEASED')
+    require(plan['readiness']['implementation_available'] is True,'PACKAGE_NOT_IMPLEMENTED')
+    helper=control.load_transport()
+    fingerprint=helper.verify_cached_host('A')
+    require(fingerprint=='SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM','EXACT_KNOWN_A_HOST_KEY')
+    ledger=RoleLedger(control.STAGING if staging is None else staging)
+    directory=ledger.reserve(role,payload_sha)
+    try:
+        control.write_new(directory/'packet_review.json',review_raw)
+        control.write_new(directory/'packet.json',control.encode({k:plan[k] for k in REVIEW_KEYS}))
+        def validate(raw):
+            value=validate_response(role,raw,plan,ledger)
+            if role=='capture':
+                control.write_new(ledger.phase/'package_clock.json',control.encode(package_clock(value,
+                    (ledger.phase/'start.json').read_bytes(),payload_sha)))
+            else:
+                policy=source_policy(value,plan,ledger)
+                validate_execution(value,policy,(ledger.phase/'package_clock.json').read_bytes(),
+                    (directory/'intent.json').read_bytes())
+                control.write_new(directory/'source_policy.json',control.encode(policy))
+                control.write_new(directory/'owned_root_receipt.json',control.encode(value['owned_root']))
+            remaining(decode((ledger.phase/'start.json').read_bytes()))
+            record=validation_record(role,ledger)
+            control.write_new(directory/'validated.json',control.encode(record))
+            return value
+        result=ledger.capture_transport(role,helper,plan['payload'],6291456,validate,
+            command=remote_command(role,payload_sha),fingerprint=fingerprint,seconds=60 if role=='capture' else 2400)
+        if role=='execution' and result['worker_response']['status']=='STOPPED_FIRST_FAILURE':
+            ledger.close_failure(role,'SCIENTIFIC_FAILURE_OWNED_CLEAN_EVIDENCE_RECOVERABLE')
+        return dict(phase=str(directory),response=result,execution_ready=False)
+    except BaseException:
+        if not (ledger.phase/'closed.json').exists():ledger.close_failure(role,'ROLE_FAILED_NO_RETRY')
+        raise
+
+
+def package_clock(value,start_raw,payload_sha):
+    first=decode(start_raw);remaining(first)
+    remote=value['remote_start_monotonic'];sample=value['remote_sample_monotonic']
+    require(type(remote) in (int,float) and type(sample) in (int,float) and math.isfinite(remote) and math.isfinite(sample) and
+        0<=remote<=sample<remote+60 and re.fullmatch('[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}',value['boot_id']),
+        'ACTUAL_FIRST_CALL_BOOT_CLOCK')
+    utc=datetime.datetime.strptime(value['remote_utc_sample'],'%Y-%m-%dT%H:%M:%S.%f%z')
+    began=datetime.datetime.strptime(first['utc_start'],'%Y-%m-%dT%H:%M:%S.%f%z')
+    now=datetime.datetime.now(datetime.timezone.utc)
+    require(began-datetime.timedelta(seconds=5)<=utc<=now+datetime.timedelta(seconds=5),'REMOTE_UTC_SAMPLE_SKEW')
+    clock=dict(schema=execution.CLOCK_SCHEMA,authorization_sha256=AUTH_SHA,proposal_sha256=capture.PROPOSAL_SHA,
+        reader_payload_sha256=payload_sha,initial_response_sha256=sha(canonical(value['capture'])),start_file_sha256=sha(start_raw),
+        boot_id=value['boot_id'],remote_start_monotonic=remote,remote_deadline_monotonic=remote+3600,
+        remote_utc_sample=value['remote_utc_sample'],remote_clock_sample_monotonic=sample,
+        local_utc_start=first['utc_start'],local_utc_deadline=first['utc_end'],local_monotonic_start=first['start'],
+        local_monotonic_deadline=first['end'],local_clock_domain=first['domain'])
+    import types
+    types.FunctionType(execution.package_clock.__code__,dict(vars(execution),AUTH_SHA=AUTH_SHA,
+        INITIAL_CLOCK_SHA256=sha(canonical(clock))))(canonical(clock))
+    return clock
+
+
+def validate_response(role,raw,plan,ledger):
+    require(type(raw) is bytes and len(raw)<=6291456,'ROLE_RESPONSE_CAP')
+    value=decode(raw)
+    if role=='capture':
+        require(type(value) is dict and set(value)=={'role','capture','boot_id','remote_start_monotonic',
+            'remote_sample_monotonic','remote_utc_sample','execution_ready'} and value['role']==role and
+            value['execution_ready'] is False and type(value['boot_id']) is str,'CAPTURE_CLOSED_RESPONSE')
+        import types
+        types.FunctionType(capture.validate_receipt.__code__,dict(vars(capture),AUTH_SHA=AUTH_SHA))(canonical(value['capture']))
+    else:
+        require(type(value) is dict and set(value)=={'role','worker_response','owned_root','cleanup_observation','execution_ready'} and
+            value['role']==role and value['execution_ready'] is False and type(value['owned_root']) is dict,
+            'UNQUALIFIED_OR_FAILED_BATCH_RESPONSE')
+    return value
+
+
+def source_policy(value,plan,ledger):
+    directory=ledger.phase/'execution';response=value['worker_response'];sources=plan['source_sha256']
+    return dict(schema='e137-batch-source-policy-redacted-v1',authorization_sha256=AUTH_SHA,proposal_sha256=capture.PROPOSAL_SHA,
+        original_clock_sha256=sha((ledger.phase/'package_clock.json').read_bytes()),role2_payload_sha256=plan['payload_sha256'],
+        role2_intent_sha256=sha((directory/'intent.json').read_bytes()),role2_stdout_sha256=sha((directory/'stdout.json').read_bytes()),
+        role2_stderr_sha256=sha((directory/'stderr.log').read_bytes()),role2_transport_sha256=sha((directory/'transport.json').read_bytes()),
+        instance_sha256=response['instance_sha256'],policy_sha256=plan['policy_sha256'],source_manifest_sha256=sha(canonical(sources)),
+        source_sha256=sources,emitter_source_sha256=sources['physical_e137_root_receipt'],
+        runtime_source_sha256=sources['physical_f_replay_execution_e135'],worker_source_sha256=sources['physical_f_replay_execution_e137'])
+
+
+def validate_execution(value,policy,clock_raw,intent_raw):
+    """Reported-data joins inside the reviewed one-use transport creator chain."""
+    from src.data import physical_e137_role3_binding as binding
+    response,receipt,cleanup=value['worker_response'],value['owned_root'],value['cleanup_observation']
+    keys={'schema','status','launch_debit','selfchecks','instance_sha256','policy_sha256','payload_sha256',
+        'source_manifest_sha256','engine_metadata','bootstrap','ldd_policy','final_environment_observed',
+        'physical_d95_verified','execution_ready','training_release'}
+    require(type(response) is dict and set(response)==keys and response['schema']==execution.SCHEMA and
+        response['status'] in ('OBSERVED_PENDING_SCIENTIFIC_AUDIT','STOPPED_FIRST_FAILURE') and
+        type(response['launch_debit']) is int and response['launch_debit']==1 and type(response['selfchecks']) is int and response['selfchecks']==3 and
+        all(response[k] is False for k in ('final_environment_observed','physical_d95_verified','execution_ready','training_release')) and
+        all(response[k]==policy[p] for k,p in (('instance_sha256','instance_sha256'),('policy_sha256','policy_sha256'),
+        ('payload_sha256','role2_payload_sha256'),('source_manifest_sha256','source_manifest_sha256'))),'BATCH_RESPONSE_EXACT_BINDINGS')
+    require(type(receipt) is dict and set(receipt)==binding.RECEIPT_KEYS and
+        receipt['schema']=='e137-final-registered-root-receipt-v1' and receipt['root']==ROOT and
+        receipt['worker_response_sha256']==sha(canonical(response)) and receipt['cleanup_evidence_sha256']==sha(canonical(cleanup)) and
+        receipt['cleanup_observer_source_sha256']==policy['source_sha256']['physical_e137_batch_execution'] and
+        receipt['launch_debit']==1 and type(receipt['launch_debit']) is int,'ACTUAL_EMITTER_RESPONSE_JOIN')
+    require(type(cleanup) is dict and cleanup.get('cleaned') is True and cleanup.get('cleanup_error') is None and
+        type(cleanup.get('returncode')) is int and cleanup.get('launch_attempted') is True,'ACTUAL_FINAL_CLEANUP')
+    bindings=dict(authorization_sha256=AUTH_SHA,clock_sha256=sha(clock_raw),role2_intent_sha256=sha(intent_raw),
+        role2_payload_sha256=policy['role2_payload_sha256'],worker_spec_sha256=policy['instance_sha256'],
+        runtime_source_sha256=policy['runtime_source_sha256'],worker_source_sha256=policy['worker_source_sha256'],
+        emitter_source_sha256=policy['emitter_source_sha256'])
+    require(receipt['input_bindings']==bindings,'ACTUAL_EMITTER_INSTANCE_BINDINGS')
+    import types
+    clock=types.FunctionType(execution.package_clock.__code__,dict(vars(execution),AUTH_SHA=AUTH_SHA,
+        INITIAL_CLOCK_SHA256=sha(clock_raw)))(clock_raw)
+    require(receipt['boot_id']==clock['boot_id'] and receipt['original_remote_deadline']==clock['monotonic_end'] and
+        type(receipt['final_snapshot_monotonic']) in (int,float) and math.isfinite(receipt['final_snapshot_monotonic']) and
+        clock['remote_start_monotonic']<=receipt['final_snapshot_monotonic']<clock['monotonic_end'],'EMITTER_ORIGINAL_CLOCK')
+    binding.core._file_identity(receipt['identity'],0,directory=True)
+    require(receipt['birth_continuity']=={k:receipt['identity'][k] for k in ('st_dev','st_ino','st_uid','st_mode')},'ROOT_BIRTH_CONTINUITY')
+
+
+def validation_record(role,ledger):
+    directory=ledger.phase/role;intent=decode((directory/'intent.json').read_bytes())
+    return dict(schema='e137-local-role-validation-v1',role=role,authorization_sha256=AUTH_SHA,
+        clock_sha256=sha((ledger.phase/'start.json').read_bytes()),payload_sha256=intent['payload_sha256'],
+        stdout_sha256=sha((directory/'stdout.json').read_bytes()),stderr_sha256=sha((directory/'stderr.log').read_bytes()),
+        transport_sha256=sha(canonical(decode((directory/'transport.json').read_bytes()))))
 
 
 class RoleLedger(object):
@@ -215,8 +403,8 @@ class RoleLedger(object):
             self.phase.mkdir(exist_ok=False)
             utc,start = datetime.datetime.now(datetime.timezone.utc),time.monotonic()
             first = dict(authorization_sha256=AUTH_SHA,start=start,end=start+3600,
-                utc_start=utc.isoformat(timespec='microseconds'),
-                utc_end=(utc+datetime.timedelta(seconds=3600)).isoformat(timespec='microseconds'),
+                utc_start=utc.strftime('%Y-%m-%dT%H:%M:%S.%f%z'),
+                utc_end=(utc+datetime.timedelta(seconds=3600)).strftime('%Y-%m-%dT%H:%M:%S.%f%z'),
                 domain=dict(host=platform.node(),clock=time.get_clock_info('monotonic').implementation))
             control.write_new(self.phase/'start.json',control.encode(first))
         else:
@@ -250,7 +438,7 @@ class RoleLedger(object):
             (directory/'stdout.json').read_bytes(),(directory/'stderr.log').read_bytes(),
             decode((directory/'transport.json').read_bytes()))
 
-    def capture_transport(self,role,helper,payload,cap,validator):
+    def capture_transport(self,role,helper,payload,cap,validator,command=None,fingerprint=None,seconds=60):
         """Actual one-use transport primitive, not a release for execute()."""
         require(role in ROLES and type(payload) is bytes and callable(validator),'ROLE_TRANSPORT_ARGUMENTS')
         require(not (self.phase/'closed.json').exists(),'FIRST_FAILURE_CLOSED_PACKAGE')
@@ -258,15 +446,22 @@ class RoleLedger(object):
         require((directory/'intent.json').is_file(),'DEBIT_BEFORE_TRANSPORT')
         validate_intent(decode((directory/'intent.json').read_bytes()),role,sha(payload))
         from scripts import acceptance_transport_e98 as control
-        control.write_new(directory/'transport_consumed.json',control.encode(dict(attempt_consumed=True)))
+        if fingerprint is None:fingerprint=helper.verify_cached_host('A')
+        require(type(fingerprint) is str and fingerprint=='SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM','EXACT_KNOWN_A_HOST_KEY')
+        control.write_new(directory/'transport_consumed.json',control.encode(dict(attempt_consumed=True,automatic_retries=0,
+            payload_sha256=sha(payload),host_fingerprint=fingerprint)))
         first = decode((self.phase/'start.json').read_bytes())
-        helper.TIMEOUT = min(50,int(remaining(first)))
+        helper.TIMEOUT = transport_timeout(first,seconds)
         try:
-            observed = helper.transport(helper.command('A'),payload,cap)
+            argv=helper.command('A')
+            if command is not None:
+                require(command==remote_command(role,sha(payload)),'EXACT_REVIEWED_REMOTE_COMMAND')
+                argv=list(argv);argv[-1]=command
+            observed = helper.transport(argv,payload,cap)
             self.save_raw(role,observed['stdout'],observed['stderr'],{k:v for k,v in observed.items() if k not in ('stdout','stderr')})
             remaining(first)
             require(type(observed['exit_code']) is int and observed['exit_code'] == 0 and all(observed[k] is False for k in
-                ('timeout','overflow','write_failed','threads_incomplete')),'ROLE_TRANSPORT_FAILED')
+                ('timeout','overflow','write_failed','threads_incomplete')) and observed['stderr']==b'','ROLE_TRANSPORT_FAILED')
             return validator(observed['stdout'])
         except BaseException:
             self.close_failure(role,'ROLE_FAILED_RAW_MAY_BE_PARTIAL_NO_RETRY')
@@ -279,7 +474,7 @@ class RoleLedger(object):
         control.write_new(directory/'stdout.json',stdout)
         control.write_new(directory/'stderr.log',stderr)
         control.write_new(directory/'transport.json',control.encode(dict(transport,
-            stdout_sha256=sha(stdout),stderr_sha256=sha(stderr),remote_termination_verified=False)))
+            stdout_sha256=sha(stdout),stdout_bytes=len(stdout),stderr_sha256=sha(stderr),stderr_bytes=len(stderr),remote_termination_verified=False)))
 
     def close_failure(self,role,code):
         from scripts import acceptance_transport_e98 as control
@@ -314,7 +509,7 @@ def remote(spec,started):
             namespace[name] = types.FunctionType(function.__code__,namespace,name,function.__defaults__,function.__closure__)
         value = namespace['capture'](authority,proposal,started+60,tick,time.monotonic)
         return dict(role='capture',capture=value,boot_id=boot,remote_start_monotonic=started,
-            remote_sample_monotonic=time.monotonic(),remote_utc_sample=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='microseconds'),
+            remote_sample_monotonic=time.monotonic(),remote_utc_sample=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.%f%z'),
             execution_ready=False)
     rows,budget = [],[0]
     # No readback IO until the original clock and actual role2 root attestation join.

@@ -11,6 +11,42 @@ from scripts import acceptance_transport_e98 as control
 
 
 class Tests(unittest.TestCase):
+    def test_generated_numeric_utc_offset_survives_all_remote_clock_consumers(self):
+        import types
+        from tests.test_physical_f_replay_execution_e137 import clock_value
+        from tests.test_physical_e137_root_receipt import ReceiptTests
+        from src.data import physical_e137_role3_export as exporter
+        value=clock_value()
+        for key in ('remote_utc_sample','local_utc_start','local_utc_deadline'):
+            parsed=m.datetime.datetime.strptime(value[key],'%Y-%m-%dT%H:%M:%S.%f%z')
+            value[key]=parsed.strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+            self.assertRegex(value[key],r'\+0000$')
+        raw=m.canonical(value)
+        parse=types.FunctionType(m.execution.package_clock.__code__,dict(vars(m.execution),
+            AUTH_SHA=value['authorization_sha256'],INITIAL_CLOCK_SHA256=m.sha(raw)))
+        self.assertEqual(parse(raw)['monotonic_end'],4600.)
+        with mock.patch.object(exporter,'AUTH_SHA256',value['authorization_sha256']):
+            self.assertEqual(exporter._clock(raw)['end'],4600.)
+        fixture=ReceiptTests();self.addCleanup(fixture.doCleanups);fixture.setUp()
+        session,files=fixture.create()
+        self.assertIsNotNone(session.emit(files,fixture.response,fixture.observation))
+
+    def test_original_cleanup_reserve_never_starts_short_budget_transport(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger=m.RoleLedger(tmp);ledger.reserve('capture',m.sha(b'inert'))
+            helper=mock.Mock()
+            helper.verify_cached_host.return_value='SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM'
+            with mock.patch.object(m,'remaining',return_value=10.9):
+                with self.assertRaisesRegex(ValueError,'INSUFFICIENT_ORIGINAL_CLEANUP_RESERVE'):
+                    ledger.capture_transport('capture',helper,b'inert',100,mock.Mock())
+            helper.transport.assert_not_called()
+            self.assertTrue((ledger.phase/'capture/transport_consumed.json').exists())
+        for seconds,wanted in ((60,50),(2400,2390)):
+            with mock.patch.object(m,'remaining',return_value=3600):
+                self.assertEqual(m.transport_timeout({},seconds),wanted)
+            with mock.patch.object(m,'remaining',return_value=11):
+                self.assertEqual(m.transport_timeout({},seconds),1)
+
     def test_actual_authority_exact_reply_and_no_engine_guess(self):
         repo = Path(__file__).resolve().parents[1]
         raw,proposal = (repo/m.AUTH).read_bytes(),(repo/m.PROPOSAL).read_bytes()
@@ -26,7 +62,7 @@ class Tests(unittest.TestCase):
         with mock.patch.object(control,'load_transport') as load:
             plan = m.prepare()
         load.assert_not_called()
-        self.assertEqual(len(plan['source_sha256']),36)
+        self.assertEqual(len(plan['source_sha256']),43)
         self.assertFalse(plan['readiness']['ready'])
         ast.parse(plan['payload'].decode('ascii'),feature_version=(3,6))
         ast.parse(Path(m.__file__).read_text(encoding='utf-8'),feature_version=(3,6))
@@ -34,7 +70,11 @@ class Tests(unittest.TestCase):
         saved = {k:v for k,v in sys.modules.items() if k == 'src' or k.startswith('src.')}
         try:
             with mock.patch('builtins.open') as opened:
-                exec(compile(plan['payload'].decode('ascii').split('result=sys.modules')[0],'<inert-e137-closure>','exec'),{})
+                from scripts import worker_e137_batch as worker
+                rows=[dict(name=name,sha256=pin,body=m.base64.b64encode(
+                    (Path(__file__).resolve().parents[1]/'src/data'/(name+'.py')).read_bytes()).decode('ascii'))
+                    for name,pin in plan['source_sha256'].items()]
+                worker.load_sources(rows,plan['source_sha256'])
             opened.assert_not_called()
         finally:
             for key in list(sys.modules):
@@ -42,23 +82,26 @@ class Tests(unittest.TestCase):
                     del sys.modules[key]
             sys.modules.update(saved)
 
-    def test_first_connection_blocked_even_exact_packet_review(self):
+    def test_first_connection_blocked_without_exact_packet_review(self):
         plan = m.prepare()
         with tempfile.TemporaryDirectory() as tmp:
             review = Path(tmp)/'review.json'
-            control.write_new(review,control.encode(dict(status='PASS',reviewed={k:plan[k] for k in m.REVIEW_KEYS})))
+            control.write_new(review,control.encode(dict(status='PENDING',reviewed={k:plan[k] for k in m.REVIEW_KEYS})))
             with mock.patch.object(control,'load_transport') as load:
-                with self.assertRaisesRegex(ValueError,'WHOLE_PACKAGE_ENGINE_BINDER_VALIDATOR_UNRESOLVED'):
+                with self.assertRaisesRegex(ValueError,'EXACT_ROLE_PACKET_REVIEW'):
                     m.execute('capture',review,plan['payload_sha256'])
             load.assert_not_called()
-        with self.assertRaisesRegex(ValueError,'ENGINE_SELECTION_AND_ACK_PROTOCOL_UNRESOLVED'):
-            m.prepare('execution')
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(Exception):m.prepare('execution',staging=tmp)
 
     def test_create_once_roles_raw_first_failure_no_retry_clock_not_reset(self):
         with tempfile.TemporaryDirectory() as tmp:
             ledger = m.RoleLedger(tmp)
             first = ledger.reserve('capture','1'*64)
             started = (ledger.phase/'start.json').read_bytes()
+            clock=m.decode(started)
+            for key in ('utc_start','utc_end'):
+                self.assertRegex(clock[key],r'^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{6}\+0000$')
             ledger.save_raw('capture',b'raw',b'',dict(exit_code=0))
             self.assertTrue((first/'stdout.json').exists())
             with self.assertRaises(FileExistsError):
@@ -138,7 +181,8 @@ class Tests(unittest.TestCase):
             ledger = m.RoleLedger(tmp)
             directory = ledger.reserve('capture',m.sha(b'inert'))
             helper = mock.Mock()
-            helper.transport.return_value = dict(stdout=b'raw invalid',stderr=b'error',exit_code=0,timeout=False,
+            helper.verify_cached_host.return_value='SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM'
+            helper.transport.return_value = dict(stdout=b'raw invalid',stderr=b'',exit_code=0,timeout=False,
                 overflow=False,write_failed=False,threads_incomplete=False)
             def reject(raw):
                 self.assertEqual((directory/'stdout.json').read_bytes(),raw)
@@ -173,7 +217,8 @@ class Tests(unittest.TestCase):
         for broken_save in (True,False):
             with tempfile.TemporaryDirectory() as tmp:
                 ledger=m.RoleLedger(tmp);directory=ledger.reserve('capture',m.sha(b'inert'))
-                helper=mock.Mock();helper.transport.return_value=dict(stdout=b'raw',stderr=b'',exit_code=False,
+                helper=mock.Mock();helper.verify_cached_host.return_value='SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM'
+                helper.transport.return_value=dict(stdout=b'raw',stderr=b'',exit_code=False,
                     timeout=False,overflow=False,write_failed=False,threads_incomplete=False)
                 validator=mock.Mock()
                 if broken_save:
@@ -192,7 +237,8 @@ class Tests(unittest.TestCase):
     def test_failure_marker_write_failure_propagates_without_claiming_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
             ledger=m.RoleLedger(tmp);ledger.reserve('capture',m.sha(b'inert'))
-            helper=mock.Mock();helper.transport.side_effect=ValueError('TRANSPORT_FAILED')
+            helper=mock.Mock();helper.verify_cached_host.return_value='SHA256:9+c0w59UN6NMPA6MnG45jtRW63JT9gKLTBxtnnSpJqM'
+            helper.transport.side_effect=ValueError('TRANSPORT_FAILED')
             with mock.patch.object(ledger,'close_failure',side_effect=OSError('MARKER_WRITE_FAILED')):
                 with self.assertRaisesRegex(OSError,'MARKER_WRITE_FAILED'):
                     ledger.capture_transport('capture',helper,b'inert',100,mock.Mock())

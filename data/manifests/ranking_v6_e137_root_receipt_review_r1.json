@@ -1,0 +1,28 @@
+{
+  "schema": "e137-root-receipt-independent-review-v1",
+  "status": "PASS_ACTUAL_INSTANCE_TRACKER_AND_FINAL_SNAPSHOT_PRIMITIVE_ONLY",
+  "reviewer": "/root/reference_semantic_review_r2",
+  "source_sha256": "f71bacfe5ab935dc2e02f6890a8c994ce625759b8dd7ff2c1a89e68b64bf815c",
+  "tests_sha256": "29276bafbcfe574088249fa92a09ea84b7a4001735da3462da7169594b7cca5d",
+  "independent_tests": {"total": 59, "failures": 0, "errors": 0, "seconds": 0.303},
+  "verified": [
+    "Actual exclusive mkdir descriptor captured before legacy close and matched to reopened root",
+    "Registry binds genuine tracked Files instance rather than copied owned map",
+    "Legitimate metadata evolution allowed before final stable full-eight-field snapshot",
+    "Source-bound cleanup capability joins exact worker/cleanup bytes, original clock and intent; unknown descendants fail",
+    "Pre-embedding response digest avoids circular final stdout claim",
+    "Default gates before IO, no historical module globals changed"
+  ],
+  "remaining": [
+    "Real source-reviewed cleanup observer and capability installer",
+    "Use tracked Files throughout actual executor and emit only after all writes and cleanup",
+    "External enforcement of original role2 2400-second deadline",
+    "Bind actual outer stdout/stderr/transport and executor policy",
+    "Operationally prevent later root mutations"
+  ],
+  "real_OS_ownership_observed": false,
+  "execution_ready": false,
+  "E137_A_connections": 0,
+  "Tessent_launches": 0,
+  "physical_D95_verified": false
+}
