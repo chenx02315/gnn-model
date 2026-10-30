@@ -1,0 +1,61 @@
+{
+  "schema": "e138-contract-recipe-bootstrap-local-review-v1",
+  "status": "PASS_LOCAL_COMPONENTS_RUNTIME_ADAPTER_PENDING",
+  "date": "2026-10-30",
+  "previous_local_checkpoint": "9124ef1",
+  "authorization_received": false,
+  "new_remote_connections": 0,
+  "real_subprocess_launches": 0,
+  "e137_retried": false,
+  "e137_failure_cause_known": false,
+  "root_regression": {
+    "tests": 405,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 7.984
+  },
+  "independent_reviews": [
+    {
+      "scope": "pure contract parsing/input/source/order consistency; candidate second deny gate; exact new-root recipe derivation",
+      "tests": 47,
+      "seconds": 0.078,
+      "status": "PASS"
+    },
+    {
+      "scope": "new bootstrap, hostile exception regression, finite context validation; old bootstrap compatibility",
+      "tests": 28,
+      "seconds": 0.159,
+      "status": "PASS",
+      "new_tests": 20,
+      "old_tests": 8
+    }
+  ],
+  "sha256": {
+    "src/data/physical_e138_contract.py": "7ecd88a168e2a0860556f79cc1dc5bba3bd69e28fee6ab5cfbfaefc4116b37a3",
+    "src/data/physical_f_replay_recipe_e138.py": "d14f2dded701f4634a550e797cf568eebdbf262269f8ec8af2c93974e97883d9",
+    "src/data/physical_runtime_bootstrap_e138.py": "8a8d95802d4a5b52958511bfaf8f3e7c2a34b82460c335b701e69f3b7a3de238",
+    "src/data/physical_e138_batch_candidate.py": "db107a779102a80dba68dccb132ff9941873842cbef99ea088fe23024ece05f1",
+    "src/data/physical_batch_diagnostics_e138.py": "c4ed6c0d1cdfdd7bdc7b0ad5feb08f2c76f4602a05b5bcce12db12bd300c9de2",
+    "tests/test_physical_e138_contract.py": "2e3c3086b83ae8c54fdddf68f018f2748ef76d1e210cbe491d9b6e8e14091e82",
+    "tests/test_physical_f_replay_recipe_e138.py": "55791be6a037a371998a5b6da8d043c3e6f60b15e79102df8ee82302584e3fc9",
+    "tests/test_physical_runtime_bootstrap_e138.py": "7d0eeab0be59626d667344fc466a8d4a60efda4e8df7bc3ff22ca0b3b1cf08a6",
+    "tests/test_physical_e138_batch_candidate.py": "e71004d5bfd76548a3042bf0b3c0729e75713a3148dcfd95d0ae80192e0fe0d6"
+  },
+  "implemented": [
+    "Exact new-root/phase/policy grant and source/input/order consistency checks; defaults None; old grant denied",
+    "Duplicate JSON keys, NaN/Infinity and overflowing float exponent rejected",
+    "Main Tcl and baseline helper rebased by exact reversible root-only byte replacement",
+    "New bootstrap internal attempted-stage and literal diagnostics preserve original capture_runtime fixed code object and child limits"
+  ],
+  "limits": [
+    "Contract consistency is not an authenticated user approval or independent review",
+    "Bootstrap checks grant/proposal/root/phase but caller must first validate complete contract.POLICY and source freeze",
+    "New-root Tcl artifacts do not prove actual runtime service namespaces rebound",
+    "Default candidate second gate remains closed even after synthetic contract PASS",
+    "Trusted full source loader, runtime services/root receipt/export/controller adapters not complete",
+    "No actual subprocess, Python36 or physical D95 verification"
+  ],
+  "next": "Read-only root/auth/source coupling audit, then implement exact E138 runtime adapters without historical mutation; do not request remote execution grant before complete packet preparation",
+  "physical_d95_verified": false,
+  "training_release": false
+}

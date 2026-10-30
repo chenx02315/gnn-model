@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-10-30）：E138纯合同、新目录Tcl/helper派生及内部阶段bootstrap已通过独立47项/28项组件复核，405项相关本地回归通过；无新增远端/真实子进程。注意这不是完整运行适配：Files/storage/selector/clock/root receipt/export等实际namespace及controller仍待新root/grant/source重绑定。候选第二门继续拒绝，旧E137不重试。回执ranking_v6_e138_contract_bootstrap_review_r1.json与entries/E138_bounded_failure_diagnostics.md。
+
 最新本地推进（2026-10-30）：E138有限诊断组件及18阶段batch候选已实现并独立复核，28项专用测试与366项相关回归通过。旧E137源码哈希不变，无新增A/B连接。当前仅为本地候选：远端准入固定拒绝，新的授权/根目录/来源及controller尚未接通，bootstrap内部细分仍待做；不能说E138已可运行或E137原因已定位。详见entries/E138_bounded_failure_diagnostics.md和ranking_v6_e138_local_diagnostics_review_r1.json。
 
 最新真实执行结果（2026-10-30）：E137第1次A固定来源捕获成功；精确动态role2经独立审核后执行一次，返回ValueError/launch_debit=0/owned_root=null。原始220字节响应及运输记录已保存并独立核验；冻结源码表明未到Tessent observer，但不能证明此前bootstrap/元数据/侧文件完全无副作用或远端清理完成。包已关闭，禁止重试；因无合格owned-clean收据，不使用第3连接补探测。失败原因缺少安全阶段/错误码而无法定位，见ranking_v6_e137_terminal_failure_audit_r1.json。338项本地回归及原精确包审核通过是实现证据，不是物理D95。下一版先补安全诊断并复核；任何新远端尝试须新整包授权。

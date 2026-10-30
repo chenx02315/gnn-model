@@ -21,6 +21,7 @@ from . import physical_engine_selector_e137 as selector
 from . import physical_stil_dependencies_e137 as dependencies
 from . import physical_e137_root_receipt as roots
 from . import physical_batch_diagnostics_e138 as diagnostics
+from . import physical_e138_contract as contract
 
 # Frozen historical E137 is never edited. No E138 remote admission exists yet.
 BASE_E137_SOURCE_SHA256='3cfd702439c439c54aa654e4c8f064c33ec2d274e77329f93701e6eb53972ed9'
@@ -60,7 +61,8 @@ def _publish_evidence(files,tick,name,raw):
 
 
 def admission(package):
-    """No remote release: E137's grant cannot authorize another attempt."""
+    """A consistent contract cannot release the unfinished runtime adapter."""
+    contract.admit(package)
     raise ValueError('E138_REMOTE_PACKAGE_UNRELEASED')
 
 

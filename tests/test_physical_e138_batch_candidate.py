@@ -14,8 +14,16 @@ class AdmissionTests(unittest.TestCase):
             result=m.execute({'authority':b'old E137 grant'},0.)
         for call in (clock,private,domain,opened):call.assert_not_called()
         self.assertEqual(result['diagnostic']['stage_attempted'],'ADMISSION')
-        self.assertEqual(result['diagnostic']['error_code'],'E138_REMOTE_PACKAGE_UNRELEASED')
+        self.assertEqual(result['diagnostic']['error_code'],'E138_FREEZE_NOT_CONFIGURED')
         self.assertIsNone(result['owned_root'])
+
+    def test_real_synthetic_contract_pass_still_cannot_release_candidate(self):
+        from tests.test_physical_e138_contract import ContractTests
+        fixture=ContractTests();self.addCleanup(fixture.doCleanups);fixture.setUp()
+        with mock.patch.object(m.time,'monotonic') as clock, mock.patch.object(m,'_execute') as work:
+            result=m.execute(fixture.package,0.)
+        clock.assert_not_called();work.assert_not_called()
+        self.assertEqual(result['diagnostic']['error_code'],'E138_REMOTE_PACKAGE_UNRELEASED')
 
     def test_frozen_e137_source_and_python36_candidate_syntax(self):
         old=Path(m.__file__).with_name('physical_e137_batch_execution.py').read_bytes()
