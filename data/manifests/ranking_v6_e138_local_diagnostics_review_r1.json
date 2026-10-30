@@ -1,0 +1,47 @@
+{
+  "schema": "e138-local-bounded-diagnostic-review-v1",
+  "status": "PASS_LOCAL_DIAGNOSTICS_REMOTE_PACKAGE_NOT_IMPLEMENTED",
+  "date": "2026-10-30",
+  "historical_base": "73e355b",
+  "historical_e137_source_sha256": "3cfd702439c439c54aa654e4c8f064c33ec2d274e77329f93701e6eb53972ed9",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": {
+    "src/data/physical_batch_diagnostics_e138.py": "02a81dea8545026e164ecd079d95110f2d177bb061b1b7bdad0ef1333a073cc9",
+    "src/data/physical_e138_batch_candidate.py": "71bd4d0c3f8cc928f89a27adc8ed0d83b46d2e6b067824f265dfc72fe1cb4c94",
+    "tests/test_physical_batch_diagnostics_e138.py": "9495b9037efaed8a8d807e62261daabebfe258293f30d302a3b7d3b19d1e110d",
+    "tests/test_physical_e138_batch_candidate.py": "6b27a0e4be9ecae4745b7ad0031c44ce213563421b9c638285d71931267e51db"
+  },
+  "root_tests": {
+    "focused": 28,
+    "focused_seconds": 0.054,
+    "regression": 366,
+    "regression_seconds": 7.58,
+    "failures": 0,
+    "errors": 0
+  },
+  "independent_tests": {
+    "tests": 28,
+    "seconds": 0.052,
+    "failures": 0,
+    "errors": 0
+  },
+  "implemented": [
+    "18 fixed attempted-stage checkpoints in actual candidate control flow",
+    "Unknown exception parameters, custom names and tracebacks never exported",
+    "Only exact builtin ValueError with bounded exact whitelisted code can disclose code",
+    "Constructed instance SHA and first-attempt launch debit survive outer or inner failure",
+    "Unknown cleanup never creates ownership or durability evidence",
+    "Remote admission unconditionally disabled before IO; E137 grant cannot release candidate"
+  ],
+  "not_implemented": [
+    "E138 grant/proposal/root/source rebinding",
+    "E138 remote controller and payload freeze",
+    "New runtime bootstrap substage diagnostics",
+    "Any actual E138 remote validation"
+  ],
+  "new_remote_connections": 0,
+  "e137_retried": false,
+  "e137_failure_cause_known": false,
+  "physical_d95_verified": false,
+  "training_release": false
+}
