@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-10-31）：E138 selector/STIL完整私有函数namespace绑定已实现并独立5项复核通过，438项相关回归通过；虚拟FS实际走完22文件验证链。安装根和候选不变，仅执行root迁移；origin/adapter/effective-config需后续共同绑定。原生collector准入及root receipt/readback/assembler尚未完成，仍无新增远端。回执ranking_v6_e138_dependency_binding_review_r1.json。
+
 最新恢复点（2026-10-31）：E138原生固定来源capture、独立时钟/launch验证及私有Files/observer/storage服务已完成限定独立复核，433项相关回归通过。曾发现storage导入函数漂移却被标成固定来源的P2，现改为校验原始storage字节并私有编译，反例复核关闭。见ranking_v6_e138_native_capture_runtime_review_r1.json。仍无新增远端/真实子进程；assembler尚未接通，collector/selector/STIL和原生根收据/readback仍待做，候选准入继续拒绝，不代表E138可运行或物理D95。
 
 最新（2026-10-30）：E138纯合同、新目录Tcl/helper派生及内部阶段bootstrap已通过独立47项/28项组件复核，405项相关本地回归通过；无新增远端/真实子进程。注意这不是完整运行适配：Files/storage/selector/clock/root receipt/export等实际namespace及controller仍待新root/grant/source重绑定。候选第二门继续拒绝，旧E137不重试。回执ranking_v6_e138_contract_bootstrap_review_r1.json与entries/E138_bounded_failure_diagnostics.md。

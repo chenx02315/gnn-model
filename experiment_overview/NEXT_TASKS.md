@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新已完成：selector/STIL全函数namespace绑定及22文件虚拟FS验证（独立5项、总438项通过）。下一项原生E138 collector准入，接上述binding及已审有限文件采样原语；随后native root receipt/readback与assembler/controller。不要重复绑定实现或误删完整adapter拒绝门，不使用旧E137授权。
+
 最新（2026-10-31）：已完成并复核native capture、clock/launch/private services，433项回归通过；勿重做旧耦合盘点或上述模块。下一节点：原生E138 collector准入＋私有selector/STIL完整函数namespace绑定；之后原生owned-root receipt与固定readback，最后assembler/controller/完整来源闭包。安装根/cad及冻结E127输入不迁移，仅输出root改新E138。所有阶段继续本地实现和独立复核，未有新远端授权；不能解除candidate第二门或重用E137额度。
 
 最新已完成：E138纯合同、目录配方和bootstrap内部诊断，独立47/28及总405本地测试；不重复实现这些。下一项先盘点并接通实际运行namespace的新root/auth/source绑定（Files/storage/selector/clock/root receipt/export/controller），不得只删candidate的固定拒绝门。旧E137封存；新授权尚无，但可继续本地实现和复核，无需用户逐小步批准。

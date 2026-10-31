@@ -1,0 +1,15 @@
+{
+  "schema": "e138-dependency-binding-local-review-v1",
+  "status": "PASS_COMPONENT_ONLY",
+  "date": "2026-10-31",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": "2cb17b773ecfbe3c88c27859a77118592a8439f2694052412741c5b9e9c96639",
+  "tests_sha256": "6456b9628b634984b23d78e8f54004bdc5866130e5006c5ff251fd245b4c9f8c",
+  "independent_tests": {"tests": 5, "failures": 0, "errors": 0, "seconds": 0.094},
+  "regression": {"tests": 438, "failures": 0, "errors": 0, "seconds": 8.228},
+  "evidence": ["Exact two source SHA checks before compilation", "Private full-function namespaces", "Vendor installation and candidates unchanged", "Virtual filesystem full 22-file verifier path"],
+  "new_remote_connections": 0,
+  "execution_ready": false,
+  "physical_d95_verified": false,
+  "limits": "Future entry must bind origin SHA, adapter SHA, effective config and full dependency provenance together; collector admission and root receipt/export/assembler remain incomplete"
+}
