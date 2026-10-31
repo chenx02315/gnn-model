@@ -1,5 +1,13 @@
 # E138：补齐失败位置记录，不冒充实验成功
 
+## 最新恢复点（2026-10-31）
+
+已进一步完成原生E138固定来源捕获、新时钟/launch验证，以及真正私有的Files/observer/storage服务。独立复核通过；433项相关本地回归全部通过。准确来源SHA和范围见 `ranking_v6_e138_native_capture_runtime_review_r1.json`。
+
+复核曾发现一处来源标记缺陷：若导入的storage函数被替换，旧工厂仍标成冻结来源。现在必须先核验storage原始字节，独立编译私有模块，反例确认不再使用被替换函数，历史模块不变。原始源码SHA、适配源码SHA、有效配置SHA分别记录，不能把派生状态冒充旧raw module。
+
+接下来无需再次盘点：先做E138 collector及selector/STIL全函数namespace绑定，再做原生目录归属/清理收据与结果取回，最后才接assembler和controller。当前仅组件实现通过，默认准入仍关闭；无新远端或真实子进程，也未定位E137旧失败原因。
+
 ## 最新恢复点（2026-10-30）
 
 已继续完成三项本地组件：新E138合同一致性校验、主Tcl/基线helper的新目录派生、带内部阶段诊断的新bootstrap。独立47项及28项组件测试通过，主代理405项相关回归通过。精确源码、测试SHA和边界见 `ranking_v6_e138_contract_bootstrap_review_r1.json`。

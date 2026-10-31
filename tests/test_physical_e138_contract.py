@@ -57,6 +57,21 @@ class ContractTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,'E138_FREEZE_NOT_CONFIGURED'):m.admit(None)
             opened.assert_not_called()
 
+    def test_shared_capture_authority_check_is_pure_and_defaults_closed(self):
+        with mock.patch('builtins.open') as opened,mock.patch('subprocess.Popen') as spawn, \
+                mock.patch('time.monotonic') as clock:
+            for auth_pin,proposal_pin in ((None,None),(m.OLD_AUTH_SHA256,self.frozen['proposal_sha256'])):
+                with self.assertRaisesRegex(ValueError,'E138_AUTHORITY_PINS_NOT_CONFIGURED'):
+                    m.check_authority(None,None,auth_pin,proposal_pin)
+            result=m.check_authority(self.package['authority'],self.package['proposal'],
+                self.frozen['authorization_sha256'],self.frozen['proposal_sha256'])
+        opened.assert_not_called();spawn.assert_not_called();clock.assert_not_called()
+        self.assertEqual(result['root'],m.ROOT);self.assertFalse(result['execution_ready'])
+        self.assertFalse(result['remote_authorization_proven'])
+        with self.assertRaisesRegex(ValueError,'E138_AUTHORITY_EXACT_BYTES'):
+            m.check_authority(self.package['authority']+b' ',self.package['proposal'],
+                self.frozen['authorization_sha256'],self.frozen['proposal_sha256'])
+
     def test_actual_old_grant_cannot_be_reused(self):
         raw=(Path(__file__).resolve().parents[1]/'contracts/physical_f_clean_replay_authorization_e137.json').read_bytes()
         self.assertEqual(m.sha(raw),m.OLD_AUTH_SHA256)

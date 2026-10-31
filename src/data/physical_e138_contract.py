@@ -112,6 +112,36 @@ def _freeze():
     return f
 
 
+def check_authority(authority_raw,proposal_raw,authorization_sha256=None,proposal_sha256=None):
+    """Pure shared consistency check for capture and later execution stages.
+
+    Pins must come from an independently reviewed entrypoint, never from the
+    arguments themselves. This helper does not prove that trust origin.
+    """
+    require(_hex(authorization_sha256) and authorization_sha256!=OLD_AUTH_SHA256 and
+        _hex(proposal_sha256),'E138_AUTHORITY_PINS_NOT_CONFIGURED')
+    require(type(authority_raw) is bytes and 0<len(authority_raw)<=65536 and
+        type(proposal_raw) is bytes and 0<len(proposal_raw)<=65536 and
+        sha(authority_raw)==authorization_sha256 and sha(proposal_raw)==proposal_sha256,
+        'E138_AUTHORITY_EXACT_BYTES')
+    proposal,authority=decode(proposal_raw),decode(authority_raw)
+    require(type(proposal) is dict and set(proposal)=={'schema','package','status','scope_if_granted'} and
+        proposal['schema']=='e138-fixed-f-replay-proposal-v1' and proposal['package']=='E138' and
+        proposal['status']=='PENDING_EXPLICIT_WHOLE_PACKAGE_AUTHORIZATION','E138_NEW_PROPOSAL_REQUIRED')
+    _policy(proposal['scope_if_granted'])
+    require(type(authority) is dict and set(authority)=={'schema','approved_package','approval_source',
+        'user_reply','user_authorization_received','proposal_sha256','approved_scope','execution_ready'} and
+        authority['schema']=='e138-explicit-whole-package-authorization-v1' and
+        authority['approved_package']=='E138' and authority['approval_source']=='explicit_user_reply' and
+        authority['user_authorization_received'] is True and authority['execution_ready'] is False and
+        type(authority['user_reply']) is str and 0<len(authority['user_reply'])<=4096 and
+        authority['proposal_sha256']==proposal_sha256,'E138_NEW_EXPLICIT_GRANT_REQUIRED')
+    _policy(authority['approved_scope'])
+    return dict(schema='e138-authority-consistency-only-v1',package='E138',root=ROOT,phase=PHASE,
+        authorization_sha256=authorization_sha256,proposal_sha256=proposal_sha256,
+        remote_authorization_proven=False,execution_ready=False)
+
+
 def admit(package):
     """Consistency only; no clock, process, FS, ledger or callback access."""
     f=_freeze()
@@ -122,19 +152,8 @@ def admit(package):
     require(sha(package['authority'])==f['authorization_sha256'] and
         sha(package['proposal'])==f['proposal_sha256'] and
         sha(package['policy'])==f['policy_sha256'],'E138_GRANT_PROPOSAL_POLICY_PIN')
-    proposal,authority,policy=(decode(package[k]) for k in ('proposal','authority','policy'))
-    require(type(proposal) is dict and set(proposal)=={'schema','package','status','scope_if_granted'} and
-        proposal['schema']=='e138-fixed-f-replay-proposal-v1' and proposal['package']=='E138' and
-        proposal['status']=='PENDING_EXPLICIT_WHOLE_PACKAGE_AUTHORIZATION','E138_NEW_PROPOSAL_REQUIRED')
-    _policy(proposal['scope_if_granted']);_policy(policy)
-    require(type(authority) is dict and set(authority)=={'schema','approved_package','approval_source',
-        'user_reply','user_authorization_received','proposal_sha256','approved_scope','execution_ready'} and
-        authority['schema']=='e138-explicit-whole-package-authorization-v1' and
-        authority['approved_package']=='E138' and authority['approval_source']=='explicit_user_reply' and
-        authority['user_authorization_received'] is True and authority['execution_ready'] is False and
-        type(authority['user_reply']) is str and 0<len(authority['user_reply'])<=4096 and
-        authority['proposal_sha256']==f['proposal_sha256'],'E138_NEW_EXPLICIT_GRANT_REQUIRED')
-    _policy(authority['approved_scope'])
+    check_authority(package['authority'],package['proposal'],f['authorization_sha256'],f['proposal_sha256'])
+    _policy(decode(package['policy']))
     require(type(LOADED_SOURCE_ORDER) is tuple and LOADED_SOURCE_ORDER==f['source_order'],
         'E138_LOADER_ORDER_CONSISTENCY')
     for name,pin in f['source_sha256'].items():

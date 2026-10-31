@@ -1,0 +1,73 @@
+{
+  "schema": "e138-native-capture-runtime-review-v1",
+  "status": "PASS_COMPONENTS_ASSEMBLER_PENDING",
+  "date": "2026-10-31",
+  "previous_commit": "246479b",
+  "sha256": {
+    "src/data/physical_e138_contract.py": "19bdaaf461de3ff424df57cf8e263f80efd57fa2a67a9929d5f89c4188f917f6",
+    "tests/test_physical_e138_contract.py": "1ebfbb2a945bfd69d9df377c702a4476884e4a1c13a0b6b3b1b7241095788f6e",
+    "src/data/physical_replay_capture_e138.py": "3ab9950455e04336700b7de6c58b0bd07d2acc73e878d3c033a427bb4c2b3963",
+    "tests/test_physical_replay_capture_e138.py": "6946510b11207fb770f88d300bb0fa8cf95b4fe4ee82ec8bd287e5131e00745a",
+    "src/data/physical_e138_runtime_primitives.py": "ae0c139e9a7cb1a822b0fc95b4706fbb16f41cc1ee945963742a8f71cb97a213",
+    "tests/test_physical_e138_runtime_primitives.py": "b60da64f2b4882d80f46999de9e348d33e1abcc2369bb0bf2298ce5c863a8634"
+  },
+  "root_regression": {
+    "tests": 433,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 14.706
+  },
+  "independent_reviews": [
+    {
+      "reviewer": "reference_semantic_review_r2",
+      "scope": "shared authority helper",
+      "tests": 48,
+      "seconds": 0.079,
+      "status": "PASS"
+    },
+    {
+      "reviewer": "reference_semantic_review_r2",
+      "scope": "native capture with virtual filesystem",
+      "tests": 39,
+      "seconds": 0.114,
+      "status": "PASS"
+    },
+    {
+      "reviewer": "e96_materializer_review",
+      "scope": "native clock/launch/private services and storage origin fix",
+      "focused_tests": 12,
+      "joint_tests": 41,
+      "status": "PASS"
+    }
+  ],
+  "closed_defect": {
+    "priority": "P2",
+    "description": "Factory previously reused mutable imported storage code while claiming fixed origin SHA",
+    "repair": "Require exact frozen storage raw bytes before compile; compile a private storage module; never reuse substituted imported persist function",
+    "independent_counterexample_after_fix": {
+      "accepted_unreviewed_code": false,
+      "private_storage": true,
+      "old_import_unchanged": true
+    }
+  },
+  "implemented": [
+    "Native capture uses E138 authority/receipt schema and unchanged fixed E127 input paths",
+    "Clock parser distinguishes original A and local monotonic domains and requires numeric UTC offset",
+    "Launch validation fixes argv/cwd/HOME/TMPDIR to new output root",
+    "Real Files class methods and nested observer validator use private new-root globals",
+    "Storage ROOT/SIDECAR/END and methods use private verified source namespace",
+    "Origin source, adapter source and effective config commitments are separate"
+  ],
+  "not_complete": [
+    "E138 batch candidate still imports old components and rejects complete runtime admission",
+    "Native collector admission and selector/STIL private namespace bindings",
+    "Native owned-root receipt, cleanup/raw joins and fixed readback",
+    "Complete assembler/controller/source-loader and exact packet reviews",
+    "Actual E138 grant and remote execution"
+  ],
+  "new_remote_connections": 0,
+  "real_subprocesses": 0,
+  "python36_runtime_verified": false,
+  "physical_d95_verified": false,
+  "training_release": false
+}

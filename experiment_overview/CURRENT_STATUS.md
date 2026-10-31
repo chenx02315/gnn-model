@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新恢复点（2026-10-31）：E138原生固定来源capture、独立时钟/launch验证及私有Files/observer/storage服务已完成限定独立复核，433项相关回归通过。曾发现storage导入函数漂移却被标成固定来源的P2，现改为校验原始storage字节并私有编译，反例复核关闭。见ranking_v6_e138_native_capture_runtime_review_r1.json。仍无新增远端/真实子进程；assembler尚未接通，collector/selector/STIL和原生根收据/readback仍待做，候选准入继续拒绝，不代表E138可运行或物理D95。
+
 最新（2026-10-30）：E138纯合同、新目录Tcl/helper派生及内部阶段bootstrap已通过独立47项/28项组件复核，405项相关本地回归通过；无新增远端/真实子进程。注意这不是完整运行适配：Files/storage/selector/clock/root receipt/export等实际namespace及controller仍待新root/grant/source重绑定。候选第二门继续拒绝，旧E137不重试。回执ranking_v6_e138_contract_bootstrap_review_r1.json与entries/E138_bounded_failure_diagnostics.md。
 
 最新本地推进（2026-10-30）：E138有限诊断组件及18阶段batch候选已实现并独立复核，28项专用测试与366项相关回归通过。旧E137源码哈希不变，无新增A/B连接。当前仅为本地候选：远端准入固定拒绝，新的授权/根目录/来源及controller尚未接通，bootstrap内部细分仍待做；不能说E138已可运行或E137原因已定位。详见entries/E138_bounded_failure_diagnostics.md和ranking_v6_e138_local_diagnostics_review_r1.json。
