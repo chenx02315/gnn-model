@@ -1,0 +1,17 @@
+{
+  "schema": "e138-native-engine-collector-review-v1",
+  "date": "2026-10-31",
+  "status": "PASS_COMPONENT_ONLY",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": "965977782ed159a07ad6a464079c43408318c0281ea96ec69bf49b2e080bf246",
+  "tests_sha256": "b31cf168959ce62c5c177bd72d827da78efac6419fef824ed3d62cd2e5b4cabe",
+  "independent_tests": {"tests": 9, "failures": 0, "errors": 0, "seconds": 0.109},
+  "regression": {"tests": 447, "failures": 0, "errors": 0, "seconds": 8.626},
+  "verified_locally": ["New grant/context and both source hashes checked before callbacks/compile", "Original 3600/2400 deadline guards before and after tick", "Failed attempt cannot collect again", "Actual selector algorithm and sampling chain over synthetic sources and virtual files", "Private environment sentinel excluded from public result"],
+  "new_remote_connections": 0,
+  "real_tool_launches": 0,
+  "execution_ready": false,
+  "physical_d95_verified": false,
+  "limits": "Synthetic scripts/environment and virtual installation only. Trusted source closure, actual boot/resource enforcement, prelaunch drift recheck and full assembler remain required.",
+  "next": "Native owned-root registration/cleanup receipt and fixed readback, then complete assembler/controller"
+}
