@@ -1,0 +1,33 @@
+{
+  "schema": "e138-assembler-source-session-review-v1",
+  "date": "2026-10-31",
+  "status": "PASS_SYNTHETIC_INTEGRATION_CONTROLLER_PENDING",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": {
+    "scripts/e138_source_session.py": "e98ca167923c0d0e964578b42877c7d61043317dfaaa2e5cf9c0eef4854987cc",
+    "tests/test_e138_source_session.py": "a17f0ab4852669966e30d7f53e8d6036048fd1570e1ef6ddd37652eda69bd190",
+    "src/data/physical_e138_batch_assembler.py": "42f413b59abba7ac4a9f8b7a101c0d25d678bdebfa165f00cbe23a85f894e6d7",
+    "tests/test_physical_e138_batch_assembler.py": "48d12148c66bab61e86f5e4b1291288d21d6baf03d9b0af8e33a4f703c747a0a"
+  },
+  "independent_tests": {"tests": 50, "seconds": 2.537, "failures": 0, "errors": 0},
+  "root_focused_tests": {"tests": 50, "seconds": 2.582, "failures": 0, "errors": 0},
+  "root_regression": {"tests": 560, "seconds": 14.860, "failures": 0, "errors": 0},
+  "regression_selection": "tests filenames matching e133/e134/e135/e137/e138, excluding duplex",
+  "evidence": [
+    "All source bytes verified and compiled before registry mutation; complete src registry restored on context exit",
+    "Synthetic assembler executes inside fresh source session with complete verified source roster and actual load order",
+    "Bootstrap diagnostic projection and exact native collector/root failure codes retained without arbitrary exception text",
+    "Original clock bounds, launch debit and default-disabled authorization preserved"
+  ],
+  "new_remote_connections": 0,
+  "execution_ready": false,
+  "physical_d95_verified": false,
+  "limitations": [
+    "Physical file operations and supervision use synthetic substitutes",
+    "Source session is single-worker registry isolation, not a malicious-code sandbox",
+    "No real Linux/Python3.6/runtime performance or trusted transport validation",
+    "Actual E138 authority, three-role controller, raw persistence and exact packet review remain pending",
+    "E137 terminal failure remains closed and its actual cause is unknown; supplemental read already consumed"
+  ],
+  "next": "Implement native three-role controller and raw-record-first persistence locally; no new remote execution authority inferred"
+}

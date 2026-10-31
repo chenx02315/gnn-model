@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新（2026-10-31）：assembler/source session已实现并独立复核，50项联合与560项相关回归通过，见ranking_v6_e138_assembler_loader_review_r1.json。下一项仅本地实现三角色controller和原始记录先落盘包装，复用已审固定readback/join；必须保留原包时钟、一次性账本、固定来源和首失败停止。完整精确包独立复核之后再处理新E138远端权限。已消耗的E137补充读取不重复；本地合成通过不等于真实D95。
+
 最新已完成：native固定readback、raw join和最终close脱敏修复，510项相关回归通过。下一项完整原生batch assembler（不得只移除candidate拒绝门），绑定已审capture/bootstrap/collector/私有服务/STIL/receipt/readback；再做可信source loader和三角色controller，原始输出先存后验、失败零重试、时钟不重置。最后完整包独立复核后才形成新远端整包授权请求。旧E137保持封存，不新A/B/训练。
 
 最新已完成：native rootreceipt（8input/10binding、role2原始截止、真实注册/最终stable8/原始cleanup关联；独立57项、总478项回归）。下一项原生固定结果readback及raw transport joins，再接完整assembler/controller；worker_spec必须提供经源绑定的connection_start_monotonic，不从emit重开时钟。仍无E138远端授权，不重用E137额度。

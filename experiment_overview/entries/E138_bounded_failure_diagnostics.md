@@ -1,5 +1,11 @@
 # E138：补齐失败位置记录，不冒充实验成功
 
+## assembler与source session联合恢复点（2026-10-31）
+
+原生执行器已把合同、capture、bootstrap、selector、STIL、时钟、私有运行服务、collector及目录收据串联。完整源码清单先校验与编译，再在全新src命名空间运行；退出时恢复原模块。联合合成测试明确在source session内部调用assembler，独立50项及主代理560项相关回归通过。精确SHA见ranking_v6_e138_assembler_loader_review_r1.json。
+
+新增诊断仅保留受限bootstrap字段和实际collector/root白名单错误码，不泄漏任意异常正文。物理文件采样与监督后端仍是替代，不是Linux真实执行证据。三角色controller、原始记录持久化和完整精确包审查仍未完成；实际E138授权未建立，不访问A/B或启动Tessent。补充脚本读取此前已完成，旧E137仍为失败终态。
+
 ## 最新恢复点（2026-10-31）
 
 已进一步完成原生E138固定来源捕获、新时钟/launch验证，以及真正私有的Files/observer/storage服务。独立复核通过；433项相关本地回归全部通过。准确来源SHA和范围见 `ranking_v6_e138_native_capture_runtime_review_r1.json`。
