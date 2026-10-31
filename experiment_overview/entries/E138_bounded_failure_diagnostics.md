@@ -1,5 +1,11 @@
 # E138：补齐失败位置记录，不冒充实验成功
 
+## 安全返回与调用封装恢复点（2026-10-31）
+
+继续补齐safe_dispatch：失败仅返回有限阶段、固定错误码和worker实例消耗状态；未知异常/子类/BaseException不输出正文、类型或traceback。这只约束返回JSON，不拦截已加载可信代码主动打印，也不替代持久化连接账本。
+
+调用envelope把预期payloadSHA放在独立精确命令参数里，bootstrap先核对有界payload再compile/exec，避免自哈希循环。模板中的其他source/input pins保持冻结，仅机械派生已验证payloadSHA及canonical role2 intent与对应摘要。实际envelope→safe_dispatch→原生组件虚拟链经独立85项、主代理595项相关回归通过；源码及边界见ranking_v6_e138_safe_envelope_review_r1.json。尚无实际SSH、厂商文件验证或E138整包授权；完整controller/readback/单次输出包装仍待完成。
+
 ## worker和原始证据保存恢复点（2026-10-31）
 
 新增create-once本地phase store：先独占记录角色尝试，再保存stdout/stderr/transport并fsync，随后才能调用验收。独立复核发现起始记录写失败和非法首次结果两条可继续路径，均修复为终止；目录墓碑不删除、不重置预算。保存本身失败只能保留已写前缀，不保证关闭标记一定落盘。

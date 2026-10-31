@@ -29,6 +29,7 @@ class Tests(unittest.TestCase):
             ('physical_replay_capture_e138',b'from . import physical_e138_contract as contract\nAUTH_SHA=PROPOSAL_SHA=None\ndef check_authority(a,p): return contract.check_authority(a,p,AUTH_SHA,PROPOSAL_SHA)\ndef capture(a,p,end,tick,monotonic):\n tick()\n return {"synthetic":True}\n'),
             ('physical_e138_runtime_primitives',b'import types\nclass Domain:\n peak=100\n def sample(self):return {}\nlegacy=types.SimpleNamespace(process=types.SimpleNamespace(_boot_id=lambda:"synthetic-boot"),direct=types.SimpleNamespace(Descendants=Domain))\n')]
         self.patch(m,'_USED',False)
+        self.patch(m,'_STAGE','ADMISSION')
         self.patch(m.platform,'node',return_value='bupt-vncs2');self.patch(m.platform,'system',return_value='Linux')
         self.patch(m.os,'getuid',return_value=1047,create=True);self.patch(m.time,'monotonic',return_value=1000.)
         self.configure()
@@ -108,6 +109,34 @@ class Tests(unittest.TestCase):
     def test_python36_syntax(self):
         ast.parse(Path(m.__file__).read_text(encoding='utf-8'),feature_version=(3,6))
 
+    def test_safe_default_denial_is_single_bounded_public_frame(self):
+        self.patch(m,'FROZEN',None)
+        with mock.patch('builtins.compile') as compile:
+            raw=m.safe_dispatch(self.package,self.rows,self.loader,self.intent,'c'*64,1000.)
+        compile.assert_not_called();value=json.loads(raw)
+        self.assertEqual(value['error_code'],'E138_WORKER_EXTERNAL_FREEZE_REQUIRED')
+        self.assertEqual(value['stage'],'ADMISSION');self.assertFalse(value['attempt_consumed'])
+        self.assertLess(len(raw),1024)
+
+    def test_safe_boundary_redacts_unknown_and_subclass_exception_text(self):
+        class Private(m.WorkerFailure):pass
+        for exc in (ValueError('SENTINEL_PRIVATE'),KeyboardInterrupt('SENTINEL_PRIVATE'),
+                Private('E138_WORKER_SOURCE_PIN'),m.WorkerFailure('E138_WORKER_SOURCE_PIN SENTINEL_PRIVATE')):
+            with self.subTest(kind=type(exc).__name__),mock.patch.object(m,'dispatch',side_effect=exc):
+                raw=m.safe_dispatch({},[],b'',{},'c'*64,1000.)
+            self.assertNotIn(b'SENTINEL_PRIVATE',raw)
+            self.assertEqual(json.loads(raw)['error_code'],'E138_WORKER_REDACTED_FAILURE')
+
+    def test_safe_success_and_stage_on_source_load_failure(self):
+        with mock.patch.object(m,'dispatch',return_value=b'{"synthetic":true}'):
+            self.assertEqual(m.safe_dispatch({},[],b'',{},'c'*64,1000.),b'{"synthetic":true}')
+        self.bodies[-1]=(self.bodies[-1][0],b'raise RuntimeError("SENTINEL_PRIVATE")')
+        self.configure()
+        raw=m.safe_dispatch(self.package,self.rows,self.loader,self.intent,'c'*64,1000.)
+        self.assertNotIn(b'SENTINEL_PRIVATE',raw);value=json.loads(raw)
+        self.assertEqual(value['stage'],'SOURCE_LOAD');self.assertTrue(value['attempt_consumed'])
+        self.assertEqual(value['error_code'],'E138_WORKER_REDACTED_FAILURE')
+
     def native_fixture_session(self,session,rows,role,configure=None):
         """Only physical test backends/content pins are substituted, in RAM.
 
@@ -155,6 +184,17 @@ class Tests(unittest.TestCase):
         if role=='execution':
             self.freeze['payload_sha256']=assembly['payload_sha256']
             self.intent=json.loads(self.package['role2_intent'])
+        from scripts import e138_reviewed_envelope as envelope
+        template=copy.deepcopy(self.freeze);static_package=dict(self.package)
+        template.pop('payload_sha256')
+        if role=='execution':
+            template['assembly'].pop('payload_sha256')
+            template['input_sha256'].pop('role2_intent')
+            template['assembly']['input_sha256'].pop('role2_intent',None)
+            static_package.pop('role2_intent')
+        derived,reconstructed=envelope.derive(template,static_package,self.intent,self.freeze['payload_sha256'])
+        self.assertEqual(derived,self.freeze);self.assertEqual(reconstructed,self.package)
+        self.freeze.clear();self.freeze.update(derived);self.package=reconstructed
         # Do not patch the shared types module: native source tag checks depend
         # on genuine ModuleType identity. Only the worker's constructor is wrapped.
         original=types.ModuleType;owner=self
@@ -182,7 +222,7 @@ class Tests(unittest.TestCase):
                 return instrumented
         def construct(name):return InstrumentedLoader(name) if name=='_e138_reviewed_source_session' else original(name)
         with mock.patch.object(m,'types',types.SimpleNamespace(ModuleType=construct)),mock.patch('subprocess.Popen') as spawn:
-            result=m.dispatch(self.package,self.rows,self.loader,self.intent,self.freeze['payload_sha256'],
+            result=m.safe_dispatch(self.package,self.rows,self.loader,self.intent,self.freeze['payload_sha256'],
                 2000. if role=='execution' else 1000.)
         spawn.assert_not_called()
         return json.loads(result)

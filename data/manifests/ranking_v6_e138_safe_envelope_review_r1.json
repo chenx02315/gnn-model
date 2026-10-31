@@ -1,0 +1,36 @@
+{
+  "schema":"e138-safe-boundary-reviewed-envelope-v1",
+  "date":"2026-10-31",
+  "status":"PASS_VIRTUAL_INTEGRATION_CONTROLLER_PENDING",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/worker_e138_batch.py":"5ba90159cded68b4e9037cead4edf2d41a6b9390b65aed6216d50207e0352c8f",
+    "tests/test_worker_e138_batch.py":"f1f3da1ae2993de295cad0bcd292c39820884e0f0924d3ae731b6c2148bb8670",
+    "scripts/e138_reviewed_envelope.py":"871161b337582917ef2913f9b7fbaed851a5598805cdd62cbbe7b03f4881111b",
+    "tests/test_e138_reviewed_envelope.py":"21eac4282d29e4dd58383446bb9259a5d07106def0d370dbf3c5fcd8ab128d4a"
+  },
+  "independent_component_tests":{
+    "safe_boundary_joint":{"tests":78,"seconds":4.353,"failures":0,"errors":0},
+    "pure_envelope":{"tests":7,"seconds":0.008,"failures":0,"errors":0}
+  },
+  "root_regression":{"tests":595,"seconds":17.165,"failures":0,"errors":0},
+  "independent_final_integration":{"tests":85,"seconds":4.154,"failures":0,"errors":0},
+  "evidence":[
+    "Finite worker stage and exact public error whitelist; no arbitrary exception text/class/traceback in returned failure JSON",
+    "Bootstrap verifies complete bounded payload against separate invocation argument before compile/exec",
+    "Payload does not embed its own digest; full payload plus exact command must be independently reviewed",
+    "Runtime derivation limited to verified payload digest and canonical role2 intent plus corresponding digest/assembly joins",
+    "Final native tests combine envelope derivation, safe_dispatch, actual loader and native capture/assembler using virtual physical backends"
+  ],
+  "new_remote_connections":0,
+  "execution_ready":false,
+  "physical_d95_verified":false,
+  "limitations":[
+    "Strict base64 decoding is not a proof of unique base64 encoding; decoded intent JSON bytes are canonical",
+    "Safe return frame does not intercept trusted source code printing or enforce transport stdout bounds",
+    "Worker attempt state is not the durable connection ledger",
+    "Real controller, readback dispatch, single-frame output wrapper and exact packet review remain pending",
+    "No actual E138 grant or trusted host execution established"
+  ],
+  "next":"Finish controller with pinned transport/clock/review/ledger wiring and native readback before requesting any new remote package authority"
+}

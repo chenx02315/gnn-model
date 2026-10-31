@@ -18,6 +18,14 @@ import types
 
 FROZEN=None
 _USED=False
+_STAGE='ADMISSION'
+STAGES=frozenset(('ADMISSION','SOURCE_LOAD','AUTHORITY','CAPTURE','ASSEMBLY_BIND','EXECUTION','SERIALIZE'))
+PUBLIC_CODES=frozenset(('E138_WORKER_EXTERNAL_FREEZE_REQUIRED','E138_WORKER_EXACT_INTENT',
+    'E138_WORKER_CONNECTION_START','E138_WORKER_INPUT_BYTES','E138_WORKER_LOADER_PIN',
+    'E138_WORKER_SOURCE_ROSTER','E138_WORKER_SOURCE_ROW','E138_WORKER_SOURCE_PIN',
+    'E138_WORKER_NATIVE_SOURCE_ROSTER','E138_WORKER_ROLE_INPUTS','E138_WORKER_FIXED_A_LINUX',
+    'E138_WORKER_CAPTURE_DEADLINE','E138_WORKER_CAPTURE_RESOURCES','E138_WORKER_CAPTURE_BOOT_CHANGED',
+    'E138_WORKER_ASSEMBLY_FREEZE_JOIN','E138_WORKER_RESPONSE_BOUND'))
 FIELDS=frozenset(('role','payload_sha256','loader_sha256','source_sha256','source_order',
     'input_sha256','authorization_sha256','proposal_sha256','assembly'))
 
@@ -104,22 +112,26 @@ def _capture(loaded,package,started):
 
 
 def dispatch(package,rows,loader_raw,intent,payload_sha,connection_start):
-    global _USED
+    global _USED,_STAGE
     # Reject default authority, all input/source drift and unsupported readback
     # before loader compilation, clocks, host checks or component callbacks.
+    _STAGE='ADMISSION'
     frozen,sources=_preflight(package,rows,loader_raw,intent,payload_sha,connection_start)
-    _USED=True
+    _USED=True;_STAGE='SOURCE_LOAD'
     loader=types.ModuleType('_e138_reviewed_source_session')
     exec(compile(loader_raw,'<e138-reviewed-source-session>','exec'),loader.__dict__)
     loader.FROZEN_SOURCE_SHA256=frozen['source_sha256'];loader.FROZEN_SOURCE_ORDER=frozen['source_order']
     with loader.source_session(rows) as loaded:
+        _STAGE='AUTHORITY'
         contract=loaded['physical_e138_contract'];capture=loaded['physical_replay_capture_e138']
         contract.check_authority(package['authority'],package['proposal'],frozen['authorization_sha256'],frozen['proposal_sha256'])
         capture.AUTH_SHA=frozen['authorization_sha256'];capture.PROPOSAL_SHA=frozen['proposal_sha256']
         if frozen['role']=='capture':
             capture.check_authority(package['authority'],package['proposal'])
+            _STAGE='CAPTURE'
             value=_capture(loaded,package,connection_start)
         else:
+            _STAGE='ASSEMBLY_BIND'
             assembly=frozen['assembly']
             require(set(assembly)==contract.FREEZE_KEYS and assembly['authorization_sha256']==frozen['authorization_sha256'] and
                 assembly['proposal_sha256']==frozen['proposal_sha256'] and assembly['payload_sha256']==payload_sha and
@@ -131,9 +143,33 @@ def dispatch(package,rows,loader_raw,intent,payload_sha,connection_start):
             assembler.AUTH_SHA256=frozen['authorization_sha256'];assembler.PROPOSAL_SHA256=frozen['proposal_sha256']
             assembler.POLICY_SHA256=assembly['policy_sha256'];assembler.PAYLOAD_SHA256=payload_sha
             assembler.FROZEN_INPUT_SHA256=frozen['input_sha256'];assembler.FROZEN_SOURCE_SHA256=frozen['source_sha256']
+            _STAGE='EXECUTION'
             value=assembler.execute(package,sources,connection_start)
         # Ordinary bounded JSON only; no callable/module/private environment can
         # escape the session through the result. Bytes are returned for raw save.
+        _STAGE='SERIALIZE'
         raw=canonical(value)
         require(len(raw)<=6291456,'E138_WORKER_RESPONSE_BOUND')
         return raw
+
+
+def safe_dispatch(package,rows,loader_raw,intent,payload_sha,connection_start):
+    """One bounded public frame. Caller writes it once, without traceback.
+
+    This is not a transport wrapper: reviewed sources must also avoid printing
+    private data, and the controller must enforce raw output/transport bounds.
+    No arbitrary exception text, class name or traceback enters this frame.
+    """
+    code='E138_WORKER_REDACTED_FAILURE';failed=False;raw=None
+    try:
+        raw=dispatch(package,rows,loader_raw,intent,payload_sha,connection_start)
+    except BaseException as exc:
+        failed=True
+        if type(exc) is WorkerFailure and len(exc.args)==1 and type(exc.args[0]) is str and exc.args[0] in PUBLIC_CODES:
+            code=exc.args[0]
+    if failed:
+        raw=canonical(dict(schema='e138-safe-worker-failure-v1',status='STOPPED_FIRST_FAILURE',
+            stage=_STAGE if type(_STAGE) is str and _STAGE in STAGES else 'ADMISSION',
+            error_code=code,attempt_consumed=_USED is True,execution_ready=False,
+            physical_d95_verified=False,training_release=False))
+    return raw
