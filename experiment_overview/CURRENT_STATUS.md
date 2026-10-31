@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-10-31）：E138原生目录归属/清理收据已实现并独立57项联合复核通过，478项相关回归通过。真实private Files＋虚拟FS验证mkdir child、伪owned拒绝、最终身份稳定及原始输出/cleanup绑定；补齐角色2起点＋2400秒对所有tick/snapshot的约束，不以emit时刻重开预算。无新增远端；固定readback及完整assembler/controller仍待做。回执ranking_v6_e138_root_receipt_review_r1.json。
+
 最新（2026-10-31）：E138原生引擎采集准入已通过独立9项复核，447项相关回归通过。新grant/context、双源码、原始3600/2400期限、首次回调前消耗尝试及失败后拒绝重复已覆盖；真实selector算法连接虚拟文件采样，私有sentinel未导出。无新远端/工具，仍非真实安装验证或完整包放行。下一项原生owned-root/cleanup收据和固定结果取回。回执ranking_v6_e138_engine_collector_review_r1.json。
 
 最新（2026-10-31）：E138 selector/STIL完整私有函数namespace绑定已实现并独立5项复核通过，438项相关回归通过；虚拟FS实际走完22文件验证链。安装根和候选不变，仅执行root迁移；origin/adapter/effective-config需后续共同绑定。原生collector准入及root receipt/readback/assembler尚未完成，仍无新增远端。回执ranking_v6_e138_dependency_binding_review_r1.json。

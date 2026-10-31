@@ -1,0 +1,20 @@
+{
+  "schema": "e138-root-receipt-interface-design-v1",
+  "status": "DESIGN_NOT_EXECUTION_AUTHORIZATION",
+  "package_inputs": ["authority", "proposal", "original_clock", "role2_intent", "worker_spec", "runtime_source", "worker_source", "storage_source"],
+  "receipt_schema": "e138-final-registered-root-receipt-v1",
+  "binding_fields": ["authorization_sha256", "proposal_sha256", "clock_sha256", "role2_intent_sha256", "role2_payload_sha256", "worker_spec_sha256", "runtime_source_sha256", "worker_source_sha256", "storage_source_sha256", "emitter_source_sha256"],
+  "invariants": [
+    "All freeze and capability pins default to None; new authority required before IO or clock callbacks",
+    "Pinned worker_spec.connection_start_monotonic binds the original role2 start; every tick and final snapshot enforce min(package end, role2 start plus 2400) and the corresponding UTC cap",
+    "Private runtime factory freeze is compared, never inferred from supplied bytes",
+    "Registration captures the exact exclusively created mkdir child before close/reopen",
+    "Only the actual registered Files instance can emit a qualified final receipt",
+    "Final cleanup joins exact worker response bytes and cleanup bytes, source-bound observer and original boot/clock",
+    "Copied owned dictionaries, unknown cleanup, identity replacement or expired original clock cannot qualify",
+    "No further root mutations after final snapshot; outer raw transport still requires independent joins",
+    "Unknown exception text, custom names and private context never enter receipt or public error code"
+  ],
+  "execution_ready": false,
+  "physical_d95_verified": false
+}

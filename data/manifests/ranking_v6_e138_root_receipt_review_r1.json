@@ -1,0 +1,16 @@
+{
+  "schema": "e138-native-root-receipt-review-v1",
+  "date": "2026-10-31",
+  "status": "PASS_COMPONENT_ONLY",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": "21e489236771e22128fd8095a997ef6a41afe29c73b59088d3bb789ad0d56d04",
+  "tests_sha256": "c83a5f9f9a69872aad80d8dd2d3bce411c301ae1fa064bcf05088450e429fc78",
+  "independent_tests": {"tests": 57, "failures": 0, "errors": 0, "seconds": 0.431},
+  "regression": {"tests": 478, "failures": 0, "errors": 0, "seconds": 9.660},
+  "implemented": ["Eight raw inputs and ten binding fields", "Actual private Files registration and mkdir-child identity capture", "Frozen role2 start bounds all ticks and final snapshot", "Cleanup and pre-embedding worker raw-byte joins", "Unknown errors redacted without exception formatting or cause/context"],
+  "new_remote_connections": 0,
+  "execution_ready": false,
+  "physical_d95_verified": false,
+  "limitations": ["Virtual filesystem and synthetic grants/capabilities only", "Actual role2 start provenance, source loader, cleanup observer and no-writes-after-snapshot remain assembler obligations", "No real OS identity, remote process or Python36 validation"],
+  "next": "Native fixed readback and raw transport binding, followed by complete batch assembler/controller"
+}
