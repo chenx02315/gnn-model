@@ -231,6 +231,7 @@ def tracked_services(package):
 
         def emit(self,files,worker_response_bytes,cleanup_evidence_bytes):
             partial = None
+            result = None
             fd = fresh = None
             try:
                 _require(not emitted[0],'ROOT_RECEIPT_SINGLE_FINAL_EMISSION')
@@ -296,16 +297,21 @@ def tracked_services(package):
                     executor_source_policy_join_required=True,
                     physical_D95_verified=False,execution_ready=False,training_release=False)
                 _require(len(canonical(result)) <= 8192,'ROOT_RECEIPT_OUTPUT_BOUND')
-                return result
             except BaseException as exc:
+                result = None
                 args = exc.args if type(exc) is _Stop else ()
                 code = args[0] if type(args) is tuple and len(args) == 1 and type(args[0]) is str and args[0] in PUBLIC_CODES else 'ROOT_RECEIPT_CAPABILITY_OR_IO_FAILED'
                 # Raise outside the handler: do not retain the private exception
                 # as __context__, even when it has hostile formatting methods.
             finally:
-                if fresh is not None:
-                    os.close(fresh)
-                if fd is not None:
-                    os.close(fd)
+                for handle in (fresh,fd):
+                    if handle is not None:
+                        try:
+                            os.close(handle)
+                        except BaseException:
+                            result = None
+                            code = 'ROOT_RECEIPT_CAPABILITY_OR_IO_FAILED'
+            if result is not None:
+                return result
             raise RootReceiptFailure(code,partial) from None
     return Session()

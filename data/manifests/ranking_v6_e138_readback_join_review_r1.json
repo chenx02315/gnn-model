@@ -1,0 +1,50 @@
+{
+  "schema": "e138-fixed-readback-raw-join-review-v1",
+  "date": "2026-10-31",
+  "status": "PASS_COMPONENTS_ASSEMBLER_PENDING",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": {
+    "src/data/physical_e138_role3_export.py": "ee5073af10faab34b8b6202b2deca62900d3f4d0d8b133cd61cf691a4015dea3",
+    "tests/test_physical_e138_role3_export.py": "ff093ab71e0eebf3bb7dbd6266aa683edbdcf375cc51d62419deba3516a7975a",
+    "src/data/physical_e138_role2_join.py": "d336762b31a57628c1dd29d2d0e6b0ea9968f2fd441c76cfad185c1bacc94597",
+    "tests/test_physical_e138_role2_join.py": "cea14d66e7b4e9b4205fee7b5cc90c66e2096c05c4d1fdf4d26862de9bc765e0",
+    "src/data/physical_e138_root_receipt.py": "a689e5c3b4f51f9525c3ead79ad8114d3858951c717b1487a9a328a18d54a239",
+    "tests/test_physical_e138_root_receipt.py": "f6e6cc1cd319b6fcfe9cedb037581ff1b4d08366ede5878c2478421ba3dcde8b"
+  },
+  "independent_tests": {
+    "readback_and_join": 30,
+    "seconds": 0.464,
+    "root_close_repair_joint": 63,
+    "repair_seconds": 0.869,
+    "failures": 0,
+    "errors": 0
+  },
+  "root_regression": {
+    "tests": 510,
+    "seconds": 10.552,
+    "failures": 0,
+    "errors": 0
+  },
+  "closed_defect": {
+    "priority": "P2",
+    "component": "E138 root receipt",
+    "description": "finally-close failure could override sanitized errors and skip second close",
+    "fix": "Attempt both closes independently; any close error cancels qualification and raises fixed error outside handlers"
+  },
+  "evidence": [
+    "Exact fixed35 output list and bounded ordered prefix",
+    "Complete outer transport required; cleaned worker scientific failure can remain readable",
+    "Pure join matches exporter context shape; expected pins must come from trusted phase creator",
+    "Original package clock and role3 read60 remain bounded; no role2 deadline reset"
+  ],
+  "new_remote_connections": 0,
+  "execution_ready": false,
+  "physical_d95_verified": false,
+  "limitations": [
+    "Only virtual FS and synthetic source/callback trust",
+    "Authenticated context schema name does not turn consistency hashes into authenticity proof",
+    "Partial prefix in RAM is not durable publication",
+    "Complete assembler/controller/source loader and raw persistence wrapper still required"
+  ],
+  "next": "Complete native batch assembler, trusted source loader and three-role controller with exact packet review before requesting new remote package authority"
+}

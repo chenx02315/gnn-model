@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新已完成：native固定readback、raw join和最终close脱敏修复，510项相关回归通过。下一项完整原生batch assembler（不得只移除candidate拒绝门），绑定已审capture/bootstrap/collector/私有服务/STIL/receipt/readback；再做可信source loader和三角色controller，原始输出先存后验、失败零重试、时钟不重置。最后完整包独立复核后才形成新远端整包授权请求。旧E137保持封存，不新A/B/训练。
+
 最新已完成：native rootreceipt（8input/10binding、role2原始截止、真实注册/最终stable8/原始cleanup关联；独立57项、总478项回归）。下一项原生固定结果readback及raw transport joins，再接完整assembler/controller；worker_spec必须提供经源绑定的connection_start_monotonic，不从emit重开时钟。仍无E138远端授权，不重用E137额度。
 
 最新已完成：原生E138 collector（独立9项、总447项本地回归），勿重复实现。下一节点是原生目录真实instance注册、mkdir-child身份绑定、最终cleanup/raw收据，再接固定结果readback；随后完整assembler/controller/source closure。所有新组件仍默认禁用，E137额度不复用，不新A/B/LSF/Tessent。

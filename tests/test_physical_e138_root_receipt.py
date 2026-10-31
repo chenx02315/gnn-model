@@ -369,5 +369,29 @@ class ReceiptTests(unittest.TestCase):
         for path in (Path(m.__file__),Path(__file__)):ast.parse(path.read_text(encoding='utf-8'),feature_version=(3,6))
 
 
+    def _close_failure(self,unstable):
+        session,files=self.create();closed=[];calls=[0]
+        original_directory=self.fs.directory
+        def directory(path):
+            if path==m.ROOT:
+                calls[0]+=1
+                if unstable and calls[0]==2:self.fs.info[path].st_ino+=1
+            return original_directory(path)
+        def close(fd):
+            self.fs.close(fd);closed.append(fd)
+            raise OSError('SENTINEL_PRIVATE_CLOSE')
+        with mock.patch.object(m.anchored,'_directory',side_effect=directory),mock.patch.object(m.os,'close',side_effect=close):
+            with self.assertRaises(m.RootReceiptFailure) as caught:
+                session.emit(files,self.response,self.observation)
+        self.assertEqual(caught.exception.code,'ROOT_RECEIPT_CAPABILITY_OR_IO_FAILED')
+        self.assertEqual(len(closed),2)
+        self.assertIsNone(caught.exception.__context__);self.assertIsNone(caught.exception.__cause__)
+        self.assertFalse(caught.exception.partial_receipt['qualified_final_root_receipt'])
+        self.assertNotIn('SENTINEL',str(caught.exception))
+
+    def test_success_path_final_closes_both_attempted_and_sanitized(self):self._close_failure(False)
+    def test_snapshot_failure_and_final_close_failure_sanitized(self):self._close_failure(True)
+
+
 if __name__ == '__main__':
     unittest.main()
