@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-10-31）：E138本地原始证据持久化层及capture/execution worker已完成并独立复核。实际worker经真实loader进入原生capture/assembler，底层仍为虚拟文件/进程后端；75项独立联合测试及585项相关回归通过。修复起始记录保存失败可继续、非法首次结果可替换两处P2，首次失败后终止且保留已有原始字节。未新增远端；controller、最外层失败安全序列化和readback分派仍待做。回执ranking_v6_e138_worker_store_review_r1.json。
+
 最新（2026-10-31）：E138原生assembler与有界source session已接通并独立复核，50项联合测试及560项相关回归通过。完整源码清单和实际加载顺序下，合成执行及退出后的模块恢复得到验证；bootstrap及已知collector/root失败码保留，未知异常仍脱敏。无新增远端，不是物理D95或整包可运行。下一项是三角色controller、原始记录先落盘及精确包复核；E137补充读取已完成，不重读。回执ranking_v6_e138_assembler_loader_review_r1.json。
 
 最新（2026-10-31）：E138固定35项结果取回及角色2原始记录关联已实现并独立复核；同时关闭rootreceipt最终close异常绕过脱敏的P2。510项相关回归通过，原生export/join联合30项及close修复联合63项独立通过。部分前缀仍仅RAM，不是持久化证明；纯join必须来自可信phase创建及固定host运输，不能现场自算哈希冒认认证。无新增远端，完整assembler/controller/source loader仍待接通。回执ranking_v6_e138_readback_join_review_r1.json。

@@ -1,5 +1,11 @@
 # E138：补齐失败位置记录，不冒充实验成功
 
+## worker和原始证据保存恢复点（2026-10-31）
+
+新增create-once本地phase store：先独占记录角色尝试，再保存stdout/stderr/transport并fsync，随后才能调用验收。独立复核发现起始记录写失败和非法首次结果两条可继续路径，均修复为终止；目录墓碑不删除、不重置预算。保存本身失败只能保留已写前缀，不保证关闭标记一定落盘。
+
+新增无运输worker，默认冻结值为空，先核对外部可信freeze及完整loader/source/input字节，再进入source session执行capture或assembler。实际原生组件的虚拟后端集成已验证；独立75项及主代理585项回归通过。源码SHA见ranking_v6_e138_worker_store_review_r1.json。尚无readback分派/最外层异常序列化/controller或实际E138授权，绝不把局部PASS当成服务器可运行或物理D95。
+
 ## assembler与source session联合恢复点（2026-10-31）
 
 原生执行器已把合同、capture、bootstrap、selector、STIL、时钟、私有运行服务、collector及目录收据串联。完整源码清单先校验与编译，再在全新src命名空间运行；退出时恢复原模块。联合合成测试明确在source session内部调用assembler，独立50项及主代理560项相关回归通过。精确SHA见ranking_v6_e138_assembler_loader_review_r1.json。

@@ -1,0 +1,37 @@
+{
+  "schema": "e138-worker-local-store-review-v1",
+  "date": "2026-10-31",
+  "status": "PASS_NATIVE_VIRTUAL_INTEGRATION_CONTROLLER_PENDING",
+  "reviewer": "reference_semantic_review_r2",
+  "source_sha256": {
+    "scripts/e138_phase_store.py": "1852ad7622c5e3b6eeee1541cb0965869dccd468884fe883b190c2fa29b32f75",
+    "tests/test_e138_phase_store.py": "cf831ffb4b3ca141d52582c37635bd4a8f76f77b5f59e8c96f446a2037c0cf85",
+    "scripts/worker_e138_batch.py": "dfaaf11e09adfa20882b6d51cd2b6e9920bf9cc8b4cd6d43d5bc72a70fa50fb5",
+    "tests/test_worker_e138_batch.py": "3364f50ced8d96ced6c711a7d9376d6388f8406932a7c6766797dd7b0016040a"
+  },
+  "independent_tests": {"tests":75,"seconds":4.262,"failures":0,"errors":0},
+  "root_regression": {"tests":585,"seconds":16.296,"failures":0,"errors":0},
+  "regression_selection":"tests filenames matching e133/e134/e135/e137/e138 excluding duplex",
+  "closed_findings": [
+    "P2: failed start persistence could leave same store usable; now terminal with retained directory tombstone",
+    "P2: invalid first result could be replaced; now terminal before accepting any replacement",
+    "Close-write failure now returns fixed error while preserving terminal memory state"
+  ],
+  "evidence": [
+    "Exclusive local phase and ordered role debit; no existing phase resume",
+    "Raw stdout/stderr/transport fsynced before validator; terminal failure preserves available raw prefix",
+    "Worker rejects default freeze and drift before compilation; no pins learned from untrusted packet",
+    "Actual worker dispatch reaches native capture and native assembler inside verified source session",
+    "Physical files, engine sampling and process supervision remain virtual test substitutes; Popen not called"
+  ],
+  "new_remote_connections":0,
+  "execution_ready":false,
+  "physical_d95_verified":false,
+  "limitations": [
+    "Local store assumes trusted staging and single process, not hostile filesystem races",
+    "Store acceptance binds validation bytes but does not authenticate remote evidence or release readback",
+    "Worker does not implement readback dispatch or uniformly serialize all exceptions",
+    "No actual E138 grant; complete controller/outer wrapper/exact packet review pending"
+  ],
+  "next":"Implement reviewed controller and outer safe response boundary, native readback dispatch, and full virtual three-role chain before any new remote package request"
+}
