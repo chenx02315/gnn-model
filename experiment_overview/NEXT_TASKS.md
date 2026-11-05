@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新（2026-11-05）：原始时钟纯关联已独立复核并关闭因果P2，627项回归通过。下一项直接实现完整controller调度：复用已审packet/compiler、controller_clock、phase_store，绑定独立review精确摘要、固定host与transport源码，连接前落盘debit、返回后raw先存再验。不得把纯时钟/packet PASS当成可信输入来源；实际E138授权尚未建立，仍不访问A/B。
+
 最新（2026-11-05）：readback绑定/角色3分派/纯packet编译已独立复核，622项相关回归通过；不要重复这些组件。下一项实现实际controller：默认无真实grant，固定host与transport源码，精确review projection，调用前一次性role debit及原包clock，raw先存后验；role3仅在可信角色2raw及owned-clean join通过后执行。打包器本身不建立这些信任。完整虚拟三角色控制链及精确包复核后再请求新E138整体远端授权；旧E137及补充机会已关闭，不重用。
 
 最新（2026-10-31）：safe_dispatch和纯调用envelope已独立复核，完整局部虚拟链85项、相关回归595项通过。下一节点不重做组件：实现controller的固定host/transport与原时钟、精确review projection、phase store衔接，补native readback分派与单次有界stdout输出。payload静态模板不能内嵌自身SHA；仅按已审envelope规则派生动态intent字段。真实E138授权仍缺，完整本地整合及精确包复核前不请求/不连接A。
