@@ -1,0 +1,33 @@
+{
+  "schema":"e138-controller-pinned-factory-review-v1",
+  "date":"2026-11-05",
+  "status":"PASS_LOCAL_PINNED_WIRING_ACTUAL_PACKAGE_PENDING",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/e138_controller.py":"0748c3fb9b8c4144de938066e1fa1bd5da2deab994e617742f0970624f4100dd",
+    "tests/test_e138_controller_pinned_integration.py":"6cf5faa73ce974f99472df5b87816a63969e8ed90d0e02e54ef7ab496da9abb1"
+  },
+  "independent_tests":{"tests":38,"seconds":9.461,"failures":0,"errors":0},
+  "root_final_regression":{"tests":665,"seconds":17.717,"failures":0,"errors":0},
+  "closed_findings":[
+    "P1 adapter imported before source closure verification; closure now checked first",
+    "P2 source recheck consumed time after last timeout calculation; final balance now checked afterward",
+    "P2 malformed status string leaked arbitrary content; invalid fields use fixed markers",
+    "P2 adapter exception manufactured native receipt; now explicitly local failure with no native result"
+  ],
+  "evidence":[
+    "Separate pinned factory accepts no caller adapter; original clock starts before adapter construction",
+    "Static transitive local imports, extant package initializers and privately compiled transport helper bound by closure",
+    "Host/key/helper/scope/adapter and closure bind exact staged reviews",
+    "Native eight-field metadata and bounded raw stdout/stderr saved before seven-field store projection",
+    "65537-byte stderr preserved before terminal rejection; malformed termination flags rejected without validator"
+  ],
+  "limitations":[
+    "All process and key checks in tests mocked; no real SSH or ssh-keygen invocation",
+    "Repository source hashes do not authenticate system Python/SSH, hostile in-process mutation or actual remote host state",
+    "Staged review installation requires trusted local provenance; hashes alone do not authenticate consent",
+    "Actual deployment material, grant and complete exact execution package remain unprepared/unreleased"
+  ],
+  "new_remote_connections":0,"execution_ready":false,"physical_d95_verified":false,
+  "next":"Prepare actual bounded local deployment material/source manifest and whole-package proposal; independently review exact entrypoint and request one new E138 package authority before any A connection"
+}

@@ -1,8 +1,9 @@
-"""Bounded, default-disabled E138 orchestration. No live transport is installed.
+"""Bounded, default-disabled simulation and pinned E138 orchestration.
 
 RELEASE is an independently installed local review, never candidate data. An
 injected adapter is trusted test machinery, NOT host authentication or consent.
-No resume, retries, grant discovery, SSH, or scientific-success assertion.
+Pinned transport requires separate factory admission. No resume, retries, grant
+discovery, or scientific-success assertion. No grant is installed by this code.
 """
 import copy
 import datetime
@@ -22,10 +23,52 @@ from src.data import physical_e138_role3_export as exporter
 AUTHORIZATION_SHA256 = None
 PROPOSAL_SHA256 = None
 RELEASE = None
+PINNED_RELEASE = None
 ROLES = storage.ROLES
 LIMITS = dict(capture=60, execution=2400, readback=60)
 require = contract.require
 canonical, sha = packet.canonical, packet.sha
+
+
+def local_source_closure():
+    """Inspect the complete repository-local static import closure, not stdlib.
+
+    Includes package initializers. Dynamic remote source compilation is bound
+    separately by the reviewed packet; this is not a Python execution sandbox.
+    Caller must establish release authority before invoking this filesystem API.
+    """
+    import ast
+    import importlib.util
+    root = Path(__file__).resolve().parents[1]
+    pending = ['scripts.e138_controller','scripts.run_prospective_metadata_v1']
+    seen = {}
+    def location(name):
+        stem = root.joinpath(*name.split('.'))
+        for path in (stem.with_suffix('.py'), stem/'__init__.py'):
+            if path.is_file(): return path
+        return None
+    while pending:
+        name = pending.pop()
+        if name in seen: continue
+        path = location(name)
+        if path is None: continue
+        raw = path.read_bytes()
+        require(len(raw) <= 1048576, 'E138_CONTROLLER_LOCAL_SOURCE_BOUND')
+        seen[name] = sha(raw)
+        parts = name.split('.')
+        for count in range(1,len(parts)):
+            pending.append('.'.join(parts[:count]))
+        package = name if path.name == '__init__.py' else name.rpartition('.')[0]
+        for node in ast.walk(ast.parse(raw)):
+            if isinstance(node,ast.Import):
+                pending.extend(alias.name for alias in node.names)
+            elif isinstance(node,ast.ImportFrom):
+                target = (importlib.util.resolve_name('.'*node.level+(node.module or ''),package)
+                          if node.level else node.module)
+                if target:
+                    pending.append(target)
+                    pending.extend(target+'.'+alias.name for alias in node.names if alias.name != '*')
+    return seen
 
 
 def _private_function(function, **bindings):
@@ -37,7 +80,9 @@ class Controller:
     """Single original phase, three consumed connections, trusted local staging.
 
     Adapter.send receives exact reviewed payload/command plus an explicit timeout
-    and host identity. Only simulation adapters are currently supported. Adapter
+    and host identity. __init__ accepts simulation adapters only; create_pinned
+    constructs the exact separately pinned transport with no caller adapter.
+    Adapter
     exceptions consume the intent and produce a terminal bounded transport record.
     RELEASE binds adapter source, native validator sources and each exact review.
     Python monkeypatching is outside this trusted-process threat boundary.
@@ -68,6 +113,57 @@ class Controller:
         self.store = storage.PhaseStore(staging, AUTHORIZATION_SHA256, PROPOSAL_SHA256)
         self.start = self.store.create()
         self.index, self.terminal, self.original_clock = 0, False, None
+        self._pinned_mode = False
+
+    @classmethod
+    def create_pinned(cls, staging, authority, proposal):
+        """Separate production-shaped admission; defaults still deny all IO.
+
+        No caller adapter can substitute for the exact pinned transport class.
+        Both controller and transport grants require independent installation.
+        No endpoint is contacted here; constructor compilation consumes the
+        original local package clock, which is never restarted.
+        """
+        f = PINNED_RELEASE
+        require(type(f) is dict and contract._hex(AUTHORIZATION_SHA256) and
+                contract._hex(PROPOSAL_SHA256), 'E138_CONTROLLER_NO_PINNED_RELEASE')
+        require(set(f) == {'authorization_sha256','proposal_sha256','adapter_source_sha256',
+                'host','host_key','helper_sha256','scope','local_source_sha256','roles'} and
+                f['authorization_sha256'] == AUTHORIZATION_SHA256 and
+                f['proposal_sha256'] == PROPOSAL_SHA256, 'E138_CONTROLLER_PINNED_RELEASE')
+        contract.check_authority(authority,proposal,AUTHORIZATION_SHA256,PROPOSAL_SHA256)
+        closure = local_source_closure()
+        require(type(f['local_source_sha256']) is dict and closure == f['local_source_sha256'] and
+                closure.get('scripts.e138_pinned_transport') == f['adapter_source_sha256'],
+                'E138_CONTROLLER_PINNED_SOURCE_CLOSURE')
+        # Verify source bytes before importing newly reachable adapter code.
+        from scripts import e138_pinned_transport as pinned
+        require(f['host'] == pinned.HOST and f['host_key'] == pinned.HOST_KEY and
+                f['helper_sha256'] == pinned.HELPER_SHA256 and
+                f['scope'] == pinned.PinnedTransport.scope and
+                type(f['roles']) is dict and set(f['roles']) == set(ROLES),
+                'E138_CONTROLLER_PINNED_IDENTITY')
+        instance = cls.__new__(cls)
+        instance.freeze = copy.deepcopy(f)
+        instance.authority, instance.proposal = authority,proposal
+        instance.store = storage.PhaseStore(staging,AUTHORIZATION_SHA256,PROPOSAL_SHA256)
+        instance.start = instance.store.create()
+        instance.index, instance.terminal, instance.original_clock = 0,False,None
+        instance._pinned_mode = True
+        failed = False
+        try:
+            instance.adapter = pinned.PinnedTransport(authority,proposal)
+            require(type(instance.adapter) is pinned.PinnedTransport,
+                    'E138_CONTROLLER_PINNED_ADAPTER_TYPE')
+            instance._adapter_type = pinned.PinnedTransport
+            instance.store.remaining()
+            return instance
+        except BaseException:
+            failed = True
+        if failed:
+            try: instance._stop('CONTROLLER_STOP')
+            except BaseException: instance.terminal = True
+            raise ValueError('E138_CONTROLLER_PINNED_CONSTRUCTION_FAILED') from None
 
     def _stop(self, reason):
         self.terminal = True
@@ -102,7 +198,11 @@ class Controller:
         plan = _private_function(packet.prepare, EXPECTED=pinned['packet'])(**material)
         expected = dict(projection=plan['projection'], projection_sha256=plan['projection_sha256'],
                         payload_sha256=sha(plan['payload']), remote_command=plan['remote_command'],
-                        host=self.freeze['host'], scope='LOCAL_SIMULATION_ONLY')
+                        host=self.freeze['host'], scope=(self.freeze['scope'] if self._pinned_mode else 'LOCAL_SIMULATION_ONLY'))
+        if self._pinned_mode:
+            expected.update(host_key=self.freeze['host_key'],helper_sha256=self.freeze['helper_sha256'],
+                adapter_source_sha256=self.freeze['adapter_source_sha256'],
+                local_source_sha256=self.freeze['local_source_sha256'])
         require(review_raw == canonical(expected) and plan['projection']['role'] == role and
                 plan['projection']['authorization_sha256'] == self.freeze['authorization_sha256'] and
                 plan['projection']['proposal_sha256'] == self.freeze['proposal_sha256'],
@@ -126,6 +226,57 @@ class Controller:
             _private_function(joiner.join, FREEZE=frozen['readback']['join_freeze'])(package)
         return plan
 
+    def _persist_native(self, result, role, origin='NATIVE_ADAPTER_RETURN'):
+        """Save bounded raw prefixes and all native fields BEFORE projection.
+
+        Malformed/non-JSON field values get a bounded invalid-type marker, never
+        repr/private exception text. Valid native receipts retain every field.
+        Projection is explicitly labelled; the full receipt is never overwritten.
+        """
+        directory = self.store.phase/role
+        values = result if type(result) is dict else {}
+        saved = {}
+        projected = {}
+        bounded = True
+        remaining_cap = storage.CAPS[role]
+        for name in ('stdout','stderr'):
+            cap = remaining_cap
+            value = values.get(name)
+            raw = value[:cap] if type(value) is bytes else b''
+            bounded = bounded and type(value) is bytes and len(value) <= cap
+            storage.write_new(directory/('native_'+name+'.raw'),raw)
+            remaining_cap -= len(raw)
+            saved[name] = dict(file='native_'+name+'.raw',bytes=len(raw),sha256=sha(raw),
+                original_bytes=len(value) if type(value) is bytes else None,
+                prefix_only=type(value) is not bytes or len(value)>cap)
+            projected[name] = raw if name == 'stdout' else raw[:65536]
+            if name == 'stderr' and type(value) is bytes and len(value)>65536:
+                bounded = False
+        for name in ('exit_code','timeout','overflow','write_failed','threads_incomplete','remote_termination_verified'):
+            value = values.get(name)
+            if name not in values:
+                saved[name] = {'missing':True}
+            elif (name == 'exit_code' and (value is None or (type(value) is int and abs(value)<2**31))) or (name != 'exit_code' and type(value) is bool):
+                saved[name] = value
+            else:
+                saved[name] = {'invalid_native_field':True}
+        exact = set(values) == storage.RESULT_KEYS|{'remote_termination_verified'}
+        storage.write_new(directory/'native_transport.json',canonical(dict(
+            schema='e138-full-native-transport-v1',result=saved,exact_native_keys=exact,
+            receipt_origin=origin,native_result_received=origin=='NATIVE_ADAPTER_RETURN',
+            phase_store_projection='EXPLICIT_SEVEN_KEY_PROJECTION_NOT_FULL_NATIVE_RECEIPT')))
+        valid = exact and bounded and origin=='NATIVE_ADAPTER_RETURN' and values.get('remote_termination_verified') is False
+        code = values.get('exit_code')
+        valid_code = code is None or (type(code) is int and abs(code)<2**31)
+        valid = valid and valid_code
+        projected['exit_code'] = code if valid_code else None
+        for name in ('timeout','overflow','write_failed','threads_incomplete'):
+            value = values.get(name)
+            valid = valid and type(value) is bool
+            projected[name] = value if type(value) is bool else True
+        if not valid: projected['threads_incomplete'] = True
+        return projected
+
     def run_role(self, material, review_raw):
         require(not self.terminal and self.index < 3, 'E138_CONTROLLER_TERMINAL')
         try:
@@ -140,12 +291,22 @@ class Controller:
                     'E138_CONTROLLER_PERSISTED_INTENT')
             timeout = min(LIMITS[role], self.store.remaining() - 10)
             require(timeout > 0, 'E138_CONTROLLER_RESERVE')
+            if self._pinned_mode:
+                require(type(self.adapter) is self._adapter_type and
+                        local_source_closure() == self.freeze['local_source_sha256'],
+                        'E138_CONTROLLER_PINNED_ADAPTER_OR_SOURCE_DRIFT')
+            timeout = min(LIMITS[role], self.store.remaining() - 10)
+            require(timeout > 0, 'E138_CONTROLLER_RESERVE')
+            origin = 'NATIVE_ADAPTER_RETURN'
             try:
                 result = self.adapter.send(host=self.freeze['host'], role=role,
                     payload=plan['payload'], remote_command=plan['remote_command'], timeout=timeout)
             except BaseException:
+                origin = 'LOCAL_ADAPTER_EXCEPTION'
                 result = dict(stdout=b'', stderr=b'', exit_code=None, timeout=False,
                               overflow=False, write_failed=False, threads_incomplete=True)
+            if self._pinned_mode:
+                result = self._persist_native(result,role,origin)
             def validate(raw, stderr, transport):
                 if role == 'capture':
                     now = time.monotonic()
@@ -169,7 +330,7 @@ class Controller:
                     exporter.validate_result(value, complete=True)
                 return canonical(dict(role=role, raw_sha256=sha(raw),
                     remote_authentication_proven=False, execution_ready=False,
-                    scope='LOCAL_SIMULATION_ONLY'))
+                    scope=self.freeze['scope'] if self._pinned_mode else 'LOCAL_SIMULATION_ONLY'))
             receipt = self.store.record(result, validate)
             self.index += 1
             if self.index == 3:

@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-11-05）：固定运输factory已接入controller并独立38项复核，最终源码665项相关回归通过。原始时钟在构造适配器前启动；源码闭包先验后导入，完整八字段运输回执/原文先落盘，再显式映射七字段store。已关闭先导入后验源P1及余额失准、畸形字段泄漏、伪造原生回执三项P2。所有运输测试仍为模拟，无真实SSH/ssh-keygen；实际E138部署材料/完整精确包/新授权尚未建立，无物理D95。回执ranking_v6_e138_controller_pinned_review_r1.json。
+
 最新（2026-11-05）：固定A运输适配器独立复核通过，13项模拟进程测试及654项相关回归通过。私有固定helper闭包、精确命令、缓存指纹、一次性角色顺序、读异常/短写、进程创建耗时与独立清理失败路径均有验证；旧helper未修改。仍未执行真实SSH或ssh-keygen，未接入controller真实入口，实际授权默认关闭。八字段运输结果中的remote_termination_verified保持false，不能静默丢为store七字段。详见ranking_v6_e138_pinned_transport_review_r1.json。
 
 最新（2026-11-05）：本地控制器编排已独立复核：真实packet/clock/PhaseStore及native receipt/join/export接口接通，14项控制器测试和641项相关回归通过。五条路径模拟调用数为正常3、清理合格的科学失败3、无根2、伪归属2、capture原文字节变化1。已关闭发送前余额过期、capture原文未绑定及双失败异常上下文三处P2。仅模拟adapter；未执行生成的远端worker，两个虚拟FS通过复制收据身份衔接，不能证明真实文件系统连续性或独立来源信任。新E138授权及真实固定运输仍未建立，无远端/物理D95。回执ranking_v6_e138_controller_review_r1.json。
