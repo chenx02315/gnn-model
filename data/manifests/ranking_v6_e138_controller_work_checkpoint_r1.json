@@ -1,0 +1,23 @@
+{
+  "schema":"e138-controller-work-checkpoint-v1",
+  "date":"2026-11-05",
+  "status":"SUPERSEDED_BY_ranking_v6_e138_controller_review_r1",
+  "base_commit":"7bf2f8e0193087c3f11512ce85b4d9971d741020",
+  "owned_files":["scripts/e138_controller.py","tests/test_e138_controller.py"],
+  "root_focused_tests":{"tests":9,"seconds":0.275,"failures":0,"errors":0},
+  "review_findings":[
+    "Post-intent timeout recomputation and exact persisted capture byte binding implemented",
+    "Double-failure exception-context repair awaits focused independent re-review"
+  ],
+  "remaining":[
+    "Native three-role controller integration with tightly scoped virtual FS inside simulated adapter",
+    "Normal3/owned-clean scientific-failure3/no-root2 connection-count evidence",
+    "Complete independent review and broad regression before sealing",
+    "Real pinned transport adapter not enabled; no actual E138 grant"
+  ],
+  "agents":{"implementation":"e138_controller_build","review":"reference_semantic_review_r2"},
+  "new_remote_connections":0,
+  "execution_ready":false,
+  "physical_d95_verified":false,
+  "resume":"Inspect current owned files and live agents; do not restart finished components or mistake mock tests for full native integration"
+}

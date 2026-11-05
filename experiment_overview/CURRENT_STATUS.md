@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-11-05）：本地控制器编排已独立复核：真实packet/clock/PhaseStore及native receipt/join/export接口接通，14项控制器测试和641项相关回归通过。五条路径模拟调用数为正常3、清理合格的科学失败3、无根2、伪归属2、capture原文字节变化1。已关闭发送前余额过期、capture原文未绑定及双失败异常上下文三处P2。仅模拟adapter；未执行生成的远端worker，两个虚拟FS通过复制收据身份衔接，不能证明真实文件系统连续性或独立来源信任。新E138授权及真实固定运输仍未建立，无远端/物理D95。回执ranking_v6_e138_controller_review_r1.json。
+
 最新（2026-11-05）：补齐controller原始时钟纯关联：以原生capture收据和package-clock解析器连接本地start与远端采样，不直接比较两台主机monotonic原点。独立复核发现并关闭远端推算启动早于本地连接的P2；新增因果反例及恰好剩10秒拒绝测试。独立5项及627项相关回归通过，无新增远端。尚未完成实际controller的审核/固定运输/账本调度；不代表E138整包可执行。回执ranking_v6_e138_controller_clock_review_r1.json。
 
 最新（2026-11-05）：readback运行绑定、worker/envelope角色3分派及纯打包器已完成独立复核。原生raw/owned-clean join在系统访问前执行，角色3保留原连接起点+60秒及25MiB响应限额，固定35项、有序失败前缀及超过6MiB合法输出通过虚拟FS整合。独立103项联合及9项packet测试通过；622项相关回归在允许临时硬链接的本地环境全部通过（沙箱内3项旧os.link测试曾被WinError5阻止，未改测试绕过）。无SSH/Tessent、新E138授权或真实D95结果。下一项只做controller/固定运输/原时钟/独立review/一次性账本接通，再完整精确包复核。回执ranking_v6_e138_readback_runtime_review_r1.json、ranking_v6_e138_packet_review_r1.json。

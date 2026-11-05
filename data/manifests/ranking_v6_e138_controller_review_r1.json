@@ -1,0 +1,26 @@
+{
+  "schema":"e138-controller-simulation-review-v1",
+  "date":"2026-11-05",
+  "status":"PASS_LOCAL_ORCHESTRATION_LIVE_TRANSPORT_PENDING",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/e138_controller.py":"50a9f582e59adb66e8819c4059f6ddc8c93a69ddf414e7ef145a36480aff20db",
+    "tests/test_e138_controller.py":"34df4b5d2ad4c0f8a093c4f1ee6321a28426a9495c6a9f6d468f9b79418c4bbb",
+    "tests/test_e138_controller_native_integration.py":"b5079100ca8293cbfbdeb985cb2d16ed0715f56c1ff739ff153aacc665d3b7b3"
+  },
+  "independent_tests":{"tests":14,"seconds":0.664,"failures":0,"errors":0},
+  "root_regression":{"tests":641,"seconds":11.017,"failures":0,"errors":0},
+  "simulated_calls":{"normal":3,"owned_clean_scientific_failure":3,"no_root":2,"forged_owned_bool":2,"changed_capture_bytes":1},
+  "closed_findings":["Remaining time recalculated after intent persistence before send","Execution binds saved capture raw bytes exactly","Double failure close path cannot leak private exception context"],
+  "evidence":["Actual packet reconstruction and exact reviewed payload/command sent to simulator","Staged trusted review installation does not restart clock","Real local PhaseStore persists intent and raw before validation","Native session.emit produces receipt; native join before third send; native exporter reads fixed35 paths"],
+  "limitations":[
+    "Only simulation adapter supported; no generated worker payload execution by adapter",
+    "Distinct virtual filesystems used for execution/readback; receipt identity copied into readback fixture",
+    "Synthetic expected bindings come from fixture receipt, not an independently authenticated source",
+    "Direct module source checks do not authenticate complete transitive closure or hostile Python mutation",
+    "Trusted install_review API does not authenticate reviewer identity",
+    "No actual E138 grant, host authentication or live transport established"
+  ],
+  "new_remote_connections":0,"execution_ready":false,"physical_d95_verified":false,
+  "next":"Implement and independently review pinned real transport adapter plus source/release closure and exact full-packet review; obtain actual new E138 authority before any remote attempt"
+}
