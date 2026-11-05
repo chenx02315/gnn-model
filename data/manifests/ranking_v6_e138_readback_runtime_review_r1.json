@@ -1,0 +1,33 @@
+{
+  "schema":"e138-native-readback-runtime-review-v1",
+  "recorded_date":"2026-11-05",
+  "status":"PASS_VIRTUAL_INTEGRATION_CONTROLLER_PENDING",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "src/data/physical_e138_readback_runtime.py":"853c70478844c8a659d0bb88e50824093e4e34cf15f6d9da002578ce451b67c4",
+    "tests/test_physical_e138_readback_runtime.py":"049d24af19ac887715ceec1bb0269c76f5c0ede0cb0bdcf3e7b2aa58e2484d3d",
+    "scripts/worker_e138_batch.py":"e2f93af4d816237038121dec5ba830b3c6427a602dcf1afd6146b9d164bc8d95",
+    "tests/test_worker_e138_batch.py":"77ae99190a9347fcb0dacc7988ba713811203e62f3138194092bb622d66c446b",
+    "scripts/e138_reviewed_envelope.py":"6b46afad88f3894e1798dd9703781ba676a865f3dea88a4dce8b4b677867d7db",
+    "tests/test_e138_reviewed_envelope.py":"bdca7805201b3f75b5453b7eea86060d2e41bd6e8f167857d2025968594bed98"
+  },
+  "independent_joint_tests":{"tests":103,"seconds":5.502,"failures":0,"errors":0},
+  "root_regression_20261105":{"tests":622,"seconds":10.718,"failures":0,"errors":0,
+    "includes_packet_candidate":true,"environment":"same local suite outside filesystem sandbox; no network or actual tool launches"},
+  "sandbox_observation":{"tests":622,"errors":3,"cause":"historical stream_reference_e135_r2 temporary os.link calls rejected with WinError5; unchanged out-of-sandbox rerun passed"},
+  "closed_findings":[
+    "P2 final error-frame serialization could leak unknown exception; guarded fixed tiny fallback without encoder retry",
+    "P2 unknown ValueError parameter could execute __eq__; exact tuple/length/str checks added"
+  ],
+  "evidence":[
+    "Native raw/owned-clean join precedes system/domain/filesystem access",
+    "Original connection_start plus60 deadline includes source loading and pure join",
+    "Sampled peak bytes and child-set count correctly adapted; sampling failure is not zero",
+    "Worker/envelope support readback-specific freeze and25MiB response bound",
+    "Actual worker/loader/native runtime/private join/exporter tested on virtual owned FS, fixed35 paths, ordered partial and over6MiB result"
+  ],
+  "new_remote_connections":0,
+  "execution_ready":false,
+  "physical_d95_verified":false,
+  "limitations":["Virtual FS/process/resource substitutes only","No actual E138 grant or trusted remote channel established","Packet compiler review tracked separately; controller/transport/ledger wiring remains pending"]
+}

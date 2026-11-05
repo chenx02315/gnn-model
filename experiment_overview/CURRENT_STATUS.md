@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新（2026-11-05）：readback运行绑定、worker/envelope角色3分派及纯打包器已完成独立复核。原生raw/owned-clean join在系统访问前执行，角色3保留原连接起点+60秒及25MiB响应限额，固定35项、有序失败前缀及超过6MiB合法输出通过虚拟FS整合。独立103项联合及9项packet测试通过；622项相关回归在允许临时硬链接的本地环境全部通过（沙箱内3项旧os.link测试曾被WinError5阻止，未改测试绕过）。无SSH/Tessent、新E138授权或真实D95结果。下一项只做controller/固定运输/原时钟/独立review/一次性账本接通，再完整精确包复核。回执ranking_v6_e138_readback_runtime_review_r1.json、ranking_v6_e138_packet_review_r1.json。
+
 最新（2026-10-31）：继续完成worker有限阶段/白名单异常返回和独立调用参数封装，消除payload内嵌自身SHA的循环；仅允许从已验证调用机械派生payloadSHA及role2 intent/摘要。envelope→safe_dispatch→真实loader→原生capture/assembler的虚拟物理链经独立85项复核，595项相关回归通过。仍无SSH/Tessent或新E138授权；完整controller、readback分派和单次stdout写入包装待接通。回执ranking_v6_e138_safe_envelope_review_r1.json。
 
 最新（2026-10-31）：E138本地原始证据持久化层及capture/execution worker已完成并独立复核。实际worker经真实loader进入原生capture/assembler，底层仍为虚拟文件/进程后端；75项独立联合测试及585项相关回归通过。修复起始记录保存失败可继续、非法首次结果可替换两处P2，首次失败后终止且保留已有原始字节。未新增远端；controller、最外层失败安全序列化和readback分派仍待做。回执ranking_v6_e138_worker_store_review_r1.json。

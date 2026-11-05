@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新（2026-11-05）：readback绑定/角色3分派/纯packet编译已独立复核，622项相关回归通过；不要重复这些组件。下一项实现实际controller：默认无真实grant，固定host与transport源码，精确review projection，调用前一次性role debit及原包clock，raw先存后验；role3仅在可信角色2raw及owned-clean join通过后执行。打包器本身不建立这些信任。完整虚拟三角色控制链及精确包复核后再请求新E138整体远端授权；旧E137及补充机会已关闭，不重用。
+
 最新（2026-10-31）：safe_dispatch和纯调用envelope已独立复核，完整局部虚拟链85项、相关回归595项通过。下一节点不重做组件：实现controller的固定host/transport与原时钟、精确review projection、phase store衔接，补native readback分派与单次有界stdout输出。payload静态模板不能内嵌自身SHA；仅按已审envelope规则派生动态intent字段。真实E138授权仍缺，完整本地整合及精确包复核前不请求/不连接A。
 
 最新（2026-10-31）：本地store及capture/execution worker通过独立75项联合验证、585项相关回归。不要重复实现已审组件；继续controller/最外层安全序列化/readback分派，验证完整虚拟三角色链及原始时钟/归属收据，最后精确包独立复核。store只保证可信staging/单进程内持久化，不是授权、readback放行或真实D95证据。实际E138权限未建立，无新A/B调用。

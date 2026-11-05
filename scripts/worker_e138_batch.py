@@ -1,8 +1,8 @@
-"""Default-disabled E138 capture/execution dispatch; no transport.
+"""Default-disabled E138 three-role dispatch; no transport.
 
 FROZEN is installed by a future independently reviewed trusted entrypoint,
 never copied from wire data. Source loader and component raw bytes must match
-that freeze before compilation. Readback dispatch is not implemented here.
+that freeze before compilation. Readback requires native owned-clean raw joins.
 The loader is single-worker isolation, not an untrusted-code sandbox.
 """
 import base64
@@ -19,15 +19,16 @@ import types
 FROZEN=None
 _USED=False
 _STAGE='ADMISSION'
-STAGES=frozenset(('ADMISSION','SOURCE_LOAD','AUTHORITY','CAPTURE','ASSEMBLY_BIND','EXECUTION','SERIALIZE'))
+STAGES=frozenset(('ADMISSION','SOURCE_LOAD','AUTHORITY','CAPTURE','ASSEMBLY_BIND','EXECUTION','READBACK_BIND','READBACK','SERIALIZE'))
 PUBLIC_CODES=frozenset(('E138_WORKER_EXTERNAL_FREEZE_REQUIRED','E138_WORKER_EXACT_INTENT',
     'E138_WORKER_CONNECTION_START','E138_WORKER_INPUT_BYTES','E138_WORKER_LOADER_PIN',
     'E138_WORKER_SOURCE_ROSTER','E138_WORKER_SOURCE_ROW','E138_WORKER_SOURCE_PIN',
     'E138_WORKER_NATIVE_SOURCE_ROSTER','E138_WORKER_ROLE_INPUTS','E138_WORKER_FIXED_A_LINUX',
     'E138_WORKER_CAPTURE_DEADLINE','E138_WORKER_CAPTURE_RESOURCES','E138_WORKER_CAPTURE_BOOT_CHANGED',
-    'E138_WORKER_ASSEMBLY_FREEZE_JOIN','E138_WORKER_RESPONSE_BOUND'))
+    'E138_WORKER_ASSEMBLY_FREEZE_JOIN','E138_WORKER_READBACK_FREEZE_JOIN','E138_WORKER_RESPONSE_BOUND'))
 FIELDS=frozenset(('role','payload_sha256','loader_sha256','source_sha256','source_order',
     'input_sha256','authorization_sha256','proposal_sha256','assembly'))
+READBACK_FIELDS=(FIELDS-{'assembly'})|{'readback'}
 
 
 class WorkerFailure(ValueError):
@@ -45,7 +46,8 @@ def canonical(value):return json.dumps(value,sort_keys=True,separators=(',',':')
 
 def _preflight(package,rows,loader_raw,intent,payload_sha,started):
     f=FROZEN
-    require(not _USED and type(f) is dict and set(f)==FIELDS and f['role'] in ('capture','execution') and
+    require(not _USED and type(f) is dict and f.get('role') in ('capture','execution','readback') and
+        set(f)==(READBACK_FIELDS if f['role']=='readback' else FIELDS) and
         all(_hex(f[key]) for key in ('payload_sha256','loader_sha256','authorization_sha256','proposal_sha256')) and
         type(f['source_sha256']) is dict and 1<=len(f['source_sha256'])<=96 and
         all(type(name) is str and _hex(pin) for name,pin in f['source_sha256'].items()) and
@@ -57,7 +59,7 @@ def _preflight(package,rows,loader_raw,intent,payload_sha,started):
     require(type(payload_sha) is str and payload_sha==f['payload_sha256'] and
         type(intent) is dict and set(intent)=={'role','attempt_consumed','role_index','connections_max',
             'automatic_retries','payload_sha256'} and intent['role']==f['role'] and intent['attempt_consumed'] is True and
-        type(intent['role_index']) is int and intent['role_index']==('capture','execution').index(f['role'])+1 and
+        type(intent['role_index']) is int and intent['role_index']==('capture','execution','readback').index(f['role'])+1 and
         type(intent['connections_max']) is int and intent['connections_max']==3 and
         type(intent['automatic_retries']) is int and intent['automatic_retries']==0 and
         intent['payload_sha256']==payload_sha,'E138_WORKER_EXACT_INTENT')
@@ -78,11 +80,14 @@ def _preflight(package,rows,loader_raw,intent,payload_sha,started):
         raw=base64.b64decode(row['body_base64'],validate=True);total+=len(raw)
         require(0<len(raw)<=262144 and total<=4194304 and sha(raw)==row['sha256'],'E138_WORKER_SOURCE_PIN')
         sources[name]=raw
-    needed={'physical_e138_contract','physical_replay_capture_e138','physical_e138_runtime_primitives'}
+    needed={'physical_e138_contract','physical_e138_runtime_primitives'}
+    if f['role'] in ('capture','execution'):needed.add('physical_replay_capture_e138')
     if f['role']=='execution':needed.add('physical_e138_batch_assembler')
+    if f['role']=='readback':needed.add('physical_e138_readback_runtime')
     require(needed<=set(sources),'E138_WORKER_NATIVE_SOURCE_ROSTER')
     require((f['role']=='capture' and set(package)=={'authority','proposal'} and f['assembly'] is None) or
-        (f['role']=='execution' and type(f['assembly']) is dict),'E138_WORKER_ROLE_INPUTS')
+        (f['role']=='execution' and type(f['assembly']) is dict) or
+        (f['role']=='readback' and type(f['readback']) is dict),'E138_WORKER_ROLE_INPUTS')
     return copy.deepcopy(f),sources
 
 
@@ -113,7 +118,7 @@ def _capture(loaded,package,started):
 
 def dispatch(package,rows,loader_raw,intent,payload_sha,connection_start):
     global _USED,_STAGE
-    # Reject default authority, all input/source drift and unsupported readback
+    # Reject default authority and all input/source drift
     # before loader compilation, clocks, host checks or component callbacks.
     _STAGE='ADMISSION'
     frozen,sources=_preflight(package,rows,loader_raw,intent,payload_sha,connection_start)
@@ -123,14 +128,15 @@ def dispatch(package,rows,loader_raw,intent,payload_sha,connection_start):
     loader.FROZEN_SOURCE_SHA256=frozen['source_sha256'];loader.FROZEN_SOURCE_ORDER=frozen['source_order']
     with loader.source_session(rows) as loaded:
         _STAGE='AUTHORITY'
-        contract=loaded['physical_e138_contract'];capture=loaded['physical_replay_capture_e138']
+        contract=loaded['physical_e138_contract']
         contract.check_authority(package['authority'],package['proposal'],frozen['authorization_sha256'],frozen['proposal_sha256'])
-        capture.AUTH_SHA=frozen['authorization_sha256'];capture.PROPOSAL_SHA=frozen['proposal_sha256']
         if frozen['role']=='capture':
+            capture=loaded['physical_replay_capture_e138']
+            capture.AUTH_SHA=frozen['authorization_sha256'];capture.PROPOSAL_SHA=frozen['proposal_sha256']
             capture.check_authority(package['authority'],package['proposal'])
             _STAGE='CAPTURE'
             value=_capture(loaded,package,connection_start)
-        else:
+        elif frozen['role']=='execution':
             _STAGE='ASSEMBLY_BIND'
             assembly=frozen['assembly']
             require(set(assembly)==contract.FREEZE_KEYS and assembly['authorization_sha256']==frozen['authorization_sha256'] and
@@ -145,11 +151,23 @@ def dispatch(package,rows,loader_raw,intent,payload_sha,connection_start):
             assembler.FROZEN_INPUT_SHA256=frozen['input_sha256'];assembler.FROZEN_SOURCE_SHA256=frozen['source_sha256']
             _STAGE='EXECUTION'
             value=assembler.execute(package,sources,connection_start)
+        else:
+            _STAGE='READBACK_BIND'
+            readback=frozen['readback']
+            require(set(readback)=={'source_sha256','source_order','join_freeze'} and
+                readback['source_sha256']==frozen['source_sha256'] and readback['source_order']==frozen['source_order'] and
+                type(readback['join_freeze']) is dict and readback['join_freeze'].get('raw_sha256')==frozen['input_sha256'] and
+                readback['join_freeze'].get('role3_payload_sha256')==payload_sha and
+                package.get('role3_intent')==canonical(intent),'E138_WORKER_READBACK_FREEZE_JOIN')
+            contract.LOADED_SOURCE_ORDER=frozen['source_order']
+            collector=loaded['physical_e138_readback_runtime'];collector.FROZEN=readback
+            _STAGE='READBACK'
+            value=collector.collect(package,sources,connection_start)
         # Ordinary bounded JSON only; no callable/module/private environment can
         # escape the session through the result. Bytes are returned for raw save.
         _STAGE='SERIALIZE'
         raw=canonical(value)
-        require(len(raw)<=6291456,'E138_WORKER_RESPONSE_BOUND')
+        require(len(raw)<=(25165824 if frozen['role']=='readback' else 6291456),'E138_WORKER_RESPONSE_BOUND')
         return raw
 
 

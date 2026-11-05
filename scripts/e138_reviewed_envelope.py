@@ -3,7 +3,7 @@
 The trusted controller must review BOTH complete payload and exact command.
 SHA arguments alone do not authenticate a sender. Keeping command arguments
 outside the payload avoids embedding a payload's own hash inside itself.
-Only payload hash and exact canonical role2 intent may be runtime-derived.
+Only payload hash and the current role's exact canonical intent may be derived.
 """
 import base64
 import copy
@@ -12,11 +12,13 @@ import json
 import shlex
 
 MAX_PAYLOAD=4194304
-ROLES=('capture','execution')
+ROLES=('capture','execution','readback')
 STATIC_KEYS=frozenset(('role','loader_sha256','source_sha256','source_order','input_sha256',
     'authorization_sha256','proposal_sha256','assembly'))
 ASSEMBLY_KEYS=frozenset(('authorization_sha256','proposal_sha256','policy_sha256','input_sha256',
     'source_sha256','source_order'))
+READBACK_STATIC_KEYS=(STATIC_KEYS-{'assembly'})|{'readback'}
+READBACK_JOIN_KEYS=frozenset(('raw_sha256','role2_payload_sha256','input_bindings','cleanup_observer_source_sha256'))
 
 
 def require(ok,code):
@@ -45,8 +47,8 @@ if len(arg)>4096:raise ValueError("E138_BOOT_ARGUMENT_BOUND")
 __role_intent__=json.loads(arg.decode("ascii"))
 if type(__role_intent__) is not dict or set(__role_intent__)!={"role","attempt_consumed","role_index","connections_max","automatic_retries","payload_sha256"}:raise ValueError("E138_BOOT_INTENT")
 i=__role_intent__
-if i["role"] not in ("capture","execution"):raise ValueError("E138_BOOT_ROLE")
-if i["attempt_consumed"] is not True or type(i["role_index"]) is not int or i["role_index"]!=("capture","execution").index(i["role"])+1 or type(i["connections_max"]) is not int or i["connections_max"]!=3 or type(i["automatic_retries"]) is not int or i["automatic_retries"]!=0:raise ValueError("E138_BOOT_DEBIT")
+if i["role"] not in ("capture","execution","readback"):raise ValueError("E138_BOOT_ROLE")
+if i["attempt_consumed"] is not True or type(i["role_index"]) is not int or i["role_index"]!=("capture","execution","readback").index(i["role"])+1 or type(i["connections_max"]) is not int or i["connections_max"]!=3 or type(i["automatic_retries"]) is not int or i["automatic_retries"]!=0:raise ValueError("E138_BOOT_DEBIT")
 if type(i["payload_sha256"]) is not str or len(i["payload_sha256"])!=64 or any(c not in "0123456789abcdef" for c in i["payload_sha256"]):raise ValueError("E138_BOOT_EXPECTED_HASH")
 if json.dumps(i,sort_keys=True,separators=(",",":"),ensure_ascii=True,allow_nan=False).encode("ascii")!=arg:raise ValueError("E138_BOOT_CANONICAL_INTENT")
 raw=sys.stdin.buffer.read(4194305)
@@ -76,7 +78,8 @@ def derive(template,package,verified_intent,verified_payload_sha):
     verified_* must come from the exact reviewed BOOTSTRAP execution. This pure
     helper does not authenticate that provenance and cannot release execution.
     """
-    require(type(template) is dict and set(template)==STATIC_KEYS and template['role'] in ROLES and
+    require(type(template) is dict and template.get('role') in ROLES and
+        set(template)==(READBACK_STATIC_KEYS if template['role']=='readback' else STATIC_KEYS) and
         all(_hex(template[k]) for k in ('loader_sha256','authorization_sha256','proposal_sha256')) and
         type(template['source_sha256']) is dict and 1<=len(template['source_sha256'])<=96 and
         all(type(k) is str and _hex(v) for k,v in template['source_sha256'].items()) and
@@ -89,8 +92,9 @@ def derive(template,package,verified_intent,verified_payload_sha):
     require(type(verified_intent) is dict and canonical(verified_intent)==canonical(intent(template['role'],verified_payload_sha)) and
         all(type(verified_intent[k]) is int for k in ('role_index','connections_max','automatic_retries')),
         'E138_ENVELOPE_VERIFIED_INVOCATION')
+    dynamic_key='role3_intent' if template['role']=='readback' else 'role2_intent'
     require(type(package) is dict and set(package)==set(template['input_sha256']) and
-        'role2_intent' not in package and {'authority','proposal'}<=set(package) and
+        dynamic_key not in package and {'authority','proposal'}<=set(package) and
         all(type(raw) is bytes and len(raw)<=6291456 and sha(raw)==template['input_sha256'][key] for key,raw in package.items()) and
         sum(map(len,package.values()))<=10485760 and
         sha(package['authority'])==template['authorization_sha256'] and sha(package['proposal'])==template['proposal_sha256'],
@@ -99,7 +103,7 @@ def derive(template,package,verified_intent,verified_payload_sha):
     frozen['payload_sha256']=verified_payload_sha
     if template['role']=='capture':
         require(set(package)=={'authority','proposal'} and template['assembly'] is None,'E138_ENVELOPE_CAPTURE_SHAPE')
-    else:
+    elif template['role']=='execution':
         assembly=template['assembly']
         require(type(assembly) is dict and set(assembly)==ASSEMBLY_KEYS and _hex(assembly['policy_sha256']) and
             'policy' in package and sha(package['policy'])==assembly['policy_sha256'] and
@@ -109,4 +113,15 @@ def derive(template,package,verified_intent,verified_payload_sha):
         frozen['input_sha256']['role2_intent']=sha(result['role2_intent'])
         frozen['assembly']['payload_sha256']=verified_payload_sha
         frozen['assembly']['input_sha256']['role2_intent']=sha(result['role2_intent'])
+    else:
+        readback=template['readback']
+        require(type(readback) is dict and set(readback)=={'source_sha256','source_order','join_freeze'} and
+            readback['source_sha256']==template['source_sha256'] and readback['source_order']==template['source_order'] and
+            type(readback['join_freeze']) is dict and set(readback['join_freeze'])==READBACK_JOIN_KEYS and
+            readback['join_freeze']['raw_sha256']==template['input_sha256'],
+            'E138_ENVELOPE_STATIC_READBACK_JOIN')
+        result['role3_intent']=canonical(verified_intent)
+        frozen['input_sha256']['role3_intent']=sha(result['role3_intent'])
+        frozen['readback']['join_freeze']['raw_sha256']['role3_intent']=sha(result['role3_intent'])
+        frozen['readback']['join_freeze']['role3_payload_sha256']=verified_payload_sha
     return frozen,result

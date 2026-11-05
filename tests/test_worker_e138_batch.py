@@ -39,7 +39,7 @@ class Tests(unittest.TestCase):
 
     def configure(self,role='capture'):
         self.rows=[dict(name=name,sha256=m.sha(raw),body_base64=base64.b64encode(raw).decode('ascii')) for name,raw in self.bodies]
-        self.intent=dict(role=role,attempt_consumed=True,role_index=1 if role=='capture' else 2,
+        self.intent=dict(role=role,attempt_consumed=True,role_index=('capture','execution','readback').index(role)+1,
             connections_max=3,automatic_retries=0,payload_sha256='c'*64)
         self.freeze=dict(role=role,payload_sha256='c'*64,loader_sha256=m.sha(self.loader),
             source_sha256={name:m.sha(raw) for name,raw in self.bodies},source_order=tuple(name for name,raw in self.bodies),
@@ -77,8 +77,8 @@ class Tests(unittest.TestCase):
                     with self.assertRaises(m.WorkerFailure):m.dispatch(dict(self.package,authority=b'bad'),self.rows,self.loader,self.intent,'c'*64,1000.)
                 compile.assert_not_called()
 
-    def test_readback_not_implemented_and_intent_exact_types(self):
-        self.freeze['role']='readback'
+    def test_readback_requires_distinct_freeze_and_intent_exact_types(self):
+        self.freeze['role']='readback'  # old assembly-shaped freeze cannot enable readback
         with self.assertRaisesRegex(m.WorkerFailure,'EXTERNAL_FREEZE_REQUIRED'):self.run_dispatch()
         self.freeze['role']='capture';self.intent['role_index']=True
         with self.assertRaisesRegex(m.WorkerFailure,'EXACT_INTENT'):self.run_dispatch()
@@ -146,6 +146,9 @@ class Tests(unittest.TestCase):
         from tests import test_physical_e138_batch_assembler as fixture
         from tests import test_physical_replay_capture_e138 as capture_fixture
         from tests import test_physical_replay_source_inventory_e135 as inventory_fixture
+        from tests import test_physical_e138_readback_runtime as readback_fixture
+        from tests import test_physical_e138_role2_join as join_fixture
+        from tests import test_physical_e138_root_receipt as root_fixture
         @contextmanager
         def enter():
             with session(rows) as loaded:
@@ -153,8 +156,11 @@ class Tests(unittest.TestCase):
                 with mock.patch.object(fixture,'m',assembler if assembler else fixture.m), \
                         mock.patch.object(capture_fixture,'m',loaded['physical_replay_capture_e138']), \
                         mock.patch.object(inventory_fixture,'inv',loaded['physical_replay_source_inventory_e135']), \
-                        mock.patch.object(inventory_fixture,'core',loaded['physical_replay_source_reader_e135']):
-                    case=fixture.NativeFlowTests() if role=='execution' else capture_fixture.CaptureTests()
+                        mock.patch.object(inventory_fixture,'core',loaded['physical_replay_source_reader_e135']), \
+                        mock.patch.object(readback_fixture,'m',loaded.get('physical_e138_readback_runtime',readback_fixture.m)), \
+                        mock.patch.object(join_fixture,'m',loaded.get('physical_e138_role2_join',join_fixture.m)), \
+                        mock.patch.object(root_fixture,'m',loaded.get('physical_e138_root_receipt',root_fixture.m)):
+                    case=fixture.NativeFlowTests() if role=='execution' else readback_fixture.Tests() if role=='readback' else capture_fixture.CaptureTests()
                     try:
                         case.setUp()
                         if configure:configure(case,loaded)
@@ -162,13 +168,14 @@ class Tests(unittest.TestCase):
                     finally:case.doCleanups()
         return enter()
 
-    def native_dispatch(self,role):
+    def native_dispatch(self,role,readback_change=None):
         from scripts import e138_source_session as loader
         from tests.test_e138_source_session import Tests as LoaderTests
         from tests import test_physical_e138_batch_assembler as fixture
         roots={'physical_e138_contract','physical_replay_capture_e138','physical_e138_runtime_primitives'}
         if role=='execution':
             roots|=set(fixture.m.COMPONENTS.values())|set(fixture.m.ORIGINS.values())|set(fixture.m.INPUT_SOURCES.values())|set(fixture.m.contract.REQUIRED_SOURCES)|{'physical_e138_batch_assembler'}
+        if role=='readback':roots|={'physical_e138_readback_runtime','physical_e138_root_receipt'}
         self.bodies=LoaderTests().native_bodies(roots)
         rows=[dict(name=name,sha256=m.sha(raw),body_base64=base64.b64encode(raw).decode('ascii')) for name,raw in self.bodies]
         pins={name:m.sha(raw) for name,raw in self.bodies};order=tuple(name for name,raw in self.bodies)
@@ -178,12 +185,19 @@ class Tests(unittest.TestCase):
                 if role=='execution':
                     self.package=copy.deepcopy(case.package);assembly=copy.deepcopy(case.frozen)
                     assembly['source_sha256']=pins;assembly['source_order']=order
+                elif role=='readback':
+                    self.package=copy.deepcopy(case.package);assembly=None;readback=copy.deepcopy(case.frozen)
+                    readback['source_sha256']=pins;readback['source_order']=order
                 else:
                     self.package=dict(authority=case.authority,proposal=case.proposal);assembly=None
         self.configure(role);self.freeze['assembly']=assembly
         if role=='execution':
             self.freeze['payload_sha256']=assembly['payload_sha256']
             self.intent=json.loads(self.package['role2_intent'])
+        if role=='readback':
+            self.freeze.pop('assembly');self.freeze['readback']=readback
+            self.freeze['payload_sha256']=readback['join_freeze']['role3_payload_sha256']
+            self.intent=json.loads(self.package['role3_intent'])
         from scripts import e138_reviewed_envelope as envelope
         template=copy.deepcopy(self.freeze);static_package=dict(self.package)
         template.pop('payload_sha256')
@@ -192,6 +206,11 @@ class Tests(unittest.TestCase):
             template['input_sha256'].pop('role2_intent')
             template['assembly']['input_sha256'].pop('role2_intent',None)
             static_package.pop('role2_intent')
+        if role=='readback':
+            template['readback']['join_freeze'].pop('role3_payload_sha256')
+            template['input_sha256'].pop('role3_intent')
+            template['readback']['join_freeze']['raw_sha256'].pop('role3_intent',None)
+            static_package.pop('role3_intent')
         derived,reconstructed=envelope.derive(template,static_package,self.intent,self.freeze['payload_sha256'])
         self.assertEqual(derived,self.freeze);self.assertEqual(reconstructed,self.package)
         self.freeze.clear();self.freeze.update(derived);self.package=reconstructed
@@ -213,6 +232,11 @@ class Tests(unittest.TestCase):
                                 if name=='finite_sampler':result.sample_path=case.sample_path
                                 return result
                             case.patch(assembler,'_private',side_effect=private)
+                        elif role=='readback':
+                            owner.assertEqual(case.package,owner.package)
+                            for name,pin in pins.items():
+                                case.patch(loaded[name],'__source_sha256__',pin,create=True)
+                            if readback_change:readback_change(case,loaded)
                         else:
                             runtime=loaded['physical_e138_runtime_primitives']
                             owner.patch(runtime.legacy.direct,'Descendants',fixture.Domain)
@@ -223,7 +247,7 @@ class Tests(unittest.TestCase):
         def construct(name):return InstrumentedLoader(name) if name=='_e138_reviewed_source_session' else original(name)
         with mock.patch.object(m,'types',types.SimpleNamespace(ModuleType=construct)),mock.patch('subprocess.Popen') as spawn:
             result=m.safe_dispatch(self.package,self.rows,self.loader,self.intent,self.freeze['payload_sha256'],
-                2000. if role=='execution' else 1000.)
+                2000. if role=='execution' else 1100. if role=='readback' else 1000.)
         spawn.assert_not_called()
         return json.loads(result)
 
@@ -237,6 +261,28 @@ class Tests(unittest.TestCase):
         self.assertIsNotNone(result['owned_root'],result)
         self.assertEqual(result['worker_response']['launch_debit'],1)
         self.assertFalse(result['execution_ready'])
+
+    def test_actual_worker_native_readback_fixed35(self):
+        result=self.native_dispatch('readback')
+        self.assertEqual(result['role'],'readback');self.assertEqual(len(result['files']),35)
+        self.assertFalse(result['execution_ready'])
+
+    def test_actual_worker_readback_retains_partial_and_large_frame(self):
+        def mutate(case,loaded):
+            target=loaded['physical_e138_role3_export'].OUTPUTS[1]
+            def hook(path):
+                if path==target:case.fs.info[path].st_ctime_ns+=1
+            case.fs.read_hook=hook
+        result=self.native_dispatch('readback',mutate)
+        self.assertEqual(result['error_code'],'ROLE3_OUTPUT_CHANGED')
+        self.assertEqual(len(result['partial_result']['files']),1)
+
+    def test_actual_worker_readback_accepts_over6mib_frame(self):
+        def large(case,loaded):
+            path=next(p for p in loaded['physical_e138_role3_export'].OUTPUTS if p.endswith('faults.rpt'))
+            case.fs.body[path]=b'x'*(6291456+100);case.fs.info[path].st_size=len(case.fs.body[path])
+        result=self.native_dispatch('readback',large)
+        self.assertEqual(result['role'],'readback');self.assertGreater(len(m.canonical(result)),6291456)
 
 
 if __name__=='__main__':unittest.main()

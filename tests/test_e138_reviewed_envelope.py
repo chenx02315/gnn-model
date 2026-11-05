@@ -57,7 +57,7 @@ class Tests(unittest.TestCase):
         return template,package
 
     def test_only_allowlisted_derived_fields_and_no_mutation(self):
-        for role in m.ROLES:
+        for role in ('capture','execution'):
             template,package=self.template(role);before=copy.deepcopy(template)
             frozen,result=m.derive(template,package,m.intent(role,'c'*64),'c'*64)
             self.assertEqual(template,before);self.assertNotIn('role2_intent',package)
@@ -90,6 +90,26 @@ class Tests(unittest.TestCase):
         template['payload_sha256']='c'*64
         with self.assertRaisesRegex(ValueError,'STATIC_TEMPLATE'):
             m.derive(template,package,m.intent('capture','c'*64),'c'*64)
+
+    def test_readback_derives_only_own_intent_not_prior_execution_bytes(self):
+        template,package=self.template()
+        template['role']='readback';template.pop('assembly')
+        package.update(role2_intent=b'frozen role2 intent',role2_stdout=b'frozen raw',role2_stderr=b'',
+            role2_transport=b'frozen transport',original_clock=b'frozen clock')
+        template['input_sha256']={k:m.sha(v) for k,v in package.items()}
+        template['readback']=dict(source_sha256=copy.deepcopy(template['source_sha256']),source_order=template['source_order'],
+            join_freeze=dict(raw_sha256=copy.deepcopy(template['input_sha256']),role2_payload_sha256='d'*64,
+                input_bindings={'synthetic':'e'*64},cleanup_observer_source_sha256='f'*64))
+        before=copy.deepcopy(template)
+        frozen,result=m.derive(template,package,m.intent('readback','c'*64),'c'*64)
+        self.assertEqual(template,before);self.assertEqual(result['role2_intent'],package['role2_intent'])
+        self.assertEqual(frozen['readback']['join_freeze']['role2_payload_sha256'],'d'*64)
+        self.assertEqual(frozen['readback']['join_freeze']['role3_payload_sha256'],'c'*64)
+        self.assertEqual(frozen['input_sha256']['role3_intent'],m.sha(result['role3_intent']))
+        self.assertEqual(frozen['readback']['join_freeze']['raw_sha256'],frozen['input_sha256'])
+        with self.assertRaisesRegex(ValueError,'STATIC_INPUT_PIN'):
+            m.derive(template,dict(package,role2_stdout=b'changed'),m.intent('readback','c'*64),'c'*64)
+        ns=self.boot(b'VALUE=3',role='readback');self.assertEqual(ns['VALUE'],3)
 
     def test_python36_syntax_and_bootstrap_bound(self):
         ast.parse(Path(m.__file__).read_text(encoding='utf-8'),feature_version=(3,6))
