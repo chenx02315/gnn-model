@@ -1,0 +1,31 @@
+{
+  "schema":"e138-real-local-materials-review-checkpoint-v1",
+  "date":"2026-11-05",
+  "status":"PASS_LOCAL_MATERIALS_FULL_REGRESSION_NOT_RUN",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/e138_deployment_materials.py":"61d361b920c33a859263d08d3ddce1a5d44265c370961061927f1524953490f9",
+    "tests/test_e138_deployment_materials.py":"486f11da216cb4dd0e96a8f8f1292460a18eecec561d4316ba13e87623c92854",
+    "contracts/physical_f_clean_replay_proposal_e138_v1.json":"6e4d52d540aa3c776f7d443a1a14f0764ab90fa11657585d8d6c1b6c8acd0b4b"
+  },
+  "independent_focused_tests":{"tests":14,"seconds":0.238,"failures":0,"errors":0},
+  "root_focused_tests":{"tests":14,"seconds":0.242,"failures":0,"errors":0},
+  "actual_materials":{
+    "status":"READY_LOCAL_MATERIALS_ONLY",
+    "summary_sha256":"92bcdee0c130eb5be9b04299bf3975cbe716eda25770a43386d38825123ac558",
+    "artifacts":133,"source_rows":124,"fixed_content_rows":7,"constant_rows":2,"execution_inputs":13,
+    "roles":{
+      "capture":{"modules":35,"bytes":326943,"manifest_sha256":"2a88d1a38d336fad5ef5c8d43b0a4b857a54b526d58195c478e0bc497b32f480"},
+      "execution":{"modules":53,"bytes":525574,"manifest_sha256":"c7d37479c2225a58f1aabd449fcc9b434f6310cf66fa06f24928f12367b56ee4"},
+      "readback":{"modules":36,"bytes":344980,"manifest_sha256":"94c256ee13f04508283971b36f73224034761f3d06d42f80c79b996e8644dc09"}
+    }
+  },
+  "proposal_review":"PASS_SCOPE_CONGRUENCE_AUTHORIZATION_PENDING",
+  "closed_finding":"P2 unsupported project imports and missing/malformed declared module pins could be omitted; explicit rejection and inert nested import-alias resolution added",
+  "intermediate_observation":"A stricter intermediate version passed unit tests but actual preparation rejected unresolved direct_tessent_acceptance_e104 declarations; not treated as READY. Final same-hash unit and real preparation both passed.",
+  "full_regression":{"status":"NOT_EXECUTED","expected_tests":679,"reason":"Automatic approval review usage limit prevented out-of-sandbox test command from starting; no bypass attempted"},
+  "git_sync":"NOT_COMMITTED_OR_PUSHED_PENDING_FULL_REGRESSION",
+  "new_remote_connections":0,"authority_supplied":false,"execution_ready":false,"physical_d95_verified":false,
+  "limitations":["Private cache bytes remain only in RAM; no vendor/script/environment bodies exported","Current source hash calculation and native pin checks are not independent exact packet approval","Trusted local staging assumed; parent-directory race isolation not proven","No actual E138 authorization or captured current remote input/clock supplied"],
+  "resume":"Revalidate exact hashes and git status; when approval service is available run unmodified related suite including historical hardlink tests, then seal/commit/push if passing. Do not rerun vendor supplement remotely, create grant or start A/B/Tessent/LSF/training. Next prepare actual exact entrypoint package under a new explicit E138 authority."
+}

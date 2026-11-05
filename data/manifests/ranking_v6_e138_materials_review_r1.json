@@ -1,0 +1,19 @@
+{
+  "schema":"e138-real-local-materials-final-review-v1",
+  "date":"2026-11-05",
+  "status":"PASS_LOCAL_MATERIALS_AND_REGRESSION_ACTUAL_AUTHORITY_PENDING",
+  "prior_checkpoint":"ranking_v6_e138_materials_review_checkpoint_r1.json",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/e138_deployment_materials.py":"61d361b920c33a859263d08d3ddce1a5d44265c370961061927f1524953490f9",
+    "tests/test_e138_deployment_materials.py":"486f11da216cb4dd0e96a8f8f1292460a18eecec561d4316ba13e87623c92854",
+    "contracts/physical_f_clean_replay_proposal_e138_v1.json":"6e4d52d540aa3c776f7d443a1a14f0764ab90fa11657585d8d6c1b6c8acd0b4b"
+  },
+  "independent_focused_tests":{"tests":14,"seconds":0.238,"failures":0,"errors":0},
+  "root_full_regression":{"tests":679,"seconds":33.232,"failures":0,"errors":0},
+  "actual_preparation_recheck":{"status":"READY_LOCAL_MATERIALS_ONLY","artifacts":133,"summary_sha256":"92bcdee0c130eb5be9b04299bf3975cbe716eda25770a43386d38825123ac558"},
+  "proposal_review":"PASS_EXACT_NATIVE_POLICY_AND_CHINESE_SCOPE",
+  "previous_approval_service_failure":"Historical command did not start. Current identical local regression executed after approval service recovery; no bypass or omitted hardlink tests.",
+  "new_remote_connections":0,"authority_supplied":false,"execution_ready":false,"physical_d95_verified":false,
+  "next":"Obtain one explicit E138 whole-package authorization bound to proposal digest; install actual pins, independently review exact full entry/capture packet before first A connection; staged execution/readback review remains inside original budget"
+}

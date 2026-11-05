@@ -1,5 +1,9 @@
 # 当前实验状态
 
+最新（2026-11-05）：审批服务恢复后，原样执行679项相关本地回归全部通过（33.232秒）；真实材料复查仍为133条READY_LOCAL_MATERIALS_ONLY，摘要SHA未变。材料源码与提案均与独立复核通过字节一致，旧额度阻断记录仅保留为历史，不再当当前测试未运行。下一节点是真实新E138整包授权，提案SHA6e4d52d540aa3c776f7d443a1a14f0764ab90fa11657585d8d6c1b6c8acd0b4b；收到后再绑定真实grant并审核完整精确入口/首个packet，未授权前不发起A连接。仍无远端/物理D95/训练。回执ranking_v6_e138_materials_review_r1.json。
+
+最新（2026-11-05，未提交恢复点）：实际本地材料准备与E138待授权提案已独立复核。最终同一SHA下14项测试通过，真实prepare返回READY_LOCAL_MATERIALS_ONLY，133条摘要无失败、13项静态输入齐全；私有正文仅RAM，不含伪造grant/当前远端capture/clock。闭包遗漏P2经明确项目导入拒绝和静态别名解析修复；中间“单测绿但真实NOT_READY”未冒认成功。679项完整回归命令被自动审批服务额度限制阻止启动，尚未执行，故未提交/推送本批；不是服务器或实验失败，不绕过审批。恢复记录ranking_v6_e138_materials_review_checkpoint_r1.json。仍无新E138授权和远端连接。
+
 最新（2026-11-05）：固定运输factory已接入controller并独立38项复核，最终源码665项相关回归通过。原始时钟在构造适配器前启动；源码闭包先验后导入，完整八字段运输回执/原文先落盘，再显式映射七字段store。已关闭先导入后验源P1及余额失准、畸形字段泄漏、伪造原生回执三项P2。所有运输测试仍为模拟，无真实SSH/ssh-keygen；实际E138部署材料/完整精确包/新授权尚未建立，无物理D95。回执ranking_v6_e138_controller_pinned_review_r1.json。
 
 最新（2026-11-05）：固定A运输适配器独立复核通过，13项模拟进程测试及654项相关回归通过。私有固定helper闭包、精确命令、缓存指纹、一次性角色顺序、读异常/短写、进程创建耗时与独立清理失败路径均有验证；旧helper未修改。仍未执行真实SSH或ssh-keygen，未接入controller真实入口，实际授权默认关闭。八字段运输结果中的remote_termination_verified保持false，不能静默丢为store七字段。详见ranking_v6_e138_pinned_transport_review_r1.json。
