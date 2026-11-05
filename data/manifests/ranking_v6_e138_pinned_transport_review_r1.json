@@ -1,0 +1,32 @@
+{
+  "schema":"e138-pinned-a-transport-review-v1",
+  "date":"2026-11-05",
+  "status":"PASS_MOCKED_TRANSPORT_CONTROLLER_INTEGRATION_PENDING",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/e138_pinned_transport.py":"7116e26ab66ae951c7eb8ab51e41eee99d6a397238ec277bb868719fd8b90693",
+    "tests/test_e138_pinned_transport.py":"b2dc5dac5331e4a8962a89bafbb788c62660ea3dcb4f489d18b92e85c6dddb44"
+  },
+  "helper_sha256":"e0b1e62352781f96dc7d0e5a2a1a27e7f278b63c8aaaa07dbd946c1795c0f434",
+  "independent_tests":{"tests":13,"seconds":0.175,"failures":0,"errors":0},
+  "root_regression":{"tests":654,"seconds":11.235,"failures":0,"errors":0},
+  "evidence":[
+    "Default release denies before helper load or host query",
+    "Private verified helper namespace; fixed A endpoint/key and exact envelope command; one-use ordered attempts",
+    "Read exceptions and short writes explicitly force failure without private thread traceback",
+    "Same absolute send window before/after process creation; late zero-exit response is timeout, captured raw retained",
+    "Startup-overrun independently attempts kill, wait5 and each pipe close; no helper reader/writer threads started afterward"
+  ],
+  "closed_findings":["P2 Popen elapsed time reopened active window","P2 kill failure skipped subsequent wait during startup-overrun cleanup"],
+  "limitations":[
+    "All process/keygen interactions mocked; synthetic key material only",
+    "Popen and OS scheduling are not a hard kernel wall-clock limit",
+    "Cached key lookup has post-capture size checking, not preallocation bound",
+    "Eight-field native result preserves remote_termination_verified=False; controller still accepts only simulation adapter and store seven-field result",
+    "Startup-overrun empty streams mean unread/unknown, not no output or remote termination",
+    "Constructor compilation time must remain inside caller original package clock",
+    "No actual E138 grant or controller live release configured"
+  ],
+  "new_remote_connections":0,"execution_ready":false,"physical_d95_verified":false,
+  "next":"Explicit controller adapter/source/release integration preserving full transport receipt before seven-field store projection, then complete exact package review before requesting actual new E138 remote authority"
+}

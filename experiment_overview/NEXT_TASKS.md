@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+最新（2026-11-05）：独立固定A运输适配器已复核，654项相关回归通过，未真实调用SSH。下一项直接接controller：完整运输八字段先落盘，严格核对remote_termination_verified为false后才映射store七字段；固定适配器身份和完整source/release闭包纳入独立审核。构造适配器耗时也须计入原包时钟。controller当前仍仅模拟，不可删除scope拒绝就运行；新E138实际授权不存在。
+
 最新（2026-11-05）：controller模拟编排独立14项及641项回归通过，不重复组件实现。下一项真实固定transport adapter及完整source/release闭包；精确payload和命令必须连同host身份审核。当前模拟adapter不执行workerpayload、不同虚拟FS复制identity，不能据此声称真实跨角色连续性。新E138整体远端授权仍不存在；完整真实入口/精确包复核前不连接A/B、不启动Tessent，不重用已关闭E137。
 
 最新（2026-11-05）：原始时钟纯关联已独立复核并关闭因果P2，627项回归通过。下一项直接实现完整controller调度：复用已审packet/compiler、controller_clock、phase_store，绑定独立review精确摘要、固定host与transport源码，连接前落盘debit、返回后raw先存再验。不得把纯时钟/packet PASS当成可信输入来源；实际E138授权尚未建立，仍不访问A/B。
