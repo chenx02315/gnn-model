@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新授权状态（2026-11-06）：用户明确回复“批准 E138 整包”（原文左引号保留），实际授权文件physical_f_clean_replay_authorization_e138.json SHA bcaa8da7adc2e61daa35ccd50ce42dfd4131de180c7f3ca3adbbc86e8403dd74；与既有提案范围完全一致，原生合同及独立复核通过。旧“等待授权”为历史状态，不再重复申请。真实材料复核仍133条READY；本地执行phase不存在、A连接0。正在准备真实入口/精确首packet及独立审核；授权本身不跳过审核、不扩大任何预算。回执ranking_v6_e138_authorization_review_r1.json。
+
 最新（2026-11-05）：审批服务恢复后，原样执行679项相关本地回归全部通过（33.232秒）；真实材料复查仍为133条READY_LOCAL_MATERIALS_ONLY，摘要SHA未变。材料源码与提案均与独立复核通过字节一致，旧额度阻断记录仅保留为历史，不再当当前测试未运行。下一节点是真实新E138整包授权，提案SHA6e4d52d540aa3c776f7d443a1a14f0764ab90fa11657585d8d6c1b6c8acd0b4b；收到后再绑定真实grant并审核完整精确入口/首个packet，未授权前不发起A连接。仍无远端/物理D95/训练。回执ranking_v6_e138_materials_review_r1.json。
 
 最新（2026-11-05，未提交恢复点）：实际本地材料准备与E138待授权提案已独立复核。最终同一SHA下14项测试通过，真实prepare返回READY_LOCAL_MATERIALS_ONLY，133条摘要无失败、13项静态输入齐全；私有正文仅RAM，不含伪造grant/当前远端capture/clock。闭包遗漏P2经明确项目导入拒绝和静态别名解析修复；中间“单测绿但真实NOT_READY”未冒认成功。679项完整回归命令被自动审批服务额度限制阻止启动，尚未执行，故未提交/推送本批；不是服务器或实验失败，不绕过审批。恢复记录ranking_v6_e138_materials_review_checkpoint_r1.json。仍无新E138授权和远端连接。
