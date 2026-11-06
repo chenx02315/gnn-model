@@ -1,0 +1,64 @@
+{
+  "schema": "e139-reviewed-local-native-script-preparation-v1",
+  "date": "2026-11-06",
+  "status": "PASS_LOCAL_PREPARATION_NOT_EXECUTION_RELEASE",
+  "independent_reviewer": "reference_semantic_review_r2",
+  "source_pins": {
+    "scripts/e139_native_graph_candidate.py": "30ef062e6ccc3a5ee8910d089a2f779c49bc7c6ee7f834447fab7712f64268ea",
+    "tests/test_e139_native_graph_candidate.py": "a32c1e4f67a9be8522e1f7eb3648c48645bb35c2ce83dfadfa48aa636ee9f117",
+    "scripts/e139_packet_candidate.py": "4838bec6a14b064bce638d5c61e142b121527bcc930511ea475cbbc0cdb43f51",
+    "tests/test_e139_packet_candidate.py": "7415472bca42b40e7c287bbe5c22c91d095d8d2735f07884d00a137d787b1950",
+    "scripts/e139_local_materials.py": "d71176afd458e6941ff875e5eb7037fc39f7718a9ce30633e907a02f0f071d91",
+    "tests/test_e139_local_materials.py": "8b326977b3221750d00faf7f2fa0ae69ebdd710248f12e1f6b13df7addb5f1ea",
+    "scripts/e139_local_source_session.py": "a38a4c743a5bfd8d8c62530022ff4857af50aa6c7eb0c1a503aa1ac6926af1a0",
+    "tests/test_e139_local_source_session.py": "a14837f358b4a2b0ac18a5599b16e871921beb8a4ae7c85ba25889df6cc24fe1",
+    "scripts/e139_entry_candidate.py": "d13ae39dd83c80d4802ab6555a4e0b0392ae45727fcd3a8e52fa5d11089ed5fa",
+    "tests/test_e139_entry_candidate.py": "c3d6723b184459dca106a22ead42fb2640ffe1d97130115a17167fc8030796bd",
+    "tests/test_e139_local_entry_integration.py": "83911e62b5162fe0c270bb473f9b20b81c54b88658ebdd65970dd367b6b748b3"
+  },
+  "native_graph": {
+    "sources": 56, "derived": 14, "unchanged": 42,
+    "spec_sha256": "b768c7bb7eeedb77361274d0f05d4bf7141f9029efad6e2913a19305722b200f",
+    "rules_sha256": "865802ca63e6ee5ff47a9d1434b669f9d059bf4bb07ba4c7758ba859b721fd9b",
+    "actual_loader_components_admission_crossjoins_tested": true,
+    "recipe_main_and_helper_new_root_reverse_equivalence": true,
+    "dormant_batch_candidate_legacy_execute_not_an_e139_entry": true
+  },
+  "materials": {
+    "status": "READY_LOCAL_MATERIALS_ONLY", "public_rows": 137,
+    "unique_sources": 56, "role_sources": {"capture":35,"execution":53,"readback":36},
+    "summary_sha256": "372f8427766e3fc029a32eb545189fcabb7cc641fb06d39d2fc9b45bf66c6658",
+    "effective_dependency_checks": null,
+    "old_origin_dependency_count_not_reused_as_effective_proof": true
+  },
+  "effective_packet_source_sha256": "5c1e2ed157ef4e9a1a067c655ea52b00377c82866e623b7bdff29d40f0f402ef",
+  "effective_entry_source_sha256": "eb07035f6550574dc70a124372f653cc13e2e266a318254e49f782c2a7da8f25",
+  "session_binding_configuration_sha256": "84f20a0ba7e0badaa543653ced046b77c1e1b0154075149cf3f7c4a9d86d153d",
+  "independent_validation": {
+    "native": {"tests":8,"seconds":1.187,"failures":0,"errors":0},
+    "packet": {"tests":6,"seconds":0.056,"failures":0,"errors":0},
+    "materials": {"tests":6,"seconds":0.890,"failures":0,"errors":0},
+    "session_native_packet_combined": {"tests":28,"seconds":5.962,"failures":0,"errors":0},
+    "final_entry": {"tests":8,"seconds":0.083,"failures":0,"errors":0},
+    "actual_private_preparation_integration": {"tests":3,"seconds":2.012,"failures":0,"errors":0}
+  },
+  "integration_repairs": [
+    "Separate adapter source SHA and explicit binding configuration digest",
+    "Verify effective RAM sources rather than historical disk self-read",
+    "Restore registries and locks across native enter/exit and close failure",
+    "Preserve ScopedController.run_role closure; verify existing tagged clock instead of cloning it"
+  ],
+  "final_related_regression": {"tests":762,"seconds":49.632,"failures":0,"errors":0,"exit_code":0},
+  "limits": [
+    "Synthetic authority and review records in tests are not user consent or independent packet release",
+    "Actual private graph and full capture preparation tested, but no real capture packet dispatched",
+    "Start integration replaces pinned construction and ReviewedRun.execute; actual pinned factory remains unverified",
+    "No real Python 3.6 or isolated Linux execution is established by AST syntax checks",
+    "Private session is trusted-process isolation, not malicious-code sandbox or remote termination proof",
+    "No actual E139 grant file, local E139 phase or A/B connection was created"
+  ],
+  "next": "Implement fixed thin public entry/facade/provider provenance and verify actual pinned factory with local substituted transport. After complete source freeze and independent review request one E139 whole-package approval; only after a real reply perform exact actual-grant pretool validation and exact packet review before the first connection",
+  "authorization_received": false,
+  "execution_ready": false,
+  "physical_d95_verified": false
+}

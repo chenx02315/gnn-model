@@ -616,3 +616,15 @@ tests/test_e139_contract_bootstrap_candidate.py -text
 tests/test_e139_runtime_identity_candidate.py -text
 data/manifests/ranking_v6_e139_identity_subset_review_r1.json -text
 data/manifests/ranking_v6_e139_runtime_identity_subset_review_r1.json -text
+scripts/e139_native_graph_candidate.py -text
+scripts/e139_packet_candidate.py -text
+scripts/e139_local_materials.py -text
+scripts/e139_local_source_session.py -text
+scripts/e139_entry_candidate.py -text
+tests/test_e139_native_graph_candidate.py -text
+tests/test_e139_packet_candidate.py -text
+tests/test_e139_local_materials.py -text
+tests/test_e139_local_source_session.py -text
+tests/test_e139_entry_candidate.py -text
+tests/test_e139_local_entry_integration.py -text
+data/manifests/ranking_v6_e139_local_preparation_review_r1.json -text

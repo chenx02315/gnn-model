@@ -1,5 +1,7 @@
 # 下一节点账本（最新节点 E135准备；下方日期条目为历史快照）
 
+下一节点（2026-11-06）：E139原生56图、实际材料、7脚本session、packet/entry候选及本地capture准备接线均已独立复核，762项最终回归通过。不要重做这些组件。继续实现固定薄公开入口，把E139_MATERIALS、四个SOURCE_BYTES键、SOURCE_MANIFEST与固定repo/staging绑定到已核验来源；entry有效源码需使用最终eb07035f...版本，禁止克隆/覆盖ScopedController.run_role。session外部freeze包含adapter源码SHA与独立配置摘要两项，原始文件漂移和有效RAM漂移都保留检查。用本地替代运输验收实际pinned factory及连续原时钟生命周期，不访问A/B或使用实际新grant；当前start测试只有factory+execute doubles，不能当生产构造通过。完整入口/来源冻结与独立审核后，再请求一次新E139整体批准；真实批准收到后才形成canonical ASCII实际grant并贯穿实际pretool校验/精确包审核，首连接前仍拒绝。无旧E138重试或剩余连接复用。
+
 下一节点（2026-11-06）：不要重做已复核的E139有限派生器或6模块候选。717项最终相关回归已通过；继续完整图接线：先闭合capture/assembler/cleanup等schema生产者与消费者，迁移recipe主脚本和helper输出root，保持selector/STIL算法原文，仅在私有图显式绑定输出路径；随后合并effective源码map与INPUT_SOURCES、动态私有编译和完整materials闭包，接worker/packet/controller/原时钟/运输入口。不得保留origin pin冒认effective字节，不得只解除默认拒绝门。全部接线及合成端到端独立复核通过后才请求一次E139整体新授权；真实新grant必须逐字节经过实际pretool链。旧E138不重试，当前没有新的远端许可。builder在四模块候选后遇额度限制，根代理已补测试并由另一reviewer独立复核，未留未测试半成品。
 
 当前（2026-11-06）：E139提案/范围复核及696项回归已通过，不重开E138。下一项在新文件实施有限派生器和明确身份配置清单：按固定origin SHA/字面量原值/出现次数变换，在私有模块图绑定effective SHA；不全局替换、不克隆无关算法、不改历史globals。完成新合同/完整绑定及合成测试后独立复核；真实新授权未收到前不创建grant，更不能声称真实授权全链已经通过。新远端运行必须另取得E139整包批准。
