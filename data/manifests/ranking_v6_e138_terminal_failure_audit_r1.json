@@ -1,0 +1,29 @@
+{
+  "schema":"e138-actual-terminal-failure-audit-v1",
+  "date":"2026-11-06",
+  "status":"TERMINAL_PRETOOL_FAILURE_NO_RETRY_NO_ROLE3",
+  "reviewer":"reference_semantic_review_r2",
+  "local_phase":"v6_e138_clean_F_replay_r1",
+  "authorization_sha256":"bcaa8da7adc2e61daa35ccd50ce42dfd4131de180c7f3ca3adbbc86e8403dd74",
+  "actual_connections":{"capture":1,"execution":1,"readback":0},
+  "capture":{"accepted":true,"stdout_sha256":"cfe817444f1753887b886ba08575e7b2218e4479a211b326b60fd923d0976230","original_clock_sha256":"bc665b18c4de9e53166c875a1f8c5449bbe87e3700bd40bb342e876093bd7e96"},
+  "execution_packet_independent_review":{
+    "request_sha256":"58bc803f8ee7ec2c83d8a96e58f501f692c74165aac155dc73866f31040cd508",
+    "payload_bytes":1302656,
+    "payload_sha256":"5cc2b354853216b7bd798fefc73506f3991d552bf566cc82d8544e587fc1db32",
+    "command_sha256":"85bdd5bc86ac6134d92dfad806492cec5f2c9be3565300bfe1464892345dd46f",
+    "review_scope":"EXACT_PAYLOAD_COMMAND_SOURCE_POLICY"
+  },
+  "execution_response":{"bytes":1155,"sha256":"2cfe5398b00001b74db2607efafbc2059ceb7cad61f4ceba8e17895f3c6633c3","native_transport_sha256":"79c7afb422d8696c0c29df8550f239c0a01bb85139c52ef4ee0196e650346f75","exit_code":0,"stderr_bytes":0,"timeout":false,"overflow":false,"write_failed":false,"threads_incomplete":false,"owned_root":null,"cleanup_observation":null,"launch_debit":0,"instance_sha256":null},
+  "failure":{"stage_attempted":"BOOTSTRAP","bootstrap_stage":"AUTHORITY_JSON","bootstrap_error_code":"E138_BOOTSTRAP_AUTHORITY_JSON_FAILED","bootstrap_children":0,"values_disclosed":false},
+  "independently_reproduced_cause":{
+    "description":"Actual authorization contains UTF-8 Chinese/left quote. Native contract accepts UTF-8; frozen bootstrap calls physical_replay_source_reader_e135.decode, which decodes ASCII and raises UnicodeDecodeError on identical raw bytes.",
+    "bootstrap_sha256":"8a8d95802d4a5b52958511bfaf8f3e7c2a34b82460c335b701e69f3b7a3de238",
+    "contract_decode_actual_bytes":"PASS",
+    "bootstrap_decode_actual_bytes":"UnicodeDecodeError",
+    "validation_gap":"Synthetic tests and exact package review did not carry the actual UTF-8 grant through frozen bootstrap decoder"
+  },
+  "terminal":{"local_reason":"VALIDATION_FAILED","controller_terminal":true,"accepted_roles":1,"persistent_parent_session":"85760 exited0 after read-only terminal inspection","automatic_retries":0,"role3_forbidden":"No qualified owned-clean root receipt; remaining budget is not probe permission"},
+  "limitations":["Zero bootstrap child and tool debit do not prove every earlier step was side-effect free","No remote cleanup verification or physical D95 result","No current-root probing or further remote reading performed"],
+  "next":"Preserve exact executed bytes and raw evidence. Prepare and review a new local encoding repair candidate; any further remote attempt requires a separately bounded new authorization, not rewriting current grant or retrying this phase."
+}
