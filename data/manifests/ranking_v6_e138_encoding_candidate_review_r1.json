@@ -1,0 +1,27 @@
+{
+  "schema":"e138-forensic-encoding-candidate-review-v1",
+  "date":"2026-11-06",
+  "status":"PASS_LOCAL_COUNTERFACTUAL_NOT_AUTHORIZATION_NOT_RELEASE",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":{
+    "scripts/e138_authority_encoding_candidate.py":"a6117200d7f28b7c978986e1bb8ebfcc124a021a6ea94365bb7b3b7d331dc5a3",
+    "tests/test_e138_authority_encoding_candidate.py":"5b4dbd33abac64ab6d082680d3bfa3dbeb9924765cbf2f421537ed7dce65664f"
+  },
+  "independent_tests":{"tests":6,"seconds":0.008,"failures":0,"errors":0},
+  "root_regression":{"tests":693,"seconds":30.541,"failures":0,"errors":0},
+  "evidence":[
+    "Exact executed UTF-8 authorization reproduces frozen bootstrap AUTHORITY_JSON rejection",
+    "Private canonical ASCII representation preserves decoded old grant semantics and proposal/scope",
+    "Both native contract and frozen bootstrap decoders agree on candidate",
+    "Actual frozen bootstrap passes authority parsing/validation with candidate then deliberately fails CONTEXT_JSON; no child, supervisor or tool call"
+  ],
+  "executed_authorization_unchanged":"bcaa8da7adc2e61daa35ccd50ce42dfd4131de180c7f3ca3adbbc86e8403dd74",
+  "limitations":[
+    "Candidate preserves consumed r1 scope; cannot authorize any future run",
+    "No old file or execution pin changed, no new grant written",
+    "Local Python3.13 implementation uses bytes.isascii; not a Python3.6 remote component",
+    "Passing authority stage does not prove context/environment/engine/tool/D95 success"
+  ],
+  "new_remote_connections":0,"execution_ready":false,"physical_d95_verified":false,
+  "next":"Define fresh bounded recovery proposal/new phase and enforce real grant through all actual pretool validation stages before a separately authorized remote attempt; do not reopen E138"
+}
