@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新本地推进（2026-11-06）：E139有限派生器、合同/bootstrap两模块候选及runtime/receipt/join/export四模块候选均经独立复核；最终717项相关回归通过（37.512秒）。全部只修改固定身份/schema字面量或明确旧授权拒绝；原始与有效SHA、精确次数、逆向字节/AST一致性均记录。合成中文授权通过授权检查后故意在CONTEXT_JSON停止；四模块仅结构验证，没有加载或运行派生ownership/readback。完整私有图、外部生产者、recipe/实际材料与入口仍待接线，无实际E139授权、无新增远端运行、无新的F仿真/D95结果。旧E138失败保持封存；回执ranking_v6_e139_identity_subset_review_r1.json和ranking_v6_e139_runtime_identity_subset_review_r1.json。
+
 最新本地恢复方案（2026-11-06）：E139待授权提案及迁移路线已独立复核，3项提案测试和696项相关回归通过。仅更改schema/package、新远端root和新本地phase，其余预算/禁止项不变；E138旧授权无法放行新提案，原授权及bootstrap SHA保持未变。拟采用薄入口＋有限私有源码派生图，严格记录origin/rule/effective SHA，尚未实现完整E139运行入口，也没有新授权或远端调用。提案SHA4b8a915f06482f25425c71b07c6eba8c002c1455b59e28023ce5e0a806bd75a1；见E139_bounded_recovery_plan.md和ranking_v6_e139_recovery_proposal_review_r1.json。
 
 最新本地修复证据（2026-11-06）：实际E138失败证据已封存，纯编码反事实候选独立6项及693项相关回归通过。原UTF-8授权可复现AUTHORITY_JSON失败；保留相同已消耗r1语义的ASCII表示能通过两个解码器及冻结bootstrap授权验证，测试随后故意在CONTEXT_JSON停止，子进程/工具均0。候选不生成授权、不改原文件或执行pin、不允许重试，也不是远端Python3.6组件。下一项另拟新phase的有界恢复方案及真实授权全前置链验证；旧E138不恢复。见ranking_v6_e138_encoding_candidate_review_r1.json。

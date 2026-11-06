@@ -607,3 +607,12 @@ tests/test_prospective_tool_identifiers_e123.py -text
 contracts/prospective_identifier_repair_proposal_e123_v1.json -text
 data/manifests/ranking_v6_e122_*.json -text
 data/manifests/ranking_v6_e123_*.json -text
+# Preserve exact reviewed E139 candidate bytes across platforms/checkouts.
+scripts/e139_source_derivation.py -text
+scripts/e139_contract_bootstrap_candidate.py -text
+scripts/e139_runtime_identity_candidate.py -text
+tests/test_e139_source_derivation.py -text
+tests/test_e139_contract_bootstrap_candidate.py -text
+tests/test_e139_runtime_identity_candidate.py -text
+data/manifests/ranking_v6_e139_identity_subset_review_r1.json -text
+data/manifests/ranking_v6_e139_runtime_identity_subset_review_r1.json -text

@@ -1,0 +1,39 @@
+{
+  "schema": "e139-local-identity-subset-review-v1",
+  "date": "2026-11-06",
+  "status": "PASS_LOCAL_TWO_MODULE_CANDIDATE_NOT_COMPLETE_GRAPH",
+  "independent_reviewer": "reference_semantic_review_r2",
+  "source_pins": {
+    "scripts/e139_source_derivation.py": "15d024613ced492c3d9371ed18b850d4b98226b474828d1006c208f57b21d40f",
+    "tests/test_e139_source_derivation.py": "74567f794c10a675791e5f1f3f749a20bb0d52129a811606a22bdb69a9d1ca34",
+    "scripts/e139_contract_bootstrap_candidate.py": "a4990b27e84a175651efe847a1193ea16399b411fc1dbe1b827b7e8ce0126624",
+    "tests/test_e139_contract_bootstrap_candidate.py": "2a120c161f3592a81e19acd1421a902690d1387ce8963699190e91593384fd92"
+  },
+  "spec_sha256": "34844578fb3f443777a3a0ae0e7fadbb8faf7b283aead40a599401d146c77699",
+  "rules_sha256": "c274976d3daf8c7b23e8dbe1309a482c6342b810091fa9af63d6330f156eb190",
+  "effective_source_sha256": {
+    "physical_e138_contract": "6236ade200957cfc5476c726dc2fda45231806552291952d9cc1fd8778088730",
+    "physical_runtime_bootstrap_e138": "aefa865fcedfc19d2e03a1cd081eff4c1168358a505b7b251c24684df1f8d11f"
+  },
+  "validation": {
+    "independent_focused": {"tests": 24, "seconds": 0.070, "failures": 0, "errors": 0},
+    "root_related_regression": {"tests": 711, "seconds": 35.399, "failures": 0, "errors": 0, "exit_code": 0},
+    "derived_python_3_6_syntax": true,
+    "exact_old_source_pins_and_replacement_counts": true,
+    "default_disabled_and_consumed_e137_e138_hashes_rejected": true,
+    "synthetic_canonical_ascii_chinese_authority": "CONTEXT_JSON deliberate stop; zero host query, supervisor, child and tick",
+    "actual_e139_authority_pretool_chain": "NOT_RUN_NO_ACTUAL_GRANT"
+  },
+  "limits": [
+    "Pure byte derivation is not a private graph loader or execution release",
+    "Compatibility module names, documentation and E138 diagnostic codes remain explicit legacy labels",
+    "Contract/bootstrap budget semantics remain unchanged",
+    "Effective source pins must replace origin pins in future actual source maps and embedded inputs",
+    "Canonical ASCII synthetic grant is test evidence only; no new actual grant created",
+    "No A/B/SSH, LSF, Tessent, BLIND or training run in this local stage"
+  ],
+  "e138_executed_evidence_unchanged": true,
+  "e139_authorization_received": false,
+  "execution_ready": false,
+  "physical_d95_verified": false
+}

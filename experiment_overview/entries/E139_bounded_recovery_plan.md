@@ -1,5 +1,15 @@
 # E139：新目录的有界恢复提案（未授权、未实现完整入口）
 
+## 已完成的本地修复（2026-11-06）
+
+有限派生器及合同/bootstrap 两模块候选已独立复核：24 项定向测试、711 项相关回归通过。派生器同时验证原始 SHA、规则及次数和有效源码 SHA，拒绝重叠与级联替换；仅输出私有字节和小型元数据，不加载或运行模块。合同的新身份/目录/预算与提案一致，默认仍禁用，bootstrap 显式拒绝 E137/E138 已消耗授权的哈希。
+
+合成中文/左引号授权以 canonical ASCII JSON 保存原话语义，经过两个真实解码函数及派生 bootstrap 的授权检查后，按测试设计停在 CONTEXT_JSON；host、supervisor、子进程、tick 均未调用。此处不是实际 E139 授权证据，更不是完整入口验证。E138 原授权与原源码不改；兼容模块名、文档和诊断码保留旧标签并明确记录，不能据此声称整个运行图已迁移。
+
+小型复核回执：data/manifests/ranking_v6_e139_identity_subset_review_r1.json。后续继续将时钟/归属收据/取回的生产者与消费者 schema 成对迁移，随后绑定 recipe、完整源码图、worker/controller/运输与实际材料；不跳过完整接线审核，不提前连接服务器。
+
+runtime primitives、root receipt、role2 join、role3 export 的四模块候选也已完成：9处精确schema替换，原文逆向还原与AST恢复一致，原限制、来源pin和默认禁用状态不变。6项结构测试独立通过，最终全部717项相关回归通过（37.512秒）。receipt→join、join→export 的字面量已配对；clock/capture/assembler/cleanup等外部生产者明确标为待接线。本轮没有加载或运行这四份派生模块，不能据此声称ownership/readback已验证。回执：data/manifests/ranking_v6_e139_runtime_identity_subset_review_r1.json。
+
 ## 目的与边界
 
 E138 的真实授权含 UTF-8 中文，冻结 bootstrap 使用 ASCII 解码器，在工具启动前失败。原字节、phase 和失败回执保持不变。E139 不是恢复旧任务，也不使用 E138 未用完的第三连接。

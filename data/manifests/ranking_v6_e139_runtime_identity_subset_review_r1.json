@@ -1,0 +1,41 @@
+{
+  "schema": "e139-local-runtime-identity-subset-review-v1",
+  "date": "2026-11-06",
+  "status": "PASS_STRUCTURAL_FOUR_MODULE_CANDIDATE_NOT_COMPLETE_GRAPH",
+  "independent_reviewer": "reference_semantic_review_r2",
+  "source_pins": {
+    "scripts/e139_runtime_identity_candidate.py": "0647022da7ef24b55734f70b4a258be64ca2ed7aa40e5f85945a485b86bba5ad",
+    "tests/test_e139_runtime_identity_candidate.py": "4de053d19247a88f9eac392c23d909f013a2d57631a44b4ad4d3780077027acc"
+  },
+  "spec_sha256": "808d53430caad213da349f5c3e5f28f9ef2eb2aa12c0f18563b92d2dff99aeba",
+  "rules_sha256": "008ee70b6d24d5b324d85c409b2026e33ee18494c8f0e3bd16e44b400b8bc3ac",
+  "effective_source_sha256": {
+    "physical_e138_runtime_primitives": "422edd6f18270b74cd317d9248587320253aa7e7d507b5e9675a74e47a855b8e",
+    "physical_e138_root_receipt": "2f7967e961e7b34b05eaa26cf695752134ae26f35103feef025c293d7a640476",
+    "physical_e138_role2_join": "9bd17395177574cba0c9f9524e87722e8e6edece9f9b62f67402ff0974bb792e",
+    "physical_e138_role3_export": "8be706a439b7ba6ba961ea8568ee8efa9e427108b75c60fcc9f73596941f14dc"
+  },
+  "validation": {
+    "root_focused": {"tests": 6, "seconds": 0.070, "failures": 0, "errors": 0},
+    "independent_focused": {"tests": 6, "seconds": 0.064, "failures": 0, "errors": 0},
+    "root_final_related_regression": {"tests": 717, "seconds": 37.512, "failures": 0, "errors": 0, "exit_code": 0},
+    "exact_reverse_bytes_and_restored_ast_match": true,
+    "legacy_pins_numeric_limits_none_gates_unchanged": true,
+    "receipt_join_and_join_export_schema_pairs": "STRUCTURAL_ALIGNMENT_ONLY",
+    "derived_runtime_modules_loaded_or_executed": false,
+    "real_python_3_6_runtime_test": false
+  },
+  "implementation_note": "Builder quota ended after candidate file. Root completed tests/corrected inventory labels; separate reviewer independently reviewed final exact bytes.",
+  "outside_subset": [
+    "Clock capture and execution/cleanup schema producers",
+    "Private graph loader and origin/effective source-map propagation",
+    "Recipe main/helper and selector/STIL private bindings",
+    "Worker/assembler/controller/packet/transport and actual local materials",
+    "Actual new E139 authority and exact-byte full pretool validation"
+  ],
+  "no_new_remote_connections": true,
+  "historical_files_unchanged": true,
+  "e139_authorization_received": false,
+  "execution_ready": false,
+  "physical_d95_verified": false
+}
