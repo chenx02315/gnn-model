@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新本地恢复方案（2026-11-06）：E139待授权提案及迁移路线已独立复核，3项提案测试和696项相关回归通过。仅更改schema/package、新远端root和新本地phase，其余预算/禁止项不变；E138旧授权无法放行新提案，原授权及bootstrap SHA保持未变。拟采用薄入口＋有限私有源码派生图，严格记录origin/rule/effective SHA，尚未实现完整E139运行入口，也没有新授权或远端调用。提案SHA4b8a915f06482f25425c71b07c6eba8c002c1455b59e28023ce5e0a806bd75a1；见E139_bounded_recovery_plan.md和ranking_v6_e139_recovery_proposal_review_r1.json。
+
 最新本地修复证据（2026-11-06）：实际E138失败证据已封存，纯编码反事实候选独立6项及693项相关回归通过。原UTF-8授权可复现AUTHORITY_JSON失败；保留相同已消耗r1语义的ASCII表示能通过两个解码器及冻结bootstrap授权验证，测试随后故意在CONTEXT_JSON停止，子进程/工具均0。候选不生成授权、不改原文件或执行pin、不允许重试，也不是远端Python3.6组件。下一项另拟新phase的有界恢复方案及真实授权全前置链验证；旧E138不恢复。见ranking_v6_e138_encoding_candidate_review_r1.json。
 
 最新真实终态（2026-11-06）：E138首capture成功；动态角色2精确包经独立审核后真实执行一次，1155字节完整响应在BOOTSTRAP/AUTHORITY_JSON失败。工具启动扣次0、bootstrap子进程0、owned_root/cleanup均null；原始回执已保存并独立核验，本地phase已VALIDATION_FAILED关闭，PTY已退出。不使用第三连接，不重试。原因可本地确定性复现：实际授权UTF-8中文与冻结bootstrap沿用的ASCII解码器不兼容，先前测试/审核未贯穿真实授权。原授权/源码字节不改；不能现场重编码重跑，也不能宣称所有前置步骤无副作用。下一项仅新本地编码修复候选及复核；任何新远端尝试另需有界授权。见ranking_v6_e138_terminal_failure_audit_r1.json。
