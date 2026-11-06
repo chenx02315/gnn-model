@@ -1,0 +1,24 @@
+{
+  "schema":"e138-actual-entry-capture-packet-review-v1",
+  "date":"2026-11-06",
+  "status":"PASS_EXACT_CAPTURE_PACKET_PENDING_ONE_USE_EXECUTION",
+  "reviewer":"reference_semantic_review_r2",
+  "authorization_sha256":"bcaa8da7adc2e61daa35ccd50ce42dfd4131de180c7f3ca3adbbc86e8403dd74",
+  "proposal_sha256":"6e4d52d540aa3c776f7d443a1a14f0764ab90fa11657585d8d6c1b6c8acd0b4b",
+  "source_sha256":{
+    "scripts/run_physical_f_clean_replay_e138.py":"1308ce76ecaa9048c88b250152c500bb3dab99256ca132dc6b2f4a325e5729cd",
+    "tests/test_run_physical_f_clean_replay_e138.py":"1d2ad084a8169da28d3237c9d0e7e3ef7b6f93dce160ebf728aafcdc139d32ca"
+  },
+  "independent_tests":{"tests":8,"seconds":1.436,"failures":0,"errors":0},
+  "root_regression":{"tests":687,"seconds":38.707,"failures":0,"errors":0},
+  "capture":{"payload_bytes":483685,"source_modules":35,
+    "payload_sha256":"9da7a8aec1ffddff883212f82bfa1db0d30338a4d4f2f61ada54fbd65e023b12",
+    "command_sha256":"72c19408713a7b096e90cd5657547718d97dcd766b4063db40d80aab87a5b315",
+    "projection_sha256":"a26516f07065ac3536b6c639b30e7ee2f3b793a5b08c2f48b864be40d15f4f52",
+    "request_sha256":"08b54127e2a9c7623465772d92f8d59bd37d2327d9b3561a9a2940d88a87eb8b"},
+  "approved_canonical_record":{"request_sha256":"08b54127e2a9c7623465772d92f8d59bd37d2327d9b3561a9a2940d88a87eb8b","review_scope":"EXACT_PAYLOAD_COMMAND_SOURCE_POLICY","role":"capture","schema":"e138-independent-exact-packet-review-v1"},
+  "parent_operation":"Trusted local persistent Python PTY retains one ReviewedRun/controller/original clock. Review pins installed only from independent canonical records. Idle does not extend authority; all later preparation/execution checks original remaining budget. No resume or recreated controller.",
+  "closed_findings":["Staged preparation failures terminalize original instance","Local native capture validation now runs from verified private35-module source session, without historical module tag mutation"],
+  "new_remote_connections":0,"execution_ready":false,"physical_d95_verified":false,
+  "scope":"This approves exact capture only, not dynamic execution/readback packets or any scientific result. Later packet reviews remain inside original3600-second budget."
+}
