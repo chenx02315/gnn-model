@@ -1,0 +1,45 @@
+{
+  "schema": "e140-actual-terminal-failure-v1",
+  "date": "2026-11-10",
+  "independent_reviewer": "reference_semantic_review_r2",
+  "status": "STOPPED_FIRST_FAILURE_NOT_PHYSICAL_NEGATIVE",
+  "phase": "v6_e140_clean_F_replay_r1",
+  "authorization_sha256": "977e5de382e91433cde3e0f9c6dc77b5da3e4d4ee8bdcce63b2c2222ddd84b33",
+  "connections_consumed": 2,
+  "capture_accepted": true,
+  "execution_accepted": false,
+  "readback_attempted": false,
+  "automatic_retries": 0,
+  "failure": {
+    "stage_attempted": "ENGINE_COLLECTION",
+    "stage_completion_verified": false,
+    "error_kind": "VALUE_ERROR",
+    "error_code": "REDACTED_UNKNOWN_ERROR",
+    "bootstrap_failure": null,
+    "component_failure": null,
+    "tessent_launch_debit": 0,
+    "bootstrap_children_measured": null,
+    "owned_root": null,
+    "cleanup_observation": null
+  },
+  "native_transport": {"exit_code": 0, "stdout_bytes": 782, "stderr_bytes": 0, "timeout": false, "overflow": false, "write_failed": false, "threads_incomplete": false, "remote_termination_verified": false},
+  "file_sha256": {
+    "execution/intent.json": "a3a9973fa9b8247a6be4bc98ed67800b8f9f0c7ecdebc69d8bb899440a3207f1",
+    "execution/stdout.raw": "cbb10ac058522f32d6e1eba8aae5e695e6fe07286f6016d1ac089db7c679160b",
+    "execution/native_stdout.raw": "cbb10ac058522f32d6e1eba8aae5e695e6fe07286f6016d1ac089db7c679160b",
+    "execution/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution/transport.json": "d965ab8ed5c4abd3cfe418ca0ab93487d0558513d009b45f1d79b8b5511abaa8",
+    "execution/native_transport.json": "3eabc35a573c249998fa4677eba05746fbf0e437fd9283803f31bb902d517358",
+    "closed.json": "f5c92af07badeef992b17ec0e7a18e6f44e55a69bef08c26a02a3b19a7ab8aaf"
+  },
+  "limitations": [
+    "Stage order establishes bootstrap and launch builder returned, not an independently measured bootstrap completion or child count",
+    "ENGINE_COLLECTION checkpoint precedes build_plan, so no claim that collector IO began",
+    "Zero tool debit does not refund either consumed connection",
+    "No qualifying root/cleanup receipt; third connection is not usable for speculative readback"
+  ],
+  "physical_d95_status": "UNPROVEN",
+  "F_new_detection_count": null,
+  "H_F_union_count": null,
+  "training_release": false
+}

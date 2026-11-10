@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新实际终态（2026-11-10）：用户批准 E140 后，实际授权/预工具与精确 capture、execution 包分别通过独立复核；capture 成功，execution 在 ENGINE_COLLECTION 阶段以 VALUE_ERROR/REDACTED_UNKNOWN_ERROR 失败关闭。两连接已消耗，Tessent 启动扣次为 0，无合格 owned_root/cleanup，不使用第三连接、不重试。checkpoint 在 build_plan 之前，尚不能断定 collector 已读文件或唯一根因；bootstrap 调用及 launch builder 按顺序已返回，但没有独立子进程计数。继续仅本地定位，旧冻结源码和失败原文不动。F 新增/去重并集未知，D95 仍 UNPROVEN。回执 ranking_v6_e140_actual_terminal_failure_r1.json。
+
 最新完整接线（2026-11-10）：E140 的实际材料、私有控制会话、固定公开入口及来源冻结已完成独立复核；821 项相关测试全部通过（60.674 秒，退出码 0）。独立核对 11+73 项原始来源、56 个有效原生模块、7 个本地核心及配置摘要，无不匹配；回执 ranking_v6_e140_integrated_review_r1.json。A 端确有 CPython 3.6.8，通用探针证明显式绑定九项内置名称可修复所复现的构建问题；不等于完整 AES 回放已成功。E139 失败及原证据不改，E140 尚无新的整包远端授权，不创建授权文件、不启动 Tessent。详见 entries/E140_integrated_builtins_repair.md。
 
 最新新版本整合（2026-11-10）：E140本地56模块原生图与有界提案已独立复核，内置九项显式builtins修复；14个有效模块更新、42个helper原文不变。实际私有loader验证新contract依赖pin、assembler组件及recipe主/helper新root，旧E137/E138/E139授权均拒绝。仅原生图就绪，完整材料/控制器/入口与来源freeze尚待整合；未收到E140远端授权，不启动回放。目标Python3.6.8通用行为已实测，但完整AES检测结果尚无新增。

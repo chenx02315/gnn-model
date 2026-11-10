@@ -662,3 +662,9 @@ tests/test_e140_pinned_factory.py -text
 tests/test_e140_public_entry.py -text
 data/manifests/ranking_v6_e140_proposed_source_freeze_r1.json -text
 data/manifests/ranking_v6_e140_integrated_review_r1.json -text
+contracts/physical_f_clean_replay_authorization_e140.json -text
+data/manifests/ranking_v6_e140_actual_capture_review_request_r1.json -text
+data/manifests/ranking_v6_e140_actual_authorization_capture_review_r1.json -text
+data/manifests/ranking_v6_e140_actual_execution_review_request_r1.json -text
+data/manifests/ranking_v6_e140_actual_execution_review_r1.json -text
+data/manifests/ranking_v6_e140_actual_terminal_failure_r1.json -text

@@ -1,0 +1,18 @@
+{
+  "schema": "e140-actual-execution-packet-review-v1",
+  "date": "2026-11-10",
+  "reviewer": "reference_semantic_review_r2",
+  "status": "PASS_EXACT_EXECUTION_PACKET_NOT_TOOL_RESULT",
+  "request_sha256": "bca714029afa3d9fdc1ffe92cfe7e8dbace878956566aa9d7b8f68212bda5547",
+  "payload_bytes": 1303448,
+  "payload_sha256": "0dfdf9000c5c3e9cc8e399b38cbce06331eb9a04d11f1516e5108e0561c1e827",
+  "command_sha256": "f6604f7da256fb5c3e652c31ba51f1a99ce4a8a83e5979684b5da2b2b901f4d2",
+  "canonical_review_record_sha256": "3dc2fe1aa121b8d9d8b9becf1638932e1111164580bd84e88510ced39161fdf7",
+  "previous_accepted_sha256": "2ff281328bbe40633d5a1dd0610ee531d1875529a33b8021b22625573fb941a7",
+  "actual_capture_stdout_sha256": "bce1a0804d21b6d10741d15a4e9adb5af7a050ff8ad7879ee299b40c0019c891",
+  "original_clock_sha256": "f220f52f821c20549c7b088bc75f2fb1b25ac44dc011c2651049ff73e63324e5",
+  "source_modules_checked": 53,
+  "original_instance_and_clock_required": true,
+  "readback_preapproved": false,
+  "physical_d95_verified": false
+}

@@ -2,6 +2,14 @@
 
 日期：2026-11-10。目的：先让固定 AES F4 的干净回放能正确启动，最终补齐 H64+F4 的逐故障覆盖证据；不是重训模型。
 
+## 最新实际终态（下方准备状态保留为历史）
+
+用户已明确回复“批准 E140 整包”。实际 canonical ASCII 授权为 1,801 字节，SHA `977e5de382e91433cde3e0f9c6dc77b5da3e4d4ee8bdcce63b2c2222ddd84b33`；实际授权预工具 3 项独立测试通过，capture 与 execution 精确包分别独立审核后由同一控制会话按原时钟发送。
+
+capture 成功；execution 返回 782 字节失败帧，SHA `cbb10ac058522f32d6e1eba8aae5e695e6fe07286f6016d1ac089db7c679160b`：尝试阶段 ENGINE_COLLECTION，VALUE_ERROR/REDACTED_UNKNOWN_ERROR，工具启动扣次 0，无 owned_root/cleanup。原 phase 已 VALIDATION_FAILED，两个连接已消耗，未使用第三连接、未重试。本地控制进程已退出。
+
+该 checkpoint 位于 selector.build_plan 之前。只能按程序顺序确认 bootstrap 和 launch builder 已返回，不能宣称 collector 开始读文件、bootstrap 独立完成回执或实际子进程数。故障细节未输出，当前继续本地确定性定位，不改本次冻结源码。F 新增和 H∪F 都未知；D95 未证明，不是已证明未达标。完整独立终态回执：`data/manifests/ranking_v6_e140_actual_terminal_failure_r1.json`。
+
 ## 已确认什么
 
 A 端 `/usr/bin/python3` 存在，实际版本为 CPython 3.6.8。因此不是“没有安装 Python”。已获准的一次只读通用探针复现：动态构造的函数未显式配置内置名称时缺少 `repr`；显式配置九项名称后通过。探针没有携带项目源码、没有启动 Tessent，也没有新检测结果。原始记录在 `data/manifests/a_python_builtins_readonly_observation_20261110.json`。

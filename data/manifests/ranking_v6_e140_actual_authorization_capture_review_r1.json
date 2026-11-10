@@ -1,0 +1,21 @@
+{
+  "schema": "e140-actual-authority-capture-review-v1",
+  "date": "2026-11-10",
+  "reviewer": "reference_semantic_review_r2",
+  "status": "PASS_ACTUAL_AUTHORITY_PRETOOL_AND_EXACT_CAPTURE_ONLY",
+  "authorization_bytes": 1801,
+  "authorization_sha256": "977e5de382e91433cde3e0f9c6dc77b5da3e4d4ee8bdcce63b2c2222ddd84b33",
+  "decoded_reply": "批准 E140 整包",
+  "proposal_sha256": "43bd32db6e629e7c558c165f4f5d0f08d01100ee9e6055a79a99a4c88ffa0b9e",
+  "source_freeze_sha256": "83cecb8e87eb20043c88cd351500b2b6ddbb4f6f4735cc2c42f1cbfaf9477e98",
+  "actual_pretool_tests": {"count": 3, "independent_seconds": 1.073, "deliberate_stop": "CONTEXT_JSON", "host_calls": 0, "bootstrap_children": 0},
+  "capture": {
+    "request_sha256": "62c76b503cd3fb44eca15203fb949418e7cd846100c084781d84ad25cd429a90",
+    "payload_bytes": 483673,
+    "payload_sha256": "4d04bce7c9ce1548a2f7283ece02a592cfd73d2daa4f1b4866f262265c36c8b7",
+    "command_sha256": "1c8063f079b20229128ad70b3b6377752e38ad8a467b3fa2237edaaa5dad0a7e",
+    "canonical_review_record_sha256": "56eb13230b4520317526880612672ea428d4cef5ae902c7ac2a9468a1343443e"
+  },
+  "execution_or_readback_preapproved": false,
+  "physical_d95_verified": false
+}
