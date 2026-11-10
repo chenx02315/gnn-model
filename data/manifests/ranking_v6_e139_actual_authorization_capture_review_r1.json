@@ -1,0 +1,16 @@
+{
+  "schema":"e139-actual-authority-capture-review-v1",
+  "date":"2026-11-10",
+  "reviewer":"reference_semantic_review_r2",
+  "status":"PASS_ACTUAL_AUTHORITY_PRETOOL_AND_EXACT_CAPTURE_ONLY",
+  "authorization_bytes":1801,
+  "authorization_sha256":"9e8b899d529983e29493ea253b32c58e543afca307b7e6bff6be8e599fd37e54",
+  "decoded_reply":"批准 E139 整包",
+  "proposal_sha256":"4b8a915f06482f25425c71b07c6eba8c002c1455b59e28023ce5e0a806bd75a1",
+  "source_freeze_sha256":"7a693c885379a238c61a8dcb771469e7eb9d6352509b2e8d6b271cce612191d5",
+  "actual_pretool_tests":{"count":3,"independent_seconds":1.022,"test_sha256":"6d2bab4a0ccb5c3b1000d2095a0113d5c4e0b6f292e85cc32dd5d0eed9666940","deliberate_stop":"CONTEXT_JSON","host_calls":0,"bootstrap_children":0},
+  "capture":{"request_sha256":"187288932942017a93e6a8367fdab9ef9426e13deea8068e4c4f9a695e127917","payload_bytes":483297,"payload_sha256":"06fa33a5410028cd7e47f529cf516f98ad0ae7cf06c483af1319a15b04535b48","command_sha256":"75c2f3c58a9bb39fba394f05fbcc6cb57d97a4cc64912351a83bee744e0282a7","canonical_review_record_sha256":"aa71673f246a3b6d31ee0537edcfdf96a129cc8e8ddea7a8cd9d49b0bb0029a7"},
+  "execution_or_readback_preapproved":false,
+  "new_remote_calls_at_review":0,
+  "physical_d95_verified":false
+}

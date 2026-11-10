@@ -633,3 +633,9 @@ tests/test_e139_public_entry.py -text
 tests/test_e139_pinned_factory_integration.py -text
 data/manifests/ranking_v6_e139_public_entry_review_r1.json -text
 data/manifests/ranking_v6_e139_proposed_source_freeze_r1.json -text
+contracts/physical_f_clean_replay_authorization_e139.json -text
+tests/test_e139_actual_authority_pretool.py -text
+data/manifests/ranking_v6_e139_actual_capture_review_request_r1.json -text
+data/manifests/ranking_v6_e139_actual_authorization_capture_review_r1.json -text
+data/manifests/ranking_v6_e139_actual_execution_review_request_r1.json -text
+data/manifests/ranking_v6_e139_actual_terminal_failure_r1.json -text

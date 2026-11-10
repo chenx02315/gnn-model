@@ -23,3 +23,5 @@ H 的证据来源：`data/manifests/ranking_v6_e134_actual_audit_r1.json`，字�
 4. 证据完整时填入 F 新增数和去重并集，判定达标或未达标；任何回放/应用/映射缺口均保留“未证明”。随后回到相同候选、相同预算下固定规则/XGBoost/GNN 的累计 ATPG 秒数比较。此次回放耗时不作为模型加速证据。
 
 本表不会因本地测试数增加而改变覆盖率结论。当前 E139 没有实际授权文件，也没有新增物理检测结果。
+
+2026-11-10 实际更新：用户已批准 E139，真实授权及精确包完成独立复核后执行了 capture 和 execution 两个连接。capture 成功；execution 在 bootstrap 的 CHILD_CODE_BUILD 阶段失败并终止，子进程和工具启动扣次均为0，未获得合格root/清理回执。没有重试或第三连接。因此表中 F 新增、并集和“未证明”结论均不变。前段“没有实际授权文件”为授权前快照，不再是当前状态；实际失败回执见 `data/manifests/ranking_v6_e139_actual_terminal_failure_r1.json`。

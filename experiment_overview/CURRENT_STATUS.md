@@ -1,5 +1,7 @@
 # 当前实验状态
 
+当前真实终态（2026-11-10）：E139已获真实批准并执行原包两连接。capture成功；execution精确包独立复核后真实发送，返回BOOTSTRAP/CHILD_CODE_BUILD失败，bootstrap子进程0、工具启动扣次0、owned_root和cleanup为null。phase已VALIDATION_FAILED关闭，原进程已退出；不重试、不使用第三连接。783项相关回归通过只证明本地检查，不覆盖此次实际环境代码构建失败。F新增/并集仍未知、AES D95仍UNPROVEN。当前仅本地确定性诊断，不修改本次授权/冻结源码/失败原文。见ranking_v6_e139_actual_terminal_failure_r1.json。
+
 当前权限节点：源码freeze已独立逐项核验通过（6+70份origin、56份有效native及7份脚本），可以请求一次新的E139整包批准；当前尚未收到批准。freeze文件中的PENDING为生成时状态，独立通过回执在ranking_v6_e139_public_entry_review_r1.json；保持被审核原始字节不改。
 
 最新（2026-11-10）：固定E139公开入口及实际pinned构造的本地替代运输验收已独立通过，780项相关回归通过（48.099秒）。已修复同一会话不能动态安装后续角色审核pin的P1；构造器globals恢复后，同一controller/adapter可处理模拟capture并以原时钟准备下一包。send数据来自明确标识的历史E138夹具，不是新E139测量；没有实际授权、A/B调用或新F信用。当前AES结果表见AES_HF_RESULT.md：H18323，F新增/去重并集未知，仍UNPROVEN。源码freeze候选7a693c88...仅绑定代码与配置，不授权执行。

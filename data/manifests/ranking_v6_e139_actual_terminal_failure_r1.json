@@ -1,0 +1,18 @@
+{
+  "schema":"e139-actual-terminal-failure-v1",
+  "date":"2026-11-10",
+  "status":"TERMINAL_PRETOOL_FAILURE_NO_RETRY_NO_ROLE3",
+  "authorization_sha256":"9e8b899d529983e29493ea253b32c58e543afca307b7e6bff6be8e599fd37e54",
+  "local_phase":"v6_e139_clean_F_replay_r1",
+  "connections":{"capture":1,"execution":1,"readback":0},
+  "capture":{"accepted":true,"stdout_bytes":14200,"stdout_sha256":"7cacac58cda8e5067b0c6a03fb02ddf2e83f32b25bccd29c063318452ee55144b","original_clock_sha256":"bbf63c6e0a8c00b9fe39ec76d02907a8ab2e976388ce1c79ea2004d5cf3556ff","accepted_sha256":"7f3a7ac27de436f0b3cc6aaa1d0c60bc070746ab48879c75a0e9660cd57157b1"},
+  "execution_review":{"request_sha256":"b77d1865b76c5b2ebd488fea41df8789c761dc159f8ecd519c5127963b3292cb","payload_bytes":1302464,"payload_sha256":"953906b60eb32d94cf8888754ef6f4eb8a4ca7dec9b63f123a56d8e3d606facd","command_sha256":"f1ab1964c26b4824c182d6c10e1f24ae2c28ede1870be9c7f9319450626da8d9","canonical_review_record_sha256":"5b162c95f6fce24abad7b6b61eaefb73add12454ce1ea44c6315b3e6a5a0e86b"},
+  "execution_response":{"bytes":1159,"sha256":"485a5ff1314ddb8af7f743a197d9126a50d56d1e4f921fed7fddb3bd82933a75","native_transport_sha256":"5e85ad1171f516fc37ce9f4636837b3d692c90f5619a6a9cd984e184d8b97138","transport_exit_code":0,"stderr_bytes":0,"timeout":false,"overflow":false,"write_failed":false,"threads_incomplete":false,"bootstrap_stage":"CHILD_CODE_BUILD","bootstrap_error":"E138_BOOTSTRAP_CHILD_CODE_BUILD_FAILED","bootstrap_children":0,"tool_launch_debit":0,"owned_root":null,"cleanup_observation":null},
+  "closed":{"reason":"VALIDATION_FAILED","sha256":"f5c92af07badeef992b17ec0e7a18e6f44e55a69bef08c26a02a3b19a7ab8aaf","controller_terminal":true,"accepted_roles":1,"parent_session":"47958 exited0 after context restoration"},
+  "root_cause":"NOT_YET_PROVEN_LOCAL_DIAGNOSIS_PENDING",
+  "independent_terminal_review":{"reviewer":"reference_semantic_review_r2","status":"CONFIRMED_TERMINAL_NO_ROLE3","seven_key_transport_sha256":"d5323ca131c96abb0abefc8a7e880e561ec04e7cd944f93cf1f3761ace6e762d","candidate_only":"Private FunctionType namespace omits explicit __builtins__; repr/min behavior may differ on target interpreter. Actual exception was redacted, so this is not a proven cause."},
+  "limits":["Authorized encoding stage passed; later bootstrap code-build failure is distinct from E138 AUTHORITY_JSON failure","Zero child/tool debit does not prove all earlier steps side-effect free","No qualified owned-clean root, so third connection is not a probe permission","No F replay result or D95 decision was obtained"],
+  "next":"Preserve actual bytes. Local-only deterministic diagnosis and independent review; no rewriting actual authorization/source/failure evidence or resuming this phase.",
+  "automatic_retries":0,
+  "physical_d95_verified":false
+}
