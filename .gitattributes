@@ -639,3 +639,6 @@ data/manifests/ranking_v6_e139_actual_capture_review_request_r1.json -text
 data/manifests/ranking_v6_e139_actual_authorization_capture_review_r1.json -text
 data/manifests/ranking_v6_e139_actual_execution_review_request_r1.json -text
 data/manifests/ranking_v6_e139_actual_terminal_failure_r1.json -text
+scripts/bootstrap_builtins_repair_candidate.py -text
+tests/test_bootstrap_builtins_repair_candidate.py -text
+data/manifests/ranking_v6_bootstrap_builtins_repair_review_r1.json -text

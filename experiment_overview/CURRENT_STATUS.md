@@ -1,5 +1,7 @@
 # 当前实验状态
 
+最新本地修复（2026-11-10）：显式九个内建名称的有限bootstrap修复候选已独立复核，5项定向及788项相关回归通过（45.382秒）。修复后真实源码路径达到命令核对及一次模拟监督调用，实际子进程0、无新远端连接。现有capture/E112没有解释器版本/ABI测量，故未证明A端版本或E139失败唯一根因，也未实测匹配解释器。候选未部署，E139终止不变；下一步新身份整合有效源码pin与完整接线，不原样重跑。见E139_offline_builtins_repair.md及ranking_v6_bootstrap_builtins_repair_review_r1.json。
+
 当前真实终态（2026-11-10）：E139已获真实批准并执行原包两连接。capture成功；execution精确包独立复核后真实发送，返回BOOTSTRAP/CHILD_CODE_BUILD失败，bootstrap子进程0、工具启动扣次0、owned_root和cleanup为null。phase已VALIDATION_FAILED关闭，原进程已退出；不重试、不使用第三连接。783项相关回归通过只证明本地检查，不覆盖此次实际环境代码构建失败。F新增/并集仍未知、AES D95仍UNPROVEN。当前仅本地确定性诊断，不修改本次授权/冻结源码/失败原文。见ranking_v6_e139_actual_terminal_failure_r1.json。
 
 当前权限节点：源码freeze已独立逐项核验通过（6+70份origin、56份有效native及7份脚本），可以请求一次新的E139整包批准；当前尚未收到批准。freeze文件中的PENDING为生成时状态，独立通过回执在ranking_v6_e139_public_entry_review_r1.json；保持被审核原始字节不改。
