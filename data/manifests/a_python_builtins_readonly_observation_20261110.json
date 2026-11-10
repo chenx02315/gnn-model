@@ -1,0 +1,41 @@
+{
+  "observation": {
+    "children_created": 0,
+    "executable": "/usr/bin/python3",
+    "host": "bupt-vncs2",
+    "implementation": "cpython",
+    "project_source_sent": false,
+    "results": {
+      "explicit_nine": "BUILTINS_AVAILABLE",
+      "omitted": "MISSING_REPR"
+    },
+    "schema": "a-python-builtins-minimal-probe-v1",
+    "version": [
+      3,
+      6,
+      8
+    ]
+  },
+  "payload_bytes": 961,
+  "payload_sha256": "3633d18539a4f7fac817d50134922d06afb00864325ec2d63be2f2fe97b9441c",
+  "status": "VALIDATED_READONLY_PROBE",
+  "streams": {
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 288,
+      "sha256": "f700f80b3dfcf421e7af79d0e75d9bc4ddd4870aa759198b657d306d9a6b59c5"
+    }
+  },
+  "timing_scope": "KEY_QUERY_10S_THEN_SSH_HELPER_WAIT_30S_PLUS_CLEANUP_NOT_WHOLE_HARD_LIMIT",
+  "transport": {
+    "exit_code": 0,
+    "overflow": false,
+    "remote_termination_verified": false,
+    "threads_incomplete": false,
+    "timeout": false,
+    "write_failed": false
+  }
+}

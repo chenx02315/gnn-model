@@ -642,3 +642,7 @@ data/manifests/ranking_v6_e139_actual_terminal_failure_r1.json -text
 scripts/bootstrap_builtins_repair_candidate.py -text
 tests/test_bootstrap_builtins_repair_candidate.py -text
 data/manifests/ranking_v6_bootstrap_builtins_repair_review_r1.json -text
+scripts/probe_a_python_builtins_v1.py -text
+tests/test_python_builtins_minimal_probe.py -text
+data/manifests/a_python_builtins_readonly_observation_20261110.json -text
+data/manifests/python_builtins_target_review_20261110.json -text
