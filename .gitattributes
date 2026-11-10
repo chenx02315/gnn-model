@@ -646,3 +646,7 @@ scripts/probe_a_python_builtins_v1.py -text
 tests/test_python_builtins_minimal_probe.py -text
 data/manifests/a_python_builtins_readonly_observation_20261110.json -text
 data/manifests/python_builtins_target_review_20261110.json -text
+scripts/e140_native_graph_candidate.py -text
+tests/test_e140_native_graph_candidate.py -text
+contracts/physical_f_clean_replay_proposal_e140_v1.json -text
+data/manifests/ranking_v6_e140_native_review_r1.json -text

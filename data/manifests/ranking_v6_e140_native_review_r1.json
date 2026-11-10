@@ -1,0 +1,19 @@
+{
+  "schema":"e140-native-candidate-local-review-v1",
+  "date":"2026-11-10",
+  "status":"PASS_NATIVE_CANDIDATE_NOT_ENTRY_OR_RUN_RELEASE",
+  "reviewer":"reference_semantic_review_r2",
+  "source_sha256":"a1bd104d00d66d80d0bd5da18dd6bf22f1d2e731049711276c0dc31ff674936a",
+  "test_sha256":"b2ccd9f10f26a06fe6a30a42952759ab9827a6de8cf290c75e7e3beb24cdbdba",
+  "proposal_sha256":"43bd32db6e629e7c558c165f4f5d0f08d01100ee9e6055a79a99a4c88ffa0b9e",
+  "independent_tests":{"count":11,"seconds":1.680,"failures":0,"errors":0},
+  "final_related_regression":{"count":797,"seconds":47.010,"failures":0,"errors":0,"exit_code":0},
+  "source_count":56,"changed_nodes":14,"unchanged_helpers":42,"identity_rules":38,
+  "bootstrap_effective_sha256":"af01857a8101304835af5adcb5e80849a043c553f2245cf134798593a8471cee",
+  "contract_effective_sha256":"2f780b36d6c7e652280163e2c485f285603555447ee7394f545a7c53b4aafc72",
+  "consumed_authorizations_rejected":["E137","E138","E139"],
+  "budgets_unchanged":true,
+  "actual_private_loader_components_capture_pin_recipe_roots_tested":true,
+  "pending":["materials and controller/source-session/entry integration","complete exact source freeze and independent review","new explicit whole-package remote authorization"],
+  "authorization_received":false,"execution_ready":false,"physical_d95_verified":false
+}
