@@ -628,3 +628,8 @@ tests/test_e139_local_source_session.py -text
 tests/test_e139_entry_candidate.py -text
 tests/test_e139_local_entry_integration.py -text
 data/manifests/ranking_v6_e139_local_preparation_review_r1.json -text
+scripts/run_physical_f_clean_replay_e139.py -text
+tests/test_e139_public_entry.py -text
+tests/test_e139_pinned_factory_integration.py -text
+data/manifests/ranking_v6_e139_public_entry_review_r1.json -text
+data/manifests/ranking_v6_e139_proposed_source_freeze_r1.json -text

@@ -1,0 +1,22 @@
+{
+  "schema": "e139-public-entry-local-review-v1",
+  "date": "2026-11-10",
+  "status": "PASS_LOCAL_ENTRY_AND_SIMULATED_FACTORY_NOT_REMOTE_RELEASE",
+  "independent_reviewer": "reference_semantic_review_r2",
+  "source_pins": {
+    "scripts/run_physical_f_clean_replay_e139.py": "a602a74a3d99b73a12931a48db8ebec1c76a87eaac1ed42061f17f65aecb1e87",
+    "tests/test_e139_public_entry.py": "bf8e8b7d0729dc97aff3261812bd21e0e63262204e2dcc87f4000efd4f50a392",
+    "tests/test_e139_pinned_factory_integration.py": "5eb26a3dc5162f721bd71506769adb421e117199c9b8b8c45b935ca2aa9898fc"
+  },
+  "resolved_integration_defect": "P1: immutable initial review-pin snapshot prevented execution/readback exact review after actual prior output. One-use current-role trusted-parent pin installation now preserves the same session and clock.",
+  "independent_focused": {"tests":18,"seconds":21.922,"failures":0,"errors":0},
+  "final_related_regression": {"tests":780,"seconds":48.099,"failures":0,"errors":0,"exit_code":0},
+  "actual_local_components": ["private native/script graph", "fixed effective materials and capture preparation", "ScopedController and underlying create_pinned", "PhaseStore temporary phase/original clock", "PinnedTransport constructor and fixed helper compilation", "native capture validator and next-packet preparation"],
+  "test_substitutions": ["synthetic authority and review records", "local node and paired time sources", "negative file-read returns", "one substituted PinnedTransport.send response derived from hash-verified historical E138 capture metadata", "wrapper cross-role state doubles"],
+  "limitations": ["No SSH/key-check or new E139 measurement established by mocked send", "No real three-role E139 execution or F detection credit", "Source freeze only binds code/configuration, not consent", "Review-pin installation trusts parent provenance; it does not authenticate a reviewer"],
+  "proposed_source_freeze_sha256": "7a693c885379a238c61a8dcb771469e7eb9d6352509b2e8d6b271cce612191d5",
+  "independent_source_freeze_review": {"status":"PASS_CODE_CONFIG_INTEGRITY_ONLY","public_origin_checks":6,"session_origin_checks":70,"effective_native_checks":56,"effective_script_checks":7,"raw_manifest_sha256":"875ed1f2b029c4b456c046f3bf0ee978ce92039ac6e4427fbaf342fa9bd6944b","proposal_sha256":"4b8a915f06482f25425c71b07c6eba8c002c1455b59e28023ce5e0a806bd75a1"},
+  "authorization_received": false,
+  "execution_ready": false,
+  "physical_d95_verified": false
+}

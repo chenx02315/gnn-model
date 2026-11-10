@@ -1,5 +1,9 @@
 # 当前实验状态
 
+当前权限节点：源码freeze已独立逐项核验通过（6+70份origin、56份有效native及7份脚本），可以请求一次新的E139整包批准；当前尚未收到批准。freeze文件中的PENDING为生成时状态，独立通过回执在ranking_v6_e139_public_entry_review_r1.json；保持被审核原始字节不改。
+
+最新（2026-11-10）：固定E139公开入口及实际pinned构造的本地替代运输验收已独立通过，780项相关回归通过（48.099秒）。已修复同一会话不能动态安装后续角色审核pin的P1；构造器globals恢复后，同一controller/adapter可处理模拟capture并以原时钟准备下一包。send数据来自明确标识的历史E138夹具，不是新E139测量；没有实际授权、A/B调用或新F信用。当前AES结果表见AES_HF_RESULT.md：H18323，F新增/去重并集未知，仍UNPROVEN。源码freeze候选7a693c88...仅绑定代码与配置，不授权执行。
+
 最新本地接线（2026-11-06）：E139原生56模块图、实际本地材料、私有7控制脚本会话、打包器及入口字节候选已独立复核，762项最终相关回归通过（49.632秒）。实际capture准备使用原35模块清单生成完整有效包；recipe主脚本/helper、源码输入交叉连接、原文/有效字节/配置摘要均核对。修复入口复制有闭包run_role的问题，保留会话存活保护。测试授权仍为合成，start测试替代factory和role执行；真实固定薄入口/facade与实际pinned factory尚待验收。无实际E139授权文件、无新phase、无A/B调用；E138不重试、无新增F仿真或D95结果。见ranking_v6_e139_local_preparation_review_r1.json及E139_bounded_recovery_plan.md。
 
 最新本地推进（2026-11-06）：E139有限派生器、合同/bootstrap两模块候选及runtime/receipt/join/export四模块候选均经独立复核；最终717项相关回归通过（37.512秒）。全部只修改固定身份/schema字面量或明确旧授权拒绝；原始与有效SHA、精确次数、逆向字节/AST一致性均记录。合成中文授权通过授权检查后故意在CONTEXT_JSON停止；四模块仅结构验证，没有加载或运行派生ownership/readback。完整私有图、外部生产者、recipe/实际材料与入口仍待接线，无实际E139授权、无新增远端运行、无新的F仿真/D95结果。旧E138失败保持封存；回执ranking_v6_e139_identity_subset_review_r1.json和ranking_v6_e139_runtime_identity_subset_review_r1.json。
