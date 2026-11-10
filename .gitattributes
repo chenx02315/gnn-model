@@ -650,3 +650,15 @@ scripts/e140_native_graph_candidate.py -text
 tests/test_e140_native_graph_candidate.py -text
 contracts/physical_f_clean_replay_proposal_e140_v1.json -text
 data/manifests/ranking_v6_e140_native_review_r1.json -text
+scripts/e140_local_materials.py -text
+scripts/e140_entry_candidate.py -text
+scripts/e140_local_source_session.py -text
+scripts/e140_public_entry_derivation.py -text
+scripts/run_physical_f_clean_replay_e140.py -text
+tests/test_e140_local_materials.py -text
+tests/test_e140_entry_candidate.py -text
+tests/test_e140_local_source_session.py -text
+tests/test_e140_pinned_factory.py -text
+tests/test_e140_public_entry.py -text
+data/manifests/ranking_v6_e140_proposed_source_freeze_r1.json -text
+data/manifests/ranking_v6_e140_integrated_review_r1.json -text

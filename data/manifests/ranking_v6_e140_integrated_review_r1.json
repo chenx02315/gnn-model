@@ -1,0 +1,35 @@
+{
+  "schema": "e140-integrated-local-source-review-v1",
+  "date": "2026-11-10",
+  "status": "PASS_LOCAL_CODE_CONFIG_NOT_REMOTE_AUTHORIZATION",
+  "independent_reviewer": "reference_semantic_review_r2",
+  "independent_component_checks": {
+    "materials_and_entry": {"tests": 8, "seconds": 1.526},
+    "session_and_native_graph": {"tests": 14, "seconds": 2.578},
+    "actual_pinned_factory_local": {"tests": 3, "seconds": 1.433},
+    "public_entry": {"tests": 5, "seconds": 10.783}
+  },
+  "final_related_regression": {"tests": 821, "seconds": 60.674, "failures": 0, "errors": 0, "exit_code": 0},
+  "source_freeze_review": {
+    "status": "PASS_CODE_CONFIG_INTEGRITY_ONLY",
+    "manifest": "data/manifests/ranking_v6_e140_proposed_source_freeze_r1.json",
+    "raw_manifest_sha256": "ddb412a8c1991ac0e5aa961d52eb48ab8e2178894dfb583f4d4612a9cc41f97c",
+    "canonical_freeze_sha256": "83cecb8e87eb20043c88cd351500b2b6ddbb4f6f4735cc2c42f1cbfaf9477e98",
+    "public_origin_checks": 11,
+    "session_origin_checks": 73,
+    "effective_native_checks": 56,
+    "effective_script_checks": 7,
+    "effective_entry_sha256": "431c9d160800a314fd19797e63c00614c74625ddcb7889f92297879fbd92ab0d",
+    "configuration_digests_match": true,
+    "budgets_and_prohibitions_unchanged": true
+  },
+  "limitations": [
+    "Synthetic authority, local temporary phase, mocked send or staged transitions do not establish new remote execution",
+    "Actual target probe confirms generic builtins behavior only, not a full E127 function run or unique original E139 exception",
+    "No new F detection credit or D95 result",
+    "New actual authority bytes and fresh exact role reviews remain required before remote execution"
+  ],
+  "authorization_received": false,
+  "execution_ready": false,
+  "physical_d95_verified": false
+}
